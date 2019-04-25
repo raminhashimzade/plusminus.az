@@ -16,7 +16,10 @@
     width: 200px;
   }
   .header__lang-switch {
-    margin-left: 31px;
+    margin-left: 21px;
+    button {
+      font-size: 12px;
+    }
   }
 
   .header__links {
