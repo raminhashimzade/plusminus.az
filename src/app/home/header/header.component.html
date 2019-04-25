@@ -1,3 +1,52 @@
-<p>
-  header works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="header">
+        <div class="header__icon">
+            <img src="./assets/icons/mybank-logo.svg">
+          </div>
+          <div class="header__links d-lg-none">
+              <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>{{'~deposits' | translate}}</button>
+                <button mat-menu-item>{{'~loans' | translate}}</button>
+                <button mat-menu-item>{{'~mortgage' | translate}}</button>
+                <button mat-menu-item>{{'~credit-cards' | translate}}</button>
+                <button mat-menu-item>{{'~debit-cards' | translate}}</button>
+                <button mat-menu-item>{{'~exchange-rates' | translate}}</button>
+              </mat-menu>
+          </div>
+          <div class="header__links d-none d-lg-flex">
+            <a class="link">
+              {{'~deposits' | translate}}
+            </a>
+            <a class="link">
+              {{'~loans' | translate}}
+            </a>
+            <a class="link">
+              {{'~mortgage' | translate}}
+            </a>
+            <a class="link">
+              {{'~credit-cards' | translate}}
+            </a>
+            <a class="link">
+              {{'~debit-cards' | translate}}
+            </a>
+            <a class="link">
+              {{'~exchange-rates' | translate}}
+            </a>
+
+          </div>
+          <div class="header__search">
+              <i class="fas fa-search"></i>
+          </div>
+          <div class="header__lang-switch">
+            <select value="English" (change)="onLangChange($event)" [ngModel]="defaultLang">
+                <option value="en" >English</option>
+                <option value="ru">Русский</option>
+            </select>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { APP_KEY, DEFAULT_LANG } from './app.utils';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'plus-minus';
+  constructor(private translateService: TranslateService) {
+    this.setDefaultLang();
+  }
+  setDefaultLang() {
+    const language = localStorage.getItem(`${APP_KEY}_language`) || DEFAULT_LANG;
+    this.translateService.setDefaultLang(language);
+  }
 }
