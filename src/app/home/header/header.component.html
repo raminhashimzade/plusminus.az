@@ -11,8 +11,8 @@
             {{ defaultLang | uppercase }}
           </button>
           <mat-menu #langMenu="matMenu">
-            <button mat-menu-item (change)="onLangChange('en')">EN</button>
-            <button mat-menu-item (change)="onLangChange('ru')">Ru</button>
+            <button mat-menu-item (click)="onLangChange('en')">EN</button>
+            <button mat-menu-item (click)="onLangChange('ru')">RU</button>
           </mat-menu>
         </div>
 
