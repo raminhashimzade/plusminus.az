@@ -7,7 +7,14 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        loadChildren:
+          './home/landing-page/landing-page.module#LandingPageModule'
+      }
+    ]
   }
 ];
 

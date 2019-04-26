@@ -1,3 +1,20 @@
-<p>
-  main-banner works!
-</p>
+<div class="slide-wrapper">
+  <ng-container *ngFor="let slide of slides; let i = index">
+    <slide [slide]="slide" *ngIf="slideIndex === i"></slide>
+
+    <div class="container" *ngIf="slideIndex === i">
+      <div class="row">
+        <div class="col-12">
+          <div class="slide-wrapper__actions">
+            <div class="slide-wrapper__actions__prev" (click)="onSlidePrev()">
+              <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="slide-wrapper__actions__next" (click)="onSlideNext()">
+              <i class="fas fa-chevron-right"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -1,0 +1,61 @@
+:host {
+  display: block;
+  width: 100vw;
+}
+.slide {
+  position: relative;
+  height: 360px;
+  .slide__cover {
+    width: 100vw;
+    height: 360px;
+    position: fixed;
+    left: 0;
+    img {
+      object-fit: fill;
+    }
+  }
+  .slide__content {
+    padding-top: 121px;
+    padding-bottom: 67px;
+    .slide__content__title {
+      position: relative;
+      z-index: 1;
+      color: #ffffff;
+      width: 323px;
+      font-family: 'Montserrat-SemiBold';
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: -1.08px;
+    }
+    .slide__content__shortInfo {
+      position: relative;
+      z-index: 1;
+      color: #ffffff;
+      font-family: 'Montserrat-Medium';
+      font-size: 14px;
+      font-weight: 400;
+      /* Text style for "З, аполнит" */
+      letter-spacing: -0.14px;
+    }
+    .slide__detailed {
+      margin-top: 66px;
+      margin-left: 170px;
+      position: relative;
+      z-index: 1;
+      button {
+        background: transparent;
+        width: 150px;
+        height: 35px;
+        color: #fff2c2;
+        border: 1px solid #fff2c2;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-weight: 400;
+        /* Text style for "П, одробне" */
+        letter-spacing: -0.12px;
+        text-align: center;
+        padding: 10px 38px;
+      }
+    }
+  }
+}
