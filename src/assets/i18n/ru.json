@@ -25,5 +25,7 @@
   "~more": "Ещё",
   "~selectCredits": "Подбор кредитов",
   "~selectCreditsShortInfo": "Заполните одну заявку для всех банков и выберите подходящее предложение",
-  "~detailed": "Подробнее"
+  "~detailed": "Подробнее",
+  "~upTo": "up to",
+  "~upToDuration": "up to duration"
 }

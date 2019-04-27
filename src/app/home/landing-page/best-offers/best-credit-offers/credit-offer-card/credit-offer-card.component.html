@@ -1,0 +1,22 @@
+<div class="offer-card">
+  <div class="offer-card__header">
+      <div class="offer-card__header__title">
+        <div class="offer-card__header__title__main">{{offer.bankName}}</div>
+        <div class="offer-card__header__title__secondary">{{'~offer' | translate}}</div>
+      </div>
+      <div class="offer-card__header__logo">
+        <img src="./assets/images/kapital-bank.png">
+      </div>
+  </div>
+  <div class="offer-card__content">
+      <div class="deposit-percent">
+        <div class="deposit-percent__title">{{offer.creditPercent}}%</div>
+        <div class="deposit-percent__subtitle"> {{offer.creditPercent}}</div>
+      </div>
+      <div class="deposit-count">
+        <div class="deposit-count__title"> <span>{{'~upTo' | translate}} </span> {{offer.creditAmount}}</div>
+        <div class="deposit-count__subtitle"><span>{{'~upToDuration' | translate}}</span> {{offer.creditDuration}}</div>
+      </div>
+  </div>
+  <div class="offer-card__actions">{{'~more-info' | translate}}</div>
+</div>

@@ -1,0 +1,71 @@
+:host {
+    display: block;
+}
+.offer-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.0625rem 1.3125rem;
+    background: #ffffff;
+    width: 19.3125rem;
+    border: solid 0.125rem #eaf1fe;
+    margin-right: 0.1875rem;
+    .offer-card__header {
+        margin-bottom: 1.1875rem;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        .offer-card__header__title {
+            display: flex;
+            flex-direction: column;
+            .offer-card__header__title__main {
+                font-size: 20px;
+                font-family: 'Montserrat-SemiBold';
+            }
+            .toffer-card__header__title__secondary {
+            }
+        }
+        .offer-card__header__logo {
+           width: 42px;
+        }
+
+    }
+    .offer-card__content {
+        width: 100%;
+        display: flex;
+        .deposit-percent {
+            font-size: 0.625rem;
+            margin-right: 3.375rem;
+            .deposit-percent__title {
+                font-family: 'Montserrat-SemiBold';
+                font-size: 1.6875rem;
+            }
+            .deposit-percent__subtitle {
+                font-size: 0.75rem;
+            }
+        }
+        .deposit-count {
+            .deposit-count__title {
+                font-family: 'Montserrat-SemiBold';
+                font-size: 24px;
+                span {
+                    font-size: 12px;
+                }
+            }
+            .deposit-count__subtitle {
+              span {
+                font-size: 12px;
+              }
+            }
+        }
+    }
+    .offer-card__actions {
+        align-self: flex-end;
+        font-size: 0.75rem;
+        font-weight: 900;
+        margin-top: 0.875rem;
+        cursor: pointer;
+    }
+
+}
