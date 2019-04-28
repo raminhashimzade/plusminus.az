@@ -26,6 +26,7 @@
     "core-js": "^2.5.4",
     "daemonite-material": "^4.1.1",
     "i": "^0.3.6",
+    "ngx-perfect-scrollbar": "^7.2.1",
     "ngx-router-animations": "0.0.9",
     "npm": "^6.9.0",
     "rxjs": "~6.3.3",
