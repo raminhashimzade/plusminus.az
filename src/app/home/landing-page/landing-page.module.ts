@@ -16,6 +16,8 @@ import { CreditOfferCardComponent } from './best-offers/best-credit-offers/credi
 import { OurPartnersComponent } from './our-partners/our-partners.component';
 import { BankPartnersComponent } from './our-partners/bank-partners/bank-partners.component';
 import { BankPartnerCardComponent } from './our-partners/bank-partners/bank-partner-card/bank-partner-card.component';
+import { FavorableRatesPreviewComponent } from './favorable-rates-preview/favorable-rates-preview.component';
+import { FavorableRatesPreviewTableComponent } from './favorable-rates-preview/favorable-rates-preview-table/favorable-rates-preview-table.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { BankPartnerCardComponent } from './our-partners/bank-partners/bank-part
           CreditOfferCardComponent,
           OurPartnersComponent,
           BankPartnersComponent,
-          BankPartnerCardComponent],
+          BankPartnerCardComponent,
+          FavorableRatesPreviewComponent,
+          FavorableRatesPreviewTableComponent],
   imports: [
     CommonModule,
     SharedTranslateModule,

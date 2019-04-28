@@ -1,0 +1,48 @@
+:host {
+    display: block;
+    width: 50%;
+}
+
+th {
+    color: #5f5f5f;
+    font-family: 'Montserrat-Medium';
+    font-size: 14px;
+    font-weight: 400;
+    padding-right: 30px;
+}
+td {
+   .currencyCode {
+        color: #5f5f5f;
+        font-family: 'Montserrat-SemiBold';
+        font-size: 20px;
+        text-transform: uppercase;
+        padding-right: 30px;
+   }
+   .rate {
+       display: flex;
+       flex-direction: column;
+       padding-right: 30px;
+       min-height: 80px;
+        .rate__value {
+            font-family: 'Montserrat-Medium';
+            font-size: 20px;
+            font-weight: 400;
+            padding-right: 7px;
+            span {
+                color: #ff3c4e;
+                font-size: 12px;
+            }
+        }
+        .rate__banks {
+           display: flex;
+           flex-direction: column;
+           .rate__banks__item {
+                color: var(--primary-default);
+                font-family: 'Montserrat-Medium';
+                font-size: 10px;
+                font-weight: 400;
+                line-height: 13.75px;
+           }
+        }
+}
+}

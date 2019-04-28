@@ -8,7 +8,7 @@
   "~credits": "Кредиты",
   "~debit-cards": "Дебетовые карты",
   "~exchange-rates": "Курс",
-  "~partners": "Наши партнеры",
+
   "~about-project": " О проекте",
   "~contacts": " Контакты",
   "~partners-program": "Партнерская программа",
@@ -27,5 +27,13 @@
   "~selectCreditsShortInfo": "Заполните одну заявку для всех банков и выберите подходящее предложение",
   "~detailed": "Подробнее",
   "~upTo": "up to",
-  "~upToDuration": "up to duration"
+  "~upToDuration": "up to duration",
+  "~banks": "Банки",
+  "~mobile-operators": "Мобильные тарифи",
+  "~providers": "Провайдеры",
+  "~our-partners": "Наши партнеры",
+  "~currency": "Валюта",
+  "~bestBuy": "Лучшая покупка",
+  "~bestSell": "Лучшая продажа",
+  "~favorableRate": "Выгодный курс"
 }

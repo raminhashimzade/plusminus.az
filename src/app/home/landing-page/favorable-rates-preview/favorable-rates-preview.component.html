@@ -1,0 +1,25 @@
+
+<div class="container-overlay">
+
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+          <div class="section">
+              <div class="section__title">{{'~favorableRate' | translate}}</div>
+              <div class="section__content">
+                <favorable-rates-preview-table [currencies] = "rates | slice: 0:2"></favorable-rates-preview-table>
+                <favorable-rates-preview-table [currencies] = "rates | slice: 2:4"></favorable-rates-preview-table>
+              </div>
+              <div class="section__footer">
+                <div class="section__footer__date">
+                    Курс актуален на 14:21:16, 16.04.2019
+                </div>
+                <div class="section__footer__action">
+                   <a> Все курсы валют</a>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>

@@ -8,7 +8,6 @@
   "~credits": "Credits",
   "~debit-cards": "Debit Cards",
   "~exchange-rates": "Exchange Rates",
-  "~partners": "Our Partners",
   "~about-project": "About Project",
   "~contacts": "Contacts",
   "~partners-program": "Partners Program",
@@ -27,5 +26,14 @@
   "~selectCreditsShortInfo": "Заполните одну заявку для всех банков и выберите подходящее предложение",
   "~detailed": "More",
   "~upTo": "up to",
-  "~upToDuration": "up to duration"
+  "~upToDuration": "up to duration",
+  "~banks": "Banks",
+  "~mobile-operators": "Mobile Operators",
+  "~providers": "Providers",
+  "~our-partners": "Our Partners",
+  "~currency": "Currency",
+  "~bestBuy": "Best Buy",
+  "~bestSell": "Best Sell",
+  "~favorableRate": "Favorable Rate"
+
 }

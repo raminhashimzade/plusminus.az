@@ -80,3 +80,10 @@ img {
   font-family: Montserrat-SemiBold;
   src: url(assets/fonts/Montserrat/Montserrat-SemiBold.ttf) format('opentype');
 }
+
+.mat-tab-label {
+  min-width: 20px!important;
+  padding:  0 10px!important;
+  font-size: 12px!important;
+  font-family: 'Montserrat-Medium'!important;
+}
