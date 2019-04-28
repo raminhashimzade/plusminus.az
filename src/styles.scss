@@ -34,6 +34,7 @@ html,
 body {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
   // background: var(--kg-wrapper-background);
   background: var(--background-default);
   font-size: 100%;

@@ -1,4 +1,14 @@
 :host {
     display: block;
+    padding: 58px 0;
     background: var(--background-secondary);
+}
+.section {
+    .section__title {
+        font-size: 25px;
+        font-family: 'Montserrat-SemiBold';
+        letter-spacing: -0.9px;
+        font-weight: 400;
+    }
+    .section__content {}
 }

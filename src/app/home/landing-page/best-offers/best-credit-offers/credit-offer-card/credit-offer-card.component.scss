@@ -5,17 +5,21 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1.0625rem 1.3125rem;
     background: #ffffff;
-    width: 19.3125rem;
+    width: 335px;
     border: solid 0.125rem #eaf1fe;
-    margin-right: 0.1875rem;
+    margin-right: 0.625rem;
+    position: relative;
+    transition-property: transform, box-shadow;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+    cursor: pointer;
     .offer-card__header {
-        margin-bottom: 1.1875rem;
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
         width: 100%;
+        padding: 15px 30px;
         .offer-card__header__title {
             display: flex;
             flex-direction: column;
@@ -34,38 +38,51 @@
     .offer-card__content {
         width: 100%;
         display: flex;
-        .deposit-percent {
+        justify-content: space-between;
+        padding: 15px 30px;
+        background: var(--background-secondary);
+        .credit-percent {
             font-size: 0.625rem;
-            margin-right: 3.375rem;
-            .deposit-percent__title {
+            .credit-percent__title {
                 font-family: 'Montserrat-SemiBold';
                 font-size: 1.6875rem;
             }
-            .deposit-percent__subtitle {
+            .credit-percent__subtitle {
                 font-size: 0.75rem;
             }
         }
-        .deposit-count {
-            .deposit-count__title {
+        .credit-count {
+            .credit-count__title {
                 font-family: 'Montserrat-SemiBold';
                 font-size: 24px;
-                span {
+                span, b {
                     font-size: 12px;
                 }
             }
-            .deposit-count__subtitle {
+            .credit-count__subtitle {
               span {
                 font-size: 12px;
               }
             }
         }
     }
-    .offer-card__actions {
-        align-self: flex-end;
-        font-size: 0.75rem;
-        font-weight: 900;
-        margin-top: 0.875rem;
+    .offer-card__navigate {
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        color: #ffffff;
+        border-radius: 50%;
+        background-color: var(--primary-default);
         cursor: pointer;
+        position: absolute;
+        bottom: -15px;
     }
+&:hover {
+    box-shadow: 0 25px 20px rgba(94, 94, 94, 0.15);
+    transform: translateY(-10px);
+}
 
 }

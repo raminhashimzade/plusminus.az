@@ -7,7 +7,7 @@ export const MockCreditOffers = [
     },
     {
         bankName: 'Kapital Bank',
-        creditPercent: '',
+        creditPercent: '12.5',
         creditAmount: '50.000',
         creditDuration: '5'
     },
