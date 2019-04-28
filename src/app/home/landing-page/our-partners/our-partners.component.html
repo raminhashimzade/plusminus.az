@@ -1,0 +1,20 @@
+
+<div class="container-overlay">
+
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+        <div class="section">
+            <div class="section__title">{{'~our-partners' | translate}}</div>
+            <div class="section__content">
+                <mat-tab-group [disableRipple]="true" [selectedIndex]="selectedTabIndex" [animationDuration]="'1.5s'">
+                    <mat-tab label="{{'~banks' | translate}}"> <bank-partners></bank-partners>  </mat-tab>
+                    <mat-tab label="{{'~mobile-operators' | translate}}">  </mat-tab>
+                    <mat-tab label="{{'~providers' | translate}}"> </mat-tab>
+                  </mat-tab-group>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>

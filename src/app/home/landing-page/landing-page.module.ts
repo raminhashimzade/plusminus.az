@@ -13,6 +13,9 @@ import { BestDepositOffersComponent } from './best-offers/best-deposit-offers/be
 import { BestDepositOfferComponent } from './best-offers/best-deposit-offers/best-deposit-offer/best-deposit-offer.component';
 import { BestCreditOffersComponent } from './best-offers/best-credit-offers/best-credit-offers.component';
 import { CreditOfferCardComponent } from './best-offers/best-credit-offers/credit-offer-card/credit-offer-card.component';
+import { OurPartnersComponent } from './our-partners/our-partners.component';
+import { BankPartnersComponent } from './our-partners/bank-partners/bank-partners.component';
+import { BankPartnerCardComponent } from './our-partners/bank-partners/bank-partner-card/bank-partner-card.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { CreditOfferCardComponent } from './best-offers/best-credit-offers/credi
          BestDepositOffersComponent,
           BestDepositOfferComponent,
           BestCreditOffersComponent,
-          CreditOfferCardComponent],
+          CreditOfferCardComponent,
+          OurPartnersComponent,
+          BankPartnersComponent,
+          BankPartnerCardComponent],
   imports: [
     CommonModule,
     SharedTranslateModule,
