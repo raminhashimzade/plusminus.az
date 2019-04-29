@@ -1,10 +1,9 @@
 :host {
   display: block;
- // width: calc(100% - 10px);
  width: 100%;
   position: relative;
  // margin-right: 10px;
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 2;
   background: white;

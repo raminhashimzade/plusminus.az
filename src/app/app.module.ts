@@ -14,7 +14,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule } from '@angular/forms';
 export function HttpLoaderFactory(http: HttpClient) {
   const link = './assets/i18n/';
-  return new TranslateHttpLoader(http, link, '.json');
+  return new TranslateHttpLoader(http, link, `.json?random=${Math.random() * 100}`);
 }
 import { PerfectScrollbarModule, PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
