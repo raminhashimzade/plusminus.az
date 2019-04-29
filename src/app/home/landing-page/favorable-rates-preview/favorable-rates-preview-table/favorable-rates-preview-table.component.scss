@@ -46,3 +46,8 @@ td {
         }
 }
 }
+@media (max-width: 768px) {
+   :host {
+       width: 100%;
+   }
+}

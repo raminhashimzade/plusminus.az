@@ -9,9 +9,10 @@
   height: 360px;
   position: absolute;
   left: 0;
-  img {
-    object-fit: fill;
-  }
+  background-image: url("../../../../../assets/images/select-credits.jpeg");
+  background-color: var(--primary-default);
+  background-repeat: no-repeat;
+  background-position-x: center;
 }
 
 .slide {
@@ -25,7 +26,6 @@
       position: relative;
       z-index: 1;
       color: #ffffff;
-      width: 323px;
       font-family: 'Montserrat-SemiBold';
       font-size: 36px;
       font-weight: 400;
@@ -38,7 +38,7 @@
       font-family: 'Montserrat-Medium';
       font-size: 14px;
       font-weight: 400;
-      /* Text style for "З, аполнит" */
+      max-width: 310px;
       letter-spacing: -0.14px;
     }
     .slide__detailed {

@@ -1,6 +1,6 @@
 
  <div class="slide__cover">
-  <img [src]="slide.coverPhoto" />
+  <!-- <img [src]="slide.coverPhoto" /> -->
 </div>
 
 <div class="container">
@@ -9,8 +9,8 @@
       <div class="slide" *ngIf="slide">
 
         <div class="slide__content">
-          <div class="slide__content__title">{{ slide.title }}</div>
-          <div class="slide__content__shortInfo">{{ slide.shortInfo }}</div>
+          <div class="slide__content__title" [translate]="slide.title"></div>
+          <div class="slide__content__shortInfo" [translate]="slide.shortInfo"></div>
           <div class="slide__detailed">
             <button>{{ '~detailed' | translate }}</button>
           </div>

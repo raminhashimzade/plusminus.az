@@ -35,5 +35,9 @@
   "~currency": "Валюта",
   "~bestBuy": "Лучшая покупка",
   "~bestSell": "Лучшая продажа",
-  "~favorableRate": "Выгодный курс"
+  "~favorableRate": "Выгодный курс",
+  "~offer": "предложение",
+  "~allCurrencies": "Все валюты",
+  "~amount": "сумма",
+  "~duration": "длительность"
 }

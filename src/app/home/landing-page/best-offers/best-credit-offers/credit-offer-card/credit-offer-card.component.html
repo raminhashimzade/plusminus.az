@@ -11,11 +11,11 @@
   <div class="offer-card__content">
       <div class="credit-percent">
         <div class="credit-percent__title">{{offer.creditPercent}}%</div>
-        <div class="credit-percent__subtitle"> {{offer.creditPercent}}</div>
+        <div class="credit-percent__subtitle"> {{'~annual' | translate}}</div>
       </div>
       <div class="credit-count">
-        <div class="credit-count__title"> <span>{{'~upTo' | translate}} </span> {{offer.creditAmount}} <b>AZN</b></div>
-        <div class="credit-count__subtitle"><span>{{'~upToDuration' | translate}}</span> {{offer.creditDuration}}</div>
+        <div class="credit-count__title"> <span>{{'~amount' | translate}}</span> {{offer.creditAmount}} <b>AZN</b></div>
+        <div class="credit-count__subtitle"><span>{{'~duration' | translate}}  </span>{{offer.creditDuration}}</div>
       </div>
   </div>
   <div class="offer-card__navigate"><i class="fas fa-chevron-right"></i></div>

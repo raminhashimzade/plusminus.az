@@ -34,6 +34,9 @@
   "~currency": "Currency",
   "~bestBuy": "Best Buy",
   "~bestSell": "Best Sell",
-  "~favorableRate": "Favorable Rate"
-
+  "~favorableRate": "Favorable Rate",
+  "~offer": "offer",
+  "~allCurrencies": "All currencies",
+  "~amount": "quantity",
+  "~duration": "duration"
 }
