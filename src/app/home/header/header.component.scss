@@ -1,6 +1,13 @@
 :host {
   display: block;
-  width: 100%;
+ // width: calc(100% - 10px);
+ width: 100%;
+  position: relative;
+ // margin-right: 10px;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  background: white;
 }
 
 .header {
