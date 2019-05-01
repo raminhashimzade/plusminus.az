@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './home/header/header.component';
 import { FooterComponent} from './home/footer/footer.component';
-import {HttpClientModule,  HttpClient} from '@angular/common/http';
+import {HttpClientModule,  HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +18,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 import { PerfectScrollbarModule, PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { TokenResolver } from './home/token.resolver';
+import { APIInterceptor } from './shared/interceptors/api.interceptor';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -45,10 +47,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   }),
   ],
   providers: [
+    TokenResolver,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
+    },
+    {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

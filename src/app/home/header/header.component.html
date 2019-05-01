@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-12">
       <div class="header">
-        <div class="header__icon">
+        <div class="header__icon" routerLink="/">
           <img src="./assets/icons/brand.svg" />
         </div>
 
@@ -32,7 +32,7 @@
           <a class="link">
             {{ '~deposits' | translate }}
           </a>
-          <a class="link" [routerLink]="['loans']"  >
+          <a class="link" [routerLink]="['loans']" routerLinkActive="active"  >
             {{ '~loans' | translate }}
           </a>
           <a class="link">

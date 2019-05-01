@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { DataResponse } from '../models/data-reponse';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,12 @@ export class AuthService {
   getToken(): string {
     return this.token;
   }
-  // fetchToken(): Observable<string> {
-  //   return this.http.post
-  // }
+  fetchToken(): Observable<string> {
+    return this.http.post<DataResponse>('mybank/getSessionId', {})
+    .pipe(map(res => {
+      this.token = res && res.data;
+      console.log(this.token)
+      return this.token;
+    }))
+  }
 }

@@ -20,9 +20,13 @@
   .header__icon {
     height: 33px;
     width: 200px;
+    outline: 0;
+    cursor: pointer;
   }
   .header__lang-switch {
-    margin-left: 21px;
+    margin-left: 13px;
+    border-left: 1px solid #908f8f;
+    padding-left: 13px;
     button {
       font-size: 12px;
     }
@@ -43,6 +47,10 @@
       text-align: center;
       margin-right: 15px;
       cursor: pointer;
+      transition: color 300ms ease-in-out;
+      &.active {
+        color: var(--primary-default);
+      }
     }
   }
   .header__scales {
@@ -56,6 +64,7 @@
 
 .lang-switch {
   width: 3.9375rem;
+
   /deep/ .mat-form-field-flex {
     border-radius: 0.375rem;
     background: var(--secondary-text-color);

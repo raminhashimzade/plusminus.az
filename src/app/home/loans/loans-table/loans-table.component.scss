@@ -2,10 +2,10 @@
     display: block;
     background: var( --background-secondary);
 }
-.loan-request{
+.loans__request{
     margin: 34px 0;
     width: 100%;
-    .loand-request__btn {
+    .loans__request__btn {
         height: 35px;
         width: 100%;
         background-color: var(--primary-default);
@@ -15,4 +15,134 @@
         font-weight: 400;
         letter-spacing: -0.12px;
     }
+}
+
+.loans__table {
+    .loans__table__filter {
+        display: flex;
+        .loans__table__filter__btn {
+            padding: 10px 15px;
+            height: 35px;
+            color: #000000;
+            font-family: 'Montserrat-Medium';
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: -0.12px;
+            background: #ffffff;
+            border: 1px solid rgba(29, 163, 41, 0.5);
+        }
+     }
+     .loans__table__content {
+        margin: 16px 0;
+         table {
+             border:  1px solid rgba(29, 163, 41, 0.5);
+             background: #ffffff;
+             thead {
+                 th {
+                    padding: 13px 50px;
+                    border:  1px solid rgba(29, 163, 41, 0.5);
+                    color: var(--primary-default);
+                    font-family: 'Montserrat-Medium';
+                    font-size: 12px;
+                    font-weight: 300;
+                    letter-spacing: -0.12px;
+                    text-align: center;
+                 }
+             }
+             tbody {
+                 tr {
+                    border:  1px solid rgba(29, 163, 41, 0.5);
+                    td {
+                        text-align: center;
+                        .td-content {
+                            padding:23px 12px;
+                            max-height: 140px;
+                            overflow: hidden;
+                            transition: max-height 300ms ease-in-out;
+                            &.--expanded {
+                                max-height: 1000px
+                            }
+                            &.loans__table__content__bank {
+                                .loans__table__content__bank__icon {}
+                                .loans__table__content__bank__more {
+                                    padding-top: 15px;
+                                    cursor: pointer;
+                                    color: var(--primary-default);
+                                    transition: transform 300ms ease-in-out;
+                                    &.--top {
+                                        transform: rotateX(180deg);
+                                    }
+                                }
+                            }
+                            &.loans__table__content__amount {
+                                display: flex;
+                                flex-direction: column;
+                                   .loans__table__content__amount__value {
+                                       font-family: 'Montserrat-Medium';
+                                       font-size: 14px;
+                                       font-weight: 700;
+                                       line-height: 18px;
+                                       letter-spacing: -0.14px;
+                                   }
+                                   .loans__table__content__amount__duration {
+                                       padding-top: 5px;
+                                       font-family: 'Montserrat-Medium';
+                                       font-size: 12px;
+                                       font-weight: 300;
+                                       line-height: 19px;
+                                       letter-spacing: -0.12px;
+                                   }
+
+                            }
+                            &.loans__table__content__documents {
+                                display: flex;
+                                flex-direction: column;
+                                .loans__table__content__documents__item {
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 19px;
+                                    letter-spacing: -0.12px;
+                                    font-family: 'Montserrat-Medium';
+                                }
+                            }
+                            &.loans__table__content__requirements {
+                                .loans__table__content__requirement__item {
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    line-height: 19px;
+                                    letter-spacing: -0.12px;
+                                    font-family: 'Montserrat-Medium';
+                                }
+                            }
+                            &.loans__table__content__popularity {
+                               button {
+                                   width: 135px;
+                                   height: 35px;
+                                   border: 1px solid rgba(119, 94, 0, 0.34);
+                                   font-family: 'Montserrat-Medium';
+                                   font-size: 12px;
+                                   font-weight: 400;
+                                   letter-spacing: -0.12px;
+                                   &.primary {
+                                   background-color: var(--primary-default);
+                                   color: #ffffff;
+                                   margin-bottom: 10px;
+                                   }
+                                   &.secondary {
+                                       color: #000000;
+                                       background-color: var(--secondary-default);
+                                   }
+                               }
+                           }
+
+
+
+
+                        }
+                    }
+                 }
+             }
+         }
+
+     }
 }

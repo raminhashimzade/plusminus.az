@@ -45,5 +45,17 @@
   "~loansDuration": "Срок кредита",
   "~loansType": "Тип кредита",
   "~pickLoan": "Подобрать кредит",
-  "~requestLoansFromAllBanks": "Отправить заявку на кредит всем банкам"
+  "~requestLoansFromAllBanks": "Отправить заявку на кредит всем банкам",
+  "~loansCalculator": "Кредитный калькулятор",
+  "~inCash": "Наличными",
+  "~withRealEstateCollateral": "Под залог недвижимости",
+  "~refinancing": "Рефинансирование",
+  "~withoutCollateraAndGuarantore": "Без залога и поручителя",
+  "~onlyWithPassport": "Только по паспорту",
+  "~effectiveRate": "Ставка",
+  "~documents": "Документы",
+  "~requirements": "Требования",
+  "~popularity": "Популярность",
+  "~navigateToPage": "Перейти на сайт",
+  "~compare": "Сравнить"
 }

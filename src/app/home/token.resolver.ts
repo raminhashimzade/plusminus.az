@@ -9,7 +9,7 @@ import {Location} from '@angular/common';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable()
-export class UserResolver {
+export class TokenResolver {
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -19,7 +19,8 @@ export class UserResolver {
   resolve(
     route: ActivatedRoute,
     state: RouterStateSnapshot
-  ): Observable<any> | Promise<any> {
-    return this.authService.getToken ? of(null) : null;
+  ): Observable<string | null> {
+    console.log('resolveing')
+    return this.authService.getToken() ? of(null) : this.authService.fetchToken();
   }
 }

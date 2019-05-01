@@ -11,6 +11,7 @@ export class ValueTranslatePipe implements PipeTransform {
     this.translateService.onDefaultLangChange.subscribe((data) => {
       this.lang = data.lang;
     });
-    return value[this.lang];
+  //  return value[this.lang];
+  return value['az'];
   }
 }
