@@ -13,7 +13,12 @@ const routes: Routes = [
         path: '',
         loadChildren:
           './home/landing-page/landing-page.module#LandingPageModule'
-      }
+      },
+      {
+        path: 'loans',
+        loadChildren:
+          './home/loans/loans.module#LoansModule'
+      },
     ]
   }
 ];

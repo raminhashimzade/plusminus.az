@@ -39,5 +39,11 @@
   "~offer": "предложение",
   "~allCurrencies": "Все валюты",
   "~amount": "сумма",
-  "~duration": "длительность"
+  "~duration": "длительность",
+  "~consumer": "Потребительские",
+  "~loansAmount": "Сумма кредита",
+  "~loansDuration": "Срок кредита",
+  "~loansType": "Тип кредита",
+  "~pickLoan": "Подобрать кредит",
+  "~requestLoansFromAllBanks": "Отправить заявку на кредит всем банкам"
 }

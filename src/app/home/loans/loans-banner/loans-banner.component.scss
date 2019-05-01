@@ -1,0 +1,77 @@
+:host {
+    display: block;
+    background: #fcde69;
+    height: 300px;
+}
+/deep/ .mat-form-field-flex {
+    background-color: #ffffff!important;
+}
+.banner {
+    padding-top: 47px;
+    padding-bottom: 184px;
+    .banner__title {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 40px;
+        .banner__title__top {
+            color: #1da329;
+            font-family: "Montserrat-SemiBold";
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .banner__title__bottom {
+            color: #1da329;
+            letter-spacing: -0.96px;
+            font-family: "Montserrat-Medium";
+            font-size: 27px;
+            letter-spacing: 1px;
+        }
+    }
+    .banner__filter {
+        display: flex;
+        .banner__filter__amount {
+            display: flex;
+            height: 45px;
+            .banner__filter__amount__input {
+              input {
+               width: 375px;
+               height: 100%;
+              }
+            }
+            .banner__filter__amount__select {
+                height: 100%;
+                width: 75px;
+                select {
+                    height: 100%;
+                    width: 100%;
+
+                  }
+            }
+        }
+        .banner__filter__duration {
+            height: 45px;
+            width: 173px;
+            margin-left: 9px;
+        }
+        .banner__filter__type {
+            height: 45px;
+            width: 173px;
+            margin-left: 9px;
+        }
+        .banner__filter__submit {
+            margin-left: 9px;
+            button {
+                width: 200px;
+                height: 45px;
+                border: 1px solid rgba(119, 94, 0, 0.34);
+                background-color: var(--primary-default);
+                color: #fff2c2;
+                font-family: 'Montserrat-Medium';
+                font-size: 12px;
+                font-weight: 400;
+                letter-spacing: -0.12px;
+            }
+        }
+    }
+}

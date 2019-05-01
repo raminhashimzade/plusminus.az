@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="banner">
+        <div class="banner__title">
+            <div class="banner__title__top">
+              {{'~consumer' | translate}}
+            </div>
+            <div class="banner__title__bottom">
+              {{'~loans' | translate}}
+            </div>
+        </div>
+        <div class="banner__filter">
+          <div class="banner__filter__amount">
+            <div class="banner__filter__amount__input">
+              <input [placeholder]="'~loansAmount' | translate" class="plus-input">
+            </div>
+            <div class="banner__filter__amount__select">
+
+              <select class="plus-select">
+                <option value="" disabled selected>AZN</option>
+                <option value="usd">USD</option>
+                <option value="euro">EURO</option>
+              </select>
+            </div>
+          </div>
+          <div class="banner__filter__duration">
+              <select class="plus-select">
+                  <option value="" disabled selected>{{'~loansDuration' | translate}}</option>
+                </select>
+          </div>
+          <div class="banner__filter__type">
+              <select class="plus-select">
+                  <option value="" disabled selected>{{'~loansType' | translate}}</option>
+                </select>
+          </div>
+          <div class="banner__filter__submit">
+            <button>{{'~pickLoan' | translate}} </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

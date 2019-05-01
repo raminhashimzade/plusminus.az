@@ -88,3 +88,46 @@ img {
   font-family: 'Montserrat-Medium'!important;
 }
 
+.plus-input {
+  border: 1px solid rgba(119, 94, 0, 0.34);
+  outline: 0;
+  background: #ffffff;
+  padding: 18px 18px 15px 18px;
+  /*Text */
+  color: #6d6d6d;
+  font-family: 'Montserrat-Medium';
+  font-size: 12px;
+  font-weight: 400;
+  /* Text style for "Сумма кред" */
+  letter-spacing: -0.12px;
+  &::placeholder {
+    border: 0;
+    outline: 0;
+    color: #6d6d6d;
+  }
+}
+
+.plus-select {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  color: #6d6d6d;
+  text-align-last: center;
+  border: 1px solid rgba(119, 94, 0, 0.34);
+  font-family: 'Montserrat-Medium';
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.12px;
+  padding: 0;
+  outline: 0;
+  option {
+      color: #6d6d6d;
+      width: 100%;
+      font-family: 'Montserrat-Medium';
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: -0.12px;
+  }
+}
