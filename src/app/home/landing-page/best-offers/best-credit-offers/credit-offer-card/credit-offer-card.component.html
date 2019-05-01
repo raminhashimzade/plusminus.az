@@ -5,7 +5,7 @@
         <div class="offer-card__header__title__secondary">{{'~offer' | translate}}</div>
       </div>
       <div class="offer-card__header__logo">
-        <img src="./assets/images/kapital-bank.png">
+        <img src="./assets/icons/{{offer.iconPath}}.svg">
       </div>
   </div>
   <div class="offer-card__content">
@@ -14,8 +14,8 @@
         <div class="credit-percent__subtitle"> {{'~annual' | translate}}</div>
       </div>
       <div class="credit-count">
-        <div class="credit-count__title"> <span>{{'~amount' | translate}}</span> {{offer.creditAmount}} <b>AZN</b></div>
-        <div class="credit-count__subtitle"><span>{{'~duration' | translate}}  </span>{{offer.creditDuration}}</div>
+        <div class="credit-count__title"> <span>{{'~amount' | translate}}: </span> {{offer.creditAmount}} <span class="currency">AZN</span> </div>
+        <div class="credit-count__subtitle"><span>{{'~duration' | translate}}:</span> {{offer.creditDuration}}</div>
       </div>
   </div>
   <div class="offer-card__navigate"><i class="fas fa-chevron-right"></i></div>
