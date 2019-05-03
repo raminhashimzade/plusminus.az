@@ -1,0 +1,48 @@
+<div class="loanRequest">
+    <div class="loanRequest__sidebar">
+      <div class="loanRequest__sidebar__icon">
+        <img src="./assets/images/smile.png">
+      </div>
+      <div class="loanRequest__sidebar__title">
+        {{'~welcome' | translate}}!
+      </div>
+      <div class="loanRequest__sidebar__subtitle">
+          {{'~loanRequestSubtitle' | translate}}
+      </div>
+    </div>
+    <div class="loanRequest__form">
+        <mat-vertical-stepper [linear]="false" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>{{'~fillContactInfo' | translate}}</ng-template>
+                    <mat-form-field>
+                      <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                    </mat-form-field>
+                    <div>
+                      <button mat-button matStepperNext></button>
+                    </div>
+                  </form>
+              </mat-step>
+
+            <mat-step [stepControl]="secondFormGroup">
+                <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>{{'~fillCodeYouRecieved' | translate}}</ng-template>
+                    <mat-form-field>
+                      <input matInput placeholder="Last name, First name" formControlName="secondCtrl" required>
+                    </mat-form-field>
+                    <div>
+                      <button mat-button matStepperNext></button>
+                    </div>
+                  </form>
+              </mat-step>
+
+            <mat-step >
+                <ng-template matStepLabel>Done</ng-template>
+              </mat-step>
+
+          </mat-vertical-stepper>
+    </div>
+  </div>
+
+
+

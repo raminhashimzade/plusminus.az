@@ -1,0 +1,36 @@
+:host {
+    display: block;
+}
+.loanRequest {
+    display: flex;
+    align-items: center;
+    .loanRequest__sidebar {
+        background: var(--primary-default);
+        width: 360px;
+        height: 500px;
+        padding: 50px;
+        .loanRequest__sidebar__icon {
+            width: 60px;
+            height: 60px;
+        }
+        .loanRequest__sidebar__title {
+            padding-top: 40px;
+            font-size: 28px;
+            width: 100px;
+            line-height: 28px;
+            color: #ffffff;
+            font-family: 'Montserrat-SemiBold';
+        }
+        .loanRequest__sidebar__subtitle {
+            padding-top: 20px;
+            font-size: 14px;
+            line-height: 28px;
+            color: #ffffff;
+        }
+    }
+    .loanRequest__form {
+        width: 600px;
+        height: 600px;
+        background: #ffffff;
+    }
+}
