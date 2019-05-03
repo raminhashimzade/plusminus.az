@@ -131,3 +131,13 @@ img {
       letter-spacing: -0.12px;
   }
 }
+.loanRequestDialogBackdrop {
+  background: var(--primary-default);
+  opacity: 0.3!important;
+}
+.loanRequestDialog {
+    .mat-dialog-container {
+      background: transparent;
+      box-shadow: none;
+    }
+}
