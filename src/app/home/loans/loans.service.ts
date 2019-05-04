@@ -1,9 +1,9 @@
 import { AuthService } from './../../auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { DataResponse } from 'src/app/models/data-reponse';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { LoanProduct } from './models/loanProduct.model';
 
 @Injectable({
@@ -23,6 +23,25 @@ export class LoansService {
         return this.http.post<DataResponse>('mybank/sendOTP', {
             token: this.authService.getToken(),
             ...formValue
-        });
+        })
+        .pipe(
+            catchError(er => of(null))
+        );
+    }
+    checkOTP(formValue: Object) {
+        return this.http.post<DataResponse>('mybank/checkOTP', {
+            token: this.authService.getToken(),
+            ...formValue
+        }).pipe(
+            catchError(er => of(null))
+        );;
+    }
+    postLoanOrder(formValue: Object) {
+        return this.http.post<DataResponse>('mybank/postLoanOrder', {
+            token: this.authService.getToken(),
+            ...formValue
+        }).pipe(
+            catchError(er => of(null))
+        );;
     }
 }

@@ -76,9 +76,20 @@
   "~next": "Продолжить",
   "~pleaseFillTelNumber": "Пожалуйста, заполните номер телефона",
   "~pleaseAgreeWithTerms": "Пожалуйста согласитесь с условиями",
-  "~smsCodeSentTo": "SMS code sent to",
-  "~pleaseFillCode": "Please fill code",
+  "~smsCodeSent": "Смс код отправлен",
+  "~pleaseFillCode": "Заполните код",
   "~cusOfficialIncome": "официальный доход",
   "~cusUnOfficialIncome": "неофициальный доход",
-  "~cusVoen": "voen"
+  "~cusVoen": "voen",
+  "~requestLoanAmt": "Сумма кредита",
+  "~requestLoanPeriod": "Срок",
+  "~requestLoanCurencyCode": "Валюта",
+  "~firstName": "Имя",
+  "~lastName": "Фамилия",
+  "~incomeAmt": "Сумма дохода",
+  "~fillForms": "Заполните поля",
+  "~requiredField": "Пожлуйста, заполните это поле",
+  "~loanRequestSuccessMsg": "Запрос отправлен",
+  "~middleName": "Отчество",
+  "~birthDate": "День рождения"
 }

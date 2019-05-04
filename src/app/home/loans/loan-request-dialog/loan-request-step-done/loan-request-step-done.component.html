@@ -1,3 +1,12 @@
-<p>
-  loan-request-step-done works!
-</p>
+<div class="formCancel" (click)= "close.next()">
+    <i class="fas fa-times"></i>
+</div>
+
+<div class="requestDone">
+  <div class="requestDone__img animated bounce">
+    <img  src="./assets/images/plus-secondary-color.png">
+  </div>
+  <div class="requestDone__msg">
+    {{'~loanRequestSuccessMsg' | translate}} !
+  </div>
+</div>

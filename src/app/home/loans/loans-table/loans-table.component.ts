@@ -41,7 +41,9 @@ export class LoansTableComponent implements OnInit {
   onRequestLoansFromAllBanks() {
       const ref  = this.dialog.open(LoanRequestDialogComponent, {
         panelClass: 'loanRequestDialog',
-    //    backdropClass: 'loanRequestDialogBackdrop'
+        autoFocus: false,
+        maxWidth: '90vw',
+        disableClose: true
       });
 
   }

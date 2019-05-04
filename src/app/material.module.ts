@@ -8,6 +8,9 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs'
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+
 
 @NgModule({
   imports: [
@@ -19,7 +22,9 @@ import {MatButtonModule} from '@angular/material/button';
     MatDialogModule,
     MatStepperModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
   ],
   exports: [
     MatFormFieldModule,
@@ -30,7 +35,12 @@ import {MatButtonModule} from '@angular/material/button';
     MatDialogModule,
     MatStepperModule,
     MatCheckboxModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+  ],
+  providers: [
+
   ]
 })
 export class MaterialModule { }

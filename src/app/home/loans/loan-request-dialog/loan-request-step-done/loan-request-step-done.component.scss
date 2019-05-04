@@ -1,0 +1,35 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-default);
+    width: calc(var(--loan-request-step-width));
+    height: calc(var(--loan-request-step-height));
+    position: relative;
+}
+.requestDone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .requestDone__img {
+        width: 100px;
+      //  animation-duration: 1s;
+    }
+    .requestDone__msg {
+        color: #ffffff;
+        margin-top: 35px;
+        font-size: 22px;
+    }
+}
+
+.formCancel {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: calc(var(--loan-request-step-padding) / 2);
+    right: calc(var(--loan-request-step-padding) / 2);
+    font-size: 20px;
+     width: 100%;
+     cursor: pointer;
+     color: #ffffff;
+}

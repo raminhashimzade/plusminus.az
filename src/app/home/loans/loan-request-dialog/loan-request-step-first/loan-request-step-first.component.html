@@ -31,13 +31,15 @@
                 </mat-select>
               </mat-form-field>
 
-              <mat-form-field appearance="outline" class="telInput__number">
+              <mat-form-field appearance="outline" class="telInput__number" >
                   <mat-label>{{'~fillTelNumber' | translate }}</mat-label>
                   <input matInput ngModel
                   name="gsm" type="tel"
                   required
                   maxlength="7"
-                  (input)="onTelInput($event)">
+                  (input)="onTelInput($event)"
+                  #telField ="matInput"
+                  >
                   <mat-error *ngIf="form?.controls['gsm']?.invalid">{{getErrorMessage()}}</mat-error>
                 </mat-form-field>
         </div>

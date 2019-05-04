@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-loan-request-dialog',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loan-request-dialog.component.scss']
 })
 export class LoanRequestDialogComponent implements OnInit {
-  stepIndex = 3;
-  firstStepData: Object;
+  stepIndex = 1;
+  firstStepData: {gsm: string,  channel: string};
   stepError: boolean;
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<LoanRequestDialogComponent>) { }
 
   ngOnInit() {
   }
@@ -20,7 +21,11 @@ export class LoanRequestDialogComponent implements OnInit {
   onSecondStepComplete() {
     this.stepIndex = 3;
   }
+  onThirdStepComplete() {
+    this.stepIndex = 4;
+  }
   onStepError() {
+    this.stepIndex = undefined;
     this.stepError = true;
   }
 

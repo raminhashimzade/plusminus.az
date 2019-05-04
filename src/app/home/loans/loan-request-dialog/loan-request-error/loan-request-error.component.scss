@@ -2,6 +2,7 @@
     display: block;
     width: calc(var(--loan-request-step-width));
     height: calc(var(--loan-request-step-height));
+    position: relative;
 }
 
 .loanRequestError__cover {
@@ -11,4 +12,15 @@
     background-position-x: center;
     background-position-y: center;
     background-image: url('../../../../../assets//images/plus-minus-error-page.png');
+}
+.formCancel {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: calc(var(--loan-request-step-padding) / 2);
+    right: calc(var(--loan-request-step-padding) / 2);
+    font-size: 20px;
+     width: 100%;
+     cursor: pointer;
+     color: #ffffff;
 }

@@ -56,5 +56,20 @@
      "~pleaseAgreeWithTerms": "Zəhmıt olmasa şərtlər ilə razılaşın",
      "~cusOfficialIncome": "rəsmi gəlir",
      "~cusUnOfficialIncome": "qeyri-rəsmi gəlir",
-     "~cusVoen": "Vöen"
+     "~cusVoen": "Vöen",
+     "~requestLoanAmt": "Kredit məbləği",
+     "~requestLoanPeriod": "Müddət",
+     "~requestLoanCurencyCode": "Valyuta",
+     "~firstName": "Ad",
+     "~lastName": "Soyad",
+     "~incomeAmt": "Gəlir məbləği",
+     "~fillForms": "Xanaları doldurun",
+     "~requiredField": "Zəhmət olmasa xananı doldurun",
+     "~loanRequestSuccessMsg": "Təklif göndərildi",
+     "~middleName": "Ata adı",
+     "~birthDate": "Təvəllüd",
+     "~welcome": "Xoş gəldiniz",
+     "~loanRequestSubtitle": "Burada bütün banklarda kredit üçün onlayn müraciət edə bilərsiniz",
+     "~smsCodeSent": "SMS kod göndərildi",
+     "~pleaseFillCode": "Kodu daxil edin"
   }

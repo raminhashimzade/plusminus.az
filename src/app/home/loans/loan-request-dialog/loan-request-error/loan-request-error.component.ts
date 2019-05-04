@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'loan-request-error',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loan-request-error.component.scss']
 })
 export class LoanRequestErrorComponent implements OnInit {
-
+  @Output() public close = new EventEmitter<void>();
   constructor() { }
 
   ngOnInit() {

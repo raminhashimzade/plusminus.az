@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'loan-request-step-done',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loan-request-step-done.component.scss']
 })
 export class LoanRequestStepDoneComponent implements OnInit {
+  @Output() public close = new EventEmitter<void>();
 
   constructor() { }
 

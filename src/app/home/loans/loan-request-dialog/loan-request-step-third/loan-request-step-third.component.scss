@@ -30,7 +30,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        .input-field, .checkbox-field {
+        .input-field, .checkbox-field, .birthdate-field, .select-field {
             width: 100%;
             font-size: 14px;
         }
@@ -41,7 +41,9 @@
         justify-content: space-between;
         align-items: center;
         min-height: 47px;
+        padding: 0 20px;
        .loanRequest__form__step__item__footer__next {
+        margin-left: auto;
             button {
       //          width: 100px;
             };

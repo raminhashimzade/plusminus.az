@@ -1,5 +1,5 @@
 <div class="loanRequest">
-    <div class="loanRequest__sidebar">
+    <div class="loanRequest__sidebar d-none d-lg-block">
       <div class="loanRequest__sidebar__icon">
         <img src="./assets/images/smile.png">
       </div>
@@ -11,8 +11,8 @@
       </div>
     </div>
     <div class="loanRequest__form">
-      <div class="loanRequest__form__cancel">
-          <i class="fas fa-times"></i>
+      <div class="loanRequest__form__cancel" >
+          <i class="fas fa-times" (click)= "dialogRef.close()"></i>
       </div>
       <div class="loanRequest__form__step" *ngIf="stepIndex === 1">
           <loan-request-step-first
@@ -22,21 +22,21 @@
       </div>
       <div class="loanRequest__form__step"  *ngIf="stepIndex === 2">
           <loan-request-step-second [firstStepData]="firstStepData"
-           (stepComplete)="onSecondStepComplete()"
+           (stepComplete)="onSecondStepComplete($event)"
            (stepError)="onStepError()"
            ></loan-request-step-second>
       </div>
       <div class="loanRequest__form__step"  *ngIf="stepIndex === 3">
           <loan-request-step-third [firstStepData]="firstStepData"
-           (stepComplete)="onSecondStepComplete()"
+           (stepComplete)="onThirdStepComplete($event)"
            (stepError)="onStepError()"
            ></loan-request-step-third>
       </div>
       <div class="loanRequest__form__step" *ngIf="stepError">
-          <loan-request-error></loan-request-error>
+          <loan-request-error (close)="dialogRef.close()"></loan-request-error>
       </div>
       <div class="loanRequest__form__step"  *ngIf="stepIndex === 4">
-          <loan-request-step-done></loan-request-step-done>
+          <loan-request-step-done (close)="dialogRef.close()"></loan-request-step-done>
       </div>
     </div>
   </div>
