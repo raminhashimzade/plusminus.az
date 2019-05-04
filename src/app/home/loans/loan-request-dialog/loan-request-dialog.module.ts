@@ -9,9 +9,17 @@ import { LoanRequestStepFirstComponent } from './loan-request-step-first/loan-re
 import { LoanRequestStepSecondComponent } from './loan-request-step-second/loan-request-step-second.component';
 import { LoanRequestStepDoneComponent } from './loan-request-step-done/loan-request-step-done.component';
 import { LoanRequestErrorComponent } from './loan-request-error/loan-request-error.component';
+import { LoanRequestStepThirdComponent } from './loan-request-step-third/loan-request-step-third.component';
 
 @NgModule({
-  declarations: [LoanRequestDialogComponent, LoanRequestStepFirstComponent, LoanRequestStepSecondComponent, LoanRequestStepDoneComponent, LoanRequestErrorComponent],
+  declarations: [
+    LoanRequestDialogComponent,
+    LoanRequestStepFirstComponent,
+    LoanRequestStepSecondComponent,
+    LoanRequestStepThirdComponent,
+    LoanRequestStepDoneComponent,
+    LoanRequestErrorComponent
+  ],
   imports: [
     CommonModule,
     HttpClientModule,

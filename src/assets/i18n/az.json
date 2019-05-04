@@ -53,5 +53,8 @@
      "~loanRequestContactAgreement": "Mən şərtlərlə razıyam",
      "~next": "Davam Etmək",
      "~pleaseFillTelNumber": "Zəhmət olmasa telefon nömrəsini qeyd edin",
-     "~pleaseAgreeWithTerms": "Zəhmıt olmasa şərtlər ilə razılaşın"
+     "~pleaseAgreeWithTerms": "Zəhmıt olmasa şərtlər ilə razılaşın",
+     "~cusOfficialIncome": "rəsmi gəlir",
+     "~cusUnOfficialIncome": "qeyri-rəsmi gəlir",
+     "~cusVoen": "Vöen"
   }

@@ -16,13 +16,26 @@
       </div>
       <div class="loanRequest__form__step" *ngIf="stepIndex === 1">
           <loan-request-step-first
-          (stepComplete)="onFirstStepComplete($event)"></loan-request-step-first>
+          (stepComplete)="onFirstStepComplete($event)"
+          (stepError)="onStepError()"
+          ></loan-request-step-first>
       </div>
       <div class="loanRequest__form__step"  *ngIf="stepIndex === 2">
           <loan-request-step-second [firstStepData]="firstStepData"
-           (stepComplete)="onSecondStepComplete()"></loan-request-step-second>
+           (stepComplete)="onSecondStepComplete()"
+           (stepError)="onStepError()"
+           ></loan-request-step-second>
       </div>
       <div class="loanRequest__form__step"  *ngIf="stepIndex === 3">
+          <loan-request-step-third [firstStepData]="firstStepData"
+           (stepComplete)="onSecondStepComplete()"
+           (stepError)="onStepError()"
+           ></loan-request-step-third>
+      </div>
+      <div class="loanRequest__form__step" *ngIf="stepError">
+          <loan-request-error></loan-request-error>
+      </div>
+      <div class="loanRequest__form__step"  *ngIf="stepIndex === 4">
           <loan-request-step-done></loan-request-step-done>
       </div>
     </div>

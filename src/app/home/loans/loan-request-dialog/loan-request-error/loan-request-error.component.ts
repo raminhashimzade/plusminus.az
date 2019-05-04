@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-loan-request-error',
+  selector: 'loan-request-error',
   templateUrl: './loan-request-error.component.html',
   styleUrls: ['./loan-request-error.component.scss']
 })

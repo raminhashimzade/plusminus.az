@@ -20,7 +20,8 @@ export class TokenResolver {
     route: ActivatedRoute,
     state: RouterStateSnapshot
   ): Observable<string | null> {
-    console.log('resolveing')
+    console.log('resolveing');
+ //   return of('')
     return this.authService.getToken() ? of(null) : this.authService.fetchToken();
   }
 }

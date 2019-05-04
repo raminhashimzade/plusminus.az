@@ -55,5 +55,8 @@
   "~pleaseFillTelNumber": "Please fill tel number",
   "~pleaseAgreeWithTerms": "Please agree with terms",
   "~smsCodeSentTo'": "SMS code sent to",
-  "~pleaseFillCode": "Please fill code"
+  "~pleaseFillCode": "Please fill code",
+  "~cusOfficialIncome": "Official income",
+  "~cusUnOfficialIncome": "Unofficial income",
+  "~cusVoen": "Voen"
 }

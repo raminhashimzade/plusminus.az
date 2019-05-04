@@ -77,5 +77,8 @@
   "~pleaseFillTelNumber": "Пожалуйста, заполните номер телефона",
   "~pleaseAgreeWithTerms": "Пожалуйста согласитесь с условиями",
   "~smsCodeSentTo": "SMS code sent to",
-  "~pleaseFillCode": "Please fill code"
+  "~pleaseFillCode": "Please fill code",
+  "~cusOfficialIncome": "официальный доход",
+  "~cusUnOfficialIncome": "неофициальный доход",
+  "~cusVoen": "voen"
 }

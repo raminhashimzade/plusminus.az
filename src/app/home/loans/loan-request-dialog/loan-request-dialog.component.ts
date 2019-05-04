@@ -6,8 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loan-request-dialog.component.scss']
 })
 export class LoanRequestDialogComponent implements OnInit {
-  stepIndex = 1;
+  stepIndex = 3;
   firstStepData: Object;
+  stepError: boolean;
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +19,9 @@ export class LoanRequestDialogComponent implements OnInit {
   }
   onSecondStepComplete() {
     this.stepIndex = 3;
+  }
+  onStepError() {
+    this.stepError = true;
   }
 
 }

@@ -1,0 +1,73 @@
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+    <div class="loanRequest__form__step__item">
+      <div class="loanRequest__form__step__item__header">
+        <div class="loanRequest__form__step__item__header__title">
+          {{'~fillForms' |translate |titlecase}}
+        </div>
+        <div class="loanRequest__form__step__item__header__subtitle">
+          {{'~step' | translate | titlecase}} 3/4
+        </div>
+      </div>
+      <div class="loanRequest__form__step__item__content">
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+                <mat-form-field appearance="outline" class="input-field" >
+                    <mat-label>{{'~firstName' | translate }}</mat-label>
+                    <input matInput ngModel
+                    name="cusFirstName" type="text"
+                    required
+                 >
+                    <mat-error *ngIf="f?.controls['firstName']?.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+                <mat-form-field appearance="outline" class="input-field">
+                    <mat-label>{{'~lastName' | translate }}</mat-label>
+                    <input matInput ngModel
+                    name="cusLastName" type="text"
+                    required
+                 >
+                    <mat-error *ngIf="f?.controls['firstName']?.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+
+                <mat-checkbox ngModel name="cusOfficialIncome"  class="checkbox-field" >
+                    {{'~cusOfficialIncome' | translate | titlecase}}
+                  </mat-checkbox>
+
+            </div>
+            <div class="col-4">
+                <mat-checkbox ngModel name="cusVoen"  class="checkbox-field" >
+                    {{'~cusVoen' | translate | titlecase}}
+                  </mat-checkbox>
+            </div>
+
+            <div class="col-4">
+                <mat-checkbox ngModel name="cusUnOfficialIncome"  class="checkbox-field">
+                    {{'~cusUnOfficialIncome' | translate | titlecase}}
+                  </mat-checkbox>
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+      <div class="loanRequest__form__step__item__footer">
+        <div class="loanRequest__form__step__item__footer__next">
+          <button mat-raised-button color="primary" type="submit" [ngClass]="{'is-loading': loading}">{{'~next' | translate | titlecase}} </button>
+        </div>
+      </div>
+    </div>
+
+    </form>
