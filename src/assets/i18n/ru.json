@@ -62,5 +62,12 @@
   "~loanRequestSubtitle": "Здесь вы можете подать онлайн заявку на кредит во все банки",
   "~fillContactInfo": "Заполните контактную информацию",
   "~fillCodeYouRecieved": "Введите код вы получили с смс",
-  "~auctions": "аукционы"
+  "~auctions": "аукционы",
+  "~month": "месяц",
+  "~loanName": "тип кредита",
+  "~withEmpReference": "без справки с место работы ",
+  "~withCollateral": "без поручитество или залога",
+  "~withGracePeriod": "c грейс периода",
+  "~commissionCash": "без комиссии за снятие наличными ",
+  "~commissionLoan": "без комиссии за кредит"
 }

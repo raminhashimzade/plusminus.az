@@ -21,7 +21,7 @@
           <button mat-button [matMenuTriggerFor]="menu">Menu</button>
           <mat-menu #menu="matMenu">
             <button mat-menu-item>{{ '~deposits' | translate }}</button>
-            <button mat-menu-item>{{ '~loans' | translate }}</button>
+            <button mat-menu-item [routerLink]="['loans']" routerLinkActive="active">{{ '~loans' | translate }}</button>
             <button mat-menu-item>{{ '~credit-cards' | translate }}</button>
             <button mat-menu-item>{{ '~debit-cards' | translate }}</button>
             <button mat-menu-item>{{ '~mobile-tariffs' | translate }}</button>

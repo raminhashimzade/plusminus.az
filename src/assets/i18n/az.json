@@ -39,5 +39,12 @@
     "~allCurrencies": "Bütün valyutalar",
     "~amount": "Miqdar",
     "~duration": "müddət",
-    "~auctions": "hərraclar"
+    "~auctions": "hərraclar",
+    "~month": "ay",
+    "~loanName": "kredit növü",
+    "~withEmpReference": "iş yerindən arayış olmadan",
+    "~withCollateral": "girovsuz və zaminsiz",
+    "~withGracePeriod": "güzəşt müddəti ilə",
+    "~commissionCash": "nağd pulun çıxarılması komissiyasız",
+    "~commissionLoan": "kredit komissiyasız"
   }

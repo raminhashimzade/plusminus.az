@@ -12,22 +12,77 @@
     <div class="col-12">
         <div class="loans__table">
           <div class="loans__table__filter">
-            <button class="loans__table__filter__btn">  {{'~loansCalculator' | translate}} </button>
-            <button class="loans__table__filter__btn">  {{'~inCash' | translate}} </button>
-            <button class="loans__table__filter__btn">  {{'~withRealEstateCollateral' | translate}} </button>
-            <button class="loans__table__filter__btn">  {{'~refinancing' | translate}} </button>
-            <button class="loans__table__filter__btn">  {{'~withoutCollateraAndGuarantore' | translate}} </button>
-            <button class="loans__table__filter__btn">  {{'~onlyWithPassport' | translate}} </button>
-          </div>
+
+
+              <form #f="ngForm">
+
+                  <div class="loans__table__filter__btn --ck-button">
+                      <label>
+                         <input type="checkbox" value="false" ngModel name ="withEmpReference"><span>{{'~withEmpReference' | translate |titlecase}}</span>
+                      </label>
+                   </div>
+
+                  <div class="loans__table__filter__btn --ck-button">
+                      <label>
+                         <input type="checkbox" value="false" ngModel name ="withCollateral"><span>{{'~withCollateral' | translate |titlecase}}</span>
+                      </label>
+                   </div>
+
+                  <div class="loans__table__filter__btn --ck-button">
+                      <label>
+                         <input type="checkbox" value="false" ngModel name ="withGracePeriod"><span>{{'~withGracePeriod' | translate |titlecase}}</span>
+                      </label>
+                   </div>
+
+                  <div class="loans__table__filter__btn --ck-button">
+                      <label>
+                         <input type="checkbox" value="false" ngModel name ="commissionCash"><span>{{'~commissionCash' | translate |titlecase}}</span>
+                      </label>
+                   </div>
+                  <div class="loans__table__filter__btn --ck-button">
+                      <label>
+                         <input type="checkbox" value="false" ngModel name ="commissionLoan"><span>{{'~commissionLoan' | translate |titlecase}}</span>
+                      </label>
+                   </div>
+
+            </form>
+
+
+        </div>
           <div class="loans__table__content">
               <table>
                 <thead>
-                  <th>{{'~bank' | translate | titlecase}}</th>
-                  <th>{{'~effectiveRate' | translate | titlecase}}</th>
-                  <th>{{'~amount' | translate | titlecase}}</th>
-                  <th>{{'~documents' | translate | titlecase}}</th>
-                  <th >{{'~requirements' | translate | titlecase}}</th>
-                  <th>{{'~popularity' | translate | titlecase}}</th>
+                  <th>
+                    <div class="th-wrapper">
+                        {{'~bank' | translate | titlecase}}
+                    </div>
+                  </th>
+                  <th>
+                    <div class="th-wrapper">
+                        {{'~loanName' | translate | titlecase}}
+                    </div>
+                  </th>
+                  <th>
+                      <div class="th-wrapper">
+                       {{'~effectiveRate' | translate | titlecase}}
+                     </div>
+                  </th>
+                  <th>
+                    <div class="th-wrapper">
+                        {{'~amount' | translate | titlecase}}
+                    </div>
+                  </th>
+                  <th>
+                    <div class="th-wrapper">
+                        {{'~documents' | translate | titlecase}}
+                    </div>
+                  </th>
+                  <th >
+                    <div class="th-wrapper">
+                        {{'~requirements' | translate | titlecase}}
+                    </div>
+                  </th>
+                  <th></th>
                 </thead>
                 <tbody>
                   <tr *ngFor="let loan of loanProducts | slice: 0: 10">
@@ -42,16 +97,25 @@
                       </div>
 
                     </td>
+
                     <td valign="top">
                       <div class="td-content">
-                          temp
+                         {{loan.loanName | valueTranslate | titlecase}}
+                      </div>
+                    </td>
+
+                    <td valign="top">
+                      <div class="td-content --rate">
+                         {{loan.minRate}} %
                       </div>
                     </td>
                     <td valign="top">
                       <div class=" td-content loans__table__content__amount" [ngClass]="{'--expanded' : expandedNode === loan.lnID}">
                         <div class="loans__table__content__amount__value">
                           {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}} {{loan.currencyCode | lowercase}}</div>
-                        <div class="loans__table__content__amount__duration"> {{'~duration' | translate}} : {{loan.maxPeriod}}</div>
+                        <div class="loans__table__content__amount__duration">
+                          {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}
+                        </div>
 
                       </div>
                     </td>

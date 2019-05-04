@@ -21,15 +21,12 @@
     .loans__table__filter {
         display: flex;
         .loans__table__filter__btn {
-            padding: 10px 15px;
-            height: 35px;
             color: #000000;
             font-family: 'Montserrat-Medium';
             font-size: 12px;
             font-weight: 300;
             letter-spacing: -0.12px;
             background: #ffffff;
-            border: 1px solid rgba(29, 163, 41, 0.5);
         }
      }
      .loans__table__content {
@@ -39,14 +36,16 @@
              background: #ffffff;
              thead {
                  th {
-                    padding: 13px 50px;
                     border:  1px solid rgba(29, 163, 41, 0.5);
-                    color: var(--primary-default);
-                    font-family: 'Montserrat-Medium';
-                    font-size: 12px;
-                    font-weight: 300;
-                    letter-spacing: -0.12px;
-                    text-align: center;
+                    .th-wrapper {
+                        padding: 13px 35px;
+                        font-family: 'Montserrat-Medium';
+                        color: var(--primary-default);
+                        font-size: 12px;
+                        font-weight: 300;
+                        letter-spacing: -0.12px;
+                        text-align: center;
+                    }
                  }
              }
              tbody {

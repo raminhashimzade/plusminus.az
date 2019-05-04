@@ -6,6 +6,7 @@ import { LoansBannerComponent } from './loans-banner/loans-banner.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LoansTableComponent } from './loans-table/loans-table.component';
 import {  ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from '@angular/forms';
 import { LoanRequestDialogModule } from './loan-request-dialog/loan-request-dialog.module';
 @NgModule({
   declarations: [LoansComponent, LoansBannerComponent, LoansTableComponent],
@@ -14,6 +15,7 @@ import { LoanRequestDialogModule } from './loan-request-dialog/loan-request-dial
     LoansRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    FormsModule,
     LoanRequestDialogModule
   ],
   entryComponents: [
