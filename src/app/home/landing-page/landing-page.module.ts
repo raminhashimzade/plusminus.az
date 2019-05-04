@@ -19,6 +19,7 @@ import { BankPartnerCardComponent } from './our-partners/bank-partners/bank-part
 import { FavorableRatesPreviewComponent } from './favorable-rates-preview/favorable-rates-preview.component';
 import { FavorableRatesPreviewTableComponent } from './favorable-rates-preview/favorable-rates-preview-table/favorable-rates-preview-table.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { LoanRequestDialogModule } from '../loans/loan-request-dialog/loan-request-dialog.module';
 
 @NgModule({
   declarations: [
@@ -38,11 +39,12 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
           FavorableRatesPreviewComponent,
           FavorableRatesPreviewTableComponent],
   imports: [
-    CommonModule,
+  CommonModule,
     SharedTranslateModule,
     MaterialModule,
     PerfectScrollbarModule,
-    LandingPageRoutingModule
+    LandingPageRoutingModule,
+    LoanRequestDialogModule
   ]
 })
 export class LandingPageModule {}

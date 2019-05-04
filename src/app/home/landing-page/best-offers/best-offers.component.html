@@ -9,12 +9,12 @@
             <div class="section__title">{{'~best-offers' | translate}}</div>
             <div class="section__content">
                 <mat-tab-group [disableRipple]="true" [selectedIndex]="selectedTabIndex" [animationDuration]="'1.5s'">
-                    <mat-tab label="{{'~deposits' | translate}}"> <best-deposit-offers> </best-deposit-offers> </mat-tab>
+                    <mat-tab label="{{'~deposits' | translate}}" [disabled]="true"> <best-deposit-offers> </best-deposit-offers> </mat-tab>
                     <mat-tab label="{{'~loans' | translate}}"> <best-credit-offers></best-credit-offers> </mat-tab>
-                    <mat-tab label="{{'~credit-cards' | translate}}"> <best-deposit-offers> </best-deposit-offers> </mat-tab>
-                    <mat-tab label="{{'~debit-cards' | translate}}"> <best-deposit-offers> </best-deposit-offers> </mat-tab>
-                    <mat-tab label="{{'~mobile-tariffs' | translate}}"> <best-deposit-offers> </best-deposit-offers> </mat-tab>
-                    <mat-tab label="{{'~exchange-rates' | translate}}"> <best-deposit-offers> </best-deposit-offers> </mat-tab>
+                    <mat-tab label="{{'~credit-cards' | translate}}" [disabled]="true"> <best-deposit-offers> </best-deposit-offers> </mat-tab>
+                    <mat-tab label="{{'~debit-cards' | translate}}" [disabled]="true"> <best-deposit-offers> </best-deposit-offers> </mat-tab>
+                    <mat-tab label="{{'~auctions' | translate}}" [disabled]="true"> <best-deposit-offers> </best-deposit-offers> </mat-tab>
+                    <mat-tab label="{{'~exchange-rates' | translate}}" [disabled]="true"> <best-deposit-offers> </best-deposit-offers> </mat-tab>
                   </mat-tab-group>
             </div>
           </div>

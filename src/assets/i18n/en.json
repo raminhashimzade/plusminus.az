@@ -38,5 +38,6 @@
   "~offer": "offer",
   "~allCurrencies": "All currencies",
   "~amount": "quantity",
-  "~duration": "duration"
+  "~duration": "duration",
+  "~auctions": "auctions"
 }

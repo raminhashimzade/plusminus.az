@@ -12,7 +12,7 @@
           <div class="slide__content__title" [translate]="slide.title"></div>
           <div class="slide__content__shortInfo" [translate]="slide.shortInfo"></div>
           <div class="slide__detailed">
-            <button>{{ '~detailed' | translate }}</button>
+            <button (click)="onRequestLoansFromAllBanks()" >{{ '~detailed' | translate }}</button>
           </div>
         </div>
       </div>

@@ -36,10 +36,18 @@
     }
 }
 
+
 @media (max-width: 768px) {
     .section {
         .section__content {
             flex-direction: column;
+        }
+    }
+    .second {
+        /deep/ .favorable-rates-table {
+            thead {
+                display: none;
+            }
         }
     }
 }

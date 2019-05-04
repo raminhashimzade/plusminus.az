@@ -47,9 +47,25 @@
       text-align: center;
       margin-right: 15px;
       cursor: pointer;
+      padding: 8px 0;
+      position: relative;
       transition: color 300ms ease-in-out;
-      &.active {
-        color: var(--primary-default);
+      &.active:after {
+       width: 100%;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        background: var(--primary-default);
+        height: 2px;
+        width: 100%;
+        left: 0;
+        bottom: 0px;
+        width: 0%;
+        transition: width 300ms ease-in-out;
+      }
+      &:hover:after {
+        width: 100%;
       }
     }
   }

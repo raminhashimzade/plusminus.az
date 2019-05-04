@@ -3,6 +3,7 @@ import { MockSlides } from './mock-slides';
 import { SlideModel } from './slide.model';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { rotateCubeToLeft } from 'ngx-router-animations';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'main-banner',
   templateUrl: './main-banner.component.html',
@@ -17,7 +18,7 @@ export class MainBannerComponent implements OnInit {
   slides: SlideModel[] = MockSlides;
   slideIndex = 0;
   slideCount: number;
-  constructor() {
+  constructor(private dialog: MatDialog) {
     this.slideCount = this.slides ? this.slides.length : 0;
   }
 
@@ -35,4 +36,5 @@ export class MainBannerComponent implements OnInit {
     }
     this.slideIndex += 1;
   }
+
 }

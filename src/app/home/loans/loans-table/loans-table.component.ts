@@ -1,8 +1,8 @@
-import { LoanRequestDialogComponent } from './loan-request-dialog/loan-request-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { LoansService } from '../loans.service';
 import { LoanProduct } from '../models/loanProduct.model';
 import {MatDialog}  from '@angular/material/dialog';
+import { LoanRequestDialogComponent } from '../loan-request-dialog/loan-request-dialog.component';
 @Component({
   selector: 'loans-table',
   templateUrl: './loans-table.component.html',

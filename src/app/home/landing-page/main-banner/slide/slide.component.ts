@@ -1,5 +1,7 @@
 import { SlideModel } from './../slide.model';
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoanRequestDialogComponent } from 'src/app/home/loans/loan-request-dialog/loan-request-dialog.component';
 
 @Component({
   selector: 'slide',
@@ -8,7 +10,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SlideComponent implements OnInit {
   @Input() slide: SlideModel;
-  constructor() {}
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit() {}
+  onRequestLoansFromAllBanks() {
+    const ref  = this.dialog.open(LoanRequestDialogComponent, {
+      panelClass: 'loanRequestDialog',
+      backdropClass: 'loanRequestDialogBackdrop'
+    });
+
+}
+
 }

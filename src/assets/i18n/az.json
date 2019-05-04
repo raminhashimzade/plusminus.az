@@ -38,5 +38,6 @@
     "~offer": "təklif",
     "~allCurrencies": "Bütün valyutalar",
     "~amount": "Miqdar",
-    "~duration": "müddət"
+    "~duration": "müddət",
+    "~auctions": "hərraclar"
   }
