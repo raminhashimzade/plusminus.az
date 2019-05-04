@@ -19,4 +19,10 @@ export class LoansService {
             map(res => res && res.data)
         )
     }
+    sendOtp(formValue:Object):Observable<DataResponse> {
+        return this.http.post<DataResponse>('mybank/sendOTP', {
+            token: this.authService.getToken(),
+            ...formValue
+        });
+    }
 }

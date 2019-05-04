@@ -46,5 +46,14 @@
   "~withCollateral": "without collateral",
   "~withGracePeriod": "with grace period",
   "~commissionCash": "without commission cash",
-  "~commissionLoan": "without commission loan"
+  "~commissionLoan": "without commission loan",
+  "~fillContactInfo": "fill contact info",
+  "~step": "step",
+  "~fillTelNumber": "Fill mobile number",
+  "~loanRequestContactAgreement": "I agree with the terms of broadcast information",
+  "~next": "Continue",
+  "~pleaseFillTelNumber": "Please fill tel number",
+  "~pleaseAgreeWithTerms": "Please agree with terms",
+  "~smsCodeSentTo'": "SMS code sent to",
+  "~pleaseFillCode": "Please fill code"
 }

@@ -46,5 +46,12 @@
     "~withCollateral": "girovsuz və zaminsiz",
     "~withGracePeriod": "güzəşt müddəti ilə",
     "~commissionCash": "nağd pulun çıxarılması komissiyasız",
-    "~commissionLoan": "kredit komissiyasız"
+    "~commissionLoan": "kredit komissiyasız",
+     "~fillContactInfo": "Kontaktı qeyd edin",
+     "~step": "addım",
+     "~fillTelNumber": "Mobil nömrəni qeyd edin",
+     "~loanRequestContactAgreement": "Mən şərtlərlə razıyam",
+     "~next": "Davam Etmək",
+     "~pleaseFillTelNumber": "Zəhmət olmasa telefon nömrəsini qeyd edin",
+     "~pleaseAgreeWithTerms": "Zəhmıt olmasa şərtlər ilə razılaşın"
   }

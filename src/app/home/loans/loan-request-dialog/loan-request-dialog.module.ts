@@ -8,9 +8,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoanRequestStepFirstComponent } from './loan-request-step-first/loan-request-step-first.component';
 import { LoanRequestStepSecondComponent } from './loan-request-step-second/loan-request-step-second.component';
 import { LoanRequestStepDoneComponent } from './loan-request-step-done/loan-request-step-done.component';
+import { LoanRequestErrorComponent } from './loan-request-error/loan-request-error.component';
 
 @NgModule({
-  declarations: [LoanRequestDialogComponent, LoanRequestStepFirstComponent, LoanRequestStepSecondComponent, LoanRequestStepDoneComponent],
+  declarations: [LoanRequestDialogComponent, LoanRequestStepFirstComponent, LoanRequestStepSecondComponent, LoanRequestStepDoneComponent, LoanRequestErrorComponent],
   imports: [
     CommonModule,
     HttpClientModule,

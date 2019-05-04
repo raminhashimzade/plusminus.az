@@ -69,5 +69,13 @@
   "~withCollateral": "без поручитество или залога",
   "~withGracePeriod": "c грейс периода",
   "~commissionCash": "без комиссии за снятие наличными ",
-  "~commissionLoan": "без комиссии за кредит"
+  "~commissionLoan": "без комиссии за кредит",
+  "~step": "шаг",
+  "~fillTelNumber": "Введите номер мобильного телефона",
+  "~loanRequestContactAgreement": "Я принимаю условия передачи информации",
+  "~next": "Продолжить",
+  "~pleaseFillTelNumber": "Пожалуйста, заполните номер телефона",
+  "~pleaseAgreeWithTerms": "Пожалуйста согласитесь с условиями",
+  "~smsCodeSentTo": "SMS code sent to",
+  "~pleaseFillCode": "Please fill code"
 }
