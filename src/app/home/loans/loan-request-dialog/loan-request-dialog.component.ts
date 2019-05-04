@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-loan-request-dialog',
@@ -7,20 +6,18 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./loan-request-dialog.component.scss']
 })
 export class LoanRequestDialogComponent implements OnInit {
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  constructor(private _formBuilder: FormBuilder) { }
+  stepIndex = 1;
+  firstStepData: Object;
+  constructor() { }
 
   ngOnInit() {
-    this.initSteps();
   }
-  initSteps() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
-    });
+  onFirstStepComplete(data) {
+    this.firstStepData = data;
+    this.stepIndex = 2;
+  }
+  onSecondStepComplete() {
+    this.stepIndex = 3;
   }
 
 }

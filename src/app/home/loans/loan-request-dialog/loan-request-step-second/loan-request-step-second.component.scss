@@ -1,0 +1,54 @@
+:host {
+    display: block;
+
+}
+
+.loanRequest__form__step__item {
+    display: flex;
+    flex-direction: column;
+    width: calc(var(--loan-request-step-width));
+    height: calc(var(--loan-request-step-height));
+    padding: var(--loan-request-step-padding);
+    .loanRequest__form__step__item__header {
+        display: flex;
+        flex-direction: column;
+        .loanRequest__form__step__item__header__title {
+            font-family: 'Montserrat-Medium';
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: -0.18px;
+            letter-spacing: -0.18px;
+        }
+        .loanRequest__form__step__item__header__subtitle {
+            color: #7f7f7f;
+        }
+    }
+    .loanRequest__form__step__item__content {
+        flex:1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .otpVerify {
+            display: flex;
+            .otpInput {
+                text-align: center;
+                width: 63px;
+                margin-right: 10px;
+            }
+        }
+    }
+    .loanRequest__form__step__item__footer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 47px;
+       .loanRequest__form__step__item__footer__next {
+           margin-left: auto;
+            button {
+           //     width: 100px;
+            };
+       }
+    }
+}

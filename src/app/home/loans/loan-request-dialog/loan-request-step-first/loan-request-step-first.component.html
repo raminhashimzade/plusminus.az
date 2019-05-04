@@ -1,0 +1,61 @@
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+<div class="loanRequest__form__step__item">
+  <div class="loanRequest__form__step__item__header">
+    <div class="loanRequest__form__step__item__header__title">
+      {{'~fillContactInfo' |translate |titlecase}}
+    </div>
+    <div class="loanRequest__form__step__item__header__subtitle">
+      {{'~step' | translate | titlecase}} 1/4
+    </div>
+  </div>
+  <div class="loanRequest__form__step__item__content">
+        <div class="telInput">
+
+            <mat-form-field appearance="outline" class="telInput__telPrefix">
+                <mat-select [(value)]="inputPrefix">
+                  <mat-option  [value]="'50'">
+                    050
+                  </mat-option>
+                  <mat-option  [value]="'51'">
+                    051
+                  </mat-option>
+                  <mat-option  [value]="'55'">
+                    055
+                  </mat-option>
+                  <mat-option  [value]="'70'">
+                    070
+                  </mat-option>
+                  <mat-option  [value]="'77'">
+                    077
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="telInput__number">
+                  <mat-label>{{'~fillTelNumber' | translate }}</mat-label>
+                  <input matInput ngModel
+                  name="gsm" type="tel"
+                  required
+                  maxlength="7"
+                  (input)="onTelInput($event)">
+                  <mat-error *ngIf="form?.controls['gsm']?.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+        </div>
+  </div>
+  <div class="loanRequest__form__step__item__footer">
+    <div class="loanRequest__form__step__item__footer__checkbox">
+
+          <mat-checkbox ngModel name="checked" [required]="true">
+            {{'~loanRequestContactAgreement' | translate | titlecase}}
+          </mat-checkbox>
+
+          <div *ngIf="form?.controls['checked']?.invalid" class="form-error">{{getCheckBoxErrorMessage()}}</div>
+
+    </div>
+    <div class="loanRequest__form__step__item__footer__next">
+      <button mat-raised-button color="primary" type="submit" [ngClass]="{'is-loading': loading}">{{'~next' | translate | titlecase}} </button>
+    </div>
+  </div>
+</div>
+
+</form>

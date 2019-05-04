@@ -24,13 +24,24 @@
         .loanRequest__sidebar__subtitle {
             padding-top: 20px;
             font-size: 14px;
-            line-height: 28px;
+            line-height: 24px;
             color: #ffffff;
         }
     }
     .loanRequest__form {
-        width: 600px;
-        height: 600px;
+        width: var(--loan-request-step-width);
+        height: var(--loan-request-step-height);
         background: #ffffff;
+        position: relative;
+        .loanRequest__form__cancel {
+           display: flex;
+           justify-content: flex-end;
+           position: absolute;
+           top: calc(var(--loan-request-step-padding) / 2);
+           right: calc(var(--loan-request-step-padding) / 2);
+           font-size: 20px;
+            width: 100%;
+            color: var(--primary-default);
+        }
     }
 }

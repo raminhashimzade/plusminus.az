@@ -4,13 +4,17 @@ import { LoanRequestDialogComponent } from './loan-request-dialog.component';
 import { MaterialModule } from 'src/app/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedTranslateModule } from 'src/app/shared/shared-translate.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { LoanRequestStepFirstComponent } from './loan-request-step-first/loan-request-step-first.component';
+import { LoanRequestStepSecondComponent } from './loan-request-step-second/loan-request-step-second.component';
+import { LoanRequestStepDoneComponent } from './loan-request-step-done/loan-request-step-done.component';
 
 @NgModule({
-  declarations: [LoanRequestDialogComponent],
+  declarations: [LoanRequestDialogComponent, LoanRequestStepFirstComponent, LoanRequestStepSecondComponent, LoanRequestStepDoneComponent],
   imports: [
     CommonModule,
     HttpClientModule,
+    FormsModule,
     MaterialModule,
     SharedTranslateModule,
     ReactiveFormsModule

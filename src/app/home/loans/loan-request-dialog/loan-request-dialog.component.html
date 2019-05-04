@@ -11,36 +11,20 @@
       </div>
     </div>
     <div class="loanRequest__form">
-        <mat-vertical-stepper [linear]="false" #stepper>
-            <mat-step [stepControl]="firstFormGroup">
-                <form [formGroup]="firstFormGroup">
-                    <ng-template matStepLabel>{{'~fillContactInfo' | translate}}</ng-template>
-                    <mat-form-field>
-                      <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-                    </mat-form-field>
-                    <div>
-                      <button mat-button matStepperNext></button>
-                    </div>
-                  </form>
-              </mat-step>
-
-            <mat-step [stepControl]="secondFormGroup">
-                <form [formGroup]="secondFormGroup">
-                    <ng-template matStepLabel>{{'~fillCodeYouRecieved' | translate}}</ng-template>
-                    <mat-form-field>
-                      <input matInput placeholder="Last name, First name" formControlName="secondCtrl" required>
-                    </mat-form-field>
-                    <div>
-                      <button mat-button matStepperNext></button>
-                    </div>
-                  </form>
-              </mat-step>
-
-            <mat-step >
-                <ng-template matStepLabel>Done</ng-template>
-              </mat-step>
-
-          </mat-vertical-stepper>
+      <div class="loanRequest__form__cancel">
+          <i class="fas fa-times"></i>
+      </div>
+      <div class="loanRequest__form__step" *ngIf="stepIndex === 1">
+          <loan-request-step-first
+          (stepComplete)="onFirstStepComplete($event)"></loan-request-step-first>
+      </div>
+      <div class="loanRequest__form__step"  *ngIf="stepIndex === 2">
+          <loan-request-step-second [firstStepData]="firstStepData"
+           (stepComplete)="onSecondStepComplete()"></loan-request-step-second>
+      </div>
+      <div class="loanRequest__form__step"  *ngIf="stepIndex === 3">
+          <loan-request-step-done></loan-request-step-done>
+      </div>
     </div>
   </div>
 

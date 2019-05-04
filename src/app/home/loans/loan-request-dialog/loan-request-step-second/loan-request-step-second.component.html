@@ -1,0 +1,38 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <div class="loanRequest__form__step__item">
+      <div class="loanRequest__form__step__item__header">
+        <div class="loanRequest__form__step__item__header__title">
+          {{'~smsCodeSentTo' | translate | titlecase}} {{firstStepData['gsm']}}. <br>
+          {{'~pleaseFillCode' | translate | titlecase}}
+        </div>
+        <div class="loanRequest__form__step__item__header__subtitle">
+          {{'~step' | translate | titlecase}} 2/4
+        </div>
+      </div>
+      <div class="loanRequest__form__step__item__content">
+        <div class="otpVerify">
+            <mat-form-field appearance="outline" class="otpInput">
+                <input matInput placeholder="*" ngModel name="first" type="password" maxlength="1">
+              </mat-form-field>
+
+            <mat-form-field appearance="outline" class="otpInput">
+                <input matInput placeholder="*" ngModel name="second" type="password" maxlength="1">
+              </mat-form-field>
+
+            <mat-form-field appearance="outline" class="otpInput">
+                <input matInput placeholder="*" ngModel name="third" type="password" maxlength="1">
+              </mat-form-field>
+
+            <mat-form-field appearance="outline" class="otpInput">
+                <input matInput placeholder="*" ngModel name="fourth" type="password" maxlength="1">
+              </mat-form-field>
+        </div>
+      </div>
+      <div class="loanRequest__form__step__item__footer">
+        <div class="loanRequest__form__step__item__footer__next">
+          <button mat-raised-button color="primary" type="submit" [ngClass]="{'is-loading': loading}">{{'~next' | translate | titlecase}} </button>
+        </div>
+      </div>
+    </div>
+
+    </form>
