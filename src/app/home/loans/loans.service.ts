@@ -11,9 +11,10 @@ import { LoanProduct } from './models/loanProduct.model';
 })
 export class LoansService {
     constructor(private http: HttpClient, private authService: AuthService) {}
-    getListLoanProducts(): Observable<LoanProduct[]> {
+    getListLoanProducts(formValue: Object): Observable<LoanProduct[]> {
         return this.http.post<DataResponse>('mybank/listLoanProduct', {
-            token: this.authService.getToken()
+            token: this.authService.getToken(),
+            ...formValue
         })
         .pipe(
             map(res => res && res.data)
@@ -42,6 +43,13 @@ export class LoansService {
             ...formValue
         }).pipe(
             catchError(er => of(null))
+        );
+    }
+    listLoanPeriods() {
+        return this.http.post<DataResponse>('mybank/listLoanPeriod', {
+            token: this.authService.getToken()
+        }).pipe(
+            map(res => res && res.data)
         );;
     }
 }

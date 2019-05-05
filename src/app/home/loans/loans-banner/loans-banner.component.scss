@@ -3,12 +3,12 @@
     background-image: url('../../../../assets//images/loans-banner-cover.jpeg');
     height: 300px;
 }
-/deep/ .mat-form-field-flex {
-    background-color: #ffffff!important;
-}
 .banner {
     padding-top: 47px;
     padding-bottom: 184px;
+    /deep/ .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: #ffffff!important;
+     }
     .banner__title {
         display: flex;
         flex-direction: column;
@@ -32,46 +32,40 @@
         display: flex;
         .banner__filter__amount {
             display: flex;
-            height: 45px;
             .banner__filter__amount__input {
-              input {
-               width: 375px;
+             .banner__filter__amount__input__number {
                height: 100%;
+               font-size: 14px;
               }
             }
             .banner__filter__amount__select {
-                height: 100%;
-                width: 75px;
-                select {
-                    height: 100%;
-                    width: 100%;
-
+                .banner__filter__amount__select__currency {
+                    width: 75px;
+                    font-size: 14px;
                   }
             }
         }
-        .banner__filter__duration {
-            height: 45px;
-            width: 173px;
-            margin-left: 9px;
-        }
-        .banner__filter__type {
-            height: 45px;
-            width: 173px;
+        .banner__filter__period {
+            .banner__filter__period__select {
+                font-size: 14px;
+            }
             margin-left: 9px;
         }
         .banner__filter__submit {
             margin-left: 9px;
-            button {
-                width: 200px;
-                height: 45px;
-                border: 1px solid rgba(119, 94, 0, 0.34);
-                background-color: var(--primary-default);
-                color: #fff2c2;
-                font-family: 'Montserrat-Medium';
-                font-size: 12px;
-                font-weight: 400;
-                letter-spacing: -0.12px;
-            }
+            position: relative;
+            top: 12px;
+            // button {
+            //     width: 200px;
+            //     height: 45px;
+            //     border: 1px solid rgba(119, 94, 0, 0.34);
+            //     background-color: var(--primary-default);
+            //     color: #fff2c2;
+            //     font-family: 'Montserrat-Medium';
+            //     font-size: 12px;
+            //     font-weight: 400;
+            //     letter-spacing: -0.12px;
+            // }
         }
     }
 }

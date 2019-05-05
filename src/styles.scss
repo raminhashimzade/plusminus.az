@@ -178,8 +178,8 @@ img {
 	input {
 		&:hover, &:checked {
 			&+span {
-				background-color: var(--primary-default);
-				color: #ffffff;
+				background-color: var(--secondary-default);
+		//		color: #ffffff;
 			}
 		}
 	}

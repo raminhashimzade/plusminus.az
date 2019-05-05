@@ -41,8 +41,8 @@
   "~amount": "сумма",
   "~duration": "длительность",
   "~consumer": "Потребительские",
-  "~loansAmount": "Сумма кредита",
-  "~loansDuration": "Срок кредита",
+  "~loanAmount": "Сумма кредита",
+  "~loanPeriod": "Срок кредита",
   "~loansType": "Тип кредита",
   "~pickLoan": "Подобрать кредит",
   "~requestLoansFromAllBanks": "Отправить заявку на кредит всем банкам",
@@ -91,5 +91,6 @@
   "~requiredField": "Пожлуйста, заполните это поле",
   "~loanRequestSuccessMsg": "Запрос отправлен",
   "~middleName": "Отчество",
-  "~birthDate": "День рождения"
+  "~birthDate": "День рождения",
+  "~bank": "Банк"
 }

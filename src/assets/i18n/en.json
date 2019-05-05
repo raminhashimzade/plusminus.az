@@ -69,5 +69,6 @@
   "~requiredField": "Please fill this field",
   "~loanRequestSuccessMsg": "Request is sent",
   "~middleName": "Middle Name",
-  "~birthDate": "Birth date"
+  "~birthDate": "Birth date",
+  "~bank": "Bank"
 }
