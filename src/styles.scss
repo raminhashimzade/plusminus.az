@@ -11,9 +11,9 @@
   --text-default: rgba(0, 0, 0, 0.87);
   --text-dark: #000000;
   --text-light: #9b9b9b;
-  --loan-request-step-width: 600px;
-  --loan-request-step-height: 640px;
-  --loan-request-step-padding: 50px;
+  --loan-request-step-width: 37.5rem;
+  --loan-request-step-height: 40rem;
+  --loan-request-step-padding: 3.125rem;
 }
 
 * {
@@ -233,4 +233,30 @@ button.is-loading {
   color: #f44336;
   font-size: 12px;
   padding-top: 5px;
+}
+
+@media (max-width: 1199px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  .mat-dialog-container {
+    padding: 0!important;
+  }
+  :root {
+    --loan-request-step-width: 30rem;
+    --loan-request-step-height: 50rem;
+    --loan-request-step-padding: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --loan-request-step-width: 22.5rem;
+  }
+
 }

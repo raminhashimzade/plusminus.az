@@ -1,16 +1,17 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { LoansService } from '../loans.service';
 import { LoanProduct } from '../models/loanProduct.model';
 import { MatDialog } from '@angular/material/dialog';
 import { LoanRequestDialogComponent } from '../loan-request-dialog/loan-request-dialog.component';
-import { MoockLoansData } from './mock-loans';
 import { NgForm } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'loans-table',
   templateUrl: './loans-table.component.html',
   styleUrls: ['./loans-table.component.scss']
 })
-export class LoansTableComponent implements OnInit, AfterViewInit {
+export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('f') form: NgForm;
   loanProducts: LoanProduct[];
   expandedNode: string;
@@ -21,6 +22,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit {
     comissionCash: false,
     comissionLoan: false,
   }
+  _onDestroy$ = new Subject<void>();
   constructor(private loansService: LoansService, private dialog: MatDialog) { }
 
   ngOnInit() {
@@ -30,6 +32,9 @@ export class LoansTableComponent implements OnInit, AfterViewInit {
     setTimeout(() => this.setInitialCheckboxesToFalse(), 50)
     setTimeout(() => this.listenToTableFilterChanges(), 100)
   }
+  ngOnDestroy() {
+    this._onDestroy$.next();
+  }
   setInitialCheckboxesToFalse() {
     Object.keys(this.form.controls).forEach(controlKey => {
       if (!this.form.controls[controlKey].value) {
@@ -38,7 +43,9 @@ export class LoansTableComponent implements OnInit, AfterViewInit {
     });
   }
   listenToTableFilterChanges() {
-    this.form.valueChanges.subscribe(res => {
+    this.form.valueChanges
+    .pipe(takeUntil(this._onDestroy$))
+    .subscribe(res => {
 
      this.currentFormValues = {
        ...this.currentFormValues,

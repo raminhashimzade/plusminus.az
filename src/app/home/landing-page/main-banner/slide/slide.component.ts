@@ -17,7 +17,7 @@ export class SlideComponent implements OnInit {
     const ref  = this.dialog.open(LoanRequestDialogComponent, {
       panelClass: 'loanRequestDialog',
       autoFocus: false,
-      maxWidth: '90vw',
+      maxWidth: '99vw',
       disableClose: true
     //  backdropClass: 'loanRequestDialogBackdrop'
     });

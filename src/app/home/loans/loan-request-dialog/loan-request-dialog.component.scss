@@ -6,25 +6,25 @@
     align-items: center;
     .loanRequest__sidebar {
         background: var(--primary-default);
-        width: 360px;
-        height: 500px;
-        padding: 50px;
+        width: 22.5rem;
+        height: 31.25rem;
+        padding: 3.125rem;
         .loanRequest__sidebar__icon {
-            width: 60px;
-            height: 60px;
+            width: 3.75rem;
+            height: 3.75rem;
         }
         .loanRequest__sidebar__title {
-            padding-top: 40px;
-            font-size: 28px;
-            width: 100px;
-            line-height: 28px;
+            padding-top: 2.5rem;
+            font-size: 1.75rem;
+            width: 6.25rem;
+            line-height: 1.75rem;
             color: #ffffff;
             font-family: 'Montserrat-SemiBold';
         }
         .loanRequest__sidebar__subtitle {
-            padding-top: 20px;
-            font-size: 14px;
-            line-height: 24px;
+            padding-top: 1.25rem;
+            font-size: 0.875rem;
+            line-height: 1.5rem;
             color: #ffffff;
         }
     }
@@ -39,7 +39,7 @@
            position: absolute;
            top: calc(var(--loan-request-step-padding) / 2);
            right: calc(var(--loan-request-step-padding) / 2);
-           font-size: 20px;
+           font-size: 1.25rem;
             width: 100%;
             cursor: pointer;
             color: var(--primary-default);

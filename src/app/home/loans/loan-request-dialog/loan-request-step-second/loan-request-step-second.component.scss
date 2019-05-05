@@ -14,10 +14,10 @@
         flex-direction: column;
         .loanRequest__form__step__item__header__title {
             font-family: 'Montserrat-Medium';
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 400;
-            letter-spacing: -0.18px;
-            letter-spacing: -0.18px;
+            letter-spacing: -0.0112rem;
+            letter-spacing: -0.0112rem;
         }
         .loanRequest__form__step__item__header__subtitle {
             color: #7f7f7f;
@@ -33,8 +33,8 @@
             display: flex;
             .otpInput {
                 text-align: center;
-                width: 63px;
-                margin-right: 10px;
+                width: 3.9375rem;
+                margin-right: 0.625rem;
             }
         }
     }
@@ -43,12 +43,12 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        min-height: 47px;
-        padding: 0 20px;
+        min-height: 2.9375rem;
+        padding: 0 1.25rem;
        .loanRequest__form__step__item__footer__next {
            margin-left: auto;
             button {
-           //     width: 100px;
+           //     width: 6.25rem;
             };
        }
     }

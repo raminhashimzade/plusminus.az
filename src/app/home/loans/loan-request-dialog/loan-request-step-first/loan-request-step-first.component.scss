@@ -14,10 +14,10 @@
         flex-direction: column;
         .loanRequest__form__step__item__header__title {
             font-family: 'Montserrat-Medium';
-            font-size: 18px;
+            font-size: 1.125rem;
             font-weight: 400;
-            letter-spacing: -0.18px;
-            letter-spacing: -0.18px;
+            letter-spacing: -0.0112rem;
+            letter-spacing: -0.0112rem;
         }
         .loanRequest__form__step__item__header__subtitle {
             color: #7f7f7f;
@@ -33,7 +33,7 @@
             display: flex;
             width: 100%;
             .telInput__telPrefix {
-                width: 82px;
+                width: 5.125rem;
             }
             .telInput__number {
                 flex: 1;
@@ -45,12 +45,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        min-height: 47px;
-        padding: 0 20px;
+        min-height: 2.9375rem;
+        .loanRequest__form__step__item__footer__checkbox {
+            display: flex;
+            justify-content: flex-end;
+        }
        .loanRequest__form__step__item__footer__next {
-            button {
-      //          width: 100px;
-            };
+            display: flex;
+            justify-content: flex-end;
        }
     }
 }
