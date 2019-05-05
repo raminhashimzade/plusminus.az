@@ -92,5 +92,6 @@
   "~loanRequestSuccessMsg": "Запрос отправлен",
   "~middleName": "Отчество",
   "~birthDate": "День рождения",
-  "~bank": "Банк"
+  "~bank": "Банк",
+  "~requestLoan": "Запросить кредит"
 }

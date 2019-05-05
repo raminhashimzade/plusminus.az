@@ -6,6 +6,7 @@
 .loanRequest__form__step__item {
     display: flex;
     flex-direction: column;
+    overflow: auto;
     width: calc(var(--loan-request-step-width));
     height: calc(var(--loan-request-step-height));
     padding: var(--loan-request-step-padding);
@@ -48,7 +49,11 @@
         min-height: 2.9375rem;
         .loanRequest__form__step__item__footer__checkbox {
             display: flex;
-            justify-content: flex-end;
+            align-items: flex-end;
+            flex-direction: column;
+            @media (max-width: 768px) {
+                margin-bottom: 35px;
+            }
         }
        .loanRequest__form__step__item__footer__next {
             display: flex;

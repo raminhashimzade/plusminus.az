@@ -6,6 +6,7 @@
 .loanRequest__form__step__item {
     display: flex;
     flex-direction: column;
+    overflow: auto;
     width: calc(var(--loan-request-step-width));
     height: calc(var(--loan-request-step-height));
     padding: var(--loan-request-step-padding);

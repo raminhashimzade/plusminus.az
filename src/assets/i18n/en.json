@@ -70,5 +70,6 @@
   "~loanRequestSuccessMsg": "Request is sent",
   "~middleName": "Middle Name",
   "~birthDate": "Birth date",
-  "~bank": "Bank"
+  "~bank": "Bank",
+  "~requestLoan": "Request Loan"
 }

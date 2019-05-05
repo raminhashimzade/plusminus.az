@@ -6,9 +6,9 @@
     flex-direction: column;
     align-items: flex-start;
     background: #ffffff;
-    width: 335px;
-    border: solid 0.125rem #eaf1fe;
-    margin-right: 0.625rem;
+    width: 20.9375rem;
+    border: solid 2px #eaf1fe;
+    margin-right: 10px;
     position: relative;
     transition-property: transform, box-shadow;
     transition-duration: 300ms;
@@ -19,19 +19,19 @@
         align-items: flex-start;
         justify-content: space-between;
         width: 100%;
-        padding: 15px 30px;
+        padding: 0.9375rem 1.875rem;
         .offer-card__header__title {
             display: flex;
             flex-direction: column;
             .offer-card__header__title__main {
-                font-size: 20px;
+                font-size: 1.25rem;
                 font-family: 'Montserrat-SemiBold';
             }
             .toffer-card__header__title__secondary {
             }
         }
         .offer-card__header__logo {
-           width: 100px;
+           width: 6.25rem;
         }
 
     }
@@ -39,30 +39,30 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
-        padding: 15px 30px;
-        padding-bottom: 30px;
+        padding: 0.9375rem 1.875rem;
+        padding-bottom: 1.875rem;
         background: var(--background-secondary);
         .credit-percent {
-            font-size: 0.625rem;
+            font-size: 10px;
             .credit-percent__title {
                 font-family: 'Montserrat-SemiBold';
-                font-size: 1.6875rem;
+                font-size: 27px;
             }
             .credit-percent__subtitle {
-                font-size: 0.75rem;
+                font-size: 12px;
             }
         }
         .credit-count {
             .credit-count__title {
                 font-family: 'Montserrat-SemiBold';
-                font-size: 24px;
+                font-size: 1.5rem;
                 span, b {
-                    font-size: 12px;
+                    font-size: 0.75rem;
                 }
             }
             .credit-count__subtitle {
               span {
-                font-size: 12px;
+                font-size: 0.75rem;
               }
             }
         }
@@ -72,18 +72,18 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 30px;
-        height: 30px;
+        width: 1.875rem;
+        height: 1.875rem;
         color: #ffffff;
         border-radius: 50%;
         background-color: var(--primary-default);
         cursor: pointer;
         position: absolute;
-        bottom: -15px;
+        bottom: -0.9375rem;
     }
 &:hover {
-    box-shadow: 0 25px 20px rgba(94, 94, 94, 0.15);
-    transform: translateY(-10px);
+    box-shadow: 0 1.5625rem 1.25rem rgba(94, 94, 94, 0.15);
+    transform: translateY(-0.625rem);
 }
 
 }

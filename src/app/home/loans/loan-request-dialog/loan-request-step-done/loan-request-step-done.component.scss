@@ -5,6 +5,7 @@
     background: var(--primary-default);
     width: calc(var(--loan-request-step-width));
     height: calc(var(--loan-request-step-height));
+    overflow: auto;
     position: relative;
 }
 .requestDone {

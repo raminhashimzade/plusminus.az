@@ -3,6 +3,7 @@
     width: calc(var(--loan-request-step-width));
     height: calc(var(--loan-request-step-height));
     position: relative;
+    overflow: auto;
 }
 
 .loanRequestError__cover {

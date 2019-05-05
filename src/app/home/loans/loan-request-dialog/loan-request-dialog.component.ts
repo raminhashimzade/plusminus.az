@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
+
 @Component({
   selector: 'app-loan-request-dialog',
   templateUrl: './loan-request-dialog.component.html',
-  styleUrls: ['./loan-request-dialog.component.scss']
+  styleUrls: ['./loan-request-dialog.component.scss'],
+
 })
 export class LoanRequestDialogComponent implements OnInit {
   stepIndex = 1;

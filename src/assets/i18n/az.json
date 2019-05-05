@@ -80,5 +80,6 @@
      "~loanRequestSubtitle": "Burada bütün banklarda kredit üçün onlayn müraciət edə bilərsiniz",
      "~smsCodeSent": "SMS kod göndərildi",
      "~pleaseFillCode": "Kodu daxil edin",
-     "~bank": "Bank"
+     "~bank": "Bank",
+     "~requestLoan": "Kredit sifariş et"
   }

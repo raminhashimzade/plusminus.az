@@ -31,6 +31,7 @@
     .loanRequest__form {
         width: var(--loan-request-step-width);
         height: var(--loan-request-step-height);
+        overflow: auto;
         background: #ffffff;
         position: relative;
         .loanRequest__form__cancel {

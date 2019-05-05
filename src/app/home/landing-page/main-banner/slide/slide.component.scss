@@ -6,7 +6,7 @@
 
 .slide__cover {
   width: 100vw;
-  height: 360px;
+  height: 22.5rem;
   position: absolute;
   left: 0;
   background-image: url("../../../../../assets/images/select-credits.jpeg");
@@ -17,48 +17,50 @@
 
 .slide {
   position: relative;
-  height: 360px;
+  height: 22.5rem;
 
   .slide__content {
-    padding-top: 121px;
-    padding-bottom: 67px;
+    padding-top: 7.5625rem;
+    padding-bottom: 4.1875rem;
     .slide__content__title {
       position: relative;
       z-index: 1;
       color: #ffffff;
       font-family: 'Montserrat-SemiBold';
-      font-size: 36px;
+      font-size: 2.25rem;
       font-weight: 400;
-      letter-spacing: -1.08px;
+      letter-spacing: -0.0675rem;
     }
     .slide__content__shortInfo {
       position: relative;
       z-index: 1;
       color: #ffffff;
       font-family: 'Montserrat-Medium';
-      font-size: 14px;
+      font-size: 0.875rem;
       font-weight: 400;
-      max-width: 310px;
-      letter-spacing: -0.14px;
+      max-width: 19.375rem;
+      letter-spacing: -0.0088rem;
     }
     .slide__detailed {
-      margin-top: 66px;
-      margin-left: 170px;
+      margin-top: 4.125rem;
+      margin-left: 10.625rem;
       position: relative;
       z-index: 1;
       button {
-        background: transparent;
-        width: 150px;
-        height: 35px;
-        color: #fff2c2;
+        width: 9.375rem;
         border: 1px solid #fff2c2;
-        font-family: Montserrat;
-        font-size: 12px;
-        font-weight: 400;
-        /* Text style for "П, одробне" */
-        letter-spacing: -0.12px;
-        text-align: center;
-        padding: 10px 38px;
+        // background: transparent;
+        // width: 9.375rem;
+        // height: 2.1875rem;
+        // color: #fff2c2;
+        // border: 0.0625rem solid #fff2c2;
+        // font-family: Montserrat;
+        // font-size: 0.75rem;
+        // font-weight: 400;
+        // /* Text style for "П, одробне" */
+        // letter-spacing: -0.0075rem;
+        // text-align: center;
+        // padding: 0.625rem 2.375rem;
       }
     }
   }

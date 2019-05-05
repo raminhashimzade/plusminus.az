@@ -1,71 +1,69 @@
 :host {
     display: block;
     background-image: url('../../../../assets//images/loans-banner-cover.jpeg');
-    height: 300px;
+    height: 18.75rem;
+    background-repeat: no-repeat;
+    @media (max-width: 992px) {
+       background-position-x: right;
+       height: 21.75rem;
+    }
 }
 .banner {
-    padding-top: 47px;
-    padding-bottom: 184px;
+    padding-top: 2.9375rem;
+    padding-bottom: 11.5rem;
+    @media (max-width: 768px) {
+        padding: 0;
+    }
     /deep/ .mat-form-field-appearance-outline .mat-form-field-outline {
     background-color: #ffffff!important;
      }
     .banner__title {
         display: flex;
         flex-direction: column;
-        padding-bottom: 40px;
+        padding-bottom: 2.5rem;
         .banner__title__top {
             color: #1da329;
             font-family: "Montserrat-SemiBold";
-            font-size: 32px;
+            font-size: 2rem;
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 0.0625rem;
         }
         .banner__title__bottom {
             color: #1da329;
-            letter-spacing: -0.96px;
+            letter-spacing: -0.06rem;
             font-family: "Montserrat-Medium";
-            font-size: 27px;
-            letter-spacing: 1px;
+            font-size: 1.6875rem;
+            letter-spacing: 0.0625rem;
         }
     }
     .banner__filter {
         display: flex;
+        flex-wrap: wrap;
         .banner__filter__amount {
             display: flex;
             .banner__filter__amount__input {
              .banner__filter__amount__input__number {
                height: 100%;
-               font-size: 14px;
+               font-size: 0.875rem;
               }
             }
             .banner__filter__amount__select {
                 .banner__filter__amount__select__currency {
-                    width: 75px;
-                    font-size: 14px;
+                    width: 4.6875rem;
+                    font-size: 0.875rem;
                   }
             }
         }
         .banner__filter__period {
             .banner__filter__period__select {
-                font-size: 14px;
+                font-size: 0.875rem;
             }
-            margin-left: 9px;
+            margin-left: 0.5625rem;
         }
         .banner__filter__submit {
-            margin-left: 9px;
+            margin-left: 0.5625rem;
             position: relative;
-            top: 12px;
-            // button {
-            //     width: 200px;
-            //     height: 45px;
-            //     border: 1px solid rgba(119, 94, 0, 0.34);
-            //     background-color: var(--primary-default);
-            //     color: #fff2c2;
-            //     font-family: 'Montserrat-Medium';
-            //     font-size: 12px;
-            //     font-weight: 400;
-            //     letter-spacing: -0.12px;
-            // }
+            top: 0.75rem;
         }
     }
 }
