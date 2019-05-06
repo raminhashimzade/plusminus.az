@@ -43,6 +43,9 @@ export class LoanRequestStepSecondComponent implements OnInit {
   onKeyUp(input: MatInput | MatButton) {
       input.focus();
   }
+  onFocus(controlKey: string) {
+      this.form.controls[controlKey].setValue('');
+  }
   getErrorMessage(controlKey: string) {
     return this.form.controls[controlKey].hasError('required') ?
     this.translateService.instant('~requiredField') : '';

@@ -1,7 +1,7 @@
 :host {
     display: block;
-    width: calc(var(--loan-request-step-width));
-    height: calc(var(--loan-request-step-height));
+    width: calc(var(--loan-request-step-done-width));
+    height: calc(var(--loan-request-step-done-height));
     position: relative;
     overflow: auto;
 }

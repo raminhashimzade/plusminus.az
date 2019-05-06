@@ -71,5 +71,6 @@
   "~middleName": "Middle Name",
   "~birthDate": "Birth date",
   "~bank": "Bank",
-  "~requestLoan": "Request Loan"
+  "~requestLoan": "Request Loan",
+  "~close": "Close"
 }

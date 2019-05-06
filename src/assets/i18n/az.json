@@ -81,5 +81,6 @@
      "~smsCodeSent": "SMS kod göndərildi",
      "~pleaseFillCode": "Kodu daxil edin",
      "~bank": "Bank",
-     "~requestLoan": "Kredit sifariş et"
+     "~requestLoan": "Kredit sifariş et",
+     "~close": "Bağla"
   }

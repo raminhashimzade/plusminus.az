@@ -1,3 +1,4 @@
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { NgModule } from '@angular/core';
 import { SharedTranslateModule } from './shared-translate.module';
 import { MaterialModule } from '../material.module';
@@ -6,11 +7,13 @@ import { MaterialModule } from '../material.module';
   declarations: [],
   imports: [
     SharedTranslateModule,
-    MaterialModule
+    MaterialModule,
+    PerfectScrollbarModule
   ],
   exports: [
     SharedTranslateModule,
-    MaterialModule
+    MaterialModule,
+    PerfectScrollbarModule
   ]
 })
 export class SharedModule { }

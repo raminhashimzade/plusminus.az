@@ -11,9 +11,16 @@
   --text-default: rgba(0, 0, 0, 0.87);
   --text-dark: #000000;
   --text-light: #9b9b9b;
-  --loan-request-step-width: 37.5rem;
-  --loan-request-step-height: 40rem;
   --loan-request-step-padding: 3.125rem;
+  --loan-request-step-first-width: 37.5rem;
+  --loan-request-step-first-height: 40rem;
+  --loan-request-step-second-width: 37.5rem;
+  --loan-request-step-third-height: 40rem;
+  --loan-request-step-third-width: 37.5rem;
+  --loan-request-step-third-height: 40rem;
+  --loan-request-step-done-width: 37.5rem;
+  --loan-request-step-done-height: 40rem;
+
 }
 
 * {
@@ -248,15 +255,20 @@ button.is-loading {
     padding: 0!important;
   }
   :root {
-    --loan-request-step-width: 30rem;
-    --loan-request-step-height: 50rem;
-    --loan-request-step-padding: 2rem;
+//    --loan-request-step-padding: 2rem;
   }
 }
 
 @media (max-width: 576px) {
   :root {
-    --loan-request-step-width: 22.5rem;
+    --loan-request-step-first-width: 20.5rem;
+    --loan-request-step-first-height: 22rem;
+    --loan-request-step-second-width: 20.5rem;
+    --loan-request-step-second-height: 22rem;
+    --loan-request-step-third-width: 22rem;
+    --loan-request-step-done-width: 20.5rem;
+    --loan-request-step-done-height: 25.5rem;
+    --loan-request-step-padding: 1rem;
   }
 
 }

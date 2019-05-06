@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 })
 export class LoanRequestDialogComponent implements OnInit {
-  stepIndex = 1;
+  stepIndex = 2;
   firstStepData: {gsm: string,  channel: string};
   stepError: boolean;
   constructor(public dialogRef: MatDialogRef<LoanRequestDialogComponent>) { }

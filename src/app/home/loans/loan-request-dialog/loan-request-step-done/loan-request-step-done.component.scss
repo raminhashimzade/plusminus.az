@@ -3,8 +3,8 @@
     justify-content: center;
     align-items: center;
     background: var(--primary-default);
-    width: calc(var(--loan-request-step-width));
-    height: calc(var(--loan-request-step-height));
+    width: calc(var(--loan-request-step-done-width));
+    height: calc(var(--loan-request-step-done-height));
     overflow: auto;
     position: relative;
 }
@@ -13,13 +13,13 @@
     flex-direction: column;
     align-items: center;
     .requestDone__img {
-        width: 100px;
+        width: 6.25rem;
       //  animation-duration: 1s;
     }
     .requestDone__msg {
         color: #ffffff;
-        margin-top: 35px;
-        font-size: 22px;
+        margin: 1.5625rem 0;
+        font-size: 1.375rem;
     }
 }
 
@@ -29,7 +29,7 @@
     position: absolute;
     top: calc(var(--loan-request-step-padding) / 2);
     right: calc(var(--loan-request-step-padding) / 2);
-    font-size: 20px;
+    font-size: 1.25rem;
      width: 100%;
      cursor: pointer;
      color: #ffffff;

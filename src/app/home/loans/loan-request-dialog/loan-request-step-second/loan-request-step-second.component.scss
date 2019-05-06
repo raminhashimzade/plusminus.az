@@ -7,8 +7,8 @@
     display: flex;
     flex-direction: column;
     overflow: auto;
-    width: calc(var(--loan-request-step-width));
-    height: calc(var(--loan-request-step-height));
+    width: calc(var(--loan-request-step-second-width));
+    height: calc(var(--loan-request-step-second-height));
     padding: var(--loan-request-step-padding);
     .loanRequest__form__step__item__header {
         display: flex;

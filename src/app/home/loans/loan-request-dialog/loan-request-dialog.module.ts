@@ -1,3 +1,4 @@
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoanRequestDialogComponent } from './loan-request-dialog.component';
@@ -26,7 +27,8 @@ import { LoanRequestStepThirdComponent } from './loan-request-step-third/loan-re
     FormsModule,
     MaterialModule,
     SharedTranslateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PerfectScrollbarModule
   ],
   exports: [LoanRequestDialogComponent],
   entryComponents: [LoanRequestDialogComponent]
