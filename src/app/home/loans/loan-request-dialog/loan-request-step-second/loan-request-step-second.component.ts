@@ -17,9 +17,13 @@ export class LoanRequestStepSecondComponent implements OnInit {
   @Output() stepComplete = new EventEmitter();
   @Output() stepError = new EventEmitter();
   loading: boolean;
+  @ViewChild('firstField') firstField: MatInput;
   constructor(private loansServce: LoansService, private translateService: TranslateService) { }
 
   ngOnInit() {
+    setTimeout(() => {
+    this.firstField.focus();
+    }, 300)
   }
   onSubmit() {
     if (!this.form.valid) {return;}

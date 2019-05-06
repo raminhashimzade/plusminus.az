@@ -16,9 +16,10 @@ export class LoanRequestStepThirdComponent implements OnInit {
   @Input() firstStepData: {gsm: string,  channel: string};
   @Output() stepComplete = new EventEmitter();
   @Output() stepError = new EventEmitter();
-  cusUnOfficialIncome = false;
   cusOfficialIncome = false;
+  cusUnOfficialIncome = false;
   cusVoen = false;
+  loanCurrencyCode = 'AZN';
   startDate = new Date(2001, 0, 1);
   loading: boolean;
   constructor(private translateService: TranslateService, private loansService: LoansService) { }

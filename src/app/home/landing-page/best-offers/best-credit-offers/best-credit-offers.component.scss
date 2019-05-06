@@ -1,6 +1,10 @@
 :host {
+    display: block;
+}
+
+.best-credit-offers__cards {
     display: flex;
-    min-height: 13.125rem;
+    min-height: 14.125rem;
     margin-top: 1.875rem;
     width: 100%;
     overflow: auto;

@@ -22,6 +22,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     comissionCash: false,
     comissionLoan: false,
   }
+  bannerFormValues = {};
   _onDestroy$ = new Subject<void>();
   constructor(private loansService: LoansService, private dialog: MatDialog) { }
 
@@ -85,6 +86,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
       ...form.value
     }
     console.log(formValue);
+    this.currentFormValues = formValue;
     this.getListLoanProducts(formValue);
   }
 

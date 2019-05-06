@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 })
 export class LoanRequestDialogComponent implements OnInit {
-  stepIndex = 2;
+  stepIndex = environment.production ? 1 : 3;
   firstStepData: {gsm: string,  channel: string};
   stepError: boolean;
   constructor(public dialogRef: MatDialogRef<LoanRequestDialogComponent>) { }

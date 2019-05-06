@@ -125,7 +125,7 @@
             <div class="col-12 col-md-4 pr-0">
 
               <mat-form-field appearance="outline" class="input-field">
-                <mat-label>{{'~requestLoanPeriod' | translate }}</mat-label>
+                <mat-label>{{'~requestLoanPeriod' | translate }}( {{'~month' | translate}} )</mat-label>
                 <input matInput ngModel
                 name="requestLoanPeriod" type="text"
                 required
@@ -140,7 +140,7 @@
                     <mat-label>{{'~requestLoanCurencyCode' | translate }}</mat-label>
                     <mat-select
                       name="requestLoanCurencyCode"
-                      ngModel
+                      [ngModel]="loanCurrencyCode"
                       required
                      >
                       <mat-option value="AZN">AZN</mat-option>

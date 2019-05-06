@@ -12,19 +12,19 @@
       <div class="loanRequest__form__step__item__content">
         <div class="otpVerify">
             <mat-form-field appearance="outline" class="otpInput">
-                <input matInput placeholder="*" (keyup)="onKeyUp(second)" (focus)="onFocus('first')"  ngModel name="first" type="password" maxlength="1" required>
+                <input matInput placeholder="*" (keyup)="onKeyUp(second)" (focus)="onFocus('first')" #firstField="matInput"  ngModel name="first"  maxlength="1" required>
               </mat-form-field>
 
             <mat-form-field appearance="outline" class="otpInput">
-                <input matInput placeholder="*" (keyup)="onKeyUp(third)" (focus)="onFocus('second')" ngModel name="second" #second type="password" maxlength="1" required>
+                <input matInput placeholder="*" (keyup)="onKeyUp(third)" (focus)="onFocus('second')" ngModel name="second" #second  maxlength="1" required>
               </mat-form-field>
 
             <mat-form-field appearance="outline" class="otpInput">
-                <input matInput placeholder="*" (keyup)="onKeyUp(fourth)" (focus)="onFocus('third')" ngModel name="third" #third type="password" maxlength="1" required>
+                <input matInput placeholder="*" (keyup)="onKeyUp(fourth)" (focus)="onFocus('third')" ngModel name="third" #third  maxlength="1" required>
               </mat-form-field>
 
             <mat-form-field appearance="outline" class="otpInput">
-                <input matInput placeholder="*" (keyup)="onKeyUp(submitBtn)" (focus)="onFocus('fourth')"  ngModel name="fourth" #fourth type="password" maxlength="1" required>
+                <input matInput placeholder="*" (keyup)="onKeyUp(submitBtn)" (focus)="onFocus('fourth')"  ngModel name="fourth" #fourth  maxlength="1" required>
               </mat-form-field>
         </div>
       </div>
