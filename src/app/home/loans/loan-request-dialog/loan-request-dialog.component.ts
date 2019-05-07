@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.prod';
 
 })
 export class LoanRequestDialogComponent implements OnInit {
-  stepIndex = environment.production ? 1 : 3;
+  stepIndex = 1;
   firstStepData: {gsm: string,  channel: string};
   stepError: boolean;
   constructor(public dialogRef: MatDialogRef<LoanRequestDialogComponent>) { }

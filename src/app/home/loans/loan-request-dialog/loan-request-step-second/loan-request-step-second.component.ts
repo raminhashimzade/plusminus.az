@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
@@ -25,10 +25,10 @@ export class LoanRequestStepSecondComponent implements OnInit {
     this.firstField.focus();
     }, 300)
   }
+
   onSubmit() {
     if (!this.form.valid) {return;}
     this.loading = true;
-    console.log(this.form.value);
     const otpCode = Object.values(this.form.value).join('');
     const newFormValue = {
       gsm: this.firstStepData['gsm'],
@@ -44,8 +44,15 @@ export class LoanRequestStepSecondComponent implements OnInit {
       }
     })
   }
-  onKeyUp(input: MatInput | MatButton) {
-      input.focus();
+  onKeyUp(controlKey: string,  nextInput: MatInput | MatButton, e) {
+    const value = e.target.value;
+    const replacedValue = value.replace(/[^\d]/,'');
+    if (replacedValue) {
+      this.form.controls[controlKey].setValue(replacedValue);
+      nextInput.focus();
+    } else {
+      this.form.controls[controlKey].setValue('');
+    }
   }
   onFocus(controlKey: string) {
       this.form.controls[controlKey].setValue('');
@@ -53,6 +60,10 @@ export class LoanRequestStepSecondComponent implements OnInit {
   getErrorMessage(controlKey: string) {
     return this.form.controls[controlKey].hasError('required') ?
     this.translateService.instant('~requiredField') : '';
+  }
+  onCodeInput(controlKey: string, e: any) {
+    const value = e.target.value;
+    this.form.controls[controlKey].setValue(value.replace(/[^\d]/,''));
   }
 
 

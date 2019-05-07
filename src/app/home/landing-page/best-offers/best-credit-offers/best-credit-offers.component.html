@@ -1,5 +1,13 @@
-<perfect-scrollbar id="best-credit-offers">
-    <div class="best-credit-offers__cards">
-        <credit-offer-card *ngFor="let offer of creidtOffers" [offer]="offer"> </credit-offer-card>
+    <div  class="swiper-container" style="width: 100%" #swiper >
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let offer of creidtOffers;let i=index;let first=first" >
+          <credit-offer-card  [offer]="offer"> </credit-offer-card>
+         </div>
+      </div>
+    <div class="swiper-pagination"></div>
+    <!-- <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div> -->
+
     </div>
-</perfect-scrollbar>
+
+

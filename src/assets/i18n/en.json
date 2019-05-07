@@ -72,5 +72,7 @@
   "~birthDate": "Birth date",
   "~bank": "Bank",
   "~requestLoan": "Request Loan",
-  "~close": "Close"
+  "~close": "Close",
+  "~feedbackTitle": "Please leave feedback",
+  "~forBanks": "For Banks"
 }

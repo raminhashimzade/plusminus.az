@@ -20,31 +20,46 @@ import { FavorableRatesPreviewComponent } from './favorable-rates-preview/favora
 import { FavorableRatesPreviewTableComponent } from './favorable-rates-preview/favorable-rates-preview-table/favorable-rates-preview-table.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { LoanRequestDialogModule } from '../loans/loan-request-dialog/loan-request-dialog.module';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 @NgModule({
   declarations: [
     LandingPageComponent,
-     MainBannerComponent,
-      SlideComponent,
-       OurServicesComponent,
-        ServiceCardComponent,
-        BestOffersComponent,
-         BestDepositOffersComponent,
-          BestDepositOfferComponent,
-          BestCreditOffersComponent,
-          CreditOfferCardComponent,
-          OurPartnersComponent,
-          BankPartnersComponent,
-          BankPartnerCardComponent,
-          FavorableRatesPreviewComponent,
-          FavorableRatesPreviewTableComponent],
+    MainBannerComponent,
+    SlideComponent,
+    OurServicesComponent,
+    ServiceCardComponent,
+    BestOffersComponent,
+    BestDepositOffersComponent,
+    BestDepositOfferComponent,
+    BestCreditOffersComponent,
+    CreditOfferCardComponent,
+    OurPartnersComponent,
+    BankPartnersComponent,
+    BankPartnerCardComponent,
+    FavorableRatesPreviewComponent,
+    FavorableRatesPreviewTableComponent
+  ],
   imports: [
-  CommonModule,
+    CommonModule,
     SharedTranslateModule,
     MaterialModule,
     PerfectScrollbarModule,
     LandingPageRoutingModule,
-    LoanRequestDialogModule
+    LoanRequestDialogModule,
+    SwiperModule
+  ],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
   ]
 })
 export class LandingPageModule {}

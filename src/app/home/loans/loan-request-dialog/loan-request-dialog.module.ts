@@ -11,6 +11,7 @@ import { LoanRequestStepSecondComponent } from './loan-request-step-second/loan-
 import { LoanRequestStepDoneComponent } from './loan-request-step-done/loan-request-step-done.component';
 import { LoanRequestErrorComponent } from './loan-request-error/loan-request-error.component';
 import { LoanRequestStepThirdComponent } from './loan-request-step-third/loan-request-step-third.component';
+import { RatingModule } from '../../rating/rating.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LoanRequestStepThirdComponent } from './loan-request-step-third/loan-re
     MaterialModule,
     SharedTranslateModule,
     ReactiveFormsModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+    RatingModule
   ],
   exports: [LoanRequestDialogComponent],
   entryComponents: [LoanRequestDialogComponent]

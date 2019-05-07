@@ -3,9 +3,13 @@
     background-image: url('../../../../assets//images/loans-banner-cover.jpeg');
     height: 18.75rem;
     background-repeat: no-repeat;
-    @media (max-width: 992px) {
+    @media (max-width: 768px) {
        background-position-x: right;
        height: 21.75rem;
+    }
+    @media (max-width: 576px) {
+       background-image: none;
+       background: #F8C810;
     }
 }
 .banner {
@@ -15,7 +19,7 @@
         padding: 0;
     }
     /deep/ .mat-form-field-appearance-outline .mat-form-field-outline {
-    background-color: #ffffff!important;
+  background-color: #ffffff!important;
      }
     .banner__title {
         display: flex;
@@ -51,6 +55,7 @@
                 .banner__filter__amount__select__currency {
                     width: 4.6875rem;
                     font-size: 0.875rem;
+                    margin: 0 0.5625rem;
                   }
             }
         }
@@ -58,7 +63,6 @@
             .banner__filter__period__select {
                 font-size: 0.875rem;
             }
-            margin-left: 0.5625rem;
         }
         .banner__filter__submit {
             margin-left: 0.5625rem;

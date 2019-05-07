@@ -43,7 +43,7 @@
     "~loanAmount": "Kredit məbləği",
     "~loanPeriod": "Kredit müddəti",
     "~requestLoansFromAllBanks": "Bütn banklardan kredit sifarişi ver",
-    "~auctions": "Hərraclar",
+    "~auctions": "Aksiyalar",
     "~month": "ay",
     "~loanName": "kredit növü",
     "~effectiveRate": "faiz",
@@ -82,5 +82,7 @@
      "~pleaseFillCode": "Kodu daxil edin",
      "~bank": "Bank",
      "~requestLoan": "Kredit sifariş et",
-     "~close": "Bağla"
+     "~close": "Bağla",
+     "~feedbackTitle": "Geribildirim edin",
+     "~forBanks": "Banklar üçün"
   }

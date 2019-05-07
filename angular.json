@@ -28,9 +28,12 @@
             ],
             "styles": [
               "node_modules/daemonite-material/css/material.min.css",
+              "node_modules/swiper/dist/css/swiper.min.css",
               "src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/swiper/dist/js/swiper.min.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

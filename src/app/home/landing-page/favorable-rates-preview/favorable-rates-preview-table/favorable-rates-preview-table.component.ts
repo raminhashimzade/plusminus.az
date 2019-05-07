@@ -11,8 +11,8 @@ export class FavorableRatesPreviewTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.currencies[0].rates[0].buy)
-    console.log(this.currencies[0].rates['buy'])
+//    console.log(this.currencies[0].rates[0].buy)
+  //  console.log(this.currencies[0].rates['buy'])
   }
 
 }
