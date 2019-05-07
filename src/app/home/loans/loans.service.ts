@@ -45,6 +45,17 @@ export class LoansService {
             catchError(er => of(null))
         );
     }
+
+    voteMe(vote: number) {
+        return this.http.post<DataResponse>('mybank/voteMe', {
+            token: this.authService.getToken(),
+            companyId : "",
+            companyType : "",
+            vote : vote
+        }).pipe(
+            catchError(er => of(null))
+        );
+    }
     listLoanPeriods() {
         return this.http.post<DataResponse>('mybank/listLoanPeriod', {
             token: this.authService.getToken()

@@ -7,9 +7,8 @@
       <div class="col-12">
           <div class="section">
               <div class="section__title">{{'~favorableRate' | translate}}</div>
-              <div class="section__content">
-                <favorable-rates-preview-table [currencies] = "rates | slice: 0:2"></favorable-rates-preview-table>
-                <favorable-rates-preview-table class="second" [currencies] = "rates | slice: 2:4"></favorable-rates-preview-table>
+              <div class="section__content" *ngIf="rates" >
+                <favorable-rates-preview-table  *ngFor="let rate of rates;let i = index" [currency] = "rate" [index]="i"></favorable-rates-preview-table>
               </div>
               <div class="section__footer">
                 <div class="section__footer__date">

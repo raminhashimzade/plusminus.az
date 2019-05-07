@@ -1,11 +1,11 @@
-<table class="favorable-rates-table">
-  <thead>
+<table class="favorable-rates-table" *ngIf="currency?.rates && currency?.rates[0]?.buy">
+  <thead *ngIf="showThead">
     <th>{{'~currency' | translate}}</th>
     <th>{{'~bestBuy' | translate}}</th>
     <th>{{'~bestSell' | translate}}</th>
   </thead>
   <tbody>
-    <tr *ngFor="let currency of currencies">
+    <tr >
       <td valign="top"><div class="currencyCode">{{currency.currencyCode}}</div></td>
 
       <td valign="top">

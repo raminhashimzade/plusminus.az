@@ -13,7 +13,8 @@
     }
     .section__content {
         display: flex;
-        margin-top: 27px;
+        flex-wrap: wrap;
+        margin-top: 1.6875rem;
     }
     .section__footer {
         display: flex;

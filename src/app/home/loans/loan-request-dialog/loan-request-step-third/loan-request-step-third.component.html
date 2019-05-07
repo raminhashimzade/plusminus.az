@@ -21,7 +21,7 @@
                     required
                     #cusFirstNameField = "matInput"
                  >
-                    <mat-error *ngIf="f?.controls['firstName']?.invalid">{{getErrorMessage('cusFirstName')}}</mat-error>
+                    <mat-error *ngIf="f?.controls['cusFirstName']?.invalid">{{getErrorMessage('cusFirstName')}}</mat-error>
                   </mat-form-field>
             </div>
             <div class="col-6 pl-0">
@@ -31,7 +31,7 @@
                 name="cusLastName" type="text"
                 required
              >
-                <mat-error *ngIf="f?.controls['firstName']?.invalid">{{getErrorMessage('cusLastName')}}</mat-error>
+                <mat-error *ngIf="f?.controls['cusLastName']?.invalid">{{getErrorMessage('cusLastName')}}</mat-error>
               </mat-form-field>
             </div>
           </div>
@@ -98,9 +98,9 @@
           <div class="row">
             <div class="col-12">
               <mat-form-field appearance="outline" class="input-field">
-                <mat-label>{{'~incomeAmt' | translate }}</mat-label>
+                <mat-label>{{'~incomeAmt' | translate }} (AZN)</mat-label>
                 <input matInput ngModel
-                name="cusIncomeAmt" type="text"
+                name="cusIncomeAmt" type="tel"
                 (input)="onNumInput($event, 'cusIncomeAmt')"
                 required
              >
@@ -114,7 +114,7 @@
               <mat-form-field appearance="outline" class="input-field">
                 <mat-label>{{'~requestLoanAmt' | translate }}</mat-label>
                 <input matInput ngModel
-                name="requestLoanAmt" type="text"
+                name="requestLoanAmt" type="tel"
                 (input)="onNumInput($event, 'requestLoanAmt')"
                 required
              >
@@ -127,7 +127,8 @@
               <mat-form-field appearance="outline" class="input-field">
                 <mat-label>{{'~requestLoanPeriod' | translate }}( {{'~month' | translate}} )</mat-label>
                 <input matInput ngModel
-                name="requestLoanPeriod" type="text"
+                name="requestLoanPeriod" type="tel"
+                (input)="onNumInput($event, 'requestLoanPeriod')"
                 required
              >
                 <mat-error *ngIf="f?.controls['requestLoanPeriod']?.invalid">{{getErrorMessage('requestLoanPeriod')}}</mat-error>
