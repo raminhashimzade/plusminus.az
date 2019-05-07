@@ -13,7 +13,7 @@
   <div class="row">
     <div class="col-12">
         <div class="loans__table">
-          <div class="loans__table__filter">
+          <div id="loans-table-filter" class="loans__table__filter">
 
 
               <form #f="ngForm">
@@ -52,7 +52,8 @@
 
         </div>
           <div class="loans__table__content">
-              <table>
+              <table-loader *ngIf="loading"></table-loader>
+              <table id="loans-table" *ngIf="!loading">
                 <thead>
                   <th>
                     <div class="th-wrapper">
@@ -89,11 +90,11 @@
                 <tbody>
                   <tr *ngFor="let loan of loanProducts | slice: 0: 10">
                     <td valign="top">
-                      <div class="td-content loans__table__content__bank" [ngClass]="{'--expanded' : expandedNode === loan.lnID}">
+                      <div class="td-content loans__table__content__bank" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
                           <div class="loans__table__content__bank__icon">
-                              AzerTurk Bank
+                             <img src="./assets/icons/banks/17.svg">
                           </div>
-                          <div class="loans__table__content__bank__more" (click)="onExpandToggle(loan.lnID)" [ngClass]="{'--top' : expandedNode === loan.lnID}">
+                          <div class="loans__table__content__bank__more" *ngIf="!isMobile" (click)="onExpandToggle(loan.lnID)" [ngClass]="{'--top' : (expandedNode === loan.lnID) || isMobile }">
                               <i class="fas fa-chevron-down"></i>
                           </div>
                       </div>
@@ -112,7 +113,7 @@
                       </div>
                     </td>
                     <td valign="top">
-                      <div class=" td-content loans__table__content__amount" [ngClass]="{'--expanded' : expandedNode === loan.lnID}">
+                      <div class=" td-content loans__table__content__amount" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile  }">
                         <div class="loans__table__content__amount__value">
                           {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}} {{loan.currencyCode | lowercase}}</div>
                         <div class="loans__table__content__amount__duration">
@@ -122,23 +123,23 @@
                       </div>
                     </td>
                     <td valign="top">
-                      <div class=" td-content loans__table__content__documents" [ngClass]="{'--expanded' : expandedNode === loan.lnID}">
+                      <div class=" td-content loans__table__content__documents" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
                         <div class="loans__table__content__documents__item" *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
                             {{item}} <br>
                         </div>
                       </div>
                     </td>
                     <td valign="top">
-                      <div class=" td-content loans__table__content__requirements" [ngClass]="{'--expanded' : expandedNode === loan.lnID}">
+                      <div class=" td-content loans__table__content__requirements" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile  }">
                         <div class="loans__table__content__requirement__item">
                          {{loan.description | valueTranslate}}
                         </div>
                       </div>
                     </td>
                     <td valign="top">
-                      <div class="td-content loans__table__content__popularity" [ngClass]="{'--expanded' : expandedNode === loan.lnID}">
-                          <button class="primary">{{'~navigateToPage' | translate}}</button>
-                          <button class="secondary">{{'~compare' | translate}}</button>
+                      <div class="td-content loans__table__content__popularity" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
+                          <button mat-raised-button color="primary">{{'~detailed' | translate}}</button>
+                          <button mat-raised-button color="accent">{{'~compare' | translate}}</button>
                       </div>
                     </td>
                   </tr>

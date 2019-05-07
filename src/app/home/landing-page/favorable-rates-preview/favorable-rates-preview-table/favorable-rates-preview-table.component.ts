@@ -20,7 +20,11 @@ export class FavorableRatesPreviewTableComponent implements OnInit {
   }
   get showThead(): boolean {
     console.log('calc th');
-    return  (window.innerWidth > 768) || (window.innerWidth <=768 && this.index === 0);
+    const width  = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+
+    return  (width > 768) || (width <=768 && this.index === 0);
   }
   onWindowResize() {
 

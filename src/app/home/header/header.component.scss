@@ -49,6 +49,10 @@
       padding: 0.5rem 0;
       position: relative;
       transition: color 300ms ease-in-out;
+      &.disabled {
+        pointer-events: none;
+        color:rgba(0, 0, 0, 0.38);
+      }
       &.active:after {
        width: 100%;
       }

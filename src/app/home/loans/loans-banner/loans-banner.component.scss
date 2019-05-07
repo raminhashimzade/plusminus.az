@@ -18,9 +18,16 @@
     @media (max-width: 768px) {
         padding: 0;
     }
-    /deep/ .mat-form-field-appearance-outline .mat-form-field-outline {
-  background-color: #ffffff!important;
-     }
+    .banner__filter {
+        /deep/ .mat-form-field-appearance-outline .mat-form-field-outline {
+            background-color: #ffffff!important;
+
+         }
+         /deep/  .mat-form-field-infix {
+            border-top: 1.1em solid transparent;
+        }
+    }
+
     .banner__title {
         display: flex;
         flex-direction: column;

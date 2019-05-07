@@ -3,17 +3,17 @@
     background: var( --background-secondary);
 }
 .loans__request{
-    margin: 34px 0;
+    margin: 2.125rem 0;
     width: 100%;
     .loans__request__btn {
-     //   height: 35px;
+     //   height: 2.1875rem;
         width: 100%;
         // background-color: var(--primary-default);
         // color: #fff2c2;
         // font-family: 'Montserrat-Medium';
-        // font-size: 14px;
+        // font-size: 0.875rem;
         // font-weight: 400;
-        // letter-spacing: -0.12px;
+        // letter-spacing: -0.0075rem;
     }
 }
 
@@ -23,48 +23,55 @@
         .loans__table__filter__btn {
             color: #000000;
             font-family: 'Montserrat-Medium';
-            font-size: 12px;
+            font-size: 0.75rem;
             font-weight: 300;
-            letter-spacing: -0.12px;
+            letter-spacing: -0.0075rem;
             background: #ffffff;
         }
      }
      .loans__table__content {
-        margin: 16px 0;
+        margin: 1rem 0;
          table {
-             border:  1px solid rgba(29, 163, 41, 0.5);
+             width: 100%;
+             border:  0.0625rem solid rgba(29, 163, 41, 0.5);
              background: #ffffff;
              thead {
                  th {
-                    border:  1px solid rgba(29, 163, 41, 0.5);
+                    border:  0.0625rem solid rgba(29, 163, 41, 0.5);
                     .th-wrapper {
-                        padding: 13px 35px;
+                        padding: 0.8125rem 2.1875rem;
                         font-family: 'Montserrat-Medium';
                         color: var(--primary-default);
-                        font-size: 12px;
+                        font-size: 0.75rem;
                         font-weight: 300;
-                        letter-spacing: -0.12px;
+                        letter-spacing: -0.0075rem;
                         text-align: center;
                     }
                  }
              }
              tbody {
                  tr {
-                    border:  1px solid rgba(29, 163, 41, 0.5);
+                    border:  0.0625rem solid rgba(29, 163, 41, 0.5);
                     td {
                         text-align: center;
                         .td-content {
-                            padding:23px 12px;
-                            max-height: 140px;
+                            padding:1.4375rem 0.75rem;
+                            max-height: 8.75rem;
                             overflow: hidden;
                             transition: max-height 300ms ease-in-out;
                             &.--expanded {
-                                max-height: 1000px
+                                max-height: 62.5rem
                             }
                             &.loans__table__content__bank {
-                                .loans__table__content__bank__icon {}
+                                display: flex;
+                                flex-direction: column;
+                                align-items: center;
+                                .loans__table__content__bank__icon {
+                                    width: 8.125rem;
+                                    max-height: 3.125rem;
+                                }
                                 .loans__table__content__bank__more {
-                                    padding-top: 15px;
+                                    padding-top: 0.9375rem;
                                     cursor: pointer;
                                     color: var(--primary-default);
                                     transition: transform 300ms ease-in-out;
@@ -78,18 +85,18 @@
                                 flex-direction: column;
                                    .loans__table__content__amount__value {
                                        font-family: 'Montserrat-Medium';
-                                       font-size: 14px;
+                                       font-size: 0.875rem;
                                        font-weight: 700;
-                                       line-height: 18px;
-                                       letter-spacing: -0.14px;
+                                       line-height: 1.125rem;
+                                       letter-spacing: -0.0088rem;
                                    }
                                    .loans__table__content__amount__duration {
-                                       padding-top: 5px;
+                                       padding-top: 0.3125rem;
                                        font-family: 'Montserrat-Medium';
-                                       font-size: 12px;
+                                       font-size: 0.75rem;
                                        font-weight: 300;
-                                       line-height: 19px;
-                                       letter-spacing: -0.12px;
+                                       line-height: 1.1875rem;
+                                       letter-spacing: -0.0075rem;
                                    }
 
                             }
@@ -97,41 +104,34 @@
                                 display: flex;
                                 flex-direction: column;
                                 .loans__table__content__documents__item {
-                                    font-size: 12px;
+                                    font-size: 0.75rem;
                                     font-weight: 400;
-                                    line-height: 19px;
-                                    letter-spacing: -0.12px;
+                                    line-height: 1.1875rem;
+                                    letter-spacing: -0.0075rem;
                                     font-family: 'Montserrat-Medium';
                                 }
                             }
                             &.loans__table__content__requirements {
                                 .loans__table__content__requirement__item {
-                                    font-size: 12px;
+                                    font-size: 0.75rem;
                                     font-weight: 400;
-                                    line-height: 19px;
-                                    letter-spacing: -0.12px;
+                                    line-height: 1.1875rem;
+                                    letter-spacing: -0.0075rem;
                                     font-family: 'Montserrat-Medium';
                                 }
                             }
                             &.loans__table__content__popularity {
-                               button {
-                                   width: 135px;
-                                   height: 35px;
-                                   border: 1px solid rgba(119, 94, 0, 0.34);
-                                   font-family: 'Montserrat-Medium';
-                                   font-size: 12px;
-                                   font-weight: 400;
-                                   letter-spacing: -0.12px;
-                                   &.primary {
-                                   background-color: var(--primary-default);
-                                   color: #ffffff;
-                                   margin-bottom: 10px;
-                                   }
-                                   &.secondary {
-                                       color: #000000;
-                                       background-color: var(--secondary-default);
-                                   }
-                               }
+                                display: flex;
+                                flex-direction: column;
+                                button {
+                                    margin-top: 7px;
+                                }
+                                @media (max-width: 992px) {
+                                    display: flex;
+                                    button:first-child {
+                                      // margin-right: 10px;
+                                    }
+                                }
                            }
 
 
@@ -144,4 +144,58 @@
          }
 
      }
+}
+
+@media (max-width: 992px) {
+    .loans__table {
+        .loans__table__content {
+
+            table {
+                border: 0;
+              }
+
+              table caption {
+                font-size: 1.3em;
+              }
+
+              table thead {
+                border: none;
+                clip: rect(0 0 0 0);
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                padding: 0;
+                position: absolute;
+                width: 1px;
+              }
+
+              table tr {
+                border-bottom: 3px solid #ddd;
+                display: block;
+                margin-bottom: .625em;
+              }
+
+              table td {
+                border-bottom: 1px solid #ddd;
+                display: block;
+                font-size: .8em;
+                text-align: right;
+              }
+
+              table td::before {
+                /*
+                * aria-label has no advantage, it won't be read inside a table
+                content: attr(aria-label);
+                */
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+              }
+
+              table td:last-child {
+                border-bottom: 0;
+              }
+        }
+    }
 }

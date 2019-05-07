@@ -1,11 +1,12 @@
-import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, HostListener, ElementRef } from '@angular/core';
 import { LoansService } from '../loans.service';
 import { LoanProduct } from '../models/loanProduct.model';
 import { MatDialog } from '@angular/material/dialog';
 import { LoanRequestDialogComponent } from '../loan-request-dialog/loan-request-dialog.component';
 import { NgForm } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, finalize } from 'rxjs/operators';
+import { switchToView } from 'src/app/app.utils';
 @Component({
   selector: 'loans-table',
   templateUrl: './loans-table.component.html',
@@ -13,6 +14,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('f') form: NgForm;
+  @ViewChild('table') table: ElementRef;
   loanProducts: LoanProduct[];
   expandedNode: string;
   currentFormValues = {
@@ -24,11 +26,28 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   bannerFormValues = {};
   _onDestroy$ = new Subject<void>();
+  isMobile: boolean;
+  loading: boolean;
+  @HostListener('window:resize', ['$event']) resize() {this.determineMobileSize(); }
+
   constructor(private loansService: LoansService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.getListLoanProducts(this.currentFormValues);
+  //  this.getListLoanProducts(this.currentFormValues);
+    this.determineMobileSize();
   }
+  determineMobileSize() {
+    try {
+      const width  = window.innerWidth
+      || document.documentElement.clientWidth
+      || document.body.clientWidth;
+      this.isMobile = width <=768;
+      console.log(this.isMobile)
+    } catch (er) {
+      console.log(er);
+    }
+  }
+
   ngAfterViewInit() {
     setTimeout(() => this.setInitialCheckboxesToFalse(), 50)
     setTimeout(() => this.listenToTableFilterChanges(), 100)
@@ -58,10 +77,15 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   getListLoanProducts(data: Object) {
     this.loanProducts = null;
+    this.loading = true;
     this.loansService.getListLoanProducts(data)
+    .pipe(
+      finalize(() => this.loading = false)
+    )
       .subscribe(res => {
         // this.loanProducts = res || MoockLoansData;
         this.loanProducts = res;
+        switchToView('#loans-table-filter');
       })
   }
   onExpandToggle(id: string) {
