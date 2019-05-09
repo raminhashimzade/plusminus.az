@@ -2,17 +2,25 @@
   <div class="row">
     <div class="col-12">
         <div class="loansCompare">
-            <div class="loansCompare__content">
+            <div class="loansCompare__content" *ngIf="!loading else table_loader">
 
               <div class="arrows">
 
-                  <div class="arrow --prev">
-                      <i class="fas fa-chevron-circle-right"></i>
-                  </div>
 
-                  <div class="arrow --next">
-                      <i class="fas fa-chevron-circle-right"></i>
-                  </div>
+                  <button mat-mini-fab class="arrow --prev"
+                   (click)="onPrevProduct()"
+                   [disabled]="!hasPrevProduct()"
+                   >
+                      <mat-icon inline="true">arrow_forward_ios</mat-icon>
+                    </button>
+
+                  <button mat-mini-fab class="arrow --next"
+                   (click)="onNextProduct()"
+                   [disabled]="!hasNextProduct()"
+                   >
+                      <mat-icon inline="true">arrow_forward_ios</mat-icon>
+                    </button>
+
 
               </div>
 
@@ -24,7 +32,7 @@
                       {{'~bank' | translate | titlecase}}
                     </div>
                   </th>
-                  <th  *ngFor="let loan of loanProducts">
+                  <th  *ngFor="let loan of visibleProducts">
                     <div class="th-content">
                       AzerTurk Bank
                     </div>
@@ -38,7 +46,7 @@
                             {{'~effectiveRate' | translate | titlecase}}
                         </div>
                     </td>
-                    <td *ngFor="let loan of loanProducts">
+                    <td *ngFor="let loan of visibleProducts">
                      <div class="td-content">
                         {{loan.minRate}} %
                      </div>
@@ -51,7 +59,7 @@
                             {{'~loanAmount' | translate}}
                         </div>
                     </td>
-                    <td *ngFor="let loan of loanProducts">
+                    <td *ngFor="let loan of visibleProducts">
                         <div class="td-content">
                             {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}} {{loan.currencyCode | lowercase}}
                         </div>
@@ -64,7 +72,7 @@
                               {{'~loanPeriod' | translate}}
                           </div>
                       </td>
-                      <td class="td-content"  *ngFor="let loan of loanProducts">
+                      <td class="td-content"  *ngFor="let loan of visibleProducts">
                           <div class="td-content">
                               {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}
 
@@ -77,7 +85,7 @@
                               {{'~loanName' | translate}}
                           </div>
                       </td>
-                      <td  *ngFor="let loan of loanProducts" >
+                      <td  *ngFor="let loan of visibleProducts" >
                           <div class="td-content">
                               {{loan.loanName | valueTranslate}}
                           </div>
@@ -91,7 +99,7 @@
 
                         </div>
                     </td>
-                    <td *ngFor="let loan of loanProducts">
+                    <td *ngFor="let loan of visibleProducts">
                         <div class="td-content">
                             <div class="td-content__documents"
                             *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10"
@@ -108,7 +116,7 @@
                         <div class="td-content"></div>
                       {{'~requirements' | translate}}
                     </td>
-                    <td *ngFor="let loan of loanProducts">
+                    <td *ngFor="let loan of visibleProducts">
                         <div class="td-content">
                             {{loan.description | valueTranslate}}
                         </div>
@@ -122,3 +130,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #table_loader>
+<table-loader></table-loader>
+</ng-template>

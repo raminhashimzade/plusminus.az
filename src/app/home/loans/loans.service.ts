@@ -3,14 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { map, catchError } from 'rxjs/operators';
 import { DataResponse } from 'src/app/models/data-reponse';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of, Subject, ReplaySubject } from 'rxjs';
 import { LoanProduct } from './models/loanProduct.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class LoansService {
-    compareProductIds$ = new Subject<number[]>();
+    compareProductIds$ = new ReplaySubject<number[]>();
+    compareProductIds = [];
     constructor(private http: HttpClient, private authService: AuthService) {}
     getListLoanProducts(formValue: Object): Observable<LoanProduct[]> {
         return this.http.post<DataResponse>('mybank/listLoanProduct', {
@@ -73,5 +74,17 @@ export class LoansService {
         }).pipe(
             map(res => res && res.data)
         );
+    }
+    addProductToCompare(productId: number):void {
+        if(!(productId && this.compareProductIds)) {return;}
+        if (this.compareProductIds.includes(productId)) {return;}
+        this.compareProductIds = [
+            ...this.compareProductIds,
+            productId
+        ];
+        this.compareProductIds$.next(this.compareProductIds);
+    }
+    getCompareProductIds(): Observable<number[]> {
+        return this.compareProductIds$.asObservable();
     }
 }

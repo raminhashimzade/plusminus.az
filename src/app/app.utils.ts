@@ -10,7 +10,6 @@ export function getBaseUrl(): string {
     setTimeout(() => {
       try {
         const nav = document.querySelector(name);
-        console.log(nav)
         if (nav) { nav.scrollIntoView() }
       } catch(er) {
         console.log(er);

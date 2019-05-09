@@ -10,6 +10,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import {MatIconModule} from '@angular/material/icon';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS
     MatButtonModule,
     MatDatepickerModule,
     MatMomentDateModule,
+    MatIconModule,
+    MatBadgeModule
   ],
   exports: [
     MatFormFieldModule,
@@ -38,6 +42,8 @@ import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS
     MatButtonModule,
     MatDatepickerModule,
     MatMomentDateModule,
+    MatIconModule,
+    MatBadgeModule
   ],
   providers: [
 

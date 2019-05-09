@@ -54,8 +54,15 @@
           </a>
         </div>
 
-        <div class="header__scales">
-          <img src="./assets/icons/scales.svg" />
+        <div class="header__scales" *ngIf="showScales">
+          <button mat-raised-button class="header__scales__btn"
+              [matBadge]="(productIds$ | async)?.length"
+               matBadgePosition="below" matBadgeColor="accent"
+               [disabled]="!((productIds$ | async)?.length > 0)"
+               routerLink="/home/loans/compare"
+                >
+            <img src="./assets/icons/scales.svg" />
+          </button>
         </div>
       </div>
     </div>

@@ -139,7 +139,7 @@
                     <td valign="top">
                       <div class="td-content loans__table__content__popularity" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
                           <button mat-raised-button color="primary">{{'~detailed' | translate}}</button>
-                          <button mat-raised-button color="accent">{{'~compare' | translate}}</button>
+                          <button mat-raised-button color="accent" (click)="onAddProductToCompare(loan.lnID)">{{'~compare' | translate}}</button>
                       </div>
                     </td>
                   </tr>

@@ -1,9 +1,12 @@
 import { LoansComponent } from './loans.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoansCompareComponent } from './loans-compare/loans-compare.component';
+import { LoansTableComponent } from './loans-table/loans-table.component';
 
 const routes: Routes = [
-  { path: '', component: LoansComponent, pathMatch: 'full' }
+  { path: '', component: LoansTableComponent, pathMatch: 'full' },
+  {path: 'compare', component: LoansCompareComponent},
 ];
 
 @NgModule({

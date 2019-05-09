@@ -9,10 +9,10 @@
                 position: relative;
 
                 th:first-child {
-                    width: 130px;;
+                    width: 130px;
                 }
                 .th-content, .td-content {
-                    width: 250px;
+                    width: 15.625rem;
                     &.--first {
                         width: 130px;
                     }
@@ -40,16 +40,42 @@
     height: 0;
 
     .arrow {
-        font-size: 25px;
-        color: #2980b9;
-        cursor: pointer;
+        font-size: 18px;
         &.--prev {
-          //  left: 0;
           transform: translateX(-25px) rotateY(180deg) ;
         }
         &.--next {
-        //    right: 0;
         transform: translateX(25px);
         }
+    }
+}
+
+@media (max-width: 576px) {
+    .loansCompare {
+        .loansCompare__content {
+
+            .loansCompare__content__table {
+                th:first-child {
+                    width: 100px;
+                }
+                .th-content, .td-content {
+                    width: 150px;
+                    &.--first {
+                        width: 100px;
+                    }
+                }
+            }
+
+        }
+    }
+    .arrows {
+      .arrow {
+        &.--prev {
+            transform: translateX(0px) rotateY(180deg) ;
+          }
+          &.--next {
+          transform: translateX(0px);
+          }
+      }
     }
 }

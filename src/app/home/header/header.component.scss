@@ -78,6 +78,12 @@
     position: absolute;
     right: 0;
     top: 0;
+    .header__scales__btn {
+      min-width: 40px;
+      padding: 0;
+      height: 64px;
+      box-shadow: none;
+    }
   }
 }
 

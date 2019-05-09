@@ -14,5 +14,5 @@ export class AppComponent {
   setDefaultLang() {
     const language = localStorage.getItem(`${APP_KEY}_language`) || DEFAULT_LANG;
     this.translateService.setDefaultLang(language);
-  }
+  }z
 }

@@ -42,7 +42,6 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
       || document.documentElement.clientWidth
       || document.body.clientWidth;
       this.isMobile = width <=768;
-      console.log(this.isMobile)
     } catch (er) {
       console.log(er);
     }
@@ -112,6 +111,9 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     console.log(formValue);
     this.currentFormValues = formValue;
     this.getListLoanProducts(formValue);
+  }
+  onAddProductToCompare(id: number) {
+    this.loansService.addProductToCompare(id);
   }
 
 }
