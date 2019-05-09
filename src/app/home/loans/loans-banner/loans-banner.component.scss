@@ -3,13 +3,19 @@
     background-image: url('../../../../assets//images/loans-banner-cover.jpeg');
     height: 18.75rem;
     background-repeat: no-repeat;
+    @media (max-width: 992px) {
+       background-position-x: right;
+       background-position-x: -336px;
+    }
     @media (max-width: 768px) {
        background-position-x: right;
        height: 21.75rem;
     }
     @media (max-width: 576px) {
-       background-image: none;
-       background: #F8C810;
+           background-position-x: -590px;
+    }
+    @media (max-width: 450px) {
+           background-position-x: -625px;
     }
 }
 .banner {

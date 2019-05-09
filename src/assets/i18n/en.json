@@ -77,5 +77,6 @@
   "~forBanks": "For Banks",
   "~rateUs": "Rate us :)",
   "~compare": "Compare",
-  "~otpVerifyError": "Wrong code"
+  "~otpVerifyError": "Wrong code",
+  "~back": "back"
 }

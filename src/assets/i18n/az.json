@@ -87,5 +87,6 @@
      "~forBanks": "Banklar üçün",
      "~rateUs": "Bizi qiymətləndirin :)",
      "~compare": "Müqayisə et",
-     "~otpVerifyError": "Kod yanlışdır"
+     "~otpVerifyError": "Kod yanlışdır",
+     "~back": "geri"
   }

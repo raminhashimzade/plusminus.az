@@ -31,5 +31,8 @@ export class LoanRequestDialogComponent implements OnInit {
     this.stepIndex = undefined;
     this.stepError = true;
   }
+  onStepBack(stepIndex: number) {
+    this.stepIndex = stepIndex;
+  }
 
 }

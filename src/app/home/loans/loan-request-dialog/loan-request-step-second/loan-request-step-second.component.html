@@ -34,6 +34,10 @@
         </div>
       </div>
       <div class="loanRequest__form__step__item__footer">
+        <div class="loanRequest__form__step__item__footer__back">
+            <button mat-raised-button type="reset"  (click)="onStepBack()">{{'~back' | translate | titlecase}} </button>
+
+        </div>
         <div class="loanRequest__form__step__item__footer__next">
           <button mat-raised-button color="primary" [disabled]="!f?.valid" #submitBtn type="submit" [ngClass]="{'is-loading': loading}">{{'~next' | translate | titlecase}} </button>
         </div>

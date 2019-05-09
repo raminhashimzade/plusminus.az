@@ -98,5 +98,6 @@
   "~feedbackTitle": "Пожалуйста, оставьте отзыв",
   "~forBanks": "Для Банков",
   "~rateUs": "Оцените нас:)",
-  "~otpVerifyError": "Код неправильна"
+  "~otpVerifyError": "Код неправильна",
+  "~back": "назад"
 }

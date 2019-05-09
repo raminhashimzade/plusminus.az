@@ -26,6 +26,7 @@
           <loan-request-step-second [firstStepData]="firstStepData"
            (stepComplete)="onSecondStepComplete()"
            (stepError)="onStepError()"
+           (stepBack)="onStepBack($event)"
            ></loan-request-step-second>
       </div>
       <div class="loanRequest__form__step"  *ngIf="stepIndex === 3">
@@ -38,7 +39,9 @@
           <loan-request-error (close)="dialogRef.close()"></loan-request-error>
       </div>
       <div class="loanRequest__form__step"  *ngIf="stepIndex === 4">
-          <loan-request-step-done (close)="dialogRef.close()"></loan-request-step-done>
+          <loan-request-step-done
+          [firstStepData]="firstStepData"
+          (close)="dialogRef.close()"></loan-request-step-done>
       </div>
     </div>
   </div>

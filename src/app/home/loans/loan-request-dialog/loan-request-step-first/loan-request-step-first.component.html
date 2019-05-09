@@ -61,7 +61,8 @@
         </div>
         <div class="col-12 col-md-6">
             <div class="loanRequest__form__step__item__footer__next">
-                <button mat-raised-button color="primary" type="submit" [ngClass]="{'is-loading': loading}">{{'~next' | translate | titlecase}} </button>
+                <button mat-raised-button color="primary" [disabled]="!(form?.controls['gsm']?.value?.length === 7)"
+                 type="submit" [ngClass]="{'is-loading': loading}">{{'~next' | translate | titlecase}} </button>
               </div>
         </div>
       </div>

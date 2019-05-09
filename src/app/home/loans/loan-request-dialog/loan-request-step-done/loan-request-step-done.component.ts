@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angular/core';
 import { bounce } from 'ng-animate';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { LoansService } from '../../loans.service';
@@ -18,6 +18,7 @@ export class LoanRequestStepDoneComponent implements OnInit, OnDestroy {
   @Output() public close = new EventEmitter<void>();
   bounce: boolean;
   _onDestroy$ = new Subject<void>();
+  @Input() firstStepData: {gsm: string, channel: string};
   constructor(private loansService: LoansService, private dialogRef: MatDialogRef<LoanRequestDialogComponent>) { }
 
   ngOnInit() {
@@ -35,7 +36,11 @@ export class LoanRequestStepDoneComponent implements OnInit, OnDestroy {
   }
   onVoteMe(vote: number) {
     console.log(vote);
-    this.loansService.voteMe(vote)
+    const data = {
+      vote : vote,
+       gsm:  this.firstStepData.gsm,
+    }
+    this.loansService.voteMe(data)
     .subscribe(res => {
       console.log(res);
       this.close.next();

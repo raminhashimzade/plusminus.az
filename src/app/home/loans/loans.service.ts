@@ -46,12 +46,13 @@ export class LoansService {
         );
     }
 
-    voteMe(vote: number) {
+    voteMe(vote:{gsm: string, vote: number}) {
         return this.http.post<DataResponse>('mybank/voteMe', {
             token: this.authService.getToken(),
             companyId : "",
             companyType : "",
-            vote : vote
+            vote : vote.vote,
+            gsm: vote.gsm
         }).pipe(
             catchError(er => of(null))
         );

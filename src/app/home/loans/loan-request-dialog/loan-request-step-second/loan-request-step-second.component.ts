@@ -17,6 +17,7 @@ export class LoanRequestStepSecondComponent implements OnInit {
   @Input() firstStepData: {gsm: string, channel: string};
   @Output() stepComplete = new EventEmitter();
   @Output() stepError = new EventEmitter();
+  @Output() stepBack = new EventEmitter<number>();
   loading: boolean;
   @ViewChild('firstField') firstField: MatInput;
   otpError: boolean;
@@ -74,6 +75,9 @@ export class LoanRequestStepSecondComponent implements OnInit {
   onCodeInput(controlKey: string, e: any) {
     const value = e.target.value;
     this.form.controls[controlKey].setValue(value.replace(/[^\d]/,''));
+  }
+  onStepBack() {
+    this.stepBack.next(1);
   }
 
 
