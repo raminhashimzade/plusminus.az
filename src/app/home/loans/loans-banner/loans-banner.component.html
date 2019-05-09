@@ -14,11 +14,11 @@
           <div class="banner__filter__amount">
             <div class="banner__filter__amount__input">
                 <mat-form-field appearance="outline" class="banner__filter__amount__input__number" >
-                    <mat-label>{{'~loanAmount' | translate }}</mat-label>
+                    <!-- <mat-label>{{'~loanAmount' | translate }}</mat-label> -->
                     <input matInput ngModel
-                    name="loanAmount" type="text"
+                    name="loanAmount" type="tel"
                     required
-
+                    placeholder="{{'~loanAmount' | translate }}"
                     (input)="onNumInput($event)"
                     #loanAmount ="matInput"
                     >
@@ -45,11 +45,12 @@
           <div class="banner__filter__period">
 
               <mat-form-field appearance="outline" class="banner__filter__period__select">
-                  <mat-label>{{'~loanPeriod' | translate }}</mat-label>
+                  <!-- <mat-label>{{'~loanPeriod' | translate }}</mat-label> -->
                   <mat-select
                     name="loanPeriod"
                     ngModel
                     required
+                    placeholder="{{'~loanPeriod' | translate }}"
                    >
                    <mat-option *ngFor="let period of (loanPeriods$ | async)"
                     [value]="period?.periodId"> {{period?.period}}</mat-option>

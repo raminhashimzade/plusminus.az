@@ -11,26 +11,31 @@
       </div>
       <div class="loanRequest__form__step__item__content">
         <div class="otpVerify">
+          <div class="otpVerify__fields">
             <mat-form-field appearance="outline" class="otpInput">
-                <input matInput placeholder="*" (keyup)="onKeyUp('first', second, $event)"  (focus)="onFocus('first')" #firstField="matInput"  ngModel name="first"  maxlength="1" required>
-              </mat-form-field>
+              <input matInput placeholder="*"  type="tel" (keyup)="onKeyUp('first', second, $event)"  (focus)="onFocus('first')" #firstField="matInput"  ngModel name="first"  maxlength="1" required>
+            </mat-form-field>
 
-            <mat-form-field appearance="outline" class="otpInput">
-                <input matInput placeholder="*" (keyup)="onKeyUp('second', third, $event)" (focus)="onFocus('second')" ngModel name="second" #second  maxlength="1" required>
-              </mat-form-field>
+          <mat-form-field appearance="outline" class="otpInput">
+              <input matInput placeholder="*"  type="tel" (keyup)="onKeyUp('second', third, $event)" (focus)="onFocus('second')" ngModel name="second" #second  maxlength="1" required>
+            </mat-form-field>
 
-            <mat-form-field appearance="outline" class="otpInput">
-                <input matInput placeholder="*" (keyup)="onKeyUp('third', fourth, $event)" (focus)="onFocus('third')" ngModel name="third" #third  maxlength="1" required>
-              </mat-form-field>
+          <mat-form-field appearance="outline" class="otpInput">
+              <input matInput placeholder="*"  type="tel" (keyup)="onKeyUp('third', fourth, $event)" (focus)="onFocus('third')" ngModel name="third" #third  maxlength="1" required>
+            </mat-form-field>
 
-            <mat-form-field appearance="outline" class="otpInput">
-                <input matInput placeholder="*"  (focus)="onFocus('fourth')"  ngModel name="fourth" #fourth  maxlength="1" required>
-              </mat-form-field>
+          <mat-form-field appearance="outline" class="otpInput">
+              <input matInput placeholder="*"  type="tel" (keyup)="onSubmit()" (focus)="onFocus('fourth')"  ngModel name="fourth" #fourth  maxlength="1" required>
+            </mat-form-field>
+          </div>
+          <div class="otpVerify__error" *ngIf="otpError" class="form-error">
+            * {{'~otpVerifyError' | translate}}
+          </div>
         </div>
       </div>
       <div class="loanRequest__form__step__item__footer">
         <div class="loanRequest__form__step__item__footer__next">
-          <button mat-raised-button color="primary" #submitBtn type="submit" [ngClass]="{'is-loading': loading}">{{'~next' | translate | titlecase}} </button>
+          <button mat-raised-button color="primary" [disabled]="!f?.valid" #submitBtn type="submit" [ngClass]="{'is-loading': loading}">{{'~next' | translate | titlecase}} </button>
         </div>
       </div>
     </div>

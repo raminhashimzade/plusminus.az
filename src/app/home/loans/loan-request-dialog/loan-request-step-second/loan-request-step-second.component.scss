@@ -32,10 +32,17 @@
         align-items: center;
         .otpVerify {
             display: flex;
-            .otpInput {
-                text-align: center;
-                width: 3.9375rem;
-                margin-right: 0.625rem;
+            flex-direction: column;
+            .otpVerify__fields {
+                display: flex;
+                .otpInput {
+                    text-align: center;
+                    width: 3.9375rem;
+                    margin-right: 0.625rem;
+                }
+            }
+            .otpVerify__error {
+
             }
         }
     }

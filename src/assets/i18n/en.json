@@ -15,7 +15,7 @@
   "~confidential-policy": "Confidential Policy",
   "~site-map": "Sitemap",
   "~follow-us": "Follow us",
-  "~company-address": "© 2019 ООО «MYBANK». Наш адрес: 109544, г. Баку, Р.Бехбутов, дом 15 / При использовании материалов гиперссылка на mybank.az обязательна.",
+  "~company-address": "© 2019 plusminus.az",
   "~deposit": "Deposits",
   "~family": "Family",
   "~annual": "annual",
@@ -76,5 +76,6 @@
   "~feedbackTitle": "Please leave feedback",
   "~forBanks": "For Banks",
   "~rateUs": "Rate us :)",
-  "~compare": "Compare"
+  "~compare": "Compare",
+  "~otpVerifyError": "Wrong code"
 }

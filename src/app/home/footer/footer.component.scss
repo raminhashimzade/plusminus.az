@@ -33,6 +33,15 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            &.--twitter {
+                color: #1EA1F2;
+            }
+            &.--instagram {
+                color: #B0468A;
+            }
+            &.--linkedin {
+              color: #0077B5;
+            }
         }
     }
 }

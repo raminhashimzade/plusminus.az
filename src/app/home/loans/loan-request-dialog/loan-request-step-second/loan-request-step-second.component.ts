@@ -5,6 +5,7 @@ import { MatButton } from '@angular/material/button';
 import { LoansService } from '../../loans.service';
 import { HttpResponseEnum } from 'src/app/http-response.enum';
 import { TranslateService } from '@ngx-translate/core';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'loan-request-step-second',
@@ -18,6 +19,7 @@ export class LoanRequestStepSecondComponent implements OnInit {
   @Output() stepError = new EventEmitter();
   loading: boolean;
   @ViewChild('firstField') firstField: MatInput;
+  otpError: boolean;
   constructor(private loansServce: LoansService, private translateService: TranslateService) { }
 
   ngOnInit() {
@@ -31,15 +33,23 @@ export class LoanRequestStepSecondComponent implements OnInit {
     this.loading = true;
     const otpCode = Object.values(this.form.value).join('');
     const newFormValue = {
+    // gsm: 12,
       gsm: this.firstStepData['gsm'],
       otp: otpCode
     };
     console.log(newFormValue);
     this.loansServce.checkOTP(newFormValue)
+    .pipe(
+      finalize(() => this.loading = false)
+    )
     .subscribe(res => {
       if (res && (res.success === HttpResponseEnum.success)) {
         this.stepComplete.next(newFormValue);
+      } else if (res && (res.errorText === 'OTP not allowed')){
+        this.firstField.focus();
+        this.otpError = true;
       } else {
+        console.log(res)
         this.stepError.next();
       }
     })

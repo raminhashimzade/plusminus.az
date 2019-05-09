@@ -67,7 +67,10 @@
                   (focus)="cusBirthDate.open()"
                   >
                 <mat-datepicker-toggle matSuffix [for]="cusBirthDate"></mat-datepicker-toggle>
-                <mat-datepicker #cusBirthDate startView="year" [startAt]="startDate"></mat-datepicker>
+                <mat-datepicker [panelClass]="'input-datepicker'"
+                  #cusBirthDate startView="multi-year"
+                 [startAt]="startDate"
+                 ></mat-datepicker>
                 <mat-error *ngIf="f?.controls['cusBirthDate']?.invalid">{{getErrorMessage('cusBirthDate')}}</mat-error>
 
               </mat-form-field>
