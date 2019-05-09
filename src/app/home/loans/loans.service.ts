@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { map, catchError } from 'rxjs/operators';
 import { DataResponse } from 'src/app/models/data-reponse';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { LoanProduct } from './models/loanProduct.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class LoansService {
+    compareProductIds$ = new Subject<number[]>();
     constructor(private http: HttpClient, private authService: AuthService) {}
     getListLoanProducts(formValue: Object): Observable<LoanProduct[]> {
         return this.http.post<DataResponse>('mybank/listLoanProduct', {
@@ -63,5 +64,14 @@ export class LoansService {
         }).pipe(
             map(res => res && res.data)
         );;
+    }
+    getCompareLoanProductList(productIds: number[]) {
+        return this.http.post<DataResponse>('mybank/compareProducts', {
+            token: this.authService.getToken(),
+            prodId : productIds,
+	        prodType : "loan"
+        }).pipe(
+            map(res => res && res.data)
+        );
     }
 }

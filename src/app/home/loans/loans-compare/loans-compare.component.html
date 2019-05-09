@@ -1,0 +1,124 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+        <div class="loansCompare">
+            <div class="loansCompare__content">
+
+              <div class="arrows">
+
+                  <div class="arrow --prev">
+                      <i class="fas fa-chevron-circle-right"></i>
+                  </div>
+
+                  <div class="arrow --next">
+                      <i class="fas fa-chevron-circle-right"></i>
+                  </div>
+
+              </div>
+
+              <table class="table loansCompare__content__table">
+                <thead>
+
+                  <th>
+                    <div class="th-content --first">
+                      {{'~bank' | translate | titlecase}}
+                    </div>
+                  </th>
+                  <th  *ngFor="let loan of loanProducts">
+                    <div class="th-content">
+                      AzerTurk Bank
+                    </div>
+                  </th>
+                </thead>
+                <tbody>
+
+                  <tr>
+                    <td>
+                        <div class="td-content --first">
+                            {{'~effectiveRate' | translate | titlecase}}
+                        </div>
+                    </td>
+                    <td *ngFor="let loan of loanProducts">
+                     <div class="td-content">
+                        {{loan.minRate}} %
+                     </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                        <div class="td-content --first">
+                            {{'~loanAmount' | translate}}
+                        </div>
+                    </td>
+                    <td *ngFor="let loan of loanProducts">
+                        <div class="td-content">
+                            {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}} {{loan.currencyCode | lowercase}}
+                        </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                      <td >
+                          <div class="td-content --first">
+                              {{'~loanPeriod' | translate}}
+                          </div>
+                      </td>
+                      <td class="td-content"  *ngFor="let loan of loanProducts">
+                          <div class="td-content">
+                              {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}
+
+                          </div>
+                      </td>
+                    </tr>
+                  <tr>
+                      <td>
+                          <div class="td-content --first">
+                              {{'~loanName' | translate}}
+                          </div>
+                      </td>
+                      <td  *ngFor="let loan of loanProducts" >
+                          <div class="td-content">
+                              {{loan.loanName | valueTranslate}}
+                          </div>
+                      </td>
+                    </tr>
+
+                  <tr>
+                    <td >
+                        <div class="td-content --first">
+                            {{'~documents' | translate}}
+
+                        </div>
+                    </td>
+                    <td *ngFor="let loan of loanProducts">
+                        <div class="td-content">
+                            <div class="td-content__documents"
+                            *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10"
+                            >
+                                {{item}} <br>
+                            </div>
+                        </div>
+
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                        <div class="td-content"></div>
+                      {{'~requirements' | translate}}
+                    </td>
+                    <td *ngFor="let loan of loanProducts">
+                        <div class="td-content">
+                            {{loan.description | valueTranslate}}
+                        </div>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </div>
+  </div>
+</div>

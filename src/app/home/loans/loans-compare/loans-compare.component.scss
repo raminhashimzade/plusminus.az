@@ -1,0 +1,55 @@
+:host {
+    display: block;
+}
+.loansCompare {
+    .loansCompare__content {
+
+        .loansCompare__content__table {
+                table-layout: fixed;
+                position: relative;
+
+                th:first-child {
+                    width: 130px;;
+                }
+                .th-content, .td-content {
+                    width: 250px;
+                    &.--first {
+                        width: 130px;
+                    }
+                }
+                .td-content{
+                    max-height: 8.75rem;
+                    overflow: hidden;
+                    transition: max-height 300ms ease-in-out;
+                    &.--expanded {
+                        max-height: 62.5rem
+                    }
+                }
+
+        }
+    }
+}
+
+.arrows {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    top: 90px;
+    z-index: 10;
+    height: 0;
+
+    .arrow {
+        font-size: 25px;
+        color: #2980b9;
+        cursor: pointer;
+        &.--prev {
+          //  left: 0;
+          transform: translateX(-25px) rotateY(180deg) ;
+        }
+        &.--next {
+        //    right: 0;
+        transform: translateX(25px);
+        }
+    }
+}

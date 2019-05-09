@@ -9,8 +9,9 @@ import {  ReactiveFormsModule} from "@angular/forms";
 import {FormsModule} from '@angular/forms';
 import { LoanRequestDialogModule } from './loan-request-dialog/loan-request-dialog.module';
 import { TableLoaderComponent } from './loans-table/table-loader/table-loader.component';
+import { LoansCompareComponent } from './loans-compare/loans-compare.component';
 @NgModule({
-  declarations: [LoansComponent, LoansBannerComponent, LoansTableComponent, TableLoaderComponent],
+  declarations: [LoansComponent, LoansBannerComponent, LoansTableComponent, TableLoaderComponent, LoansCompareComponent],
   imports: [
     CommonModule,
     LoansRoutingModule,
