@@ -7,6 +7,7 @@ import { NgForm } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { switchToView } from 'src/app/app.utils';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'loans-table',
   templateUrl: './loans-table.component.html',
@@ -30,11 +31,16 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   loading: boolean;
   @HostListener('window:resize', ['$event']) resize() {this.determineMobileSize(); }
 
-  constructor(private loansService: LoansService, private dialog: MatDialog) { }
+  constructor(
+    private loansService: LoansService,
+     private dialog: MatDialog,
+      private router: Router,
+       private route: ActivatedRoute) { }
 
   ngOnInit() {
   //  this.getListLoanProducts(this.currentFormValues);
     this.determineMobileSize();
+    this.listenToRouterParams();
   }
   determineMobileSize() {
     try {
@@ -114,6 +120,24 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   onAddProductToCompare(id: number) {
     this.loansService.addProductToCompare(id);
+  }
+  listenToRouterParams() {
+    this.route.params.subscribe(res => {
+      const loanAmount = res['loanAmount'];
+      const loanCurrency = res['loanCurrency'];
+      const loanPeriod = res['loanPeriod'];
+      if (loanAmount && loanCurrency) {
+        const formValue = {
+          ...this.currentFormValues,
+          loanAmount,
+          loanCurrency,
+          loanPeriod
+        }
+        console.log(formValue);
+        this.currentFormValues = formValue;
+        this.getListLoanProducts(formValue);
+      }
+    })
   }
 
 }
