@@ -6,7 +6,7 @@ import { LoanRequestDialogComponent } from '../loan-request-dialog/loan-request-
 import { NgForm } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil, finalize } from 'rxjs/operators';
-import { switchToView } from 'src/app/app.utils';
+import { switchToView, isMobileSize } from 'src/app/app.utils';
 import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'loans-table',
@@ -43,14 +43,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.listenToRouterParams();
   }
   determineMobileSize() {
-    try {
-      const width  = window.innerWidth
-      || document.documentElement.clientWidth
-      || document.body.clientWidth;
-      this.isMobile = width <=768;
-    } catch (er) {
-      console.log(er);
-    }
+    this.isMobile = isMobileSize();
   }
 
   ngAfterViewInit() {

@@ -16,3 +16,13 @@ export function getBaseUrl(): string {
       }
     }, 10);
   }
+  export function isMobileSize(): boolean {
+    try {
+      const width  = window.innerWidth
+      || document.documentElement.clientWidth
+      || document.body.clientWidth
+      return  width <=576;
+    } catch (er) {
+      console.log(er);
+    }
+  }

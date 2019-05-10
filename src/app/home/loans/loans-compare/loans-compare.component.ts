@@ -3,7 +3,8 @@ import { LoansService } from '../loans.service';
 import { LoanProduct } from '../models/loanProduct.model';
 import { map, switchMap, finalize, take, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
+import { isMobileSize } from 'src/app/app.utils';
+declare var Swiper;
 @Component({
   selector: 'loans-compare',
   templateUrl: './loans-compare.component.html',
@@ -15,7 +16,10 @@ export class LoansCompareComponent implements OnInit {
   pageIndex = 0;
   itemsPerTable = 3;
   loading: boolean;
-  @HostListener('window:resize', ['$event']) resize() {this.setVisibleProducts(); }
+/** Mobile only */
+  swiper: any;
+  isMobile: boolean; // whether it is mobile mode
+  @HostListener('window:resize', ['$event']) resize() { this.buildView()}
 
   constructor(private loansService: LoansService, private router: Router) { }
 
@@ -34,7 +38,7 @@ export class LoansCompareComponent implements OnInit {
       finalize(() => this.loading = false)
     ).subscribe(res => {
         this.loanProducts = res;
-        this.setVisibleProducts();
+        this.buildView();
     })
   }
   setVisibleProducts() {
@@ -64,11 +68,59 @@ export class LoansCompareComponent implements OnInit {
     || document.body.clientWidth;
     if (width >= 992) {
       this.itemsPerTable= 3;
-    } else if (width >= 768 && width < 992) {
+    } else if (width >= 576 && width < 992) {
      this.itemsPerTable= 2;
-    } else if (width > 0 && width < 768) {
-       this.itemsPerTable= 1;
+    } else if (width > 0 && width < 576) {
+       this.itemsPerTable= 3;
      }
+  }
+  initSwiper() {
+    const config = this.getSwiperConfig();
+    setTimeout(() => {
+      this.swiper && this.swiper.destroy();
+      console.log('sw')
+        this.swiper = new Swiper('.swiper-container', config);
+    }, 0);
+  }
+  getSwiperConfig() {
+    return {
+      slidesPerView: 'auto',
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        speed: 1500,
+        spaceBetween: 10,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-next',
+        },
+        effect: 'cube',
+        coverflowEffect: {
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+         slideShadows : true,
+        },
+        cubeEffect: {
+          shadow: false,
+          slideShadows: true,
+          shadowOffset: 20,
+          shadowScale: 0.94,
+        },
+        autoplay: {
+          delay: 1500,
+          disableOnInteraction: true,
+        },
+      };
+  }
+  buildView() {
+    this.isMobile = isMobileSize();
+    if (this.isMobile) {
+      this.initSwiper();
+    }
+      this.setVisibleProducts();
   }
 
 }
