@@ -97,6 +97,11 @@
                         <div class="td-content --first">
                             {{'~documents' | translate}}
 
+                            <div class="readMore" read-more #mobDocExpand="readMore"
+                            [ngClass]="{'--top' : mobDocExpand.expanded}">
+                               <i class="fas fa-chevron-down"></i>
+                           </div>
+
                         </div>
                     </td>
                     <td *ngFor="let loan of visibleProducts">
@@ -133,8 +138,8 @@
 
 <div  class="swiper-container" style="width: 100%" #swiper *ngIf="isMobile" >
   <div class="swiper-wrapper">
-    <div class="swiper-slide" *ngFor="let loan of visibleProducts;let i=index;let first=first" >
-    <table class="table">
+    <div class="swiper-slide" *ngFor="let loan of loanProducts;let i=index;let first=first" >
+    <table class="table mobileTable">
       <thead>
         <th>Bank</th>
         <th>AzerTurk Bank</th>
@@ -163,21 +168,46 @@
         </tr>
 
         <tr>
-          <td>{{'~documents' | translate | titlecase}}</td>
           <td>
-              <div
-              *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10"
-              >
-                  {{item}} <br>
+            <div class="mobileTable__td-content --documents">
+                <div>
+                    {{'~documents' | translate | titlecase}}
+                </div>
+                <div class="readMore" read-more #mobDocExpand="readMore"
+                 [ngClass]="{'--top' : mobDocExpand.expanded}">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+          </td>
+          <td>
+              <div class="mobileTable__td-content"  [ngClass]="{'--expanded' : mobDocExpand.expanded}">
+                  <div
+                  *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10"
+                  >
+                      {{item}} <br>
+                  </div>
               </div>
 
           </td>
         </tr>
 
         <tr>
-          <td>{{'~requirements' | translate | titlecase}}</td>
           <td>
-              {{loan.description | valueTranslate}}
+              <div class="mobileTable__td-content --requirements">
+                  <div>
+                      {{'~requirements' | translate | titlecase}}
+                  </div>
+                  <div class="readMore" read-more #mobReqExpand="readMore"
+                   [ngClass]="{'--top' : mobReqExpand.expanded}">
+                      <i class="fas fa-chevron-down"></i>
+                  </div>
+              </div>
+
+          </td>
+          <td>
+            <div class="mobileTable__td-content" [ngClass]="{'--expanded' : mobReqExpand.expanded}">
+                {{loan.description | valueTranslate}}
+            </div>
           </td>
         </tr>
 

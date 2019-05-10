@@ -17,14 +17,6 @@
                         width: 130px;
                     }
                 }
-                .td-content{
-                    max-height: 8.75rem;
-                    overflow: hidden;
-                    transition: max-height 300ms ease-in-out;
-                    &.--expanded {
-                        max-height: 62.5rem
-                    }
-                }
 
         }
     }
@@ -49,7 +41,29 @@
         }
     }
 }
-
+.mobileTable__td-content {
+    max-height: 8.75rem;
+    overflow: hidden;
+    transition: max-height 300ms ease-in-out;
+    &.--documents, &.--requirements {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+    }
+    &.--expanded {
+        max-height: 62.5rem
+    }
+}
+.readMore {
+    padding-top: 0.9375rem;
+    cursor: pointer;
+    color: var(--primary-default);
+    transition: transform 300ms ease-in-out;
+    &.--top {
+        transform: rotateX(180deg);
+    }
+}
 @media (max-width: 576px) {
     .loansCompare {
         .loansCompare__content {

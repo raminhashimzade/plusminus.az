@@ -9,14 +9,3 @@
 .swiper-slide {
   // width: 20.9375rem!important;
 }
-/deep/ .swiper-pagination {
-    bottom: -4px!important;
-    .swiper-pagination-bullet {
-        width: 10px;
-        height: 10px;
-        outline: 0;
-    }
-    .swiper-pagination-bullet-active {
-        background: var(--secondary-default);
-    }
-}

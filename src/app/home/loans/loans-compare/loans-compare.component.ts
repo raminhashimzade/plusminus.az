@@ -84,6 +84,7 @@ export class LoansCompareComponent implements OnInit {
   }
   getSwiperConfig() {
     return {
+     // autoHeight: true,
       slidesPerView: 'auto',
         pagination: {
           el: '.swiper-pagination',

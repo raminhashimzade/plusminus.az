@@ -6,7 +6,8 @@
     background: var( --primary-default);
 }
 .brand-logo {
-    width: 5.75rem;
+    width: 3.75rem;
+    height: 3.75rem;
 }
 .link {
     font-size: 0.6875rem;
@@ -53,7 +54,7 @@
 
 @media (max-width: 768px) {
     .brand-logo {
-        width: 40px;;
+     //   width: 40px;;
     }
     .social-follow {
         margin-top: 20px;
