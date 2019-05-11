@@ -1,222 +1,342 @@
 <div class="container" *ngIf="!isMobile">
   <div class="row">
     <div class="col-12">
-        <div class="loansCompare">
-            <div class="loansCompare__content" *ngIf="!loading else table_loader">
+      <div class="loansCompare">
+        <div class="loansCompare__content" *ngIf="!loading else table_loader">
 
-              <div class="arrows">
-
-
-                  <button mat-mini-fab class="arrow --prev"
-                   (click)="onPrevProduct()"
-                   [disabled]="!hasPrevProduct()"
-                   >
-                      <mat-icon inline="true">arrow_forward_ios</mat-icon>
-                    </button>
-
-                  <button mat-mini-fab class="arrow --next"
-                   (click)="onNextProduct()"
-                   [disabled]="!hasNextProduct()"
-                   >
-                      <mat-icon inline="true">arrow_forward_ios</mat-icon>
-                    </button>
+          <div class="arrows">
 
 
-              </div>
+            <button mat-mini-fab class="arrow --prev" (click)="onPrevProduct()" [disabled]="!hasPrevProduct()">
+              <mat-icon inline="true">arrow_forward_ios</mat-icon>
+            </button>
 
-              <table class="table loansCompare__content__table">
-                <thead>
+            <button mat-mini-fab class="arrow --next" (click)="onNextProduct()" [disabled]="!hasNextProduct()">
+              <mat-icon inline="true">arrow_forward_ios</mat-icon>
+            </button>
 
-                  <th>
-                    <div class="th-content --first">
-                      {{'~bank' | translate | titlecase}}
-                    </div>
-                  </th>
-                  <th  *ngFor="let loan of visibleProducts">
-                    <div class="th-content">
-                      AzerTurk Bank
-                    </div>
-                  </th>
-                </thead>
-                <tbody>
 
-                  <tr>
-                    <td>
-                        <div class="td-content --first">
-                            {{'~effectiveRate' | translate | titlecase}}
-                        </div>
-                    </td>
-                    <td *ngFor="let loan of visibleProducts">
-                     <div class="td-content">
-                        {{loan.minRate}} %
-                     </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                        <div class="td-content --first">
-                            {{'~loanAmount' | translate}}
-                        </div>
-                    </td>
-                    <td *ngFor="let loan of visibleProducts">
-                        <div class="td-content">
-                            {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}} {{loan.currencyCode | lowercase}}
-                        </div>
-                    </td>
-                  </tr>
-
-                  <tr>
-                      <td >
-                          <div class="td-content --first">
-                              {{'~loanPeriod' | translate}}
-                          </div>
-                      </td>
-                      <td class="td-content"  *ngFor="let loan of visibleProducts">
-                          <div class="td-content">
-                              {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}
-
-                          </div>
-                      </td>
-                    </tr>
-                  <tr>
-                      <td>
-                          <div class="td-content --first">
-                              {{'~loanName' | translate}}
-                          </div>
-                      </td>
-                      <td  *ngFor="let loan of visibleProducts" >
-                          <div class="td-content">
-                              {{loan.loanName | valueTranslate}}
-                          </div>
-                      </td>
-                    </tr>
-
-                  <tr>
-                    <td >
-                        <div class="td-content --first">
-                            {{'~documents' | translate}}
-
-                            <div class="readMore" read-more #mobDocExpand="readMore"
-                            [ngClass]="{'--top' : mobDocExpand.expanded}">
-                               <i class="fas fa-chevron-down"></i>
-                           </div>
-
-                        </div>
-                    </td>
-                    <td *ngFor="let loan of visibleProducts">
-                        <div class="td-content">
-                            <div class="td-content__documents"
-                            *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10"
-                            >
-                                {{item}} <br>
-                            </div>
-                        </div>
-
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                        <div class="td-content"></div>
-                      {{'~requirements' | translate}}
-                    </td>
-                    <td *ngFor="let loan of visibleProducts">
-                        <div class="td-content">
-                            {{loan.description | valueTranslate}}
-                        </div>
-                    </td>
-                  </tr>
-
-                </tbody>
-              </table>
-            </div>
           </div>
+
+          <table class="table loansCompare__content__table">
+            <thead>
+
+              <th>
+                <div class="th-content --first">
+                  {{'~bank' | translate | titlecase}}
+                </div>
+              </th>
+              <th *ngFor="let loan of visibleProducts">
+                <div class="th-content">
+                  AzerTurk Bank
+                </div>
+              </th>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td>
+                  <div class="td-content --first">
+                    {{'~effectiveRate' | translate | titlecase}}
+                  </div>
+                </td>
+                <td *ngFor="let loan of visibleProducts">
+                  <div class="td-content">
+                    {{loan.minRate}} %
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="td-content --first">
+                    {{'~loanAmount' | translate}}
+                  </div>
+                </td>
+                <td *ngFor="let loan of visibleProducts">
+                  <div class="td-content">
+                    {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}}
+                    {{loan.currencyCode | lowercase}}
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="td-content --first">
+                    {{'~loanPeriod' | translate}}
+                  </div>
+                </td>
+                <td class="td-content" *ngFor="let loan of visibleProducts">
+                  <div class="td-content">
+                    {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}
+
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="td-content --first">
+                    {{'~loanName' | translate}}
+                  </div>
+                </td>
+                <td *ngFor="let loan of visibleProducts">
+                  <div class="td-content">
+                    {{loan.loanName | valueTranslate}}
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                    <div class="td-content --first">
+                      {{'~minSalary' | translate}}
+                    </div>
+                  </td>
+                  <td *ngFor="let loan of visibleProducts">
+                    <div class="td-content">
+                      {{loan.minSalary}}
+                    </div>
+                  </td>
+              </tr>
+
+              <tr>
+                <td>
+                    <div class="td-content --first">
+                      {{'~withGracePeriod' | translate}}
+                    </div>
+                  </td>
+                  <td *ngFor="let loan of visibleProducts">
+                    <div class="td-content">
+                      {{loan.withGracePeriod}}
+                    </div>
+                  </td>
+              </tr>
+              <tr>
+                <td>
+                    <div class="td-content --first">
+                      {{'~withCollateral' | translate}}
+                    </div>
+                  </td>
+                  <td *ngFor="let loan of visibleProducts">
+                    <div class="td-content">
+                      {{loan.withCollateral}}
+                    </div>
+                  </td>
+              </tr>
+
+              <tr>
+                <td>
+                    <div class="td-content --first">
+                      {{'~commissionCash' | translate}}
+                    </div>
+                  </td>
+                  <td *ngFor="let loan of visibleProducts">
+                    <div class="td-content">
+                      {{loan.comissionCash}}
+                    </div>
+                  </td>
+              </tr>
+
+              <tr>
+                <td>
+                    <div class="td-content --first">
+                      {{'~commissionLoan' | translate}}
+                    </div>
+                  </td>
+                  <td *ngFor="let loan of visibleProducts">
+                    <div class="td-content">
+                      {{loan.comissionLoan}}
+                    </div>
+                  </td>
+              </tr>
+
+              <tr>
+                <td>
+                    <div class="td-content --first">
+                      {{'~withEmpReference' | translate}}
+                    </div>
+                  </td>
+                  <td *ngFor="let loan of visibleProducts">
+                    <div class="td-content">
+                      {{loan.withEmpReference}}
+                    </div>
+                  </td>
+              </tr>
+
+              <tr>
+                <td>
+                    <div class="td-content --first">
+                      {{'~age' | translate}}
+                    </div>
+                  </td>
+                  <td *ngFor="let loan of visibleProducts">
+                    <div class="td-content">
+                      {{loan.minAge}} - {{loan.maxAge}}
+                    </div>
+                  </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="td-content --first">
+                    {{'~documents' | translate}}
+
+                    <div class="readMore" read-more #docExpand="readMore" [ngClass]="{'--top' : docExpand?.expanded}">
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+
+                  </div>
+                </td>
+                <td *ngFor="let loan of visibleProducts">
+                  <div class="td-content" [ngClass]="{'--expanded' : docExpand?.expanded}">
+                    <div class="td-content__documents"
+                      *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
+                      {{item}} <br>
+                    </div>
+                  </div>
+
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="td-content">
+                    {{'~requirements' | translate}}
+                    <div class="readMore" read-more #reqExpand="readMore" [ngClass]="{'--top' : reqExpand?.expanded}">
+                      <i class="fas fa-chevron-down"></i>
+                    </div>
+                  </div>
+                </td>
+                <td *ngFor="let loan of visibleProducts">
+                  <div class="td-content"  [ngClass]="{'--expanded' :reqExpand?.expanded}">
+                    {{loan.description | valueTranslate}}
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div  class="swiper-container" style="width: 100%" #swiper *ngIf="isMobile" >
+<div class="swiper-container" style="width: 100%" #swiper *ngIf="isMobile">
   <div class="swiper-wrapper">
-    <div class="swiper-slide" *ngFor="let loan of loanProducts;let i=index;let first=first" >
-    <table class="table mobileTable">
-      <thead>
-        <th>Bank</th>
-        <th>AzerTurk Bank</th>
+    <div class="swiper-slide" *ngFor="let loan of loanProducts;let i=index;let first=first">
+      <table class="table mobileTable">
+        <thead>
+          <th>Bank</th>
+          <th>AzerTurk Bank</th>
 
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{'~effectiveRate' | translate | titlecase}}</td>
-          <td> {{loan.minRate}} %</td>
-        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{'~effectiveRate' | translate | titlecase}}</td>
+            <td> {{loan.minRate}} %</td>
+          </tr>
 
-        <tr>
-          <td>{{'~loanAmount' | translate | titlecase}}</td>
-          <td>  {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}} {{loan.currencyCode | lowercase}}
-          </td>
-        </tr>
-        <tr>
+          <tr>
+            <td>{{'~loanAmount' | translate | titlecase}}</td>
+            <td> {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}}
+              {{loan.currencyCode | lowercase}}
+            </td>
+          </tr>
+          <tr>
 
-          <td>{{'~loanPeriod' | translate | titlecase}}</td>
-          <td> {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}</td>
-        </tr>
+            <td>{{'~loanPeriod' | translate | titlecase}}</td>
+            <td> {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}</td>
+          </tr>
 
-        <tr>
-          <td>{{'~loanName' | translate | titlecase}}</td>
-          <td>{{loan.loanName | valueTranslate}}</td>
-        </tr>
+          <tr>
+            <td>{{'~loanName' | translate | titlecase}}</td>
+            <td>{{loan.loanName | valueTranslate}}</td>
+          </tr>
 
-        <tr>
-          <td>
-            <div class="mobileTable__td-content --documents">
+          <tr>
+            <td>{{'~minSalary' | translate | titlecase}}</td>
+            <td>{{loan.minSalary}}</td>
+          </tr>
+
+          <tr>
+            <td>{{'~withGracePeriod' | translate | titlecase}}</td>
+            <td>{{loan.withGracePeriod}}</td>
+          </tr>
+
+          <tr>
+            <td>{{'~withCollateral' | translate | titlecase}}</td>
+            <td>{{loan.withCollateral}}</td>
+          </tr>
+
+          <tr>
+            <td>{{'~commissionCash' | translate | titlecase}}</td>
+            <td>{{loan.comissionCash}}</td>
+          </tr>
+
+          <tr>
+            <td>{{'~commissionLoan' | translate | titlecase}}</td>
+            <td>{{loan.comissionLoan}}</td>
+          </tr>
+
+          <tr>
+            <td>{{'~withEmpReference' | translate | titlecase}}</td>
+            <td>{{loan.withEmpReference}}</td>
+          </tr>
+
+          <tr>
+              <td>{{'~age' | translate | titlecase}}</td>
+              <td>{{loan.minAge}} - {{loan.maxAge}}</td>
+            </tr>
+
+          <tr>
+            <td>
+              <div class="mobileTable__td-content --documents">
                 <div>
-                    {{'~documents' | translate | titlecase}}
+                  {{'~documents' | translate | titlecase}}
                 </div>
-                <div class="readMore" read-more #mobDocExpand="readMore"
-                 [ngClass]="{'--top' : mobDocExpand.expanded}">
-                    <i class="fas fa-chevron-down"></i>
+                <div class="readMore" read-more #mobDocExpand="readMore" [ngClass]="{'--top' : mobDocExpand.expanded}">
+                  <i class="fas fa-chevron-down"></i>
                 </div>
-            </div>
-          </td>
-          <td>
-              <div class="mobileTable__td-content"  [ngClass]="{'--expanded' : mobDocExpand.expanded}">
-                  <div
-                  *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10"
-                  >
-                      {{item}} <br>
-                  </div>
+              </div>
+            </td>
+            <td>
+              <div class="mobileTable__td-content" [ngClass]="{'--expanded' : mobDocExpand.expanded}">
+                <div *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
+                  {{item}} <br>
+                </div>
               </div>
 
-          </td>
-        </tr>
+            </td>
+          </tr>
 
-        <tr>
-          <td>
+          <tr>
+            <td>
               <div class="mobileTable__td-content --requirements">
-                  <div>
-                      {{'~requirements' | translate | titlecase}}
-                  </div>
-                  <div class="readMore" read-more #mobReqExpand="readMore"
-                   [ngClass]="{'--top' : mobReqExpand.expanded}">
-                      <i class="fas fa-chevron-down"></i>
-                  </div>
+                <div>
+                  {{'~requirements' | translate | titlecase}}
+                </div>
+                <div class="readMore" read-more #mobReqExpand="readMore" [ngClass]="{'--top' : mobReqExpand.expanded}">
+                  <i class="fas fa-chevron-down"></i>
+                </div>
               </div>
 
-          </td>
-          <td>
-            <div class="mobileTable__td-content" [ngClass]="{'--expanded' : mobReqExpand.expanded}">
+            </td>
+            <td>
+              <div class="mobileTable__td-content" [ngClass]="{'--expanded' : mobReqExpand.expanded}">
                 {{loan.description | valueTranslate}}
-            </div>
-          </td>
-        </tr>
+              </div>
+            </td>
+          </tr>
 
-      </tbody>
-    </table>
-     </div>
+        </tbody>
+      </table>
+    </div>
   </div>
-<div class="swiper-pagination"></div>
-<!-- <div class="swiper-button-next"></div>
+  <div class="swiper-pagination"></div>
+  <!-- <div class="swiper-button-next"></div>
 <div class="swiper-button-prev"></div> -->
 
 </div>
@@ -224,5 +344,5 @@
 
 
 <ng-template #table_loader>
-<table-loader></table-loader>
+  <table-loader></table-loader>
 </ng-template>

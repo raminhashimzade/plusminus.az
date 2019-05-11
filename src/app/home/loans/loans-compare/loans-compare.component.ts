@@ -110,10 +110,10 @@ export class LoansCompareComponent implements OnInit {
           shadowOffset: 20,
           shadowScale: 0.94,
         },
-        autoplay: {
-          delay: 1500,
-          disableOnInteraction: true,
-        },
+        // autoplay: {
+        //   delay: 1500,
+        //   disableOnInteraction: true,
+        // },
       };
   }
   buildView() {

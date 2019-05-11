@@ -13,6 +13,7 @@ export class LoansService {
     compareProductIds$ = new ReplaySubject<number[]>();
     compareProductIds = [];
     constructor(private http: HttpClient, private authService: AuthService) {
+    //    this.compareProductIds$.next(this.compareProductIds)
     }
     getListLoanProducts(formValue: Object): Observable<LoanProduct[]> {
         return this.http.post<DataResponse>('mybank/listLoanProduct', {

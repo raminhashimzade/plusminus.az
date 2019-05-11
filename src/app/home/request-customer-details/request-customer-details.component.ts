@@ -16,22 +16,25 @@ export class RequestCustomerDetailsComponent implements OnInit {
    this.postLoanOrderCheckLink();
   }
   postLoanOrderCheckLink() {
-    let url = new URL(`${window.location.host}/${window.location.hash.substr(1)}`);
-    const data = {
-      linkHash: url.searchParams.get('h'),
-      orderID: url.searchParams.get('id'),
-      bankID: url.searchParams.get('bankid'),
-      channel: 'SITE'
-    }
-    console.log(data);
-    this.loansService.postLoanOrderCheckLink(data)
-    .subscribe(res => {
-      if (res && (res.success === HttpResponseEnum.success)) {
-        this.success = true;
-      } else {
-        this.router.navigateByUrl('/error-page');
+    try {
+      let url = new URL(`${window.location.protocol}/${window.location.host}/${window.location.hash.substr(2)}`);
+      const data = {
+        linkHash: url.searchParams.get('h'),
+        orderID: url.searchParams.get('id'),
+        bankID: url.searchParams.get('bankid'),
+        channel: 'SITE'
       }
-    })
+      this.loansService.postLoanOrderCheckLink(data)
+      .subscribe(res => {
+        if (res && (res.success === HttpResponseEnum.success)) {
+          this.success = true;
+        } else {
+          this.router.navigateByUrl('/error-page');
+        }
+      })
+    } catch (er) {
+      this.router.navigateByUrl('/error-page');
+    }
 
   }
 

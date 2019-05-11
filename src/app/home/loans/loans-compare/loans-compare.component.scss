@@ -13,8 +13,14 @@
                 }
                 .th-content, .td-content {
                     width: 15.625rem;
+                    max-height: 8.75rem;
+                    overflow: hidden;
+                    transition: max-height 300ms ease-in;
                     &.--first {
                         width: 130px;
+                    }
+                    &.--expanded {
+                        max-height: 62.5rem
                     }
                 }
 

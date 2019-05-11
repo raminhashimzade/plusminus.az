@@ -1,9 +1,9 @@
-import { LandingPageComponent } from './home/landing-page/landing-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { TokenResolver } from './home/token.resolver';
-import { ErrorPageComponent } from './home/error-page/error-page.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,6 +31,10 @@ const routes: Routes = [
   {
   path: 'error-page',
   component: ErrorPageComponent
+  },
+  {
+  path: '**',
+  component: NotFoundComponent
   }
 ];
 
