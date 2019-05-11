@@ -32,7 +32,7 @@ export class LoansService {
             catchError(er => of(null))
         );
     }
-    checkOTP(formValue: Object) {
+    checkOTP(formValue: Object):Observable<DataResponse> {
         return this.http.post<DataResponse>('mybank/checkOTP', {
             token: this.authService.getToken(),
             ...formValue
@@ -40,7 +40,7 @@ export class LoansService {
             catchError(er => of(null))
         );;
     }
-    postLoanOrder(formValue: Object) {
+    postLoanOrder(formValue: Object):Observable<DataResponse> {
         return this.http.post<DataResponse>('mybank/postLoanOrder', {
             token: this.authService.getToken(),
             ...formValue
@@ -49,7 +49,7 @@ export class LoansService {
         );
     }
 
-    voteMe(vote:{gsm: string, vote: number}) {
+    voteMe(vote:{gsm: string, vote: number}):Observable<DataResponse> {
         return this.http.post<DataResponse>('mybank/voteMe', {
             token: this.authService.getToken(),
             companyId : "",
@@ -87,5 +87,13 @@ export class LoansService {
     }
     getCompareProductIds(): Observable<number[]> {
         return this.compareProductIds$.asObservable();
+    }
+    postLoanOrderCheckLink(data: Object): Observable<DataResponse> {
+        return this.http.post<DataResponse>('mybank/postLoanOrderCheckLink', {
+            token: this.authService.getToken(),
+             ...data
+        }).pipe(
+            map(res => res)
+        );
     }
 }

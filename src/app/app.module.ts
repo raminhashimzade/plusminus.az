@@ -31,6 +31,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 };
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter} from '@angular/material';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { ErrorPageComponent } from './home/error-page/error-page.component';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'DD/MM/YYYY'
@@ -47,7 +48,8 @@ export const MY_FORMATS = {
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

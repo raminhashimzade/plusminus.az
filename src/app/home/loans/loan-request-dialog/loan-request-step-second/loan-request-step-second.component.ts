@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { LoansService } from '../../loans.service';
-import { HttpResponseEnum } from 'src/app/http-response.enum';
+import { HttpResponseEnum } from 'src/app/shared/enums/http-response.enum';
 import { TranslateService } from '@ngx-translate/core';
 import { finalize } from 'rxjs/operators';
 

@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MatInput } from '@angular/material/input';
 import * as moment from 'moment';
 import { LoansService } from '../../loans.service';
-import { HttpResponseEnum } from 'src/app/http-response.enum';
+import { HttpResponseEnum } from 'src/app/shared/enums/http-response.enum';
 @Component({
   selector: 'loan-request-step-third',
   templateUrl: './loan-request-step-third.component.html',

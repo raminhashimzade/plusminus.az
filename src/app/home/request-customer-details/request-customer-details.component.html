@@ -1,0 +1,16 @@
+<div class="page" *ngIf="success">
+  <div class="page__icon">
+    <img src="./assets/icons/smile-secondary.png">
+  </div>
+  <div class="page__text">
+    <div class="page__text__primary">
+      {{'~requestConfirmMsg' | translate}} !
+    </div>
+    <div class="page__text__secondary">
+      {{'~requestConfirmSubMsg' | translate}}
+    </div>
+  </div>
+  <a class="page__navigate" routerLink="/home" >
+      <button mat-raised-button color="accent">{{'~gotoMainPage' | translate}}</button>
+  </a>
+</div>

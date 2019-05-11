@@ -88,5 +88,9 @@
      "~rateUs": "Bizi qiymətləndirin :)",
      "~compare": "Müqayisə et",
      "~otpVerifyError": "Kod yanlışdır",
-     "~back": "geri"
+     "~back": "geri",
+     "~requestConfirmMsg": "Təsdiq üçün təşəkkür edirik",
+     "~requestConfirmSubMsg": "Müştərinin bütün məlumatları Sizin e-meyl ünvanıza göndərilmişdir",
+     "~gotoMainPage": "Əsas Səhifəyə keç",
+     "~somethingWentWrong": "Xəta baş verdi"
   }
