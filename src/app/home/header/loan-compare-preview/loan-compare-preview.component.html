@@ -1,0 +1,17 @@
+<div class="box">
+  <div class="box__items">
+    <div class="item" *ngFor="let item of (loans$ | async) ">
+      <div class="item__name">
+        {{item.loanName | valueTranslate}}
+      </div>
+        <a class="item__remove" (click)="onRemoveLoanFromCompareList(item)" title="{{'~removeFromCompareList' | translate}}">
+          <mat-icon>remove_circle_outline</mat-icon>
+        </a>
+    </div>
+  </div>
+  <div class="box__footer">
+    <button mat-raised-button color="accent"
+    (click)="onCompare()"
+    class="box__footer__btn"> {{'~compare' | translate}}</button>
+  </div>
+</div>

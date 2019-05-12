@@ -266,18 +266,22 @@ button.is-loading {
 	background-color: lightgray;
 }
 
-.swiper-pagination {
-  // bottom: -4px!important;
-  .swiper-pagination-bullet {
-      width: 15px;
-      height: 15px;
-      outline: 0;
+.swiper-container {
+  .swiper-pagination {
+    // bottom: -4px!important;
+    .swiper-pagination-bullet {
+        width: 15px;
+        height: 15px;
+        outline: 0;
+    }
+    .swiper-pagination-bullet-active {
+        background: var(--secondary-default);
+    }
   }
-  .swiper-pagination-bullet-active {
-      background: var(--secondary-default);
+  .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+    background: var(--secondary-default);
   }
 }
-
 @media (max-width: 1199px) {
   html {
     font-size: 15px;

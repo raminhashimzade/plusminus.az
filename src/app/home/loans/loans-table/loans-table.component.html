@@ -112,6 +112,7 @@
                          {{loan.minRate}} %
                       </div>
                     </td>
+
                     <td valign="top">
                       <div class=" td-content loans__table__content__amount" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile  }">
                         <div class="loans__table__content__amount__value">
@@ -122,6 +123,18 @@
 
                       </div>
                     </td>
+
+                    <!-- <td valign="top">
+                      <div class=" td-content loans__table__content__amount" >
+                        <div class="loans__table__content__amount__value">
+                          {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}} {{loan.currencyCode | lowercase}}</div>
+                        <div class="loans__table__content__amount__duration">
+                          {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}
+                        </div>
+
+                      </div>
+                    </td> -->
+
                     <td valign="top">
                       <div class=" td-content loans__table__content__documents" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
                         <div class="loans__table__content__documents__item" *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
@@ -139,7 +152,9 @@
                     <td valign="top">
                       <div class="td-content loans__table__content__popularity" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
                           <button mat-raised-button color="primary">{{'~detailed' | translate}}</button>
-                          <button mat-raised-button color="accent" (click)="onAddProductToCompare(loan.lnID)">{{'~compare' | translate}}</button>
+                          <button mat-raised-button color="accent"
+                           [disabled]="canAddProductToCompare(loan?.lnID)"
+                            (click)="onAddProductToCompare(loan)">{{'~compare' | translate}}</button>
                       </div>
                     </td>
                   </tr>

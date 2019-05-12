@@ -37,7 +37,7 @@
     "~favorableRate": "Sərfəli məzənnə",
     "~offer": "təklif",
     "~allCurrencies": "Bütün valyutalar",
-    "~amount": "Miqdar",
+    "~amount": "Məbləğ",
     "~duration": "müddət",
     "~consumer": "İstehlak",
     "~loanAmount": "Kredit məbləği",
@@ -47,7 +47,7 @@
     "~month": "ay",
     "~loanName": "Kredit növü",
     "~effectiveRate": "faiz",
-    "~documents": "Sənədlər",
+    "~documents": "Tələb olunan sənədlər",
     "~requirements": "Tələblər",
     "~withEmpReference": "Iş yerindən arayış olmadan",
     "~withCollateral": "Girovsuz və zaminsiz",
@@ -95,5 +95,6 @@
      "~somethingWentWrong": "Xəta baş verdi",
      "~pageNotFound": "Səhifə tapılmadı",
      "~age": "Yaş",
-     "~minSalary": "Minimum maaş"
+     "~minSalary": "Minimum maaş",
+     "~removeFromCompareList": "Müqayisədən sil"
   }

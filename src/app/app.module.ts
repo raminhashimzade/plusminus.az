@@ -33,6 +33,9 @@ import { MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter} from '@angular/material
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoanComparePreviewComponent } from './home/header/loan-compare-preview/loan-compare-preview.component';
+import { ValueTranslateModule } from './shared/pipes/value-translate/value-translate.module';
+import { HoverClassModule } from './shared/directives/hover-class/hover-class.module';
 
 export const MY_FORMATS = {
   parse: {
@@ -52,7 +55,8 @@ export const MY_FORMATS = {
     HeaderComponent,
     FooterComponent,
     ErrorPageComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoanComparePreviewComponent
   ],
   imports: [
   BrowserModule,
@@ -62,6 +66,8 @@ export const MY_FORMATS = {
     MaterialModule,
     FormsModule,
     PerfectScrollbarModule,
+    ValueTranslateModule,
+    HoverClassModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

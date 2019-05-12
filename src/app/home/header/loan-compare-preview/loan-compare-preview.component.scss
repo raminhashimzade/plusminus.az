@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  width: 18.75rem;
+  background: white;
+  box-shadow: 0.0625rem 0.0625rem 0.9375rem rgba(0,0,0,0.15);
+  padding: 1.25rem;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  .box__items {
+    display: flex;
+    flex-direction: column;
+    .item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 0.0625rem solid #ececec;
+      padding: 0.4375rem;
+      .item__name {
+        font-size: 1rem;
+      }
+      .item__remove {
+        cursor: pointer;
+        &:hover {
+          color: indianred;
+        }
+      }
+    }
+  }
+  .box__footer {
+    align-self: center;
+    .box__footer__btn {
+      margin-top: 1.25rem;
+      align-self: center;
+    }
+  }
+
+}

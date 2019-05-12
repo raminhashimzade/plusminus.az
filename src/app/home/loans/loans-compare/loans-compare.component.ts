@@ -28,11 +28,12 @@ export class LoansCompareComponent implements OnInit {
   }
   getCompareLoanProductList() {
     this.loading = true;
-    if (!(this.loansService.compareProductIds.length > 0)) {
+    if (!(this.loansService.compareProductList.length > 0)) {
       this.router.navigateByUrl('/home/loans');
     }
-    this.loansService.getCompareProductIds()
+    this.loansService.getSavedCompareProductList()
     .pipe(
+      map((products: LoanProduct[]) => products.map(p => p.lnID) ),
       switchMap((productIds: number[]) => this.loansService.getCompareLoanProductList(productIds)),
       take(1),
       finalize(() => this.loading = false)
@@ -88,15 +89,16 @@ export class LoansCompareComponent implements OnInit {
       slidesPerView: 'auto',
         pagination: {
           el: '.swiper-pagination',
+          type: 'progressbar',
           clickable: true,
         },
-        speed: 1500,
+     //  speed: 600,
         spaceBetween: 10,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-next',
         },
-        effect: 'cube',
+    //    effect: 'cube',
         coverflowEffect: {
           rotate: 50,
           stretch: 0,
@@ -110,10 +112,10 @@ export class LoansCompareComponent implements OnInit {
           shadowOffset: 20,
           shadowScale: 0.94,
         },
-        // autoplay: {
-        //   delay: 1500,
-        //   disableOnInteraction: true,
-        // },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: true,
+        },
       };
   }
   buildView() {

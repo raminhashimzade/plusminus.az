@@ -10,8 +10,8 @@ import { LoanProduct } from './models/loanProduct.model';
     providedIn: 'root'
 })
 export class LoansService {
-    compareProductIds$ = new ReplaySubject<number[]>();
-    compareProductIds = [];
+    compareProductList$ = new ReplaySubject<LoanProduct[]>();
+    compareProductList: LoanProduct[] = [];
     constructor(private http: HttpClient, private authService: AuthService) {
     //    this.compareProductIds$.next(this.compareProductIds)
     }
@@ -77,17 +77,22 @@ export class LoansService {
             map(res => res && res.data)
         );
     }
-    addProductToCompare(productId: number):void {
-        if(!(productId && this.compareProductIds)) {return;}
-        if (this.compareProductIds.includes(productId)) {return;}
-        this.compareProductIds = [
-            ...this.compareProductIds,
-            productId
+    addProductToCompare(product: LoanProduct):void {
+        if(!(product && this.compareProductList)) {return;}
+        if (this.compareProductList.find(p => p.lnID === product.lnID)) {return;}
+        this.compareProductList = [
+            ...this.compareProductList,
+            product
         ];
-        this.compareProductIds$.next(this.compareProductIds);
+        this.compareProductList$.next(this.compareProductList);
     }
-    getCompareProductIds(): Observable<number[]> {
-        return this.compareProductIds$.asObservable();
+    removeProductFromCompare(product: LoanProduct): void {
+      if  (!(product && this.compareProductList)) {return; }
+      this.compareProductList = this.compareProductList.filter(p => p.lnID  !== product.lnID);
+      this.compareProductList$.next(this.compareProductList);
+  }
+    getSavedCompareProductList(): Observable<LoanProduct[]> {
+        return this.compareProductList$.asObservable();
     }
     postLoanOrderCheckLink(data: Object): Observable<DataResponse> {
         return this.http.post<DataResponse>('mybank/postLoanOrderCheckLink', {

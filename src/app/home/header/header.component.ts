@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { LoansService } from '../loans/loans.service';
 import { Observable } from 'rxjs';
+import { LoanProduct } from '../loans/models/loanProduct.model';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +12,12 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   defaultLang: string;
-  showScales = false;
-  productIds$: Observable<number[]>;
+  showloanCompare= false;
+  productList$: Observable<LoanProduct[]>;
   constructor(private translateService: TranslateService,
      private router: Router,
       private loansService: LoansService) {
-        this.productIds$ = this.loansService.compareProductIds$;
+        this.productList$ = this.loansService.getSavedCompareProductList();
       }
 
   ngOnInit() {
@@ -24,7 +25,7 @@ export class HeaderComponent implements OnInit {
     this.translateService.onDefaultLangChange.subscribe(res => {
       this.defaultLang = res && res.lang;
     });
-    this.showScales = this.router.url.includes('loans');
+    this.showloanCompare= this.router.url.includes('loans');
     this.listenToRouteChange();
   }
   onLangChange(lang) {
@@ -34,9 +35,9 @@ export class HeaderComponent implements OnInit {
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd ) {
         if (event && event.url.includes('loans')) {
-          this.showScales = true;
+          this.showloanCompare= true;
         } else {
-          this.showScales = false;
+          this.showloanCompare= false;
         }
       }
     })

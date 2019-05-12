@@ -111,8 +111,11 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.currentFormValues = formValue;
     this.getListLoanProducts(formValue);
   }
-  onAddProductToCompare(id: number) {
-    this.loansService.addProductToCompare(id);
+  onAddProductToCompare(loan: LoanProduct) {
+    this.loansService.addProductToCompare(loan);
+  }
+  canAddProductToCompare(loanID: number) {
+    return this.loansService.compareProductList.find(p => p.lnID === loanID);
   }
   listenToRouterParams() {
     this.route.params.subscribe(res => {

@@ -78,5 +78,13 @@
   "~rateUs": "Rate us :)",
   "~compare": "Compare",
   "~otpVerifyError": "Wrong code",
-  "~back": "back"
+  "~back": "back",
+  "~requestConfirmMsg": "Thanks for confirmation",
+  "~requestConfirmSubMsg": "Customer details sent to your email",
+  "~gotoMainPage": "Main Page",
+  "~somethingWentWrong": "Something went wrong",
+  "~pageNotFound": "page not found",
+  "~age": "age",
+  "~minSalary": "Minimum salary",
+  "~removeFromCompareList": "Remove from compare"
 }
