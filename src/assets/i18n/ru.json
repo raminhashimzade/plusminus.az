@@ -107,5 +107,6 @@
   "~pageNotFound": "Страница не найдена",
   "~age": "Dозраст",
   "~minSalary": "Минимальная зарплата",
-  "~removeFromCompareList": "Удалить сравнение"
+  "~removeFromCompareList": "Удалить сравнение",
+  "~monthlyPayment": "Ежемесячный платеж"
 }

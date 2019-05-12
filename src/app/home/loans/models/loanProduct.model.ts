@@ -16,6 +16,8 @@ export interface LoanProduct{
     maxAmount: string;
     minPeriod: string;
     maxPeriod: string;
+    minMonthlyPayment: number;
+    maxMonthlyPayment: number;
     minRate: string;
     maxRate: string;
     minEffectiveRate: string;

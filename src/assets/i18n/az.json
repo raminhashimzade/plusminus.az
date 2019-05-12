@@ -96,5 +96,6 @@
      "~pageNotFound": "Səhifə tapılmadı",
      "~age": "Yaş",
      "~minSalary": "Minimum maaş",
-     "~removeFromCompareList": "Müqayisədən sil"
+     "~removeFromCompareList": "Müqayisədən sil",
+     "~monthlyPayment": "Aylıq ödəniş"
   }

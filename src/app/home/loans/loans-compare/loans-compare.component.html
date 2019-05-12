@@ -61,6 +61,22 @@
                 </td>
               </tr>
 
+              <!-- <tr>
+                  <td>
+                      <div class="td-content --first">
+                        {{'~monthlyPayment' | translate}}
+                      </div>
+                    </td>
+                    <td *ngFor="let loan of visibleProducts">
+                      <div class="td-content">
+                          {{loan.minMonthlyPayment }}
+                          <ng-container *ngIf="loan.minMonthlyPayment"> - </ng-container>
+                          {{loan.maxMonthlyPayment}}
+                         {{loan.currencyCode | lowercase}}
+                      </div>
+                    </td>
+              </tr> -->
+
               <tr>
                 <td>
                   <div class="td-content --first">
@@ -245,6 +261,16 @@
               {{loan.currencyCode | lowercase}}
             </td>
           </tr>
+          <!-- <tr>
+            <td>{{'~monthlyPayment' | translate | titlecase}}</td>
+            <td>    {{loan.minMonthlyPayment }}
+                <ng-container *ngIf="loan.minMonthlyPayment"> - </ng-container>
+                {{loan.maxMonthlyPayment}}
+               {{loan.currencyCode | lowercase}}
+
+            </td>
+          </tr> -->
+
           <tr>
 
             <td>{{'~loanPeriod' | translate | titlecase}}</td>

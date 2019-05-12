@@ -75,6 +75,13 @@
                         {{'~amount' | translate | titlecase}}
                     </div>
                   </th>
+
+                  <th>
+                    <div class="th-wrapper">
+                        {{'~monthlyPayment' | translate | titlecase}}
+                    </div>
+                  </th>
+
                   <th>
                     <div class="th-wrapper">
                         {{'~documents' | translate | titlecase}}
@@ -124,16 +131,26 @@
                       </div>
                     </td>
 
-                    <!-- <td valign="top">
-                      <div class=" td-content loans__table__content__amount" >
-                        <div class="loans__table__content__amount__value">
-                          {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}} {{loan.currencyCode | lowercase}}</div>
-                        <div class="loans__table__content__amount__duration">
-                          {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}
-                        </div>
+                    <td valign="top">
+                      <div class=" td-content" >
+                        <ng-container *ngIf="loan.minMonthlyPayment && loan.maxMonthlyPayment">
+                            {{loan.minMonthlyPayment }} -
+                            {{loan.maxMonthlyPayment}}
+                           {{loan.currencyCode | lowercase}}
+                        </ng-container>
 
-                      </div>
-                    </td> -->
+                        <ng-container *ngIf="loan.minMonthlyPayment && !loan.maxMonthlyPayment">
+                            {{loan.minMonthlyPayment }}
+                           {{loan.currencyCode | lowercase}}
+                        </ng-container>
+
+                        <ng-container *ngIf="!loan.minMonthlyPayment && loan.maxMonthlyPayment">
+                            {{loan.maxMonthlyPayment }}
+                           {{loan.currencyCode | lowercase}}
+                        </ng-container>
+
+                        </div>
+                    </td>
 
                     <td valign="top">
                       <div class=" td-content loans__table__content__documents" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
