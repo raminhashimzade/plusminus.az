@@ -95,11 +95,11 @@
                   <th></th>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let loan of loanProducts | slice: 0: 10">
+                  <tr *ngFor="let loan of loanProducts | slice: 0: 10" [attr.loan-id]="loan.lnID">
                     <td valign="top">
                       <div class="td-content loans__table__content__bank" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
-                          <div class="loans__table__content__bank__icon">
-                             <img src="./assets/icons/banks/17.svg">
+                          <div class="loans__table__content__bank__icon" >
+                             <img src="./assets/icons/banks/17.svg" [attr.loan-img-id]="loan.lnID">
                           </div>
                           <div class="loans__table__content__bank__more" *ngIf="!isMobile" (click)="onExpandToggle(loan.lnID)" [ngClass]="{'--top' : (expandedNode === loan.lnID) || isMobile }">
                               <i class="fas fa-chevron-down"></i>
@@ -123,9 +123,13 @@
                     <td valign="top">
                       <div class=" td-content loans__table__content__amount" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile  }">
                         <div class="loans__table__content__amount__value">
-                          {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}} {{loan.currencyCode | lowercase}}</div>
+
+                          {{loan.minAmount }} {{loan.currencyCode | lowercase}} -  {{loan.maxAmount}}  {{loan.currencyCode | lowercase}}
+                           <br class="d-none d-sm-block">
+                           <span>({{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}})</span>
+
+                        </div>
                         <div class="loans__table__content__amount__duration">
-                          {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}
                         </div>
 
                       </div>
@@ -169,9 +173,9 @@
                     <td valign="top">
                       <div class="td-content loans__table__content__popularity" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
                           <button mat-raised-button color="primary">{{'~detailed' | translate}}</button>
-                          <button mat-raised-button color="accent"
+                          <button mat-raised-button color="accent" fly-to-cart [id]="loan?.lnID"
                            [disabled]="canAddProductToCompare(loan?.lnID)"
-                            (click)="onAddProductToCompare(loan)">{{'~compare' | translate}}</button>
+                            (click)="onAddProductToCompare(loan)">{{'~addToCart' | translate}}</button>
                       </div>
                     </td>
                   </tr>

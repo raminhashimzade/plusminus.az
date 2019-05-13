@@ -4,6 +4,10 @@
   background: white;
   box-shadow: 0.0625rem 0.0625rem 0.9375rem rgba(0,0,0,0.15);
   padding: 1.25rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  max-height: 84vh;
+  overflow: auto;
 }
 
 .box {
@@ -29,9 +33,11 @@
     }
   }
   .box__footer {
-    align-self: center;
+    display: flex;
+    flex-direction: column;
     .box__footer__btn {
-      margin-top: 1.25rem;
+      width: 100%;
+      margin-top: 0.5rem;
       align-self: center;
     }
   }

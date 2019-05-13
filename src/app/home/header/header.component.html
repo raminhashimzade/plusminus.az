@@ -54,7 +54,7 @@
           </a>
         </div>
 
-        <div class="header__loanCompare" *ngIf="showloanCompare" hoverClass ="expanded">
+        <div class="header__loanCompare" *ngIf="showloanCompare" hoverClass ="expanded" id="compare-cart">
           <button mat-raised-button class="header__loanCompare__btn"
               [matBadge]="(productList$ | async)?.length"
                matBadgePosition="below" matBadgeColor="accent"

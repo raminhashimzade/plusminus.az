@@ -97,5 +97,7 @@
      "~age": "Yaş",
      "~minSalary": "Minimum maaş",
      "~removeFromCompareList": "Müqayisədən sil",
-     "~monthlyPayment": "Aylıq ödəniş"
+     "~monthlyPayment": "Aylıq ödəniş",
+     "~orderLoan": "Sifariş et",
+     "~addToCart": "Səbətə at"
   }

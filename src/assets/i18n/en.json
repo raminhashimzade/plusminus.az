@@ -87,5 +87,7 @@
   "~age": "age",
   "~minSalary": "Minimum salary",
   "~removeFromCompareList": "Remove from compare",
-  "~monthlyPayment": "Monthly payment"
+  "~monthlyPayment": "Monthly payment",
+  "~orderLoan": "Order",
+  "~addToCart": "Add to cart"
 }

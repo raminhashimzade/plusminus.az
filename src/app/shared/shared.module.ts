@@ -1,3 +1,4 @@
+import { FlyToCartModule } from './directives/fly-to-cart/fly-to-cart.module';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { NgModule } from '@angular/core';
 import { SharedTranslateModule } from './shared-translate.module';
@@ -12,14 +13,16 @@ import { ReadMoreModule } from './directives/read-more/read-more.module';
     MaterialModule,
     PerfectScrollbarModule,
     RatingModule,
-    ReadMoreModule
+    ReadMoreModule,
+    FlyToCartModule
   ],
   exports: [
     SharedTranslateModule,
     MaterialModule,
     PerfectScrollbarModule,
     RatingModule,
-    ReadMoreModule
+    ReadMoreModule,
+    FlyToCartModule
   ]
 })
 export class SharedModule { }

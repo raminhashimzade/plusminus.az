@@ -108,5 +108,7 @@
   "~age": "Dозраст",
   "~minSalary": "Минимальная зарплата",
   "~removeFromCompareList": "Удалить сравнение",
-  "~monthlyPayment": "Ежемесячный платеж"
+  "~monthlyPayment": "Ежемесячный платеж",
+  "~orderLoan": "Заказать",
+  "~addToCart": "Добавить в корзину"
 }
