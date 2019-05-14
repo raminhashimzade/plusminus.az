@@ -21,14 +21,16 @@ export class HomeService {
         catchError(er => of(null))
     );
   }
-  getBankList(): Observable<BankPartner[]> {
+  getBankList(partner: boolean): Observable<BankPartner[]> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post<DataResponse>('mybank/bankList', {
+    console.log(this.authService.getToken())
+    return this.http.post<DataResponse>('mybank/banklist', {
       token: this.authService.getToken(),
+      partner: partner
   }, httpOptions).pipe(
       map(res => res && res.data),
       catchError(er => of(null))

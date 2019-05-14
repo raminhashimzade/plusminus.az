@@ -2,7 +2,7 @@
   <div class="box__items">
     <div class="item" *ngFor="let item of loans">
       <div class="item__name">
-        {{item.loanName | valueTranslate}}
+        {{item.bankName}}
       </div>
         <a class="item__remove" (click)="onRemoveLoanFromCompareList(item)" title="{{'~removeFromCompareList' | translate}}">
           <mat-icon>remove_circle_outline</mat-icon>

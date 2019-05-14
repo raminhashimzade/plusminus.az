@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class BankPartnersComponent implements OnInit {
   partners$: Observable<BankPartner[]>;
   constructor(private homeService: HomeService) {
-    this.partners$ = this.homeService.getBankList();
+    this.partners$ = this.homeService.getBankList(true);
   }
 
   ngOnInit() {

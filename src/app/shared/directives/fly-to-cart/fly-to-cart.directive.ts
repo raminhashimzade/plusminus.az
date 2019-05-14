@@ -10,6 +10,13 @@ export class FlyToCartDirective implements OnInit{
   ngOnInit() {
   }
   onClick() {
+    try {
+      this.flyToCart();
+    } catch (er) {
+      console.log(er);
+    }
+  }
+  flyToCart() {
     const cartElem = document.getElementById('compare-cart') as HTMLElement;
     var offsetLeftCart = cartElem.offsetLeft;
     var widthCart = cartElem.offsetWidth;

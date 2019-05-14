@@ -28,7 +28,7 @@
               </th>
               <th *ngFor="let loan of visibleProducts">
                 <div class="th-content">
-                    {{loan.bankID}}
+                    {{loan.bankName}}
                 </div>
               </th>
             </thead>
@@ -230,7 +230,7 @@
       <table class="table mobileTable">
         <thead>
           <th>{{'~bank' | translate}}</th>
-          <th> {{loan.bankID}}</th>
+          <th> {{loan.bankName}}</th>
 
         </thead>
         <tbody>
