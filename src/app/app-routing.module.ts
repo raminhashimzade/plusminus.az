@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    resolve:{token: TokenResolver},
+    resolve:  {token: TokenResolver},
     children: [
       {
         path: '',
@@ -21,6 +21,11 @@ const routes: Routes = [
         path: 'loans',
         loadChildren:
           './home/loans/loans.module#LoansModule'
+      },
+      {
+        path: 'exchange-rates',
+        loadChildren:
+          './home/exchange-rates/exchange-rates.module#ExchangeRatesModule'
       },
       {
         path: 'requestCustomerDetails',

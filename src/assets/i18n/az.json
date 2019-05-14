@@ -99,5 +99,7 @@
      "~removeFromCompareList": "Müqayisədən sil",
      "~monthlyPayment": "Aylıq ödəniş",
      "~orderLoan": "Sifariş et",
-     "~addToCart": "Səbətə at"
+     "~addToCart": "Səbətə at",
+     "~buying": "alış",
+     "~selling": "satış"
   }
