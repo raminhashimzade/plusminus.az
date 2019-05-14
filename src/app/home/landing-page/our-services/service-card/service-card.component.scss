@@ -12,7 +12,12 @@
   margin-bottom: 0.4375rem;
   margin-right: 0.4375rem;
   cursor: pointer;
+  outline: 0;
   transition: box-shadow 300ms ease-in-out;
+  &.disabled {
+    background: rgba(0, 0, 0, 0.12);
+    box-shadow: none!important;
+  }
   &:hover {
     box-shadow: 0 0.75rem 1.125rem 0.125rem rgba(0, 0, 0, 0.1);
   }

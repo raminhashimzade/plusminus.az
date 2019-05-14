@@ -1,4 +1,4 @@
-<div class="service-card" *ngIf="service" routerLink="/home/{{service.url}}">
+<div class="service-card" *ngIf="service" routerLink="/home/{{service.url}}" [ngClass]="{'disabled': service?.disabled}">
   <div class="service-card__icon">
     <img src="{{ service.iconPath }}" />
   </div>

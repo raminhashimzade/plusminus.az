@@ -29,12 +29,12 @@
            <ng-container *ngIf="allCurrencies && allCurrencies[0] else all_rates_loader">
               <table class="table" >
                   <tr>
-                    <th>
-                      <div class="th-content --bank">
+                    <th class="--borderRight">
+                      <div class="th-content --bank ">
                         {{'~bank' | translate}}
                       </div>
                     </th>
-                    <th *ngFor="let rate of rateList" colspan="2">
+                    <th *ngFor="let rate of rateList" colspan="2" class="--borderRight">
                       <div class="th-content">
                         <div class="rateValue">{{rate}} </div>
                       </div>
@@ -60,7 +60,7 @@
                              </div>
                            </div>
                         </th>
-                        <th >
+                        <th class="--borderRight">
                             <div class="th-content">
                                 <div class="rateType">
                                   <div class="rateType__name">
@@ -81,7 +81,7 @@
                   </tr>
                   <tbody >
                     <tr *ngFor="let currency of allCurrencies">
-                      <td>
+                      <td class="--borderRight">
                         <div class="td-content --bank">
                            <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span> {{currency?.bankName}}
                         </div>
@@ -92,7 +92,7 @@
                                   <div class="buyRate">{{currency.bankCurrRate.CASH[0][rate]?.sellRate}}</div>
                               </div>
                             </td>
-                          <td >
+                          <td class="sell --borderRight">
                               <div class="td-content --rate">
                                   <div class="sellRate">{{currency.bankCurrRate.CASH[0][rate]?.buyRate}}</div>
                               </div>

@@ -83,12 +83,12 @@
                   </th>
 
                   <th>
-                    <div class="th-wrapper">
+                    <div class="th-wrapper" *ngIf="!isMobile">
                         {{'~documents' | translate | titlecase}}
                     </div>
                   </th>
                   <th >
-                    <div class="th-wrapper">
+                    <div class="th-wrapper" *ngIf="!isMobile">
                         {{'~requirements' | translate | titlecase}}
                     </div>
                   </th>
@@ -97,12 +97,13 @@
                 <tbody>
                   <tr *ngFor="let loan of loanProducts | slice: 0: 10" [attr.loan-id]="loan.lnID">
                     <td valign="top">
-                      <div class="td-content loans__table__content__bank" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
+                      <div class="td-content loans__table__content__bank"
+                      >
                           <div class="loans__table__content__bank__icon" [attr.loan-img-id]="loan.lnID" >
                               {{loan.bankName}}
                              <!-- <img  src="./asets/icons/banks/{{loan.bankID}}.svg" onerror="this.src='./assets/icons/banks/17.svg'" [attr.loan-img-id]="loan.lnID"> -->
                           </div>
-                          <div class="loans__table__content__bank__more" *ngIf="!isMobile" (click)="onExpandToggle(loan.lnID)" [ngClass]="{'--top' : (expandedNode === loan.lnID) || isMobile }">
+                          <div class="loans__table__content__bank__more"  (click)="onExpandToggle(loan.lnID)" [ngClass]="{'--top' : (expandedNode === loan.lnID)}">
                               <i class="fas fa-chevron-down"></i>
                           </div>
                       </div>
@@ -122,7 +123,7 @@
                     </td>
 
                     <td valign="top">
-                      <div class=" td-content loans__table__content__amount" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile  }">
+                      <div class=" td-content loans__table__content__amount" >
                         <div class="loans__table__content__amount__value">
 
                           <span [countUp]="loan.minAmount">0</span> {{loan.currencyCode | lowercase}}
@@ -158,22 +159,23 @@
                         </div>
                     </td>
 
-                    <td valign="top">
-                      <div class=" td-content loans__table__content__documents" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
+                    <td valign="top"  *ngIf="(isMobile && (expandedNode === loan.lnID) ) || !isMobile">
+                      <div class=" td-content loans__table__content__documents" >
                         <div class="loans__table__content__documents__item" *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
                             {{item}} <br>
                         </div>
                       </div>
                     </td>
-                    <td valign="top">
-                      <div class=" td-content loans__table__content__requirements" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile  }">
+                    <td valign="top" *ngIf="(isMobile && (expandedNode === loan.lnID) ) || !isMobile ">
+                      <div class=" td-content loans__table__content__requirements" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }"
+                        >
                         <div class="loans__table__content__requirement__item">
                          {{loan.description | valueTranslate}}
                         </div>
                       </div>
                     </td>
                     <td valign="top">
-                      <div class="td-content loans__table__content__popularity" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
+                      <div class="td-content loans__table__content__popularity" >
                           <button mat-raised-button color="primary">{{'~detailed' | translate}}</button>
                           <button mat-raised-button color="accent" fly-to-cart [id]="loan?.lnID"
                            [disabled]="canAddProductToCompare(loan?.lnID)"
