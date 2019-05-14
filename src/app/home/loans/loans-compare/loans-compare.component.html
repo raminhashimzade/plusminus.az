@@ -28,7 +28,7 @@
               </th>
               <th *ngFor="let loan of visibleProducts">
                 <div class="th-content">
-                  AzerTurk Bank
+                    {{loan.bankID}}
                 </div>
               </th>
             </thead>
@@ -60,22 +60,6 @@
                   </div>
                 </td>
               </tr>
-
-              <!-- <tr>
-                  <td>
-                      <div class="td-content --first">
-                        {{'~monthlyPayment' | translate}}
-                      </div>
-                    </td>
-                    <td *ngFor="let loan of visibleProducts">
-                      <div class="td-content">
-                          {{loan.minMonthlyPayment }}
-                          <ng-container *ngIf="loan.minMonthlyPayment"> - </ng-container>
-                          {{loan.maxMonthlyPayment}}
-                         {{loan.currencyCode | lowercase}}
-                      </div>
-                    </td>
-              </tr> -->
 
               <tr>
                 <td>
@@ -245,8 +229,8 @@
     <div class="swiper-slide" *ngFor="let loan of loanProducts;let i=index;let first=first">
       <table class="table mobileTable">
         <thead>
-          <th>Bank</th>
-          <th>AzerTurk Bank</th>
+          <th>{{'~bank' | translate}}</th>
+          <th> {{loan.bankID}}</th>
 
         </thead>
         <tbody>

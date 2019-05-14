@@ -33,6 +33,7 @@
           <loan-request-step-third [firstStepData]="firstStepData"
            (stepComplete)="onThirdStepComplete()"
            (stepError)="onStepError()"
+           [requestBankId]="requestBankId"
            ></loan-request-step-third>
       </div>
       <div class="loanRequest__form__step" *ngIf="stepError">

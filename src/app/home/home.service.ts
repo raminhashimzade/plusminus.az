@@ -1,5 +1,6 @@
+import { BankPartner } from './landing-page/our-partners/bank-partners/bank-partner.model';
 import { AuthService } from './../auth/auth.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DataResponse } from '../models/data-reponse';
 import { catchError, map } from 'rxjs/operators';
@@ -19,5 +20,18 @@ export class HomeService {
         map(res => res && res.data),
         catchError(er => of(null))
     );
-}
+  }
+  getBankList(): Observable<BankPartner[]> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post<DataResponse>('mybank/bankList', {
+      token: this.authService.getToken(),
+  }, httpOptions).pipe(
+      map(res => res && res.data),
+      catchError(er => of(null))
+  );
+  }
 }

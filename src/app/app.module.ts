@@ -1,3 +1,4 @@
+import { LoanRequestDialogModule } from './home/loans/loan-request-dialog/loan-request-dialog.module';
 import { MaterialModule } from './material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
@@ -63,6 +64,7 @@ export const MY_FORMATS = {
     FormsModule,
     ValueTranslateModule,
     HoverClassModule,
+    LoanRequestDialogModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -99,7 +99,8 @@
                     <td valign="top">
                       <div class="td-content loans__table__content__bank" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }">
                           <div class="loans__table__content__bank__icon" >
-                             <img  src="./asets/icons/banks/{{loan.bankID}}.svg" onerror="this.src='./assets/icons/banks/17.svg'" [attr.loan-img-id]="loan.lnID">
+                              {{loan.bankName}}
+                             <!-- <img  src="./asets/icons/banks/{{loan.bankID}}.svg" onerror="this.src='./assets/icons/banks/17.svg'" [attr.loan-img-id]="loan.lnID"> -->
                           </div>
                           <div class="loans__table__content__bank__more" *ngIf="!isMobile" (click)="onExpandToggle(loan.lnID)" [ngClass]="{'--top' : (expandedNode === loan.lnID) || isMobile }">
                               <i class="fas fa-chevron-down"></i>

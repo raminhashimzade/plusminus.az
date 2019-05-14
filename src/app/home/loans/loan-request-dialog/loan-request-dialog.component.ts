@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment.prod';
 
 
@@ -13,9 +13,13 @@ export class LoanRequestDialogComponent implements OnInit {
   stepIndex = 1;
   firstStepData: {gsm: string,  channel: string};
   stepError: boolean;
-  constructor(public dialogRef: MatDialogRef<LoanRequestDialogComponent>) { }
+  requestBankId = [];
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<LoanRequestDialogComponent>) { }
 
   ngOnInit() {
+    if (this.data && this.data.requestBankId) {
+      this.requestBankId = this.data.requestBankId;
+    }
   }
   onFirstStepComplete(data) {
     this.firstStepData = data;

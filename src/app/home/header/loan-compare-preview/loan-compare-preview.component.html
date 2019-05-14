@@ -1,6 +1,6 @@
-<div class="box">
+<div class="box" *ngIf="(loans$ | async) as loans" >
   <div class="box__items">
-    <div class="item" *ngFor="let item of (loans$ | async) ">
+    <div class="item" *ngFor="let item of loans">
       <div class="item__name">
         {{item.loanName | valueTranslate}}
       </div>
@@ -14,7 +14,7 @@
     (click)="onCompare()"
     class="box__footer__btn"> {{'~compare' | translate}}</button>
 
-    <button mat-raised-button color="primary"
+    <button mat-raised-button color="primary" (click)="onRequestLoansFromBanks(loans)"
      class="box__footer__btn"> {{'~orderLoan' | translate}}</button>
   </div>
 </div>

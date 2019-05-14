@@ -3,6 +3,8 @@ import { LoansService } from '../../loans/loans.service';
 import { Observable } from 'rxjs';
 import { LoanProduct } from '../../loans/models/loanProduct.model';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { LoanRequestDialogComponent } from '../../loans/loan-request-dialog/loan-request-dialog.component';
 
 @Component({
   selector: 'loan-compare-preview',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoanComparePreviewComponent implements OnInit {
   loans$: Observable<LoanProduct[]>;
-  constructor(private loansService: LoansService, private router: Router) {
+  constructor(private loansService: LoansService, private router: Router, private dialog: MatDialog) {
     this.loans$ = this.loansService.getSavedCompareProductList();
   }
 
@@ -24,6 +26,21 @@ export class LoanComparePreviewComponent implements OnInit {
     const el = document.getElementById('header__loanCompare__preview');
     if ( el) { el.style.display  = 'none'; }
     this.router.navigateByUrl('/home/loans/compare');
+  }
+  onRequestLoansFromBanks(loans: LoanProduct[]) {
+    console.log(loans);
+    if (!(loans && loans.length > 0)) {return;}
+    const requestBankId = loans.map(l => l.bankID);
+    const ref  = this.dialog.open(LoanRequestDialogComponent, {
+      panelClass: 'loanRequestDialog',
+      autoFocus: false,
+      maxWidth: '99vw',
+      disableClose: true,
+      data: {
+        requestBankId: requestBankId
+      }
+    //  backdropClass: 'loanRequestDialogBackdrop'
+    });
   }
 
 }

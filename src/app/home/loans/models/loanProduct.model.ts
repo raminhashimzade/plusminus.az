@@ -1,6 +1,7 @@
 export interface LoanProduct{
     lnID: number;
     bankID: number;
+    bankName: string;
     loanName: LoanName;
     currencyCode: string;
     priority: number;

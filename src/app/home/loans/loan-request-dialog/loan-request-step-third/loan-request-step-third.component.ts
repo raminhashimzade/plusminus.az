@@ -14,6 +14,7 @@ export class LoanRequestStepThirdComponent implements OnInit {
   @ViewChild('f') form: NgForm;
   @ViewChild('cusFirstNameField') cusFirstNameField: MatInput;
   @Input() firstStepData: {gsm: string,  channel: string};
+  @Input() requestBankId: number[] = [];
   @Output() stepComplete = new EventEmitter();
   @Output() stepError = new EventEmitter();
   cusOfficialIncome = false;
@@ -42,7 +43,8 @@ export class LoanRequestStepThirdComponent implements OnInit {
       ...formValue,
       requestType: "LOAN",
       requestProductId: "LN_ID",
-     cusBirthDate:'19880101000000'
+       cusBirthDate:'19880101000000',
+       requestBankId: this.requestBankId
  // cusBirthDate: moment(this.form.controls['cusBirthDate'].value).unix()
     }
     console.log(newFormValue);
