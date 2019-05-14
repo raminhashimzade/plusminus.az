@@ -1,0 +1,60 @@
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      {{'~compare' | translate}}
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col-12 col-lg-3">
+            <mat-form-field class="content__form__inputs__field">
+                <mat-label>{{'~currency' | translate}}</mat-label>
+                <mat-select ngModel name="currencyCode">
+                  <mat-option value="USD"> USD </mat-option>
+                  <mat-option value="EURO"> EURO </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+    </div>
+            <div class="col-12 col-lg-3">
+                <mat-form-field class="content__form__inputs__field">
+                    <input matInput [matDatepicker]="datefrom" (focus)="datefrom?.open()" placeholder="{{'~datefrom' | translate}}" ngModel name="datefrom">
+                    <mat-datepicker-toggle matSuffix [for]="datefrom"></mat-datepicker-toggle>
+                    <mat-datepicker #datefrom></mat-datepicker>
+                  </mat-form-field>
+            </div>
+
+            <div class="col-12 col-lg-3">
+                <mat-form-field class="content__form__inputs__field">
+                    <input matInput [matDatepicker]="dateUntil" (focus)="dateUntil?.open()" placeholder="{{'~dateUntil' | translate}}" ngModel name="dateUntil">
+                    <mat-datepicker-toggle matSuffix [for]="dateUntil"></mat-datepicker-toggle>
+                    <mat-datepicker #dateUntil></mat-datepicker>
+                  </mat-form-field>
+            </div>
+
+            <div class="col-12 col-lg-3">
+                <button mat-raised-button color="primary" type="submit">{{'~compare' | translate}}</button>
+            </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+        <fusioncharts *ngIf="data?.data && !loading"
+        width="100%"
+        [height]="400"
+        [type]="'spline'"
+        [dataFormat]="'json'"
+        [dataSource]="data"
+      >
+      </fusioncharts>
+
+      <table-loader *ngIf="loading" style="height: 400px"></table-loader>
+
+    </div>
+  </div>
+</div>
+
+
+</form>
+

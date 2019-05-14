@@ -101,5 +101,7 @@
      "~orderLoan": "Sifariş et",
      "~addToCart": "Səbətə at",
      "~buying": "alış",
-     "~selling": "satış"
+     "~selling": "satış",
+     "~datefrom": "Başlanğıc tarixi",
+     "~dateUntil": "Bitmə tarixi"
   }

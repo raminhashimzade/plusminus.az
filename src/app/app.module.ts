@@ -26,25 +26,13 @@ export function HttpLoaderFactory(http: HttpClient) {
 import { TokenResolver } from './home/token.resolver';
 import { APIInterceptor } from './shared/interceptors/api.interceptor';
 
-import { MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter} from '@angular/material';
-import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoanComparePreviewComponent } from './home/header/loan-compare-preview/loan-compare-preview.component';
 import { ValueTranslateModule } from './shared/pipes/value-translate/value-translate.module';
 import { HoverClassModule } from './shared/directives/hover-class/hover-class.module';
 
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'DD/MM/YYYY'
-  },
-  display: {
-    dateInput: 'DD/MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY'
-  }
-};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,9 +64,6 @@ export const MY_FORMATS = {
   providers: [
     TokenResolver,
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
-    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
-    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
-    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     { provide: LOCALE_ID,
       deps: [TranslateService],
       useFactory: (service) => service.getDefaultLang()

@@ -30,32 +30,32 @@
           </mat-menu>
         </div>
         <div class="header__links d-none d-lg-flex">
-          <a class="link">
+          <a class="link disabled">
             {{ '~deposits' | translate }}
           </a>
           <a class="link" [routerLink]="['loans']" routerLinkActive="active"  >
             {{ '~loans' | translate }}
           </a>
-          <a class="link">
+          <a class="link disabled">
             {{ '~credit-cards' | translate }}
           </a>
-          <a class="link">
+          <a class="link disabled">
             {{ '~debit-cards' | translate }}
           </a>
-          <a class="link">
+          <a class="link disabled">
             {{ '~auctions' | translate | titlecase}}
           </a>
           <a class="link" [routerLink]="['exchange-rates']" routerLinkActive="active">
             {{ '~exchange-rates' | translate }}
           </a>
 
-          <a class="link">
+          <a class="link disabled">
             {{ '~forBanks' | translate }}
           </a>
         </div>
 
-        <div class="header__loanCompare" *ngIf="showloanCompare" hoverClass ="expanded" id="compare-cart">
-          <button mat-raised-button class="header__loanCompare__btn"
+        <div class="header__loanCompare"  hoverClass ="expanded" id="compare-cart">
+          <button mat-raised-button class="header__loanCompare__btn" *ngIf="showloanCompare"
               [matBadge]="(productList$ | async)?.length"
                matBadgePosition="below" matBadgeColor="accent"
                [disabled]="true"

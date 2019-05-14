@@ -6,6 +6,7 @@ import { DataResponse } from 'src/app/models/data-reponse';
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { ExchangeRate } from './models/exchange-rate.model';
+import { CurrencyArchieve } from './models/currency-archieve.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,15 @@ export class ExchangeRatesService {
     getCurrRateList(): Observable<ExchangeRate[]> {
       return this.http.post<DataResponse>('mybank/currRateList', {
           token: this.authService.getToken(),
+      }).pipe(
+          map(res => res && res.data),
+          catchError(er => of(null))
+      );
+    }
+    getcurrRateArchive(formValue: Object): Observable<CurrencyArchieve[]> {
+      return this.http.post<DataResponse>('mybank/currRateArchive', {
+          token: this.authService.getToken(),
+          ...formValue
       }).pipe(
           map(res => res && res.data),
           catchError(er => of(null))

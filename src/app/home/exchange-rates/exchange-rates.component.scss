@@ -23,6 +23,10 @@
     display: flex;
     flex-wrap: wrap;
     height: 441px;
+    width: 100%;
+    @media (max-width: 992px) {
+       height: 690px;
+    }
   }
 }
 
