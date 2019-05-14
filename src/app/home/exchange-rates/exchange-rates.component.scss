@@ -38,12 +38,9 @@
             color: #5f5f5f;
             font-family: 'Montserrat-Medium';
             font-size: 14px;
-            font-weight: 400;
+            text-transform: uppercase;
           }
-        .rate {
-          display: flex;
-          flex-direction: column;
-          .rate__value {
+          .rateValue {
             color: #5f5f5f;
             font-family: 'Montserrat-Medium';
             font-size: 14px;
@@ -51,30 +48,15 @@
             text-transform: uppercase;
             margin-bottom: 10px;
           }
-          .rate__types {
+          .rateType {
             display: flex;
-            justify-content: space-between;
-            .rate__types__buy, .rate__types__sell {
-              display: flex;
-            }
-            .rate__types__buy__title, .rate__types__sell__title {
-              color: #5f5f5f;
-              font-family: 'Montserrat-Medium';
-              font-size: 14px;
-              font-weight: 400;
-            }
-            .rate__types__buy__sorting, .rate__types__sell__sorting {
+            .rateType__name {}
+            .rateType__sorting {
                 display: flex;
-                mat-icon {
-                  width: 14px;
-                }
+                cursor: pointer;
             }
-            .rate__types__sell__title {
-              padding-right: 10px;
-            }
-
           }
-        }
+
       }
       .td-content {
         &.--bank {
@@ -83,16 +65,18 @@
           font-size: 14px;
           font-weight: 400;
           color: var(--primary-default);
-         .location-icon {
-          margin-right: 10px;
-          font-size: 16px;
-         }
+          .location-icon {
+            margin-right: 10px;
+            font-size: 16px;
+          }
         }
         &.--rate {
-          display: flex;
-          width: 150px;
-          justify-content: space-between;
-          .buyRate {
+          .buyRate, .sellRate {
+            color: #5f5f5f;
+            font-family: 'Montserrat-Medium';
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
           }
         }
 

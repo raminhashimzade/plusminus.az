@@ -27,15 +27,12 @@ export class ExchangeRatesComponent implements OnInit {
   getAllRates() {
     this.exchangeRatesService.getCurrRateList().subscribe(res => {
       this.allCurrencies = res;
-      console.log(this.allCurrencies[0].bankCurrRate.CASH)
       if (this.allCurrencies && this.allCurrencies[0]
             && this.allCurrencies[0].bankCurrRate
            && this.allCurrencies[0].bankCurrRate.CASH
            && this.allCurrencies[0].bankCurrRate.CASH[0]) {
         const rateList = Object.keys(this.allCurrencies[0].bankCurrRate.CASH[0]);
        this.rateList = rateList ? rateList.filter(rate => (rate !== 'OIL') && (rate !== 'GOLD')) : [];
-
-        console.log(this.allCurrencies)
       }
     });
   }

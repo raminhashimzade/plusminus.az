@@ -6,7 +6,9 @@
             {{'~favorableRate' | translate}}
         </div>
         <div class="exchange-rates-preview__table">
+          <ng-container *ngIf="favorableCurrencies else favorable_rates_loader">
            <favorable-rates-preview-table  *ngFor="let rate of favorableCurrencies;let i = index" [currency] = "rate" [index]="i"></favorable-rates-preview-table>
+          </ng-container>
         </div>
       </div>
     </div>
@@ -16,69 +18,93 @@
     <div class="col-12">
       <div class="exchange-rates-full">
         <div class="exchange-rates-full__table">
-            <table class="table" *ngIf="allCurrencies && allCurrencies[0]">
-                <thead>
-                  <th>
-                    <div class="th-content --bank">
-                      {{'~bank' | translate}}
-                    </div>
-                  </th>
-                  <th *ngFor="let rate of rateList">
-                    <div class="th-content">
-                      <div class="rate">
-                        <div class="rate__value">
-                            {{rate}}
-                        </div>
-                        <div class="rate__types">
-                          <div class="rate__types__buy">
-                            <div class="rate__types__buy__title">
-                                {{'~buying' | translate | titlecase }}
-                            </div>
-                            <div class="rate__types__buy__sorting">
-                                <span>
-                                  <mat-icon>keyboard_arrow_up</mat-icon>
-                                </span>
-                                <span>
-                                   <mat-icon>keyboard_arrow_down</mat-icon>
-                                </span>
-                            </div>
-                          </div>
-                          <div class="rate__types__sell">
-                              <div class="rate__types__sell__title">
-                                  {{'~selling' | translate | titlecase }}
-                              </div>
-                              <div class="rate__types__sell__sorting">
-                                  <span>
-                                    <mat-icon>keyboard_arrow_up</mat-icon>
-                                  </span>
-                                  <span>
-                                     <mat-icon>keyboard_arrow_down</mat-icon>
-                                  </span>
-                              </div>
-                          </div>
-                        </div>
+           <ng-container *ngIf="allCurrencies && allCurrencies[0] else all_rates_loader">
+              <table class="table" >
+                  <tr>
+                    <th>
+                      <div class="th-content --bank">
+                        {{'~bank' | translate}}
                       </div>
-                    </div>
-                  </th>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let currency of allCurrencies">
-                    <td>
-                      <div class="td-content --bank">
-                         <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span> {{currency?.bankName}}
+                    </th>
+                    <th *ngFor="let rate of rateList" colspan="2">
+                      <div class="th-content">
+                        <div class="rateValue">{{rate}} </div>
                       </div>
-                    </td>
-                    <td  *ngFor="let rate of rateList">
-                      <div class="td-content --rate">
-                        <div class="sellRate">{{currency.bankCurrRate.CASH[0][rate]?.buyRate}}</div>
-                        <div class="buyRate">{{currency.bankCurrRate.CASH[0][rate]?.sellRate}}</div>
-                      </div>
-                    </td>
+                    </th>
                   </tr>
-                </tbody>
-              </table>
+                  <tr>
+                    <th></th>
+                    <ng-container *ngFor="let rate of rateList">
+                        <th>
+                           <div class="th-content">
+                             <div class="rateType">
+                               <div class="rateType__name">
+                                  {{'~buying' | translate | titlecase }}
+                               </div>
+                               <div class="rateType__sorting">
+                                  <span>
+                                      <mat-icon>keyboard_arrow_up</mat-icon>
+                                    </span>
+                                    <span>
+                                       <mat-icon>keyboard_arrow_down</mat-icon>
+                                    </span>
+                               </div>
+                             </div>
+                           </div>
+                        </th>
+                        <th >
+                            <div class="th-content">
+                                <div class="rateType">
+                                  <div class="rateType__name">
+                                     {{'~selling' | translate | titlecase }}
+                                  </div>
+                                  <div class="rateType__sorting">
+                                     <span>
+                                         <mat-icon>keyboard_arrow_up</mat-icon>
+                                       </span>
+                                       <span>
+                                          <mat-icon>keyboard_arrow_down</mat-icon>
+                                       </span>
+                                  </div>
+                                </div>
+                              </div>
+                        </th>
+                    </ng-container>
+                  </tr>
+                  <tbody >
+                    <tr *ngFor="let currency of allCurrencies">
+                      <td>
+                        <div class="td-content --bank">
+                           <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span> {{currency?.bankName}}
+                        </div>
+                      </td>
+                      <ng-container  *ngFor="let rate of rateList">
+                          <td >
+                              <div class="td-content --rate">
+                                  <div class="buyRate">{{currency.bankCurrRate.CASH[0][rate]?.sellRate}}</div>
+                              </div>
+                            </td>
+                          <td >
+                              <div class="td-content --rate">
+                                  <div class="sellRate">{{currency.bankCurrRate.CASH[0][rate]?.buyRate}}</div>
+                              </div>
+                            </td>
+                      </ng-container>
+
+                    </tr>
+                  </tbody>
+                </table>
+           </ng-container>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #favorable_rates_loader>
+  <table-loader></table-loader>
+</ng-template>
+
+<ng-template #all_rates_loader>
+  <table-loader></table-loader>
+</ng-template>

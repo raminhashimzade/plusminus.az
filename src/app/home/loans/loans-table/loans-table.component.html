@@ -124,7 +124,8 @@
                       <div class=" td-content loans__table__content__amount" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile  }">
                         <div class="loans__table__content__amount__value">
 
-                          {{loan.minAmount }} {{loan.currencyCode | lowercase}} -  {{loan.maxAmount}}  {{loan.currencyCode | lowercase}}
+                          <span [countUp]="loan.minAmount">0</span> {{loan.currencyCode | lowercase}}
+                        -  <span [countUp]="loan.maxAmount">0</span>  {{loan.currencyCode | lowercase}}
                            <br class="d-none d-sm-block">
                            <span>({{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}})</span>
 

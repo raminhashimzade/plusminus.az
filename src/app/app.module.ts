@@ -22,13 +22,9 @@ export function HttpLoaderFactory(http: HttpClient) {
   const link = './assets/i18n/';
   return new TranslateHttpLoader(http, link, `.json?random=${Math.random() * 100}`);
 }
-import { PerfectScrollbarModule, PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { TokenResolver } from './home/token.resolver';
 import { APIInterceptor } from './shared/interceptors/api.interceptor';
-const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-  suppressScrollX: true
-};
+
 import { MAT_DATE_LOCALE, MAT_DATE_FORMATS, DateAdapter} from '@angular/material';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { ErrorPageComponent } from './error-page/error-page.component';
@@ -65,7 +61,6 @@ export const MY_FORMATS = {
     HttpClientModule,
     MaterialModule,
     FormsModule,
-    PerfectScrollbarModule,
     ValueTranslateModule,
     HoverClassModule,
     TranslateModule.forRoot({
@@ -78,10 +73,6 @@ export const MY_FORMATS = {
   ],
   providers: [
     TokenResolver,
-    {
-      provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    },
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
