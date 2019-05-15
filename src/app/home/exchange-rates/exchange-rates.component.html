@@ -27,9 +27,9 @@
       <div class="exchange-rates-full">
           <div class="arrows">
 
-              <button mat-mini-fab class="arrow --next" >
+              <!-- <button mat-mini-fab class="arrow --next" >
                   <mat-icon inline="true">arrow_forward_ios</mat-icon>
-                </button>
+                </button> -->
 
           </div>
 
@@ -58,11 +58,11 @@
                                <div class="rateType__name">
                                   {{'~buying' | translate | titlecase }}
                                </div>
-                               <div class="rateType__sorting">
-                                  <span>
+                               <div class="rateType__sorting" >
+                                  <span (click)="onSort(rate, 'buyRate', 'asc')" [ngClass]="{'active': isActiveSort(rate, 'buyRate', 'asc')}" >
                                       <mat-icon>keyboard_arrow_up</mat-icon>
                                     </span>
-                                    <span>
+                                    <span (click)="onSort(rate, 'buyRate', 'desc')" [ngClass]="{'active': isActiveSort(rate, 'buyRate', 'desc')}">
                                        <mat-icon>keyboard_arrow_down</mat-icon>
                                     </span>
                                </div>
@@ -76,10 +76,10 @@
                                      {{'~selling' | translate | titlecase }}
                                   </div>
                                   <div class="rateType__sorting">
-                                     <span>
+                                     <span (click)="onSort(rate, 'sellRate', 'asc')" [ngClass]="{'active': isActiveSort(rate, 'sellRate', 'asc')}">
                                          <mat-icon>keyboard_arrow_up</mat-icon>
                                        </span>
-                                       <span>
+                                       <span (click)="onSort(rate, 'sellRate', 'desc')" [ngClass]="{'active': isActiveSort(rate, 'sellRate', 'desc')}">
                                           <mat-icon>keyboard_arrow_down</mat-icon>
                                        </span>
                                   </div>

@@ -19,6 +19,6 @@ interface CASH {
 }
 
 export interface Rate {
-  sellRate: string;
-  buyRate: string;
+  sellRate: string | number;
+  buyRate: string | number ;
 }
