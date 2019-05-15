@@ -46,7 +46,7 @@ export class FlyToCartDirective implements OnInit{
     setTimeout(() => {
       imgClone.style.height = '50px';
       imgClone.style.top = (cartElem.offsetTop) +'px';
-      imgClone.style.left = cartElem.getBoundingClientRect().left + cartElem.offsetWidth/2 - 20 +'px' ;
+      imgClone.style.left = cartElem.getBoundingClientRect().left + cartElem.offsetWidth/2 - 50 +'px' ;
       imgClone.style.opacity = '0.5';
     }, 500);
 

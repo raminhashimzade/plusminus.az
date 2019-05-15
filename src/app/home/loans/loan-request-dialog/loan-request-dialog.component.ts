@@ -1,10 +1,8 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { environment } from 'src/environments/environment.prod';
-
 
 @Component({
-  selector: 'app-loan-request-dialog',
+  selector: 'loan-request-dialog',
   templateUrl: './loan-request-dialog.component.html',
   styleUrls: ['./loan-request-dialog.component.scss'],
 

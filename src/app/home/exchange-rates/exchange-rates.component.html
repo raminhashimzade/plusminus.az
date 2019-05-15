@@ -25,7 +25,16 @@
   <div class="row">
     <div class="col-12">
       <div class="exchange-rates-full">
+          <div class="arrows">
+
+              <button mat-mini-fab class="arrow --next" >
+                  <mat-icon inline="true">arrow_forward_ios</mat-icon>
+                </button>
+
+          </div>
+
         <div class="exchange-rates-full__table">
+
            <ng-container *ngIf="allCurrencies && allCurrencies[0] else all_rates_loader">
               <table class="table" >
                   <tr>
@@ -60,7 +69,7 @@
                              </div>
                            </div>
                         </th>
-                        <th class="--borderRight">
+                        <th class="pl-0 --borderRight">
                             <div class="th-content">
                                 <div class="rateType">
                                   <div class="rateType__name">
@@ -83,7 +92,7 @@
                     <tr *ngFor="let currency of allCurrencies">
                       <td class="--borderRight">
                         <div class="td-content --bank">
-                           <span class="location-icon"><i class="fas fa-map-marker-alt"></i></span> {{currency?.bankName}}
+                           {{currency?.bankName}}
                         </div>
                       </td>
                       <ng-container  *ngFor="let rate of rateList">
@@ -92,7 +101,7 @@
                                   <div class="buyRate">{{currency.bankCurrRate.CASH[0][rate]?.sellRate}}</div>
                               </div>
                             </td>
-                          <td class="sell --borderRight">
+                          <td class="sell --borderRight pl-0">
                               <div class="td-content --rate">
                                   <div class="sellRate">{{currency.bankCurrRate.CASH[0][rate]?.buyRate}}</div>
                               </div>

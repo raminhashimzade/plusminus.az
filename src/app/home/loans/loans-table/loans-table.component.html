@@ -95,13 +95,12 @@
                   <th></th>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let loan of loanProducts | slice: 0: 10" [attr.loan-id]="loan.lnID">
+                  <tr *ngFor="let loan of loanProducts" [attr.loan-id]="loan.lnID">
                     <td valign="top">
                       <div class="td-content loans__table__content__bank"
                       >
-                          <div class="loans__table__content__bank__icon" [attr.loan-img-id]="loan.lnID" >
-                              {{loan.bankName}}
-                             <!-- <img  src="./asets/icons/banks/{{loan.bankID}}.svg" onerror="this.src='./assets/icons/banks/17.svg'" [attr.loan-img-id]="loan.lnID"> -->
+                          <div class="loans__table__content__bank__icon" >
+                             <img  src="./assets/icons/banks/{{loan.bankID}}.svg" alt="{{loan.bankName}}" [attr.loan-img-id]="loan.lnID">
                           </div>
                           <div class="loans__table__content__bank__more"  (click)="onExpandToggle(loan.lnID)" [ngClass]="{'--top' : (expandedNode === loan.lnID)}">
                               <i class="fas fa-chevron-down"></i>
@@ -161,7 +160,7 @@
 
                     <td valign="top"  *ngIf="(isMobile && (expandedNode === loan.lnID) ) || !isMobile">
                       <div class=" td-content loans__table__content__documents" >
-                        <div class="loans__table__content__documents__item" *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
+                        <div class="loans__table__content__documents__item" *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n')">
                             {{item}} <br>
                         </div>
                       </div>

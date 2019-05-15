@@ -24,6 +24,7 @@ export function getBaseUrl(): string {
       || document.body.clientWidth
       return  width <=576;
     } catch (er) {
+      return false;
       console.log(er);
     }
   }

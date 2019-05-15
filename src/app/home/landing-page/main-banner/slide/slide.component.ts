@@ -2,6 +2,7 @@ import { SlideModel } from './../slide.model';
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoanRequestDialogComponent } from 'src/app/home/loans/loan-request-dialog/loan-request-dialog.component';
+import { isMobileSize } from 'src/app/app.utils';
 
 @Component({
   selector: 'slide',
@@ -18,7 +19,8 @@ export class SlideComponent implements OnInit {
       panelClass: 'loanRequestDialog',
       autoFocus: false,
       maxWidth: '99vw',
-      disableClose: true
+      disableClose: true,
+      position: isMobileSize() && {top: '0'}
     //  backdropClass: 'loanRequestDialogBackdrop'
     });
   }
