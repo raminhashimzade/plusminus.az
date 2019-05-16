@@ -2,7 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { LoansService } from '../loans.service';
 import { LoanProduct } from '../models/loanProduct.model';
 import { map, switchMap, finalize, take, tap } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { isMobileSize } from 'src/app/app.utils';
 declare var Swiper;
 @Component({
@@ -21,10 +21,26 @@ export class LoansCompareComponent implements OnInit {
   isMobile: boolean; // whether it is mobile mode
   @HostListener('window:resize', ['$event']) resize() { this.buildView()}
 
-  constructor(private loansService: LoansService, private router: Router) { }
+  constructor(private loansService: LoansService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.queryParams['lnID'];
+    if (id) {
+      this.getPreviewLoanProduct(id);
+    } else {
     this.getCompareLoanProductList();
+    }
+  }
+  getPreviewLoanProduct(id: number) {
+    this.loading = true;
+    this.loansService.getCompareLoanProductList([id])
+    .pipe(
+      finalize(() => this.loading = false)
+    )
+    .subscribe(res => {
+        this.loanProducts = res;
+        this.buildView();
+    });
   }
   getCompareLoanProductList() {
     this.loading = true;
@@ -61,6 +77,7 @@ export class LoansCompareComponent implements OnInit {
     return this.pageIndex !== 0;
   }
   hasNextProduct(): boolean {
+    if (!this.loanProducts) {return;}
     return !(this.pageIndex + this.itemsPerTable >= this.loanProducts.length);
   }
   setItemsPerTable() {

@@ -175,7 +175,10 @@
                     </td>
                     <td valign="top">
                       <div class="td-content loans__table__content__popularity" >
-                          <button mat-raised-button color="primary">{{'~detailed' | translate}}</button>
+                          <button mat-raised-button
+                          color="primary" routerLink="/home/loans/compare"
+                          [queryParams]="{lnID: loan.lnID}"
+                          >{{'~detailed' | translate}}</button>
                           <button mat-raised-button color="accent" fly-to-cart [id]="loan?.lnID"
                            [disabled]="canAddProductToCompare(loan?.lnID)"
                             (click)="onAddProductToCompare(loan)">{{'~addToCart' | translate}}</button>

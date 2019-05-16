@@ -12,6 +12,12 @@
                 th:first-child {
                     width: 130px;
                 }
+                .th-content {
+                  img {
+                    width: 100px;
+                    height: auto;
+                  }
+                }
                 .th-content, .td-content {
                     width: 15.625rem;
                     max-height: 8.75rem;
