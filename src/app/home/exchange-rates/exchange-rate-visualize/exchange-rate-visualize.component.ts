@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { parseMomentToString } from 'src/app/app.utils';
 import { ExchangeRatesService } from '../exchange-rates.service';
@@ -7,14 +7,15 @@ import { finalize } from 'rxjs/operators';
 @Component({
   selector: 'exchange-rate-visualize',
   templateUrl: './exchange-rate-visualize.component.html',
-  styleUrls: ['./exchange-rate-visualize.component.scss']
+  styleUrls: ['./exchange-rate-visualize.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExchangeRateVisualizeComponent implements OnInit {
   @ViewChild('f') form: NgForm;
   dataSource: any;
   data: any;
   loading: boolean;
-  constructor(private exchangeRateService: ExchangeRatesService) { }
+  constructor(private exchangeRateService: ExchangeRatesService, private changeRef: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
@@ -25,7 +26,10 @@ export class ExchangeRateVisualizeComponent implements OnInit {
    parseMomentToString(this.form.value);
     this.exchangeRateService.getcurrRateArchive(this.form.value)
       .pipe(finalize(() => {
-        setTimeout(() => this.loading  = false, 0)
+        setTimeout(() => {
+          this.loading  = false
+          this.changeRef.detectChanges();
+        }, 0)
       }))
     .subscribe((items: CurrencyArchieve[]) => {
       if (!items) {return;}
@@ -48,6 +52,7 @@ export class ExchangeRateVisualizeComponent implements OnInit {
         },
         data: dataSource
       }
+      this.changeRef.detectChanges();
     })
   }
 }

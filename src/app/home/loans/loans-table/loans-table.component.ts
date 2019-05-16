@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, HostListener, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { LoansService } from '../loans.service';
 import { LoanProduct } from '../models/loanProduct.model';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,10 +8,12 @@ import { Subject } from 'rxjs';
 import { takeUntil, finalize } from 'rxjs/operators';
 import { switchToView, isMobileSize } from 'src/app/app.utils';
 import { Router, ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'loans-table',
   templateUrl: './loans-table.component.html',
-  styleUrls: ['./loans-table.component.scss']
+  styleUrls: ['./loans-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('f') form: NgForm;
@@ -34,16 +36,16 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private loansService: LoansService,
      private dialog: MatDialog,
-      private router: Router,
+      private changeRef: ChangeDetectorRef,
        private route: ActivatedRoute) { }
 
   ngOnInit() {
-  //  this.getListLoanProducts(this.currentFormValues);
     this.determineMobileSize();
     this.listenToRouterParams();
   }
   determineMobileSize() {
     this.isMobile = isMobileSize();
+    this.changeRef.detectChanges();
   }
 
   ngAfterViewInit() {
@@ -59,6 +61,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
         this.form.controls[controlKey].setValue(false);
       }
     });
+    this.changeRef.detectChanges();
   }
   listenToTableFilterChanges() {
     this.form.valueChanges
@@ -78,7 +81,10 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loading = true;
     this.loansService.getListLoanProducts(data)
     .pipe(
-      finalize(() => this.loading = false)
+      finalize(() => {
+         this.loading = false;
+         this.changeRef.detectChanges();
+      })
     )
       .subscribe(res => {
         // this.loanProducts = res || MoockLoansData;
@@ -92,6 +98,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     } else {
       this.expandedNode = id;
     }
+    this.changeRef.detectChanges();
   }
   onRequestLoansFromAllBanks() {
     const ref = this.dialog.open(LoanRequestDialogComponent, {
@@ -114,6 +121,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   onAddProductToCompare(loan: LoanProduct) {
     this.loansService.addProductToCompare(loan);
+    this.changeRef.detectChanges();
   }
   canAddProductToCompare(loanID: number) {
     return this.loansService.compareProductList.find(p => p.lnID === loanID);

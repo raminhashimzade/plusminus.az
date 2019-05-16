@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FavorableRatePreview } from '../landing-page/favorable-rates-preview/favorable-rate-preview.model';
 import { ExchangeRatesService } from './exchange-rates.service';
 import { ExchangeRate, Rate } from './models/exchange-rate.model';
@@ -7,7 +7,8 @@ import { isMobileSize } from 'src/app/app.utils';
 @Component({
   selector: 'exchange-rates',
   templateUrl: './exchange-rates.component.html',
-  styleUrls: ['./exchange-rates.component.scss']
+  styleUrls: ['./exchange-rates.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExchangeRatesComponent implements OnInit {
   favorableCurrencies: FavorableRatePreview[];
@@ -15,7 +16,10 @@ export class ExchangeRatesComponent implements OnInit {
   rateList: string[];
   sortState: {rate: string, type: string, sortBy: string};
   isMobile: boolean;
-  constructor(private exchangeRatesService: ExchangeRatesService) {  }
+  constructor(
+    private exchangeRatesService: ExchangeRatesService,
+    private changeRef: ChangeDetectorRef
+    ) {  }
 
   ngOnInit() {
     this.getBestRates();
@@ -24,6 +28,7 @@ export class ExchangeRatesComponent implements OnInit {
   getBestRates() {
     this.exchangeRatesService.getcurrBestRateList().subscribe(res => {
       this.favorableCurrencies = res;
+      this.changeRef.detectChanges();
     });
   }
   onSort(rate: string, type: string, sortBy: string) {
@@ -47,6 +52,8 @@ export class ExchangeRatesComponent implements OnInit {
     this.allCurrencies  = [...sortedCurrencies];
     } catch (er) {
       console.log(er);
+    } finally {
+      this.changeRef.detectChanges();
     }
   }
   isActiveSort(rate: string, type: string, sortBy: string) {
@@ -60,6 +67,7 @@ export class ExchangeRatesComponent implements OnInit {
            && this.allCurrencies[0].bankCurrRate.CASH
            && this.allCurrencies[0].bankCurrRate.CASH[0]) {
            this.buildRateList();
+            this.changeRef.detectChanges();
       }
     });
   }
@@ -67,6 +75,7 @@ export class ExchangeRatesComponent implements OnInit {
     const rateList = Object.keys(this.allCurrencies[0].bankCurrRate.CASH[0]);
    // this.rateList = rateList ? rateList.filter(rate => (rate !== 'OIL') && (rate !== 'GOLD')) : [];
     this.rateList = ['USD', 'EUR', 'RUB', 'TRY'];
+    this.changeRef.detectChanges();
   }
   onNextRateScroll() {
     try {
@@ -77,6 +86,8 @@ export class ExchangeRatesComponent implements OnInit {
     });
     } catch(er) {
       console.log(er);
+    } finally {
+      this.changeRef.detectChanges();
     }
   }
 
