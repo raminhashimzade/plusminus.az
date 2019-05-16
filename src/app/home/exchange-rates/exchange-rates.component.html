@@ -98,12 +98,12 @@
                       <ng-container  *ngFor="let rate of rateList">
                           <td >
                               <div class="td-content --rate">
-                                  <div class="buyRate">{{currency.bankCurrRate.CASH[0][rate]?.sellRate}}</div>
+                                  <div class="buyRate">{{currency.bankCurrRate.CASH[0][rate]?.buyRate}}</div>
                               </div>
                             </td>
                           <td class="sell --borderRight pl-0">
                               <div class="td-content --rate">
-                                  <div class="sellRate">{{currency.bankCurrRate.CASH[0][rate]?.buyRate}}</div>
+                                  <div class="sellRate">{{currency.bankCurrRate.CASH[0][rate]?.sellRate}}</div>
                               </div>
                             </td>
                       </ng-container>
