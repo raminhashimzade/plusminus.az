@@ -22,10 +22,10 @@ export class ExchangeRateVisualizeComponent implements OnInit {
   onSubmit() {
     this.data = null;
     this.loading = true;
-    console.log(parseMomentToString(this.form.value))
+   parseMomentToString(this.form.value);
     this.exchangeRateService.getcurrRateArchive(this.form.value)
       .pipe(finalize(() => {
-        setTimeout(() => this.loading  = false, 50)
+        setTimeout(() => this.loading  = false, 0)
       }))
     .subscribe((items: CurrencyArchieve[]) => {
       if (!items) {return;}

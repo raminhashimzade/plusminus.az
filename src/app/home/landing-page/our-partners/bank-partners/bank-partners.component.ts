@@ -9,6 +9,10 @@ import { Observable } from 'rxjs';
 })
 export class BankPartnersComponent implements OnInit {
   partners$: Observable<BankPartner[]>;
+  mockPartner: BankPartner = {
+    bankID: 1,
+    bankWebSite: 'http://www.azerturkbank.az'
+  }
   constructor(private homeService: HomeService) {
     this.partners$ = this.homeService.getBankList(true);
   }
