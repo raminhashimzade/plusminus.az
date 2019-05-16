@@ -13,7 +13,6 @@ export class FavorableRatesPreviewComponent implements OnInit {
   constructor(private homeService: HomeService) {
     this.homeService.getcurrBestRateList().subscribe(res => {
       this.rates = res;
-      console.log(res);
     });
   }
 

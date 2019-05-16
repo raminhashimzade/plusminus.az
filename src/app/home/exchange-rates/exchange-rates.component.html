@@ -25,15 +25,13 @@
   <div class="row">
     <div class="col-12">
       <div class="exchange-rates-full">
-          <div class="arrows">
+          <div class="arrows" >
+          <button mat-mini-fab class="arrow --next" (click)="onNextRateScroll()" >
+              <mat-icon inline="true">arrow_forward_ios</mat-icon>
+            </button>
+        </div>
 
-              <!-- <button mat-mini-fab class="arrow --next" >
-                  <mat-icon inline="true">arrow_forward_ios</mat-icon>
-                </button> -->
-
-          </div>
-
-        <div class="exchange-rates-full__table">
+        <div class="exchange-rates-full__table" >
 
            <ng-container *ngIf="allCurrencies && allCurrencies[0] else all_rates_loader">
               <table class="table" >

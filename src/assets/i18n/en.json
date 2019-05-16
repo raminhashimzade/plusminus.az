@@ -89,5 +89,14 @@
   "~removeFromCompareList": "Remove from compare",
   "~monthlyPayment": "Monthly payment",
   "~orderLoan": "Order",
-  "~addToCart": "Add to cart"
+  "~addToCart": "Add to cart",
+  "~loanAmount": "Loan Amount",
+  "~loanPeriod": "Loan Period",
+  "~documents": "Documents",
+  "~requirements": "Requirements",
+  "~effectiveRate": "Effective Rate",
+  "~dateFrom": "Date from",
+  "~dateUntil": "Date until",
+  "~buying": "Buying",
+  "~selling": "Selling"
 }

@@ -5,6 +5,7 @@ import { LoanProduct } from '../../loans/models/loanProduct.model';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { LoanRequestDialogComponent } from '../../loans/loan-request-dialog/loan-request-dialog.component';
+import { isMobileSize } from 'src/app/app.utils';
 
 @Component({
   selector: 'loan-compare-preview',
@@ -36,10 +37,10 @@ export class LoanComparePreviewComponent implements OnInit {
       autoFocus: false,
       maxWidth: '99vw',
       disableClose: true,
+      position: isMobileSize() && {top: '0'},
       data: {
         requestBankId: requestBankId
       }
-    //  backdropClass: 'loanRequestDialogBackdrop'
     });
   }
 

@@ -7,7 +7,7 @@
 
 @mixin loader-text {
   background: linear-gradient(-90deg, #efefef 0%, #fcfcfc 50%, #efefef 100%);
-  border-radius: 15px;
+  border-radius: 0.9375rem;
   background-size: 400% 400%;
   animation: pulse 1.2s ease-in-out infinite;
   @keyframes pulse {
@@ -27,32 +27,32 @@ table {
   width: 100%;
   background: #ffffff;
   .col {
-    width: 150px;
+    width: 9.375rem;
     &:first-child {
-    width: 200px;
+    width: 12.5rem;
   }
 }
   thead {
     color: rgba(0, 0, 0, 0.54);
     th {
-      padding: 0.8rem 0;
-      border-bottom: .5px solid #f3f3f3;
+      padding: 12.8px 0;
+      border-bottom: 0.0313rem solid #f3f3f3;
       p {
        @include loader-text();
-       height: 20px;
-       width: 120px;
-       // padding-left: 15px;
-     //   width: 170px;
+       height: 1.25rem;
+       width: 7.5rem;
+       // padding-left: 0.9375rem;
+     //   width: 10.625rem;
       }
     }
   }
   td {
-    padding: 0.6rem 0;
-    border-bottom: .5px solid #f3f3f3;
+    padding: 9.6px 0;
+    border-bottom: 0.0313rem solid #f3f3f3;
     p {
       @include loader-text();
-      height: 21px;
-      width:100px;
+      height: 1.3125rem;
+      width:6.25rem;
     }
   }
   tr:nth-child(3n+1) {

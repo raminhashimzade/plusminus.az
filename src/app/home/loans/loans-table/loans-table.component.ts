@@ -98,7 +98,8 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
       panelClass: 'loanRequestDialog',
       autoFocus: false,
       maxWidth: '90vw',
-      disableClose: true
+      disableClose: true,
+      position: isMobileSize() && {top: '0'}
     });
 
   }

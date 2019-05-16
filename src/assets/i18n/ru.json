@@ -110,5 +110,7 @@
   "~removeFromCompareList": "Удалить сравнение",
   "~monthlyPayment": "Ежемесячный платеж",
   "~orderLoan": "Заказать",
-  "~addToCart": "Добавить в корзину"
+  "~addToCart": "Добавить в корзину",
+  "~buying": "Покупка",
+  "~selling": "Продажа"
 }

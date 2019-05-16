@@ -39,6 +39,7 @@
   .exchange-rates-full__table {
     width: 100%;
     overflow-x: auto;
+    position: relative;
     table {
       width: 100%;
       th:first-child, td:first-child {
@@ -107,21 +108,26 @@
 
 
 .arrows {
-  width: 100%;
+  width: auto;
   display: flex;
   justify-content: space-between;
-  position: sticky;
-  top: 90px;
-  z-index: 10;
+  position: -webkit-sticky;
+  position: absolute;
+  top: 3px;
+  z-index: 998;
   height: 0;
+  right: 6px;
 
   .arrow {
       font-size: 18px;
+     cursor: pointer;
+
       &.--prev {
         transform: translateX(-25px) rotateY(180deg) ;
       }
       &.--next {
-      transform: translateX(25px);
+        cursor: pointer;
+     // transform: translateX(25px);
       }
   }
 }
