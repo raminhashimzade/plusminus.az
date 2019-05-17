@@ -10,7 +10,7 @@
           </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row" >
     <div class="col-12">
         <div class="loans__table">
           <div id="loans-table-filter" class="loans__table__filter">
@@ -53,7 +53,7 @@
         </div>
           <div class="loans__table__content">
               <table-loader *ngIf="loading"></table-loader>
-              <table id="loans-table" *ngIf="!loading">
+              <table id="loans-table" *ngIf="loanProducts && !loading">
                 <thead>
                   <th>
                     <div class="th-wrapper">

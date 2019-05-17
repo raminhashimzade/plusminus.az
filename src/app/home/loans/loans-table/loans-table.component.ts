@@ -89,7 +89,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     )
       .subscribe(res => {
         // this.loanProducts = res || MoockLoansData;
-        this.loanProducts = res.slice(0, 20);
+        this.loanProducts = res;
         switchToView('#loans-table-filter');
       })
   }
