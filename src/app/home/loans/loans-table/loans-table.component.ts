@@ -5,10 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoanRequestDialogComponent } from '../loan-request-dialog/loan-request-dialog.component';
 import { NgForm } from '@angular/forms';
 import { Subject, Observable } from 'rxjs';
-import { takeUntil, finalize, skipWhile, map } from 'rxjs/operators';
+import { takeUntil, finalize, map } from 'rxjs/operators';
 import { switchToView, isMobileSize } from 'src/app/app.utils';
 import { Router, ActivatedRoute } from '@angular/router';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'loans-table',
@@ -21,6 +20,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('table') table: ElementRef;
   loanProducts: LoanProduct[];
   expandedNode: string;
+  sortState: {sortKey: string, sortBy: string};
   currentFormValues = {
     withEmpReference: true,
     withCollateral: false,
@@ -89,7 +89,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     )
       .subscribe(res => {
         // this.loanProducts = res || MoockLoansData;
-        this.loanProducts = res;
+        this.loanProducts = res.slice(0, 20);
         switchToView('#loans-table-filter');
       })
   }
@@ -144,7 +144,30 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
         this.currentFormValues = formValue;
         this.getListLoanProducts(formValue);
       }
-    })
+    });
+  }
+  onSort(sortKey: string, sortBy: string) {
+    if (sortBy === 'asc') {
+      this.loanProducts = [...this.loanProducts].sort((a, b) => {
+        if (a[sortKey] > b[sortKey]) {return 1;}
+        if (a[sortKey] < b[sortKey]) {return -1;}
+        return 0;
+      });
+    } else {
+      this.loanProducts = [...this.loanProducts].sort((a, b) => {
+        if (a[sortKey] > b[sortKey]) {return -1;}
+        if (a[sortKey] < b[sortKey]) {return 1;}
+        return 0;
+      });
+    }
+    this.sortState = {sortKey, sortBy};
+    this.changeRef.detectChanges();
+  }
+  isActiveSort(sortKey, sortBy): boolean {
+    if (!this.sortState) {return false;}
+   // console.log(this.sortState)
+   // console.log(JSON.stringify(this.sortState) === JSON.stringify({sortKey, sortBy}))
+    return JSON.stringify(this.sortState) === JSON.stringify({sortKey, sortBy});
   }
 
 }

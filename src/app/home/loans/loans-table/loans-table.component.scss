@@ -39,6 +39,20 @@
                         font-weight: 300;
                         letter-spacing: -0.0075rem;
                         text-align: center;
+                        .sorting {
+                          display: flex;
+                          justify-content: center;
+                          padding-top: 5px;
+                          .sorting__arrow {
+                            cursor: pointer;
+                            color: rgba(0,0,0,.87);
+                            transition: color 100ms ease-in-out;
+                            &.active {
+                               color: var(--primary-default);
+                            }
+                          }
+
+                        }
                     }
                  }
              }

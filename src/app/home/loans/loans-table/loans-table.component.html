@@ -58,27 +58,67 @@
                   <th>
                     <div class="th-wrapper">
                         {{'~bank' | translate | titlecase}}
+                        <div class="sorting" >
+                          <span class="sorting__arrow" (click)="onSort('bankName',  'asc')" [ngClass]="{'active': isActiveSort('bankName', 'asc')}" >
+                              <mat-icon>keyboard_arrow_up</mat-icon>
+                            </span>
+                            <span class="sorting__arrow" (click)="onSort('bankName',  'desc')" [ngClass]="{'active': isActiveSort('bankName', 'desc')}">
+                               <mat-icon>keyboard_arrow_down</mat-icon>
+                            </span>
+                       </div>
                     </div>
                   </th>
                   <th>
                     <div class="th-wrapper">
                         {{'~loanName' | translate | titlecase}}
+                        <!-- <div class="sorting" >
+                          <span class="sorting__arrow" (click)="onSort('loanName', 'asc')" [ngClass]="{'active': isActiveSort('loanName', 'asc')}" >
+                              <mat-icon>keyboard_arrow_up</mat-icon>
+                            </span>
+                            <span class="sorting__arrow" (click)="onSort('loanName', 'desc')" [ngClass]="{'active': isActiveSort('loanName', 'desc')}">
+                               <mat-icon>keyboard_arrow_down</mat-icon>
+                            </span>
+                       </div> -->
                     </div>
                   </th>
                   <th>
                       <div class="th-wrapper">
                        {{'~effectiveRate' | translate | titlecase}}
+                       <div class="sorting" >
+                        <span class="sorting__arrow" (click)="onSort('minRate', 'asc')" [ngClass]="{'active': isActiveSort('minRate', 'asc')}" >
+                            <mat-icon>keyboard_arrow_up</mat-icon>
+                          </span>
+                          <span class="sorting__arrow" (click)="onSort('minRate', 'desc')" [ngClass]="{'active': isActiveSort('minRate', 'desc')}">
+                             <mat-icon>keyboard_arrow_down</mat-icon>
+                          </span>
+                     </div>
                      </div>
                   </th>
                   <th>
                     <div class="th-wrapper">
                         {{'~amount' | translate | titlecase}}
+                        <div class="sorting" >
+                          <span class="sorting__arrow" (click)="onSort('minAmount', 'asc')" [ngClass]="{'active': isActiveSort('minAmount', 'asc')}" >
+                              <mat-icon>keyboard_arrow_up</mat-icon>
+                            </span>
+                            <span class="sorting__arrow" (click)="onSort('minAmount', 'desc')" [ngClass]="{'active': isActiveSort('minAmount', 'desc')}">
+                               <mat-icon>keyboard_arrow_down</mat-icon>
+                            </span>
+                       </div>
                     </div>
                   </th>
 
                   <th>
                     <div class="th-wrapper">
                         {{'~monthlyPayment' | translate | titlecase}}
+                        <div class="sorting" >
+                          <span class="sorting__arrow" (click)="onSort('minMonthlyPayment', 'asc')" [ngClass]="{'active': isActiveSort('minMonthlyPayment', 'asc')}" >
+                              <mat-icon>keyboard_arrow_up</mat-icon>
+                            </span>
+                            <span class="sorting__arrow" (click)="onSort('maxMonthlyPayment', 'desc')" [ngClass]="{'active': isActiveSort('maxMonthlyPayment', 'desc')}">
+                               <mat-icon>keyboard_arrow_down</mat-icon>
+                            </span>
+                       </div>
                     </div>
                   </th>
 
