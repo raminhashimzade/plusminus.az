@@ -26,7 +26,6 @@
             <button mat-menu-item [disabled]="true">{{ '~debit-cards' | translate }}</button>
             <button mat-menu-item [disabled]="true">{{ '~auctions' | translate }}</button>
             <button mat-menu-item [routerLink]="['exchange-rates']" routerLinkActive="active" >{{ '~exchange-rates' | translate }}</button>
-            <button mat-menu-item [disabled]="true">{{ '~forBanks' | translate }}</button>
           </mat-menu>
         </div>
         <div class="header__links d-none d-lg-flex">
@@ -49,9 +48,6 @@
             {{ '~exchange-rates' | translate }}
           </a>
 
-          <a class="link disabled">
-            {{ '~forBanks' | translate }}
-          </a>
         </div>
 
         <div class="header__loanCompare"  hoverClass ="expanded" id="compare-cart">

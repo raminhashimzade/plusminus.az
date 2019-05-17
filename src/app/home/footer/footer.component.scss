@@ -19,8 +19,8 @@
     margin-bottom: 0.25rem;
     cursor: pointer;
 
-    &.--about {
-        margin-bottom: 0.8125rem;
+    &.--about, &.--contacts {
+       margin-bottom: 0.8125rem;
     }
 
 }

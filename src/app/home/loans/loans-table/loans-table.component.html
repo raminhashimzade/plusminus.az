@@ -180,7 +180,7 @@
                           [queryParams]="{lnID: loan.lnID}"
                           >{{'~detailed' | translate}}</button>
                           <button mat-raised-button color="accent" fly-to-cart [id]="loan?.lnID"
-                           [disabled]="canAddProductToCompare(loan?.lnID)"
+                           [disabled]="(canAddProductToCompare(loan?.lnID) | async)"
                             (click)="onAddProductToCompare(loan)">{{'~addToCart' | translate}}</button>
                       </div>
                     </td>

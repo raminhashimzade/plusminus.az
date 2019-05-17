@@ -4,10 +4,11 @@ import { LoanProduct } from '../models/loanProduct.model';
 import { MatDialog } from '@angular/material/dialog';
 import { LoanRequestDialogComponent } from '../loan-request-dialog/loan-request-dialog.component';
 import { NgForm } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { takeUntil, finalize } from 'rxjs/operators';
+import { Subject, Observable } from 'rxjs';
+import { takeUntil, finalize, skipWhile, map } from 'rxjs/operators';
 import { switchToView, isMobileSize } from 'src/app/app.utils';
 import { Router, ActivatedRoute } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'loans-table',
@@ -123,8 +124,9 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.loansService.addProductToCompare(loan);
     this.changeRef.detectChanges();
   }
-  canAddProductToCompare(loanID: number) {
-    return this.loansService.compareProductList.find(p => p.lnID === loanID);
+  canAddProductToCompare(loanID: number): Observable<boolean> {
+    return this.loansService.getSavedCompareProductList()
+      .pipe(map((loans: LoanProduct[]) => !!loans.find(l => l.lnID === loanID)));
   }
   listenToRouterParams() {
     this.route.params.subscribe(res => {
