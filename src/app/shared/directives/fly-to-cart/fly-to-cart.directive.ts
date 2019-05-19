@@ -34,15 +34,6 @@ export class FlyToCartDirective implements OnInit{
     imgClone.style.zIndex = '9999';
     parentElem.append(imgClone);
 
-    // console.log('offsetLeft', offsetLeft)
-    // console.log('offsetTop', offsetTop);
-    // console.log('parentEl', parentElem);
-    // console.log(imgElem);
-    // console.log(imgElem.getBoundingClientRect());
-    // console.log(offsetTopCart);
-    // console.log(heightCart);
-    // console.log(cartElem.offsetLeft)
-    // console.log((offsetLeftCart+widthCart/2) )
     setTimeout(() => {
       imgClone.style.height = '50px';
       imgClone.style.top = (cartElem.offsetTop) +'px';
@@ -57,7 +48,7 @@ export class FlyToCartDirective implements OnInit{
     }, 1000);
     setTimeout(function () {
       cartElem.classList.remove('shakeit');
-      imgClone.remove();
+    //  imgClone.remove();
     }, 1500);
   }
 

@@ -219,7 +219,7 @@
                           color="primary" routerLink="/home/loans/compare"
                           [queryParams]="{lnID: loan.lnID}"
                           >{{'~detailed' | translate}}</button>
-                          <button mat-raised-button color="accent" fly-to-cart [id]="loan?.lnID"
+                          <button mat-raised-button color="accent" [id]="loan?.lnID"
                            [disabled]="(canAddProductToCompare(loan?.lnID) | async)"
                             (click)="onAddProductToCompare(loan)">{{'~addToCart' | translate}}</button>
                       </div>
