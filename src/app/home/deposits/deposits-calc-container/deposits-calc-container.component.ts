@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { DepositService } from '../deposit.service';
 import { MatSliderChange } from '@angular/material';
+import { Router } from '@angular/router';
 import { DepositCalcForm } from '../models/deposit-calc-form.model';
 
 @Component({
@@ -13,11 +14,14 @@ import { DepositCalcForm } from '../models/deposit-calc-form.model';
 })
 export class DepositsCalcContainerComponent implements OnInit, AfterViewInit {
   @ViewChild('f') form: NgForm;
-  @Output() formChange = new EventEmitter<DepositCalcForm>();
   depositCurrency = 'AZN';
   depositPeriods$: Observable<any>;
   slideValue: number;
-  constructor(private translateService: TranslateService, private depositService: DepositService) {
+  constructor(
+      private translateService: TranslateService,
+      private depositService: DepositService,
+      private router: Router
+     ) {
     this.depositPeriods$ = this.depositService.listDepositPeriod();
   }
 
@@ -28,7 +32,12 @@ export class DepositsCalcContainerComponent implements OnInit, AfterViewInit {
   }
   listenToformChange() {
     this.form.valueChanges.subscribe(res => {
-      this.formChange.next(this.form.value);
+      if (!this.form.value.depositAmount || !this.form.value.depositCurrency || !this.form.value.depositPeriod) {return;}
+      this.router.navigate(['/home/deposits',
+         { depositAmount: this.form.value.depositAmount,
+         depositCurrency: this.form.value.depositCurrency,
+         depositPeriod: this.form.value.depositPeriod
+        } as DepositCalcForm]);
     });
   }
   getErrorMessage(controlKey: string) {

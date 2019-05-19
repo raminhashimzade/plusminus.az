@@ -3,8 +3,8 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12">
-        <div class="loans__request">
-            <button mat-raised-button color="primary" class="loans__request__btn" (click)="onRequestLoansFromAllBanks()">
+        <div class="products__request">
+            <button mat-raised-button color="primary" class="products__request__btn" (click)="onRequestLoansFromAllBanks()">
               {{'~requestLoansFromAllBanks' | translate}}
             </button>
           </div>
@@ -12,36 +12,36 @@
   </div>
   <div class="row" >
     <div class="col-12">
-        <div class="loans__table">
-          <div id="loans-table-filter" class="loans__table__filter">
+        <div class="products__table">
+          <div id="loans-table-filter" class="products__table__filter">
 
 
               <form #f="ngForm">
 
-                  <div class="loans__table__filter__btn --ck-button">
+                  <div class="products__table__filter__btn --ck-button">
                       <label>
                          <input type="checkbox" value="false" ngModel name ="withEmpReference"><span>{{'~withEmpReference' | translate |titlecase}}</span>
                       </label>
                    </div>
 
-                  <div class="loans__table__filter__btn --ck-button">
+                  <div class="products__table__filter__btn --ck-button">
                       <label>
                          <input type="checkbox" value="false" ngModel name ="withCollateral"><span>{{'~withCollateral' | translate |titlecase}}</span>
                       </label>
                    </div>
 
-                  <div class="loans__table__filter__btn --ck-button">
+                  <div class="products__table__filter__btn --ck-button">
                       <label>
                          <input type="checkbox" value="false" ngModel name ="withGracePeriod"><span>{{'~withGracePeriod' | translate |titlecase}}</span>
                       </label>
                    </div>
 
-                  <div class="loans__table__filter__btn --ck-button">
+                  <div class="products__table__filter__btn --ck-button">
                       <label>
                          <input type="checkbox" value="false" ngModel name ="comissionCash"><span>{{'~commissionCash' | translate |titlecase}}</span>
                       </label>
                    </div>
-                  <div class="loans__table__filter__btn --ck-button">
+                  <div class="products__table__filter__btn --ck-button">
                       <label>
                          <input type="checkbox" value="false" ngModel name ="comissionLoan"><span>{{'~commissionLoan' | translate |titlecase}}</span>
                       </label>
@@ -51,7 +51,7 @@
 
 
         </div>
-          <div class="loans__table__content">
+          <div class="products__table__content">
               <table-loader *ngIf="loading"></table-loader>
               <table id="loans-table2" class="table plus-minus" *ngIf="loanProducts && !loading">
                 <thead>
@@ -129,9 +129,9 @@
                 <tbody>
                   <tr *ngFor="let loan of loanProducts" [attr.loan-id]="loan.lnID">
                     <td valign="top">
-                      <div class="td-content loans__table__content__bank"
+                      <div class="td-content products__table__content__bank"
                       >
-                          <div class="loans__table__content__bank__icon" >
+                          <div class="products__table__content__bank__icon" >
                              <img  src="./assets/icons/banks/{{loan.bankID}}.svg" alt="{{loan.bankName}}" [attr.loan-img-id]="loan.lnID">
                           </div>
                           <div class="expand-icon"  (click)="onExpandToggle(loan.lnID)" [ngClass]="{'--top' : (expandedNode === loan.lnID)}">
