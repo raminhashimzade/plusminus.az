@@ -24,7 +24,9 @@
      }
      .loans__table__content {
         margin: 1rem 0;
+        overflow: auto;
          table {
+           table-layout: fixed;
              width: 100%;
              border: 1px solid rgba(0, 0, 0, 0.12);
              background: #ffffff;
