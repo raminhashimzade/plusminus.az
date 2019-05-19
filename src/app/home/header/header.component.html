@@ -20,7 +20,7 @@
         <div class="header__links d-lg-none">
           <button class="header__links__menu" mat-button [matMenuTriggerFor]="menu">Menu</button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item [disabled]="true">{{ '~deposits' | translate }}</button>
+            <button mat-menu-item [routerLink]="['deposits']" routerLinkActive="active" >{{ '~deposits' | translate }} </button>
             <button mat-menu-item [routerLink]="['loans']" routerLinkActive="active">{{ '~loans' | translate }}</button>
             <button mat-menu-item [disabled]="true">{{ '~credit-cards' | translate }}</button>
             <button mat-menu-item [disabled]="true">{{ '~debit-cards' | translate }}</button>
@@ -29,7 +29,7 @@
           </mat-menu>
         </div>
         <div class="header__links d-none d-lg-flex">
-          <a class="link disabled">
+          <a class="link" [routerLink]="['deposits']" routerLinkActive="active">
             {{ '~deposits' | translate }}
           </a>
           <a class="link" [routerLink]="['loans']" routerLinkActive="active"  >

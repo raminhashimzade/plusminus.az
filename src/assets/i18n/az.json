@@ -103,5 +103,9 @@
      "~buying": "alış",
      "~selling": "satış",
      "~datefrom": "Başlanğıc tarixi",
-     "~dateUntil": "Bitmə tarixi"
+     "~dateUntil": "Bitmə tarixi",
+     "~depositAmount": "Depozit məbləği",
+     "~depositCurrency": "Depozit valyutası",
+     "~depositPeriod": "Depozit müddəti"
+
   }

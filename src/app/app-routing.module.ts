@@ -23,6 +23,11 @@ const routes: Routes = [
           './home/loans/loans.module#LoansModule'
       },
       {
+        path: 'deposits',
+        loadChildren:
+          './home/deposits/deposits.module#DepositsModule'
+      },
+      {
         path: 'exchange-rates',
         loadChildren:
           './home/exchange-rates/exchange-rates.module#ExchangeRatesModule'

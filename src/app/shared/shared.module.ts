@@ -6,11 +6,13 @@ import { RatingModule } from '../home/rating/rating.module';
 import { ReadMoreModule } from './directives/read-more/read-more.module';
 import { TableLoaderModule } from '../home/table-loader/table-loader.module';
 import { CountUpModule } from 'countup.js-angular2';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
   imports: [
     SharedTranslateModule,
+    FormsModule,
     MaterialModule,
     RatingModule,
     ReadMoreModule,
@@ -20,6 +22,7 @@ import { CountUpModule } from 'countup.js-angular2';
   ],
   exports: [
     SharedTranslateModule,
+    FormsModule,
     MaterialModule,
     RatingModule,
     ReadMoreModule,

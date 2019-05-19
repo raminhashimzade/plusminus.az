@@ -1,0 +1,77 @@
+<form #f="ngForm" >
+  <div class="box">
+    <div class="box__header">
+      <div class="box__header__title">
+        {{'~deposits' | translate}}
+      </div>
+    </div>
+    <div class="box__content container-fluid">
+
+      <div class="row">
+        <div class="col-12 col-sm-4  col-md-3 ">
+            <div class="box__content__field">
+              <div class="box__content__field__title">
+                {{'~depositAmount' | translate}}
+              </div>
+              <div class="box__content__field__value">
+                  {{slideValue}}
+              </div>
+                <mat-slider class="slider"
+                color="accent"
+                [max]="'100000'"
+                [min]="'0'"
+                [step]="'1000'"
+                ngModel
+                name="depositAmount"
+                (input)="onSlideMove($event)"
+                >
+              </mat-slider>
+            </div>
+
+
+        </div>
+
+        <div class="col-12 col-sm-4  col-md-3  col-lg-2">
+            <div class="box__content__field">
+                <mat-form-field class="select-field --currency" >
+                  <mat-label>{{'~depositCurrency' | translate}}</mat-label>
+                    <mat-select
+                      name="depositCurrency"
+                      [ngModel]="depositCurrency"
+                      required
+                    >
+                      <mat-option value="AZN">AZN</mat-option>
+                      <mat-option value="USD">USD</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="f?.controls['depositCurrency']?.invalid">{{getErrorMessage('depositCurrency')}}</mat-error>
+
+                  </mat-form-field>
+              </div>
+
+        </div>
+
+        <div class="col-12 col-sm-4 col-md-3 col-lg-3">
+            <div class="box__content__field">
+                <mat-form-field class="select-field" >
+                    <mat-label>{{'~depositPeriod' | translate}}</mat-label>
+                    <mat-select class="select-field"
+                      name="depositPeriod"
+                      ngModel
+                      required
+                      placeholder="{{'~depositPeriod' | translate }}"
+                    >
+                    <mat-option *ngFor="let period of (depositPeriods$ | async)"
+                      [value]="period?.periodId"> {{period?.period}}</mat-option>
+
+                    </mat-select>
+                    <mat-error *ngIf="f?.controls['depositPeriod']?.invalid">{{getErrorMessage('depositPeriod')}}</mat-error>
+
+                  </mat-form-field>
+            </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</form>

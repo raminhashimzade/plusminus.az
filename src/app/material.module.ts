@@ -12,7 +12,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatMomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
-import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/material';
+import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS, MatSliderModule } from '@angular/material';
 import { MY_FORMATS } from './app.utils';
 
 
@@ -30,7 +30,8 @@ import { MY_FORMATS } from './app.utils';
     MatDatepickerModule,
     MatMomentDateModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSliderModule
   ],
   exports: [
     MatFormFieldModule,
@@ -45,7 +46,8 @@ import { MY_FORMATS } from './app.utils';
     MatDatepickerModule,
     MatMomentDateModule,
     MatIconModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSliderModule
   ],
   providers: [
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
