@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import './material.theme.scss';
-
+@import './table.theme.scss';
 :root {
   --primary-default: #20a62c;
   --primary-dark: #535392;
@@ -285,7 +285,7 @@ button.is-loading {
 
 
 .itemaddedanimate {
-  -webkit-transition: all ease-in-out 500000ms;
+  -webkit-transition: all ease-in-out 500ms;
 }
 
 .shakeit {

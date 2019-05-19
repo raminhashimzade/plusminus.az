@@ -25,156 +25,22 @@
      .loans__table__content {
         margin: 1rem 0;
         overflow: auto;
-         table {
-           table-layout: fixed;
-             width: 100%;
-             border: 1px solid rgba(0, 0, 0, 0.12);
-             background: #ffffff;
-             box-shadow:  0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
-             thead {
-                 th {
-                    border: 1px solid rgba(0, 0, 0, 0.12);
-                    .th-wrapper {
-                        padding: 0.8125rem 2.1875rem;
-                        font-family: 'Montserrat-Medium';
-                        color: var(--primary-default);
-                        font-size: 0.75rem;
-                        font-weight: 300;
-                        letter-spacing: -0.0075rem;
-                        text-align: center;
-                        .sorting {
-                          display: flex;
-                          justify-content: center;
-                          padding-top: 5px;
-                          .sorting__arrow {
-                            cursor: pointer;
-                            color: rgba(0,0,0,.87);
-                            transition: color 100ms ease-in-out;
-                            &.active {
-                               color: var(--primary-default);
-                            }
-                          }
-
-                        }
-                    }
-                 }
-             }
-             tbody {
-                 tr {
-                    border: 1px solid rgba(0, 0, 0, 0.12);
-                    td {
-                        text-align: center;
-                        .td-content {
-                            padding:1.4375rem 0.75rem;
-                            max-height: 8.75rem;
-                            overflow: hidden;
-                            transition: max-height 300ms ease-in-out;
-                            &.--expanded {
-                                max-height: 62.5rem
-                            }
-                            &.loans__table__content__bank {
-                                display: flex;
-                                flex-direction: column;
-                                align-items: center;
-
-                                img:after {
-                                    content: "\f1c5" " " attr(alt);
-                                    font-size: 16px;
-                                    font-family: FontAwesome;
-                                    color: rgb(100, 100, 100);
-
-                                    display: block;
-                                    position: absolute;
-                                    z-index: 2;
-                                    top: 0;
-                                    left: 0;
-                                    width: 100%;
-                                    height: 100%;
-                                    background-color: #fff;
-                                }
-
-                                .loans__table__content__bank__icon {
-                                    width: 8.125rem;
-                                    max-height: 3.125rem;
-                                    position: relative;
-                                    font-weight: 700;
-                                }
-                                .loans__table__content__bank__more {
-                                    padding: 0.75rem;
-                                    padding-top: 0.9375rem;
-                                    cursor: pointer;
-                                    color: var(--primary-default);
-                                    transition: transform 300ms ease-in-out;
-                                    &.--top {
-                                        transform: rotateX(180deg);
-                                    }
-                                }
-                            }
-                            &.loans__table__content__amount {
-                                display: flex;
-                                flex-direction: column;
-                                   .loans__table__content__amount__value {
-                                       font-family: 'Montserrat-Medium';
-                                       font-size: 0.875rem;
-                                   //    font-weight: 700;
-                                       line-height: 1.125rem;
-                                       letter-spacing: -0.0088rem;
-                                   }
-                                   .loans__table__content__amount__duration {
-                                       padding-top: 0.3125rem;
-                                       font-family: 'Montserrat-Medium';
-                                       font-size: 0.75rem;
-                                       font-weight: 300;
-                                       line-height: 1.1875rem;
-                                       letter-spacing: -0.0075rem;
-                                   }
-
-                            }
-                            &.loans__table__content__documents {
-                                display: flex;
-                                flex-direction: column;
-                                .loans__table__content__documents__item {
-                                    font-size: 0.75rem;
-                                    font-weight: 400;
-                                    line-height: 1.1875rem;
-                                    letter-spacing: -0.0075rem;
-                                    font-family: 'Montserrat-Medium';
-                                }
-                            }
-                            &.loans__table__content__requirements {
-                                .loans__table__content__requirement__item {
-                                    font-size: 0.75rem;
-                                    font-weight: 400;
-                                    line-height: 1.1875rem;
-                                    letter-spacing: -0.0075rem;
-                                    font-family: 'Montserrat-Medium';
-                                }
-                            }
-                            &.loans__table__content__popularity {
-                                display: flex;
-                                flex-direction: column;
-                                button {
-                                    margin-top: 7px;
-                                }
-                                @media (max-width: 992px) {
-                                    display: flex;
-                                    button:first-child {
-                                      // margin-right: 10px;
-                                    }
-                                }
-                           }
-
-
-
-
-                        }
-                    }
-                 }
-             }
-         }
-
+        box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0,0,0,.2);
+        border: 1px solid #e1e1e1;
+        table {
+          .td-content {
+            &.--amount {
+              min-width: 80px;
+            }
+            &.loans__table__content__bank {
+              width: 7rem;
+              margin: auto;
+            }
+          }
+        }
      }
 }
+
 
 @media (max-width: 992px) {
     .loans__table {
@@ -209,7 +75,8 @@
                 border-bottom: 1px solid #ddd;
                 display: block;
                 font-size: .8em;
-                text-align: right;
+                text-align: center;
+                height: auto;
               }
 
               table td::before {

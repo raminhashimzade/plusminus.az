@@ -32,7 +32,8 @@ export class FlyToCartDirective implements OnInit{
     imgClone.style.left = (this.element.nativeElement as HTMLElement).getBoundingClientRect().left + 'px';
     imgClone.style.opacity = '0.7';
     imgClone.style.zIndex = '9999';
-    parentElem.append(imgClone);
+    const htmlEl = document.getElementById('plus-minus');
+    htmlEl.append(imgClone);
 
     setTimeout(() => {
       imgClone.style.height = '50px';
@@ -48,7 +49,7 @@ export class FlyToCartDirective implements OnInit{
     }, 1000);
     setTimeout(function () {
       cartElem.classList.remove('shakeit');
-    //  imgClone.remove();
+     imgClone.remove();
     }, 1500);
   }
 

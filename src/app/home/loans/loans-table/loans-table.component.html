@@ -53,55 +53,47 @@
         </div>
           <div class="loans__table__content">
               <table-loader *ngIf="loading"></table-loader>
-              <table id="loans-table" *ngIf="loanProducts && !loading">
+              <table id="loans-table2" class="table plus-minus" *ngIf="loanProducts && !loading">
                 <thead>
                   <th>
-                    <div class="th-wrapper">
+                    <div class="th-content">
                         {{'~bank' | translate | titlecase}}
-                        <div class="sorting" >
-                          <span class="sorting__arrow" (click)="onSort('bankName',  'asc')" [ngClass]="{'active': isActiveSort('bankName', 'asc')}" >
+                        <div class="tableSorting" >
+                          <span class="tableSorting__arrow" (click)="onSort('bankName',  'asc')" [ngClass]="{'active': isActiveSort('bankName', 'asc')}" >
                               <mat-icon>keyboard_arrow_up</mat-icon>
                             </span>
-                            <span class="sorting__arrow" (click)="onSort('bankName',  'desc')" [ngClass]="{'active': isActiveSort('bankName', 'desc')}">
+                            <span class="tableSorting__arrow" (click)="onSort('bankName',  'desc')" [ngClass]="{'active': isActiveSort('bankName', 'desc')}">
                                <mat-icon>keyboard_arrow_down</mat-icon>
                             </span>
                        </div>
                     </div>
                   </th>
                   <th>
-                    <div class="th-wrapper">
+                    <div class="th-content">
                         {{'~loanName' | translate | titlecase}}
-                        <!-- <div class="sorting" >
-                          <span class="sorting__arrow" (click)="onSort('loanName', 'asc')" [ngClass]="{'active': isActiveSort('loanName', 'asc')}" >
-                              <mat-icon>keyboard_arrow_up</mat-icon>
-                            </span>
-                            <span class="sorting__arrow" (click)="onSort('loanName', 'desc')" [ngClass]="{'active': isActiveSort('loanName', 'desc')}">
-                               <mat-icon>keyboard_arrow_down</mat-icon>
-                            </span>
-                       </div> -->
                     </div>
                   </th>
                   <th>
-                      <div class="th-wrapper">
+                      <div class="th-content">
                        {{'~effectiveRate' | translate | titlecase}}
-                       <div class="sorting" >
-                        <span class="sorting__arrow" (click)="onSort('minRate', 'asc')" [ngClass]="{'active': isActiveSort('minRate', 'asc')}" >
+                       <div class="tableSorting" >
+                        <span class="tableSorting__arrow" (click)="onSort('minRate', 'asc')" [ngClass]="{'active': isActiveSort('minRate', 'asc')}" >
                             <mat-icon>keyboard_arrow_up</mat-icon>
                           </span>
-                          <span class="sorting__arrow" (click)="onSort('minRate', 'desc')" [ngClass]="{'active': isActiveSort('minRate', 'desc')}">
+                          <span class="tableSorting__arrow" (click)="onSort('minRate', 'desc')" [ngClass]="{'active': isActiveSort('minRate', 'desc')}">
                              <mat-icon>keyboard_arrow_down</mat-icon>
                           </span>
                      </div>
                      </div>
                   </th>
                   <th>
-                    <div class="th-wrapper">
+                    <div class="th-content">
                         {{'~amount' | translate | titlecase}}
-                        <div class="sorting" >
-                          <span class="sorting__arrow" (click)="onSort('minAmount', 'asc')" [ngClass]="{'active': isActiveSort('minAmount', 'asc')}" >
+                        <div class="tableSorting" >
+                          <span class="tableSorting__arrow" (click)="onSort('minAmount', 'asc')" [ngClass]="{'active': isActiveSort('minAmount', 'asc')}" >
                               <mat-icon>keyboard_arrow_up</mat-icon>
                             </span>
-                            <span class="sorting__arrow" (click)="onSort('minAmount', 'desc')" [ngClass]="{'active': isActiveSort('minAmount', 'desc')}">
+                            <span class="tableSorting__arrow" (click)="onSort('minAmount', 'desc')" [ngClass]="{'active': isActiveSort('minAmount', 'desc')}">
                                <mat-icon>keyboard_arrow_down</mat-icon>
                             </span>
                        </div>
@@ -109,13 +101,13 @@
                   </th>
 
                   <th>
-                    <div class="th-wrapper">
+                    <div class="th-content">
                         {{'~monthlyPayment' | translate | titlecase}}
-                        <div class="sorting" >
-                          <span class="sorting__arrow" (click)="onSort('minMonthlyPayment', 'asc')" [ngClass]="{'active': isActiveSort('minMonthlyPayment', 'asc')}" >
+                        <div class="tableSorting" >
+                          <span class="tableSorting__arrow" (click)="onSort('minMonthlyPayment', 'asc')" [ngClass]="{'active': isActiveSort('minMonthlyPayment', 'asc')}" >
                               <mat-icon>keyboard_arrow_up</mat-icon>
                             </span>
-                            <span class="sorting__arrow" (click)="onSort('maxMonthlyPayment', 'desc')" [ngClass]="{'active': isActiveSort('maxMonthlyPayment', 'desc')}">
+                            <span class="tableSorting__arrow" (click)="onSort('maxMonthlyPayment', 'desc')" [ngClass]="{'active': isActiveSort('maxMonthlyPayment', 'desc')}">
                                <mat-icon>keyboard_arrow_down</mat-icon>
                             </span>
                        </div>
@@ -123,12 +115,12 @@
                   </th>
 
                   <th>
-                    <div class="th-wrapper" *ngIf="!isMobile">
+                    <div class="th-content" *ngIf="!isMobile">
                         {{'~documents' | translate | titlecase}}
                     </div>
                   </th>
                   <th >
-                    <div class="th-wrapper" *ngIf="!isMobile">
+                    <div class="th-content" *ngIf="!isMobile">
                         {{'~requirements' | translate | titlecase}}
                     </div>
                   </th>
@@ -142,7 +134,7 @@
                           <div class="loans__table__content__bank__icon" >
                              <img  src="./assets/icons/banks/{{loan.bankID}}.svg" alt="{{loan.bankName}}" [attr.loan-img-id]="loan.lnID">
                           </div>
-                          <div class="loans__table__content__bank__more"  (click)="onExpandToggle(loan.lnID)" [ngClass]="{'--top' : (expandedNode === loan.lnID)}">
+                          <div class="expand-icon"  (click)="onExpandToggle(loan.lnID)" [ngClass]="{'--top' : (expandedNode === loan.lnID)}">
                               <i class="fas fa-chevron-down"></i>
                           </div>
                       </div>
@@ -162,18 +154,14 @@
                     </td>
 
                     <td valign="top">
-                      <div class=" td-content loans__table__content__amount" >
-                        <div class="loans__table__content__amount__value">
-
+                      <div class=" td-content --amount" >
+                        <div>
                           <span [countUp]="loan.minAmount">0</span> {{loan.currencyCode | lowercase}}
                         -  <span [countUp]="loan.maxAmount">0</span>  {{loan.currencyCode | lowercase}}
                            <br class="d-none d-sm-block">
                            <span>({{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}})</span>
 
                         </div>
-                        <div class="loans__table__content__amount__duration">
-                        </div>
-
                       </div>
                     </td>
 
@@ -199,27 +187,28 @@
                     </td>
 
                     <td valign="top"  *ngIf="(isMobile && (expandedNode === loan.lnID) ) || !isMobile">
-                      <div class=" td-content loans__table__content__documents" >
-                        <div class="loans__table__content__documents__item" *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n')">
+                      <div class=" td-content" [ngClass]="{'table-expanded' : (expandedNode === loan.lnID) || isMobile }" >
+                        <div *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n')">
                             {{item}} <br>
                         </div>
                       </div>
                     </td>
                     <td valign="top" *ngIf="(isMobile && (expandedNode === loan.lnID) ) || !isMobile ">
-                      <div class=" td-content loans__table__content__requirements" [ngClass]="{'--expanded' : (expandedNode === loan.lnID) || isMobile }"
+                      <div class=" td-content" [ngClass]="{'table-expanded' : (expandedNode === loan.lnID) || isMobile }"
                         >
-                        <div class="loans__table__content__requirement__item">
+                        <div >
                          {{loan.description | valueTranslate}}
                         </div>
                       </div>
                     </td>
-                    <td valign="top">
-                      <div class="td-content loans__table__content__popularity" >
+                    <td valign="top" class="pl-0 pr-0">
+                      <div class="td-content row-actions" >
                           <button mat-raised-button
                           color="primary" routerLink="/home/loans/compare"
                           [queryParams]="{lnID: loan.lnID}"
                           >{{'~detailed' | translate}}</button>
                           <button mat-raised-button color="accent" [id]="loan?.lnID"
+                          fly-to-cart
                            [disabled]="(canAddProductToCompare(loan?.lnID) | async)"
                             (click)="onAddProductToCompare(loan)">{{'~addToCart' | translate}}</button>
                       </div>

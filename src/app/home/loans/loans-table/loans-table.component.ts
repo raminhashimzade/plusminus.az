@@ -13,7 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   selector: 'loans-table',
   templateUrl: './loans-table.component.html',
   styleUrls: ['./loans-table.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+ changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('f') form: NgForm;
