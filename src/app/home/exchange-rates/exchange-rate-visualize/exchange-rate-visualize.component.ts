@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { parseMomentToString } from 'src/app/app.utils';
+import { parseMomentToString, deepClone } from 'src/app/app.utils';
 import { ExchangeRatesService } from '../exchange-rates.service';
 import { CurrencyArchieve } from '../models/currency-archieve.model';
 import { finalize } from 'rxjs/operators';
@@ -47,8 +47,8 @@ export class ExchangeRateVisualizeComponent implements OnInit {
   onSubmit() {
     this.data = null;
     this.loading = true;
-     parseMomentToString(this.form.value);
-    this.exchangeRateService.getcurrRateArchive(this.form.value)
+    const newFormValue = parseMomentToString(deepClone(this.form.value));
+    this.exchangeRateService.getcurrRateArchive(newFormValue)
       .pipe(finalize(() => {
         setTimeout(() => {
           this.loading  = false
@@ -62,7 +62,9 @@ export class ExchangeRateVisualizeComponent implements OnInit {
       }).reverse();
       this.data = dataSource;
       this.changeRef.detectChanges();
-      this.initChart();
-    })
+      setTimeout(() => {
+        this.initChart();
+      }, 10);
+    });
   }
 }
