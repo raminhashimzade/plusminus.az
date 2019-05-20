@@ -27,6 +27,9 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     withGracePeriod: false,
     comissionCash: false,
     comissionLoan: false,
+    loanAmount: 0,
+    loanCurrency: 'AZN',
+    loanPeriod: 0
   }
   bannerFormValues = {};
   _onDestroy$ = new Subject<void>();
@@ -43,6 +46,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.determineMobileSize();
     this.listenToRouterParams();
+    this.getListLoanProducts(this.currentFormValues);
   }
   determineMobileSize() {
     this.isMobile = isMobileSize();
