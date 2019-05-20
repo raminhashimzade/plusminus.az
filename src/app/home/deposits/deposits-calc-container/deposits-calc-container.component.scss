@@ -19,6 +19,8 @@
     }
   }
   .box__content {
+    display: flex;
+    flex-wrap: wrap;
     padding: 20px;
     .box__content__field {
       display: flex;
@@ -26,6 +28,8 @@
       justify-content: space-between;
       width: 100%;
       height: 50px;
+      width: 25%;
+      padding-right: 20px;
       .select-field {
         font-size: 16px;
         &.--currency {
@@ -60,6 +64,25 @@
           height: 40px!important;
           top: -45px;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .box {
+    .box__content {
+      .box__content__field {
+        width: 33.33%;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .box {
+    .box__content {
+      .box__content__field {
+        width: 100%;
       }
     }
   }

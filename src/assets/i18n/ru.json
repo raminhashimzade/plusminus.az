@@ -112,5 +112,8 @@
   "~orderLoan": "Заказать",
   "~addToCart": "Добавить в корзину",
   "~buying": "Покупка",
-  "~selling": "Продажа"
+  "~selling": "Продажа",
+  "~ratePerYear": "ставка в год",
+  "~yourIncome": "Ваш доход",
+  "~depositName": "Название вклада"
 }

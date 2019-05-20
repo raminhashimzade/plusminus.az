@@ -21,7 +21,9 @@ export class LoansCompareComponent implements OnInit {
   isMobile: boolean; // whether it is mobile mode
   @HostListener('window:resize', ['$event']) resize() { this.buildView()}
 
-  constructor(private loansService: LoansService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private loansService: LoansService,
+    private router: Router, private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
     const id = this.route.snapshot.queryParams['lnID'];

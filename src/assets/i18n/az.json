@@ -106,6 +106,9 @@
      "~dateUntil": "Bitmə tarixi",
      "~depositAmount": "Depozit məbləği",
      "~depositCurrency": "Depozit valyutası",
-     "~depositPeriod": "Depozit müddəti"
+     "~depositPeriod": "Depozit müddəti",
+     "~ratePerYear": "İllik faiz dərəcəsi",
+     "~yourIncome": "Sizin gƏliriniz",
+     "~depositName": "Depozit adı"
 
   }

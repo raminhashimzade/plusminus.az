@@ -4,7 +4,8 @@ import { map } from 'rxjs/operators';
 import { DataResponse } from 'src/app/models/data-reponse';
 import { HttpClient } from '@angular/common/http';
 import { DepositCalcForm } from './models/deposit-calc-form.model';
-import { of } from 'rxjs';
+import { of, Observable } from 'rxjs';
+import { DepositProduct } from './models/deposit.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,12 @@ export class DepositService {
         map(res => res && res.data)
     );
   }
-  getListDepositProducts(formValue: DepositCalcForm) {
-    return of([]);
+  getListDepositProducts(formValue: DepositCalcForm): Observable<DepositProduct[]> {
+    return this.http.post<DataResponse>('mybank/listDepositProduct', {
+      token: this.authService.getToken(),
+      ...formValue
+  }).pipe(
+      map(res => res && res.data)
+  );
   }
 }

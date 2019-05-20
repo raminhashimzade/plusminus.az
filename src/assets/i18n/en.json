@@ -98,5 +98,8 @@
   "~dateFrom": "Date from",
   "~dateUntil": "Date until",
   "~buying": "Buying",
-  "~selling": "Selling"
+  "~selling": "Selling",
+  "~ratePerYear": "Rate per year",
+  "~yourIncome": "Your income",
+  "~depositName": "Deposit name"
 }

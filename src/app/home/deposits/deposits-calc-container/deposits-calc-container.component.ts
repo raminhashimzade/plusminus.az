@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { DepositService } from '../deposit.service';
 import { MatSliderChange } from '@angular/material';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DepositCalcForm } from '../models/deposit-calc-form.model';
 
 @Component({
@@ -20,7 +20,8 @@ export class DepositsCalcContainerComponent implements OnInit, AfterViewInit {
   constructor(
       private translateService: TranslateService,
       private depositService: DepositService,
-      private router: Router
+      private router: Router,
+      private route: ActivatedRoute
      ) {
     this.depositPeriods$ = this.depositService.listDepositPeriod();
   }
@@ -29,14 +30,27 @@ export class DepositsCalcContainerComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit() {
     this.listenToformChange();
+    setTimeout(() => this.listenToRouterParams(), 10);
+  }
+  listenToRouterParams() {
+    this.route.params.subscribe(res => {
+      const depositAmount = res['depositAmount'];
+      const depositCurrency = res['depositCurrency'];
+      const depositPeriod = res['depositPeriod'];
+      if (depositAmount) {
+        this.slideValue = +depositAmount;
+      }
+      depositCurrency &&  this.form.controls['depositCurrency'].setValue(depositCurrency);
+      depositPeriod &&  this.form.controls['depositPeriod'].setValue(+depositPeriod);
+    });
   }
   listenToformChange() {
     this.form.valueChanges.subscribe(res => {
-      if (!this.form.value.depositAmount || !this.form.value.depositCurrency || !this.form.value.depositPeriod) {return;}
+      if (!this.form.value.depositAmount || !this.form.value.depositCurrency) {return;}
       this.router.navigate(['/home/deposits',
          { depositAmount: this.form.value.depositAmount,
          depositCurrency: this.form.value.depositCurrency,
-         depositPeriod: this.form.value.depositPeriod
+         depositPeriod: this.form.value.depositPeriod || ''
         } as DepositCalcForm]);
     });
   }

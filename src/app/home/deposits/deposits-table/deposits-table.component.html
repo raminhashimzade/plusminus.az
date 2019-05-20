@@ -1,50 +1,86 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <div class="col-12">
       <div class="productsTable">
-        <table class="table d-none">
-            <tr>
-                <th class="--borderRight">
-                  <div class="th-content --bank ">
-                    {{'~bank' | translate}}
-                  </div>
-                </th>
-                <th colspan="3" class="--borderRight">
-                  <div class="th-content">
-                    <div class="rateValue">rate </div>
-                  </div>
-                </th>
-              </tr>
+        <table class="table plus-minus deposits" *ngIf="!loading else table_loader">
+            <colgroup *ngIf="showColgroup">
+              <col width="150px">
+              <col>
+              <col width="200px">
+            </colgroup>
+               <thead>
+                  <th class="--borderRight">
+                      <div class="th-content --bank ">
+                        {{'~bank' | translate}}
+                      </div>
+                    </th>
+                    <th  class="--borderRight">
+                    </th>
+                    <th></th>
+               </thead>
 
-              <tr>
+                <tbody>
+                    <tr *ngFor="let product of depositProducts">
 
-                <th>
-                  <div class="th-content">
-                      Bank
-                  </div>
-                </th>
+                        <td>
+                          <div class="td-content products__table__content__bank">
+                            <div class="products__table__content__bank__icon" >
+                              <img  src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.dpID">
+                           </div>
+                           <!-- <div class="expand-icon"  (click)="onExpandToggle(product.dpID)" [ngClass]="{'--top' : (expandedNode === product.lnID)}">
+                               <i class="fas fa-chevron-down"></i>
+                           </div> -->
+                          </div>
+                        </td>
 
-                <th>
-                  <div class="th-content">
-                    12
-                  </div>
-                </th>
+                        <td>
+                          <div class="td-content">
+                              <div class="productName">
+                                  {{'~depositName' | translate}} "{{product?.depositName | valueTranslate}}"
+                                </div>
+                               <div class="productInfo">
 
-                <th>
-                  <div class="th-content">
-                      r3
-                  </div>
-                </th>
-                <th>
-                  <div class="th-content">
-                      r5
-                  </div>
-                </th>
+                                <div class="productInfo__rate">
+                                    <p>{{product.minRate}} %</p>
+                                    <p>{{'~ratePerYear' | translate}} </p>
+                                </div>
 
+                                <div class="productInfo__liqType">
+                                    {{product.liqType}}
+                                </div>
 
-              </tr>
+                                <div class="productInfo__income">
+                                    <p>+{{product.income}} {{product.currencyCode}}</p>
+                                    <p>{{'~yourIncome' | translate}} </p>
+                                </div>
+                            </div>
+                          </div>
+                        </td>
+
+                        <td>
+                          <div class="td-content row-actions">
+                              <button mat-raised-button
+                              [disabled]="true"
+                              color="primary" routerLink="/dome/loans/compare"
+                              [queryParams]="{dpID: product.dpID}"
+                              >{{'~detailed' | translate}}</button>
+
+                            <button mat-raised-button color="accent" [id]="product?.dpID"
+                             fly-to-cart
+                              [disabled]="(canAddProductToCompare(product?.dpID) | async)"
+                              (click)="onAddProductToCompare(product)">{{'~addToCart' | translate}}</button>
+                          </div>
+
+                        </td>
+
+                      </tr>
+                </tbody>
         </table>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #table_loader>
+    <table-loader></table-loader>
+</ng-template>
