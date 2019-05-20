@@ -5,6 +5,7 @@ import { ExchangeRatesService } from '../exchange-rates.service';
 import { CurrencyArchieve } from '../models/currency-archieve.model';
 import { finalize } from 'rxjs/operators';
 import { ExchangeRate } from '../models/exchange-rate.model';
+import { TranslateService } from '@ngx-translate/core';
 declare var google: any;
 @Component({
   selector: 'exchange-rate-visualize',
@@ -17,7 +18,10 @@ export class ExchangeRateVisualizeComponent implements OnInit {
   dataSource: any;
   data: any;
   loading: boolean;
-  constructor(private exchangeRateService: ExchangeRatesService, private changeRef: ChangeDetectorRef) { }
+  constructor(private exchangeRateService: ExchangeRatesService,
+     private changeRef: ChangeDetectorRef,
+     private translateService: TranslateService
+     ) { }
 
   ngOnInit() {
 
@@ -28,33 +32,28 @@ export class ExchangeRateVisualizeComponent implements OnInit {
   }
   drawChart() {
     const data = new google.visualization.DataTable();
-    data.addColumn('string', 'Tarix');
-    data.addColumn('number', 'USD');
+  data.addColumn('string', this.translateService.instant('~date'));
+    data.addColumn('number', this.form.value.currencyCode);
     data.addRows(this.data);
-
     const options = {
       chart: {
-        title: 'Valyuta dəyişmə qrafikasl',
-        subtitle: '(USD)'
+        title: this.translateService.instant('~exchangeVisualizeChart'),
+        subtitle: this.form.value.currencyCode
       }
     };
-
-    const chart = new google.charts.Line(document.getElementById('linechart_material'));
-
-    chart.draw(data, google.charts.Line.convertOptions(options));
+    this.loading = false;
     this.changeRef.detectChanges();
+    setTimeout(() => {
+      const chart = new google.charts.Line(document.getElementById('linechart_material'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+      this.changeRef.detectChanges();
+    });
   }
   onSubmit() {
     this.data = null;
     this.loading = true;
     const newFormValue = parseMomentToString(deepClone(this.form.value));
     this.exchangeRateService.getcurrRateArchive(newFormValue)
-      .pipe(finalize(() => {
-        setTimeout(() => {
-          this.loading  = false
-          this.changeRef.detectChanges();
-        }, 0);
-      }))
     .subscribe((items: CurrencyArchieve[]) => {
       if (!items) {return;}
       const dataSource = items.map(item => {
@@ -62,9 +61,7 @@ export class ExchangeRateVisualizeComponent implements OnInit {
       }).reverse();
       this.data = dataSource;
       this.changeRef.detectChanges();
-      setTimeout(() => {
-        this.initChart();
-      }, 10);
+      this.initChart();
     });
   }
 }

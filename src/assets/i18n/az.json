@@ -109,6 +109,8 @@
      "~depositPeriod": "Depozit müddəti",
      "~ratePerYear": "İllik faiz dərəcəsi",
      "~yourIncome": "Sizin gƏliriniz",
-     "~depositName": "Depozit adı"
+     "~depositName": "Depozit adı",
+     "~date": "Tarix",
+     "~exchangeVisualizeChart": "Valyuta dəyişmə qrafikası"
 
   }

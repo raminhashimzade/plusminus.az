@@ -115,5 +115,7 @@
   "~selling": "Продажа",
   "~ratePerYear": "ставка в год",
   "~yourIncome": "Ваш доход",
-  "~depositName": "Название вклада"
+  "~depositName": "Название вклада",
+  "~date": "Дата",
+  "~exchangeVisualizeChart": "Графика обмена валют"
 }

@@ -101,5 +101,7 @@
   "~selling": "Selling",
   "~ratePerYear": "Rate per year",
   "~yourIncome": "Your income",
-  "~depositName": "Deposit name"
+  "~depositName": "Deposit name",
+  "~date": "Date",
+  "~exchangeVisualizeChart": "Exchange rate visual graphic"
 }
