@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, HostListener, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { LoansService } from '../loans.service';
 import { LoanProduct } from '../models/loanProduct.model';
@@ -38,13 +39,16 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   isMobile: boolean;
   loading: boolean;
   sortState: SortChangeModel;
+  showFilters: boolean;
   @HostListener('window:resize', ['$event']) resize() {this.determineMobileSize(); }
 
   constructor(
     private loansService: LoansService,
      private dialog: MatDialog,
       private changeRef: ChangeDetectorRef,
-       private route: ActivatedRoute) { }
+       private route: ActivatedRoute,
+       private breakpointObserver: BreakpointObserver
+       ) { }
 
   ngOnInit() {
     this.determineMobileSize();
@@ -53,6 +57,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   determineMobileSize() {
     this.isMobile = isMobileSize();
+   this.showFilters =  !this.breakpointObserver.isMatched('(max-width: 992px)');
     this.changeRef.detectChanges();
   }
 
