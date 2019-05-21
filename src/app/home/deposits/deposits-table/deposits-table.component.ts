@@ -1,11 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef, HostListener } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, HostListener, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DepositCalcForm } from '../models/deposit-calc-form.model';
 import { DepositService } from '../deposit.service';
-import { finalize } from 'rxjs/operators';
+import { finalize, takeUntil } from 'rxjs/operators';
 import { switchToView, isMobileSize } from 'src/app/app.utils';
 import { DepositProduct } from '../models/deposit.model';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-change.model';
 import { SortStates } from 'src/app/shared/directives/order-by-column/sort-states.enum';
@@ -14,9 +14,10 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'deposits-table',
   templateUrl: './deposits-table.component.html',
-  styleUrls: ['./deposits-table.component.scss']
+  styleUrls: ['./deposits-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DepositsTableComponent implements OnInit {
+export class DepositsTableComponent implements OnInit, OnDestroy {
   currentFormValues: DepositCalcForm;
   loading: boolean;
   depositProducts: DepositProduct[];
@@ -24,6 +25,7 @@ export class DepositsTableComponent implements OnInit {
   showColgroup: boolean;
   sortState: SortChangeModel;
   showFilters: boolean;
+  _onDestroy$ = new Subject<void>();
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange()}
   constructor(
     private route: ActivatedRoute,
@@ -47,13 +49,19 @@ export class DepositsTableComponent implements OnInit {
       depositCurrency: 'AZN'
     } as DepositCalcForm;
     this.getListDepositProducts(data);
+    this.changeRef.detectChanges();
+  }
+  ngOnDestroy() {
+    this._onDestroy$.next();
   }
   updateForLayoutChange() {
     this.showColgroup = this.breakpointObserver.isMatched('(min-width: 768px)');
     this.showFilters =  !this.breakpointObserver.isMatched('(max-width: 992px)');
   }
   listenToRouterParams() {
-    this.route.params.subscribe(res => {
+    this.route.params
+    .pipe(takeUntil(this._onDestroy$))
+    .subscribe(res => {
       const depositAmount = res['depositAmount'];
       const depositCurrency = res['depositCurrency'];
       const depositPeriod = res['depositPeriod'];
@@ -69,9 +77,9 @@ export class DepositsTableComponent implements OnInit {
         this.getListDepositProducts(formValue);
       }
     });
+    this.changeRef.detectChanges();
   }
   getListDepositProducts(data: DepositCalcForm) {
-    console.log('get prod')
     this.depositProducts = null;
     this.loading = true;
     this.depositService.getListDepositProducts(data)

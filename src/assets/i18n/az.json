@@ -111,6 +111,8 @@
      "~yourIncome": "Sizin gƏliriniz",
      "~depositName": "Depozit adı",
      "~date": "Tarix",
-     "~exchangeVisualizeChart": "Valyuta dəyişmə qrafikası"
+     "~exchangeVisualizeChart": "Valyuta dəyişmə qrafikası",
+     "~visit": "Keçid",
+     "~currencyCode": "Valyuta"
 
   }

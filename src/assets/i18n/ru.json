@@ -117,5 +117,7 @@
   "~yourIncome": "Ваш доход",
   "~depositName": "Название вклада",
   "~date": "Дата",
-  "~exchangeVisualizeChart": "Графика обмена валют"
+  "~exchangeVisualizeChart": "Графика обмена валют",
+  "~visit": "Визит",
+  "~currencyCode": "Валюта"
 }

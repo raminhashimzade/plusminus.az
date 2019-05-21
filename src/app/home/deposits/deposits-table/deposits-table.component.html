@@ -3,11 +3,11 @@
     <div class="col-12">
       <div class="productsTable">
         <table class="table plus-minus deposits" *ngIf="!loading else table_loader">
-            <colgroup *ngIf="showColgroup">
+            <!-- <colgroup *ngIf="showColgroup">
               <col width="150px">
               <col>
               <col width="200px">
-            </colgroup>
+            </colgroup> -->
                <thead>
                   <th class="--borderRight" [orderByColumn]="'bankName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                       <div class="th-content --bank ">
@@ -79,38 +79,53 @@
                            </div>
                       </div>
                     </th>
+
+                    <th >
+                      <div class="th-content">
+                          {{'~currencyCode' | translate}}
+
+                      </div>
+                    </th>
+
                     <th></th>
                </thead>
 
                 <tbody>
 
-                    <tr>
-                        <td class="p-1" *ngIf="showFilters">
+                    <tr *ngIf="showFilters">
+                        <td class="p-1">
                           <div class="td-content --filter" >
                             <input placeholder=" {{'~bank' | translate}}" (input)="onFilterInput(['bankName'], $event)">
                           </div>
                         </td>
-                        <td class="p-1" *ngIf="showFilters">
+                        <td class="p-1">
                           <div class="td-content --filter" >
                             <input placeholder=" {{'~depositName' | translate}}" (input)="onFilterInput(['depostiName'], $event)">
                           </div>
                         </td>
-                        <td class="p-1" *ngIf="showFilters">
+                        <td class="p-1">
                           <div class="td-content --filter" >
                             <input placeholder="{{'~ratePerYear' | translate}}" (input)="onFilterInput(['minRate', 'maxRate'], $event)">
                           </div>
                         </td>
-                        <td class="p-1" *ngIf="showFilters">
+                        <td class="p-1">
                           <div class="td-content --filter" >
                             <input placeholder=" {{'~liqType' | translate}}" (input)="onFilterInput(['liqType', 'maxAmount'], $event)">
                           </div>
                         </td>
-                        <td class="p-1" *ngIf="showFilters">
+                        <td class="p-1">
                           <div class="td-content --filter" >
                             <input placeholder="{{'~yourIncome' | translate}}" (input)="onFilterInput(['income', 'maxMonthlyPayment'], $event)">
                           </div>
                         </td>
 
+                        <td class="p-1">
+                          <div class="td-content --filter" >
+                            <input placeholder="{{'~currencyCode' | translate}}" (input)="onFilterInput(['currencyCode', 'maxMonthlyPayment'], $event)">
+                          </div>
+                        </td>
+
+                        <td></td>
                       </tr>
 
                     <tr *ngFor="let product of filteredDepositProducts">
@@ -149,17 +164,23 @@
                         </td>
 
                         <td>
+                          <div class="td-content">
+                              <p>+{{product.currencyCode}}</p>
+                          </div>
+                        </td>
+
+                        <td class="pl-1 pr-1">
                           <div class="td-content row-actions">
+
                               <button mat-raised-button
-                              [disabled]="true"
-                              color="primary" routerLink="/dome/loans/compare"
-                              [queryParams]="{dpID: product.dpID}"
-                              >{{'~detailed' | translate}}</button>
+                              color="primary"
+                              ><a href="{{product.website}}" target="_blank">{{'~visit' | translate}}</a></button>
 
                             <button mat-raised-button color="accent" [id]="product?.dpID"
                              fly-to-cart
                               [disabled]="(canAddProductToCompare(product?.dpID) | async)"
                               (click)="onAddProductToCompare(product)">{{'~addToCart' | translate}}</button>
+
                           </div>
 
                         </td>

@@ -11,23 +11,26 @@
 
                   <div class="box__content">
                       <div class="box__content__field">
-                          <div class="box__content__field__title">
-                            {{'~depositAmount' | translate}}
-                          </div>
                           <div class="box__content__field__value">
-                              {{slideValue}}
+
+                            <mat-form-field class="w-100" appearance="fill">
+                              <mat-label> {{'~depositValue' | translate}} </mat-label>
+                                <input matInput name ="slideValue" placeholder="{{'~depositValue' | translate}}" [(ngModel)]="slideValue">
+                              </mat-form-field>
                           </div>
+
                             <mat-slider class="slider"
-                            color="accent"
-                            [max]="'100000'"
-                            [min]="'0'"
-                            [step]="'1000'"
-                            ngModel
-                            name="depositAmount"
-                            [(ngModel)]="slideValue"
-                            (input)="onSlideMove($event)"
+                              color="primary"
+                              [max]="'100000'"
+                              [min]="'0'"
+                              [step]="'1000'"
+                              ngModel
+                              name="depositAmount"
+                              [(ngModel)]="slideValue"
+                              (input)="onSlideMove($event)"
                             >
                           </mat-slider>
+
                         </div>
 
                         <div class="box__content__field">

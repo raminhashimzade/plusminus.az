@@ -1,22 +1,24 @@
-import { Component, OnInit, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { DepositService } from '../deposit.service';
 import { MatSliderChange } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DepositCalcForm } from '../models/deposit-calc-form.model';
+import { throttleTime, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'deposits-calc-container',
   templateUrl: './deposits-calc-container.component.html',
   styleUrls: ['./deposits-calc-container.component.scss']
 })
-export class DepositsCalcContainerComponent implements OnInit, AfterViewInit {
+export class DepositsCalcContainerComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('f') form: NgForm;
   depositCurrency = 'AZN';
   depositPeriods$: Observable<any>;
   slideValue: number;
+  _onDestroy$ = new Subject<void>();
   constructor(
       private translateService: TranslateService,
       private depositService: DepositService,
@@ -28,12 +30,17 @@ export class DepositsCalcContainerComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
   }
+  ngOnDestroy(): void {
+    this._onDestroy$.next();
+  }
   ngAfterViewInit() {
     this.listenToformChange();
     setTimeout(() => this.listenToRouterParams(), 10);
   }
   listenToRouterParams() {
-    this.route.params.subscribe(res => {
+    this.route.params
+    .pipe(takeUntil(this._onDestroy$))
+    .subscribe(res => {
       const depositAmount = res['depositAmount'];
       const depositCurrency = res['depositCurrency'];
       const depositPeriod = res['depositPeriod'];
@@ -45,7 +52,12 @@ export class DepositsCalcContainerComponent implements OnInit, AfterViewInit {
     });
   }
   listenToformChange() {
-    this.form.valueChanges.subscribe(res => {
+    this.form.valueChanges
+    .pipe(
+      throttleTime(1000),
+      takeUntil(this._onDestroy$)
+    )
+    .subscribe(res => {
       if (!this.form.value.depositAmount || !this.form.value.depositCurrency) {return;}
       this.router.navigate(['/home/deposits',
          { depositAmount: this.form.value.depositAmount,
