@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="products__request">
             <button mat-raised-button color="primary" class="products__request__btn" (click)="onRequestLoansFromAllBanks()">
-              {{'~requestLoansFromAllBanks' | translate}}
+              {{'~requestLoansFromAllBanks' |  translate}}
             </button>
           </div>
     </div>
@@ -53,7 +53,7 @@
         </div>
           <div class="products__table__content">
               <table-loader *ngIf="loading"></table-loader>
-              <table id="loans-table2" class="table plus-minus" *ngIf="loanProducts && !loading">
+              <table id="loans-table2" class="table plus-minus" *ngIf="filteredLoanProducts && !loading">
                 <thead>
                   <th [orderByColumn]="'bankName'" [sortState] = "sortState" (sortChange)="onSortChange($event)">
                     <div class="th-content">
@@ -73,7 +73,7 @@
                         {{'~loanName' | translate | titlecase}}
                     </div>
                   </th>
-                  <th [orderByColumn]="'minRate'" [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                  <th style="width: 100px"[orderByColumn]="'minRate'" [sortState] = "sortState" (sortChange)="onSortChange($event)">
                       <div class="th-content">
                        {{'~effectiveRate' | translate | titlecase}}
                        <div class="tableSorting">
@@ -129,43 +129,38 @@
                 <tr>
                   <td class="p-1" *ngIf="showFilters">
                     <div class="td-content --filter" >
-                      <input placeholder="Bank">
+                      <input placeholder="Bank" (input)="onFilterInput(['bankName'], $event)">
                     </div>
                   </td>
                   <td class="p-1" *ngIf="showFilters">
                     <div class="td-content --filter" >
-                      <input placeholder="Loan name">
+                      <input placeholder="Loan name" (input)="onFilterInput(['loanName'], $event)">
                     </div>
                   </td>
                   <td class="p-1" *ngIf="showFilters">
                     <div class="td-content --filter" >
-                      <input placeholder="Min Rate">
+                      <input placeholder="Min Rate" (input)="onFilterInput(['minRate', 'maxRate'], $event)">
                     </div>
                   </td>
                   <td class="p-1" *ngIf="showFilters">
                     <div class="td-content --filter" >
-                      <input placeholder="Amount">
+                      <input placeholder="Amount" (input)="onFilterInput(['minAmount', 'maxAmount'], $event)">
                     </div>
                   </td>
                   <td class="p-1" *ngIf="showFilters">
                     <div class="td-content --filter" >
-                      <input placeholder="Payment">
+                      <input placeholder="Payment" (input)="onFilterInput(['minMonthlyPayment', 'maxMonthlyPayment'], $event)">
                     </div>
                   </td>
                   <td class="p-1" *ngIf="showFilters">
                     <div class="td-content --filter" >
-                      <input placeholder="Documents">
-                    </div>
-                  </td>
-                  <td class="p-1" *ngIf="showFilters">
-                    <div class="td-content --filter" >
-                      <input placeholder="Requirements">
+                      <input placeholder="Documents"  (input)="onFilterInput(['documents'], $event)">
                     </div>
                   </td>
 
                 </tr>
                 <tbody>
-                  <tr *ngFor="let loan of loanProducts" [attr.loan-id]="loan.lnID">
+                  <tr *ngFor="let loan of filteredLoanProducts" [attr.loan-id]="loan.lnID">
                     <td valign="top">
                       <div class="td-content products__table__content__bank"
                       >
@@ -194,8 +189,8 @@
                     <td valign="top">
                       <div class=" td-content --amount" >
                         <div>
-                          <span [countUp]="loan.minAmount">0</span> {{loan.currencyCode | lowercase}}
-                        -  <span [countUp]="loan.maxAmount">0</span>  {{loan.currencyCode | lowercase}}
+                          <span >{{loan.minAmount}}</span> {{loan.currencyCode | lowercase}}
+                        -  <span >{{loan.maxAmount}}</span>  {{loan.currencyCode | lowercase}}
                            <br class="d-none d-sm-block">
                            <span>({{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}})</span>
 
@@ -239,7 +234,7 @@
                         </div>
                       </div>
                     </td> -->
-                    <td valign="top" class="pl-0 pr-0">
+                    <td valign="top" class="pl-1 pr-1">
                       <div class="td-content row-actions" >
                           <button mat-raised-button
                           color="primary" routerLink="/home/loans/compare"

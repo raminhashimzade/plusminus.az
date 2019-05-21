@@ -11,6 +11,7 @@ import { switchToView, isMobileSize } from 'src/app/app.utils';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-change.model';
 import { SortStates } from 'src/app/shared/directives/order-by-column/sort-states.enum';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'loans-table',
@@ -22,6 +23,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('f') form: NgForm;
   @ViewChild('table') table: ElementRef;
   loanProducts: LoanProduct[];
+  filteredLoanProducts: LoanProduct[];
   expandedNode: string;
  // sortState: {sortKey: string, sortBy: string};
   currentFormValues = {
@@ -47,7 +49,8 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
      private dialog: MatDialog,
       private changeRef: ChangeDetectorRef,
        private route: ActivatedRoute,
-       private breakpointObserver: BreakpointObserver
+       private breakpointObserver: BreakpointObserver,
+       private translateService: TranslateService
        ) { }
 
   ngOnInit() {
@@ -102,6 +105,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
       .subscribe(res => {
         // this.loanProducts = res || MoockLoansData;
         this.loanProducts = res;
+        this.filteredLoanProducts = res;
         switchToView('#loans-table-filter');
       })
   }
@@ -161,17 +165,19 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   onSortChange(sortChange: SortChangeModel) {
     this.sortState = {...sortChange};
     if (sortChange.orderBySort === SortStates.asc) {
-      this.loanProducts = [...this.loanProducts].sort((a, b) => {
+      this.filteredLoanProducts = [...this.filteredLoanProducts].sort((a, b) => {
         if (a[sortChange.orderByColumn] > b[sortChange.orderByColumn]) {return 1;}
         if (a[sortChange.orderByColumn] < b[sortChange.orderByColumn]) {return -1;}
         return 0;
       });
-    } else {
-      this.loanProducts = [...this.loanProducts].sort((a, b) => {
+    } else if(sortChange.orderBySort === SortStates.desc) {
+      this.filteredLoanProducts = [...this.filteredLoanProducts].sort((a, b) => {
         if (a[sortChange.orderByColumn] > b[sortChange.orderByColumn]) {return -1;}
         if (a[sortChange.orderByColumn] < b[sortChange.orderByColumn]) {return 1;}
         return 0;
       });
+    } else {
+      this.filteredLoanProducts = [...this.loanProducts];
     }
     this.changeRef.detectChanges();
   }
@@ -180,6 +186,24 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
    // console.log(this.sortState)
    // console.log(JSON.stringify(this.sortState) === JSON.stringify({sortKey, sortBy}))
     return JSON.stringify(this.sortState) === JSON.stringify({sortKey, sortBy});
+  }
+  onFilterInput(keys: string[], event) {
+    const lang = this.translateService.getDefaultLang();
+    const inputValue = event.target.value;
+    if (!inputValue) {
+      this.filteredLoanProducts = [...this.loanProducts];
+      return;
+    }
+    this.filteredLoanProducts = [...this.loanProducts].filter((loan) => {
+      return keys.some( (key) => {
+        if (!loan[key]) {return false;}
+        if (loan[key] && loan[key][lang]) {
+          return loan[key][lang].toLowerCase().includes(inputValue);
+        } else {
+          return loan[key].toLowerCase().includes(inputValue);
+        }
+      });
+    })
   }
 
 }

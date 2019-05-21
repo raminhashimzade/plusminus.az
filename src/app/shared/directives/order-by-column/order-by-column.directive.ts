@@ -27,7 +27,8 @@ export class OrderByColumnDirective implements AfterViewInit, OnChanges {
           this.orderBySort = <SortStates>sortChangeValue.orderBySort;
           this.classes =  `native-table__th ${<SortStates>sortChangeValue.orderBySort}`;
          } else {
-           this.classes = `native-table__th`
+           this.classes = `native-table__th`;
+           this.orderBySort = SortStates.inActive;
          }
   }
   onClick(e): void {
