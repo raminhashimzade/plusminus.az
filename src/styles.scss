@@ -192,7 +192,11 @@ img {
 				background-color: var(--secondary-default);
 		//		color: #ffffff;
 			}
-		}
+    }
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.12);
+    //  padding: 5px 7px;
+    }
 	}
 }
 

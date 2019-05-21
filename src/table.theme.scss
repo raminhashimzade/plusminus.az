@@ -7,10 +7,26 @@ table.plus-minus {
     }
     th {
       border: 1px solid #e1e1e1;
+      position: relative;
+      cursor: pointer;
+      &.asc {
+        .tableSorting {
+          .tableSorting__arrow.--top {
+             color: var(--secondary-default);
+          }
+        }
+      }
+      &.desc {
+        .tableSorting {
+          .tableSorting__arrow.--down {
+             color: var(--secondary-default);
+          }
+        }
+      }
     }
     .th-content {
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       text-align: center;
       font-size: 0.8rem;
@@ -21,7 +37,13 @@ table.plus-minus {
       max-height: 8.75rem;
       overflow: hidden;
       transition: max-height 300ms ease-in-out;
-
+      &.--filter {
+        input {
+          width: 100%;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          padding: 7px;
+        }
+      }
     }
   }
 
@@ -32,14 +54,26 @@ table.plus-minus {
   .tableSorting {
     display: flex;
     justify-content: center;
-    padding-top: 5px;
+    flex-direction: column;
+    position: absolute;
+    right: 6px;
+    top: 6px;
     .tableSorting__arrow {
       cursor: pointer;
       color: rgba(0,0,0,.87);
-      transition: color 100ms ease-in-out;
-      &.active {
-         color: var(--primary-default);
+      transition: color 200ms ease-in-out;
+      font-size: 21px;
+      color: #dddddd;
+      &.--top {
+        transform: rotateX(180deg);
       }
+      &.--down {
+        margin-top: -12px;
+      }
+      i {
+        line-height: 0.8;
+      }
+
     }
 
   }

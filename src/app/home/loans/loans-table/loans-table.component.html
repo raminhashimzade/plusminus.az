@@ -55,15 +55,15 @@
               <table-loader *ngIf="loading"></table-loader>
               <table id="loans-table2" class="table plus-minus" *ngIf="loanProducts && !loading">
                 <thead>
-                  <th>
+                  <th [orderByColumn]="'bankName'" [sortState] = "sortState" (sortChange)="onSortChange($event)">
                     <div class="th-content">
                         {{'~bank' | translate | titlecase}}
-                        <div class="tableSorting" >
-                          <span class="tableSorting__arrow" (click)="onSort('bankName',  'asc')" [ngClass]="{'active': isActiveSort('bankName', 'asc')}" >
-                              <mat-icon>keyboard_arrow_up</mat-icon>
+                        <div class="tableSorting">
+                          <span class="tableSorting__arrow --top">
+                             <i class="fas fa-caret-down"></i>
                             </span>
-                            <span class="tableSorting__arrow" (click)="onSort('bankName',  'desc')" [ngClass]="{'active': isActiveSort('bankName', 'desc')}">
-                               <mat-icon>keyboard_arrow_down</mat-icon>
+                            <span class="tableSorting__arrow --down">
+                              <i class="fas fa-caret-down"></i>
                             </span>
                        </div>
                     </div>
@@ -73,42 +73,42 @@
                         {{'~loanName' | translate | titlecase}}
                     </div>
                   </th>
-                  <th>
+                  <th [orderByColumn]="'minRate'" [sortState] = "sortState" (sortChange)="onSortChange($event)">
                       <div class="th-content">
                        {{'~effectiveRate' | translate | titlecase}}
-                       <div class="tableSorting" >
-                        <span class="tableSorting__arrow" (click)="onSort('minRate', 'asc')" [ngClass]="{'active': isActiveSort('minRate', 'asc')}" >
-                            <mat-icon>keyboard_arrow_up</mat-icon>
+                       <div class="tableSorting">
+                        <span class="tableSorting__arrow --top">
+                           <i class="fas fa-caret-down"></i>
                           </span>
-                          <span class="tableSorting__arrow" (click)="onSort('minRate', 'desc')" [ngClass]="{'active': isActiveSort('minRate', 'desc')}">
-                             <mat-icon>keyboard_arrow_down</mat-icon>
+                          <span class="tableSorting__arrow --down">
+                            <i class="fas fa-caret-down"></i>
                           </span>
                      </div>
                      </div>
                   </th>
-                  <th>
+                  <th   [orderByColumn]="'minAmount'" [sortState] = "sortState" (sortChange)="onSortChange($event)">
                     <div class="th-content">
                         {{'~amount' | translate | titlecase}}
-                        <div class="tableSorting" >
-                          <span class="tableSorting__arrow" (click)="onSort('minAmount', 'asc')" [ngClass]="{'active': isActiveSort('minAmount', 'asc')}" >
-                              <mat-icon>keyboard_arrow_up</mat-icon>
+                        <div class="tableSorting">
+                          <span class="tableSorting__arrow --top">
+                             <i class="fas fa-caret-down"></i>
                             </span>
-                            <span class="tableSorting__arrow" (click)="onSort('minAmount', 'desc')" [ngClass]="{'active': isActiveSort('minAmount', 'desc')}">
-                               <mat-icon>keyboard_arrow_down</mat-icon>
+                            <span class="tableSorting__arrow --down">
+                              <i class="fas fa-caret-down"></i>
                             </span>
                        </div>
                     </div>
                   </th>
 
-                  <th>
-                    <div class="th-content">
+                  <th [orderByColumn]="'minMonthlyPayment'" [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                    <div class="th-content" >
                         {{'~monthlyPayment' | translate | titlecase}}
-                        <div class="tableSorting" >
-                          <span class="tableSorting__arrow" (click)="onSort('minMonthlyPayment', 'asc')" [ngClass]="{'active': isActiveSort('minMonthlyPayment', 'asc')}" >
-                              <mat-icon>keyboard_arrow_up</mat-icon>
+                        <div class="tableSorting">
+                          <span class="tableSorting__arrow --top">
+                             <i class="fas fa-caret-down"></i>
                             </span>
-                            <span class="tableSorting__arrow" (click)="onSort('maxMonthlyPayment', 'desc')" [ngClass]="{'active': isActiveSort('maxMonthlyPayment', 'desc')}">
-                               <mat-icon>keyboard_arrow_down</mat-icon>
+                            <span class="tableSorting__arrow --down">
+                              <i class="fas fa-caret-down"></i>
                             </span>
                        </div>
                     </div>
@@ -119,13 +119,51 @@
                         {{'~documents' | translate | titlecase}}
                     </div>
                   </th>
-                  <th >
+                  <!-- <th >
                     <div class="th-content" *ngIf="!isMobile">
                         {{'~requirements' | translate | titlecase}}
                     </div>
-                  </th>
+                  </th> -->
                   <th></th>
                 </thead>
+                <tr>
+                  <td class="p-1">
+                    <div class="td-content --filter">
+                      <input placeholder="Bank">
+                    </div>
+                  </td>
+                  <td class="p-1">
+                    <div class="td-content --filter">
+                      <input placeholder="Loan name">
+                    </div>
+                  </td>
+                  <td class="p-1">
+                    <div class="td-content --filter">
+                      <input placeholder="Min Rate">
+                    </div>
+                  </td>
+                  <td class="p-1">
+                    <div class="td-content --filter">
+                      <input placeholder="Amount">
+                    </div>
+                  </td>
+                  <td class="p-1">
+                    <div class="td-content --filter">
+                      <input placeholder="Payment">
+                    </div>
+                  </td>
+                  <td class="p-1">
+                    <div class="td-content --filter">
+                      <input placeholder="Documents">
+                    </div>
+                  </td>
+                  <td class="p-1">
+                    <div class="td-content --filter">
+                      <input placeholder="Requirements">
+                    </div>
+                  </td>
+
+                </tr>
                 <tbody>
                   <tr *ngFor="let loan of loanProducts" [attr.loan-id]="loan.lnID">
                     <td valign="top">
@@ -193,14 +231,14 @@
                         </div>
                       </div>
                     </td>
-                    <td valign="top" *ngIf="(isMobile && (expandedNode === loan.lnID) ) || !isMobile ">
+                    <!-- <td valign="top" *ngIf="(isMobile && (expandedNode === loan.lnID) ) || !isMobile ">
                       <div class=" td-content" [ngClass]="{'table-expanded' : (expandedNode === loan.lnID) || isMobile }"
                         >
                         <div >
                          {{loan.description | valueTranslate}}
                         </div>
                       </div>
-                    </td>
+                    </td> -->
                     <td valign="top" class="pl-0 pr-0">
                       <div class="td-content row-actions" >
                           <button mat-raised-button

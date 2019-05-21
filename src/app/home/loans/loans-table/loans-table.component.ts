@@ -8,6 +8,8 @@ import { Subject, Observable } from 'rxjs';
 import { takeUntil, finalize, map } from 'rxjs/operators';
 import { switchToView, isMobileSize } from 'src/app/app.utils';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-change.model';
+import { SortStates } from 'src/app/shared/directives/order-by-column/sort-states.enum';
 
 @Component({
   selector: 'loans-table',
@@ -20,7 +22,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('table') table: ElementRef;
   loanProducts: LoanProduct[];
   expandedNode: string;
-  sortState: {sortKey: string, sortBy: string};
+ // sortState: {sortKey: string, sortBy: string};
   currentFormValues = {
     withEmpReference: true,
     withCollateral: false,
@@ -35,6 +37,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   _onDestroy$ = new Subject<void>();
   isMobile: boolean;
   loading: boolean;
+  sortState: SortChangeModel;
   @HostListener('window:resize', ['$event']) resize() {this.determineMobileSize(); }
 
   constructor(
@@ -150,21 +153,21 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
       }
     });
   }
-  onSort(sortKey: string, sortBy: string) {
-    if (sortBy === 'asc') {
+  onSortChange(sortChange: SortChangeModel) {
+    this.sortState = {...sortChange};
+    if (sortChange.orderBySort === SortStates.asc) {
       this.loanProducts = [...this.loanProducts].sort((a, b) => {
-        if (a[sortKey] > b[sortKey]) {return 1;}
-        if (a[sortKey] < b[sortKey]) {return -1;}
+        if (a[sortChange.orderByColumn] > b[sortChange.orderByColumn]) {return 1;}
+        if (a[sortChange.orderByColumn] < b[sortChange.orderByColumn]) {return -1;}
         return 0;
       });
     } else {
       this.loanProducts = [...this.loanProducts].sort((a, b) => {
-        if (a[sortKey] > b[sortKey]) {return -1;}
-        if (a[sortKey] < b[sortKey]) {return 1;}
+        if (a[sortChange.orderByColumn] > b[sortChange.orderByColumn]) {return -1;}
+        if (a[sortChange.orderByColumn] < b[sortChange.orderByColumn]) {return 1;}
         return 0;
       });
     }
-    this.sortState = {sortKey, sortBy};
     this.changeRef.detectChanges();
   }
   isActiveSort(sortKey, sortBy): boolean {
