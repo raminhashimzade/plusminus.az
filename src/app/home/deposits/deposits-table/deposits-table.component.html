@@ -9,51 +9,142 @@
               <col width="200px">
             </colgroup>
                <thead>
-                  <th class="--borderRight">
+                  <th class="--borderRight" [orderByColumn]="'bankName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                       <div class="th-content --bank ">
                         {{'~bank' | translate}}
+                        <div class="tableSorting">
+                            <span class="tableSorting__arrow --top">
+                               <i class="fas fa-caret-down"></i>
+                              </span>
+                              <span class="tableSorting__arrow --down">
+                                <i class="fas fa-caret-down"></i>
+                              </span>
+                         </div>
                       </div>
                     </th>
-                    <th  class="--borderRight">
+
+                    <th  class="--borderRight" [orderByColumn]="'depositName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                        <div class="th-content">
+                            {{'~depositName' | translate}}
+                            <div class="tableSorting">
+                                <span class="tableSorting__arrow --top">
+                                   <i class="fas fa-caret-down"></i>
+                                  </span>
+                                  <span class="tableSorting__arrow --down">
+                                    <i class="fas fa-caret-down"></i>
+                                  </span>
+                             </div>
+                        </div>
+                    </th>
+
+                    <th [orderByColumn]="'minRate'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                      <div class="th-content" >
+                          {{'~ratePerYear' | translate}}
+                          <div class="tableSorting">
+                              <span class="tableSorting__arrow --top">
+                                 <i class="fas fa-caret-down"></i>
+                                </span>
+                                <span class="tableSorting__arrow --down">
+                                  <i class="fas fa-caret-down"></i>
+                                </span>
+                           </div>
+                      </div>
+                    </th>
+
+
+                    <th [orderByColumn]="'liqType'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                      <div class="th-content">
+                          {{'~liqType' | translate}}
+                          <div class="tableSorting">
+                              <span class="tableSorting__arrow --top">
+                                 <i class="fas fa-caret-down"></i>
+                                </span>
+                                <span class="tableSorting__arrow --down">
+                                  <i class="fas fa-caret-down"></i>
+                                </span>
+                           </div>
+                      </div>
+                    </th>
+
+                    <th [orderByColumn]="'income'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                      <div class="th-content">
+                          {{'~yourIncome' | translate}}
+                          <div class="tableSorting">
+                              <span class="tableSorting__arrow --top">
+                                 <i class="fas fa-caret-down"></i>
+                                </span>
+                                <span class="tableSorting__arrow --down">
+                                  <i class="fas fa-caret-down"></i>
+                                </span>
+                           </div>
+                      </div>
                     </th>
                     <th></th>
                </thead>
 
                 <tbody>
-                    <tr *ngFor="let product of depositProducts">
+
+                    <tr>
+                        <td class="p-1" *ngIf="showFilters">
+                          <div class="td-content --filter" >
+                            <input placeholder=" {{'~bank' | translate}}" (input)="onFilterInput(['bankName'], $event)">
+                          </div>
+                        </td>
+                        <td class="p-1" *ngIf="showFilters">
+                          <div class="td-content --filter" >
+                            <input placeholder=" {{'~depositName' | translate}}" (input)="onFilterInput(['depostiName'], $event)">
+                          </div>
+                        </td>
+                        <td class="p-1" *ngIf="showFilters">
+                          <div class="td-content --filter" >
+                            <input placeholder="{{'~ratePerYear' | translate}}" (input)="onFilterInput(['minRate', 'maxRate'], $event)">
+                          </div>
+                        </td>
+                        <td class="p-1" *ngIf="showFilters">
+                          <div class="td-content --filter" >
+                            <input placeholder=" {{'~liqType' | translate}}" (input)="onFilterInput(['liqType', 'maxAmount'], $event)">
+                          </div>
+                        </td>
+                        <td class="p-1" *ngIf="showFilters">
+                          <div class="td-content --filter" >
+                            <input placeholder="{{'~yourIncome' | translate}}" (input)="onFilterInput(['income', 'maxMonthlyPayment'], $event)">
+                          </div>
+                        </td>
+
+                      </tr>
+
+                    <tr *ngFor="let product of filteredDepositProducts">
 
                         <td>
                           <div class="td-content products__table__content__bank">
                             <div class="products__table__content__bank__icon" >
                               <img  src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.dpID">
                            </div>
-                           <!-- <div class="expand-icon"  (click)="onExpandToggle(product.dpID)" [ngClass]="{'--top' : (expandedNode === product.lnID)}">
-                               <i class="fas fa-chevron-down"></i>
-                           </div> -->
+
                           </div>
                         </td>
 
                         <td>
                           <div class="td-content">
-                              <div class="productName">
-                                  {{'~depositName' | translate}} "{{product?.depositName | valueTranslate}}"
-                                </div>
-                               <div class="productInfo">
+                              {{product?.depositName | valueTranslate}}
+                          </div>
+                        </td>
 
-                                <div class="productInfo__rate">
-                                    <p>{{product.minRate}} %</p>
-                                    <p>{{'~ratePerYear' | translate}} </p>
-                                </div>
+                        <td>
+                          <div class="td-content">
+                              {{product.minRate}} %
+                          </div>
+                        </td>
 
-                                <div class="productInfo__liqType">
-                                    {{product.liqType}}
-                                </div>
+                        <td>
+                          <div class="td-content">
+                              {{product.liqType}}
+                          </div>
+                        </td>
 
-                                <div class="productInfo__income">
-                                    <p>+{{product.income}} {{product.currencyCode}}</p>
-                                    <p>{{'~yourIncome' | translate}} </p>
-                                </div>
-                            </div>
+                        <td>
+                          <div class="td-content">
+                              <p>+{{product.income}} {{product.currencyCode}}</p>
                           </div>
                         </td>
 

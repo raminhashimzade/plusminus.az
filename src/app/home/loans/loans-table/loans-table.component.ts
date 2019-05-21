@@ -60,7 +60,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   determineMobileSize() {
     this.isMobile = isMobileSize();
-   this.showFilters =  !this.breakpointObserver.isMatched('(max-width: 992px)');
+    this.showFilters =  !this.breakpointObserver.isMatched('(max-width: 992px)');
     this.changeRef.detectChanges();
   }
 

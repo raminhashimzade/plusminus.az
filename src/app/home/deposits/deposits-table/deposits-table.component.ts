@@ -7,6 +7,9 @@ import { switchToView, isMobileSize } from 'src/app/app.utils';
 import { DepositProduct } from '../models/deposit.model';
 import { Observable, of } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-change.model';
+import { SortStates } from 'src/app/shared/directives/order-by-column/sort-states.enum';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'deposits-table',
@@ -17,17 +20,22 @@ export class DepositsTableComponent implements OnInit {
   currentFormValues: DepositCalcForm;
   loading: boolean;
   depositProducts: DepositProduct[];
+  filteredDepositProducts: DepositProduct[];
   showColgroup: boolean;
+  sortState: SortChangeModel;
+  showFilters: boolean;
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange()}
   constructor(
     private route: ActivatedRoute,
     private depositService: DepositService,
     private changeRef: ChangeDetectorRef,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private translateService: TranslateService
     ) { }
 
   ngOnInit() {
     this.showColgroup = this.breakpointObserver.isMatched('(min-width: 768px)');
+    this.showFilters =  !this.breakpointObserver.isMatched('(max-width: 992px)');
     this.listenToRouterParams();
     const data = {
       withCapitalisation: false,
@@ -42,6 +50,7 @@ export class DepositsTableComponent implements OnInit {
   }
   updateForLayoutChange() {
     this.showColgroup = this.breakpointObserver.isMatched('(min-width: 768px)');
+    this.showFilters =  !this.breakpointObserver.isMatched('(max-width: 992px)');
   }
   listenToRouterParams() {
     this.route.params.subscribe(res => {
@@ -74,6 +83,7 @@ export class DepositsTableComponent implements OnInit {
     )
       .subscribe(res => {
         this.depositProducts = res;
+        this.filteredDepositProducts = res;
         switchToView('#deposits-table-filter');
       });
   }
@@ -85,5 +95,41 @@ export class DepositsTableComponent implements OnInit {
   onAddProductToCompare(product) {
     return ;
   }
-
+  onSortChange(sortChange: SortChangeModel) {
+    this.sortState = {...sortChange};
+    if (sortChange.orderBySort === SortStates.asc) {
+      this.filteredDepositProducts = [...this.filteredDepositProducts].sort((a, b) => {
+        if (a[sortChange.orderByColumn] > b[sortChange.orderByColumn]) {return 1;}
+        if (a[sortChange.orderByColumn] < b[sortChange.orderByColumn]) {return -1;}
+        return 0;
+      });
+    } else if(sortChange.orderBySort === SortStates.desc) {
+      this.filteredDepositProducts = [...this.filteredDepositProducts].sort((a, b) => {
+        if (a[sortChange.orderByColumn] > b[sortChange.orderByColumn]) {return -1;}
+        if (a[sortChange.orderByColumn] < b[sortChange.orderByColumn]) {return 1;}
+        return 0;
+      });
+    } else {
+      this.filteredDepositProducts = [...this.depositProducts];
+    }
+    this.changeRef.detectChanges();
+  }
+  onFilterInput(keys: string[], event) {
+    const lang = this.translateService.getDefaultLang();
+    const inputValue = event.target.value;
+    if (!inputValue) {
+      this.filteredDepositProducts = [...this.depositProducts];
+      return;
+    }
+    this.filteredDepositProducts = [...this.depositProducts].filter((loan) => {
+      return keys.some( (key) => {
+        if (!loan[key]) {return false;}
+        if (loan[key] && loan[key][lang]) {
+          return loan[key][lang].toLowerCase().includes(inputValue);
+        } else {
+          return loan[key].toLowerCase().includes(inputValue);
+        }
+      });
+    })
+  }
 }
