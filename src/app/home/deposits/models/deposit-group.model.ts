@@ -1,5 +1,5 @@
 
-export interface DepositGroup {
+export interface DepositGroup extends Array<any> {
     bankID: number;
     bankName: string;
     list: DepositProduct[];

@@ -87,8 +87,9 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
     this.changeRef.detectChanges();
   }
   getListDepositGroupProducts(data: DepositCalcForm) {
-    this.depositGroupProducts = null;
+    this.depositGroupProducts = undefined;
     this.loading = true;
+    this.sortState = {orderByColumn: '', orderBySort: ''};
     this.depositService.getListDepositGroupProducts(data)
     .pipe(
       finalize(() => {
@@ -156,5 +157,20 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
         }
       });
     })
+  }
+  applyFilter(filterValue: string) {
+    const lang = this.translateService.getDefaultLang();
+    this.filteredGroupProducts = [...this.depositGroupProducts].filter((group) => {
+    //  debugger;
+      return group.list.some((deposit) => Object.keys(deposit).some(key => {
+        if (deposit[key] && deposit[key][lang]) {
+          return deposit[key][lang].toString().toLowerCase().includes(filterValue);
+        } else {
+        //  console.log(deposit[key])
+          return deposit[key] &&  deposit[key].toString().toLowerCase().includes(filterValue);
+        }
+      }));
+    });
+   // console.log(this.filteredGroupProducts)
   }
 }

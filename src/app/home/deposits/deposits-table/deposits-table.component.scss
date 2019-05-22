@@ -5,12 +5,10 @@
 table.deposits {
   min-height: 500px;
   .td-content {
-    &:first-child, &:last-child {
-  //    flex: 1;
-    }
     &.products__table__content__bank {
       width: 112px;
       margin: auto;
+      text-align: left;
     }
     .productName {
       font-family: "Montserrat-SemiBold";

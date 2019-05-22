@@ -1,15 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value.toString().toLowerCase())" placeholder="Filter">
+          </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
       <div class="productsTable">
         <table class="table plus-minus deposits" *ngIf="!loading else table_loader">
-            <!-- <colgroup *ngIf="showColgroup">
-              <col width="150px">
-              <col>
-              <col width="200px">
-            </colgroup> -->
                <thead>
-                  <th class="--borderRight" [orderByColumn]="'bankName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                  <th class="--expand"> </th>
+                  <th [orderByColumn]="'bankName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                       <div class="th-content --bank ">
                         {{'~bank' | translate}}
                         <div class="tableSorting">
@@ -23,7 +26,7 @@
                       </div>
                     </th>
 
-                    <th  class="--borderRight" [orderByColumn]="'depositName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                    <th  [orderByColumn]="'depositName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                         <div class="th-content">
                             {{'~depositName' | translate}}
                             <div class="tableSorting">
@@ -55,14 +58,6 @@
                     <th [orderByColumn]="'liqType'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                       <div class="th-content">
                           {{'~liqType' | translate}}
-                          <!-- <div class="tableSorting">
-                              <span class="tableSorting__arrow --top">
-                                 <i class="fas fa-caret-down"></i>
-                                </span>
-                                <span class="tableSorting__arrow --down">
-                                  <i class="fas fa-caret-down"></i>
-                                </span>
-                           </div> -->
                       </div>
                     </th>
 
@@ -92,60 +87,25 @@
 
                 <tbody>
 
-                    <tr *ngIf="showFilters">
-                        <td class="p-1">
-                          <div class="td-content --filter" >
-                            <input placeholder=" {{'~bank' | translate}}" (input)="onFilterInput(['bankName'], $event)">
-                          </div>
-                        </td>
-                        <td class="p-1">
-                          <div class="td-content --filter" >
-                            <input placeholder=" {{'~depositName' | translate}}" (input)="onFilterInput(['depostiName'], $event)">
-                          </div>
-                        </td>
-                        <td class="p-1">
-                          <div class="td-content --filter" >
-                            <input placeholder="{{'~ratePerYear' | translate}}" (input)="onFilterInput(['minRate', 'maxRate'], $event)">
-                          </div>
-                        </td>
-                        <td class="p-1">
-                          <div class="td-content --filter" >
-                            <input placeholder=" {{'~liqType' | translate}}" (input)="onFilterInput(['liqType', 'maxAmount'], $event)">
-                          </div>
-                        </td>
-                        <td class="p-1">
-                          <div class="td-content --filter" >
-                            <input placeholder="{{'~yourIncome' | translate}}" (input)="onFilterInput(['income', 'maxMonthlyPayment'], $event)">
-                          </div>
-                        </td>
-
-                        <td class="p-1">
-                          <div class="td-content --filter" >
-                            <input placeholder="{{'~currencyCode' | translate}}" (input)="onFilterInput(['currencyCode', 'maxMonthlyPayment'], $event)">
-                          </div>
-                        </td>
-
-                        <td></td>
-                      </tr>
-
                       <ng-container *ngFor="let group of filteredGroupProducts">
 
                         <ng-container  *ngFor="let product of group?.list;let first=first">
                           <tr *ngIf="first || expandedGroupId === group.bankID">
 
-                            <td>
+                            <td class="p-0">
+                              <div class="expand-icon"   (click)="onExpandGroup(group.bankID)" *ngIf="first"
+                                 [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
+                                <i class="fas fa-chevron-down"></i>
+                              </div>
+                            </td>
 
-                              <div class="td-content products__table__content__bank">
+                            <td class="pl-0">
+                              <div  *ngIf="first" class="td-content products__table__content__bank">
                                 <div class="products__table__content__bank__icon" >
                                   <img  src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.dpID">
                                </div>
-
-                               <div class="expand-icon"  (click)="onExpandGroup(group.bankID)" *ngIf="first"
-                                  [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
-                                <i class="fas fa-chevron-down"></i>
-                               </div>
-
                               </div>
+
                             </td>
 
                             <td>
