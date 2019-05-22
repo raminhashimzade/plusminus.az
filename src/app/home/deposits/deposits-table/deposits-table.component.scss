@@ -4,6 +4,11 @@
 
 table.deposits {
   min-height: 500px;
+  .th-content {
+    &.--bank {
+      justify-content: flex-start;
+    }
+  }
   .td-content {
     &.products__table__content__bank {
       width: 112px;
@@ -41,10 +46,7 @@ table.deposits {
           font-family: "Montserrat-SemiBold";
         }
       }
-      .productInfo__liqType {
-     //   margin: 0 9.375rem;
-      }
-      .productInfo__income {}
+
     }
   }
 }

@@ -54,6 +54,11 @@
                       </div>
                     </th>
 
+                    <th>
+                      <div class="th-content">
+                          {{'~currencyCode' | translate}}
+                      </div>
+                    </th>
 
                     <th [orderByColumn]="'liqType'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                       <div class="th-content">
@@ -75,12 +80,7 @@
                       </div>
                     </th>
 
-                    <th >
-                      <div class="th-content">
-                          {{'~currencyCode' | translate}}
 
-                      </div>
-                    </th>
 
                     <th></th>
                </thead>
@@ -122,21 +122,23 @@
 
                             <td>
                               <div class="td-content">
+                                  <p>+{{product.currencyCode}}</p>
+                              </div>
+                            </td>
+
+                            <td>
+                              <div class="td-content">
                                   {{product.liqType}}
                               </div>
                             </td>
 
                             <td>
                               <div class="td-content">
-                                  <p>+{{product.income}} {{product.currencyCode}}</p>
+                                  <p>{{product.income}} {{product.currencyCode}}</p>
                               </div>
                             </td>
 
-                            <td>
-                              <div class="td-content">
-                                  <p>+{{product.currencyCode}}</p>
-                              </div>
-                            </td>
+
 
                             <td class="pl-1 pr-1">
                               <div class="td-content row-actions">
