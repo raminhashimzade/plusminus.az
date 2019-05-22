@@ -112,12 +112,10 @@ table.plus-minus {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    button {
+    a {
       width: 100%;
       margin-bottom: 10px;
-      a {
         color: #ffffff;
-      }
     }
   }
   @keyframes blinking{

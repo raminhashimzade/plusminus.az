@@ -27,6 +27,7 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
   showFilters: boolean;
   _onDestroy$ = new Subject<void>();
   expandedGroupId: number;
+  columns = ['bankName', 'depositName', 'minRate', 'liqType', 'income', 'currencyCode', 'income'];
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange()}
   constructor(
     private route: ActivatedRoute,
@@ -129,7 +130,6 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
         return 0;
       });
     } else if(sortChange.orderBySort === SortStates.desc) {
-      console.log('desc');
       this.filteredGroupProducts = sortedGroups.sort((a, b) => {
         if (a.list[0][sortChange.orderByColumn] > b.list[0][sortChange.orderByColumn]) {return -1;}
         if (a.list[0][sortChange.orderByColumn] < b.list[0][sortChange.orderByColumn]) {return 1;}
@@ -161,16 +161,18 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
   applyFilter(filterValue: string) {
     const lang = this.translateService.getDefaultLang();
     this.filteredGroupProducts = [...this.depositGroupProducts].filter((group) => {
-    //  debugger;
       return group.list.some((deposit) => Object.keys(deposit).some(key => {
+        if (!this.columns.includes(key)) {return false;}
         if (deposit[key] && deposit[key][lang]) {
-          return deposit[key][lang].toString().toLowerCase().includes(filterValue);
+          // if (!!(deposit[key][lang].toString().toLowerCase().includes(filterValue))) {
+          //   console.log(group, key, deposit[key])
+          // }
+          return !!(deposit[key][lang].toString().toLowerCase().includes(filterValue));
         } else {
-        //  console.log(deposit[key])
-          return deposit[key] &&  deposit[key].toString().toLowerCase().includes(filterValue);
+          return !!(deposit[key] &&  deposit[key].toString().toLowerCase().includes(filterValue));
         }
       }));
     });
-   // console.log(this.filteredGroupProducts)
+   this.changeRef.detectChanges();
   }
 }

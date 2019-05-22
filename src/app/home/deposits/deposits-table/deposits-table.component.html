@@ -141,14 +141,15 @@
                             <td class="pl-1 pr-1">
                               <div class="td-content row-actions">
 
-                                  <button mat-raised-button
-                                  color="primary"
-                                  ><a href="{{product.website}}" target="_blank">{{'~visit' | translate}}</a></button>
+                                  <a mat-raised-button
+                                  color="primary" class="primary"
+                                  href="{{product.website}}" target="_blank"
+                                  >{{'~visit' | translate}}</a>
 
-                                <button mat-raised-button color="accent" [id]="product?.dpID"
+                                <a mat-raised-button color="accent" [id]="product?.dpID"
                                  fly-to-cart
                                   [disabled]="(canAddProductToCompare(product?.dpID) | async)"
-                                  (click)="onAddProductToCompare(product)">{{'~addToCart' | translate}}</button>
+                                  (click)="onAddProductToCompare(product)">{{'~addToCart' | translate}}</a>
 
                               </div>
 
