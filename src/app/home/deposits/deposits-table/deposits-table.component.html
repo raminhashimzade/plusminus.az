@@ -55,14 +55,14 @@
                     <th [orderByColumn]="'liqType'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                       <div class="th-content">
                           {{'~liqType' | translate}}
-                          <div class="tableSorting">
+                          <!-- <div class="tableSorting">
                               <span class="tableSorting__arrow --top">
                                  <i class="fas fa-caret-down"></i>
                                 </span>
                                 <span class="tableSorting__arrow --down">
                                   <i class="fas fa-caret-down"></i>
                                 </span>
-                           </div>
+                           </div> -->
                       </div>
                     </th>
 
@@ -128,64 +128,77 @@
                         <td></td>
                       </tr>
 
-                    <tr *ngFor="let product of filteredDepositProducts">
+                      <ng-container *ngFor="let group of filteredGroupProducts">
 
-                        <td>
-                          <div class="td-content products__table__content__bank">
-                            <div class="products__table__content__bank__icon" >
-                              <img  src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.dpID">
-                           </div>
+                        <ng-container  *ngFor="let product of group?.list;let first=first">
+                          <tr *ngIf="first || expandedGroupId === group.bankID">
 
-                          </div>
-                        </td>
+                            <td>
 
-                        <td>
-                          <div class="td-content">
-                              {{product?.depositName | valueTranslate}}
-                          </div>
-                        </td>
+                              <div class="td-content products__table__content__bank">
+                                <div class="products__table__content__bank__icon" >
+                                  <img  src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.dpID">
+                               </div>
 
-                        <td>
-                          <div class="td-content">
-                              {{product.minRate}} %
-                          </div>
-                        </td>
+                               <div class="expand-icon"  (click)="onExpandGroup(group.bankID)" *ngIf="first"
+                                  [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
+                                <i class="fas fa-chevron-down"></i>
+                               </div>
 
-                        <td>
-                          <div class="td-content">
-                              {{product.liqType}}
-                          </div>
-                        </td>
+                              </div>
+                            </td>
 
-                        <td>
-                          <div class="td-content">
-                              <p>+{{product.income}} {{product.currencyCode}}</p>
-                          </div>
-                        </td>
+                            <td>
+                              <div class="td-content">
+                                  {{product?.depositName | valueTranslate}}
+                              </div>
+                            </td>
 
-                        <td>
-                          <div class="td-content">
-                              <p>+{{product.currencyCode}}</p>
-                          </div>
-                        </td>
+                            <td>
+                              <div class="td-content">
+                                  {{product.minRate}} %
+                              </div>
+                            </td>
 
-                        <td class="pl-1 pr-1">
-                          <div class="td-content row-actions">
+                            <td>
+                              <div class="td-content">
+                                  {{product.liqType}}
+                              </div>
+                            </td>
 
-                              <button mat-raised-button
-                              color="primary"
-                              ><a href="{{product.website}}" target="_blank">{{'~visit' | translate}}</a></button>
+                            <td>
+                              <div class="td-content">
+                                  <p>+{{product.income}} {{product.currencyCode}}</p>
+                              </div>
+                            </td>
 
-                            <button mat-raised-button color="accent" [id]="product?.dpID"
-                             fly-to-cart
-                              [disabled]="(canAddProductToCompare(product?.dpID) | async)"
-                              (click)="onAddProductToCompare(product)">{{'~addToCart' | translate}}</button>
+                            <td>
+                              <div class="td-content">
+                                  <p>+{{product.currencyCode}}</p>
+                              </div>
+                            </td>
 
-                          </div>
+                            <td class="pl-1 pr-1">
+                              <div class="td-content row-actions">
 
-                        </td>
+                                  <button mat-raised-button
+                                  color="primary"
+                                  ><a href="{{product.website}}" target="_blank">{{'~visit' | translate}}</a></button>
 
-                      </tr>
+                                <button mat-raised-button color="accent" [id]="product?.dpID"
+                                 fly-to-cart
+                                  [disabled]="(canAddProductToCompare(product?.dpID) | async)"
+                                  (click)="onAddProductToCompare(product)">{{'~addToCart' | translate}}</button>
+
+                              </div>
+
+                            </td>
+
+                          </tr>
+                        </ng-container>
+
+                      </ng-container>
+
                 </tbody>
         </table>
       </div>

@@ -4,12 +4,13 @@ import { DepositCalcForm } from '../models/deposit-calc-form.model';
 import { DepositService } from '../deposit.service';
 import { finalize, takeUntil } from 'rxjs/operators';
 import { switchToView, isMobileSize } from 'src/app/app.utils';
-import { DepositProduct } from '../models/deposit.model';
 import { Observable, of, Subject } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-change.model';
 import { SortStates } from 'src/app/shared/directives/order-by-column/sort-states.enum';
 import { TranslateService } from '@ngx-translate/core';
+import { DepositProduct, DepositGroup } from '../models/deposit-group.model';
+import { flatten } from '@angular/compiler';
 
 @Component({
   selector: 'deposits-table',
@@ -20,12 +21,12 @@ import { TranslateService } from '@ngx-translate/core';
 export class DepositsTableComponent implements OnInit, OnDestroy {
   currentFormValues: DepositCalcForm;
   loading: boolean;
-  depositProducts: DepositProduct[];
-  filteredDepositProducts: DepositProduct[];
-  showColgroup: boolean;
+  depositGroupProducts: DepositGroup[];
+  filteredGroupProducts: DepositGroup[];
   sortState: SortChangeModel;
   showFilters: boolean;
   _onDestroy$ = new Subject<void>();
+  expandedGroupId: number;
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange()}
   constructor(
     private route: ActivatedRoute,
@@ -36,7 +37,6 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit() {
-    this.showColgroup = this.breakpointObserver.isMatched('(min-width: 768px)');
     this.showFilters =  !this.breakpointObserver.isMatched('(max-width: 992px)');
     this.listenToRouterParams();
     const data = {
@@ -48,14 +48,21 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
       depositPeriod: 0,
       depositCurrency: 'AZN'
     } as DepositCalcForm;
-    this.getListDepositProducts(data);
+    this.getListDepositGroupProducts(data);
     this.changeRef.detectChanges();
+  }
+  onExpandGroup(groupId: number) {
+    if (this.expandedGroupId === groupId) {
+      console.log('indef')
+      this.expandedGroupId = undefined;
+      return;
+    }
+    this.expandedGroupId = groupId;
   }
   ngOnDestroy() {
     this._onDestroy$.next();
   }
   updateForLayoutChange() {
-    this.showColgroup = this.breakpointObserver.isMatched('(min-width: 768px)');
     this.showFilters =  !this.breakpointObserver.isMatched('(max-width: 992px)');
   }
   listenToRouterParams() {
@@ -74,15 +81,15 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
         }
         console.log(formValue);
         this.currentFormValues = formValue;
-        this.getListDepositProducts(formValue);
+        this.getListDepositGroupProducts(formValue);
       }
     });
     this.changeRef.detectChanges();
   }
-  getListDepositProducts(data: DepositCalcForm) {
-    this.depositProducts = null;
+  getListDepositGroupProducts(data: DepositCalcForm) {
+    this.depositGroupProducts = null;
     this.loading = true;
-    this.depositService.getListDepositProducts(data)
+    this.depositService.getListDepositGroupProducts(data)
     .pipe(
       finalize(() => {
          this.loading = false;
@@ -90,8 +97,9 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
       })
     )
       .subscribe(res => {
-        this.depositProducts = res;
-        this.filteredDepositProducts = res;
+        this.depositGroupProducts = res;
+        // this.depositProducts = flatten(res.map((group) => group.list));
+     this.filteredGroupProducts = [...this.depositGroupProducts];
         switchToView('#deposits-table-filter');
       });
   }
@@ -105,20 +113,29 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
   }
   onSortChange(sortChange: SortChangeModel) {
     this.sortState = {...sortChange};
-    if (sortChange.orderBySort === SortStates.asc) {
-      this.filteredDepositProducts = [...this.filteredDepositProducts].sort((a, b) => {
-        if (a[sortChange.orderByColumn] > b[sortChange.orderByColumn]) {return 1;}
-        if (a[sortChange.orderByColumn] < b[sortChange.orderByColumn]) {return -1;}
-        return 0;
-      });
-    } else if(sortChange.orderBySort === SortStates.desc) {
-      this.filteredDepositProducts = [...this.filteredDepositProducts].sort((a, b) => {
+    const sortedGroups = [...this.filteredGroupProducts];
+    sortedGroups.forEach(group => {
+      group.list = [...group.list].sort((a,b) => {
         if (a[sortChange.orderByColumn] > b[sortChange.orderByColumn]) {return -1;}
         if (a[sortChange.orderByColumn] < b[sortChange.orderByColumn]) {return 1;}
         return 0;
+      })
+    })
+    if (sortChange.orderBySort === SortStates.asc) {
+      this.filteredGroupProducts = sortedGroups.sort((a, b) => {
+        if (a.list[0][sortChange.orderByColumn] > b.list[0][sortChange.orderByColumn]) {return 1;}
+        if (a.list[0][sortChange.orderByColumn] < b.list[0][sortChange.orderByColumn]) {return -1;}
+        return 0;
+      });
+    } else if(sortChange.orderBySort === SortStates.desc) {
+      console.log('desc');
+      this.filteredGroupProducts = sortedGroups.sort((a, b) => {
+        if (a.list[0][sortChange.orderByColumn] > b.list[0][sortChange.orderByColumn]) {return -1;}
+        if (a.list[0][sortChange.orderByColumn] < b.list[0][sortChange.orderByColumn]) {return 1;}
+        return 0;
       });
     } else {
-      this.filteredDepositProducts = [...this.depositProducts];
+      this.filteredGroupProducts = [...this.depositGroupProducts];
     }
     this.changeRef.detectChanges();
   }
@@ -126,10 +143,10 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
     const lang = this.translateService.getDefaultLang();
     const inputValue = event.target.value;
     if (!inputValue) {
-      this.filteredDepositProducts = [...this.depositProducts];
+      this.filteredGroupProducts= [...this.depositGroupProducts];
       return;
     }
-    this.filteredDepositProducts = [...this.depositProducts].filter((loan) => {
+    this.filteredGroupProducts = [...this.depositGroupProducts].filter((loan) => {
       return keys.some( (key) => {
         if (!loan[key]) {return false;}
         if (loan[key] && loan[key][lang]) {
