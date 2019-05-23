@@ -10,11 +10,11 @@
   <form class="calculator__input" #f="ngForm">
 
     <div class="calculator__input__in">
-        <mat-form-field class="calculator__input__amount" appearance="fill" >
+        <mat-form-field class="calculator__input__amount" appearance="outline" >
           <input matInput placeholder="0" type="number"  (input)="calcOutResult()" name="amountIn" ngModel>
         </mat-form-field>
 
-        <mat-form-field class="calculator__input__currency" appearance="fill">
+        <mat-form-field class="calculator__input__currency" appearance="outline">
             <mat-select ngModel name="currencyCodeIn" (ngModelChange)="calcOutResult()"  [ngModel] = "currencyCodeIn">
               <mat-option value="USD"> USD </mat-option>
               <mat-option value="EUR"> EUR </mat-option>
@@ -25,13 +25,16 @@
             </mat-select>
           </mat-form-field>
         </div>
+      <div class="exchange-arrow">
+          <i class="fas fa-exchange-alt"></i>
+      </div>
     <div class="calculator__input__out">
 
-      <mat-form-field class="calculator__input__amount" appearance="fill" >
+      <mat-form-field class="calculator__input__amount" appearance="outline" >
           <input matInput placeholder="0" type="number" name="amountOut" ngModel (input)="calcInResult()">
         </mat-form-field>
 
-        <mat-form-field class="calculator__input__currency" appearance="fill">
+        <mat-form-field class="calculator__input__currency" appearance="outline">
             <mat-select ngModel name="currencyCodeOut" (ngModelChange)="calcOutResult()" [ngModel] = "currencyCodeOut">
               <mat-option value="AZN"> AZN</mat-option>
               <mat-option value="USD"> USD </mat-option>

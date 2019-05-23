@@ -1,57 +1,68 @@
-<form #f="ngForm" (ngSubmit)="onSubmit()">
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-12">
-      {{'~compare' | translate}}
-    </div>
-  </div>
-  <div class="row align-items-center">
-    <div class="col-12 col-lg-3">
-            <mat-form-field class="content__form__inputs__field">
-                <mat-label>{{'~currency' | translate}}</mat-label>
-                <mat-select ngModel name="currencyCode">
-                  <mat-option value="USD"> USD </mat-option>
-                  <mat-option value="EUR"> EUR </mat-option>
-                  <mat-option value="GBP"> GBP </mat-option>
-                  <mat-option value="TRY"> TRY </mat-option>
-                  <mat-option value="RUB"> RUB </mat-option>
-                </mat-select>
-              </mat-form-field>
+<div class="card">
+    <div class="card__header">
+        {{'~compare' | translate}}
+     </div>
 
-    </div>
-            <div class="col-12 col-lg-3">
-                <mat-form-field class="content__form__inputs__field">
-                    <input matInput [matDatepicker]="datefrom" (focus)="datefrom?.open()" placeholder="{{'~datefrom' | translate}}" ngModel name="datefrom">
-                    <mat-datepicker-toggle matSuffix [for]="datefrom"></mat-datepicker-toggle>
-                    <mat-datepicker #datefrom></mat-datepicker>
-                  </mat-form-field>
+     <div class="card__content">
+        <form #f="ngForm" (ngSubmit)="onSubmit()">
+
+            <div class="container-fluid">
+              <div class="row align-items-center">
+                <div class="col-12 col-lg-3">
+                      <mat-form-field class="form__field" [appearance]="'outline'">
+                          <mat-label>{{'~currency' | translate}}</mat-label>
+                          <mat-select ngModel name="currencyCode">
+                            <mat-option value="USD"> USD </mat-option>
+                            <mat-option value="EUR"> EUR </mat-option>
+                            <mat-option value="GBP"> GBP </mat-option>
+                            <mat-option value="TRY"> TRY </mat-option>
+                            <mat-option value="RUB"> RUB </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+
+                </div>
+                        <div class="col-12 col-lg-3">
+                            <mat-form-field class="form__field" [appearance]="'outline'">
+                                <mat-label>{{'~datefrom' | translate}}</mat-label>
+                                <input matInput [matDatepicker]="datefrom" (focus)="datefrom?.open()" placeholder="{{'~datefrom' | translate}}" ngModel name="datefrom">
+                                <mat-datepicker-toggle matSuffix [for]="datefrom"></mat-datepicker-toggle>
+                                <mat-datepicker #datefrom></mat-datepicker>
+                              </mat-form-field>
+                        </div>
+
+                        <div class="col-12 col-lg-3">
+                            <mat-form-field class="form__field" [appearance]="'outline'">
+                                <mat-label>{{'~dateUntil' | translate}}</mat-label>
+                                <input matInput [matDatepicker]="dateUntil" (focus)="dateUntil?.open()" placeholder="{{'~dateUntil' | translate}}" ngModel name="dateUntil">
+                                <mat-datepicker-toggle matSuffix [for]="dateUntil"></mat-datepicker-toggle>
+                                <mat-datepicker #dateUntil></mat-datepicker>
+                              </mat-form-field>
+                        </div>
+
+                        <div class="col-12 col-lg-3">
+                            <button mat-raised-button color="primary" class="submit" type="submit">{{'~compare' | translate}}</button>
+                        </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+
+                  <div id="linechart_material" *ngIf="data && !loading" style="width: 95%; height:400px"></div>
+
+                  <table-loader *ngIf="loading" style="height: 400px"></table-loader>
+
+                </div>
+              </div>
             </div>
 
-            <div class="col-12 col-lg-3">
-                <mat-form-field class="content__form__inputs__field">
-                    <input matInput [matDatepicker]="dateUntil" (focus)="dateUntil?.open()" placeholder="{{'~dateUntil' | translate}}" ngModel name="dateUntil">
-                    <mat-datepicker-toggle matSuffix [for]="dateUntil"></mat-datepicker-toggle>
-                    <mat-datepicker #dateUntil></mat-datepicker>
-                  </mat-form-field>
-            </div>
 
-            <div class="col-12 col-lg-3">
-                <button mat-raised-button color="primary" type="submit">{{'~compare' | translate}}</button>
-            </div>
-  </div>
+            </form>
+     </div>
 
-  <div class="row">
-    <div class="col-12">
-
-      <div id="linechart_material" *ngIf="data && !loading" style="width: 95%; height:400px"></div>
-
-      <table-loader *ngIf="loading" style="height: 400px"></table-loader>
-
-    </div>
-  </div>
 </div>
 
 
-</form>
+
+
 

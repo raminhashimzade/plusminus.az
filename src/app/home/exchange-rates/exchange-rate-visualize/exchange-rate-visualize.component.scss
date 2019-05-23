@@ -1,27 +1,33 @@
 :host {
     display: block;
     width: 100%;
-    background: #ffffff;
     margin: 1.25rem 0;
-    padding: 10px 0;
     box-shadow: 0.0625rem 0.125rem 0.6875rem 0rem rgba(0, 0, 0, 0.2);
 }
 
-.content {
-    display: flex;
-    .content__form    {
-        display: flex;
-        flex-direction: column;
-        .content__form__inputs {
-            display: flex;
-            .content__form__inputs__field {
-                margin-right: 1.25rem;
+
+.card {
+    .card__header {
+        padding: 1.25rem;
+        background: var(--primary-default);
+        color: #ffffff;
+        font-size: 1.125rem;
+    }
+    .card__content {
+        background: #ffffff;
+        padding: 1.25rem 0;
+        .form__field {
+            width: 100%;
+            font-size: 0.875rem;
+            /deep/ .mat-form-field-wrapper {
+                padding: 0!important;
             }
         }
+        button.submit {
+         //   height: 48px;;
+        }
     }
-    .content__chart {}
 }
-
 /deep/ .raphael-group-21-creditgroup {
     display: none;
 }
