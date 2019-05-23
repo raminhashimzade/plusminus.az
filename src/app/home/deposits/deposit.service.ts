@@ -28,4 +28,7 @@ export class DepositService {
       map(res => res && res.data)
   );
   }
+  private mapDepositProducts(data: DepositGroup[]) {
+    return [];
+  }
 }

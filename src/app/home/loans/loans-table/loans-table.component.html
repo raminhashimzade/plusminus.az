@@ -77,11 +77,6 @@
                         {{'~documents' | translate | titlecase}}
                     </div>
                   </th>
-                  <!-- <th >
-                    <div class="th-content" *ngIf="!isMobile">
-                        {{'~requirements' | translate | titlecase}}
-                    </div>
-                  </th> -->
                   <th></th>
                 </thead>
 
@@ -145,8 +140,8 @@
                         </div>
                     </td>
 
-                    <td valign="top"  *ngIf="(isMobile && (expandedNode === loan.lnID) ) || !isMobile">
-                      <div class=" td-content" [ngClass]="{'table-expanded' : (expandedNode === loan.lnID) || isMobile }" >
+                    <td valign="top" >
+                      <div class=" td-content" >
                         <div *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n')">
                             {{item}} <br>
                         </div>
