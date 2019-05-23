@@ -1,56 +1,9 @@
-<loans-banner (bannerFormSubmit)="onLoanBannerFormSubmit($event)"> </loans-banner>
-
+<loans-filter></loans-filter>
 <div class="container">
-  <div class="row">
-    <div class="col-12">
-        <div class="products__request">
-            <button mat-raised-button color="primary" class="products__request__btn" (click)="onRequestLoansFromAllBanks()">
-              {{'~requestLoansFromAllBanks' |  translate}}
-            </button>
-          </div>
-    </div>
-  </div>
+
   <div class="row" >
     <div class="col-12">
         <div class="products__table">
-          <div id="loans-table-filter" class="products__table__filter">
-
-
-              <form #f="ngForm">
-
-                  <div class="products__table__filter__btn --ck-button">
-                      <label>
-                         <input type="checkbox" value="false" ngModel name ="withEmpReference"><span>{{'~withEmpReference' | translate |titlecase}}</span>
-                      </label>
-                   </div>
-
-                  <div class="products__table__filter__btn --ck-button">
-                      <label>
-                         <input type="checkbox" value="false" ngModel name ="withCollateral"><span>{{'~withCollateral' | translate |titlecase}}</span>
-                      </label>
-                   </div>
-
-                  <div class="products__table__filter__btn --ck-button">
-                      <label>
-                         <input type="checkbox" value="false" ngModel name ="withGracePeriod"><span>{{'~withGracePeriod' | translate |titlecase}}</span>
-                      </label>
-                   </div>
-
-                  <div class="products__table__filter__btn --ck-button">
-                      <label>
-                         <input type="checkbox" value="false" ngModel name ="comissionCash"><span>{{'~commissionCash' | translate |titlecase}}</span>
-                      </label>
-                   </div>
-                  <div class="products__table__filter__btn --ck-button">
-                      <label>
-                         <input type="checkbox" value="false" ngModel name ="comissionLoan"><span>{{'~commissionLoan' | translate |titlecase}}</span>
-                      </label>
-                   </div>
-
-            </form>
-
-
-        </div>
         <div class="products__table__search">
               <mat-form-field>
                   <input matInput (keyup)="applyFilter($event.target.value.toString().toLowerCase())" placeholder="{{'~search' | translate}}">

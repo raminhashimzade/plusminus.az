@@ -1,0 +1,127 @@
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+  <div class="banner-wrapper">
+     <div class="container">
+       <div class="row">
+         <div class="col-12">
+            <div class="banner">
+                <div class="banner__title">
+                  <div class="banner__title__top">
+                    {{'~consumer' | translate}}
+                  </div>
+                  <div class="banner__title__bottom">
+                    {{'~loans' | translate}}
+                  </div>
+                </div>
+                <div class="banner__filter">
+                  <div class="banner__filter__amount">
+                    <div class="banner__filter__amount__input">
+                      <mat-form-field class="w-100" appearance="outline">
+                        <input matInput name="slideValue" type="number" placeholder="{{'~loanAmount' | translate}}"
+                          [(ngModel)]="slideValue">
+                      </mat-form-field>
+
+                      <mat-slider class="slider" color="primary" [max]="'100000'" [min]="'0'" [step]="'1000'" ngModel
+                        name="loanAmount" [(ngModel)]="slideValue" (input)="onSlideMove($event)">
+                      </mat-slider>
+
+                    </div>
+                    <div class="banner__filter__amount__select">
+
+                      <mat-form-field appearance="outline" class="banner__filter__amount__select__currency">
+                        <mat-select name="loanCurrency" [ngModel]="loanCurrency" class="form-field">
+                          <mat-option value="AZN">AZN</mat-option>
+                          <mat-option value="USD">USD</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="f?.controls['loanCurrency']?.invalid">{{getErrorMessage('loanCurrency')}}</mat-error>
+
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="banner__filter__period">
+
+                    <mat-form-field appearance="outline" class="banner__filter__period__select">
+                      <!-- <mat-label>{{'~loanPeriod' | translate }}</mat-label> -->
+                      <mat-select name="loanPeriod" ngModel class="form-field" placeholder="{{'~loanPeriod' | translate }}">
+                        <mat-option *ngFor="let period of (loanPeriods$ | async)" [value]="period?.periodId"> {{period?.period}}
+                        </mat-option>
+
+                      </mat-select>
+                      <mat-error *ngIf="f?.controls['loanPeriod']?.invalid">{{getErrorMessage('loanPeriod')}}</mat-error>
+
+                    </mat-form-field>
+
+                  </div>
+
+                  <div class="banner__filter__submit">
+                    <button mat-raised-button color="primary" type="submit">{{'~seachLoan' | translate}} </button>
+                  </div>
+                </div>
+              </div>
+         </div>
+       </div>
+     </div>
+  </div>
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+        <div class="products__request">
+          <button mat-raised-button color="primary" class="products__request__btn"
+            (click)="onRequestLoansFromAllBanks()">
+            {{'~requestLoansFromAllBanks' |  translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="products__table">
+          <div id="loans-table-filter" class="products__table__filter">
+
+              <div class="ck-buttons">
+                <div class="--ck-button">
+                  <label>
+                    <input type="checkbox" value="false" ngModel
+                      name="withEmpReference"><span>{{'~withEmpReference' | translate |titlecase}}</span>
+                  </label>
+                </div>
+
+                <div class="--ck-button">
+                  <label>
+                    <input type="checkbox" value="false" ngModel
+                      name="withCollateral"><span>{{'~withCollateral' | translate |titlecase}}</span>
+                  </label>
+                </div>
+
+                <div class="--ck-button">
+                  <label>
+                    <input type="checkbox" value="false" ngModel
+                      name="withGracePeriod"><span>{{'~withGracePeriod' | translate |titlecase}}</span>
+                  </label>
+                </div>
+
+                <div class="--ck-button">
+                  <label>
+                    <input type="checkbox" value="false" ngModel
+                      name="comissionCash"><span>{{'~commissionCash' | translate |titlecase}}</span>
+                  </label>
+                </div>
+                <div class="--ck-button">
+                  <label>
+                    <input type="checkbox" value="false" ngModel
+                      name="comissionLoan"><span>{{'~commissionLoan' | translate |titlecase}}</span>
+                  </label>
+                </div>
+              </div>
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</form>

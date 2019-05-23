@@ -2,26 +2,10 @@
     display: block;
     background: var( --background-secondary);
 }
-.products__request{
-    margin: 2.125rem 0;
-    width: 100%;
-    .products__request__btn {
-        width: 100%;
-    }
-}
+
 
 .products__table {
-    .products__table__filter {
-        display: flex;
-        .products__table__filter__btn {
-            color: #000000;
-            font-family: 'Montserrat-Medium';
-            font-size: 0.75rem;
-            font-weight: 300;
-            letter-spacing: -0.0075rem;
-            background: #ffffff;
-        }
-     }
+
      .products__table__content {
         margin: 1rem 0;
         overflow: auto;

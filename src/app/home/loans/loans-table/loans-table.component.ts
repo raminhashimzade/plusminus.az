@@ -26,16 +26,6 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   filteredLoanProducts: LoanProduct[];
   expandedNode: string;
  // sortState: {sortKey: string, sortBy: string};
-  currentFormValues = {
-    withEmpReference: true,
-    withCollateral: false,
-    withGracePeriod: false,
-    comissionCash: false,
-    comissionLoan: false,
-    loanAmount: 0,
-    loanCurrency: 'AZN',
-    loanPeriod: 0
-  }
   bannerFormValues = {};
   _onDestroy$ = new Subject<void>();
   isMobile: boolean;
@@ -67,33 +57,12 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    setTimeout(() => this.setInitialCheckboxesToFalse(), 50)
-    setTimeout(() => this.listenToTableFilterChanges(), 100)
+  //  setTimeout(() => this.listenToTableFilterChanges(), 100)
   }
   ngOnDestroy() {
     this._onDestroy$.next();
   }
-  setInitialCheckboxesToFalse() {
-    Object.keys(this.form.controls).forEach(controlKey => {
-      if (!this.form.controls[controlKey].value) {
-        this.form.controls[controlKey].setValue(false);
-      }
-    });
-    this.changeRef.detectChanges();
-  }
-  listenToTableFilterChanges() {
-    this.form.valueChanges
-    .pipe(takeUntil(this._onDestroy$))
-    .subscribe(res => {
 
-     this.currentFormValues = {
-       ...this.currentFormValues,
-       ...this.form.value
-     }
-     this.getListLoanProducts(this.currentFormValues);
-     console.log(this.currentFormValues)
-    })
-  }
   getListLoanProducts(data: Object) {
     this.loanProducts = null;
     this.loading = true;
@@ -119,25 +88,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.changeRef.detectChanges();
   }
-  onRequestLoansFromAllBanks() {
-    const ref = this.dialog.open(LoanRequestDialogComponent, {
-      panelClass: 'loanRequestDialog',
-      autoFocus: false,
-      maxWidth: '90vw',
-      disableClose: true,
-      position: isMobileSize() && {top: '0'}
-    });
 
-  }
-  onLoanBannerFormSubmit(form: NgForm) {
-    const formValue = {
-      ...this.currentFormValues,
-      ...form.value
-    }
-    console.log(formValue);
-    this.currentFormValues = formValue;
-    this.getListLoanProducts(formValue);
-  }
   onAddProductToCompare(loan: LoanProduct) {
     this.loansService.addProductToCompare(loan);
     this.changeRef.detectChanges();
@@ -150,17 +101,17 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.route.params
     .pipe(takeUntil(this._onDestroy$))
     .subscribe(res => {
-      const loanAmount = res['loanAmount'];
-      const loanCurrency = res['loanCurrency'];
-      const loanPeriod = res['loanPeriod'];
         const formValue = {
-          ...this.currentFormValues,
-          loanAmount,
-          loanCurrency,
-          loanPeriod
+           loanAmount: res['loanAmount'] || '',
+          loanCurrency: res['loanCurrency'] ||  '',
+          loanPeriod: res['loanPeriod'] || '',
+          withEmpReference: res['withEmpReference'] || true,
+          withCollateral: res['withCollateral'] || false,
+          withGracePeriod: res['withGracePeriod'] || false,
+          comissionCash: res['comissionCash'] || false,
+          comissionLoan: res['comissionLoan'] || false,
         }
         console.log(formValue);
-        this.currentFormValues = formValue;
         this.getListLoanProducts(formValue);
     });
     this.changeRef.detectChanges();

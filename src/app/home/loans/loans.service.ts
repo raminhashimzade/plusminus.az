@@ -65,7 +65,12 @@ export class LoansService {
         return this.http.post<DataResponse>('mybank/listLoanPeriod', {
             token: this.authService.getToken()
         }).pipe(
-            map(res => res && res.data)
+            map(res => res && res.data && res.data.map((p) => {
+                return {
+                period: p.period,
+                periodId:p.periodId.toString()
+                }
+            }))
         );;
     }
     getCompareLoanProductList(productIds: number[]) {

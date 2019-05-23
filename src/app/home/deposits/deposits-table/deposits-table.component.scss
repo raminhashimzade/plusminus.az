@@ -53,6 +53,7 @@ table.deposits {
 
 @media (max-width: 1199px) {
   table.deposits {
+
     .td-content {
       .productInfo {
         .productInfo__liqType {
@@ -63,15 +64,7 @@ table.deposits {
   }
 }
 @media (max-width: 992px) {
-  table.deposits {
-    .td-content {
-      .productInfo {
-        .productInfo__liqType {
-    //      margin: 0 1.5rem;
-        }
-      }
-    }
-  }
+
 }
 
 
