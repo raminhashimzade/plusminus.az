@@ -9,6 +9,9 @@ import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-
 import { SharedService } from 'src/app/shared/shared.service';
 import { LoanGroup, LoanProduct } from '../models/loanGroup.model';
 import { LoanFilterForm } from '../models/loan-filter-form';
+import { MatDialog } from '@angular/material';
+import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'loans-table',
@@ -23,6 +26,8 @@ export class LoansTableComponent implements OnInit, OnDestroy {
   sortState: SortChangeModel;
   _onDestroy$ = new Subject<void>();
   expandedGroupId: number;
+  isMobile: boolean;
+  isMdSize: boolean;
   columns = ['bankName', 'loanName', 'minRate','minAmount', 'maxAmount', 'minMonthlyPayment', 'maxMonthlyPayment', 'currencyCode'];
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
@@ -30,12 +35,16 @@ export class LoansTableComponent implements OnInit, OnDestroy {
     private loanService: LoansService,
     private changeRef: ChangeDetectorRef,
     private breakpointObserver: BreakpointObserver,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private dialog: MatDialog,
+    private translateService: TranslateService
   ) { }
 
   ngOnInit() {
     this.listenToRouterParams();
     this.changeRef.detectChanges();
+    this.isMobile = isMobileSize();
+    this.isMdSize = this.breakpointObserver.isMatched('(max-width: 992px)');
   }
   onExpandGroup(groupId: number) {
     if (this.expandedGroupId === groupId) {
@@ -48,6 +57,8 @@ export class LoansTableComponent implements OnInit, OnDestroy {
     this._onDestroy$.next();
   }
   updateForLayoutChange() {
+    this.isMobile = isMobileSize();
+    this.isMdSize = this.breakpointObserver.isMatched('(max-width: 992px)');
   }
   listenToRouterParams() {
     this.route.params
@@ -102,6 +113,14 @@ export class LoansTableComponent implements OnInit, OnDestroy {
     this.filteredGroupProducts = this.sharedService.
     filterTableWithRowGroups(filterValue, [...this.loanGroupProducts], this.columns);
     this.changeRef.detectChanges();
+  }
+  openDocumentDialog(documentData) {
+    const data = documentData[this.translateService.getDefaultLang()]
+    this.dialog.open(DocumentDialogComponent, {
+      data: data,
+      width: '300px',
+      maxHeight: '90vh'
+    })
   }
 
 }

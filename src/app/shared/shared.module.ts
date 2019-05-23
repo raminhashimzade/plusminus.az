@@ -8,9 +8,12 @@ import { TableLoaderModule } from '../home/table-loader/table-loader.module';
 import { CountUpModule } from 'countup.js-angular2';
 import { FormsModule } from '@angular/forms';
 import { OrderByColumnModule } from './directives/order-by-column/order-by-column.module';
+import { DocumentDialogComponent } from './components/document-dialog/document-dialog.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DocumentDialogComponent
+  ],
   imports: [
     SharedTranslateModule,
     FormsModule,
@@ -31,7 +34,9 @@ import { OrderByColumnModule } from './directives/order-by-column/order-by-colum
     FlyToCartModule,
     TableLoaderModule,
     CountUpModule,
-    OrderByColumnModule
-  ]
+    OrderByColumnModule,
+    DocumentDialogComponent
+  ],
+  entryComponents: [DocumentDialogComponent]
 })
 export class SharedModule { }

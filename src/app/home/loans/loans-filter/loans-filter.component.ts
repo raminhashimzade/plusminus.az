@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -8,6 +8,7 @@ import { takeUntil, debounceTime } from 'rxjs/operators';
 import { MatSliderChange, MatDialog } from '@angular/material';
 import { LoanRequestDialogComponent } from '../loan-request-dialog/loan-request-dialog.component';
 import { isMobileSize } from 'src/app/app.utils';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'loans-filter',
@@ -20,19 +21,26 @@ export class LoansFilterComponent implements OnInit {
   loanCurrency = 'AZN';
   loanPeriods$: Observable<any>;
   slideValue: number;
+  isMdSize: boolean;
   _onDestroy$ = new Subject<void>();
+  @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
       private loanService: LoansService,
       private router: Router,
       private route: ActivatedRoute,
-      private dialog: MatDialog
+      private dialog: MatDialog,
+      private breakPointObserver: BreakpointObserver
      ) {
     this.loanPeriods$ = this.loanService.listLoanPeriods();
   }
 
   ngOnInit() {
     setTimeout(() => this.listenToformChange(), 20);
+    this.isMdSize = this.breakPointObserver.isMatched('(max-width: 992px)');
+  }
+  updateForLayoutChange() {
+    this.isMdSize = this.breakPointObserver.isMatched('(max-width: 992px)');
   }
   ngOnDestroy(): void {
     this._onDestroy$.next();

@@ -10,6 +10,11 @@ table.deposits {
     }
   }
   .td-content {
+    &.--documents {
+      font-size: 24px;
+      color: #CE1B21;
+      cursor: pointer;
+    }
     &.products__table__content__bank {
       width: 112px;
       margin: auto;

@@ -1,6 +1,6 @@
 <form #f="ngForm" (ngSubmit)="onSubmit()">
   <div class="banner-wrapper">
-     <div class="container">
+     <div [ngClass]="isMdSize === true ? 'container-fluid' : 'container'">
        <div class="row">
          <div class="col-12">
             <div class="banner">
@@ -53,7 +53,7 @@
                   </div>
 
                   <div class="banner__filter__submit">
-                    <button mat-raised-button color="primary" type="submit">{{'~seachLoan' | translate}} </button>
+                    <button mat-raised-button color="primary" type="submit">{{'~searchLoan' | translate}} </button>
                   </div>
                 </div>
               </div>
@@ -61,7 +61,7 @@
        </div>
      </div>
   </div>
-  <div class="container">
+  <div [ngClass]="isMdSize === true ? 'container-fluid' : 'container'">
 
     <div class="row">
       <div class="col-12">
