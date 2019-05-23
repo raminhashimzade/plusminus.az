@@ -116,6 +116,8 @@
      "~currencyCode": "Valyuta",
      "~search": "Axtar",
      "~exchangeCalcTitle": "Valyuta kalkulyatoru",
-     "~exchangeCalcSubtitle": "Nağd məzənnə əsasında hesablanır"
+     "~exchangeCalcSubtitle": "Nağd məzənnə əsasında hesablanır",
+     "~searchDeposit": "Depozit axtar",
+     "~searchLoan": "Kredit axtar"
 
   }

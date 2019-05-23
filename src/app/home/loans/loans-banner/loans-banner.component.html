@@ -1,72 +1,76 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="banner">
-        <div class="banner__title">
-            <div class="banner__title__top">
-              {{'~consumer' | translate}}
-            </div>
-            <div class="banner__title__bottom">
-              {{'~loans' | translate}}
-            </div>
-        </div>
-        <form class="banner__filter" #f="ngForm" (ngSubmit)="onSubmit(f)">
-          <div class="banner__filter__amount">
-            <div class="banner__filter__amount__input">
-                <mat-form-field appearance="outline" class="banner__filter__amount__input__number" >
-                    <!-- <mat-label>{{'~loanAmount' | translate }}</mat-label> -->
-                    <input matInput ngModel
-                    name="loanAmount" type="tel"
-                    required
-                    placeholder="{{'~loanAmount' | translate }}"
-                    (input)="onNumInput($event)"
-                    #loanAmount ="matInput"
+    <div class="row">
+      <div class="col-12">
+        <div class="banner">
+          <div class="banner__title">
+              <div class="banner__title__top">
+                {{'~consumer' | translate}}
+              </div>
+              <div class="banner__title__bottom">
+                {{'~loans' | translate}}
+              </div>
+          </div>
+          <form class="banner__filter" #f="ngForm" (ngSubmit)="onSubmit()">
+            <div class="banner__filter__amount">
+              <div class="banner__filter__amount__input">
+                  <mat-form-field class="w-100" appearance="outline">
+                        <input matInput name ="slideValue" type="number" placeholder="{{'~loanAmount' | translate}}" [(ngModel)]="slideValue">
+                      </mat-form-field>
+
+                    <mat-slider class="slider"
+                      color="primary"
+                      [max]="'100000'"
+                      [min]="'0'"
+                      [step]="'1000'"
+                      ngModel
+                      name="loanAmount"
+                      [(ngModel)]="slideValue"
+                      (input)="onSlideMove($event)"
                     >
-                    <mat-error *ngIf="form?.controls['loanAmount']?.invalid">{{getErrorMessage('loanAmount')}}</mat-error>
-                  </mat-form-field>
+                  </mat-slider>
 
+              </div>
+              <div class="banner__filter__amount__select">
+
+                  <mat-form-field appearance="outline" class="banner__filter__amount__select__currency">
+                      <mat-select
+                        name="loanCurrency"
+                        [ngModel]="loanCurrency"
+                        class="form-field"
+                       >
+                        <mat-option value="AZN">AZN</mat-option>
+                        <mat-option value="USD">USD</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="f?.controls['loanCurrency']?.invalid">{{getErrorMessage('loanCurrency')}}</mat-error>
+
+                    </mat-form-field>
+              </div>
             </div>
-            <div class="banner__filter__amount__select">
+            <div class="banner__filter__period">
 
-                <mat-form-field appearance="outline" class="banner__filter__amount__select__currency">
+                <mat-form-field appearance="outline" class="banner__filter__period__select">
+                    <!-- <mat-label>{{'~loanPeriod' | translate }}</mat-label> -->
                     <mat-select
-                      name="loanCurrency"
-                      [ngModel]="loanCurrency"
-                      required
+                      name="loanPeriod"
+                      ngModel
+                      class="form-field"
+                      placeholder="{{'~loanPeriod' | translate }}"
                      >
-                      <mat-option value="AZN">AZN</mat-option>
-                      <mat-option value="USD">USD</mat-option>
+                     <mat-option *ngFor="let period of (loanPeriods$ | async)"
+                      [value]="period?.periodId"> {{period?.period}}</mat-option>
+
                     </mat-select>
-                    <mat-error *ngIf="f?.controls['loanCurrency']?.invalid">{{getErrorMessage('loanCurrency')}}</mat-error>
+                    <mat-error *ngIf="f?.controls['loanPeriod']?.invalid">{{getErrorMessage('loanPeriod')}}</mat-error>
 
                   </mat-form-field>
+
             </div>
-          </div>
-          <div class="banner__filter__period">
 
-              <mat-form-field appearance="outline" class="banner__filter__period__select">
-                  <!-- <mat-label>{{'~loanPeriod' | translate }}</mat-label> -->
-                  <mat-select
-                    name="loanPeriod"
-                    ngModel
-                    required
-                    placeholder="{{'~loanPeriod' | translate }}"
-                   >
-                   <mat-option *ngFor="let period of (loanPeriods$ | async)"
-                    [value]="period?.periodId"> {{period?.period}}</mat-option>
-
-                  </mat-select>
-                  <mat-error *ngIf="f?.controls['loanPeriod']?.invalid">{{getErrorMessage('loanPeriod')}}</mat-error>
-
-                </mat-form-field>
-
-          </div>
-
-          <div class="banner__filter__submit">
-            <button mat-raised-button color="primary" type="submit">{{'~pickLoan' | translate}} </button>
-          </div>
-        </form>
+            <div class="banner__filter__submit">
+              <button mat-raised-button color="primary" type="submit">{{'~seachLoan' | translate}} </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>

@@ -58,7 +58,7 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit() {
     this.determineMobileSize();
     this.listenToRouterParams();
-    this.getListLoanProducts(this.currentFormValues);
+ //   this.getListLoanProducts(this.currentFormValues);
   }
   determineMobileSize() {
     this.isMobile = isMobileSize();
@@ -147,11 +147,12 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
       .pipe(map((loans: LoanProduct[]) => !!loans.find(l => l.lnID === loanID)));
   }
   listenToRouterParams() {
-    this.route.params.subscribe(res => {
+    this.route.params
+    .pipe(takeUntil(this._onDestroy$))
+    .subscribe(res => {
       const loanAmount = res['loanAmount'];
       const loanCurrency = res['loanCurrency'];
       const loanPeriod = res['loanPeriod'];
-      if (loanAmount && loanCurrency) {
         const formValue = {
           ...this.currentFormValues,
           loanAmount,
@@ -161,8 +162,8 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
         console.log(formValue);
         this.currentFormValues = formValue;
         this.getListLoanProducts(formValue);
-      }
     });
+    this.changeRef.detectChanges();
   }
   onSortChange(sortChange: SortChangeModel) {
     this.sortState = {...sortChange};

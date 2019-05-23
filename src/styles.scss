@@ -304,7 +304,9 @@ button.is-loading {
 	50% { -webkit-transform: scale(0.8); }
 	100% { -webkit-transform: scale(1); }
 }
-
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgba(0, 0, 0, 0.42);
+}
 
 @media (max-width: 1199px) {
   html {

@@ -19,7 +19,15 @@ import { flatten } from '@angular/compiler';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DepositsTableComponent implements OnInit, OnDestroy {
-  currentFormValues: DepositCalcForm;
+  currentFormValues: DepositCalcForm = {
+    withCapitalisation: false,
+    withWithdraw: false,
+    withRefill: false,
+    withAutoProloing: false,
+    depositAmount: 0,
+    depositPeriod: 0,
+    depositCurrency: 'AZN'
+  };
   loading: boolean;
   depositGroupProducts: DepositGroup[];
   filteredGroupProducts: DepositGroup[];
@@ -40,21 +48,10 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.showFilters =  !this.breakpointObserver.isMatched('(max-width: 992px)');
     this.listenToRouterParams();
-    const data = {
-      withCapitalisation: false,
-      withWithdraw: false,
-      withRefill: false,
-      withAutoProloing: false,
-      depositAmount: 0,
-      depositPeriod: 0,
-      depositCurrency: 'AZN'
-    } as DepositCalcForm;
-    this.getListDepositGroupProducts(data);
     this.changeRef.detectChanges();
   }
   onExpandGroup(groupId: number) {
     if (this.expandedGroupId === groupId) {
-      console.log('indef')
       this.expandedGroupId = undefined;
       return;
     }
@@ -73,7 +70,7 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
       const depositAmount = res['depositAmount'];
       const depositCurrency = res['depositCurrency'];
       const depositPeriod = res['depositPeriod'];
-      if (depositAmount && depositCurrency) {
+//   if (!(depositAmount && depositCurrency)) { return;}
         const formValue = {
           ...this.currentFormValues,
           depositAmount,
@@ -83,7 +80,6 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
         console.log(formValue);
         this.currentFormValues = formValue;
         this.getListDepositGroupProducts(formValue);
-      }
     });
     this.changeRef.detectChanges();
   }

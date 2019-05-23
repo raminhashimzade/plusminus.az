@@ -4,7 +4,8 @@ import { LoansService } from '../loans.service';
 import { NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, throttleTime, debounceTime } from 'rxjs/operators';
+import { MatSliderChange } from '@angular/material';
 
 @Component({
   selector: 'loans-banner',
@@ -13,39 +14,27 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class LoansBannerComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('f') form: NgForm;
-  loanPeriods$: Observable<any>;
-  @Output() bannerFormSubmit = new EventEmitter<NgForm>();
   loanCurrency = 'AZN';
+  loanPeriods$: Observable<any>;
+  slideValue: number;
   _onDestroy$ = new Subject<void>();
-  constructor(private loansService: LoansService,
-     private translateService: TranslateService,
-     private router: Router,
-     private route: ActivatedRoute
+  constructor(
+      private translateService: TranslateService,
+      private loanService: LoansService,
+      private router: Router,
+      private route: ActivatedRoute
      ) {
-    this.loanPeriods$ = this.loansService.listLoanPeriods();
-   }
+    this.loanPeriods$ = this.loanService.listLoanPeriods();
+  }
 
   ngOnInit() {
-   setTimeout(() =>  this.listenToRouterParams(), 10)
   }
-  ngAfterViewInit() {
-  }
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this._onDestroy$.next();
   }
-  onSubmit(f: NgForm) {
-    if (!f.valid) {return;}
-    this.router.navigate(['/home/loans',
-    { loanAmount: f.value.loanAmount, loanCurrency: f.value.loanCurrency, loanPeriod: f.value.loanPeriod}]);
-  //  this.bannerFormSubmit.next(f);
-  }
-  onNumInput(e: any) {
-    const value = e.target.value;
-    this.form.controls['loanAmount'].setValue(value.replace(/[^\d]/,''))
-  }
-  getErrorMessage(controlKey: string) {
-    return this.form.controls[controlKey].hasError('required') ?
-    this.translateService.instant('~requiredField') : '';
+  ngAfterViewInit() {
+    setTimeout(() => this.listenToRouterParams(), 10);
+    setTimeout(() => this.listenToformChange(), 20);
   }
   listenToRouterParams() {
     this.route.params
@@ -53,13 +42,44 @@ export class LoansBannerComponent implements OnInit, OnDestroy, AfterViewInit {
     .subscribe(res => {
       const loanAmount = res['loanAmount'];
       const loanCurrency = res['loanCurrency'];
-      const loanPeriod = res['loanPeriod'] || 0;
-      if (loanAmount && loanCurrency) {
-        this.form.form.controls['loanAmount'].setValue(+loanAmount);
-        this.form.form.controls['loanCurrency'].setValue(loanCurrency);
-        this.form.form.controls['loanPeriod'].setValue(+loanPeriod);
+      const loanPeriod = res['loanPeriod'];
+   //   if (!(loanAmount && loanCurrency)) {return;}
+      if (loanAmount) {
+        this.slideValue = +loanAmount;
       }
+      loanCurrency &&  this.form.controls['loanCurrency'].setValue(loanCurrency);
+      loanPeriod &&  this.form.controls['loanPeriod'].setValue(+loanPeriod);
     });
+  }
+  listenToformChange() {
+    this.form.valueChanges
+    .pipe(
+      debounceTime(500),
+      takeUntil(this._onDestroy$)
+    )
+    .subscribe(res => {
+  //  if (!this.form.value.loanAmount || !this.form.value.loanCurrency) {return;}
+      console.log(res)
+      this.searchLoans();
+    });
+  }
+  onSubmit() {
+    this.searchLoans();
+  }
+  searchLoans() {
+    console.log('search')
+    this.router.navigate(['/home/loans',
+    { loanAmount: this.form.value.loanAmount || '',
+    loanCurrency: this.form.value.loanCurrency ||  this.loanCurrency,
+    loanPeriod: this.form.value.loanPeriod || ''
+   } ]);
+  }
+  getErrorMessage(controlKey: string) {
+    return this.form.controls[controlKey].hasError('required') ?
+    this.translateService.instant('~requiredField') : '';
+  }
+  onSlideMove(change: MatSliderChange) {
+    this.slideValue = change.value;
   }
 
 }

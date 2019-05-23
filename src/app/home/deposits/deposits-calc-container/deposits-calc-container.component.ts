@@ -6,7 +6,7 @@ import { DepositService } from '../deposit.service';
 import { MatSliderChange } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DepositCalcForm } from '../models/deposit-calc-form.model';
-import { throttleTime, takeUntil } from 'rxjs/operators';
+import { throttleTime, takeUntil, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'deposits-calc-container',
@@ -34,8 +34,8 @@ export class DepositsCalcContainerComponent implements OnInit, AfterViewInit, On
     this._onDestroy$.next();
   }
   ngAfterViewInit() {
-    this.listenToformChange();
     setTimeout(() => this.listenToRouterParams(), 10);
+    setTimeout(() => this.listenToformChange(), 20);
   }
   listenToRouterParams() {
     this.route.params
@@ -54,17 +54,24 @@ export class DepositsCalcContainerComponent implements OnInit, AfterViewInit, On
   listenToformChange() {
     this.form.valueChanges
     .pipe(
-      throttleTime(1000),
+      debounceTime(500),
       takeUntil(this._onDestroy$)
     )
     .subscribe(res => {
-      if (!this.form.value.depositAmount || !this.form.value.depositCurrency) {return;}
-      this.router.navigate(['/home/deposits',
-         { depositAmount: this.form.value.depositAmount,
-         depositCurrency: this.form.value.depositCurrency,
-         depositPeriod: this.form.value.depositPeriod || ''
-        } as DepositCalcForm]);
+    //  if (!this.form.value.depositAmount || !this.form.value.depositCurrency) {return;}
+      this.searchDeposits();
     });
+  }
+  onSubmit() {
+    this.searchDeposits();
+  }
+  searchDeposits() {
+    console.log('search')
+    this.router.navigate(['/home/deposits',
+    { depositAmount: this.form.value.depositAmount || '',
+    depositCurrency: this.form.value.depositCurrency ||  this.depositCurrency,
+    depositPeriod: this.form.value.depositPeriod || ''
+   } as DepositCalcForm]);
   }
   getErrorMessage(controlKey: string) {
     return this.form.controls[controlKey].hasError('required') ?

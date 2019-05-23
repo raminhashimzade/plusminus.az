@@ -1,79 +1,76 @@
-<form #f="ngForm" >
-  <div class="container">
+<div class="container">
     <div class="row">
       <div class="col-12">
-            <div class="box">
-                <div class="box__header">
-                    <div class="box__header__title">
-                      {{'~deposits' | translate}}
-                    </div>
-                  </div>
+        <div class="banner">
+          <div class="banner__title">
+              <div class="banner__title__top">
+                {{'~consumer' | translate}}
+              </div>
+              <div class="banner__title__bottom">
+                {{'~deposits' | translate}}
+              </div>
+          </div>
+          <form class="banner__filter" #f="ngForm" (ngSubmit)="onSubmit()">
+            <div class="banner__filter__amount">
+              <div class="banner__filter__amount__input">
+                  <mat-form-field class="w-100" appearance="outline">
+                        <input matInput name ="slideValue" type="number" placeholder="{{'~depositAmount' | translate}}" [(ngModel)]="slideValue">
+                      </mat-form-field>
 
-                  <div class="box__content">
-                      <div class="box__content__field">
-                          <div class="box__content__field__value">
+                    <mat-slider class="slider"
+                      color="primary"
+                      [max]="'100000'"
+                      [min]="'0'"
+                      [step]="'1000'"
+                      ngModel
+                      name="depositAmount"
+                      [(ngModel)]="slideValue"
+                      (input)="onSlideMove($event)"
+                    >
+                  </mat-slider>
 
-                            <mat-form-field class="w-100" appearance="fill">
-                              <mat-label> {{'~depositValue' | translate}} </mat-label>
-                                <input matInput name ="slideValue" placeholder="{{'~depositValue' | translate}}" [(ngModel)]="slideValue">
-                              </mat-form-field>
-                          </div>
+              </div>
+              <div class="banner__filter__amount__select">
 
-                            <mat-slider class="slider"
-                              color="primary"
-                              [max]="'100000'"
-                              [min]="'0'"
-                              [step]="'1000'"
-                              ngModel
-                              name="depositAmount"
-                              [(ngModel)]="slideValue"
-                              (input)="onSlideMove($event)"
-                            >
-                          </mat-slider>
+                  <mat-form-field appearance="outline" class="banner__filter__amount__select__currency">
+                      <mat-select
+                        name="depositCurrency"
+                        [ngModel]="depositCurrency"
+                        class="form-field"
+                       >
+                        <mat-option value="AZN">AZN</mat-option>
+                        <mat-option value="USD">USD</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="f?.controls['depositCurrency']?.invalid">{{getErrorMessage('depositCurrency')}}</mat-error>
 
-                        </div>
+                    </mat-form-field>
+              </div>
+            </div>
+            <div class="banner__filter__period">
 
-                        <div class="box__content__field">
-                            <mat-form-field class="select-field --currency" appearance="fill" >
-                              <mat-label>{{'~depositCurrency' | translate}}</mat-label>
-                                <mat-select
-                                  name="depositCurrency"
-                                  [ngModel]="depositCurrency"
-                                  required
-                                >
-                                  <mat-option value="AZN">AZN</mat-option>
-                                  <mat-option value="USD">USD</mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="f?.controls['depositCurrency']?.invalid">{{getErrorMessage('depositCurrency')}}</mat-error>
+                <mat-form-field appearance="outline" class="banner__filter__period__select">
+                    <!-- <mat-label>{{'~depositPeriod' | translate }}</mat-label> -->
+                    <mat-select
+                      name="depositPeriod"
+                      ngModel
+                      class="form-field"
+                      placeholder="{{'~depositPeriod' | translate }}"
+                     >
+                     <mat-option *ngFor="let period of (depositPeriods$ | async)"
+                      [value]="period?.periodId"> {{period?.period}}</mat-option>
 
-                              </mat-form-field>
-                          </div>
+                    </mat-select>
+                    <mat-error *ngIf="f?.controls['depositPeriod']?.invalid">{{getErrorMessage('depositPeriod')}}</mat-error>
 
-                          <div class="box__content__field">
-                              <mat-form-field class="select-field" appearance="fill"  >
-                                  <mat-label>{{'~depositPeriod' | translate}}</mat-label>
-                                  <mat-select class="select-field"
-                                    name="depositPeriod"
-                                    ngModel
-                                    required
-                                    placeholder="{{'~depositPeriod' | translate }}"
-                                  >
-                                  <mat-option *ngFor="let period of (depositPeriods$ | async)"
-                                    [value]="period?.periodId"> {{period?.period}}</mat-option>
-
-                                  </mat-select>
-                                  <mat-error *ngIf="f?.controls['depositPeriod']?.invalid">{{getErrorMessage('depositPeriod')}}</mat-error>
-
-                                </mat-form-field>
-                          </div>
-
-                  </div>
+                  </mat-form-field>
 
             </div>
+
+            <div class="banner__filter__submit">
+              <button mat-raised-button color="primary" type="submit">{{'~searchDeposit' | translate}} </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-
-
-
   </div>
-</form>

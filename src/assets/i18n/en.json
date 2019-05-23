@@ -106,5 +106,8 @@
   "~exchangeVisualizeChart": "Exchange rate visual graphic",
   "~visit": "vitis",
   "~currencyCode": "Currency code",
-  "~search": "Search"
+  "~search": "Search",
+
+  "~searchDeposit": "Search Deposit",
+  "~searchLoan": "Search Loan"
 }
