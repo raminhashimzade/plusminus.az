@@ -113,6 +113,9 @@
      "~date": "Tarix",
      "~exchangeVisualizeChart": "Valyuta dəyişmə qrafikası",
      "~visit": "Keçid",
-     "~currencyCode": "Valyuta"
+     "~currencyCode": "Valyuta",
+     "~search": "Axtar",
+     "~exchangeCalcTitle": "Valyuta kalkulyatoru",
+     "~exchangeCalcSubtitle": "Nağd məzənnə əsasında hesablanır"
 
   }

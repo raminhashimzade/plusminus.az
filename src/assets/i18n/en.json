@@ -105,5 +105,6 @@
   "~date": "Date",
   "~exchangeVisualizeChart": "Exchange rate visual graphic",
   "~visit": "vitis",
-  "~currencyCode": "Currency code"
+  "~currencyCode": "Currency code",
+  "~search": "Search"
 }

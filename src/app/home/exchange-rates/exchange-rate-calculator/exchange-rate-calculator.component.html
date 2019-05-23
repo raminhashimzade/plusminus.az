@@ -1,0 +1,48 @@
+<div class="calculator">
+  <div class="calculator__header">
+    <div class="calculator__header__title">
+      {{'~exchangeCalcTitle' | translate}}
+    </div>
+    <div class="calculator__header__subtitle">
+        {{'~exchangeCalcSubtitle' | translate}}
+    </div>
+  </div>
+  <form class="calculator__input" #f="ngForm">
+
+    <div class="calculator__input__in">
+        <mat-form-field class="calculator__input__amount" appearance="fill" >
+          <input matInput placeholder="0" type="number"  (input)="calcOutResult()" name="amountIn" ngModel>
+        </mat-form-field>
+
+        <mat-form-field class="calculator__input__currency" appearance="fill">
+            <mat-select ngModel name="currencyCodeIn" (ngModelChange)="calcOutResult()"  [ngModel] = "currencyCodeIn">
+              <mat-option value="USD"> USD </mat-option>
+              <mat-option value="EUR"> EUR </mat-option>
+              <mat-option value="GBP"> GBP </mat-option>
+              <mat-option value="TRY"> TRY </mat-option>
+              <mat-option value="RUB"> RUB </mat-option>
+              <mat-option value="AZN"> AZN </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+    <div class="calculator__input__out">
+
+      <mat-form-field class="calculator__input__amount" appearance="fill" >
+          <input matInput placeholder="0" type="number" name="amountOut" ngModel (input)="calcInResult()">
+        </mat-form-field>
+
+        <mat-form-field class="calculator__input__currency" appearance="fill">
+            <mat-select ngModel name="currencyCodeOut" (ngModelChange)="calcOutResult()" [ngModel] = "currencyCodeOut">
+              <mat-option value="AZN"> AZN</mat-option>
+              <mat-option value="USD"> USD </mat-option>
+              <mat-option value="EUR"> EUR </mat-option>
+              <mat-option value="GBP"> GBP </mat-option>
+              <mat-option value="TRY"> TRY </mat-option>
+              <mat-option value="RUB"> RUB </mat-option>
+            </mat-select>
+          </mat-form-field>
+    </div>
+
+    </form>
+  <div class="calculator__result"></div>
+</div>

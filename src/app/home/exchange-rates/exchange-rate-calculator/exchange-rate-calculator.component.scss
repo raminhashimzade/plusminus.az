@@ -1,0 +1,44 @@
+:host {
+    display: block;
+    box-shadow: 0.0625rem 0.125rem 0.6875rem 0rem rgba(0, 0, 0, 0.2);
+}
+.calculator {
+    display: flex;
+    flex-direction: column;
+    .calculator__header {
+        display: flex;
+        flex-direction: column;
+        background: var(--primary-default);
+        padding: 1.0625rem;
+        color:#ffffff;
+        .calculator__header__title {
+            font-size: 1.125rem;
+            font-family: "Montserrat-SemiBold";
+        }
+        .calculator__header__subtitle {
+            font-size: 0.75rem;
+        }
+    }
+    .calculator__input {
+        display: flex;
+        flex-direction: column;
+        padding: 1.0625rem;
+        background:#ffffff;
+        .calculator__input__in, .calculator__input__out {
+            display: flex;
+           align-items: flex-end;
+        }
+        .calculator__input__amount{
+          /deep/  input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+              }
+        }
+        .calculator__input__currency {
+            width: 75px;
+        }
+    }
+    .calculator__result {
+
+    }
+}

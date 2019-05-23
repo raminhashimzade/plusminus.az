@@ -42,6 +42,8 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
   loading: boolean;
   sortState: SortChangeModel;
   showFilters: boolean;
+  columns = ['bankName', 'loanName', 'minRate', 'minAmount', 'maxAmount',
+   'minMonthlyPayment', 'maxMonthlyPayment', 'currencyCode'];
   @HostListener('window:resize', ['$event']) resize() {this.determineMobileSize(); }
 
   constructor(
@@ -187,20 +189,20 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
    // console.log(JSON.stringify(this.sortState) === JSON.stringify({sortKey, sortBy}))
     return JSON.stringify(this.sortState) === JSON.stringify({sortKey, sortBy});
   }
-  onFilterInput(keys: string[], event) {
+  applyFilter(filterValue: string) {
     const lang = this.translateService.getDefaultLang();
-    const inputValue = event.target.value;
-    if (!inputValue) {
+    if (!filterValue) {
       this.filteredLoanProducts = [...this.loanProducts];
       return;
     }
     this.filteredLoanProducts = [...this.loanProducts].filter((loan) => {
-      return keys.some( (key) => {
+      return  Object.keys(loan).some( (key) => {
+        if (!this.columns.find(col => col === key)) {return false;}
         if (!loan[key]) {return false;}
         if (loan[key] && loan[key][lang]) {
-          return loan[key][lang].toLowerCase().includes(inputValue);
+          return loan[key][lang].toLowerCase().includes(filterValue);
         } else {
-          return loan[key].toLowerCase().includes(inputValue);
+          return loan[key].toString().toLowerCase().includes(filterValue);
         }
       });
     })

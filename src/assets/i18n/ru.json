@@ -119,5 +119,6 @@
   "~date": "Дата",
   "~exchangeVisualizeChart": "Графика обмена валют",
   "~visit": "Визит",
-  "~currencyCode": "Валюта"
+  "~currencyCode": "Валюта",
+  "~search": "Поиск"
 }

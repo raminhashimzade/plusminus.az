@@ -51,7 +51,12 @@
 
 
         </div>
-          <div class="products__table__content">
+        <div class="products__table__search">
+              <mat-form-field>
+                  <input matInput (keyup)="applyFilter($event.target.value.toString().toLowerCase())" placeholder="{{'~search' | translate}}">
+                </mat-form-field>
+        </div>
+          <div class="products__table__content ">
               <table-loader *ngIf="loading"></table-loader>
               <table id="loans-table2" class="table plus-minus" *ngIf="filteredLoanProducts && !loading">
                 <thead>
@@ -126,39 +131,7 @@
                   </th> -->
                   <th></th>
                 </thead>
-                <tr>
-                  <td class="p-1" *ngIf="showFilters">
-                    <div class="td-content --filter" >
-                      <input placeholder="Bank" (input)="onFilterInput(['bankName'], $event)">
-                    </div>
-                  </td>
-                  <td class="p-1" *ngIf="showFilters">
-                    <div class="td-content --filter" >
-                      <input placeholder="Loan name" (input)="onFilterInput(['loanName'], $event)">
-                    </div>
-                  </td>
-                  <td class="p-1" *ngIf="showFilters">
-                    <div class="td-content --filter" >
-                      <input placeholder="Min Rate" (input)="onFilterInput(['minRate', 'maxRate'], $event)">
-                    </div>
-                  </td>
-                  <td class="p-1" *ngIf="showFilters">
-                    <div class="td-content --filter" >
-                      <input placeholder="Amount" (input)="onFilterInput(['minAmount', 'maxAmount'], $event)">
-                    </div>
-                  </td>
-                  <td class="p-1" *ngIf="showFilters">
-                    <div class="td-content --filter" >
-                      <input placeholder="Payment" (input)="onFilterInput(['minMonthlyPayment', 'maxMonthlyPayment'], $event)">
-                    </div>
-                  </td>
-                  <td class="p-1" *ngIf="showFilters">
-                    <div class="td-content --filter" >
-                      <input placeholder="Documents"  (input)="onFilterInput(['documents'], $event)">
-                    </div>
-                  </td>
 
-                </tr>
                 <tbody>
                   <tr *ngFor="let loan of filteredLoanProducts" [attr.loan-id]="loan.lnID">
                     <td valign="top">
@@ -236,14 +209,14 @@
                     </td> -->
                     <td valign="top" class="pl-1 pr-1">
                       <div class="td-content row-actions" >
-                          <button mat-raised-button
+                          <a mat-raised-button
                           color="primary" routerLink="/home/loans/compare"
                           [queryParams]="{lnID: loan.lnID}"
-                          >{{'~detailed' | translate}}</button>
-                          <button mat-raised-button color="accent" [id]="loan?.lnID"
+                          >{{'~detailed' | translate}}</a>
+                          <a mat-raised-button color="accent" [id]="loan?.lnID"
                           fly-to-cart
                            [disabled]="(canAddProductToCompare(loan?.lnID) | async)"
-                            (click)="onAddProductToCompare(loan)">{{'~addToCart' | translate}}</button>
+                            (click)="onAddProductToCompare(loan)">{{'~addToCart' | translate}}</a>
                       </div>
                     </td>
                   </tr>

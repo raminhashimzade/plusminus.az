@@ -9,10 +9,11 @@ import { ImgSrcPipeModule } from 'src/app/shared/pipes/img-src-pipe.module';
 import { TableLoaderModule } from '../table-loader/table-loader.module';
 import { ExchangeRateVisualizeComponent } from './exchange-rate-visualize/exchange-rate-visualize.component';
 import { FormsModule } from '@angular/forms';
+import { ExchangeRateCalculatorComponent } from './exchange-rate-calculator/exchange-rate-calculator.component';
 
 
 @NgModule({
-  declarations: [ExchangeRatesComponent, ExchangeRateVisualizeComponent],
+  declarations: [ExchangeRatesComponent, ExchangeRateVisualizeComponent, ExchangeRateCalculatorComponent],
   imports: [
     CommonModule,
     SharedTranslateModule,
