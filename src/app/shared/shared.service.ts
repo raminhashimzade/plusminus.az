@@ -10,13 +10,15 @@ export class SharedService {
 
   constructor(private translateService: TranslateService) { }
 
-  filterTableWithRowGroups(filterValue: string, data: any) {
+  filterTableWithRowGroups(filterValue: string, data: any, columnNames: string[]) {
     const lang = this.translateService.getDefaultLang();
     return  [...data].map(group => {
       return {
         ...group,
         list: [...group.list].filter((item) => {
           return Object.keys(item).some(key => {
+       //     console.log(Object.keys(columnNames))
+            if (!Object.keys(columnNames).find(colKey => columnNames[colKey] === key)) {return false;}
             if (item[key] && item[key][lang]) {
               return !!(item[key][lang].toString().toLowerCase().includes(filterValue));
             } else {
@@ -37,7 +39,6 @@ export class SharedService {
           return 0;
         })
     })
-    console.log(originalData)
     if (sortChange.orderBySort === SortStates.asc) {
      return  originalData.sort((a, b) => {
         if (+a.list[0][sortChange.orderByColumn] > +b.list[0][sortChange.orderByColumn]) { return 1; }

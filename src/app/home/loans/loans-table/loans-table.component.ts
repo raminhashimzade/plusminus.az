@@ -1,17 +1,14 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, HostListener, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit,  OnDestroy, HostListener, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { LoansService } from '../loans.service';
-import { LoanProduct } from '../models/loanProduct.model';
-import { MatDialog } from '@angular/material/dialog';
-import { LoanRequestDialogComponent } from '../loan-request-dialog/loan-request-dialog.component';
-import { NgForm } from '@angular/forms';
-import { Subject, Observable } from 'rxjs';
+import { Subject, Observable, of } from 'rxjs';
 import { takeUntil, finalize, map } from 'rxjs/operators';
 import { switchToView, isMobileSize } from 'src/app/app.utils';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-change.model';
-import { SortStates } from 'src/app/shared/directives/order-by-column/sort-states.enum';
-import { TranslateService } from '@ngx-translate/core';
+import { SharedService } from 'src/app/shared/shared.service';
+import { LoanGroup, LoanProduct } from '../models/loanGroup.model';
+import { LoanFilterForm } from '../models/loan-filter-form';
 
 @Component({
   selector: 'loans-table',
@@ -19,90 +16,44 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./loans-table.component.scss'],
  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('f') form: NgForm;
-  @ViewChild('table') table: ElementRef;
-  loanProducts: LoanProduct[];
-  filteredLoanProducts: LoanProduct[];
-  expandedNode: string;
- // sortState: {sortKey: string, sortBy: string};
-  bannerFormValues = {};
-  _onDestroy$ = new Subject<void>();
-  isMobile: boolean;
+export class LoansTableComponent implements OnInit, OnDestroy {
   loading: boolean;
+  loanGroupProducts: LoanGroup[];
+  filteredGroupProducts: LoanGroup[];
   sortState: SortChangeModel;
-  showFilters: boolean;
-  columns = ['bankName', 'loanName', 'minRate', 'minAmount', 'maxAmount',
-   'minMonthlyPayment', 'maxMonthlyPayment', 'currencyCode'];
-  @HostListener('window:resize', ['$event']) resize() {this.determineMobileSize(); }
-
+  _onDestroy$ = new Subject<void>();
+  expandedGroupId: number;
+  columns = ['bankName', 'loanName', 'minRate','minAmount', 'maxAmount', 'minMonthlyPayment', 'maxMonthlyPayment', 'currencyCode'];
+  @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
-    private loansService: LoansService,
-     private dialog: MatDialog,
-      private changeRef: ChangeDetectorRef,
-       private route: ActivatedRoute,
-       private breakpointObserver: BreakpointObserver,
-       private translateService: TranslateService
-       ) { }
+    private route: ActivatedRoute,
+    private loanService: LoansService,
+    private changeRef: ChangeDetectorRef,
+    private breakpointObserver: BreakpointObserver,
+    private sharedService: SharedService
+  ) { }
 
   ngOnInit() {
-    this.determineMobileSize();
     this.listenToRouterParams();
- //   this.getListLoanProducts(this.currentFormValues);
-  }
-  determineMobileSize() {
-    this.isMobile = isMobileSize();
-    this.showFilters =  !this.breakpointObserver.isMatched('(max-width: 992px)');
     this.changeRef.detectChanges();
   }
-
-  ngAfterViewInit() {
-  //  setTimeout(() => this.listenToTableFilterChanges(), 100)
+  onExpandGroup(groupId: number) {
+    if (this.expandedGroupId === groupId) {
+      this.expandedGroupId = undefined;
+      return;
+    }
+    this.expandedGroupId = groupId;
   }
   ngOnDestroy() {
     this._onDestroy$.next();
   }
-
-  getListLoanProducts(data: Object) {
-    this.loanProducts = null;
-    this.loading = true;
-    this.loansService.getListLoanProducts(data)
-    .pipe(
-      finalize(() => {
-         this.loading = false;
-         this.changeRef.detectChanges();
-      })
-    )
-      .subscribe(res => {
-        // this.loanProducts = res || MoockLoansData;
-        this.loanProducts = res;
-        this.filteredLoanProducts = res;
-        switchToView('#loans-table-filter');
-      })
-  }
-  onExpandToggle(id: string) {
-    if (this.expandedNode === id) {
-      this.expandedNode = undefined;
-    } else {
-      this.expandedNode = id;
-    }
-    this.changeRef.detectChanges();
-  }
-
-  onAddProductToCompare(loan: LoanProduct) {
-    this.loansService.addProductToCompare(loan);
-    this.changeRef.detectChanges();
-  }
-  canAddProductToCompare(loanID: number): Observable<boolean> {
-    return this.loansService.getSavedCompareProductList()
-      .pipe(map((loans: LoanProduct[]) => !!loans.find(l => l.lnID === loanID)));
+  updateForLayoutChange() {
   }
   listenToRouterParams() {
     this.route.params
-    .pipe(takeUntil(this._onDestroy$))
-    .subscribe(res => {
+      .pipe(takeUntil(this._onDestroy$))
+      .subscribe(res => {
         const formValue = {
-           loanAmount: res['loanAmount'] || '',
           loanCurrency: res['loanCurrency'] ||  '',
           loanPeriod: res['loanPeriod'] || '',
           withEmpReference: res['withEmpReference'] || true,
@@ -110,54 +61,47 @@ export class LoansTableComponent implements OnInit, AfterViewInit, OnDestroy {
           withGracePeriod: res['withGracePeriod'] || false,
           comissionCash: res['comissionCash'] || false,
           comissionLoan: res['comissionLoan'] || false,
-        }
+        } as LoanFilterForm;
         console.log(formValue);
-        this.getListLoanProducts(formValue);
-    });
+        this.getListloanGroupProducts(formValue);
+      });
     this.changeRef.detectChanges();
+  }
+  getListloanGroupProducts(data: LoanFilterForm) {
+    this.loanGroupProducts = undefined;
+    this.loading = true;
+    this.sortState = { orderByColumn: '', orderBySort: '' };
+    this.loanService.getListLoanGroupProducts(data)
+      .pipe(
+        finalize(() => {
+          this.loading = false;
+          this.changeRef.detectChanges();
+        })
+      )
+      .subscribe(res => {
+        this.loanGroupProducts = res;
+        // this.loanProducts = flatten(res.map((group) => group.list));
+        this.filteredGroupProducts = [...this.loanGroupProducts];
+        switchToView('#loans-table-filter');
+      });
+  }
+  onAddProductToCompare(loan: LoanProduct) {
+    this.loanService.addProductToCompare(loan);
+    this.changeRef.detectChanges();
+  }
+  canAddProductToCompare(loanID: number): Observable<boolean> {
+    return this.loanService.getSavedCompareProductList()
+      .pipe(map((loans: LoanProduct[]) => !!loans.find(l => l.lnID === loanID)));
   }
   onSortChange(sortChange: SortChangeModel) {
-    this.sortState = {...sortChange};
-    if (sortChange.orderBySort === SortStates.asc) {
-      this.filteredLoanProducts = [...this.filteredLoanProducts].sort((a, b) => {
-        if (a[sortChange.orderByColumn] > b[sortChange.orderByColumn]) {return 1;}
-        if (a[sortChange.orderByColumn] < b[sortChange.orderByColumn]) {return -1;}
-        return 0;
-      });
-    } else if(sortChange.orderBySort === SortStates.desc) {
-      this.filteredLoanProducts = [...this.filteredLoanProducts].sort((a, b) => {
-        if (a[sortChange.orderByColumn] > b[sortChange.orderByColumn]) {return -1;}
-        if (a[sortChange.orderByColumn] < b[sortChange.orderByColumn]) {return 1;}
-        return 0;
-      });
-    } else {
-      this.filteredLoanProducts = [...this.loanProducts];
-    }
+    this.sortState = { ...sortChange };
+   this.filteredGroupProducts = this.sharedService.sortTableWithRowGroups(this.sortState, [...this.loanGroupProducts])
     this.changeRef.detectChanges();
   }
-  isActiveSort(sortKey, sortBy): boolean {
-    if (!this.sortState) {return false;}
-   // console.log(this.sortState)
-   // console.log(JSON.stringify(this.sortState) === JSON.stringify({sortKey, sortBy}))
-    return JSON.stringify(this.sortState) === JSON.stringify({sortKey, sortBy});
-  }
   applyFilter(filterValue: string) {
-    const lang = this.translateService.getDefaultLang();
-    if (!filterValue) {
-      this.filteredLoanProducts = [...this.loanProducts];
-      return;
-    }
-    this.filteredLoanProducts = [...this.loanProducts].filter((loan) => {
-      return  Object.keys(loan).some( (key) => {
-        if (!this.columns.find(col => col === key)) {return false;}
-        if (!loan[key]) {return false;}
-        if (loan[key] && loan[key][lang]) {
-          return loan[key][lang].toLowerCase().includes(filterValue);
-        } else {
-          return loan[key].toString().toLowerCase().includes(filterValue);
-        }
-      });
-    })
+    this.filteredGroupProducts = this.sharedService.
+    filterTableWithRowGroups(filterValue, [...this.loanGroupProducts], this.columns);
+    this.changeRef.detectChanges();
   }
 
 }

@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { LoansService } from '../loans/loans.service';
 import { Observable } from 'rxjs';
-import { LoanProduct } from '../loans/models/loanProduct.model';
+import { LoanProduct } from '../loans/models/loanGroup.model';
 
 @Component({
   selector: 'app-header',

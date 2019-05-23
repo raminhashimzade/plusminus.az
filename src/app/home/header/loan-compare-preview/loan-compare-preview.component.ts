@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { LoansService } from '../../loans/loans.service';
 import { Observable } from 'rxjs';
-import { LoanProduct } from '../../loans/models/loanProduct.model';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { LoanRequestDialogComponent } from '../../loans/loan-request-dialog/loan-request-dialog.component';
 import { isMobileSize } from 'src/app/app.utils';
+import { LoanProduct } from '../../loans/models/loanGroup.model';
 
 @Component({
   selector: 'loan-compare-preview',

@@ -4,7 +4,9 @@ import { Injectable } from "@angular/core";
 import { map, catchError } from 'rxjs/operators';
 import { DataResponse } from 'src/app/models/data-reponse';
 import { Observable, of, Subject, ReplaySubject } from 'rxjs';
-import { LoanProduct } from './models/loanProduct.model';
+import { LoanProduct, LoanGroup } from './models/loanGroup.model';
+import { LoanFilterForm } from './models/loan-filter-form';
+
 
 @Injectable({
     providedIn: 'root'
@@ -24,6 +26,14 @@ export class LoansService {
             map(res => res && res.data)
         )
     }
+    getListLoanGroupProducts(formValue: LoanFilterForm): Observable<LoanGroup[]> {
+        return this.http.post<DataResponse>('mybank/listGLoanProduct', {
+          token: this.authService.getToken(),
+          ...formValue
+      }).pipe(
+          map(res => res && res.data)
+      );
+      }
     sendOtp(formValue:Object):Observable<DataResponse> {
         return this.http.post<DataResponse>('mybank/sendOTP', {
             token: this.authService.getToken(),

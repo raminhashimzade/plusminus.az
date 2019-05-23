@@ -1,4 +1,10 @@
-export interface LoanProduct{
+export interface LoanGroup{
+    bankID: number;
+    bankName: string;
+    list: LoanProduct[];
+  }
+
+ export  interface LoanProduct {
     lnID: number;
     bankID: number;
     bankName: string;
@@ -9,26 +15,26 @@ export interface LoanProduct{
     withCollateral: string;
     withGracePeriod: string;
     auditorium?: any;
-    comissionCash: string;
-    comissionLoan: string;
+    comissionCash?: string;
+    comissionLoan?: string;
     minAge: string;
     maxAge: string;
-    minAmount: string;
+    minAmount?: string;
     maxAmount: string;
     minPeriod: string;
     maxPeriod: string;
-    minMonthlyPayment: number;
-    maxMonthlyPayment: number;
-    minRate: string;
-    maxRate: string;
-    minEffectiveRate: string;
-    maxEffectiveRate: string;
+    minRate?: string;
+    maxRate?: string;
+    minEffectiveRate?: any;
+    maxEffectiveRate?: any;
     insurance: string;
     minSalary: string;
     description: LoanName;
     descriptionPd: LoanName;
     descriptionDoc: LoanName;
-    anunitet: string;
+    minMonthlyPayment?: number;
+    maxMonthlyPayment?: number;
+    anunitet?: string;
   }
 
   interface LoanName {

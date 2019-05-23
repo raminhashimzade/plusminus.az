@@ -1,9 +1,9 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { LoansService } from '../loans.service';
-import { LoanProduct } from '../models/loanProduct.model';
 import { map, switchMap, finalize, take, tap } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 import { isMobileSize } from 'src/app/app.utils';
+import { LoanProduct } from '../models/loanGroup.model';
 declare var Swiper;
 @Component({
   selector: 'loans-compare',

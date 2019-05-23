@@ -20,9 +20,9 @@ export class FlyToCartDirective implements OnInit{
     const cartElem = document.getElementById('compare-cart') as HTMLElement;
     var offsetLeftCart = cartElem.offsetLeft;
     var widthCart = cartElem.offsetWidth;
-    const imgElem =  document.querySelector(`[loan-img-id="${this.id}" ]`) as HTMLElement;
+    const imgElem =  document.querySelector(`[product-img-id="${this.id}" ]`) as HTMLElement;
   //  const imgElem =  document.querySelector(`img[loan-img-id=${this.id}]`) as HTMLElement;
-   const parentElem=  document.querySelector(`[loan-id="${this.id}" ]`) as HTMLElement;
+ //  const parentElem=  document.querySelector(`[loan-id="${this.id}" ]`) as HTMLElement;
     const imgClone = imgElem.cloneNode() as HTMLElement;
     imgClone.classList.add('itemaddedanimate');
     imgClone.style.height = 'auto';

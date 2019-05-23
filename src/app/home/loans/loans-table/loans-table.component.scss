@@ -1,84 +1,108 @@
 :host {
-    display: block;
-    background: var( --background-secondary);
+  display: block;
 }
 
-
-.products__table {
-
-     .products__table__content {
-        margin: 1rem 0;
-        overflow: auto;
-        min-height: 500px;
-        background: #ffffff;
-        box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0,0,0,.2);
-        table {
-          box-shadow: none;
-          .td-content {
-            &.--amount {
-              min-width: 80px;
-            }
-            &.products__table__content__bank {
-              width: 7rem;
-              margin: auto;
-            }
-          }
-        }
-     }
-}
-
-
-@media (max-width: 992px) {
-    .products__table {
-        .products__table__content {
-
-            table {
-                border: 0;
-              }
-
-              table caption {
-                font-size: 1.3em;
-              }
-
-              table thead {
-                border: none;
-                clip: rect(0 0 0 0);
-                height: 1px;
-                margin: -1px;
-                overflow: hidden;
-                padding: 0;
-                position: absolute;
-                width: 1px;
-              }
-
-              table tr {
-                border-bottom: 3px solid #ddd;
-                display: block;
-                margin-bottom: .625em;
-              }
-
-              table td {
-                border-bottom: 1px solid #ddd;
-                display: block;
-                font-size: .8em;
-                text-align: center;
-                height: auto;
-              }
-
-              table td::before {
-                /*
-                * aria-label has no advantage, it won't be read inside a table
-                content: attr(aria-label);
-                */
-                content: attr(data-label);
-                float: left;
-                font-weight: bold;
-                text-transform: uppercase;
-              }
-
-              table td:last-child {
-                border-bottom: 0;
-              }
-        }
+table.deposits {
+  min-height: 500px;
+  .th-content {
+    &.--bank {
+      justify-content: flex-start;
     }
+  }
+  .td-content {
+    &.products__table__content__bank {
+      width: 112px;
+      margin: auto;
+      text-align: left;
+    }
+    .productName {
+      font-family: "Montserrat-SemiBold";
+      font-size: 1.125rem;
+      font-weight: 400;
+      letter-spacing: -0.54;
+      color: var(--primary-default);
+      text-align: left;
+      margin-bottom: 1.75rem;
+    }
+    .productInfo {
+      display: flex;
+      justify-content: space-between;
+      .productInfo__rate, .productInfo__income, .productInfo__liqType {
+        p:first-child {
+          font-family: "Montserrat";
+          font-size: 1.125rem;
+          font-weight: 400;
+          letter-spacing: -0.0338rem;
+        }
+        p:last-child {
+          font-family: "Montserrat";
+          font-size: 0.875rem;
+          font-weight: 400;
+          letter-spacing: -0.0338rem;
+        }
+      }
+      .productInfo__rate {
+        p:first-child {
+          font-family: "Montserrat-SemiBold";
+        }
+      }
+
+    }
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+  .productsTable {
+
+          table {
+              border: 0;
+            }
+
+            table caption {
+              font-size: 1.3em;
+            }
+
+            table thead {
+              border: none;
+              clip: rect(0 0 0 0);
+              height: 1px;
+              margin: -1px;
+              overflow: hidden;
+              padding: 0;
+              position: absolute;
+              width: 1px;
+            }
+
+            table tr {
+              border-bottom: 3px solid #ddd;
+              display: block;
+              margin-bottom: .625em;
+            }
+
+            table td {
+              border-bottom: 1px solid #ddd;
+              display: block;
+              font-size: .8em;
+              text-align: center;
+              height: auto;
+            }
+
+            table td::before {
+              /*
+              * aria-label has no advantage, it won't be read inside a table
+              content: attr(aria-label);
+              */
+              content: attr(data-label);
+              float: left;
+              font-weight: bold;
+              text-transform: uppercase;
+            }
+
+            table td:last-child {
+              border-bottom: 0;
+            }
+      }
 }

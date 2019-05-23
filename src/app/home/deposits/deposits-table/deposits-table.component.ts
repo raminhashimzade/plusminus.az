@@ -102,7 +102,8 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
     this.changeRef.detectChanges();
   }
   applyFilter(filterValue: string) {
-    this.filteredGroupProducts = this.sharedService.filterTableWithRowGroups(filterValue, [...this.depositGroupProducts]);
+    this.filteredGroupProducts = this.sharedService
+    .filterTableWithRowGroups(filterValue, [...this.depositGroupProducts], this.columns);
     this.changeRef.detectChanges();
   }
 }
