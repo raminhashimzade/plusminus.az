@@ -38,15 +38,16 @@
 
    .banner-wrapper {
      display: block;
-    background-image: url('../../../../assets//images/loans-banner-cover.jpeg');
+    background-image: url('../../../../assets//images/deposits-banner-cover.png');
     height: var(--banner-height);
     background-repeat: no-repeat;
+    min-height:var(--banner-min-height);
     .banner {
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 40px 0;
-      height: var(--banner-height);
+      min-height:var(--banner-min-height);
         .banner__title {
             display: flex;
             flex-direction: column;
