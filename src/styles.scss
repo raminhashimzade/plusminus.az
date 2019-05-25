@@ -22,6 +22,7 @@
   --loan-request-step-third-height: 40rem;
   --loan-request-step-done-width: 37.5rem;
   --loan-request-step-done-height: 40rem;
+  // --banner-height: 18.75rem;
 
 }
 
@@ -364,4 +365,10 @@ button.is-loading {
   .container {
       max-width: 960px;
   }
+  }
+
+@media (max-width: 576px){
+ :root {
+ //  --banner-height:
+ }
   }
