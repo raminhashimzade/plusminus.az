@@ -1,18 +1,22 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { LoansService } from '../loans.service';
-import { map, switchMap, finalize, take, tap } from 'rxjs/operators';
+import { DepositService } from '../deposit.service';
+import { DepositProduct } from '../models/deposit-group.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { finalize, map, switchMap, take } from 'rxjs/operators';
 import { isMobileSize } from 'src/app/app.utils';
-import { LoanProduct } from '../models/loanGroup.model';
+import { MatDialog } from '@angular/material';
+import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
+import { TranslateService } from '@ngx-translate/core';
 declare var Swiper;
 @Component({
-  selector: 'loans-compare',
-  templateUrl: './loans-compare.component.html',
-  styleUrls: ['./loans-compare.component.scss']
+  selector: 'deposits-compare',
+  templateUrl: './deposits-compare.component.html',
+  styleUrls: ['./deposits-compare.component.scss']
 })
-export class LoansCompareComponent implements OnInit {
-  products: LoanProduct[];
-  visibleProducts: LoanProduct[];
+export class DepositsCompareComponent implements OnInit {
+
+  products: DepositProduct[];
+  visibleProducts: DepositProduct[];
   pageIndex = 0;
   itemsPerTable = 3;
   loading: boolean;
@@ -21,12 +25,14 @@ export class LoansCompareComponent implements OnInit {
   isMobile: boolean; // whether it is mobile mode
   @HostListener('window:resize', ['$event']) resize() { this.buildView()}
 
-  constructor(private loansService: LoansService,
-    private router: Router, private route: ActivatedRoute
+  constructor(private depositService: DepositService,
+    private router: Router, private route: ActivatedRoute,
+    private dialog: MatDialog,
+    private translateService: TranslateService
     ) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.queryParams['lnID'];
+    const id = this.route.snapshot.queryParams['dpID'];
     if (id) {
       this.getPreviewProduct(id);
     } else {
@@ -35,7 +41,7 @@ export class LoansCompareComponent implements OnInit {
   }
   getPreviewProduct(id: number) {
     this.loading = true;
-    this.loansService.getCompareProductList([id])
+    this.depositService.getCompareProductList([id])
     .pipe(
       finalize(() => this.loading = false)
     )
@@ -46,16 +52,17 @@ export class LoansCompareComponent implements OnInit {
   }
   getCompareProductList() {
     this.loading = true;
-    if (!(this.loansService.compareProductList.length > 0)) {
-      this.router.navigateByUrl('/home/loans');
+    if (!(this.depositService.compareProductList.length > 0)) {
+      this.router.navigateByUrl('/home/deposits');
     }
-    this.loansService.getSavedCompareProductList()
+    this.depositService.getSavedCompareProductList()
     .pipe(
-      map((products: LoanProduct[]) => products.map(p => p.lnID) ),
-      switchMap((productIds: number[]) => this.loansService.getCompareProductList(productIds)),
+      map((products: DepositProduct[]) => products.map(p => p.dpID) ),
+      switchMap((productIds: number[]) => this.depositService.getCompareProductList(productIds)),
       take(1),
       finalize(() => this.loading = false)
     ).subscribe(res => {
+      if (!res) {return;}
         this.products = res;
         this.buildView();
     })
@@ -66,12 +73,12 @@ export class LoansCompareComponent implements OnInit {
 
   }
   onPrevProduct() {
-    if(!this.hasPrevProduct) {return;}
+    if(!this.hasPrevProduct || !this.products) {return;}
     this.pageIndex -=1;
     this.visibleProducts = this.products.slice(this.pageIndex, this.pageIndex + this.itemsPerTable);
   }
   onNextProduct() {
-    if(!this.hasNextProduct) {return;}
+    if(!this.hasNextProduct || !this.products) {return;}
     this.pageIndex +=1;
     this.visibleProducts = this.products.slice(this.pageIndex, this.pageIndex + this.itemsPerTable);
   }
@@ -144,5 +151,15 @@ export class LoansCompareComponent implements OnInit {
     }
       this.setVisibleProducts();
   }
+
+  openDocumentDialog(documentData) {
+    const data = documentData[this.translateService.getDefaultLang()]
+    this.dialog.open(DocumentDialogComponent, {
+      data: data,
+      width: '300px',
+      maxHeight: '90vh'
+    })
+  }
+
 
 }

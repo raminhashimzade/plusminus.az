@@ -83,7 +83,7 @@ export class LoansService {
             }))
         );;
     }
-    getCompareLoanProductList(productIds: number[]) {
+    getCompareProductList(productIds: number[]) {
         return this.http.post<DataResponse>('mybank/compareProducts', {
             token: this.authService.getToken(),
             prodId : productIds,

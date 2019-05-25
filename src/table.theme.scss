@@ -47,6 +47,11 @@ table.plus-minus {
       max-height: 8.75rem;
       overflow: hidden;
       transition: max-height 300ms ease-in-out;
+      &.--documents {
+        font-size: 24px;
+        color: #CE1B21;
+        cursor: pointer;
+      }
       &.--filter {
         input {
           width: 100%;

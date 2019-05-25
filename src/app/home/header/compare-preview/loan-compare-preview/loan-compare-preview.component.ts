@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { LoansService } from '../../loans/loans.service';
+import { LoansService } from '../../../loans/loans.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { LoanRequestDialogComponent } from '../../loans/loan-request-dialog/loan-request-dialog.component';
+import { LoanRequestDialogComponent } from '../../../loans/loan-request-dialog/loan-request-dialog.component';
 import { isMobileSize } from 'src/app/app.utils';
-import { LoanProduct } from '../../loans/models/loanGroup.model';
+import { LoanProduct } from '../../../loans/models/loanGroup.model';
 
 @Component({
   selector: 'loan-compare-preview',
@@ -13,14 +13,15 @@ import { LoanProduct } from '../../loans/models/loanGroup.model';
   styleUrls: ['./loan-compare-preview.component.scss']
 })
 export class LoanComparePreviewComponent implements OnInit {
-  loans$: Observable<LoanProduct[]>;
+  products$: Observable<LoanProduct[]>;
+   showMenu: boolean;
   constructor(private loansService: LoansService, private router: Router, private dialog: MatDialog) {
-    this.loans$ = this.loansService.getSavedCompareProductList();
+    this.products$ = this.loansService.getSavedCompareProductList();
   }
 
   ngOnInit() {
   }
-  onRemoveLoanFromCompareList(loan: LoanProduct) {
+  onRemoveFromCompareList(loan: LoanProduct) {
     this.loansService.removeProductFromCompare(loan);
   }
   onCompare() {

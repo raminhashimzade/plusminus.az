@@ -7,6 +7,7 @@ import { DepositsCalcContainerComponent } from './deposits-calc-container/deposi
 import { DepositsTableComponent } from './deposits-table/deposits-table.component';
 import { DepositsCardsComponent } from './deposits-table/deposits-cards/deposits-cards.component';
 import { DepositsFilterComponent } from './deposits-filter/deposits-filter.component';
+import { DepositsCompareComponent } from './deposits-compare/deposits-compare.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DepositsFilterComponent } from './deposits-filter/deposits-filter.compo
      DepositsCalcContainerComponent,
      DepositsTableComponent,
       DepositsCardsComponent,
-      DepositsFilterComponent
+      DepositsFilterComponent,
+      DepositsCompareComponent
     ],
   imports: [
     CommonModule,

@@ -28,9 +28,11 @@ import { APIInterceptor } from './shared/interceptors/api.interceptor';
 
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { LoanComparePreviewComponent } from './home/header/loan-compare-preview/loan-compare-preview.component';
-import { ValueTranslateModule } from './shared/pipes/value-translate/value-translate.module';
 import { HoverClassModule } from './shared/directives/hover-class/hover-class.module';
+import { DepositComparePreviewComponent } from './home/header/compare-preview/deposit-compare-preview/deposit-compare-preview.component';
+import { LoanComparePreviewComponent } from './home/header/compare-preview/loan-compare-preview/loan-compare-preview.component';
+import { ComparePreviewComponent } from './home/header/compare-preview/compare-preview.component';
+import { ValueTranslateModule } from './shared/pipes/value-translate/value-translate.module';
 
 
 @NgModule({
@@ -41,7 +43,9 @@ import { HoverClassModule } from './shared/directives/hover-class/hover-class.mo
     FooterComponent,
     ErrorPageComponent,
     NotFoundComponent,
-    LoanComparePreviewComponent
+    ComparePreviewComponent,
+    LoanComparePreviewComponent,
+    DepositComparePreviewComponent
   ],
   imports: [
   BrowserModule,

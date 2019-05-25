@@ -2,15 +2,12 @@ import { Component, OnInit, ChangeDetectorRef, HostListener, OnDestroy, ChangeDe
 import { ActivatedRoute } from '@angular/router';
 import { DepositCalcForm } from '../models/deposit-calc-form.model';
 import { DepositService } from '../deposit.service';
-import { finalize, takeUntil } from 'rxjs/operators';
-import { switchToView, isMobileSize } from 'src/app/app.utils';
-import { Observable, of, Subject } from 'rxjs';
+import { finalize, takeUntil, map } from 'rxjs/operators';
+import { switchToView} from 'src/app/app.utils';
+import { Observable, Subject } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-change.model';
-import { SortStates } from 'src/app/shared/directives/order-by-column/sort-states.enum';
-import { TranslateService } from '@ngx-translate/core';
 import { DepositProduct, DepositGroup } from '../models/deposit-group.model';
-import { flatten } from '@angular/compiler';
 import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
@@ -88,13 +85,13 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
         switchToView('#deposits-table-filter');
       });
   }
-  canAddProductToCompare(loanID: number): Observable<boolean> {
-    return of(true);
-    // return this.loansService.getSavedCompareProductList()
-    //   .pipe(map((loans: LoanProduct[]) => !!loans.find(l => l.lnID === loanID)));
+  onAddProductToCompare(product: DepositProduct) {
+    this.depositService.addProductToCompare(product);
+ //   this.changeRef.detectChanges();
   }
-  onAddProductToCompare(product) {
-    return;
+  canAddProductToCompare(loanID: number): Observable<boolean> {
+    return this.depositService.getSavedCompareProductList()
+      .pipe(map((loans: DepositProduct[]) => !!loans.find(l => l.dpID === loanID)));
   }
   onSortChange(sortChange: SortChangeModel) {
     this.sortState = { ...sortChange };

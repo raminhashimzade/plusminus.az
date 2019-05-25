@@ -1,4 +1,3 @@
-import { LoansComponent } from './loans.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoansCompareComponent } from './loans-compare/loans-compare.component';

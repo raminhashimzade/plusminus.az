@@ -2,8 +2,8 @@ export const MockServices = [
   {
     name: '~deposits',
     iconPath: './assets/images/deposits.png',
-    url: '',
-    disabled: true
+    url: 'deposits',
+    disabled: false
   },
   {
     name: '~credits',

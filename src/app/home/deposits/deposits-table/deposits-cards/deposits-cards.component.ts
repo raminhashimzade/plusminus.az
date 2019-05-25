@@ -30,14 +30,13 @@ export class DepositsCardsComponent implements OnInit {
     this.sortState = { orderByColumn: sortKey , orderBySort: 'asc'};
     this.sortChange.next(this.sortState);
   }
-  canAddProductToCompare(loanID: number): Observable<boolean> {
-    return of(null);
-    // return this.depositService.getSavedCompareProductList()
-    //   .pipe(map((loans: DepositProduct[]) => !!loans.find(l => l.lnID === loanID)));
+  onAddProductToCompare(product: DepositProduct) {
+    this.depositService.addProductToCompare(product);
+ //   this.changeRef.detectChanges();
   }
-  onAddProductToCompare(loan: DepositProduct) {
- //   this.depositService.addProductToCompare(loan);
-   // this.changeRef.detectChanges();
+  canAddProductToCompare(loanID: number): Observable<boolean> {
+    return this.depositService.getSavedCompareProductList()
+      .pipe(map((loans: DepositProduct[]) => !!loans.find(l => l.dpID === loanID)));
   }
 
 }

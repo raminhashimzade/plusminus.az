@@ -13,11 +13,9 @@ import { LoanProduct } from '../loans/models/loanGroup.model';
 export class HeaderComponent implements OnInit {
   defaultLang: string;
   showloanCompare= false;
-  productList$: Observable<LoanProduct[]>;
   constructor(private translateService: TranslateService,
      private router: Router,
       private loansService: LoansService) {
-        this.productList$ = this.loansService.getSavedCompareProductList();
       }
 
   ngOnInit() {

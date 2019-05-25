@@ -4,9 +4,8 @@
 }
 .productsCompare {
     .productsCompare__content {
-
+        margin-top: 20px;
         .productsCompare__content__table {
-                table-layout: fixed;
                 position: relative;
 
                 th:first-child {
@@ -19,16 +18,10 @@
                   }
                 }
                 .th-content, .td-content {
-                    width: 15.625rem;
-                    max-height: 8.75rem;
-                    overflow: hidden;
-                    transition: max-height 300ms ease-in;
                     &.--first {
                         width: 130px;
                     }
-                    &.--expanded {
-                        max-height: 62.5rem
-                    }
+
                 }
 
         }
@@ -54,33 +47,10 @@
         }
     }
 }
-.mobileTable__td-content {
-    max-height: 8.75rem;
-    overflow: hidden;
-    transition: max-height 300ms ease-in-out;
-    &.--documents, &.--requirements {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content:center;
-    }
-    &.--expanded {
-        max-height: 62.5rem
-    }
-}
-.readMore {
-    padding-top: 0.9375rem;
-    cursor: pointer;
-    color: var(--primary-default);
-    transition: transform 300ms ease-in-out;
-    &.--top {
-        transform: rotateX(180deg);
-    }
-}
+
 @media (max-width: 576px) {
     .productsCompare {
         .productsCompare__content {
-
             .productsCompare__content__table {
                 th:first-child {
                     width: 100px;

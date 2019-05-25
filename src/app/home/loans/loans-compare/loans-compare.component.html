@@ -1,8 +1,8 @@
 <div class="container" *ngIf="!isMobile">
   <div class="row">
     <div class="col-12">
-      <div class="loansCompare">
-        <div class="loansCompare__content" *ngIf="!loading else table_loader">
+      <div class="productsCompare">
+        <div class="productsCompare__content" *ngIf="!loading else table_loader">
 
           <div class="arrows">
 
@@ -18,7 +18,7 @@
 
           </div>
 
-          <table class="table loansCompare__content__table">
+          <table class="table productsCompare__content__table">
             <thead>
 
               <th>
@@ -26,9 +26,9 @@
                   {{'~bank' | translate | titlecase}}
                 </div>
               </th>
-              <th *ngFor="let loan of visibleProducts">
+              <th *ngFor="let product of visibleProducts">
                 <div class="th-content">
-                    {{loan.bankName}}
+                    {{product.bankName}}
                 </div>
               </th>
             </thead>
@@ -40,9 +40,9 @@
                     {{'~effectiveRate' | translate | titlecase}}
                   </div>
                 </td>
-                <td *ngFor="let loan of visibleProducts">
+                <td *ngFor="let product of visibleProducts">
                   <div class="td-content">
-                    {{loan.minRate}} %
+                    {{product.minRate}} %
                   </div>
                 </td>
               </tr>
@@ -50,13 +50,13 @@
               <tr>
                 <td>
                   <div class="td-content --first">
-                    {{'~loanAmount' | translate}}
+                    {{'~productAmount' | translate}}
                   </div>
                 </td>
-                <td *ngFor="let loan of visibleProducts">
+                <td *ngFor="let product of visibleProducts">
                   <div class="td-content">
-                    {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}}
-                    {{loan.currencyCode | lowercase}}
+                    {{product.minAmount }} {{product.currencyCode | lowercase}} - <br> {{product.maxAmount}}
+                    {{product.currencyCode | lowercase}}
                   </div>
                 </td>
               </tr>
@@ -64,12 +64,12 @@
               <tr>
                 <td>
                   <div class="td-content --first">
-                    {{'~loanPeriod' | translate}}
+                    {{'~productPeriod' | translate}}
                   </div>
                 </td>
-                <td class="td-content" *ngFor="let loan of visibleProducts">
+                <td class="td-content" *ngFor="let product of visibleProducts">
                   <div class="td-content">
-                    {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}
+                    {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
 
                   </div>
                 </td>
@@ -78,12 +78,12 @@
               <tr>
                 <td>
                   <div class="td-content --first">
-                    {{'~loanName' | translate}}
+                    {{'~productName' | translate}}
                   </div>
                 </td>
-                <td *ngFor="let loan of visibleProducts">
+                <td *ngFor="let product of visibleProducts">
                   <div class="td-content">
-                    {{loan.loanName | valueTranslate}}
+                    {{product.productName | valueTranslate}}
                   </div>
                 </td>
               </tr>
@@ -94,9 +94,9 @@
                       {{'~minSalary' | translate}}
                     </div>
                   </td>
-                  <td *ngFor="let loan of visibleProducts">
+                  <td *ngFor="let product of visibleProducts">
                     <div class="td-content">
-                      {{loan.minSalary}}
+                      {{product.minSalary}}
                     </div>
                   </td>
               </tr>
@@ -107,9 +107,9 @@
                       {{'~withGracePeriod' | translate}}
                     </div>
                   </td>
-                  <td *ngFor="let loan of visibleProducts">
+                  <td *ngFor="let product of visibleProducts">
                     <div class="td-content">
-                      {{loan.withGracePeriod}}
+                      {{product.withGracePeriod}}
                     </div>
                   </td>
               </tr>
@@ -119,9 +119,9 @@
                       {{'~withCollateral' | translate}}
                     </div>
                   </td>
-                  <td *ngFor="let loan of visibleProducts">
+                  <td *ngFor="let product of visibleProducts">
                     <div class="td-content">
-                      {{loan.withCollateral}}
+                      {{product.withCollateral}}
                     </div>
                   </td>
               </tr>
@@ -132,9 +132,9 @@
                       {{'~commissionCash' | translate}}
                     </div>
                   </td>
-                  <td *ngFor="let loan of visibleProducts">
+                  <td *ngFor="let product of visibleProducts">
                     <div class="td-content">
-                      {{loan.comissionCash}}
+                      {{product.comissionCash}}
                     </div>
                   </td>
               </tr>
@@ -142,12 +142,12 @@
               <tr>
                 <td>
                     <div class="td-content --first">
-                      {{'~commissionLoan' | translate}}
+                      {{'~commissionproduct' | translate}}
                     </div>
                   </td>
-                  <td *ngFor="let loan of visibleProducts">
+                  <td *ngFor="let product of visibleProducts">
                     <div class="td-content">
-                      {{loan.comissionLoan}}
+                      {{product.comissionproduct}}
                     </div>
                   </td>
               </tr>
@@ -158,9 +158,9 @@
                       {{'~withEmpReference' | translate}}
                     </div>
                   </td>
-                  <td *ngFor="let loan of visibleProducts">
+                  <td *ngFor="let product of visibleProducts">
                     <div class="td-content">
-                      {{loan.withEmpReference}}
+                      {{product.withEmpReference}}
                     </div>
                   </td>
               </tr>
@@ -171,9 +171,9 @@
                       {{'~age' | translate}}
                     </div>
                   </td>
-                  <td *ngFor="let loan of visibleProducts">
+                  <td *ngFor="let product of visibleProducts">
                     <div class="td-content">
-                      {{loan.minAge}} - {{loan.maxAge}}
+                      {{product.minAge}} - {{product.maxAge}}
                     </div>
                   </td>
               </tr>
@@ -189,10 +189,10 @@
 
                   </div>
                 </td>
-                <td *ngFor="let loan of visibleProducts">
+                <td *ngFor="let product of visibleProducts">
                   <div class="td-content" [ngClass]="{'--expanded' : docExpand?.expanded}">
                     <div class="td-content__documents"
-                      *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
+                      *ngFor="let item of (product.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
                       {{item}} <br>
                     </div>
                   </div>
@@ -209,9 +209,9 @@
                     </div>
                   </div>
                 </td>
-                <td *ngFor="let loan of visibleProducts">
+                <td *ngFor="let product of visibleProducts">
                   <div class="td-content"  [ngClass]="{'--expanded' :reqExpand?.expanded}">
-                    {{loan.description | valueTranslate}}
+                    {{product.description | valueTranslate}}
                   </div>
                 </td>
               </tr>
@@ -226,81 +226,81 @@
 
 <div class="swiper-container" style="width: 100%" #swiper *ngIf="isMobile">
   <div class="swiper-wrapper">
-    <div class="swiper-slide" *ngFor="let loan of loanProducts;let i=index;let first=first">
+    <div class="swiper-slide" *ngFor="let product of productProducts;let i=index;let first=first">
       <table class="table mobileTable">
         <thead>
           <th>{{'~bank' | translate}}</th>
           <th>
-            {{loan.bankName}}
+            {{product.bankName}}
           </th>
 
         </thead>
         <tbody>
           <tr>
             <td>{{'~effectiveRate' | translate | titlecase}}</td>
-            <td> {{loan.minRate}} %</td>
+            <td> {{product.minRate}} %</td>
           </tr>
 
           <tr>
-            <td>{{'~loanAmount' | translate | titlecase}}</td>
-            <td> {{loan.minAmount }} {{loan.currencyCode | lowercase}} - <br> {{loan.maxAmount}}
-              {{loan.currencyCode | lowercase}}
+            <td>{{'~productAmount' | translate | titlecase}}</td>
+            <td> {{product.minAmount }} {{product.currencyCode | lowercase}} - <br> {{product.maxAmount}}
+              {{product.currencyCode | lowercase}}
             </td>
           </tr>
           <!-- <tr>
             <td>{{'~monthlyPayment' | translate | titlecase}}</td>
-            <td>    {{loan.minMonthlyPayment }}
-                <ng-container *ngIf="loan.minMonthlyPayment"> - </ng-container>
-                {{loan.maxMonthlyPayment}}
-               {{loan.currencyCode | lowercase}}
+            <td>    {{product.minMonthlyPayment }}
+                <ng-container *ngIf="product.minMonthlyPayment"> - </ng-container>
+                {{product.maxMonthlyPayment}}
+               {{product.currencyCode | lowercase}}
 
             </td>
           </tr> -->
 
           <tr>
 
-            <td>{{'~loanPeriod' | translate | titlecase}}</td>
-            <td> {{loan.minPeriod }} - {{loan.maxPeriod}} {{'~month' | translate}}</td>
+            <td>{{'~productPeriod' | translate | titlecase}}</td>
+            <td> {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}</td>
           </tr>
 
           <tr>
-            <td>{{'~loanName' | translate | titlecase}}</td>
-            <td>{{loan.loanName | valueTranslate}}</td>
+            <td>{{'~productName' | translate | titlecase}}</td>
+            <td>{{product.productName | valueTranslate}}</td>
           </tr>
 
           <tr>
             <td>{{'~minSalary' | translate | titlecase}}</td>
-            <td>{{loan.minSalary}}</td>
+            <td>{{product.minSalary}}</td>
           </tr>
 
           <tr>
             <td>{{'~withGracePeriod' | translate | titlecase}}</td>
-            <td>{{loan.withGracePeriod}}</td>
+            <td>{{product.withGracePeriod}}</td>
           </tr>
 
           <tr>
             <td>{{'~withCollateral' | translate | titlecase}}</td>
-            <td>{{loan.withCollateral}}</td>
+            <td>{{product.withCollateral}}</td>
           </tr>
 
           <tr>
             <td>{{'~commissionCash' | translate | titlecase}}</td>
-            <td>{{loan.comissionCash}}</td>
+            <td>{{product.comissionCash}}</td>
           </tr>
 
           <tr>
-            <td>{{'~commissionLoan' | translate | titlecase}}</td>
-            <td>{{loan.comissionLoan}}</td>
+            <td>{{'~commissionproduct' | translate | titlecase}}</td>
+            <td>{{product.comissionproduct}}</td>
           </tr>
 
           <tr>
             <td>{{'~withEmpReference' | translate | titlecase}}</td>
-            <td>{{loan.withEmpReference}}</td>
+            <td>{{product.withEmpReference}}</td>
           </tr>
 
           <tr>
               <td>{{'~age' | translate | titlecase}}</td>
-              <td>{{loan.minAge}} - {{loan.maxAge}}</td>
+              <td>{{product.minAge}} - {{product.maxAge}}</td>
             </tr>
 
           <tr>
@@ -316,7 +316,7 @@
             </td>
             <td>
               <div class="mobileTable__td-content" [ngClass]="{'--expanded' : mobDocExpand.expanded}">
-                <div *ngFor="let item of (loan.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
+                <div *ngFor="let item of (product.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
                   {{item}} <br>
                 </div>
               </div>
@@ -338,7 +338,7 @@
             </td>
             <td>
               <div class="mobileTable__td-content" [ngClass]="{'--expanded' : mobReqExpand.expanded}">
-                {{loan.description | valueTranslate}}
+                {{product.description | valueTranslate}}
               </div>
             </td>
           </tr>

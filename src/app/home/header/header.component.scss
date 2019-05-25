@@ -77,26 +77,6 @@
     position: relative;
     width: 36px;
     height: 36px;
-    .header__loanCompare__btn {
-      padding: 0 7px;
-      background: transparent;
-      box-shadow: none;
-      min-width: 0;
-      transform: translateY(-10px);
-      img {
-        width: 1.32rem;
-      }
-    }
-    .header__loanCompare__preview {
-      position: absolute;
-      display: none;
-      right: 0;
-      z-index: 100;
-      transition: opacity 200ms ease-in;
-    }
-    &.expanded .header__loanCompare__preview {
-      display: block!important;
-    }
   }
 }
 
