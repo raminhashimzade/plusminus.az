@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <div class="productsTable">
+      <div class="productsTable" *ngIf="isLGSize">
         <table class="table plus-minus deposits" *ngIf="!loading else table_loader">
                <thead>
                   <th class="--expand"> </th>
@@ -165,6 +165,9 @@
                 </tbody>
         </table>
       </div>
+      <ng-container *ngIf="!isLGSize">
+          <deposits-cards (sortChange)="onSortChange($event)"  [depositGroupProducts]="filteredGroupProducts"></deposits-cards>
+        </ng-container>
     </div>
   </div>
 </div>

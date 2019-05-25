@@ -1,0 +1,107 @@
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog, MatSliderChange } from '@angular/material';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { takeUntil, debounceTime } from 'rxjs/operators';
+import { DepositService } from '../deposit.service';
+
+@Component({
+  selector: 'deposits-filter',
+  templateUrl: './deposits-filter.component.html',
+  styleUrls: ['./deposits-filter.component.scss']
+})
+export class DepositsFilterComponent implements OnInit {
+
+
+  @ViewChild('f') form: NgForm;
+  depositCurrency = 'AZN';
+  depositPeriods$: Observable<any>;
+  slideValue: number;
+  isMdSize: boolean;
+  _onDestroy$ = new Subject<void>();
+  @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
+  constructor(
+      private translateService: TranslateService,
+      private depositService: DepositService,
+      private router: Router,
+      private route: ActivatedRoute,
+      private dialog: MatDialog,
+      private breakPointObserver: BreakpointObserver
+     ) {
+    this.depositPeriods$ = this.depositService.listDepositPeriod();
+  }
+
+  ngOnInit() {
+    setTimeout(() => this.listenToformChange(), 20);
+    this.isMdSize = this.breakPointObserver.isMatched('(max-width: 992px)');
+  }
+  get isContainerFluid() {
+    return this.breakPointObserver.isMatched('(min-width: 768px) and (max-width: 992px');
+  }
+  updateForLayoutChange() {
+    this.isMdSize = this.breakPointObserver.isMatched('(max-width: 992px)');
+  }
+  ngOnDestroy(): void {
+    this._onDestroy$.next();
+  }
+  ngAfterViewInit() {
+    setTimeout(() => this.listenToRouterParams(), 10);
+  }
+  listenToRouterParams() {
+    this.route.params
+    .pipe(takeUntil(this._onDestroy$))
+    .subscribe(res => {
+      const depositAmount = res['depositAmount'];
+      if (depositAmount) {
+        this.slideValue = +depositAmount;
+      }
+      Object.keys(res).forEach(key => {
+        if (this.form.controls[key]) {
+          this.form.controls[key].setValue(res[key]);
+        }
+      })
+    });
+  }
+  listenToformChange() {
+    console.log('start listen')
+    this.form.valueChanges
+    .pipe(
+    debounceTime(500),
+     takeUntil(this._onDestroy$)
+    )
+    .subscribe(res => {
+  //  if (!this.form.value.depositAmount || !this.form.value.depositCurrency) {return;}
+      this.searchDeposits();
+    });
+  }
+  onSubmit() {
+    this.searchDeposits();
+  }
+  searchDeposits() {
+    console.log('search');
+    const filterForm = {};
+      Object.keys(this.form.value).forEach(key => {
+        if (this.form.controls[key].value) {
+          filterForm[key] = this.form.controls[key].value;
+        };
+      });
+    this.router.navigate(['/home/deposits',
+    {
+    ...filterForm
+   } ]);
+  }
+  getErrorMessage(controlKey: string) {
+    return this.form.controls[controlKey].hasError('required') ?
+    this.translateService.instant('~requiredField') : '';
+  }
+  onSlideMove(change: MatSliderChange) {
+    this.slideValue = change.value;
+  }
+
+
+
+
+}

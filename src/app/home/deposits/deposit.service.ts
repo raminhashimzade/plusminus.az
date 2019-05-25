@@ -17,7 +17,12 @@ export class DepositService {
     return this.http.post<DataResponse>('mybank/listDepositPeriod', {
         token: this.authService.getToken()
     }).pipe(
-        map(res => res && res.data)
+      map(res => res && res.data && res.data.map((p) => {
+        return {
+        period: p.period,
+        periodId:p.periodId.toString()
+        }
+    }))
     );
   }
   getListDepositGroupProducts(formValue: DepositCalcForm): Observable<DepositGroup[]> {
@@ -28,7 +33,5 @@ export class DepositService {
       map(res => res && res.data)
   );
   }
-  private mapDepositProducts(data: DepositGroup[]) {
-    return [];
-  }
+
 }

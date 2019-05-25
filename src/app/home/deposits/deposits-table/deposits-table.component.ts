@@ -103,7 +103,10 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
   }
   applyFilter(filterValue: string) {
     this.filteredGroupProducts = this.sharedService
-    .filterTableWithRowGroups(filterValue, [...this.depositGroupProducts], this.columns);
+    .filterTableWithRowGroups(filterValue, [...this.depositGroupProducts], ['bankName']);
     this.changeRef.detectChanges();
+  }
+  get isLGSize() {
+    return  this.breakpointObserver.isMatched('(min-width: 768px)');
   }
 }
