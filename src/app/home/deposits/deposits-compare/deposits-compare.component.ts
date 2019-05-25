@@ -36,12 +36,13 @@ export class DepositsCompareComponent implements OnInit {
     if (id) {
       this.getPreviewProduct(id);
     } else {
-    this.getCompareProductList();
+   // this.getCompareProductList();
+    this.getPreviewProduct(id);
     }
   }
   getPreviewProduct(id: number) {
     this.loading = true;
-    this.depositService.getCompareProductList([id])
+    this.depositService.getCompareProductList([6,7,8,9])
     .pipe(
       finalize(() => this.loading = false)
     )
@@ -95,8 +96,10 @@ export class DepositsCompareComponent implements OnInit {
     || document.body.clientWidth;
     if (width >= 992) {
       this.itemsPerTable= 3;
-    } else if (width >= 576 && width < 992) {
+    } else if (width >= 768 && width < 992) {
      this.itemsPerTable= 2;
+    }  else if (width >= 576 && width < 768) {
+     this.itemsPerTable= 1;
     } else if (width > 0 && width < 576) {
        this.itemsPerTable= 3;
      }

@@ -15,7 +15,13 @@
             </button>
 
           </div>
-        <ng-container *ngTemplateOutlet="table__template"></ng-container>
+          <div class="tables d-flex">
+            <ng-container  *ngFor="let product of visibleProducts;let i=index;let first=first">
+              <ng-container *ngTemplateOutlet="table__template;context:{product: product, first: first}"></ng-container>
+            </ng-container>
+
+          </div>
+
         </div>
       </div>
     </div>
@@ -25,7 +31,7 @@
 <div class="swiper-container" *ngIf="isMobile" style="width: 100%" #swiper >
   <div class="swiper-wrapper">
     <div class="swiper-slide" *ngFor="let product of products;let i=index;let first=first">
-        <ng-container *ngTemplateOutlet="table__template"></ng-container>
+        <ng-container *ngTemplateOutlet="table__template;context:{product: product, first: first}"></ng-container>
     </div>
   </div>
   <div class="swiper-pagination"></div>
@@ -38,16 +44,15 @@
   <table-loader></table-loader>
 </ng-template>
 
-<ng-template #table__template>
-    <table class="table plus-minus productsCompare__content__table">
+<ng-template #table__template let-product="product" let-first="first">
+    <table class="table plus-minus products">
         <thead>
-
-          <th>
+          <th *ngIf="first || isMobile">
             <div class="th-content --first">
               {{'~bank' | translate | titlecase}}
             </div>
           </th>
-          <th *ngFor="let product of visibleProducts">
+          <th >
             <div class="th-content">
                 {{product.bankName}}
             </div>
@@ -56,12 +61,12 @@
         <tbody>
 
           <tr>
-            <td>
+            <td *ngIf="first || isMobile">
               <div class="td-content --first">
                 {{'~effectiveRate' | translate | titlecase}}
               </div>
             </td>
-            <td *ngFor="let product of visibleProducts">
+            <td >
               <div class="td-content">
                 {{product.minRate}} %
               </div>
@@ -69,38 +74,38 @@
           </tr>
 
           <tr>
-            <td>
+            <td *ngIf="first || isMobile">
               <div class="td-content --first">
                 {{'~depositAmount' | translate}}
               </div>
             </td>
-            <td *ngFor="let product of visibleProducts">
+            <td >
               <div class="td-content">
-                {{product.minAmount }} {{product.currencyCode | lowercase}} - <br> {{product.maxAmount}}
+                {{product.minAmount }} {{product.currencyCode | lowercase}} - {{product.maxAmount}}
                 {{product.currencyCode | lowercase}}
               </div>
             </td>
           </tr>
 
           <tr>
-            <td>
+            <td *ngIf="first || isMobile">
               <div class="td-content --first">
                 {{'~liqType' | translate}}
               </div>
             </td>
-            <td *ngFor="let product of visibleProducts">
+            <td >
               <div class="td-content">
                 {{product.liqType}}
               </div>
             </td>
           </tr>
           <tr>
-            <td>
+            <td *ngIf="first || isMobile">
               <div class="td-content --first">
                 {{'~yourIncome' | translate}}
               </div>
             </td>
-            <td *ngFor="let product of visibleProducts">
+            <td >
               <div class="td-content">
                 {{product.income}}
               </div>
@@ -108,12 +113,12 @@
           </tr>
 
           <tr>
-            <td>
+            <td *ngIf="first || isMobile">
               <div class="td-content --first">
                 {{'~depositPeriod' | translate}}
               </div>
             </td>
-            <td class="td-content" *ngFor="let product of visibleProducts">
+            <td class="td-content" >
               <div class="td-content">
                 {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
 
@@ -122,12 +127,12 @@
           </tr>
 
           <tr>
-            <td>
+            <td *ngIf="first || isMobile">
               <div class="td-content --first">
                 {{'~productName' | translate}}
               </div>
             </td>
-            <td *ngFor="let product of visibleProducts">
+            <td >
               <div class="td-content">
                 {{product.depositName | valueTranslate}}
               </div>
@@ -135,13 +140,13 @@
           </tr>
 
           <tr>
-            <td>
+            <td *ngIf="first || isMobile">
               <div class="td-content --first">
                 {{'~description' | translate}}
 
               </div>
             </td>
-            <td *ngFor="let product of visibleProducts">
+            <td >
                 <div class="td-content --documents" (click)="openDocumentDialog(product.description)">
                     <i class="fas fa-file-pdf"></i>
                 </div>
@@ -149,13 +154,13 @@
             </td>
           </tr>
           <tr>
-            <td>
-              <div class="td-content">
+            <td *ngIf="first || isMobile">
+              <div class="td-content --first">
                 {{'~descriptionPresent' | translate}}
 
               </div>
             </td>
-            <td *ngFor="let product of visibleProducts">
+            <td >
                 <div class="td-content --documents" (click)="openDocumentDialog(product.descriptionPresent)">
                     <i class="fas fa-file-pdf"></i>
                 </div>
@@ -164,25 +169,25 @@
           </tr>
 
           <tr>
-              <td>
+            <td *ngIf="first || isMobile">
                 <div class="td-content --first">
                   {{'~website' | translate}}
                 </div>
               </td>
-              <td *ngFor="let product of visibleProducts">
+              <td >
                 <div class="td-content">
-                  {{product.website}}
+                  <a href="{{product.website}}" target="_blank"> {{product.website}}</a>
                 </div>
               </td>
             </tr>
 
           <tr>
-              <td>
+            <td *ngIf="first || isMobile">
                 <div class="td-content --first">
                   {{'~withAutoProlong' | translate}}
                 </div>
               </td>
-              <td *ngFor="let product of visibleProducts">
+              <td >
                 <div class="td-content">
                   {{product.withAutoProloing}}
                 </div>
@@ -190,12 +195,12 @@
             </tr>
 
           <tr>
-              <td>
+            <td *ngIf="first || isMobile">
                 <div class="td-content --first">
                   {{'~withCapitalisation' | translate}}
                 </div>
               </td>
-              <td *ngFor="let product of visibleProducts">
+              <td >
                 <div class="td-content">
                   {{product.withCapitalisation}}
                 </div>
@@ -203,12 +208,12 @@
             </tr>
 
           <tr>
-              <td>
+            <td *ngIf="first || isMobile">
                 <div class="td-content --first">
                   {{'~withRefill' | translate}}
                 </div>
               </td>
-              <td *ngFor="let product of visibleProducts">
+              <td >
                 <div class="td-content">
                   {{product.withRefill}}
                 </div>
@@ -216,12 +221,12 @@
             </tr>
 
           <tr>
-              <td>
+            <td *ngIf="first || isMobile">
                 <div class="td-content --first">
                   {{'~withWithdraw' | translate}}
                 </div>
               </td>
-              <td *ngFor="let product of visibleProducts">
+              <td >
                 <div class="td-content">
                   {{product.withWithdraw}}
                 </div>

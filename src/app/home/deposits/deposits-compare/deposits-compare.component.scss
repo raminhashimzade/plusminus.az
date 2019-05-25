@@ -5,25 +5,45 @@
 .productsCompare {
     .productsCompare__content {
         margin-top: 20px;
-        .productsCompare__content__table {
-                position: relative;
+        position: relative;
+        box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
+        border: 1px solid #e1e1e1;
 
-                th:first-child {
-                    width: 130px;
-                }
-                .th-content {
-                  img {
-                    width: 100px;
-                    height: auto;
-                  }
-                }
-                .th-content, .td-content {
-                    &.--first {
-                        width: 130px;
-                    }
+    }
+}
+table.products {
+        box-shadow: none;
+        border: 0;
+        th {
+            border: 0;
+            position: sticky;
+            top: 80px;
+            background: white;
+            z-index: 8;
+            .th-content {
+                color: inherit;
 
+            }
+        }
+        td {
+            .td-content {
+                &.--documents {
+                    font-size: 18px;
                 }
+                a {
+                    color: #2980b9;
+                    cursor: pointer;
+                }
+            }
+        }
 
+    .th-content, .td-content {
+        height: 21px;
+        overflow: hidden;
+        &.--first {
+            width: 130px;
+          text-align: left;
+          justify-content: flex-start;
         }
     }
 }

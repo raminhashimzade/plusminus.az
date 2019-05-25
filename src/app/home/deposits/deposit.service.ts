@@ -13,7 +13,8 @@ import { DepositGroup, DepositProduct } from './models/deposit-group.model';
 export class DepositService {
   compareProductList$ = new ReplaySubject<DepositProduct[]>();
   compareProductList: DepositProduct[] = [];
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService) {
+  }
   listDepositPeriod() {
     return this.http.post<DataResponse>('mybank/listDepositPeriod', {
         token: this.authService.getToken()
