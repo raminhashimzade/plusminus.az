@@ -11,7 +11,6 @@ import { LoanRequestDialogModule } from './loan-request-dialog/loan-request-dial
 import { LoansCompareComponent } from './loans-compare/loans-compare.component';
 import { LoansFilterComponent } from './loans-filter/loans-filter.component';
 import { LoansCardsComponent } from './loans-table/loans-cards/loans-cards.component';
-import { LoanCardComponent } from './loans-table/loans-cards/loan-card/loan-card.component';
 @NgModule({
   declarations: [
     LoansComponent,
@@ -20,7 +19,6 @@ import { LoanCardComponent } from './loans-table/loans-cards/loan-card/loan-card
       LoansCompareComponent,
       LoansFilterComponent,
       LoansCardsComponent,
-      LoanCardComponent,
     ],
   imports: [
     CommonModule,

@@ -119,6 +119,9 @@
      "~exchangeCalcSubtitle": "Nağd məzənnə əsasında hesablanır",
      "~searchDeposit": "Depozit axtar",
      "~searchLoan": "Kredit axtar",
-     "~expandMore": "Daha"
+     "~expandMore": "Daha",
+     "~sort": "Sort et",
+     "~sortByRate": "Faiz üzrə",
+     "~sortByMinAmount": "Minimum məbləğ üzrə"
 
   }

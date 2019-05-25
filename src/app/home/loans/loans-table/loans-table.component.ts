@@ -109,12 +109,12 @@ export class LoansTableComponent implements OnInit, OnDestroy {
   }
   onSortChange(sortChange: SortChangeModel) {
     this.sortState = { ...sortChange };
-   this.filteredGroupProducts = this.sharedService.sortTableWithRowGroups(this.sortState, [...this.loanGroupProducts])
+    this.filteredGroupProducts = this.sharedService.sortTableWithRowGroups(this.sortState, [...this.loanGroupProducts])
     this.changeRef.detectChanges();
   }
   applyFilter(filterValue: string) {
     this.filteredGroupProducts = this.sharedService.
-    filterTableWithRowGroups(filterValue, [...this.loanGroupProducts], this.columns);
+    filterTableWithRowGroups(filterValue, [...this.loanGroupProducts], ['bankName']);
     this.changeRef.detectChanges();
   }
   openDocumentDialog(documentData) {

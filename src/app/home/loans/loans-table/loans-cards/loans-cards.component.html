@@ -1,3 +1,13 @@
+<div class="sortBy">
+    <mat-form-field class="sort-field">
+      <mat-label>{{'~sort' | translate}}</mat-label>
+        <mat-select name="sortBy" (ngModelChange)="onSort($event)" [ngModel]="sortState?.orderByColumn">
+          <mat-option value="minRate">{{'~sortByRate' | translate}}</mat-option>
+          <mat-option value="minAmount">{{'~sortByMinAmount' | translate}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+
 <div class="cards">
     <ng-container *ngFor="let group of loanGroupProducts">
 
@@ -7,7 +17,7 @@
               <div class="card__header__bank">
 
                 <div class="card__header__bank__img">
-                  <img src="./assets/icons/banks/2.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.lnID">
+                  <img src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.lnID">
                 </div>
 
                 <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
