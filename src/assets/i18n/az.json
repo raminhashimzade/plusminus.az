@@ -122,6 +122,10 @@
      "~expandMore": "Daha",
      "~sort": "Sort et",
      "~sortByRate": "Faiz üzrə",
-     "~sortByMinAmount": "Minimum məbləğ üzrə"
+     "~sortByMinAmount": "Minimum məbləğ üzrə",
+     "~productName": "Məhsul adı",
+     "~description": "təsvir",
+     "~website": "Websayt",
+     "~product": "Məhsul"
 
   }

@@ -9,7 +9,7 @@
   </div>
   <div class="compare__menu">
 
-      <div class="box" *ngIf="(products$ | async) as products" >
+      <div class="box" *ngIf="(products$ | async) as products else no_products" >
         <div class="box__title">
           {{'~loans' | translate | titlecase}}
         </div>
@@ -44,17 +44,6 @@
 
 
 
-
-
-
-
-<!-- <button mat-raised-button class="compare-button"
- matBadgePosition="below" matBadgeColor="accent"
- [disabled]="true"
- routerLink="/home/loans/compare"
-  >
-<img src="./assets/icons/shopping-cart.svg" />
-</button> -->
-
-
-
+<ng-template #no_products>
+    <p class="no-products">No Products</p>
+  </ng-template>

@@ -79,6 +79,7 @@
             width: 100%;
             align-self: center;
             font-size: 13px;
+            margin-top: 10px;
           }
         }
 
@@ -91,6 +92,14 @@
     }
   }
 
+  .no-products {
+    padding: 10px;
+      background: white;
+      font-size: 12px;
+      width: 100px;
+      color: #d3d3d3;
+      box-shadow: 0.0625rem 0.0625rem 0.9375rem rgba(0,0,0,0.15);
+  }
 
 
   @media (max-width: 576px) {

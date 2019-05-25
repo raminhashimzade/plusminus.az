@@ -9,7 +9,7 @@
     </div>
     <div class="compare__menu">
 
-        <div class="box" *ngIf="(products$ | async) as products" >
+        <div class="box" *ngIf="(products$ | async) as products else no_products" >
           <div class="box__title">
             {{'~deposits' | translate | titlecase}}
           </div>
@@ -34,10 +34,11 @@
               <button mat-raised-button color="accent"
               (click)="onCompare()"
               class="box__footer__btn"> {{'~compare' | translate}}</button>
-
-
             </div>
           </div>
     </div>
   </div>
 
+<ng-template #no_products>
+  <p class="no-products">No Products</p>
+</ng-template>

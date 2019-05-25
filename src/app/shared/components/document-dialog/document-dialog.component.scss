@@ -2,5 +2,10 @@
     display: block;
     max-height: 100%;
     overflow: auto;
-    padding: 20px;
+}
+
+@media (max-width: 576px) {
+    :host {
+        padding: 20px;
+    }
 }

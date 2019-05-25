@@ -23,7 +23,7 @@
                 <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
                   [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
                   <div class="expand__title">
-                    {{'~expandMore' | translate}} {{group.list?.length}} {{'~bank' | translate}}
+                    {{'~expandMore' | translate}} {{group.list?.length}} {{'~product' | translate | lowercase}}
                   </div>
                   <div class="expand__icon">
                     <i class="fas fa-chevron-down"></i>

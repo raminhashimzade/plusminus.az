@@ -32,17 +32,17 @@ export class LoansCompareComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.queryParams['dpID'];
+    const id = this.route.snapshot.queryParams['lnID'];
     if (id) {
       this.getPreviewProduct(id);
     } else {
-   // this.getCompareProductList();
-    this.getPreviewProduct(id);
+      this.getCompareProductList();
+   // this.getPreviewProduct(id);
     }
   }
   getPreviewProduct(id: number) {
     this.loading = true;
-    this.loanService.getCompareProductList([6,7,8,9])
+    this.loanService.getCompareProductList([id])
     .pipe(
       finalize(() => this.loading = false)
     )

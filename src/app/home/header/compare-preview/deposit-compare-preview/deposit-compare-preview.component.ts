@@ -4,6 +4,7 @@ import { DepositProduct } from 'src/app/home/deposits/models/deposit-group.model
 import { DepositService } from 'src/app/home/deposits/deposit.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'deposit-compare-preview',
@@ -20,8 +21,15 @@ export class DepositComparePreviewComponent implements OnInit {
 
   ngOnInit() {
   }
+  get isProductExist() {
+    return this.depositService.getSavedCompareProductList();
+  }
   onRemoveFromCompareList(deposit: DepositProduct) {
     this.depositService.removeProductFromCompare(deposit);
+  }
+  canAddProductToCompare(loanID: number): Observable<boolean> {
+    return this.depositService.getSavedCompareProductList()
+      .pipe(map((loans: DepositProduct[]) => !!loans.find(l => l.dpID=== loanID)));
   }
   onCompare() {
     const el = document.getElementById('header__depositCompare__preview');

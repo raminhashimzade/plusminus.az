@@ -36,13 +36,13 @@ export class DepositsCompareComponent implements OnInit {
     if (id) {
       this.getPreviewProduct(id);
     } else {
-   // this.getCompareProductList();
-    this.getPreviewProduct(id);
+    this.getCompareProductList();
+  //  this.getPreviewProduct(id);
     }
   }
   getPreviewProduct(id: number) {
     this.loading = true;
-    this.depositService.getCompareProductList([6,7,8,9])
+    this.depositService.getCompareProductList([id])
     .pipe(
       finalize(() => this.loading = false)
     )
