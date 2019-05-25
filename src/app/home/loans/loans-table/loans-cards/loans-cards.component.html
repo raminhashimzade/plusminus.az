@@ -1,7 +1,95 @@
-<ng-container *ngFor="let group of loanGroupProducts" >
+<div class="cards">
+    <ng-container *ngFor="let group of loanGroupProducts">
 
-  <ng-container  *ngFor="let product of group?.list;let first=first">
-    <loan-card [product]="product"></loan-card>
-    </ng-container>
+        <ng-container *ngFor="let product of group?.list;let first=first">
+          <div class="card" *ngIf="first || expandedGroupId === group.bankID" [attr.group-id]="group.bankID">
+            <div class="card__header">
+              <div class="card__header__bank">
 
-  </ng-container>
+                <div class="card__header__bank__img">
+                  <img src="./assets/icons/banks/2.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.lnID">
+                </div>
+
+                <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
+                  [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
+                  <div class="expand__title">
+                    {{'~expandMore' | translate}} {{group.list?.length}} {{'~bank' | translate}}
+                  </div>
+                  <div class="expand__icon">
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="card__content">
+
+              <div class="card__content__row ">
+                <div class="card__content__row__left">
+                  {{product?.loanName | valueTranslate}}
+                </div>
+
+                <div class="card__content__row__right text-ellipsis">
+                  <b>{{'~effectiveRate' | translate | titlecase}}</b>: {{product.minRate}} %
+                </div>
+
+              </div>
+
+              <div class="card__content__row ">
+                <div class="card__content__row__left">
+                  {{'~amount' | translate}}:
+                </div>
+
+                <div class="card__content__row__right text-ellipsis">
+                  <span>{{product.minAmount}}</span> {{product.currencyCode | lowercase}}
+                  - <span>{{product.maxAmount}}</span> {{product.currencyCode | lowercase}}
+                  <br class="d-none d-sm-block">
+                  <span>({{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}})</span>
+
+                </div>
+              </div>
+              <div class="card__content__row ">
+                <div class="card__content__row__left">
+                    {{'~monthlyPayment' | translate}}:
+                </div>
+
+                <div class="card__content__row__right text-ellipsis">
+                    <ng-container *ngIf="product.minMonthlyPayment && product.maxMonthlyPayment">
+                        {{product.minMonthlyPayment }} -
+                        {{product.maxMonthlyPayment}}
+                       {{product.currencyCode | lowercase}}
+                    </ng-container>
+
+                    <ng-container *ngIf="product.minMonthlyPayment && !product.maxMonthlyPayment">
+                        {{product.minMonthlyPayment }}
+                       {{product.currencyCode | lowercase}}
+                    </ng-container>
+
+                    <ng-container *ngIf="!product.minMonthlyPayment && product.maxMonthlyPayment">
+                        {{product.maxMonthlyPayment }}
+                       {{product.currencyCode | lowercase}}
+                    </ng-container>
+                </div>
+
+              </div>
+            </div>
+            <div class="card__footer">
+
+                <a mat-raised-button
+                color="primary" routerLink="/home/loans/compare"
+                [queryParams]="{lnID: product.lnID}"
+                >{{'~detailed' | translate}}</a>
+
+                <a mat-raised-button color="accent" [id]="product?.lnID"
+                fly-to-cart
+                 [disabled]="(canAddProductToCompare(product?.lnID) | async)"
+                  (click)="onAddProductToCompare(product)">{{'~addToCart' | translate}}</a>
+
+            </div>
+          </div>
+
+        </ng-container>
+
+      </ng-container>
+
+</div>

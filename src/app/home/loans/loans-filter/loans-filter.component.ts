@@ -39,6 +39,9 @@ export class LoansFilterComponent implements OnInit {
     setTimeout(() => this.listenToformChange(), 20);
     this.isMdSize = this.breakPointObserver.isMatched('(max-width: 992px)');
   }
+  get isContainerFluid() {
+    return this.breakPointObserver.isMatched('(min-width: 768px) and (max-width: 992px');
+  }
   updateForLayoutChange() {
     this.isMdSize = this.breakPointObserver.isMatched('(max-width: 992px)');
   }

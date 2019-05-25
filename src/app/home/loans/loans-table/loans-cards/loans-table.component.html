@@ -1,5 +1,5 @@
 <loans-filter></loans-filter>
-<div class="container">
+<div [ngClass]="isLGSize === true ? 'container' : 'container-fluid'">
     <div class="row">
       <div class="col-12">
           <mat-form-field>
@@ -83,7 +83,7 @@
                         </div>
                       </th>
 
-                      <th [orderByColumn]="'income'" *ngIf="showDocuments">
+                      <th [orderByColumn]="'income'">
                         <div class="th-content">
                             {{'~documents' | translate}}
 
@@ -161,7 +161,7 @@
                                       </div>
                               </td>
 
-                              <td *ngIf="showDocuments">
+                              <td>
                                 <div class="td-content --documents" (click)="openDocumentDialog(product.descriptionDoc)">
                                     <i class="fas fa-file-pdf"></i>
                                 </div>

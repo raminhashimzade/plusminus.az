@@ -26,8 +26,6 @@ export class LoansTableComponent implements OnInit, OnDestroy {
   sortState: SortChangeModel;
   _onDestroy$ = new Subject<void>();
   expandedGroupId: number;
-  isMobile: boolean;
-  isLGSize: boolean;
   columns = ['bankName', 'loanName', 'minRate','minAmount', 'maxAmount', 'minMonthlyPayment', 'maxMonthlyPayment', 'currencyCode'];
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
@@ -43,10 +41,15 @@ export class LoansTableComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.listenToRouterParams();
     this.changeRef.detectChanges();
-    this.isMobile = isMobileSize();
-    this.isLGSize = this.breakpointObserver.isMatched('(min-width: 992px)');
-    console.log(this.isLGSize)
   }
+
+  get isLGSize() {
+    return  this.breakpointObserver.isMatched('(min-width: 768px)');
+  }
+  get showDocuments() {
+    return  this.breakpointObserver.isMatched('(min-width: 992px)');
+  }
+
   onExpandGroup(groupId: number) {
     if (this.expandedGroupId === groupId) {
       this.expandedGroupId = undefined;
@@ -58,8 +61,7 @@ export class LoansTableComponent implements OnInit, OnDestroy {
     this._onDestroy$.next();
   }
   updateForLayoutChange() {
-    this.isMobile = isMobileSize();
-    this.isLGSize = this.breakpointObserver.isMatched('(min-width: 992px)');
+    this.changeRef.detectChanges();
   }
   listenToRouterParams() {
     this.route.params
