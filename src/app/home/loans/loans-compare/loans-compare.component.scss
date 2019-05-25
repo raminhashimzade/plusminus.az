@@ -4,33 +4,46 @@
 }
 .productsCompare {
     .productsCompare__content {
+        margin-top: 20px;
+        position: relative;
+        box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
+        border: 1px solid #e1e1e1;
 
-        .productsCompare__content__table {
-                table-layout: fixed;
-                position: relative;
+    }
+}
+table.products {
+        box-shadow: none;
+        border: 0;
+        th {
+            border: 0;
+            position: sticky;
+            top: 80px;
+            background: white;
+            z-index: 8;
+            .th-content {
+                color: inherit;
 
-                th:first-child {
-                    width: 130px;
+            }
+        }
+        td {
+            .td-content {
+                &.--documents {
+                    font-size: 18px;
                 }
-                .th-content {
-                  img {
-                    width: 100px;
-                    height: auto;
-                  }
+                a {
+                    color: #2980b9;
+                    cursor: pointer;
                 }
-                .th-content, .td-content {
-                    width: 15.625rem;
-                    max-height: 8.75rem;
-                    overflow: hidden;
-                    transition: max-height 300ms ease-in;
-                    &.--first {
-                        width: 130px;
-                    }
-                    &.--expanded {
-                        max-height: 62.5rem
-                    }
-                }
+            }
+        }
 
+    .th-content, .td-content {
+        height: 21px;
+        overflow: hidden;
+        &.--first {
+            width: 200px;
+          text-align: left;
+          justify-content: flex-start;
         }
     }
 }
@@ -54,33 +67,10 @@
         }
     }
 }
-.mobileTable__td-content {
-    max-height: 8.75rem;
-    overflow: hidden;
-    transition: max-height 300ms ease-in-out;
-    &.--documents, &.--requirements {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content:center;
-    }
-    &.--expanded {
-        max-height: 62.5rem
-    }
-}
-.readMore {
-    padding-top: 0.9375rem;
-    cursor: pointer;
-    color: var(--primary-default);
-    transition: transform 300ms ease-in-out;
-    &.--top {
-        transform: rotateX(180deg);
-    }
-}
+
 @media (max-width: 576px) {
     .productsCompare {
         .productsCompare__content {
-
             .productsCompare__content__table {
                 th:first-child {
                     width: 100px;

@@ -6,7 +6,6 @@
 
           <div class="arrows">
 
-
             <button mat-mini-fab class="arrow --prev" (click)="onPrevProduct()" [disabled]="!hasPrevProduct()">
               <mat-icon inline="true">arrow_forward_ios</mat-icon>
             </button>
@@ -15,341 +14,27 @@
               <mat-icon inline="true">arrow_forward_ios</mat-icon>
             </button>
 
+          </div>
+          <div class="tables d-flex">
+            <ng-container  *ngFor="let product of visibleProducts;let i=index;let first=first">
+              <ng-container *ngTemplateOutlet="table__template;context:{product: product, first: first}"></ng-container>
+            </ng-container>
 
           </div>
 
-          <table class="table productsCompare__content__table">
-            <thead>
-
-              <th>
-                <div class="th-content --first">
-                  {{'~bank' | translate | titlecase}}
-                </div>
-              </th>
-              <th *ngFor="let product of visibleProducts">
-                <div class="th-content">
-                    {{product.bankName}}
-                </div>
-              </th>
-            </thead>
-            <tbody>
-
-              <tr>
-                <td>
-                  <div class="td-content --first">
-                    {{'~effectiveRate' | translate | titlecase}}
-                  </div>
-                </td>
-                <td *ngFor="let product of visibleProducts">
-                  <div class="td-content">
-                    {{product.minRate}} %
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <div class="td-content --first">
-                    {{'~productAmount' | translate}}
-                  </div>
-                </td>
-                <td *ngFor="let product of visibleProducts">
-                  <div class="td-content">
-                    {{product.minAmount }} {{product.currencyCode | lowercase}} - <br> {{product.maxAmount}}
-                    {{product.currencyCode | lowercase}}
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <div class="td-content --first">
-                    {{'~productPeriod' | translate}}
-                  </div>
-                </td>
-                <td class="td-content" *ngFor="let product of visibleProducts">
-                  <div class="td-content">
-                    {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
-
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <div class="td-content --first">
-                    {{'~productName' | translate}}
-                  </div>
-                </td>
-                <td *ngFor="let product of visibleProducts">
-                  <div class="td-content">
-                    {{product.productName | valueTranslate}}
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                    <div class="td-content --first">
-                      {{'~minSalary' | translate}}
-                    </div>
-                  </td>
-                  <td *ngFor="let product of visibleProducts">
-                    <div class="td-content">
-                      {{product.minSalary}}
-                    </div>
-                  </td>
-              </tr>
-
-              <tr>
-                <td>
-                    <div class="td-content --first">
-                      {{'~withGracePeriod' | translate}}
-                    </div>
-                  </td>
-                  <td *ngFor="let product of visibleProducts">
-                    <div class="td-content">
-                      {{product.withGracePeriod}}
-                    </div>
-                  </td>
-              </tr>
-              <tr>
-                <td>
-                    <div class="td-content --first">
-                      {{'~withCollateral' | translate}}
-                    </div>
-                  </td>
-                  <td *ngFor="let product of visibleProducts">
-                    <div class="td-content">
-                      {{product.withCollateral}}
-                    </div>
-                  </td>
-              </tr>
-
-              <tr>
-                <td>
-                    <div class="td-content --first">
-                      {{'~commissionCash' | translate}}
-                    </div>
-                  </td>
-                  <td *ngFor="let product of visibleProducts">
-                    <div class="td-content">
-                      {{product.comissionCash}}
-                    </div>
-                  </td>
-              </tr>
-
-              <tr>
-                <td>
-                    <div class="td-content --first">
-                      {{'~commissionproduct' | translate}}
-                    </div>
-                  </td>
-                  <td *ngFor="let product of visibleProducts">
-                    <div class="td-content">
-                      {{product.comissionproduct}}
-                    </div>
-                  </td>
-              </tr>
-
-              <tr>
-                <td>
-                    <div class="td-content --first">
-                      {{'~withEmpReference' | translate}}
-                    </div>
-                  </td>
-                  <td *ngFor="let product of visibleProducts">
-                    <div class="td-content">
-                      {{product.withEmpReference}}
-                    </div>
-                  </td>
-              </tr>
-
-              <tr>
-                <td>
-                    <div class="td-content --first">
-                      {{'~age' | translate}}
-                    </div>
-                  </td>
-                  <td *ngFor="let product of visibleProducts">
-                    <div class="td-content">
-                      {{product.minAge}} - {{product.maxAge}}
-                    </div>
-                  </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <div class="td-content --first">
-                    {{'~documents' | translate}}
-
-                    <div class="readMore" read-more #docExpand="readMore" [ngClass]="{'--top' : docExpand?.expanded}">
-                      <i class="fas fa-chevron-down"></i>
-                    </div>
-
-                  </div>
-                </td>
-                <td *ngFor="let product of visibleProducts">
-                  <div class="td-content" [ngClass]="{'--expanded' : docExpand?.expanded}">
-                    <div class="td-content__documents"
-                      *ngFor="let item of (product.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
-                      {{item}} <br>
-                    </div>
-                  </div>
-
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <div class="td-content">
-                    {{'~requirements' | translate}}
-                    <div class="readMore" read-more #reqExpand="readMore" [ngClass]="{'--top' : reqExpand?.expanded}">
-                      <i class="fas fa-chevron-down"></i>
-                    </div>
-                  </div>
-                </td>
-                <td *ngFor="let product of visibleProducts">
-                  <div class="td-content"  [ngClass]="{'--expanded' :reqExpand?.expanded}">
-                    {{product.description | valueTranslate}}
-                  </div>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="swiper-container" style="width: 100%" #swiper *ngIf="isMobile">
+<div class="swiper-container" *ngIf="isMobile" style="width: 100%" #swiper >
   <div class="swiper-wrapper">
-    <div class="swiper-slide" *ngFor="let product of productProducts;let i=index;let first=first">
-      <table class="table mobileTable">
-        <thead>
-          <th>{{'~bank' | translate}}</th>
-          <th>
-            {{product.bankName}}
-          </th>
-
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{'~effectiveRate' | translate | titlecase}}</td>
-            <td> {{product.minRate}} %</td>
-          </tr>
-
-          <tr>
-            <td>{{'~productAmount' | translate | titlecase}}</td>
-            <td> {{product.minAmount }} {{product.currencyCode | lowercase}} - <br> {{product.maxAmount}}
-              {{product.currencyCode | lowercase}}
-            </td>
-          </tr>
-          <!-- <tr>
-            <td>{{'~monthlyPayment' | translate | titlecase}}</td>
-            <td>    {{product.minMonthlyPayment }}
-                <ng-container *ngIf="product.minMonthlyPayment"> - </ng-container>
-                {{product.maxMonthlyPayment}}
-               {{product.currencyCode | lowercase}}
-
-            </td>
-          </tr> -->
-
-          <tr>
-
-            <td>{{'~productPeriod' | translate | titlecase}}</td>
-            <td> {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}</td>
-          </tr>
-
-          <tr>
-            <td>{{'~productName' | translate | titlecase}}</td>
-            <td>{{product.productName | valueTranslate}}</td>
-          </tr>
-
-          <tr>
-            <td>{{'~minSalary' | translate | titlecase}}</td>
-            <td>{{product.minSalary}}</td>
-          </tr>
-
-          <tr>
-            <td>{{'~withGracePeriod' | translate | titlecase}}</td>
-            <td>{{product.withGracePeriod}}</td>
-          </tr>
-
-          <tr>
-            <td>{{'~withCollateral' | translate | titlecase}}</td>
-            <td>{{product.withCollateral}}</td>
-          </tr>
-
-          <tr>
-            <td>{{'~commissionCash' | translate | titlecase}}</td>
-            <td>{{product.comissionCash}}</td>
-          </tr>
-
-          <tr>
-            <td>{{'~commissionproduct' | translate | titlecase}}</td>
-            <td>{{product.comissionproduct}}</td>
-          </tr>
-
-          <tr>
-            <td>{{'~withEmpReference' | translate | titlecase}}</td>
-            <td>{{product.withEmpReference}}</td>
-          </tr>
-
-          <tr>
-              <td>{{'~age' | translate | titlecase}}</td>
-              <td>{{product.minAge}} - {{product.maxAge}}</td>
-            </tr>
-
-          <tr>
-            <td>
-              <div class="mobileTable__td-content --documents">
-                <div>
-                  {{'~documents' | translate | titlecase}}
-                </div>
-                <div class="readMore" read-more #mobDocExpand="readMore" [ngClass]="{'--top' : mobDocExpand.expanded}">
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-              </div>
-            </td>
-            <td>
-              <div class="mobileTable__td-content" [ngClass]="{'--expanded' : mobDocExpand.expanded}">
-                <div *ngFor="let item of (product.descriptionDoc | valueTranslate).split('\n') | slice: 0:10">
-                  {{item}} <br>
-                </div>
-              </div>
-
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <div class="mobileTable__td-content --requirements">
-                <div>
-                  {{'~requirements' | translate | titlecase}}
-                </div>
-                <div class="readMore" read-more #mobReqExpand="readMore" [ngClass]="{'--top' : mobReqExpand.expanded}">
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-              </div>
-
-            </td>
-            <td>
-              <div class="mobileTable__td-content" [ngClass]="{'--expanded' : mobReqExpand.expanded}">
-                {{product.description | valueTranslate}}
-              </div>
-            </td>
-          </tr>
-
-        </tbody>
-      </table>
+    <div class="swiper-slide" *ngFor="let product of products;let i=index;let first=first">
+        <ng-container *ngTemplateOutlet="table__template;context:{product: product, first: first}"></ng-container>
     </div>
   </div>
   <div class="swiper-pagination"></div>
-  <!-- <div class="swiper-button-next"></div>
-<div class="swiper-button-prev"></div> -->
 
 </div>
 
@@ -357,4 +42,185 @@
 
 <ng-template #table_loader>
   <table-loader></table-loader>
+</ng-template>
+
+<ng-template #table__template let-product="product" let-first="first">
+    <table class="table plus-minus products">
+        <thead>
+          <th *ngIf="first || isMobile">
+            <div class="th-content --first">
+              {{'~bank' | translate | titlecase}}
+            </div>
+          </th>
+          <th >
+            <div class="th-content">
+                {{product.bankName}}
+            </div>
+          </th>
+        </thead>
+        <tbody>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+              <div class="td-content --first">
+                {{'~effectiveRate' | translate | titlecase}}
+              </div>
+            </td>
+            <td >
+              <div class="td-content">
+                {{product.minRate}} %
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+              <div class="td-content --first">
+                {{'~loanAmount' | translate}}
+              </div>
+            </td>
+            <td >
+              <div class="td-content">
+                {{product.minAmount }} {{product.currencyCode | lowercase}} - {{product.maxAmount}}
+                {{product.currencyCode | lowercase}}
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+              <div class="td-content --first">
+                {{'~productPeriod' | translate}}
+              </div>
+            </td>
+            <td >
+              <div class="td-content">
+             {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+              <div class="td-content --first">
+                  {{'~productName' | translate | titlecase}}
+              </div>
+            </td>
+            <td >
+              <div class="td-content">
+                  {{product.loanName | valueTranslate}}
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+              <div class="td-content --first">
+                  {{'~minSalary' | translate | titlecase}}
+              </div>
+            </td>
+            <td >
+              <div class="td-content">
+                  {{product.minSalary}}
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+              <div class="td-content --first">
+                  {{'~withGracePeriod' | translate | titlecase}}
+              </div>
+            </td>
+            <td class="td-content" >
+              <div class="td-content">
+                  {{product.withGracePeriod}}
+
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+              <div class="td-content --first">
+                  {{'~withCollateral' | translate | titlecase}}
+              </div>
+            </td>
+            <td >
+              <div class="td-content">
+                  {{product.withCollateral}}
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+              <div class="td-content --first">
+                  {{'~commissionCash' | translate}}
+
+              </div>
+            </td>
+            <td >
+                <div class="td-content ">
+                    {{product.comissionCash}}
+                </div>
+
+            </td>
+          </tr>
+          <tr>
+            <td *ngIf="first || isMobile">
+              <div class="td-content --first">
+                  {{'~commissionLoan' | translate}}
+
+              </div>
+            </td>
+            <td >
+                <div class="td-content">
+                    {{product.comissionLoan}}
+                </div>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+                <div class="td-content --first">
+                    {{'~withEmpReference' | translate}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content">
+                    {{product.withEmpReference}}
+                </div>
+              </td>
+            </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+                <div class="td-content --first">
+                    {{'~age' | translate}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content">
+                    {{'~age' | translate}}
+                </div>
+              </td>
+            </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+                <div class="td-content --first">
+                  {{'~description' | translate}}
+                </div>
+              </td>
+              <td >
+                  <div class="td-content --documents" (click)="openDocumentDialog(product.description)">
+                      <i class="fas fa-file-pdf"></i>
+                  </div>
+              </td>
+            </tr>
+
+        </tbody>
+      </table>
 </ng-template>

@@ -4,6 +4,9 @@ import { map, switchMap, finalize, take, tap } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 import { isMobileSize } from 'src/app/app.utils';
 import { LoanProduct } from '../models/loanGroup.model';
+import { TranslateService } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material';
+import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
 declare var Swiper;
 @Component({
   selector: 'loans-compare',
@@ -11,6 +14,7 @@ declare var Swiper;
   styleUrls: ['./loans-compare.component.scss']
 })
 export class LoansCompareComponent implements OnInit {
+
   products: LoanProduct[];
   visibleProducts: LoanProduct[];
   pageIndex = 0;
@@ -21,21 +25,24 @@ export class LoansCompareComponent implements OnInit {
   isMobile: boolean; // whether it is mobile mode
   @HostListener('window:resize', ['$event']) resize() { this.buildView()}
 
-  constructor(private loansService: LoansService,
-    private router: Router, private route: ActivatedRoute
+  constructor(private loanService: LoansService,
+    private router: Router, private route: ActivatedRoute,
+    private dialog: MatDialog,
+    private translateService: TranslateService
     ) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.queryParams['lnID'];
+    const id = this.route.snapshot.queryParams['dpID'];
     if (id) {
       this.getPreviewProduct(id);
     } else {
-    this.getCompareProductList();
+   // this.getCompareProductList();
+    this.getPreviewProduct(id);
     }
   }
   getPreviewProduct(id: number) {
     this.loading = true;
-    this.loansService.getCompareProductList([id])
+    this.loanService.getCompareProductList([6,7,8,9])
     .pipe(
       finalize(() => this.loading = false)
     )
@@ -46,16 +53,17 @@ export class LoansCompareComponent implements OnInit {
   }
   getCompareProductList() {
     this.loading = true;
-    if (!(this.loansService.compareProductList.length > 0)) {
+    if (!(this.loanService.compareProductList.length > 0)) {
       this.router.navigateByUrl('/home/loans');
     }
-    this.loansService.getSavedCompareProductList()
+    this.loanService.getSavedCompareProductList()
     .pipe(
-      map((products: LoanProduct[]) => products.map(p => p.lnID) ),
-      switchMap((productIds: number[]) => this.loansService.getCompareProductList(productIds)),
+      map((products: LoanProduct[]) => products.map(p => p.lnID)),
+      switchMap((productIds: number[]) => this.loanService.getCompareProductList(productIds)),
       take(1),
       finalize(() => this.loading = false)
     ).subscribe(res => {
+      if (!res) {return;}
         this.products = res;
         this.buildView();
     })
@@ -66,12 +74,12 @@ export class LoansCompareComponent implements OnInit {
 
   }
   onPrevProduct() {
-    if(!this.hasPrevProduct) {return;}
+    if(!this.hasPrevProduct || !this.products) {return;}
     this.pageIndex -=1;
     this.visibleProducts = this.products.slice(this.pageIndex, this.pageIndex + this.itemsPerTable);
   }
   onNextProduct() {
-    if(!this.hasNextProduct) {return;}
+    if(!this.hasNextProduct || !this.products) {return;}
     this.pageIndex +=1;
     this.visibleProducts = this.products.slice(this.pageIndex, this.pageIndex + this.itemsPerTable);
   }
@@ -88,8 +96,10 @@ export class LoansCompareComponent implements OnInit {
     || document.body.clientWidth;
     if (width >= 992) {
       this.itemsPerTable= 3;
-    } else if (width >= 576 && width < 992) {
+    } else if (width >= 768 && width < 992) {
      this.itemsPerTable= 2;
+    }  else if (width >= 576 && width < 768) {
+     this.itemsPerTable= 1;
     } else if (width > 0 && width < 576) {
        this.itemsPerTable= 3;
      }
@@ -143,6 +153,15 @@ export class LoansCompareComponent implements OnInit {
       this.initSwiper();
     }
       this.setVisibleProducts();
+  }
+
+  openDocumentDialog(documentData) {
+    const data = documentData[this.translateService.getDefaultLang()]
+    this.dialog.open(DocumentDialogComponent, {
+      data: data,
+      width: '300px',
+      maxHeight: '90vh'
+    })
   }
 
 }
