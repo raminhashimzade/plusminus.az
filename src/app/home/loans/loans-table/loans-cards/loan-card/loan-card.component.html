@@ -1,0 +1,10 @@
+<div class="card" *ngIf="product">
+  <div class="card__header">
+    <div class="card__header__bank">
+        <img  src="./assets/icons/banks/17.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.lnID">
+    </div>
+    <div class="card__header__type"></div>
+  </div>
+  <div class="card__content"></div>
+  <div class="card__footer"></div>
+</div>

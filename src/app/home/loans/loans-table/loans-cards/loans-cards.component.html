@@ -1,0 +1,7 @@
+<ng-container *ngFor="let group of loanGroupProducts" >
+
+  <ng-container  *ngFor="let product of group?.list;let first=first">
+    <loan-card [product]="product"></loan-card>
+    </ng-container>
+
+  </ng-container>

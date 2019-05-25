@@ -10,13 +10,17 @@ import {FormsModule} from '@angular/forms';
 import { LoanRequestDialogModule } from './loan-request-dialog/loan-request-dialog.module';
 import { LoansCompareComponent } from './loans-compare/loans-compare.component';
 import { LoansFilterComponent } from './loans-filter/loans-filter.component';
+import { LoansCardsComponent } from './loans-table/loans-cards/loans-cards.component';
+import { LoanCardComponent } from './loans-table/loans-cards/loan-card/loan-card.component';
 @NgModule({
   declarations: [
     LoansComponent,
      LoansBannerComponent,
      LoansTableComponent,
       LoansCompareComponent,
-      LoansFilterComponent
+      LoansFilterComponent,
+      LoansCardsComponent,
+      LoanCardComponent,
     ],
   imports: [
     CommonModule,
