@@ -94,7 +94,6 @@ export class LoansTableComponent implements OnInit, OnDestroy {
       )
       .subscribe(res => {
         this.loanGroupProducts = res;
-        // this.loanProducts = flatten(res.map((group) => group.list));
         this.filteredGroupProducts = [...this.loanGroupProducts];
         switchToView('#loans-table-filter');
       });

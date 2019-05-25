@@ -38,15 +38,17 @@
 
    .banner-wrapper {
      display: block;
-    background-image: url('../../../../assets//images/loans-banner-cover.jpeg');
+    background-image: url('../../../../assets//images/loans-banner-cover.png');
     height: var(--banner-height);
     background-repeat: no-repeat;
+    background-color: #F6C300;
+    min-height:var(--banner-min-height);
     .banner {
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 40px 0;
-      height: var(--banner-height);
+      min-height:var(--banner-min-height);
         .banner__title {
             display: flex;
             flex-direction: column;
@@ -92,13 +94,13 @@
 }
   @media (max-width: 992px) {
    .banner-wrapper {
-    background-position-x: right;
-    background-position-x: -336px;
+   // background-position-x: right;
+   // background-position-x: -336px;
    }
  }
  @media (max-width: 768px) {
    .banner-wrapper {
-    background-position-x: right;
+  //  background-position-x: right;
    // height: 25.75rem;
    }
  }
@@ -106,11 +108,12 @@
       .banner-wrapper {
         background: #ffd740;
         background-position-x: -590px;
+        background-image: none;
       }
  }
  @media (max-width: 450px) {
         .banner-wrapper {
-            background-position-x: -625px;
+      //      background-position-x: -625px;
         }
  }
  @media (max-width: 768px) {
