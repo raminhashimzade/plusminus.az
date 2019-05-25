@@ -28,7 +28,17 @@
 
   <div class="row">
     <div class="col-12">
+        <mat-form-field class="filter-field">
+            <input matInput (keyup)="filterBanks($event.target.value.toString().toLowerCase())"
+            placeholder="{{'~search' | translate}}">
+          </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
       <div class="exchange-rates-full">
+
           <div class="arrows" >
           <button mat-mini-fab class="arrow --next" (click)="onNextRateScroll()" >
               <mat-icon inline="true">arrow_forward_ios</mat-icon>
@@ -37,8 +47,8 @@
 
         <div class="exchange-rates-full__table" >
 
-           <ng-container *ngIf="allCurrencies && allCurrencies[0] else all_rates_loader">
-              <table class="table" >
+           <ng-container *ngIf="!loading else all_rates_loader">
+              <table class="table" *ngIf="filteredCurrencies && filteredCurrencies[0] ">
                   <tr>
                     <th class="--borderRight">
                       <div class="th-content --bank ">
@@ -91,7 +101,7 @@
                     </ng-container>
                   </tr>
                   <tbody >
-                    <tr *ngFor="let currency of allCurrencies">
+                    <tr *ngFor="let currency of filteredCurrencies">
                       <td class="--borderRight">
                         <div class="td-content --bank">
                            {{currency?.bankName}}

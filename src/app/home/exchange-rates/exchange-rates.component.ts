@@ -3,6 +3,7 @@ import { FavorableRatePreview } from '../landing-page/favorable-rates-preview/fa
 import { ExchangeRatesService } from './exchange-rates.service';
 import { ExchangeRate, Rate } from './models/exchange-rate.model';
 import { isMobileSize } from 'src/app/app.utils';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'exchange-rates',
@@ -13,9 +14,11 @@ import { isMobileSize } from 'src/app/app.utils';
 export class ExchangeRatesComponent implements OnInit {
   favorableCurrencies: FavorableRatePreview[];
   allCurrencies: ExchangeRate[];
+  filteredCurrencies: ExchangeRate[];
   rateList: string[];
   sortState: {rate: string, type: string, sortBy: string};
   isMobile: boolean;
+  loading: boolean;
   constructor(
     private exchangeRatesService: ExchangeRatesService,
     private changeRef: ChangeDetectorRef
@@ -60,8 +63,17 @@ export class ExchangeRatesComponent implements OnInit {
     return JSON.stringify(this.sortState) === JSON.stringify({rate, type, sortBy});
   }
   getAllRates() {
-    this.exchangeRatesService.getCurrRateList().subscribe(res => {
+    this.loading = true;
+    this.exchangeRatesService.getCurrRateList()
+    .pipe(
+      finalize(() => {
+        this.loading = false;
+        this.changeRef.detectChanges();
+      })
+    )
+    .subscribe(res => {
       this.allCurrencies = res;
+      this.filteredCurrencies = res;
       if (this.allCurrencies && this.allCurrencies[0]
             && this.allCurrencies[0].bankCurrRate
            && this.allCurrencies[0].bankCurrRate.CASH
@@ -88,6 +100,13 @@ export class ExchangeRatesComponent implements OnInit {
       console.log(er);
     } finally {
       this.changeRef.detectChanges();
+    }
+  }
+  filterBanks(str: string) {
+    if (!str) {
+      this.filteredCurrencies = [...this.allCurrencies];
+    } else {
+      this.filteredCurrencies = [...this.allCurrencies].filter(cur => cur.bankName.toLowerCase().includes(str));
     }
   }
 
