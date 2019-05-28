@@ -48,7 +48,7 @@
       letter-spacing: -0.0088rem;
     }
     .slide__detailed {
-      margin-top: 4.125rem;
+      margin-top: 42px;
       margin-left: 10.625rem;
       position: relative;
       z-index: 1;
@@ -67,6 +67,17 @@
         // letter-spacing: -0.0075rem;
         // text-align: center;
         // padding: 0.625rem 2.375rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .slide {
+    .slide__content {
+      .slide__detailed {
+        margin-top: 30px;
+        margin-left: 7.625rem;
       }
     }
   }

@@ -18,7 +18,7 @@
                         <div class="col-12 col-md-3 col-lg-3 col-xl-3">
                             <div class="slider-group">
                                 <mat-form-field class="w-100 banner__field" appearance="outline" >
-                                    <input matInput name="slideValue" type="number" placeholder="{{'~depositAmount' | translate}}"
+                                    <input required matInput name="slideValue" type="number" placeholder="{{'~depositAmount' | translate}}"
                                       [(ngModel)]="slideValue">
                                   </mat-form-field>
 
@@ -30,9 +30,10 @@
 
                         <div class="col-12 col-md-2 col-lg-2 col-xl-2">
                             <mat-form-field appearance="outline"  class="banner__field w-100">
-                                <mat-select name="depositCurrency" [ngModel]="depositCurrency" class="form-field">
-                                  <mat-option value="AZN">AZN</mat-option>
-                                  <mat-option value="USD">USD</mat-option>
+                                <mat-select required name="depositCurrency" [ngModel]="depositCurrency" class="form-field">
+                                  <mat-option *ngFor="let option of currCodes$ | async"
+                                  [value]="option.value"
+                                  >{{option.label}}</mat-option>
                                 </mat-select>
                                 <mat-error *ngIf="f?.controls['depositCurrency']?.invalid">{{getErrorMessage('depositCurrency')}}</mat-error>
 
@@ -42,7 +43,7 @@
                         <div class="col-12 col-md-3 col-lg-3 col-xl-3">
 
                         <mat-form-field appearance="outline"  class="banner__field w-100">
-                            <mat-select name="depositPeriod" ngModel class="form-field" placeholder="{{'~depositPeriod' | translate }}">
+                            <mat-select required name="depositPeriod" ngModel class="form-field" placeholder="{{'~depositPeriod' | translate }}">
                               <mat-option *ngFor="let period of (depositPeriods$  | async)" [value]="period?.periodId"> {{period?.period}}
                               </mat-option>
 

@@ -68,6 +68,7 @@ export class LoansTableComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._onDestroy$))
       .subscribe(res => {
         const formValue = {
+          loanAmount: res['loanAmount'] || '',
           loanCurrency: res['loanCurrency'] ||  '',
           loanPeriod: res['loanPeriod'] || '',
           withEmpReference: res['withEmpReference'] || true,

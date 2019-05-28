@@ -13,11 +13,9 @@
                       <mat-form-field class="form__field" [appearance]="'outline'">
                           <mat-label>{{'~currency' | translate}}</mat-label>
                           <mat-select ngModel name="currencyCode">
-                            <mat-option value="USD"> USD </mat-option>
-                            <mat-option value="EUR"> EUR </mat-option>
-                            <mat-option value="GBP"> GBP </mat-option>
-                            <mat-option value="TRY"> TRY </mat-option>
-                            <mat-option value="RUB"> RUB </mat-option>
+                            <mat-option *ngFor="let option of currCodes$ | async"
+                            [value]="option.value"
+                            >{{option.label}}</mat-option>
                           </mat-select>
                         </mat-form-field>
 

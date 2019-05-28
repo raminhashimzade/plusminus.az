@@ -7,6 +7,8 @@ import { MatDialog, MatSliderChange } from '@angular/material';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 import { DepositService } from '../deposit.service';
+import { SelectType } from 'src/app/shared/models/select-type.model';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'deposits-filter',
@@ -22,16 +24,19 @@ export class DepositsFilterComponent implements OnInit {
   slideValue: number;
   isMdSize: boolean;
   _onDestroy$ = new Subject<void>();
+  currCodes$: Observable<SelectType[]>;
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
       private depositService: DepositService,
+      private sharedService: SharedService,
       private router: Router,
       private route: ActivatedRoute,
       private dialog: MatDialog,
       private breakPointObserver: BreakpointObserver
      ) {
     this.depositPeriods$ = this.depositService.listDepositPeriod();
+    this.currCodes$ = this.sharedService.getCurrCodeList('deposits');
   }
 
   ngOnInit() {
@@ -82,6 +87,7 @@ export class DepositsFilterComponent implements OnInit {
   }
   searchDeposits() {
     console.log('search');
+    if (!this.form.valid) {return;}
     const filterForm = {};
       Object.keys(this.form.value).forEach(key => {
         if (this.form.controls[key].value) {

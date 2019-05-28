@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SortChangeModel } from './directives/order-by-column/sort-change.model';
 import { SortStates } from './directives/order-by-column/sort-states.enum';
+import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { SelectType } from './models/select-type.model';
+import { DataResponse } from '../models/data-reponse';
+import { map, catchError } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 
-  constructor(private translateService: TranslateService) { }
+  constructor(private translateService: TranslateService, private http: HttpClient, private authService: AuthService) { }
 
   filterTableWithRowGroups(filterValue: string, data: any, columnNames: string[]) {
     const lang = this.translateService.getDefaultLang();
@@ -54,5 +60,25 @@ export class SharedService {
     } else {
      return  data;
     }
+  }
+  getCurrCodeList(pageName: string): Observable<SelectType[]> {
+    return this.http.post<DataResponse>('mybank/currCodeList', {
+      token: this.authService.getToken(),
+      pageName: pageName
+  }).pipe(
+      map(res => res && res.data && this.mapCurrCodeList(res.data[0])),
+      catchError(er => of(null))
+  );
+  }
+  private mapCurrCodeList(data: any): SelectType[] {
+    console.log(data)
+    console.log(data.currencyCode)
+    if (!data.currencyCode) {return;}
+    return data.currencyCode.map(cur => {
+      return {
+        value: cur,
+        label: cur
+      } as SelectType
+    })
   }
 }

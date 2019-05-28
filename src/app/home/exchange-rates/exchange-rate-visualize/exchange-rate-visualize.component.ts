@@ -6,6 +6,9 @@ import { CurrencyArchieve } from '../models/currency-archieve.model';
 import { finalize } from 'rxjs/operators';
 import { ExchangeRate } from '../models/exchange-rate.model';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { SelectType } from 'src/app/shared/models/select-type.model';
+import { SharedService } from 'src/app/shared/shared.service';
 declare var google: any;
 @Component({
   selector: 'exchange-rate-visualize',
@@ -18,10 +21,14 @@ export class ExchangeRateVisualizeComponent implements OnInit {
   dataSource: any;
   data: any;
   loading: boolean;
+  currCodes$: Observable<SelectType[]>;
   constructor(private exchangeRateService: ExchangeRatesService,
      private changeRef: ChangeDetectorRef,
+     private sharedService: SharedService,
      private translateService: TranslateService
-     ) { }
+     ) {
+      this.currCodes$ = this.sharedService.getCurrCodeList('exchange-rates');
+     }
 
   ngOnInit() {
 

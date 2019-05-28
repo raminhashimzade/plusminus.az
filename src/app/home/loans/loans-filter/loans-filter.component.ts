@@ -9,6 +9,8 @@ import { MatSliderChange, MatDialog } from '@angular/material';
 import { LoanRequestDialogComponent } from '../loan-request-dialog/loan-request-dialog.component';
 import { isMobileSize } from 'src/app/app.utils';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { SelectType } from 'src/app/shared/models/select-type.model';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Component({
   selector: 'loans-filter',
@@ -23,16 +25,19 @@ export class LoansFilterComponent implements OnInit {
   slideValue: number;
   isMdSize: boolean;
   _onDestroy$ = new Subject<void>();
+  currCodes$: Observable<SelectType[]>
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
       private loanService: LoansService,
+      private sharedService: SharedService,
       private router: Router,
       private route: ActivatedRoute,
       private dialog: MatDialog,
       private breakPointObserver: BreakpointObserver
      ) {
     this.loanPeriods$ = this.loanService.listLoanPeriods();
+    this.currCodes$ = this.sharedService.getCurrCodeList('loans');
   }
 
   ngOnInit() {
@@ -67,7 +72,6 @@ export class LoansFilterComponent implements OnInit {
     });
   }
   listenToformChange() {
-    console.log('start listen')
     this.form.valueChanges
     .pipe(
     debounceTime(500),
@@ -82,7 +86,7 @@ export class LoansFilterComponent implements OnInit {
     this.searchLoans();
   }
   searchLoans() {
-    console.log('search');
+    if (!this.form.valid) {return;}
     const filterForm = {};
       Object.keys(this.form.value).forEach(key => {
         if (this.form.controls[key].value) {

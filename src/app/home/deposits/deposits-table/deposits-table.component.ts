@@ -31,7 +31,8 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
     private changeRef: ChangeDetectorRef,
     private breakpointObserver: BreakpointObserver,
     private sharedService: SharedService
-  ) { }
+  ) {
+   }
 
   ngOnInit() {
     this.listenToRouterParams();
@@ -56,11 +57,11 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
         const formValue = {
           depositAmount: res['depositAmount'] || '',
           depositCurrency: res['depositCurrency'] || 'AZN',
-          depositPeriod: res['depositPeriod'] || '',
-          withCapitalisation: res['withCapitalisation'] || '',
-          withWithdraw: res['withWithdraw'] || '',
-          withRefill: res['withRefill'] || '',
-          withAutoProloing: res['withAutoProloing'] || '',
+          depositPeriod: res['depositPeriod'] || 0,
+          withCapitalisation: res['withCapitalisation'] || false,
+          withWithdraw: res['withWithdraw'] || false,
+          withRefill: res['withRefill'] || false,
+          withAutoProloing: res['withAutoProloing'] || false,
         } as DepositCalcForm;
         console.log(formValue);
         this.getListDepositGroupProducts(formValue);

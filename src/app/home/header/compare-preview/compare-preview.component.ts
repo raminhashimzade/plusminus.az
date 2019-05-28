@@ -17,10 +17,11 @@ export class ComparePreviewComponent implements OnInit {
   }
   setCompareType(url: string):void {
     if (url && url.includes('loans')) {
-      console.log('loans')
       this.type = 'loans';
     } else if (url && url.includes('deposits')) {
       this.type = 'deposits';
+    } else {
+      this.type = undefined;
     }
   }
   listenToRouterEvents() {

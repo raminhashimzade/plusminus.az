@@ -19,7 +19,7 @@
                         <div class="col-12 col-md-3 col-lg-3 col-xl-3">
                             <div class="slider-group">
                                 <mat-form-field class="w-100 banner__field" appearance="outline" >
-                                    <input matInput name="slideValue" type="number" placeholder="{{'~loanAmount' | translate}}"
+                                    <input required  matInput name="slideValue" type="number" placeholder="{{'~loanAmount' | translate}}"
                                       [(ngModel)]="slideValue">
                                   </mat-form-field>
 
@@ -31,9 +31,10 @@
 
                         <div class="col-12 col-md-2 col-lg-2 col-xl-2">
                             <mat-form-field appearance="outline"  class="banner__field w-100">
-                                <mat-select name="loanCurrency" [ngModel]="loanCurrency" class="form-field">
-                                  <mat-option value="AZN">AZN</mat-option>
-                                  <mat-option value="USD">USD</mat-option>
+                                <mat-select required name="loanCurrency" [ngModel]="loanCurrency" class="form-field">
+                                  <mat-option *ngFor="let option of currCodes$ | async"
+                                  [value]="option.value"
+                                  >{{option.label}}</mat-option>
                                 </mat-select>
                                 <mat-error *ngIf="f?.controls['loanCurrency']?.invalid">{{getErrorMessage('loanCurrency')}}</mat-error>
 
@@ -44,7 +45,7 @@
 
                         <mat-form-field appearance="outline"  class="banner__field w-100">
                             <!-- <mat-label>{{'~loanPeriod' | translate }}</mat-label> -->
-                            <mat-select name="loanPeriod" ngModel class="form-field" placeholder="{{'~loanPeriod' | translate }}">
+                            <mat-select required name="loanPeriod" ngModel class="form-field" placeholder="{{'~loanPeriod' | translate }}">
                               <mat-option *ngFor="let period of (loanPeriods$ | async)" [value]="period?.periodId"> {{period?.period}}
                               </mat-option>
 

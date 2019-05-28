@@ -6,6 +6,7 @@ import { DataResponse } from '../models/data-reponse';
 import { catchError, map } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { FavorableRatePreview } from './landing-page/favorable-rates-preview/favorable-rate-preview.model';
+import { SelectType } from '../shared/models/select-type.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,4 +37,5 @@ export class HomeService {
       catchError(er => of(null))
   );
   }
+
 }
