@@ -22,8 +22,6 @@ import { LoansCardsComponent } from './loans-table/loans-cards/loans-cards.compo
     CommonModule,
     LoansRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
-    FormsModule,
     LoanRequestDialogModule
   ],
   entryComponents: [

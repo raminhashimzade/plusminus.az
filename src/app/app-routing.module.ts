@@ -33,6 +33,11 @@ const routes: Routes = [
           './home/exchange-rates/exchange-rates.module#ExchangeRatesModule'
       },
       {
+        path: 'mortgage',
+        loadChildren:
+          './home/mortgage/mortgage.module#MortgageModule'
+      },
+      {
         path: 'requestCustomerDetails',
         loadChildren: './home/request-customer-details/request-customer-details.module#RequestCustomerDetailsModule'
       }

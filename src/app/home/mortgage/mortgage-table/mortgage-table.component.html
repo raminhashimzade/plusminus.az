@@ -1,0 +1,191 @@
+<mortgage-filter></mortgage-filter>
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+          <mat-form-field class="filter-field">
+              <input matInput (keyup)="applyFilter($event.target.value.toString().toLowerCase())" placeholder="{{'~search' | translate}}">
+            </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="productsTable" *ngIf="isLGSize">
+          <table class="table plus-minus deposits" *ngIf="!loading else table_loader">
+                 <thead>
+                    <th class="--expand"> </th>
+                    <th [orderByColumn]="'bankName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                        <div class="th-content --bank ">
+                          {{'~bank' | translate}}
+                          <div class="tableSorting">
+                              <span class="tableSorting__arrow --top">
+                                 <i class="fas fa-caret-down"></i>
+                                </span>
+                                <span class="tableSorting__arrow --down">
+                                  <i class="fas fa-caret-down"></i>
+                                </span>
+                           </div>
+                        </div>
+                      </th>
+
+                      <th  [orderByColumn]="'loanName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                          <div class="th-content">
+                              {{'~loanName' | translate}}
+                              <div class="tableSorting">
+                                  <span class="tableSorting__arrow --top">
+                                     <i class="fas fa-caret-down"></i>
+                                    </span>
+                                    <span class="tableSorting__arrow --down">
+                                      <i class="fas fa-caret-down"></i>
+                                    </span>
+                               </div>
+                          </div>
+                      </th>
+
+                      <th [orderByColumn]="'minRate'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                        <div class="th-content" >
+                            {{'~effectiveRate' | translate}}
+                            <div class="tableSorting">
+                                <span class="tableSorting__arrow --top">
+                                   <i class="fas fa-caret-down"></i>
+                                  </span>
+                                  <span class="tableSorting__arrow --down">
+                                    <i class="fas fa-caret-down"></i>
+                                  </span>
+                             </div>
+                        </div>
+                      </th>
+
+                      <th [orderByColumn]="'minAmount'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                        <div class="th-content">
+                            {{'~amount' | translate}}
+                            <div class="tableSorting">
+                                <span class="tableSorting__arrow --top">
+                                   <i class="fas fa-caret-down"></i>
+                                  </span>
+                                  <span class="tableSorting__arrow --down">
+                                    <i class="fas fa-caret-down"></i>
+                                  </span>
+                             </div>
+                        </div>
+                      </th>
+
+                      <th [orderByColumn]="'liqType'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                        <div class="th-content">
+                            {{'~monthlyPayment' | translate}}
+                            <div class="tableSorting">
+                                <span class="tableSorting__arrow --top">
+                                   <i class="fas fa-caret-down"></i>
+                                  </span>
+                                  <span class="tableSorting__arrow --down">
+                                    <i class="fas fa-caret-down"></i>
+                                  </span>
+                             </div>
+                        </div>
+                      </th>
+
+
+
+                      <th></th>
+                 </thead>
+
+                  <tbody>
+
+                        <ng-container *ngFor="let group of filteredGroupProducts" >
+
+                          <ng-container  *ngFor="let product of group?.list;let first=first">
+                            <tr *ngIf="first || expandedGroupId === group.bankID" [attr.group-id]="group.bankID">
+
+                              <td class="p-0">
+                                <div class="expand-icon"   (click)="onExpandGroup(group.bankID)" *ngIf="first"
+                                   [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
+                                  <i class="fas fa-chevron-down"></i>
+                                </div>
+                              </td>
+
+                              <td class="pl-0">
+                                <div  *ngIf="first" class="td-content products__table__content__bank">
+                                  <div class="products__table__content__bank__icon" >
+                                    <img  src="./assets/icons/banks/{{product.bankID}}.svg"
+                                    alt="{{product.bankName}}" [attr.product-img-id]="product.lnID">
+                                 </div>
+                                </div>
+
+                              </td>
+
+                              <td>
+                                <div class="td-content">
+                                    {{product?.loanName | valueTranslate}}
+                                </div>
+                              </td>
+
+                              <td>
+                                <div class="td-content">
+                                    {{product.minRate}} %
+                                </div>
+                              </td>
+
+                              <td>
+                                <div class="td-content --amount">
+                                    <div>
+                                        <span >{{product.minAmount}}</span> {{product.currencyCode | lowercase}}
+                                      -  <span >{{product.maxAmount}}</span>  {{product.currencyCode | lowercase}}
+                                         <br class="d-none d-sm-block">
+                                         <span>({{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}})</span>
+
+                                      </div>
+                                </div>
+                              </td>
+
+                              <td>
+                                  <div class=" td-content" >
+                                      <ng-container *ngIf="product.minMonthlyPayment && product.maxMonthlyPayment">
+                                          {{product.minMonthlyPayment }} -
+                                          {{product.maxMonthlyPayment}}
+                                         {{product.currencyCode | lowercase}}
+                                      </ng-container>
+
+                                      <ng-container *ngIf="product.minMonthlyPayment && !product.maxMonthlyPayment">
+                                          {{product.minMonthlyPayment }}
+                                         {{product.currencyCode | lowercase}}
+                                      </ng-container>
+
+                                      <ng-container *ngIf="!product.minMonthlyPayment && product.maxMonthlyPayment">
+                                          {{product.maxMonthlyPayment }}
+                                         {{product.currencyCode | lowercase}}
+                                      </ng-container>
+
+                                      </div>
+                              </td>
+
+
+
+                              <td class="pl-1 pr-1">
+                                <div class="td-content row-actions">
+
+                                    <a mat-raised-button
+                                    color="primary" href="{{product.website}}"
+                                    target="_blank"
+                                    >{{'~detailed' | translate}}</a>
+
+                                </div>
+
+                              </td>
+
+                            </tr>
+                          </ng-container>
+
+                        </ng-container>
+
+                  </tbody>
+          </table>
+        </div>
+        <ng-container *ngIf="!isLGSize">
+          <mortgage-cards (sortChange)="onSortChange($event)" [loanGroupProducts]="filteredGroupProducts"></mortgage-cards>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #table_loader>
+      <table-loader></table-loader>
+  </ng-template>

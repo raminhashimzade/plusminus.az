@@ -6,7 +6,7 @@ import { RatingModule } from '../home/rating/rating.module';
 import { ReadMoreModule } from './directives/read-more/read-more.module';
 import { TableLoaderModule } from '../home/table-loader/table-loader.module';
 import { CountUpModule } from 'countup.js-angular2';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderByColumnModule } from './directives/order-by-column/order-by-column.module';
 import { DocumentDialogModule } from './components/document-dialog/document-dialog.module';
 
@@ -23,7 +23,9 @@ import { DocumentDialogModule } from './components/document-dialog/document-dial
     TableLoaderModule,
     CountUpModule,
     OrderByColumnModule,
-    DocumentDialogModule
+    DocumentDialogModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     SharedTranslateModule,
@@ -35,7 +37,9 @@ import { DocumentDialogModule } from './components/document-dialog/document-dial
     TableLoaderModule,
     CountUpModule,
     OrderByColumnModule,
-    DocumentDialogModule
+    DocumentDialogModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: []
 })

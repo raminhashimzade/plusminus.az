@@ -55,7 +55,7 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this._onDestroy$))
       .subscribe(res => {
         const formValue = {
-          depositAmount: res['depositAmount'] || '',
+          depositAmount: res['depositAmount'] || 0,
           depositCurrency: res['depositCurrency'] || 'AZN',
           depositPeriod: res['depositPeriod'] || 0,
           withCapitalisation: res['withCapitalisation'] || false,
