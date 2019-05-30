@@ -127,6 +127,12 @@
      "~description": "təsvir",
      "~website": "Websayt",
      "~product": "Məhsul",
-     "~mortgage": "Ipoteka"
+     "~mortgage": "Ipoteka",
+     "~mortgageAmount": "Ipoteka məbləği",
+     "~mortgagePeriod": "Ipoteka mwüddəti",
+     "~mortgageCurrency": "Ipoteka valyutası",
+     "~withCapitalisation": "Kapitalizasiya ilə ",
+     "~withWithdraw": "Məxaric İmkanı",
+     "~withRefill": "Mədaxil İmkanı"
 
   }

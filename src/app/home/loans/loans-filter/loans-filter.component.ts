@@ -121,7 +121,6 @@ export class LoansFilterComponent implements OnInit {
         this.form.controls[controlKey].setValue(false);
       }
     });
-   // this.changeRef.detectChanges();
   }
 
 

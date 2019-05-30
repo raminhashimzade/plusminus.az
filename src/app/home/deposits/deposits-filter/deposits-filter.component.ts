@@ -107,7 +107,13 @@ export class DepositsFilterComponent implements OnInit {
     this.slideValue = change.value;
   }
 
-
+  setInitialCheckboxesToFalse() {
+    Object.keys(this.form.controls).forEach(controlKey => {
+      if (!this.form.controls[controlKey].value) {
+        this.form.controls[controlKey].setValue(false);
+      }
+    });
+  }
 
 
 }

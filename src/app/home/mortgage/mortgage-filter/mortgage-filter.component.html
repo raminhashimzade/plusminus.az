@@ -43,7 +43,7 @@
 
                       <mat-form-field appearance="outline"  class="banner__field w-100">
                           <!-- <mat-label>{{'~loanPeriod' | translate }}</mat-label> -->
-                          <mat-select required name="loanPeriod" ngModel class="form-field" placeholder="{{'~loanPeriod' | translate }}">
+                          <mat-select required name="loanPeriod" ngModel class="form-field" placeholder="{{'~mortgagePeriod' | translate }}">
                             <mat-option *ngFor="let period of (loanPeriods$ | async)" [value]="period?.periodId"> {{period?.period}}
                             </mat-option>
 
