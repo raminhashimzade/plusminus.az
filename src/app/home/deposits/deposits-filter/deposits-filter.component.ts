@@ -9,6 +9,7 @@ import { takeUntil, debounceTime } from 'rxjs/operators';
 import { DepositService } from '../deposit.service';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
+import { deepClone } from 'src/app/app.utils';
 
 @Component({
   selector: 'deposits-filter',
@@ -16,7 +17,6 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./deposits-filter.component.scss']
 })
 export class DepositsFilterComponent implements OnInit {
-
 
   @ViewChild('f') form: NgForm;
   depositCurrency = 'AZN';
@@ -68,7 +68,8 @@ export class DepositsFilterComponent implements OnInit {
           if (this.form.controls[key].value === res[key]) {return;}
         this.form.controls[key].setValue(res[key]);
         }
-      })
+      });
+      this.depositService.depositFilterValue= deepClone(this.form.value);
     });
   }
   listenToformChange() {
@@ -79,6 +80,7 @@ export class DepositsFilterComponent implements OnInit {
     )
     .subscribe(res => {
   //  if (!this.form.value.depositAmount || !this.form.value.depositCurrency) {return;}
+     this.depositService.depositFilterValue= deepClone(this.form.value);
       this.searchDeposits();
     });
   }

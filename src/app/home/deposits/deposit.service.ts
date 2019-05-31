@@ -13,6 +13,7 @@ import { DepositGroup, DepositProduct } from './models/deposit-group.model';
 export class DepositService {
   compareProductList$ = new ReplaySubject<DepositProduct[]>();
   compareProductList: DepositProduct[] = [];
+  depositFilterValue: DepositCalcForm;
   constructor(private http: HttpClient, private authService: AuthService) {
   }
   listDepositPeriod() {
@@ -35,11 +36,14 @@ export class DepositService {
       map(res => res && res.data)
   );
   }
-  getCompareProductList(productIds: number[]) {
+  getCompareProductList(productIds: number[], formValue: DepositCalcForm) {
     return this.http.post<DataResponse>('mybank/compareDepositProducts', {
         token: this.authService.getToken(),
         prodId : productIds,
-      prodType : "deposit"
+        prodType : "deposit",
+        depositAmount: formValue && formValue.depositAmount,
+        depositPeriod: formValue && formValue.depositPeriod,
+        depositCurrencyCode: formValue && formValue.depositCurrency
     }).pipe(
         map(res => res && res.data)
     );

@@ -42,7 +42,7 @@ export class DepositsCompareComponent implements OnInit {
   }
   getPreviewProduct(id: number) {
     this.loading = true;
-    this.depositService.getCompareProductList([id])
+    this.depositService.getCompareProductList([id], this.depositService.depositFilterValue)
     .pipe(
       finalize(() => this.loading = false)
     )
@@ -59,7 +59,7 @@ export class DepositsCompareComponent implements OnInit {
     this.depositService.getSavedCompareProductList()
     .pipe(
       map((products: DepositProduct[]) => products.map(p => p.dpID) ),
-      switchMap((productIds: number[]) => this.depositService.getCompareProductList(productIds)),
+      switchMap((productIds: number[]) => this.depositService.getCompareProductList(productIds, this.depositService.depositFilterValue)),
       take(1),
       finalize(() => this.loading = false)
     ).subscribe(res => {

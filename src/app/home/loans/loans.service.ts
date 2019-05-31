@@ -3,10 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { map, catchError } from 'rxjs/operators';
 import { DataResponse } from 'src/app/models/data-reponse';
-import { Observable, of, Subject, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject } from 'rxjs';
 import { LoanProduct, LoanGroup } from './models/loanGroup.model';
 import { LoanFilterForm } from './models/loan-filter-form';
-import { NgForm } from '@angular/forms';
 
 
 @Injectable({
