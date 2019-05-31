@@ -15,7 +15,7 @@
                     <th class="--expand"> </th>
                     <th [orderByColumn]="'bankName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                         <div class="th-content --bank ">
-                          {{'~bank' | translate}}
+                          {{'~bank' | translate | titlecase}}
                           <div class="tableSorting">
                               <span class="tableSorting__arrow --top">
                                  <i class="fas fa-caret-down"></i>
@@ -43,7 +43,7 @@
 
                       <th [orderByColumn]="'minRate'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                         <div class="th-content" >
-                            {{'~effectiveRate' | translate}}
+                            {{'~effectiveRate' | translate | titlecase}}
                             <div class="tableSorting">
                                 <span class="tableSorting__arrow --top">
                                    <i class="fas fa-caret-down"></i>
@@ -127,10 +127,7 @@
                               <td>
                                 <div class="td-content --amount">
                                     <div>
-                                        <span >{{product.minAmount}}</span> {{product.currencyCode | lowercase}}
-                                      -  <span >{{product.maxAmount}}</span>  {{product.currencyCode | lowercase}}
-                                         <br class="d-none d-sm-block">
-                                         <span>({{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}})</span>
+                                     <span >{{product.maxAmount}}</span>  {{product.currencyCode | lowercase}}
 
                                       </div>
                                 </div>
@@ -138,21 +135,8 @@
 
                               <td>
                                   <div class=" td-content" >
-                                      <ng-container *ngIf="product.minMonthlyPayment && product.maxMonthlyPayment">
-                                          {{product.minMonthlyPayment }} -
-                                          {{product.maxMonthlyPayment}}
-                                         {{product.currencyCode | lowercase}}
-                                      </ng-container>
-
-                                      <ng-container *ngIf="product.minMonthlyPayment && !product.maxMonthlyPayment">
-                                          {{product.minMonthlyPayment }}
-                                         {{product.currencyCode | lowercase}}
-                                      </ng-container>
-
-                                      <ng-container *ngIf="!product.minMonthlyPayment && product.maxMonthlyPayment">
                                           {{product.maxMonthlyPayment }}
                                          {{product.currencyCode | lowercase}}
-                                      </ng-container>
 
                                       </div>
                               </td>
@@ -165,7 +149,7 @@
                                     <a mat-raised-button
                                     color="primary" href="{{product.website}}"
                                     target="_blank"
-                                    >{{'~detailed' | translate}}</a>
+                                    >{{'~visit' | translate}}</a>
 
                                 </div>
 
