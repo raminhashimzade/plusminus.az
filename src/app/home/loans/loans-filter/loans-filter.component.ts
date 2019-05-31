@@ -7,7 +7,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 import { MatSliderChange, MatDialog } from '@angular/material';
 import { LoanRequestDialogComponent } from '../loan-request-dialog/loan-request-dialog.component';
-import { isMobileSize } from 'src/app/app.utils';
+import { isMobileSize, deepClone } from 'src/app/app.utils';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
@@ -70,6 +70,7 @@ export class LoansFilterComponent implements OnInit {
           this.form.controls[key].setValue(res[key]);
         }
       })
+      this.loanService.loanFilterValue= deepClone(this.form.value);
     });
   }
   listenToformChange() {
@@ -80,6 +81,8 @@ export class LoansFilterComponent implements OnInit {
     )
     .subscribe(res => {
   //  if (!this.form.value.loanAmount || !this.form.value.loanCurrency) {return;}
+     this.loanService.loanFilterValue = deepClone(this.form.value);
+     console.log(this.loanService.loanFilterValue )
       this.searchLoans();
     });
   }

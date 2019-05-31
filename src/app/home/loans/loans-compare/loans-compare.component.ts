@@ -42,7 +42,7 @@ export class LoansCompareComponent implements OnInit {
   }
   getPreviewProduct(id: number) {
     this.loading = true;
-    this.loanService.getCompareProductList([id])
+    this.loanService.getCompareProductList([id], this.loanService.loanFilterValue)
     .pipe(
       finalize(() => this.loading = false)
     )
@@ -59,7 +59,7 @@ export class LoansCompareComponent implements OnInit {
     this.loanService.getSavedCompareProductList()
     .pipe(
       map((products: LoanProduct[]) => products.map(p => p.lnID)),
-      switchMap((productIds: number[]) => this.loanService.getCompareProductList(productIds)),
+      switchMap((productIds: number[]) => this.loanService.getCompareProductList(productIds, this.loanService.loanFilterValue)),
       take(1),
       finalize(() => this.loading = false)
     ).subscribe(res => {

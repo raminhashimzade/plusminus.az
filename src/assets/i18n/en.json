@@ -2,7 +2,7 @@
   "~compare-currencies": "Compare Currencies",
   "~best-offers": "Best Offers",
   "~deposits": "Deposits",
-  "~loans": "Loands",
+  "~loans": "Loans",
   "~mobile-tariffs": "Mobile Tariffs",
   "~credit-cards": "Credit Cards",
   "~credits": "Credits",
@@ -104,7 +104,7 @@
   "~depositName": "Deposit name",
   "~date": "Date",
   "~exchangeVisualizeChart": "Exchange rate visual graphic",
-  "~visit": "vitis",
+  "~visit": "visit",
   "~currencyCode": "Currency code",
   "~search": "Search",
 

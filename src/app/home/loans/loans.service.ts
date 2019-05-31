@@ -6,6 +6,7 @@ import { DataResponse } from 'src/app/models/data-reponse';
 import { Observable, of, Subject, ReplaySubject } from 'rxjs';
 import { LoanProduct, LoanGroup } from './models/loanGroup.model';
 import { LoanFilterForm } from './models/loan-filter-form';
+import { NgForm } from '@angular/forms';
 
 
 @Injectable({
@@ -14,6 +15,7 @@ import { LoanFilterForm } from './models/loan-filter-form';
 export class LoansService {
     compareProductList$ = new ReplaySubject<LoanProduct[]>();
     compareProductList: LoanProduct[] = [];
+    loanFilterValue: LoanFilterForm;
     constructor(private http: HttpClient, private authService: AuthService) {
     //    this.compareProductIds$.next(this.compareProductIds)
     }
@@ -83,11 +85,15 @@ export class LoansService {
             }))
         );;
     }
-    getCompareProductList(productIds: number[]) {
+    getCompareProductList(productIds: number[], formValue: LoanFilterForm) {
+        console.log(formValue)
         return this.http.post<DataResponse>('mybank/compareProducts', {
             token: this.authService.getToken(),
             prodId : productIds,
-	        prodType : "loan"
+            prodType : "loan",
+            loanAmount: formValue && formValue.loanAmount,
+            loanPeriod: formValue && formValue.loanPeriod,
+            loanCurrencyCode: formValue && formValue.loanCurrency
         }).pipe(
             map(res => res && res.data)
         );

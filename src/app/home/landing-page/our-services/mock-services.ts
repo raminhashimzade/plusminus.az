@@ -26,7 +26,6 @@ export const MockServices = [
     name: '~auctions',
     iconPath: './assets/images/mobile-tariffs.png',
     url: '',
-    disabled: true
   },
   {
     name: '~exchange-rates',
