@@ -66,6 +66,7 @@ export class LoansFilterComponent implements OnInit {
       }
       Object.keys(res).forEach(key => {
         if (this.form.controls[key]) {
+          if (this.form.controls[key].value === res[key]) {return;}
           this.form.controls[key].setValue(res[key]);
         }
       })
@@ -83,10 +84,10 @@ export class LoansFilterComponent implements OnInit {
     });
   }
   onSubmit() {
-    this.searchLoans();
+    this.searchLoans(true);
   }
-  searchLoans() {
-    if (!this.form.valid) {return;}
+  searchLoans(scrollIntoView: boolean = false) {
+   // if (!this.form.valid) {return;}
     const filterForm = {};
       Object.keys(this.form.value).forEach(key => {
         if (this.form.controls[key].value) {
@@ -95,7 +96,8 @@ export class LoansFilterComponent implements OnInit {
       });
     this.router.navigate(['/home/loans',
     {
-    ...filterForm
+      ...filterForm,
+      scrollIntoView: scrollIntoView
    } ]);
   }
   getErrorMessage(controlKey: string) {

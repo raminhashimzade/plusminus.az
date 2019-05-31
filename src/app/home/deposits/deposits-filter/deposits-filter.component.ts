@@ -65,13 +65,13 @@ export class DepositsFilterComponent implements OnInit {
       }
       Object.keys(res).forEach(key => {
         if (this.form.controls[key]) {
-          this.form.controls[key].setValue(res[key]);
+          if (this.form.controls[key].value === res[key]) {return;}
+        this.form.controls[key].setValue(res[key]);
         }
       })
     });
   }
   listenToformChange() {
-    console.log('start listen')
     this.form.valueChanges
     .pipe(
     debounceTime(500),
@@ -83,11 +83,11 @@ export class DepositsFilterComponent implements OnInit {
     });
   }
   onSubmit() {
-    this.searchDeposits();
+    this.searchDeposits(true);
   }
-  searchDeposits() {
+  searchDeposits(scrollIntoView: boolean = false) {
     console.log('search');
-    if (!this.form.valid) {return;}
+ //   if (!this.form.valid) {return;}
     const filterForm = {};
       Object.keys(this.form.value).forEach(key => {
         if (this.form.controls[key].value) {
@@ -96,7 +96,8 @@ export class DepositsFilterComponent implements OnInit {
       });
     this.router.navigate(['/home/deposits',
     {
-    ...filterForm
+    ...filterForm,
+    scrollIntoView: scrollIntoView
    } ]);
   }
   getErrorMessage(controlKey: string) {

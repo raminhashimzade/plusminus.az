@@ -63,15 +63,17 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
           withRefill: res['withRefill'] || false,
           withAutoProloing: res['withAutoProloing'] || false,
         } as DepositCalcForm;
+        const scrollIntoView =  res['scrollIntoView'] === 'true'
         console.log(formValue);
-        this.getListDepositGroupProducts(formValue);
+        this.getListDepositGroupProducts(formValue, scrollIntoView);
       });
     this.changeRef.detectChanges();
   }
-  getListDepositGroupProducts(data: DepositCalcForm) {
+  getListDepositGroupProducts(data: DepositCalcForm, scrollIntoView: boolean) {
     this.depositGroupProducts = undefined;
     this.loading = true;
     this.sortState = { orderByColumn: '', orderBySort: '' };
+    this.changeRef.detectChanges();
     this.depositService.getListDepositGroupProducts(data)
       .pipe(
         finalize(() => {
@@ -81,9 +83,8 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
       )
       .subscribe(res => {
         this.depositGroupProducts = res;
-        // this.depositProducts = flatten(res.map((group) => group.list));
         this.filteredGroupProducts = [...this.depositGroupProducts];
-        switchToView('#deposits-table-filter');
+        if (scrollIntoView) {switchToView('#products-table-filter') }
       });
   }
   onAddProductToCompare(product: DepositProduct) {

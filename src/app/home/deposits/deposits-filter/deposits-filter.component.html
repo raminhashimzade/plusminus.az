@@ -18,7 +18,7 @@
                         <div class="col-12 col-md-3 col-lg-3 col-xl-3">
                             <div class="slider-group">
                                 <mat-form-field class="w-100 banner__field" appearance="outline" >
-                                    <input required matInput name="slideValue" type="number" placeholder="{{'~depositAmount' | translate}}"
+                                    <input  matInput name="slideValue" type="number" placeholder="{{'~depositAmount' | translate}}"
                                       [(ngModel)]="slideValue">
                                   </mat-form-field>
 
@@ -30,7 +30,7 @@
 
                         <div class="col-12 col-md-2 col-lg-2 col-xl-2">
                             <mat-form-field appearance="outline"  class="banner__field w-100">
-                                <mat-select required name="depositCurrency" [ngModel]="depositCurrency" class="form-field">
+                                <mat-select  name="depositCurrency" [ngModel]="depositCurrency" class="form-field">
                                   <mat-option *ngFor="let option of currCodes$ | async"
                                   [value]="option.value"
                                   >{{option.label}}</mat-option>
@@ -43,7 +43,7 @@
                         <div class="col-12 col-md-3 col-lg-3 col-xl-3">
 
                         <mat-form-field appearance="outline"  class="banner__field w-100">
-                            <mat-select required name="depositPeriod" ngModel class="form-field" placeholder="{{'~depositPeriod' | translate }}">
+                            <mat-select  name="depositPeriod" ngModel class="form-field" placeholder="{{'~depositPeriod' | translate }}">
                               <mat-option *ngFor="let period of (depositPeriods$  | async)" [value]="period?.periodId"> {{period?.period}}
                               </mat-option>
 
@@ -74,7 +74,7 @@
       <div class="row mt-4">
           <div class="col-12">
             <div class="products__table">
-              <div id="loans-table-filter" class="products__table__filter">
+              <div id="products-table-filter" class="products__table__filter">
 
                   <div class="ck-buttons">
 
