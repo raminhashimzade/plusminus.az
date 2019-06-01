@@ -93,7 +93,8 @@
                           <tr *ngIf="first || expandedGroupId === group.bankID">
 
                             <td class="p-0">
-                              <div class="expand-icon"   (click)="onExpandGroup(group.bankID)" *ngIf="first"
+                              <div class="expand-icon"   (click)="onExpandGroup(group.bankID)"
+                               *ngIf="first && group.list?.length > 1"
                                  [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
                                 <i class="fas fa-chevron-down"></i>
                               </div>

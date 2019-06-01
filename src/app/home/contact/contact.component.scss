@@ -1,0 +1,36 @@
+:host {
+    display: block;
+}
+
+.contact {
+    margin-top: 20px;
+    .contact__header {
+        width: 100%;
+        color: #ffffff;
+        background: var(--primary-default);
+        font-size: 1.125rem;
+        padding: 1.0625rem;
+    }
+    .contact__content {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        .contact__content__form {
+            display: flex;
+            flex-direction: column;
+            .telInput {
+                display: flex;
+                width: 100%;
+                font-size: 1rem;
+                .telInput__telPrefix {
+                    width: 5.125rem;
+                }
+                .telInput__number {
+                    flex: 1;
+                }
+                @media (max-width: 776px) {
+                    font-size:0.75rem;
+                }
+            }
+        }
+   }
+}

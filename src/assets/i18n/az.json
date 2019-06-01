@@ -133,6 +133,9 @@
      "~mortgageCurrency": "Ipoteka valyutası",
      "~withCapitalisation": "Kapitalizasiya ilə ",
      "~withWithdraw": "Məxaric İmkanı",
-     "~withRefill": "Mədaxil İmkanı"
+     "~withRefill": "Mədaxil İmkanı",
+     "~contactFormSubject": "Mövzü",
+     "~contactFormText": "Suallar/Şərhlər",
+     "~send": "Göndər"
 
   }

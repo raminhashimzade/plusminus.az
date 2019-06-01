@@ -13,7 +13,6 @@ export const MockServices = [
   {
     name: '~credit-cards',
     iconPath: './assets/images/credit-cards.png',
-    url: '',
     disabled: true
   },
   {
@@ -23,9 +22,9 @@ export const MockServices = [
     disabled: true
   },
   {
-    name: '~auctions',
+    name: '~mortgage',
     iconPath: './assets/images/mobile-tariffs.png',
-    url: '',
+    url: 'mortgage',
   },
   {
     name: '~exchange-rates',

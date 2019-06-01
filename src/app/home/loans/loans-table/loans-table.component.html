@@ -101,7 +101,8 @@
                             <tr *ngIf="first || expandedGroupId === group.bankID" [attr.group-id]="group.bankID">
 
                               <td class="p-0">
-                                <div class="expand-icon"   (click)="onExpandGroup(group.bankID)" *ngIf="first"
+                                <div class="expand-icon"   (click)="onExpandGroup(group.bankID)"
+                                 *ngIf="first && group.list?.length > 1"
                                    [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
                                   <i class="fas fa-chevron-down"></i>
                                 </div>
@@ -132,10 +133,24 @@
                               <td>
                                 <div class="td-content --amount">
                                     <div>
-                                        <span >{{product.minAmount}}</span> {{product.currencyCode | lowercase}}
-                                      -  <span >{{product.maxAmount}}</span>  {{product.currencyCode | lowercase}}
+
+                                      <ng-container *ngIf="product.minAmount && product.maxAmount">
+                                          <span >{{product.minAmount}}</span>
+                                        - <span >{{product.maxAmount}}</span>  {{product.currencyCode | lowercase}}
+                                      </ng-container>
+
+                                      <ng-container *ngIf="!product.minAmount && product.maxAmount">
+                                         <span >{{product.maxAmount}}</span>  {{product.currencyCode | lowercase}}
+                                      </ng-container>
+
+                                      <ng-container *ngIf="product.minAmount && !product.maxAmount">
+                                          <span >{{product.minAmount}}</span> <span>{{product.currencyCode}}</span>
+                                      </ng-container>
+
                                          <br class="d-none d-sm-block">
                                          <span>({{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}})</span>
+
+
 
                                       </div>
                                 </div>

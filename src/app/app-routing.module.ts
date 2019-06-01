@@ -40,6 +40,10 @@ const routes: Routes = [
       {
         path: 'requestCustomerDetails',
         loadChildren: './home/request-customer-details/request-customer-details.module#RequestCustomerDetailsModule'
+      },
+      {
+        path: 'contact',
+        loadChildren: './home/contact/contact.module#ContactModule'
       }
     ]
   },

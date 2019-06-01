@@ -70,7 +70,7 @@ export class LoansFilterComponent implements OnInit {
           this.form.controls[key].setValue(res[key]);
         }
       })
-      this.loanService.loanFilterValue= deepClone(this.form.value);
+      this.loanService.loanFilterValue = deepClone(this.form.value);
     });
   }
   listenToformChange() {

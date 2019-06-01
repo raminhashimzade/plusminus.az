@@ -1,0 +1,72 @@
+<div class="container contact">
+
+  <div class="row">
+    <div class="col-12">
+        <div class="contact__header">
+            {{'~contacts' | translate}}
+        </div>
+    </div>
+  </div>
+
+  <div class="row contact__content">
+    <div class="col-6">
+        <div class="contact__content__form">
+
+            <div class="telInput">
+
+                <mat-form-field appearance="outline" class="telInput__telPrefix">
+                    <mat-select [(value)]="inputPrefix">
+                      <mat-option  [value]="'50'">
+                        050
+                      </mat-option>
+                      <mat-option  [value]="'51'">
+                        051
+                      </mat-option>
+                      <mat-option  [value]="'55'">
+                        055
+                      </mat-option>
+                      <mat-option  [value]="'70'">
+                        070
+                      </mat-option>
+                      <mat-option  [value]="'77'">
+                        077
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <mat-form-field appearance="outline" class="telInput__number" >
+                      <mat-label>{{'~fillTelNumber' | translate }}</mat-label>
+                      <input matInput ngModel
+                      name="gsm" type="tel"
+                      required
+                      maxlength="7"
+                      (input)="onTelInput($event)"
+                      #telField ="matInput"
+                      >
+                      <mat-error *ngIf="form?.controls['gsm']?.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="outline">
+              <mat-label>{{'~contactFormSubject' | translate}}</mat-label>
+                <input matInput >
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label>{{'~contactFormText' | translate}}</mat-label>
+                  <textarea matInput
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="10"
+                            cdkAutosizeMaxRows="20"></textarea>
+                </mat-form-field>
+
+                <button mat-raised-button color="accent">{{'~send' | translate | uppercase}}</button>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="contact__content__info"></div>
+    </div>
+  </div>
+</div>
