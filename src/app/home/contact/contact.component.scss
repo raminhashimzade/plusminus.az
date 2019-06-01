@@ -1,9 +1,16 @@
 :host {
     display: block;
+    background: var(--background-secondary);
+    padding: 10px 0;
 }
 
 .contact {
-    margin-top: 20px;
+    background: #ffffff;
+    box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
+    h4, h5 {
+        margin: 10px 0;
+        font-family: 'Montserrat-SemiBold'
+    }
     .contact__header {
         width: 100%;
         color: #ffffff;
@@ -12,8 +19,8 @@
         padding: 1.0625rem;
     }
     .contact__content {
-        margin-top: 10px;
-        margin-bottom: 10px;
+        padding-top: 10px;
+        padding-bottom: 15px;
         .contact__content__form {
             display: flex;
             flex-direction: column;
@@ -33,4 +40,36 @@
             }
         }
    }
+}
+
+.social-follow {
+    .social-follow__title {
+        font-size: 0.75rem;
+        color: #ffffff;
+        margin-bottom: 0.8125rem;
+    }
+    .social-follow__items {
+        display: flex;
+        .follow-item {
+            background: #4a73c0;
+            color: #ffffff;
+            border-radius: 50%;
+            margin-right: 0.5625rem;
+            width: 1.9375rem;
+            height: 1.9375rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            &.--twitter {
+                color: #1EA1F2;
+            }
+            &.--instagram {
+                color: #B0468A;
+            }
+            &.--linkedin {
+              color: #0077B5;
+            }
+        }
+    }
 }

@@ -1,15 +1,16 @@
 <div class="container contact">
 
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 p-0">
         <div class="contact__header">
-            {{'~contacts' | translate}}
+            {{'~contact' | translate}}
         </div>
     </div>
   </div>
 
   <div class="row contact__content">
-    <div class="col-6">
+    <div class="col-12 col-md-6">
+       <h4>{{'~contactUs' | translate}}</h4>
         <div class="contact__content__form">
 
             <div class="telInput">
@@ -65,8 +66,39 @@
         </div>
     </div>
 
-    <div class="col-6">
-        <div class="contact__content__info"></div>
+    <div class="col-12 col-md-6">
+        <div class="contact__content__info">
+
+          <h4>{{'~contacts' | translate}}</h4>
+
+          <h5>{{'~clientSupportService' | translate}}</h5>
+          <p> (+99450) 700-00-00 </p>
+          <p> {{'~clientSupportWeekDays' | translate}}</p>
+          <p> help@plusminus.az </p>
+
+          <h5>{{'~clientSupportAdvertising' | translate}}</h5>
+          <p>sales@plusminus.az</p>
+
+          <h5> {{'~follow-us' | translate}}</h5>
+          <div class="social-follow">
+
+              <div class="social-follow__items">
+                <a class="follow-item" href=" https://www.instagram.com/plusminus_az" target="_blank">
+                  <i class="fab fa-instagram"></i>
+                </a>
+
+                <a class="follow-item" href=" https://www.facebook.com/plusminus.az" target="_blank">
+                  <i class="fab fa-facebook-f"></i>
+              </a>
+
+                <a class="follow-item" href="https://www.linkedin.com/company/plusminus-az" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+              </div>
+          </div>
+
+        </div>
     </div>
   </div>
+
 </div>

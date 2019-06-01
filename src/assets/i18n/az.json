@@ -136,6 +136,11 @@
      "~withRefill": "Mədaxil İmkanı",
      "~contactFormSubject": "Mövzü",
      "~contactFormText": "Suallar/Şərhlər",
-     "~send": "Göndər"
+     "~send": "Göndər",
+     "~contactUs": "Bizimlə əlaqə saxlayın",
+     "~clientSupportService": "Müştəri xidməti",
+     "~clientSupportWeekDays": "Bazar ert. - Cümə 09:00 - 18:00",
+     "~clientSupportAdvertising": "Saytda reklam",
+     "~contact": "Əks əlaqə"
 
   }
