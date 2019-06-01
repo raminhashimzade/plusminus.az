@@ -34,7 +34,7 @@ export class BankLoginComponent implements OnInit, AfterViewInit {
   onSubmit() {
     if(!this.form.valid) {return;}
     this.loading = true;
-    const login = this.form.value['userName'];
+    const login = this.form.value['login'];
     const password = this.form.value['password'];
     this.bankAdminService.fetchToken(login, password)
     .pipe(finalize(() => this.loading = false))

@@ -1,72 +1,77 @@
-<div class="container login">
-  <div class="row login__header">
-    <div class="col-12 col-xl-12">
-      <p>{{'~forBanks' | translate}}</p>
-    </div>
-  </div>
-  <div class="row login__content">
-      <div class="overlay">
+    <div class="container">
+        <div class="row">
+          <div class="col-12 col-xl-12">
+            <div class="login">
+                <div class="login__header">
+                    <p>{{'~forBanks' | translate}}</p>
+                </div>
 
-        </div>
-    <div class="col-12 col-md-7 col-xl-7 login__content__info">
-      <h3>{{'~ourAdvantages' | translate}}</h3>
-      <div class="advantages">
+                <div class="login__content">
 
-        <div class="advantage">
-          <div class="advantage__symbol"></div>
-          <div class="advantage__text">
-            <p>{{'~ourAdvantage_1' | translate}}</p>
+                    <div class="login__content__info">
+                        <h3>{{'~ourAdvantages' | translate}}</h3>
+                      <div class="advantages">
+
+                      <div class="advantage">
+                        <div class="advantage__symbol"></div>
+                        <div class="advantage__text">
+                          <p>{{'~ourAdvantage_1' | translate}}</p>
+                        </div>
+                      </div>
+
+                      <div class="advantage">
+                        <div class="advantage__symbol"></div>
+                        <div class="advantage__text">
+                          <p>{{'~ourAdvantage_2' | translate}}</p>
+                        </div>
+                      </div>
+
+                      <div class="advantage">
+                        <div class="advantage__symbol"></div>
+                        <div class="advantage__text">
+                          <p>{{'~ourAdvantage_3' | translate}}</p>
+                        </div>
+                      </div>
+
+                      <div class="advantage">
+                        <div class="advantage__symbol"></div>
+                        <div class="advantage__text">
+                          <p>{{'~ourAdvantage_4' | translate}}</p>
+                        </div>
+                      </div>
+
+
+                    </div>
+                    </div>
+
+                    <div class="login__content__form">
+                        <form #f="ngForm" class="signup-form" autocomplete="off" (ngSubmit)="onSubmit()">
+                            <mat-form-field class="form-field" appearance="fill" >
+                              <mat-label>{{'~login' | translate}}</mat-label>
+                              <input matInput placeholder="{{'~login' | translate}}"
+                              ngModel name ="login" required
+                              readonly onfocus="this.removeAttribute('readonly');"
+                              >
+                            </mat-form-field>
+
+                            <mat-form-field class="form-field" appearance="fill" >
+                                <mat-label>{{'~password' | translate}}</mat-label>
+                                <input matInput placeholder="{{'~password' | translate}}"
+                                ngModel name ="password" required
+                                readonly onfocus="this.removeAttribute('readonly');"
+                                type="password">
+                              </mat-form-field>
+
+                              <button mat-raised-button
+                              [ngClass]="{'is-loading': loading}"
+                              [disabled]="loading"
+                              color ="accent" class="form-submit" type="submit"> {{'~login' | translate}}</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+
           </div>
         </div>
-
-        <div class="advantage">
-          <div class="advantage__symbol"></div>
-          <div class="advantage__text">
-            <p>{{'~ourAdvantage_2' | translate}}</p>
-          </div>
-        </div>
-
-        <div class="advantage">
-          <div class="advantage__symbol"></div>
-          <div class="advantage__text">
-            <p>{{'~ourAdvantage_3' | translate}}</p>
-          </div>
-        </div>
-
-        <div class="advantage">
-          <div class="advantage__symbol"></div>
-          <div class="advantage__text">
-            <p>{{'~ourAdvantage_4' | translate}}</p>
-          </div>
-        </div>
-
 
       </div>
-
-    </div>
-    <div class="col-12 col-md-5 col-xl-5 login__content__form">
-        <form #f="ngForm" class="signup-form" autocomplete="off" (ngSubmit)="onSubmit()">
-            <mat-form-field class="form-field" appearance="fill" >
-              <mat-label>{{'~login' | translate}}</mat-label>
-              <input matInput placeholder="{{'~login' | translate}}"
-              ngModel name ="login" required
-              readonly onfocus="this.removeAttribute('readonly');"
-              >
-            </mat-form-field>
-
-            <mat-form-field class="form-field" appearance="fill" >
-                <mat-label>{{'~password' | translate}}</mat-label>
-                <input matInput placeholder="{{'~password' | translate}}"
-                ngModel name ="password" required
-                readonly onfocus="this.removeAttribute('readonly');"
-                type="password">
-              </mat-form-field>
-
-              <button mat-raised-button
-              [ngClass]="{'is-loading': loading}"
-              [disabled]="loading"
-              color ="accent" class="form-submit" type="submit"> {{'~login' | translate}}</button>
-          </form>
-    </div>
-  </div>
-</div>
