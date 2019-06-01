@@ -9,6 +9,8 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-change.model';
 import { DepositProduct, DepositGroup } from '../models/deposit-group.model';
 import { SharedService } from 'src/app/shared/shared.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'deposits-table',
@@ -30,8 +32,11 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
     private depositService: DepositService,
     private changeRef: ChangeDetectorRef,
     private breakpointObserver: BreakpointObserver,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private titleService: Title,
+    private translateService: TranslateService
   ) {
+    this.titleService.setTitle(this.translateService.instant('~deposits'));
    }
 
   ngOnInit() {

@@ -12,6 +12,7 @@ import { LoanFilterForm } from '../models/loan-filter-form';
 import { MatDialog } from '@angular/material';
 import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
 import { TranslateService } from '@ngx-translate/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'loans-table',
@@ -35,8 +36,11 @@ export class LoansTableComponent implements OnInit, OnDestroy {
     private breakpointObserver: BreakpointObserver,
     private sharedService: SharedService,
     private dialog: MatDialog,
-    private translateService: TranslateService
-  ) { }
+    private translateService: TranslateService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle(translateService.instant('~loans'));
+  }
 
   ngOnInit() {
     this.listenToRouterParams();

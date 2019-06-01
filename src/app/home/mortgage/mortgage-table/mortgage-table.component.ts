@@ -12,6 +12,7 @@ import { takeUntil, finalize, map } from 'rxjs/operators';
 import { LoanFilterForm } from '../../loans/models/loan-filter-form';
 import { switchToView } from 'src/app/app.utils';
 import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'mortgage-table',
@@ -34,8 +35,11 @@ export class MortgageTableComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private sharedService: SharedService,
     private dialog: MatDialog,
-    private translateService: TranslateService
-  ) { }
+    private translateService: TranslateService,
+    private titleService: Title
+  ) {
+    this.titleService.setTitle(this.translateService.instant('~mortgage'));
+   }
 
   ngOnInit() {
     this.listenToRouterParams();

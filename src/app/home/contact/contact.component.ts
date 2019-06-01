@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact',
@@ -10,7 +11,11 @@ import { TranslateService } from '@ngx-translate/core';
 export class ContactComponent implements OnInit {
   @ViewChild('f') form: NgForm;
   inputPrefix = '50';
-  constructor(private translateService: TranslateService) { }
+  constructor(private translateService: TranslateService,
+    private titleService: Title
+    ) {
+      this.titleService.setTitle(this.translateService.instant('~contacts'));
+    }
 
   ngOnInit() {
   }

@@ -4,6 +4,8 @@ import { ExchangeRatesService } from './exchange-rates.service';
 import { ExchangeRate, Rate } from './models/exchange-rate.model';
 import { isMobileSize } from 'src/app/app.utils';
 import { finalize } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'exchange-rates',
@@ -21,8 +23,12 @@ export class ExchangeRatesComponent implements OnInit {
   loading: boolean;
   constructor(
     private exchangeRatesService: ExchangeRatesService,
-    private changeRef: ChangeDetectorRef
-    ) {  }
+    private changeRef: ChangeDetectorRef,
+    private titlseService: Title,
+    private translateService: TranslateService
+    ) {
+      this.titlseService.setTitle(this.translateService.instant('~exchange-rates'));
+    }
 
   ngOnInit() {
     this.getBestRates();
