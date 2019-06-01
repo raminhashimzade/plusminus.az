@@ -141,6 +141,13 @@
      "~clientSupportService": "Müştəri xidməti",
      "~clientSupportWeekDays": "Bazar ert. - Cümə 09:00 - 18:00",
      "~clientSupportAdvertising": "Saytda reklam",
-     "~contact": "Əks əlaqə"
-
+     "~contact": "Əks əlaqə",
+     "~ourAdvantages": "Üstünlüklərimiz",
+     "~ourAdvantage_1": "Yeni və geniş hədəf auditoriyasının alternativ mənbəyi",
+     "~ourAdvantage_2": "Digər banklarla şəffaf və ədalətli rəqabət imkanı",
+     "~ourAdvantage_3": "Müştərinin əlaqə məlumatlarının dərhal əldə edilməsi",
+     "~ourAdvantage_4": "Seçilmiş məhsulların axtarış nəticələrində təşviq olunması imkanı",
+     "~userName": "Istifadəçi adı",
+     "~password": "Şifrə",
+     "~login": "Daxil ol"
   }

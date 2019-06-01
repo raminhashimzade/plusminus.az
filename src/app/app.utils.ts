@@ -6,7 +6,7 @@ export function getBaseUrl(): string {
 }
 export const DEFAULT_LANG = 'az';
 export const APP_KEY = 'uni';
-
+const scripts = [];
 export function switchToView(name: string) {
   setTimeout(() => {
     try {
@@ -116,3 +116,18 @@ export function deepClone(item) {
 
   return result;
 }
+
+
+export function loadExternalScripts(url: string) {
+
+  const isLoaded = scripts.find(scr => scr === url);
+  if (isLoaded) { return Promise.resolve(true); }
+   return new Promise((resolve, reject) => {
+     const scriptElement = document.createElement('script');
+     scriptElement.src = url;
+     scriptElement.charset = 'utf-8';
+     scriptElement.onload = resolve;
+     scripts.push(url);
+     document.head.appendChild(scriptElement);
+   });
+ }

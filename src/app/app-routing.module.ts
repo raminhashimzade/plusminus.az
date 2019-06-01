@@ -44,6 +44,10 @@ const routes: Routes = [
       {
         path: 'contact',
         loadChildren: './home/contact/contact.module#ContactModule'
+      },
+      {
+        path: 'bank-admin',
+        loadChildren: './home/bank-admin/bank-admin.module#BankAdminModule'
       }
     ]
   },
