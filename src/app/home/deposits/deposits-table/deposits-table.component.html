@@ -135,7 +135,9 @@
 
                             <td>
                               <div class="td-content">
-                                  <p>{{product.income}} {{product.currencyCode}}</p>
+                                <ng-container *ngIf="product.income">
+                                    <p>+{{product.income}} {{product.currencyCode}}</p>
+                                </ng-container>
                               </div>
                             </td>
 
