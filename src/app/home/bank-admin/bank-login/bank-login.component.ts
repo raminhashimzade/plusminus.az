@@ -18,18 +18,17 @@ export class BankLoginComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
   ngAfterViewInit() {
-    return;
-    const options = {
-      strings: ['Username'],
-      typeSpeed: 40
-    };
-     loadExternalScripts('./assets/scripts/defaults.js')
-     .then(res => loadExternalScripts('./assets/scripts/initializer.js'))
-     .then(res => loadExternalScripts('./assets/scripts/html-parser.js'))
-     .then(res => loadExternalScripts('./assets/scripts/typed.js'))
-     .then(res => {
-      this.typed = new Typed('.form-field', options);
-    }).catch(er => console.log(er));
+    // const options = {
+    //   strings: ['Username'],
+    //   typeSpeed: 40
+    // };
+    //  loadExternalScripts('./assets/scripts/defaults.js')
+    //  .then(res => loadExternalScripts('./assets/scripts/initializer.js'))
+    //  .then(res => loadExternalScripts('./assets/scripts/html-parser.js'))
+    //  .then(res => loadExternalScripts('./assets/scripts/typed.js'))
+    //  .then(res => {
+    //   this.typed = new Typed('.form-field', options);
+    // }).catch(er => console.log(er));
   }
   onSubmit() {
     if(!this.form.valid) {return;}

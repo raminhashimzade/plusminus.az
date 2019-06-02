@@ -33,6 +33,7 @@ import { DepositComparePreviewComponent } from './home/header/compare-preview/de
 import { LoanComparePreviewComponent } from './home/header/compare-preview/loan-compare-preview/loan-compare-preview.component';
 import { ComparePreviewComponent } from './home/header/compare-preview/compare-preview.component';
 import { ValueTranslateModule } from './shared/pipes/value-translate/value-translate.module';
+import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { ValueTranslateModule } from './shared/pipes/value-translate/value-trans
   providers: [
     TokenResolver,
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     { provide: LOCALE_ID,
       deps: [TranslateService],
       useFactory: (service) => service.getDefaultLang()
