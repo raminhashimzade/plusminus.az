@@ -7,7 +7,7 @@ import { BankAdminGuard } from './bank-admin.guard';
 const routes: Routes = [
   {path: '',redirectTo: 'customers', pathMatch: 'full'},
   {path: 'login', component: BankLoginComponent},
-  {path: 'customers', component: BankCustomersComponent, canActivate: []}
+  {path: 'customers', component: BankCustomersComponent, canActivate: [BankAdminGuard]}
 ];
 
 @NgModule({

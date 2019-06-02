@@ -39,7 +39,6 @@ export class BankLoginComponent implements OnInit, AfterViewInit {
     this.bankAdminService.fetchToken(login, password)
     .pipe(finalize(() => this.loading = false))
     .subscribe(res => {
-      console.log(res);
       this.router.navigateByUrl('/home/bank-admin/customers');
     });
     }

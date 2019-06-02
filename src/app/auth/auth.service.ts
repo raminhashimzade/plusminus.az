@@ -17,7 +17,6 @@ export class AuthService {
     return this.http.post<DataResponse>('mybank/getSessionId', {})
     .pipe(map(res => {
       this.token = res && res.data;
-      console.log(this.token)
       return this.token;
     }))
   }
