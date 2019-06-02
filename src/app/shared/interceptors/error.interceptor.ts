@@ -27,9 +27,9 @@ import { SharedService } from '../shared.service';
               if (response.body && response.body.success === 'false') {
                 this.handleError(response.body.errorText);
                 throwError(response.body.errorText);
+              } else {
                 return response;
               }
-            return response;
           }
         }
         )

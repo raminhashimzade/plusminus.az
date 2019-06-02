@@ -1,0 +1,40 @@
+:host {
+    display: block;
+    background: var(--background-secondary);
+    padding: 20px 0;
+    flex: 1 1 0;
+}
+
+.component {
+    display: flex;
+    flex-direction: column;
+     box-shadow:    0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
+    .component__header {
+         background: var(--primary-default);
+        color: #ffffff;
+        font-family: "Montserrat-SemiBold";
+        font-size: 18px;
+        padding: 10px 20px;
+        font-weight: 400;
+        letter-spacing: -0.54px;
+        border-bottom: 1px solid #ffffff;
+    }
+    .component__content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: #ffffff;
+        h3 {
+            padding: 5px 20px;
+            color: var(--secondary-default);
+        }
+        .table {
+            box-shadow: none;
+            &.--customers {
+                td {
+                    text-align: left;
+                }
+            }
+        }
+    }
+}

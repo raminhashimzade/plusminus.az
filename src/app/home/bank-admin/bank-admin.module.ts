@@ -4,9 +4,10 @@ import { BankAdminComponent } from './bank-admin.component';
 import { BankAdminRoutingModule } from './bank-admin.routing';
 import { BankLoginComponent } from './bank-login/bank-login.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { BankCustomersComponent } from './bank-customers/bank-customers.component';
 
 @NgModule({
-  declarations: [BankAdminComponent, BankLoginComponent],
+  declarations: [BankAdminComponent, BankLoginComponent, BankCustomersComponent],
   imports: [
     CommonModule,
     BankAdminRoutingModule,

@@ -3,6 +3,7 @@ import { loadExternalScripts } from 'src/app/app.utils';
 import { NgForm } from '@angular/forms';
 import { BankAdminService } from '../bank-admin.service';
 import { finalize } from 'rxjs/operators';
+import { Router } from '@angular/router';
 declare var Typed;
 @Component({
   selector: 'bank-login',
@@ -13,7 +14,7 @@ export class BankLoginComponent implements OnInit, AfterViewInit {
   @ViewChild('f') form: NgForm;
   typed: any;
   loading: boolean;
-  constructor(private bankAdminService: BankAdminService) { }
+  constructor(private bankAdminService: BankAdminService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -38,7 +39,8 @@ export class BankLoginComponent implements OnInit, AfterViewInit {
     this.bankAdminService.fetchToken(login, password)
     .pipe(finalize(() => this.loading = false))
     .subscribe(res => {
-      console.log(res)
+      console.log(res);
+      this.router.navigateByUrl('/home/bank-admin/customers');
     });
     }
 

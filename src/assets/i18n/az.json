@@ -151,5 +151,9 @@
      "~password": "Şifrə",
      "~login": "Daxil ol",
      "~searchMortgage": "Ipoteka axtar",
-     "~messageSent": "Mesaj göndərildi"
+     "~messageSent": "Mesaj göndərildi",
+     "~orders": "Sifarişlər",
+     "~cusName": "Müştəri adı",
+        "~requestAmt": "Məbləğ",
+        "~income": "Gəlir"
   }
