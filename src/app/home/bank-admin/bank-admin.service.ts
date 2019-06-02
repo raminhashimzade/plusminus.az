@@ -11,7 +11,8 @@ import { OrderShowInfo } from './models/order-show-info.model';
   providedIn: 'root'
 })
 export class BankAdminService {
-  token: string = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzMjoxIiwiaXNzIjoicGx1c21pbnVzLmF6IiwiZXhwIjoxNTU5NTA0OTA1LCJpYXQiOjE1NTk1MDEzMDUsImp0aSI6IjMyIn0.PmwjH-yXTRXMl_OIx6Y7qForqoWHsg4MsczJMwlxkCU";
+  token: string =  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzMjoxIiwiaXNzIjoicGx1c21pbnVzLmF6IiwiZXhwIjoxNTU5NTA5ODk3LCJpYXQiOjE1NTk1MDYyOTcsImp0aSI6IjMyIn0.44xX80XQtQZbDPpZrli9Uspvl5ywOvQhxPpAWwZqn2w";
+
 //   token: string;
   bankId: string;
   constructor(private http: HttpClient, private authService: AuthService) { }

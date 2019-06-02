@@ -129,7 +129,7 @@
      "~product": "Məhsul",
      "~mortgage": "Ipoteka",
      "~mortgageAmount": "Ipoteka məbləği",
-     "~mortgagePeriod": "Ipoteka mwüddəti",
+     "~mortgagePeriod": "Ipoteka müddəti",
      "~mortgageCurrency": "Ipoteka valyutası",
      "~withCapitalisation": "Kapitalizasiya ilə ",
      "~withWithdraw": "Məxaric İmkanı",
@@ -157,5 +157,12 @@
     "~requestAmt": "Məbləğ",
     "~income": "Gəlir",
     "~information": "Məlumat",
-    "~show": "Göstər"
+    "~show": "Göstər",
+    "~requestPeriod": "Müddət",
+    "~official": "Rəsmi",
+    "~unOfficial": "Qeqri-rəsmi",
+    "~voen": "VOEN",
+    "~rqId": "ID",
+    "~guarantor": "Zamin",
+    "~orderDateTime": "Tarix"
   }
