@@ -154,6 +154,8 @@
      "~messageSent": "Mesaj göndərildi",
      "~orders": "Sifarişlər",
      "~cusName": "Müştəri adı",
-        "~requestAmt": "Məbləğ",
-        "~income": "Gəlir"
+    "~requestAmt": "Məbləğ",
+    "~income": "Gəlir",
+    "~information": "Məlumat",
+    "~show": "Göstər"
   }

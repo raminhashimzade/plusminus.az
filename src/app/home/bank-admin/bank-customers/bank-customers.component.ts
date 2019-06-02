@@ -24,5 +24,11 @@ export class BankCustomersComponent implements OnInit {
       this.orders = res;
     } )
   }
+  onShowInfoClick(order: CustomerOrder) {
+    this.bankService.postLoanOrderShowInfo(order)
+    .subscribe(res =>{
+      console.log(res);
+    })
+  }
 
 }
