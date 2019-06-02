@@ -4,6 +4,7 @@ import { ContactComponent } from './contact.component';
 import { ContactRoutingModule } from './contact.routing';
 import { MaterialModule } from 'src/app/material.module';
 import { SharedTranslateModule } from 'src/app/shared/shared-translate.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ContactComponent],
@@ -11,6 +12,7 @@ import { SharedTranslateModule } from 'src/app/shared/shared-translate.module';
     CommonModule,
     ContactRoutingModule,
     MaterialModule,
+    FormsModule,
     SharedTranslateModule
   ]
 })

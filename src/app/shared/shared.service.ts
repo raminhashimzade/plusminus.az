@@ -8,13 +8,19 @@ import { SelectType } from './models/select-type.model';
 import { DataResponse } from '../models/data-reponse';
 import { map, catchError } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
+import { MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 
-  constructor(private translateService: TranslateService, private http: HttpClient, private authService: AuthService) { }
+  constructor(
+    private translateService: TranslateService,
+    private http: HttpClient,
+     private authService: AuthService,
+     private snackBar: MatSnackBar
+     ) { }
 
   filterTableWithRowGroups(filterValue: string, data: any, columnNames: string[]) {
     const lang = this.translateService.getDefaultLang();
@@ -80,5 +86,17 @@ export class SharedService {
         label: cur
       } as SelectType
     })
+  }
+  createNotification(message: string, actionMessage: string, type: string,
+    duration = 5000,
+    verticalPosition: MatSnackBarVerticalPosition = 'bottom',
+    horizontalPosition: MatSnackBarHorizontalPosition = 'center'
+    ) {
+    this.snackBar.open(message, actionMessage, {
+      duration,
+      verticalPosition,
+      horizontalPosition,
+      panelClass: [`snackbar-${type}`]
+    });
   }
 }

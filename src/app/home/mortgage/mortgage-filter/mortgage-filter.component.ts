@@ -34,7 +34,7 @@ export class MortgageFilterComponent implements OnInit {
       private breakPointObserver: BreakpointObserver
      ) {
     this.loanPeriods$= this.loanService.listLoanPeriods();
-    this.currCodes$ = this.sharedService.getCurrCodeList('loans');
+    this.currCodes$ = this.sharedService.getCurrCodeList('mortgage');
   }
 
   ngOnInit() {

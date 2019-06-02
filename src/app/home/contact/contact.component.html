@@ -11,7 +11,7 @@
   <div class="row contact__content">
     <div class="col-12 col-md-6">
        <h4>{{'~contactUs' | translate}}</h4>
-        <div class="contact__content__form">
+        <form  #f="ngForm"  (ngSubmit) ="onSubmit()" class="contact__content__form">
 
             <div class="telInput">
 
@@ -38,32 +38,37 @@
                   <mat-form-field appearance="outline" class="telInput__number" >
                       <mat-label>{{'~fillTelNumber' | translate }}</mat-label>
                       <input matInput ngModel
-                      name="gsm" type="tel"
+                      name="cusMobilePhone" type="tel"
                       required
                       maxlength="7"
                       (input)="onTelInput($event)"
                       #telField ="matInput"
                       >
-                      <mat-error *ngIf="form?.controls['gsm']?.invalid">{{getErrorMessage()}}</mat-error>
+                      <mat-error *ngIf="form?.controls['cusMobilePhone']?.invalid">{{getErrorMessage()}}</mat-error>
                     </mat-form-field>
             </div>
 
             <mat-form-field appearance="outline">
               <mat-label>{{'~contactFormSubject' | translate}}</mat-label>
-                <input matInput >
+                <input matInput ngModel name="messageSubject" >
               </mat-form-field>
 
               <mat-form-field appearance="outline">
                   <mat-label>{{'~contactFormText' | translate}}</mat-label>
                   <textarea matInput
+                           ngModel name="messageBody"
                             cdkTextareaAutosize
                             #autosize="cdkTextareaAutosize"
                             cdkAutosizeMinRows="10"
                             cdkAutosizeMaxRows="20"></textarea>
                 </mat-form-field>
 
-                <button mat-raised-button color="accent">{{'~send' | translate | uppercase}}</button>
-        </div>
+                <button
+                  mat-raised-button color="accent"
+                  [ngClass]="{'is-loading': loading}"
+                  [disabled]="loading || isSent"
+                >{{'~send' | translate | uppercase}}</button>
+           </form>
     </div>
 
     <div class="col-12 col-md-6">
