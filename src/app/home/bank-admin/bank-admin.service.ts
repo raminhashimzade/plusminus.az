@@ -31,7 +31,7 @@ export class BankAdminService {
   getOrderList(): Observable<CustomerOrder[]>{
     return this.http.post<DataResponse>('mybank/getOrderList', {
       token: this.authService.getToken(),
-      bankToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzMjoxIiwiaXNzIjoicGx1c21pbnVzLmF6IiwiZXhwIjoxNTU5NTAyMTY1LCJpYXQiOjE1NTk0OTg1NjUsImp0aSI6IjMyIn0.MrnFoOkt8VyIHA991tKMjsQq2Ph11JlcDONkNPfK4ok',
+      bankToken: this.token,
       called: false
     })
     .pipe(map(res => {
