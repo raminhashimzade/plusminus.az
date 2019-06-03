@@ -4,6 +4,10 @@ table.plus-minus {
   box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0,0,0,.2);
     tr, td {
       text-align: center;
+      transition: background-color 100ms ease-in-out;
+    }
+    tr:hover {
+      background-color: #f5f6fa;
     }
     th {
       border: 1px solid #e1e1e1;

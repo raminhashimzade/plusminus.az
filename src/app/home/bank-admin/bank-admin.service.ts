@@ -44,8 +44,8 @@ export class BankAdminService {
     return this.http.post<DataResponse>('mybank/postLoanOrderShowInfo', {
       token: this.authService.getToken(),
       bankToken: this.token,
-      orderID: order.rqId,
-      linkHash: null
+      orderId: order.rqId,
+      bankID: this.bankId,
     })
       .pipe(map(res => {
         return res && res.data;
