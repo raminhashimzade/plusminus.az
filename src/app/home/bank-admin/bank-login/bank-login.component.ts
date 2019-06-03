@@ -17,6 +17,7 @@ export class BankLoginComponent implements OnInit, AfterViewInit {
   constructor(private bankAdminService: BankAdminService, private router: Router) { }
 
   ngOnInit() {
+    this.autoLogin();
   }
   ngAfterViewInit() {
     // const options = {
@@ -41,6 +42,13 @@ export class BankLoginComponent implements OnInit, AfterViewInit {
     .subscribe(res => {
       this.router.navigateByUrl('/home/bank-admin/customers');
     });
+    }
+    autoLogin() {
+      this.bankAdminService.fetchToken('32', '1')
+      .pipe(finalize(() => this.loading = false))
+      .subscribe(res => {
+        this.router.navigateByUrl('/home/bank-admin/customers');
+      });
     }
 
 }

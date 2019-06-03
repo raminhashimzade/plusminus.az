@@ -1,7 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { BankAdminService } from '../bank-admin.service';
 import { CustomerOrder } from '../models/customer-order.model';
 import { finalize } from 'rxjs/operators';
+import { Popover } from 'src/app/popover/popover.service';
+import { CustomerContactPopupComponent } from './customer-contact-popup/customer-contact-popup.component';
 
 @Component({
   selector: 'bank-customers',
@@ -12,7 +14,11 @@ import { finalize } from 'rxjs/operators';
 export class BankCustomersComponent implements OnInit {
   orders: CustomerOrder[];
   loading: boolean;
-  constructor(private bankService: BankAdminService, private changeRef: ChangeDetectorRef) { }
+  constructor(
+    private bankService: BankAdminService,
+    private changeRef: ChangeDetectorRef,
+    private popper: Popover
+    ) { }
 
   ngOnInit() {
   this.getOrderList();
@@ -28,11 +34,21 @@ export class BankCustomersComponent implements OnInit {
       this.orders = res;
     } )
   }
-  onShowInfoClick(order: CustomerOrder) {
-    this.bankService.postLoanOrderShowInfo(order)
-    .subscribe(res =>{
-      console.log(res);
+  onShowInfoClick(order: CustomerOrder, origin) {
+    console.log(origin);
+    const ref = this.popper.open({
+      content: CustomerContactPopupComponent,
+      origin: origin.target,
+      width: '196px',
+      data: {
+       order: order
+      }
+    });
+
+    ref.afterClosed$.subscribe(res => {
+        console.log(res);
     })
+
   }
 
   onNextRateScroll() {
@@ -60,6 +76,23 @@ export class BankCustomersComponent implements OnInit {
     } finally {
    this.changeRef.detectChanges();
     }
+  }
+  show(order: CustomerOrder, origin) {
+    const ref = this.popper.open({
+      content: CustomerContactPopupComponent,
+      //  content: 'Hello world!',
+      // content: InsidePopoverComponent,
+      origin,
+      width: '200px',
+      data: {
+       orderId: order
+      }
+    });
+
+    ref.afterClosed$.subscribe(res => {
+        console.log(res);
+    })
+
   }
 
 }

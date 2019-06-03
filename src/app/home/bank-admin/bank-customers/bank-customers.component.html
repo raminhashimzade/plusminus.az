@@ -24,14 +24,10 @@
                     <th>{{'~rqId' | translate}} </th>
                     <th>{{'~cusName' | translate}} </th>
                     <th> {{'~requestAmt' | translate}} </th>
-                    <th> {{'~currencyCode' | translate}} </th>
                     <th> {{'~requestPeriod' | translate}} </th>
                     <th> {{'~orderDateTime' | translate}} </th>
                     <th>{{'~income' | translate}}</th>
                     <th>{{'~age' | translate}}</th>
-                    <th>{{'~official' | translate}}</th>
-                    <th>{{'~voen' | translate}}</th>
-                    <th>{{'~unOfficial' | translate}}</th>
                     <th>{{'~guarantor' | translate}}</th>
                     <th>{{'~monthlyPayment' | translate}}</th>
                     <th>{{'~information' | translate}}</th>
@@ -40,23 +36,41 @@
                     <tr *ngFor="let order of orders">
                       <td>{{order.rqId}}</td>
                       <td>{{order.cusName}}</td>
-                      <td>{{order.requestAmt}}</td>
-                      <td>{{order.currencyCode}}</td>
+                      <td>
+                        <div class="td-content">
+                            {{order.requestAmt}}
+                            {{order.currencyCode}} <br>
+                        </div>
+                      </td>
                       <td>{{order.requestPeriod}} {{'~month' | translate}}</td>
                       <td>{{order.dateTime}}</td>
-                      <td>{{order.income}}</td>
+                      <td>
+                          <div class="td-content">
+                              {{order.income}}
+                              {{order.currencyCode}} <br>
+                              <span *ngIf="order.official"> ({{'~official' | translate}})</span>
+                              <span *ngIf="order.unOfficial">({{'~unOfficial' | translate}})</span>
+                              <span *ngIf="order.voen">{{'~voen' | translate}}</span>
+                          </div>
+                      </td>
                       <td>{{order.age}}</td>
-                      <td>{{order.official}}</td>
-                      <td>{{order.voen}}</td>
-                      <td>{{order.unOfficial}}</td>
                       <td>{{order.guarantor}}</td>
                       <td>{{order.monthlyPayment}}</td>
                       <td class="information">
-                        <button mat-raised-button
-                         color="primary" class="w-100"
-                         [disabled]="order.called"
-                         (click)="onShowInfoClick(order)"
-                         >{{'~show' | translate}}</button>
+
+                        <div class="row-actions">
+                            <a mat-raised-button
+                            color="primary" class="w-100"
+                            (click)="onShowInfoClick(order, $event)"
+                         >{{'~show' | translate}}</a>
+
+                            <a mat-raised-button
+                            color="accent" class="w-100"
+                            [disabled]="order.called"
+                            (click)="onShowInfoClick(order)"
+                         >{{'~called' | translate}}</a>
+
+                        </div>
                       </td>
                     </tr>
                   </tbody>

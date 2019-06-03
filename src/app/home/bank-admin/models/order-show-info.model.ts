@@ -1,6 +1,6 @@
 export interface OrderShowInfo {
    custId: number;
    mobilePhone: string;
-   email: string;
+   email?: any;
    bithDate: string;
 }

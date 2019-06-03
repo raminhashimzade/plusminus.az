@@ -36,6 +36,9 @@
             &.--customers {
                 td {
                     text-align: left;
+                    .td-content {
+                        text-align: center;
+                    }
                     &.information {
                         button {
                             width: 100%;

@@ -164,5 +164,6 @@
     "~voen": "VOEN",
     "~rqId": "ID",
     "~guarantor": "Zamin",
-    "~orderDateTime": "Tarix"
+    "~orderDateTime": "Tarix",
+    "~called": "Əlaqə saxlanıldı"
   }

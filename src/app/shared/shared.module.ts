@@ -9,6 +9,7 @@ import { CountUpModule } from 'countup.js-angular2';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderByColumnModule } from './directives/order-by-column/order-by-column.module';
 import { DocumentDialogModule } from './components/document-dialog/document-dialog.module';
+import { PopoverModule } from '../popover/popover.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DocumentDialogModule } from './components/document-dialog/document-dial
     OrderByColumnModule,
     DocumentDialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PopoverModule
   ],
   exports: [
     SharedTranslateModule,
@@ -39,7 +41,8 @@ import { DocumentDialogModule } from './components/document-dialog/document-dial
     OrderByColumnModule,
     DocumentDialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PopoverModule
   ],
   entryComponents: []
 })

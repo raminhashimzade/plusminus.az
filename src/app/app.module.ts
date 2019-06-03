@@ -46,7 +46,7 @@ import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
     NotFoundComponent,
     ComparePreviewComponent,
     LoanComparePreviewComponent,
-    DepositComparePreviewComponent
+    DepositComparePreviewComponent,
   ],
   imports: [
   BrowserModule,
@@ -75,6 +75,6 @@ import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
       useFactory: (service) => service.getDefaultLang()
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,0 +1,32 @@
+<div class="component" *ngIf="data else loading">
+  <div class="component__header">
+    <div class="component__header__title">
+     {{'~information' | translate}}
+    </div>
+    <div class="component__header__icon" (click)="close()">
+        <i class="fas fa-times"></i>
+    </div>
+  </div>
+  <div class="component__content">
+
+    <div class="component__content__row ">
+        <div class="component__content__row__key">Tel:</div>
+        <div class="component__content__row__value">
+         {{data.mobilePhone}}
+        </div>
+    </div>
+
+    <div class="component__content__row ">
+        <div class="component__content__row__key">{{'~birthDate' | translate}}:</div>
+        <div class="component__content__row__value">
+         {{data.bithDate}}
+        </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="spinner-wrapper">
+      <table-loader> </table-loader>
+  </div>
+</ng-template>

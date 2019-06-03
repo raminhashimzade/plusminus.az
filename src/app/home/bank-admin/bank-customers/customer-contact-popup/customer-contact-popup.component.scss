@@ -1,0 +1,46 @@
+:host {
+    display: block;
+}
+
+.component {
+    background: var(--secondary-default);
+    padding: 20px;
+    .component__header {
+        display: flex;
+        justify-content: space-between;
+        .component__header__title {
+            font-family: "Montserrat-SemiBold";
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: -0.19px;
+            padding-bottom: 30px;
+        }
+        .component__header__icon {
+            padding-left: 10px;
+            cursor: pointer;
+        }
+    }
+    .component__content {
+        .component__content__row {
+            display: flex;
+            color: #000000;
+            font-size: 17px;
+            margin-bottom: 12px;
+            .component__content__row__key {
+                font-size: 15px;
+                padding-right: 7px;
+                font-family: "Montserrat-SemiBold";
+                font-weight: 600;
+            }
+            .component__content__row__value {
+                font-weight: 400;
+                font-family: "Montserrat-Medium";
+            }
+        }
+    }
+}
+
+.spinner-wrapper {
+    height: 182px;
+    width: 196px;
+}

@@ -6,14 +6,18 @@ import { BankLoginComponent } from './bank-login/bank-login.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { BankCustomersComponent } from './bank-customers/bank-customers.component';
 import { BankAdminGuard } from './bank-admin.guard';
+import { CustomerContactPopupComponent } from './bank-customers/customer-contact-popup/customer-contact-popup.component';
+import { PopoverModule } from 'src/app/popover/popover.module';
 
 @NgModule({
-  declarations: [BankAdminComponent, BankLoginComponent, BankCustomersComponent],
+  declarations: [BankAdminComponent, BankLoginComponent, BankCustomersComponent, CustomerContactPopupComponent],
   imports: [
     CommonModule,
     BankAdminRoutingModule,
-    SharedModule
+    SharedModule,
+    PopoverModule
   ],
-  providers: [BankAdminGuard]
+  providers: [BankAdminGuard],
+  entryComponents: [CustomerContactPopupComponent]
 })
 export class BankAdminModule { }
