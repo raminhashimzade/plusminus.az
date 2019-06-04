@@ -18,7 +18,13 @@
         </div>
 
         <div class="header__links d-lg-none">
-          <button class="header__links__menu" mat-button [matMenuTriggerFor]="menu">Menu</button>
+          <button class="header__links__menu" mat-button [matMenuTriggerFor]="menu">
+              <i class="fas fa-bars"></i>
+          </button>
+          <!-- <button  class="header__links__menu" mat-button [matMenuTriggerFor]="menu">
+              <mat-icon>format_align_right</mat-icon>
+            </button> -->
+
           <mat-menu #menu="matMenu">
             <button mat-menu-item [routerLink]="['deposits']" routerLinkActive="active" >{{ '~deposits' | translate }} </button>
             <button mat-menu-item [routerLink]="['loans']" routerLinkActive="active">{{ '~loans' | translate }}</button>

@@ -3,12 +3,14 @@
     background: var(--background-secondary);
     padding: 20px 0;
     flex: 1 1 0;
+    width: 100%;
 }
 
 .component {
     display: flex;
     flex-direction: column;
-     box-shadow:    0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+     box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
     .component__header {
          background: var(--primary-default);
         color: #ffffff;

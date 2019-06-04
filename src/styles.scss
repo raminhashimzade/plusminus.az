@@ -327,6 +327,16 @@ button.is-loading {
   color: rgba(0, 0, 0, 0.42);
 }
 
+
+button.mat-button .mat-icon,
+a.mat-button .mat-icon,
+a.mat-raised-button .mat-icon,
+a.mat-flat-button .mat-icon,
+a.mat-stroked-button .mat-icon {
+  vertical-align: center;
+  //font-size: 1.25em;
+}
+
 @media (max-width: 1199px) {
   html {
     font-size: 15px;

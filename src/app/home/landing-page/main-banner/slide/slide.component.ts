@@ -20,7 +20,7 @@ export class SlideComponent implements OnInit {
       autoFocus: false,
       maxWidth: '99vw',
       disableClose: true,
-      position: isMobileSize() && {top: '0'}
+      position: isMobileSize() && {top: '10px'}
     //  backdropClass: 'loanRequestDialogBackdrop'
     });
   }

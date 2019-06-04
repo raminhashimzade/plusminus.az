@@ -117,7 +117,7 @@ export class LoansFilterComponent implements OnInit {
       autoFocus: false,
       maxWidth: '90vw',
       disableClose: true,
-      position: isMobileSize() && {top: '0'}
+      position: isMobileSize() && {top: '10px'}
     });
   }
   setInitialCheckboxesToFalse() {
