@@ -21,21 +21,24 @@
 
                 <table class="table plus-minus --customers" *ngIf="!loading else table_loader">
                   <thead>
+                  <th> {{'~orderDateTime' | translate}} </th>
                     <th>{{'~rqId' | translate}} </th>
                     <th>{{'~cusName' | translate}} </th>
+                    <th>{{'~age' | translate}}</th>
                     <th> {{'~requestAmt' | translate}} </th>
                     <th> {{'~requestPeriod' | translate}} </th>
-                    <th> {{'~orderDateTime' | translate}} </th>
                     <th>{{'~income' | translate}}</th>
-                    <th>{{'~age' | translate}}</th>
                     <th>{{'~guarantor' | translate}}</th>
                     <th>{{'~monthlyPayment' | translate}}</th>
                     <th>{{'~information' | translate}}</th>
+
                   </thead>
                   <tbody>
                     <tr *ngFor="let order of orders">
+                        <td>{{order.dateTime}}</td>
                       <td>{{order.rqId}}</td>
                       <td>{{order.cusName}}</td>
+                      <td>{{order.age}}</td>
                       <td>
                         <div class="td-content">
                             {{order.requestAmt}}
@@ -43,35 +46,36 @@
                         </div>
                       </td>
                       <td>{{order.requestPeriod}} {{'~month' | translate}}</td>
-                      <td>{{order.dateTime}}</td>
+
                       <td>
                           <div class="td-content">
                               {{order.income}}
                               {{order.currencyCode}} <br>
-                              <span *ngIf="order.official"> ({{'~official' | translate}})</span>
-                              <span *ngIf="order.unOfficial">({{'~unOfficial' | translate}})</span>
+                              <span *ngIf="order.official"> ({{'~official' | translate}}) <br> </span>
+                              <span *ngIf="order.unOfficial">({{'~unOfficial' | translate}}) <br></span>
                               <span *ngIf="order.voen">{{'~voen' | translate}}</span>
                           </div>
                       </td>
-                      <td>{{order.age}}</td>
                       <td>{{order.guarantor}}</td>
                       <td>{{order.monthlyPayment}}</td>
                       <td class="information">
 
-                        <div class="row-actions">
-                            <a mat-raised-button
-                            color="primary" class="w-100"
-                            (click)="onShowInfoClick(order, $event)"
-                         >{{'~show' | translate}}</a>
+                          <div class="row-actions">
+                              <a mat-raised-button
+                              color="primary" class="w-100"
+                              (click)="onShowInfoClick(order, $event)"
+                           >{{'~show' | translate}}</a>
 
-                            <a mat-raised-button
-                            color="accent" class="w-100"
-                            [disabled]="order.called"
-                            (click)="onShowInfoClick(order)"
-                         >{{'~called' | translate}}</a>
+                              <a mat-raised-button
+                              color="accent" class="w-100"
+                              [disabled]="order.called"
+                              (click)="onShowInfoClick(order)"
+                           >{{'~called' | translate}}</a>
 
-                        </div>
-                      </td>
+                          </div>
+                        </td>
+
+
                     </tr>
                   </tbody>
                 </table>
