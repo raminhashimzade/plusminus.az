@@ -5,6 +5,7 @@ import { ContactRoutingModule } from './contact.routing';
 import { MaterialModule } from 'src/app/material.module';
 import { SharedTranslateModule } from 'src/app/shared/shared-translate.module';
 import { FormsModule } from '@angular/forms';
+import { OtpVerifyModule } from 'src/app/shared/components/otp-verify/otp-verify.module';
 
 @NgModule({
   declarations: [ContactComponent],
@@ -13,7 +14,8 @@ import { FormsModule } from '@angular/forms';
     ContactRoutingModule,
     MaterialModule,
     FormsModule,
-    SharedTranslateModule
+    SharedTranslateModule,
+    OtpVerifyModule
   ]
 })
 export class ContactModule { }

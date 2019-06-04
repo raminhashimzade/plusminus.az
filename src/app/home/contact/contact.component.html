@@ -40,6 +40,7 @@
                       <input matInput ngModel
                       name="cusMobilePhone" type="tel"
                       required
+                      minlength="7"
                       maxlength="7"
                       (input)="onTelInput($event)"
                       #telField ="matInput"
@@ -50,7 +51,7 @@
 
             <mat-form-field appearance="outline">
               <mat-label>{{'~contactFormSubject' | translate}}</mat-label>
-                <input matInput ngModel name="messageSubject" >
+                <input matInput ngModel name="messageSubject" required >
               </mat-form-field>
 
               <mat-form-field appearance="outline">
@@ -60,7 +61,9 @@
                             cdkTextareaAutosize
                             #autosize="cdkTextareaAutosize"
                             cdkAutosizeMinRows="10"
-                            cdkAutosizeMaxRows="20"></textarea>
+                            cdkAutosizeMaxRows="20"
+                            required
+                            ></textarea>
                 </mat-form-field>
 
                 <button

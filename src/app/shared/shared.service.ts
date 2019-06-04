@@ -99,4 +99,23 @@ export class SharedService {
       panelClass: [`snackbar-${type}`]
     });
   }
+
+  sendOtp(formValue:Object):Observable<DataResponse> {
+    return this.http.post<DataResponse>('mybank/sendOTP', {
+        token: this.authService.getToken(),
+        ...formValue
+    })
+    .pipe(
+        catchError(er => of(null))
+    );
+}
+
+  checkOTP(formValue: Object):Observable<DataResponse> {
+    return this.http.post<DataResponse>('mybank/checkOTP', {
+        token: this.authService.getToken(),
+        ...formValue
+    }).pipe(
+        catchError(er => of(null))
+    );;
+}
 }

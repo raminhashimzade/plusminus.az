@@ -165,5 +165,7 @@
     "~rqId": "ID",
     "~guarantor": "Zamin",
     "~orderDateTime": "Tarix",
-    "~called": "Əlaqə saxlanıldı"
+    "~called": "Əlaqə saxlanıldı",
+    "~seconds": "saniyə",
+    "~resend": "Yenidən göndər"
   }
