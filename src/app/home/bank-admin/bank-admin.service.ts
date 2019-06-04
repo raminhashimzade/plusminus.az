@@ -41,10 +41,10 @@ export class BankAdminService {
   }
   postLoanOrderShowInfo(order: CustomerOrder): Observable<OrderShowInfo> {
     return this.http.post<DataResponse>('mybank/postLoanOrderShowInfo', {
-      token: this.authService.getToken(),
+       token: this.authService.getToken(),
       bankToken: this.token,
-      orderId: order.rqId,
-      bankID: this.bankId,
+     orderId: order.rqId,
+     bankID: this.bankId,
     })
       .pipe(map(res => {
         return res && res.data;

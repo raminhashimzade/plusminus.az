@@ -1,19 +1,22 @@
 :host {
     display: block;
+    width: 100%;
 }
 
 .component {
     background: var(--secondary-default);
     padding: 20px;
+    width: 100%;
     .component__header {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        padding-bottom: 30px;
         .component__header__title {
             font-family: "Montserrat-SemiBold";
             font-size: 14px;
             font-weight: 400;
             letter-spacing: -0.19px;
-            padding-bottom: 30px;
         }
         .component__header__icon {
             padding-left: 10px;

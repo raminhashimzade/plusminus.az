@@ -11,10 +11,15 @@ import {
   import { throwError, } from 'rxjs';
   import { TranslateService } from '@ngx-translate/core';
 import { SharedService } from '../shared.service';
+import { Router } from '@angular/router';
 
   @Injectable()
   export class ErrorInterceptor implements HttpInterceptor {
-    constructor(private sharedService: SharedService, private translateService: TranslateService) { }
+    constructor(
+      private sharedService: SharedService,
+       private translateService: TranslateService,
+       private router: Router
+       ) { }
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any> {
       return next.handle(req).pipe(
         catchError((er: HttpErrorResponse) => {
@@ -25,8 +30,14 @@ import { SharedService } from '../shared.service';
           response => {
             if (response instanceof HttpResponse) {
               if (response.body && response.body.success === 'false') {
-                this.handleError(response.body.errorText);
-                throwError(response.body.errorText);
+                switch (response.body.errorText) {
+                  case 'Access denied':
+                    this.router.navigateByUrl('/home/bank-admin/login');
+                    default:
+                    this.handleError(response.body.errorText);
+                    throwError(response.body.errorText);
+                }
+
               } else {
                 return response;
               }

@@ -51,7 +51,7 @@ table {
     border-bottom: 0.0313rem solid #f3f3f3;
     p {
       @include loader-text();
-      height: 1.3125rem;
+      height: 1.2em;
       width:6.25rem;
     }
   }

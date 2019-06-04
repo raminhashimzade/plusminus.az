@@ -35,7 +35,6 @@ export class BankCustomersComponent implements OnInit {
     } )
   }
   onShowInfoClick(order: CustomerOrder, origin) {
-    console.log(origin);
     const ref = this.popper.open({
       content: CustomerContactPopupComponent,
       origin: origin.target,
@@ -46,7 +45,7 @@ export class BankCustomersComponent implements OnInit {
     });
 
     ref.afterClosed$.subscribe(res => {
-        console.log(res);
+      //  console.log(res);
     })
 
   }

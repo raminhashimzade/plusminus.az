@@ -27,7 +27,6 @@ export class CustomerContactPopupComponent  {
   postLoanOrderShowInfo() {
      this.bankService.postLoanOrderShowInfo(this.order)
     .subscribe(res =>{
-      console.log(res);
       this.data = res;
     })
   }
