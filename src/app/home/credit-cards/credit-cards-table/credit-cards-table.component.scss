@@ -1,0 +1,68 @@
+:host {
+    display: block;
+    flex: 1 1 0;
+    background: var(--background-secondary);
+}
+
+.items {
+    box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    .card {
+        display: flex;
+        flex-direction: row;
+        box-shadow: none;
+        padding: 30px;
+        border: solid 1px rgba(0, 0, 0, 0.12);
+        transition: backgroun-color 100ms ease-in-out;
+        &:hover {
+            background-color: #f5f6fa;
+        //    box-shadow: 0 2px 11.84px 4.16px rgba(0,0,0,.2);
+        }
+        .card__icon {
+            width: 240px;
+        }
+        .card__description {
+            display: flex;
+            flex-direction: column;
+            padding-left: 35px;
+            .card__description__bankName {
+                font-family: 'Montserrat-Medium';
+                font-size: 11px;
+                font-weight: 400;
+                letter-spacing: -0.36px;
+            }
+            .card__description__name {
+                font-family: "Montserrat-SemiBold";
+                font-size: 17px;
+                font-weight: 400;
+                letter-spacing: -0.48px;
+                color: var(--primary-default);
+                margin-bottom: 18px;
+            }
+            .card__description__info {
+                display: flex;
+                align-items: flex-end;
+                .card__description__info__key {
+                    font-family: 'Montserrat-SemiBold';
+                    color: #000000;
+                    font-size: 13px;
+                    letter-spacing: -0.42px;
+                    margin-right: 10px;
+                }
+                .card__description__info__value {
+                    font-family: 'Montserrat-Medium';
+                    color: #000000;
+                    font-size: 11px;
+                    font-weight: 400;
+                    letter-spacing: -0.36px;
+                }
+            }
+        }
+        .card__actions {
+            margin-left: auto;
+            button {
+                min-width: 110px;
+            }
+        }
+    }
+}

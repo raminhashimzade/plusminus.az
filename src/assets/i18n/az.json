@@ -170,5 +170,18 @@
     "~resend": "Yenidən göndər",
     "~completeOrder": "Sifarişi yekunlaşdır",
     "~chooseBank": "Bankı seçin",
-    "~loanGiven": "Kredit verildi"
+    "~loanGiven": "Kredit verildi",
+    "~cardPurpose": "Kartın məqsədi",
+    "~pickMoney": "Pul yığmaq",
+    "~spendMoney": "Pul xərcləmək",
+    "~forTravel": "Beynəlxalq xərcləmək",
+    "~whatIwant": "Nə istəyirəm ?",
+    "~cashback": "Cashback",
+    "~withoutCommission": "Kommissiyasız",
+    "~free": "Pulsuz",
+    "~debitCards": "Debit kartlar",
+    "~all": "Hamsı",
+    "~chooseCard": "Kartı seçin",
+    "~price": "Qiymət"
+
   }

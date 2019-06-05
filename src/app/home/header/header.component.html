@@ -28,7 +28,7 @@
           <mat-menu #menu="matMenu">
             <button mat-menu-item [routerLink]="['deposits']" routerLinkActive="active" >{{ '~deposits' | translate }} </button>
             <button mat-menu-item [routerLink]="['loans']" routerLinkActive="active">{{ '~loans' | translate }}</button>
-            <button mat-menu-item [disabled]="true">{{ '~credit-cards' | translate }}</button>
+            <button mat-menu-item [routerLink]="['credit-cards']">{{ '~credit-cards' | translate }}</button>
             <button mat-menu-item [disabled]="true">{{ '~debit-cards' | translate }}</button>
             <button mat-menu-item [routerLink]="['mortgage']">{{ '~mortgage' | translate }}</button>
             <!-- <button mat-menu-item [disabled]="true">{{ '~auctions' | translate }}</button> -->
@@ -42,7 +42,7 @@
           <a class="link" [routerLink]="['loans']" routerLinkActive="active"  >
             {{ '~loans' | translate }}
           </a>
-          <a class="link disabled">
+          <a class="link" [routerLink]="['credit-cards']" routerLinkActive="active"  >
             {{ '~credit-cards' | translate }}
           </a>
           <a class="link disabled">

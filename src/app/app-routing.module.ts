@@ -38,6 +38,11 @@ const routes: Routes = [
           './home/mortgage/mortgage.module#MortgageModule'
       },
       {
+        path: 'credit-cards',
+        loadChildren:
+          './home/credit-cards/credit-cards.module#CreditCardsModule'
+      },
+      {
         path: 'requestCustomerDetails',
         loadChildren: './home/request-customer-details/request-customer-details.module#RequestCustomerDetailsModule'
       },

@@ -1,0 +1,41 @@
+:host {
+    display: block;
+    background: var(--background-secondary);
+    padding: 10px 0;
+    flex: 1 1 0;
+}
+
+.component {
+    background: #ffffff;
+    box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
+    h4, h5 {
+        margin: 15px 0;
+        font-family: 'Montserrat-SemiBold'
+    }
+    .component__header {
+        width: 100%;
+        color: #ffffff;
+        background: var(--primary-default);
+        font-size: 1.125rem;
+        padding: 1.0625rem;
+    }
+    .component__content {
+        padding-top: 10px;
+        padding-bottom: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        .component__content__form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            .component__content__form__fields {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+
+            }
+
+        }
+   }
+}
+

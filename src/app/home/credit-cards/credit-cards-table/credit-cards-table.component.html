@@ -1,0 +1,34 @@
+<credit-cards-filter> </credit-cards-filter>
+
+<div class="container custom">
+    <div class="row">
+        <div class="col-12">
+            <div class="items">
+                <div class="card" *ngFor="let item of items">
+                    <div class="card__icon">
+                        <img src="./assets/icons/card.svg">
+                    </div>
+                    <div class="card__description">
+                        <div class="card__description__bankName">
+                                Azerturkbank
+                        </div>
+                        <div class="card__description__name">
+                                MasterCard Gold (Дебетовая)
+                        </div>
+                        <div class="card__description__info">
+                            <div class="card__description__info__key">
+                                    {{'~price' | translate}}:
+                            </div>
+                            <div class="card__description__info__value">
+                                    {{'~free' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card__actions">
+                        <button mat-raised-button color="primary">{{'~visit' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
