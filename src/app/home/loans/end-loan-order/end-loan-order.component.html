@@ -1,0 +1,47 @@
+<div class="container component">
+
+  <div class="row">
+    <div class="col-12 p-0">
+        <div class="component__header">
+            {{'~completeOrder' | translate}}
+        </div>
+    </div>
+  </div>
+
+  <div class="row component__content">
+    <div class="col-12 col-md-12">
+       <h4>{{'~chooseBank' | translate}}</h4>
+        <div class="component__content__form">
+
+          <div class="component__content__form__fields" *ngIf="!loading else banksLoader">
+
+            <div class="bank-field"  *ngFor="let option of options">
+                <mat-checkbox [(ngModel)]="option.checked" (change)="onBankToggle($event, option.bankID)">
+                  <div class="bank-field__icon">
+                      <img src="./assets/icons/banks/{{option.bankID}}.svg">
+                  </div>
+                  </mat-checkbox>
+            </div>
+
+          </div>
+
+          <div class="component__content__form__submit" *ngIf="!loading">
+              <button
+            mat-raised-button color="accent"
+            [ngClass]="{'is-loading': loading}"
+            [disabled]="loading || !isChecked"
+            >{{'~loanGiven' | translate }}</button>
+          </div>
+
+
+        </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+<ng-template #banksLoader>
+  <bank-checkbox-loader></bank-checkbox-loader>
+</ng-template>

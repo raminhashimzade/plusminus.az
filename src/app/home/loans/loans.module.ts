@@ -10,6 +10,8 @@ import { LoanRequestDialogModule } from './loan-request-dialog/loan-request-dial
 import { LoansCompareComponent } from './loans-compare/loans-compare.component';
 import { LoansFilterComponent } from './loans-filter/loans-filter.component';
 import { LoansCardsComponent } from './loans-table/loans-cards/loans-cards.component';
+import { EndLoanOrderComponent } from './end-loan-order/end-loan-order.component';
+import { BankCheckboxLoaderComponent } from './end-loan-order/bank-checkbox-loader/bank-checkbox-loader.component';
 @NgModule({
   declarations: [
     LoansComponent,
@@ -17,6 +19,8 @@ import { LoansCardsComponent } from './loans-table/loans-cards/loans-cards.compo
       LoansCompareComponent,
       LoansFilterComponent,
       LoansCardsComponent,
+      EndLoanOrderComponent,
+      BankCheckboxLoaderComponent,
     ],
   imports: [
     CommonModule,

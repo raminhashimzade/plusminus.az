@@ -167,5 +167,8 @@
     "~orderDateTime": "Tarix",
     "~called": "Əlaqə saxlanıldı",
     "~seconds": "saniyə",
-    "~resend": "Yenidən göndər"
+    "~resend": "Yenidən göndər",
+    "~completeOrder": "Sifarişi yekunlaşdır",
+    "~chooseBank": "Bankı seçin",
+    "~loanGiven": "Kredit verildi"
   }
