@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'credit-cards-table',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreditCardsTableComponent implements OnInit {
   items = new Array(5);
-  constructor() { }
+  constructor(
+    private titleService: Title,
+    private translateService: TranslateService) {
+    this.titleService.setTitle(this.translateService.instant('~credit-cards'));
+   }
 
   ngOnInit() {
   }
