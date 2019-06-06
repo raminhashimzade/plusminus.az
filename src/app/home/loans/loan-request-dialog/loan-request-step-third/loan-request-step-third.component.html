@@ -36,19 +36,6 @@
             </div>
           </div>
 
-          <div class="row">
-            <div class="col-12">
-                <mat-form-field appearance="outline" class="input-field" >
-                    <mat-label>{{'~middleName' | translate }}</mat-label>
-                    <input matInput ngModel
-                    name="cusMiddleName" type="text"
-                    required
-                    #cusMiddleNameField = "matInput"
-                 >
-                    <mat-error *ngIf="f?.controls['cusMiddleName']?.invalid">{{getErrorMessage('cusMiddleName')}}</mat-error>
-                  </mat-form-field>
-            </div>
-          </div>
 
           <!-- <div class="row">
             <div class="col-12">
@@ -86,6 +73,8 @@
                   </mat-checkbox>
 
             </div>
+
+
             <div class="col-12 col-md-2">
                 <mat-checkbox ngModel name="cusVoen"  [(ngModel)]="cusVoen" class="checkbox-field" >
                     {{'~cusVoen' | translate | titlecase}}
@@ -98,6 +87,7 @@
                   </mat-checkbox>
             </div>
           </div>
+
           <div class="row">
             <div class="col-12">
               <mat-form-field appearance="outline" class="input-field">
@@ -111,6 +101,21 @@
               </mat-form-field>
             </div>
           </div>
+
+          <div class="row">
+            <div class="col-12">
+              <mat-form-field appearance="outline" class="input-field">
+                <mat-label>{{'~cusGuarantorAmt' | translate }} (AZN)</mat-label>
+                <input matInput ngModel
+                name="cusGuarantorAmt" type="tel"
+                (input)="onNumInput($event, 'cusGuarantorAmt')"
+                required
+             >
+                <mat-error *ngIf="f?.controls['cusGuarantorAmt']?.invalid">{{getErrorMessage('cusGuarantorAmt')}}</mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
           <div class="row">
             <div class="col-12 col-md-4 pr-0">
 
