@@ -1,140 +1,140 @@
 :host {
-    display: block;
-  }
-   /deep/   .mat-form-field-outline-start,
-  /deep/ .mat-form-field-outline-end {
-       border-radius: 0px!important;
-   }
+  display: block;
+}
+ /deep/   .mat-form-field-outline-start,
+/deep/ .mat-form-field-outline-end {
+     border-radius: 0px!important;
+ }
 
 
-   .slider-group {
-    position: relative;
-    .slider {
-      width: 100%;
-      padding: 0;
-      position: absolute;
-    // transform: translateY(-29px);
-      left: 0;
-      bottom: 0;
-     /deep/ .mat-slider-thumb {
-       background: var(--primary-default)!important;
-       border: 0!important;
-     }
-      /deep/ &.mat-slider-horizontal {
-        height: 6px;
-      }
-      /deep/ .mat-slider-wrapper {
-        top: 0!important;
-        left: 0!important;
-        right: 0!important;
-      }
-      /deep/ .mat-slider-thumb-label {
-        width: 40px!important;
-        height: 40px!important;
-        top: -45px;
-      }
-    }
-   }
-
-   .banner-wrapper {
-     display: block;
-    background-image: url('../../../../assets//images/mortgage-banner-cover.png');
-    height: var(--banner-height);
-    background-repeat: no-repeat;
-    background-color: #F6C300;
-    min-height:var(--banner-min-height);
-    .banner {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 40px 0;
-      min-height:var(--banner-min-height);
-        .banner__title {
-            display: flex;
-            flex-direction: column;
-            padding-bottom: 1.5rem;
-            .banner__title__top {
-                color: #1da329;
-                font-family: "Montserrat-SemiBold";
-                font-size: 2rem;
-                font-weight: 600;
-                letter-spacing: 0.0625rem;
-            }
-            .banner__title__bottom {
-                color: #1da329;
-                letter-spacing: -0.06rem;
-                font-family: "Montserrat-Medium";
-                font-size: 1.6875rem;
-                letter-spacing: 0.0625rem;
-            }
-        }
-        .banner__field {
-          font-size: 14px;
-         /deep/ .mat-form-field-outline {
-           background-color: #ffffff!important;
-        }
-        /deep/ .mat-form-field-wrapper {
-          padding: 0!important;
-        }
-        }
-            .filter-submit  {
-               width: 100%;
-               height: 44px;
-            }
-      }
-
-   }
-
-   .products__request{
-    margin: 2.125rem 0;
+ .slider-group {
+  position: relative;
+  .slider {
     width: 100%;
-    button {
-        width: 100%;
+    padding: 0;
+    position: absolute;
+  // transform: translateY(-29px);
+    left: 0;
+    bottom: 0;
+   /deep/ .mat-slider-thumb {
+     background: var(--primary-default)!important;
+     border: 0!important;
+   }
+    /deep/ &.mat-slider-horizontal {
+      height: 6px;
+    }
+    /deep/ .mat-slider-wrapper {
+      top: 0!important;
+      left: 0!important;
+      right: 0!important;
+    }
+    /deep/ .mat-slider-thumb-label {
+      width: 40px!important;
+      height: 40px!important;
+      top: -45px;
+    }
+  }
+ }
+
+ .banner-wrapper {
+   display: block;
+  background-image: url('../../../../assets//images/mortgage-banner-cover.png');
+  height: var(--banner-height);
+  background-repeat: no-repeat;
+  background-color: #F6C300;
+  min-height:var(--banner-min-height);
+  .banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 0;
+    min-height:var(--banner-min-height);
+      .banner__title {
+          display: flex;
+          flex-direction: column;
+          padding-bottom: 1.5rem;
+          .banner__title__top {
+              color: #1da329;
+              font-family: "Montserrat-SemiBold";
+              font-size: 2rem;
+              font-weight: 600;
+              letter-spacing: 0.0625rem;
+          }
+          .banner__title__bottom {
+              color: #1da329;
+              letter-spacing: -0.06rem;
+              font-family: "Montserrat-Medium";
+              font-size: 1.6875rem;
+              letter-spacing: 0.0625rem;
+          }
+      }
+      .banner__field {
+        font-size: 14px;
+       /deep/ .mat-form-field-outline {
+         background-color: #ffffff!important;
+      }
+      /deep/ .mat-form-field-wrapper {
+        padding: 0!important;
+      }
+      }
+          .filter-submit  {
+             width: 100%;
+             height: 44px;
+          }
+    }
+
+ }
+
+ .products__request{
+  margin: 2.125rem 0;
+  width: 100%;
+  button {
+      width: 100%;
+  }
+}
+@media (max-width: 992px) {
+ .banner-wrapper {
+ // background-position-x: right;
+ // background-position-x: -336px;
+ }
+}
+@media (max-width: 768px) {
+ .banner-wrapper {
+//  background-position-x: right;
+ // height: 25.75rem;
+ }
+}
+@media (max-width: 576px) {
+    .banner-wrapper {
+      background: #ffd740;
+      background-position-x: -590px;
+      background-image: none;
     }
 }
-  @media (max-width: 992px) {
-   .banner-wrapper {
-   // background-position-x: right;
-   // background-position-x: -336px;
-   }
- }
- @media (max-width: 768px) {
-   .banner-wrapper {
-  //  background-position-x: right;
-   // height: 25.75rem;
-   }
- }
- @media (max-width: 576px) {
+@media (max-width: 450px) {
       .banner-wrapper {
-        background: #ffd740;
-        background-position-x: -590px;
-        background-image: none;
+    //      background-position-x: -625px;
       }
- }
- @media (max-width: 450px) {
-        .banner-wrapper {
-      //      background-position-x: -625px;
-        }
- }
- @media (max-width: 768px) {
-    .banner-wrapper {
-        padding: 0;
-        background: #ffd740;
-        .banner {
-          .banner__title {
-            flex-direction: row;
-            align-items: center;
-            .banner__title__top {
-              margin-right: 10px;
-            }
-          }
-          .banner-field {
-            font-size: 12px;
-          }
-          .filter-submit{
-            margin-top: 20px;
+}
+@media (max-width: 768px) {
+  .banner-wrapper {
+      padding: 0;
+      background: #ffd740;
+      .banner {
+        .banner__title {
+          flex-direction: row;
+          align-items: center;
+          .banner__title__top {
+            margin-right: 10px;
           }
         }
-    }
- }
+        .banner-field {
+          font-size: 12px;
+        }
+        .filter-submit{
+          margin-top: 20px;
+        }
+      }
+  }
+}
 

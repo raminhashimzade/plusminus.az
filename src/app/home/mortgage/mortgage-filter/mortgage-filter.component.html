@@ -7,9 +7,11 @@
           <div class="col-12">
              <div class="banner">
                  <div class="banner__title">
-
+                   <div class="banner__title__top">
+                     {{'~consumer' | translate}}
+                   </div>
                    <div class="banner__title__bottom">
-                     {{'~mortgage' | translate}}
+                     {{'~loans' | translate}}
                    </div>
                  </div>
                  <div class="container-fluid banner__fields p-0">
@@ -69,5 +71,56 @@
 
     </div>
 </div>
+<div class="container custom">
 
+  <div class="row" *ngIf="false">
+    <div class="col-12">
+      <div class="products__table">
+        <div id="products-table-filter" class="products__table__filter">
+
+            <div class="ck-buttons">
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="withEmpReference"><span>{{'~withEmpReference' | translate |titlecase}}</span>
+                </label>
+              </div>
+
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="withCollateral"><span>{{'~withCollateral' | translate |titlecase}}</span>
+                </label>
+              </div>
+
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="withGracePeriod"><span>{{'~withGracePeriod' | translate |titlecase}}</span>
+                </label>
+              </div>
+
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="comissionCash"><span>{{'~commissionCash' | translate |titlecase}}</span>
+                </label>
+              </div>
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="comissionLoan"><span>{{'~commissionLoan' | translate |titlecase}}</span>
+                </label>
+              </div>
+            </div>
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
 </form>
