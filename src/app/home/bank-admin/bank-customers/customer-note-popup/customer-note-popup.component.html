@@ -1,0 +1,34 @@
+<div class="component" >
+    <div class="component__header">
+      <div class="component__header__title">
+       {{'~note' | translate}}
+      </div>
+      <div class="component__header__icon" (click)="close()">
+          <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <div class="component__content">
+
+      <form #f="ngForm" (ngSubmit)="onSubmit() ">
+
+          <mat-form-field appearance="outline">
+              <mat-label>{{'~note' | translate}}</mat-label>
+              <textarea matInput
+                       ngModel name="note"
+                        cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="10"
+                        cdkAutosizeMaxRows="20"
+                        required
+                        ></textarea>
+            </mat-form-field>
+
+            <button mat-raised-button color="accent"
+              [disabled]="loading"
+              [ngClass]="{'is-loading': loading}"
+            >{{'~save' | translate}}</button>
+
+      </form>
+
+    </div>
+  </div>

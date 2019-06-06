@@ -51,9 +51,9 @@
                           <div class="td-content">
                               {{order.income}}
                               {{order.currencyCode}} <br>
-                              <span *ngIf="order.official"> ({{'~official' | translate}}) <br> </span>
-                              <span *ngIf="order.unOfficial">({{'~unOfficial' | translate}}) <br></span>
-                              <span *ngIf="order.voen">{{'~voen' | translate}}</span>
+                              <span *ngIf="order.official"> ({{'~official' | translate}} <span *ngIf="order.voen">,{{'~voen' | translate}}</span>) <br> </span>
+                              <span *ngIf="order.unOfficial">({{'~unOfficial' | translate}} <span *ngIf="order.voen">,{{'~voen' | translate}}</span>) <br></span>
+
                           </div>
                       </td>
                       <td>{{order.guarantor}}</td>
@@ -63,13 +63,13 @@
                           <div class="row-actions">
                               <a mat-raised-button
                               color="primary" class="w-100"
-                              (click)="onShowInfoClick(order, $event)"
+                              (click)="onCustomerContactPopup(order, $event.target)"
                            >{{'~show' | translate}}</a>
 
                               <a mat-raised-button
                               color="accent" class="w-100"
                               [disabled]="order.called"
-                              (click)="onShowInfoClick(order)"
+                              (click)="onCustomerNotePopup(order, $event.target)"
                            >{{'~called' | translate}}</a>
 
                           </div>

@@ -17,7 +17,7 @@ export class BankLoginComponent implements OnInit, AfterViewInit {
   constructor(private bankAdminService: BankAdminService, private router: Router) { }
 
   ngOnInit() {
- // this.autoLogin();
+  this.autoLogin();
   }
   ngAfterViewInit() {
     // const options = {

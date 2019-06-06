@@ -4,14 +4,15 @@
 }
 
 .component {
-    background: var(--secondary-default);
     padding: 20px;
     width: 100%;
     .component__header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e1e1e1;
+        margin-bottom: 20px;
         .component__header__title {
             font-family: "Montserrat-SemiBold";
             font-size: 14px;
@@ -37,7 +38,6 @@
             }
             .component__content__row__value {
                 font-weight: 400;
-                font-size: 14px;
                 font-family: "Montserrat-Medium";
             }
         }

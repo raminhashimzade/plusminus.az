@@ -8,9 +8,16 @@ import { BankCustomersComponent } from './bank-customers/bank-customers.componen
 import { BankAdminGuard } from './bank-admin.guard';
 import { CustomerContactPopupComponent } from './bank-customers/customer-contact-popup/customer-contact-popup.component';
 import { PopoverModule } from 'src/app/popover/popover.module';
+import { CustomerNotePopupComponent } from './bank-customers/customer-note-popup/customer-note-popup.component';
 
 @NgModule({
-  declarations: [BankAdminComponent, BankLoginComponent, BankCustomersComponent, CustomerContactPopupComponent],
+  declarations: [
+    BankAdminComponent,
+    BankLoginComponent,
+    BankCustomersComponent,
+    CustomerContactPopupComponent,
+    CustomerNotePopupComponent
+  ],
   imports: [
     CommonModule,
     BankAdminRoutingModule,
@@ -18,6 +25,6 @@ import { PopoverModule } from 'src/app/popover/popover.module';
     PopoverModule
   ],
   providers: [BankAdminGuard],
-  entryComponents: [CustomerContactPopupComponent]
+  entryComponents: [CustomerContactPopupComponent, CustomerNotePopupComponent]
 })
 export class BankAdminModule { }

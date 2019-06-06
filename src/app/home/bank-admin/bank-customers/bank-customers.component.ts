@@ -4,6 +4,7 @@ import { CustomerOrder } from '../models/customer-order.model';
 import { finalize } from 'rxjs/operators';
 import { Popover } from 'src/app/popover/popover.service';
 import { CustomerContactPopupComponent } from './customer-contact-popup/customer-contact-popup.component';
+import { CustomerNotePopupComponent } from './customer-note-popup/customer-note-popup.component';
 
 @Component({
   selector: 'bank-customers',
@@ -24,6 +25,7 @@ export class BankCustomersComponent implements OnInit {
   this.getOrderList();
   }
   getOrderList() {
+    this.orders = undefined;
     this.loading = true;
     this.bankService.getOrderList()
     .pipe(finalize(() => {
@@ -34,10 +36,10 @@ export class BankCustomersComponent implements OnInit {
       this.orders = res;
     } )
   }
-  onShowInfoClick(order: CustomerOrder, origin) {
+  onCustomerContactPopup(order: CustomerOrder, target) {
     const ref = this.popper.open({
       content: CustomerContactPopupComponent,
-      origin: origin.target,
+      origin: target,
       width: '196px',
       data: {
        order: order
@@ -48,6 +50,21 @@ export class BankCustomersComponent implements OnInit {
       //  console.log(res);
     })
 
+  }
+  onCustomerNotePopup(order, target) {
+    const ref = this.popper.open({
+      content: CustomerNotePopupComponent,
+      origin: target,
+      width: '242px',
+      height: '340px',
+      data: {
+       order: order
+      }
+    });
+
+    ref.afterClosed$.subscribe(res => {
+     if (res) {this.getOrderList();}
+    })
   }
 
   onNextRateScroll() {
