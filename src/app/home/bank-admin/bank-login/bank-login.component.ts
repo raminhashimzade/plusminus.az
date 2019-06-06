@@ -4,6 +4,8 @@ import { NgForm } from '@angular/forms';
 import { BankAdminService } from '../bank-admin.service';
 import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 declare var Typed;
 @Component({
   selector: 'bank-login',
@@ -14,7 +16,15 @@ export class BankLoginComponent implements OnInit, AfterViewInit {
   @ViewChild('f') form: NgForm;
   typed: any;
   loading: boolean;
-  constructor(private bankAdminService: BankAdminService, private router: Router) { }
+  constructor(
+    private bankAdminService: BankAdminService,
+     private router: Router,
+     private translateService: TranslateService,
+     private titleService: Title
+    ) {
+      this.titleService.setTitle(this.translateService.instant('~forBanks'));
+    }
+
 
   ngOnInit() {
   this.autoLogin();

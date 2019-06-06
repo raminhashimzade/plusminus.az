@@ -1,44 +1,122 @@
-<div class="container">
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+  <div class="banner-wrapper">
 
-    <div class="row">
-      <div class="col-12">
+   <div class="container custom">
 
-        <div class="component">
+      <div class="row">
+          <div class="col-12">
+             <div class="banner">
+                 <div class="banner__title">
+                   <div class="banner__title__top">
+                     {{'~debitCards' | translate}}
+                   </div>
+                 </div>
+                 <div class="container-fluid banner__fields p-0">
+                  <div class="row align-items-center">
+                      <div class="col-12 col-md-3 col-lg-3 col-xl-3">
+                          <div class="slider-group">
+                              <mat-form-field class="w-100 banner__field" appearance="outline" >
+                                  <input required  matInput name="slideValue" type="number" placeholder="{{'~loanAmount' | translate}}"
+                                    [(ngModel)]="slideValue">
+                                </mat-form-field>
 
-            <div class="component__header">
-                {{'~debitCards' | translate}}
-            </div>
+                                <mat-slider class="slider" color="primary" [max]="'100000'" [min]="'0'" [step]="'1000'" ngModel
+                                  name="loanAmount" [(ngModel)]="slideValue" (input)="onSlideMove($event)">
+                                </mat-slider>
+                          </div>
+                      </div>
 
-            <div class="component__content">
-                <div class="component__content__form">
+                      <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+                          <mat-form-field appearance="outline"  class="banner__field w-100">
+                              <mat-select required name="loanCurrency" [ngModel]="loanCurrency" class="form-field">
+                                <mat-option *ngFor="let option of currCodes$ | async"
+                                [value]="option.value"
+                                >{{option.label}}</mat-option>
+                              </mat-select>
 
-                    <h5>{{'~chooseCard' | translate}}</h5>
+                            </mat-form-field>
+                      </div>
 
-                    <div class="component__content__form__fields">
-                        <mat-button-toggle-group #group="matButtonToggleGroup">
+                      <div class="col-12 col-md-3 col-lg-3 col-xl-3">
 
-                            <mat-button-toggle value="left">
-                              {{'~all' | translate}}
-                            </mat-button-toggle>
+                      <mat-form-field appearance="outline"  class="banner__field w-100">
+                          <!-- <mat-label>{{'~loanPeriod' | translate }}</mat-label> -->
+                          <mat-select required name="loanPeriod" ngModel class="form-field" placeholder="{{'~loanPeriod' | translate }}">
+                            <mat-option *ngFor="let period of (loanPeriods$ | async)" [value]="period?.periodId"> {{period?.period}}
+                            </mat-option>
 
-                            <mat-button-toggle value="left">
-                              {{'~cashback' | translate}}
-                            </mat-button-toggle>
+                          </mat-select>
 
-                            <mat-button-toggle value="left">
-                              {{'~forTravel' | translate}}
-                            </mat-button-toggle>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-12 col-md-3 col-lg-3 col-xl-3">
 
-                          </mat-button-toggle-group>
-                    </div>
+                         <button mat-raised-button color="accent" class="filter-submit" type="submit">{{'~search' | translate}} </button>
 
+                      </div>
                   </div>
+
+
+                 </div>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+</div>
+<div class="container custom">
+
+
+  <div class="row" *ngIf="false">
+    <div class="col-12">
+      <div class="products__table">
+        <div id="products-table-filter" class="products__table__filter">
+
+            <div class="ck-buttons">
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="withEmpReference"><span>{{'~withEmpReference' | translate |titlecase}}</span>
+                </label>
+              </div>
+
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="withCollateral"><span>{{'~withCollateral' | translate |titlecase}}</span>
+                </label>
+              </div>
+
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="withGracePeriod"><span>{{'~withGracePeriod' | translate |titlecase}}</span>
+                </label>
+              </div>
+
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="comissionCash"><span>{{'~commissionCash' | translate |titlecase}}</span>
+                </label>
+              </div>
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="comissionLoan"><span>{{'~commissionLoan' | translate |titlecase}}</span>
+                </label>
+              </div>
             </div>
+
+
 
         </div>
-
       </div>
     </div>
 
-  </div>
 
+  </div>
+</div>
+</form>

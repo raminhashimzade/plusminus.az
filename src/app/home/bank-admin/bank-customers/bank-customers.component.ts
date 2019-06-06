@@ -5,6 +5,8 @@ import { finalize } from 'rxjs/operators';
 import { Popover } from 'src/app/popover/popover.service';
 import { CustomerContactPopupComponent } from './customer-contact-popup/customer-contact-popup.component';
 import { CustomerNotePopupComponent } from './customer-note-popup/customer-note-popup.component';
+import { Title } from '@angular/platform-browser';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'bank-customers',
@@ -18,8 +20,12 @@ export class BankCustomersComponent implements OnInit {
   constructor(
     private bankService: BankAdminService,
     private changeRef: ChangeDetectorRef,
-    private popper: Popover
-    ) { }
+    private popper: Popover,
+    private titleService: Title,
+    private translateService: TranslateService
+    ) {
+      this.titleService.setTitle(this.translateService.instant('~forBanks'));
+    }
 
   ngOnInit() {
   this.getOrderList();
