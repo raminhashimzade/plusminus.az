@@ -56,7 +56,7 @@ export class BankCustomersComponent implements OnInit {
       content: CustomerNotePopupComponent,
       origin: target,
       width: '242px',
-      height: '340px',
+      height: '341px',
       data: {
        order: order
       }
