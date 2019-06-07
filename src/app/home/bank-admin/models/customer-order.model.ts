@@ -13,4 +13,5 @@ export interface CustomerOrder  {
     guarantor: number;
     monthlyPayment: number;
     called: boolean;
+    bankNote: string;
   }

@@ -33,7 +33,7 @@ export class CustomerNotePopupComponent implements OnInit {
     this.postLoanOrderCalled();
   }
   postLoanOrderCalled() {
-    this.bankService.postLoanOrderCalled(this.order, this.form.value.note)
+    this.bankService.postLoanOrderCalled(this.order, this.form.value.bankNote)
     .pipe(finalize(() => this.loading = false))
     .subscribe(res => this.popoverRef.close(res));
   }

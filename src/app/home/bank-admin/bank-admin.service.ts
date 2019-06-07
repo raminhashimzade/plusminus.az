@@ -56,7 +56,7 @@ export class BankAdminService {
       bankToken: this.token,
       orderId: order.rqId,
       bankID: this.bankId,
-      note: note
+      bankNote: note
     })
       .pipe(map(res => {
         return res && res.data;
