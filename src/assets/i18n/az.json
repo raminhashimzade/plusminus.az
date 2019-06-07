@@ -185,5 +185,6 @@
     "~price": "Qiymət",
     "~note": "Qeyd",
     "~save": "Yadda saxla",
-    "~cusGuarantorAmt": "Digər banklara olan aylıq ödəniş"
+    "~cusGuarantorAmt": "Digər banklara olan aylıq ödəniş",
+    "~otherMonthlyPayment": "Digər Banklara Aylıq Ödəniş"
   }
