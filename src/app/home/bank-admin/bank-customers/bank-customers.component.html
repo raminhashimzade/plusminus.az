@@ -16,7 +16,7 @@
             </div>
 
             <div class="component__content" id="customers-table">
-                <h3>{{'~orders' | translate}}</h3>
+                <h3 (click)="getOrderList()">{{'~orders' | translate}}</h3>
 
 
                 <table class="table plus-minus --customers" *ngIf="!loading else table_loader">
@@ -62,11 +62,12 @@
                               <a mat-raised-button
                               color="primary" class="w-100"
                               (click)="onCustomerContactPopup(order, $event.target)"
-                           >{{'~show' | translate}}</a>
+                           >{{'~contactNumber' | translate}}</a>
 
                               <a mat-raised-button
                               color="accent" class="w-100"
-                              [disabled]="order.called"
+                              [matBadge]="order.called ? 1 : ''" matBadgePosition="after"
+                              matBadgeColor="warn"
                               (click)="onCustomerNotePopup(order, $event.target)"
                            >{{'~called' | translate}}</a>
 

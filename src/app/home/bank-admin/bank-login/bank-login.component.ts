@@ -6,6 +6,7 @@ import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from 'src/environments/environment.prod';
 declare var Typed;
 @Component({
   selector: 'bank-login',
@@ -27,7 +28,7 @@ export class BankLoginComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
- // this.autoLogin();
+//    !environment.production  ?  this.autoLogin() : [];
   }
   ngAfterViewInit() {
     // const options = {
