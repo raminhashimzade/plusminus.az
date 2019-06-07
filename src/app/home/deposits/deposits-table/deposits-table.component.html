@@ -26,17 +26,17 @@
                       </div>
                     </th>
 
-                    <th  [orderByColumn]="'depositName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                    <th  [orderByColumn]="'depositName'" >
                         <div class="th-content">
                             {{'~depositName' | translate}}
-                            <div class="tableSorting">
+                            <!-- <div class="tableSorting">
                                 <span class="tableSorting__arrow --top">
                                    <i class="fas fa-caret-down"></i>
                                   </span>
                                   <span class="tableSorting__arrow --down">
                                     <i class="fas fa-caret-down"></i>
                                   </span>
-                             </div>
+                             </div> -->
                         </div>
                     </th>
 

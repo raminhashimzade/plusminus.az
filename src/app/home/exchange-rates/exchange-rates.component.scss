@@ -22,7 +22,7 @@
   .exchange-rates-preview__table {
     display: flex;
     flex-wrap: wrap;
-    height: 441px;
+    min-height: 441px;
     width: 100%;
     @media (max-width: 992px) {
        height: 475px;

@@ -11,11 +11,11 @@
     position: relative;
     .slider {
       width: 100%;
-      padding: 0;
+   //   padding: 0;
       position: absolute;
     // transform: translateY(-29px);
       left: 0;
-      bottom: 0;
+      bottom: -11px;
      /deep/ .mat-slider-thumb {
        background: var(--primary-default)!important;
        border: 0!important;
@@ -28,11 +28,11 @@
         left: 0!important;
         right: 0!important;
       }
-      /deep/ .mat-slider-thumb-label {
-        width: 40px!important;
-        height: 40px!important;
-        top: -45px;
-      }
+      // /deep/ .mat-slider-thumb-label {
+      //   width: 40px!important;
+      //   height: 40px!important;
+      //   top: -45px;
+      // }
     }
    }
 

@@ -185,7 +185,6 @@ img {
 .--ck-button {
   color: #000000;
   font-family: 'Montserrat-Medium';
-  font-size: 0.75rem;
   font-weight: 300;
   letter-spacing: -0.0075rem;
   background: #ffffff;
@@ -207,6 +206,7 @@ img {
 			text-align: center;
 	  	padding: 8px 16px;
       display: block;
+     font-size: 13px;
       cursor: pointer;
       color: rgba(0,0,0,.87);
       transition: all 100ms ease-in-out;

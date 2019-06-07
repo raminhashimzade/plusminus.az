@@ -46,21 +46,21 @@ export class SharedService {
    const  isAcending = sortChange.orderBySort === SortStates.asc ? 1 : -1;
        originalData.forEach(group => {
         group.list = [...group.list].sort((a, b) => {
-          if (+a[sortChange.orderByColumn] > +b[sortChange.orderByColumn]) { return isAcending}
-          if (+a[sortChange.orderByColumn] < +b[sortChange.orderByColumn]) { return -isAcending; }
+          if (a[sortChange.orderByColumn] > b[sortChange.orderByColumn]) { return isAcending}
+          if (a[sortChange.orderByColumn] < b[sortChange.orderByColumn]) { return -isAcending; }
           return 0;
         })
     })
     if (sortChange.orderBySort === SortStates.asc) {
      return  originalData.sort((a, b) => {
-        if (+a.list[0][sortChange.orderByColumn] > +b.list[0][sortChange.orderByColumn]) { return 1; }
-        if (+a.list[0][sortChange.orderByColumn] < +b.list[0][sortChange.orderByColumn]) { return -1; }
+        if (a.list[0][sortChange.orderByColumn] > b.list[0][sortChange.orderByColumn]) { return 1; }
+        if (a.list[0][sortChange.orderByColumn] < b.list[0][sortChange.orderByColumn]) { return -1; }
         return 0;
       });
     } else if (sortChange.orderBySort === SortStates.desc) {
      return  originalData.sort((a, b) => {
-        if (+a.list[0][sortChange.orderByColumn] > +b.list[0][sortChange.orderByColumn]) { return -1; }
-        if (+a.list[0][sortChange.orderByColumn] < +b.list[0][sortChange.orderByColumn]) { return 1; }
+        if (a.list[0][sortChange.orderByColumn] > b.list[0][sortChange.orderByColumn]) { return -1; }
+        if (a.list[0][sortChange.orderByColumn] < b.list[0][sortChange.orderByColumn]) { return 1; }
         return 0;
       });
     } else {
