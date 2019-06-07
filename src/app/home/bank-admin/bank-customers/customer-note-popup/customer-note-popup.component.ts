@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatInput } from '@angular/material/input';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { OrderShowInfo } from '../../models/order-show-info.model';
 import { CustomerOrder } from '../../models/customer-order.model';
 import { PopoverRef } from 'src/app/popover/popover-ref';
@@ -11,8 +12,9 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './customer-note-popup.component.html',
   styleUrls: ['./customer-note-popup.component.scss']
 })
-export class CustomerNotePopupComponent implements OnInit {
+export class CustomerNotePopupComponent implements OnInit, AfterViewInit {
   @ViewChild('f') form: NgForm;
+  @ViewChild('bankNoteInput') bankNoteInput: MatInput;
   order: CustomerOrder;
   loading: boolean;
   constructor(
@@ -22,7 +24,11 @@ export class CustomerNotePopupComponent implements OnInit {
     this.order  = this.popoverRef.data.order;
   }
   ngOnInit() {
-
+  }
+  ngAfterViewInit() {
+   setTimeout(() => {
+    this.bankNoteInput.focus();
+   }, 300)
   }
   close() {
     this.popoverRef.close();
