@@ -12,8 +12,7 @@
       <form #f="ngForm" (ngSubmit)="onSubmit() ">
 
           <mat-form-field appearance="outline">
-              <mat-label *ngIf="!order.bankNote">{{'~note' | translate}}</mat-label>
-              <mat-label *ngIf="order.bankNote">{{order.bankNote}}</mat-label>
+              <mat-label >{{'~note' | translate}}</mat-label>
               <textarea matInput
                        ngModel name="bankNote"
                         cdkTextareaAutosize
@@ -21,13 +20,13 @@
                         #autosize="cdkTextareaAutosize"
                         cdkAutosizeMinRows="10"
                         cdkAutosizeMaxRows="20"
-                        [disabled]="order.bankNote"
+                        [placeholder]="order.bankNote"
                         required
-                        >{{order.bankNote}}</textarea>
+                        ></textarea>
             </mat-form-field>
 
             <button mat-raised-button color="accent"
-              [disabled]="loading || order.bankNote"
+              [disabled]="loading"
               [ngClass]="{'is-loading': loading}"
             >{{'~save' | translate}}</button>
 
