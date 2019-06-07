@@ -14,15 +14,15 @@
           <mat-form-field appearance="outline">
               <mat-label >{{'~note' | translate}}</mat-label>
               <textarea matInput
-                       ngModel name="bankNote"
+                        ngModel name="bankNote"
                         cdkTextareaAutosize
                         #bankNoteInput ="matInput"
                         #autosize="cdkTextareaAutosize"
                         cdkAutosizeMinRows="10"
                         cdkAutosizeMaxRows="20"
-                        [placeholder]="order.bankNote"
                         required
-                        ></textarea>
+                        >
+                      </textarea>
             </mat-form-field>
 
             <button mat-raised-button color="accent"

@@ -28,7 +28,7 @@ export class BankLoginComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit() {
-//    !environment.production  ?  this.autoLogin() : [];
+   this.autoLogin();
   }
   ngAfterViewInit() {
     // const options = {

@@ -27,14 +27,16 @@ export class CustomerNotePopupComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit() {
    setTimeout(() => {
+    this.form.form.controls['bankNote'].setValue(this.order.bankNote);
     this.bankNoteInput.focus();
-   }, 300)
+   }, 100)
   }
   close() {
     this.popoverRef.close();
   }
 
   onSubmit() {
+    if (!this.form.valid) {return;}
     this.loading = true;
     this.postLoanOrderCalled();
   }
