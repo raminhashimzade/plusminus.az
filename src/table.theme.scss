@@ -6,6 +6,10 @@ table.plus-minus {
       text-align: center;
       transition: background-color 100ms ease-in-out;
     }
+    td {
+      min-height: 3rem;
+      height: auto;
+    }
     tr:hover {
       background-color: #f5f6fa;
     }
@@ -13,6 +17,7 @@ table.plus-minus {
       border: 1px solid #e1e1e1;
       position: relative;
       cursor: pointer;
+
       &.asc {
         .tableSorting {
           .tableSorting__arrow.--top {
@@ -45,6 +50,10 @@ table.plus-minus {
       text-align: center;
       font-size: 0.8rem;
       color: var(--primary-default);
+
+
+
+
     }
 
     .td-content {
