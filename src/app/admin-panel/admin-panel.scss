@@ -309,3 +309,22 @@
         transform: rotate(360deg);
     }
   }
+
+
+  .--full-screen {
+    background: rgba(0,0,0,.54)!important;
+    justify-content: center;
+    align-items: center;
+    .admin-panel {
+      width: calc(100vw - var(--admin-padding) * 2)!important;
+      height: calc(100vh - var(--admin-padding) * 2)!important;;
+      border-radius: 6px;
+      overflow: hidden!important;
+        .navigation-wrapper, .sidebar-wrapper {
+          display: none!important;
+        }
+        .admin-module {
+          width: calc(100vw - var(--admin-padding) * 2)!important;
+        }
+    }
+  }
