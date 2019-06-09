@@ -17,18 +17,18 @@
 
         <mat-menu #menu="matMenu" class="general-actions-menu">
 
-          <button mat-menu-item disabled = "true"  (click)="table.addData()"> {{ '~addData' | translate }}
+          <!-- <button mat-menu-item disabled = "true"  (click)="table?.addData()"> {{ '~addData' | translate }}
           </button>
 
-          <button mat-menu-item disabled = "true"   (click)="table.deleteData()"
+          <button mat-menu-item disabled = "true"   (click)="table?.deleteData()"
             [disabled]="!table?.isRowSelected"> {{ '~removeSelected' | translate }}
           </button>
 
-          <button mat-menu-item disabled = "true"  (click)="table.onPrint()"> {{ '~print' | translate }}
+          <button mat-menu-item disabled = "true"  (click)="table?.onPrint()"> {{ '~print' | translate }}
           </button>
 
-          <button mat-menu-item disabled = "true" (click)="table.onExport()"> {{ '~export' | translate }}
-          </button>
+          <button mat-menu-item disabled = "true" (click)="table?.onExport()"> {{ '~export' | translate }}
+          </button> -->
 
         </mat-menu>
 

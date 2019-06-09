@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AdminLoanService } from './admin-loan.service';
 import { CrudCommandType } from '../models/crud-command-type.enum';
 import { LoanProduct } from 'src/app/home/loans/models/loanGroup.model';
+import { MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'admin-loans',
@@ -10,7 +11,9 @@ import { LoanProduct } from 'src/app/home/loans/models/loanGroup.model';
 })
 export class AdminLoansComponent implements OnInit {
   displayedColumns: string[] = ['bankId', 'loanName', 'loanType', 'currencyCode',  'minRate', 'minAmount', 'maxAmount', 'editer'];
-  dataSource: LoanProduct[];
+  dataSource: MatTableDataSource<LoanProduct>;
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(private adminLoanService: AdminLoanService) { }
 
   ngOnInit() {
@@ -20,7 +23,10 @@ export class AdminLoansComponent implements OnInit {
   getData() {
     this.adminLoanService.crudLoanProduct(CrudCommandType.SELECT, {})
     .subscribe(res => {
-      this.dataSource = res;
+      this.dataSource = new MatTableDataSource(res);
+      setTimeout(() => {
+        this.dataSource.sort = this.sort;
+      }, 10);
     })
   }
 

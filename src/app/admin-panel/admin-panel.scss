@@ -118,6 +118,7 @@
     }
     .admin-module__content {
       display: flex;
+      flex-direction: column;
      // flex: 0 0 calc(100% - var(--admin-header-height) - 2 * var(--admin-padding));
       height: calc(100% - var(--admin-header-height) - var(--admin-padding));
    //   flex: 1;

@@ -19,7 +19,11 @@ export class AdminLoginComponent implements OnInit {
    }
 
    ngOnInit() {
-   //  this.login();
+    setTimeout(() => {
+      this.form.controls['login'].setValue('plusm');
+      this.form.controls['password'].setValue('123');
+      this.login();
+    }, 100)
    }
    login() {
      this.isLoading = true;
