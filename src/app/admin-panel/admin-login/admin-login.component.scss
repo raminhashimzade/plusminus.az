@@ -1,0 +1,50 @@
+:host {
+    display: block;
+  }
+  .form-group {
+    margin-bottom: 0;
+  }
+  .component{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 85vh;
+    .component__title {
+      color: #aaaaaa;
+      font-weight: bold;
+      padding-bottom: 10px;
+      font-size: 25px;
+    }
+    .component__content {
+        .component__content__form   {
+            display: flex;
+            align-items: center;
+            .component__content__form__fields {
+                display: flex;
+                flex-direction: column;
+                font-size: 15px;
+            }
+            .component__content__form__submit {
+                margin-left: 20px;
+                .login-button {
+                    background: #ffffff;
+                    color: #999999;
+                    width: 50px;
+                    height: 50px;
+                    border: 5px solid #efefef;
+                    border-radius: 50%;
+                    outline: 0;
+                    cursor: pointer;
+                    margin-bottom: 7px;
+                    transition: all ease-in-out 500ms;
+                    &:hover {
+                        color: #555555;
+                        transform: rotate(450deg);
+                    }
+                    }
+            }
+        }
+    }
+  }

@@ -1,0 +1,35 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100vw;;
+    height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+    z-index: 2;
+    background: var(--background-default);
+    box-shadow: 1px 4px 18px rgba(0, 0, 0, 0.05);
+  }
+
+
+  .admin-panel {
+    width: 100%;
+    display: flex;
+    background: var(--background-default);
+    transition-property: background, width;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding: var(--admin-padding);
+    overflow-x: auto;
+    overflow-y: hidden;
+    min-width: 625px;
+    &.--full-screen {
+
+    }
+    }
+
+

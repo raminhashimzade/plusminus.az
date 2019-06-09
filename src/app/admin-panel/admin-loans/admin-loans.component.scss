@@ -1,0 +1,23 @@
+:host {
+    display: block;
+   }
+
+   /deep/ .cdk-column-bankId{
+       width: 50px;
+   }
+   /deep/ .cdk-column-loanName {
+       width: 200px;
+   }
+
+   /deep/ .cdk-column-editer {
+    width: 50px;
+    padding-right: 8px;
+    transition: color 100ms ease-in-out;
+    &:hover {
+        color: var(--secondary-default);
+    }
+   }
+
+   td.mat-column-editer {
+
+  }

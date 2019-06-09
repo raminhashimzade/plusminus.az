@@ -14,12 +14,14 @@
 //  @import "~bootstrap/scss/utilities/_flex.scss";
 
 @import './table.theme.scss';
+@import './app/admin-panel/admin-panel.scss';
+
 :root {
   --primary-default: #20a62c;
   --primary-dark: #535392;
   --secondary-default: #fbc531;
  // --secondary-default: #FFC400;
-  --background-default: #ffffff;
+  --background-default: #f2f2f2;
   --background-light: #ffffff;
   --background-secondary: #f3fff3;
   --text-default: rgba(0, 0, 0, 0.87);
@@ -36,6 +38,16 @@
   --loan-request-step-done-width: 37.5rem;
   --loan-request-step-done-height: 40rem;
    --banner-min-height: 300px;
+
+   --text-default: rgba(0, 0, 0, 0.87);
+   --text-dark: #000000;
+   --text-light: #9b9b9b;
+   --admin-header-height: 57px;
+   --admin-border-radius: 0.313rem;
+   --admin-padding: 0.5rem;
+   --admin-sidebar-width: 275px;
+   --admin-navigation-width: 64px;
+   --profile-edit-z-index: 10;
 
 }
 
@@ -61,7 +73,7 @@ html{
   overflow-x: hidden;
   overflow-y: auto;
   // background: var(--kg-wrapper-background);
-  background: var(--background-default);
+  background: var(--background-light);
   font-size: 100%;
 }
 body {

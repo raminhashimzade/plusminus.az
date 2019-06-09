@@ -61,6 +61,10 @@ const routes: Routes = [
   component: ErrorPageComponent
   },
   {
+    path: 'admin',
+   loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'
+  },
+  {
   path: '**',
   component: NotFoundComponent
   }

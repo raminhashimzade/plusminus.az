@@ -1,0 +1,111 @@
+<div class="admin-module">
+    <div class="admin-module__header">
+      <div class="admin-module__header__moduleName">{{ '~loans' | translate }}</div>
+      <div class="admin-module__header__actions">
+
+        <div class="admin-module__header__actions__general">
+          <button [matMenuTriggerFor]="menu">
+            <div class="admin-module__header__actions__general__icon">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div class="admin-module__header__actions__general__text">
+              {{ '~generalActions' | translate }}
+            </div>
+          </button>
+        </div>
+
+
+        <mat-menu #menu="matMenu" class="general-actions-menu">
+
+          <button mat-menu-item disabled = "true"  (click)="table.addData()"> {{ '~addData' | translate }}
+          </button>
+
+          <button mat-menu-item disabled = "true"   (click)="table.deleteData()"
+            [disabled]="!table?.isRowSelected"> {{ '~removeSelected' | translate }}
+          </button>
+
+          <button mat-menu-item disabled = "true"  (click)="table.onPrint()"> {{ '~print' | translate }}
+          </button>
+
+          <button mat-menu-item disabled = "true" (click)="table.onExport()"> {{ '~export' | translate }}
+          </button>
+
+        </mat-menu>
+
+
+      </div>
+    </div>
+
+    <div class="admin-module__content">
+      <div class="native-table-wrapper">
+          <table class="material-table" *ngIf="dataSource else table_loader" mat-table [dataSource]="dataSource" class="mat-elevation-z8" >
+
+              <!-- Position Column -->
+              <!-- <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+              </ng-container> -->
+
+              <!-- BankId Column -->
+              <ng-container matColumnDef="bankId">
+                <th mat-header-cell *matHeaderCellDef> Bank Id </th>
+                <td mat-cell *matCellDef="let element"> {{element.bankId}} </td>
+              </ng-container>
+
+              <!-- Loan Name -->
+              <ng-container matColumnDef="loanName">
+                <th mat-header-cell *matHeaderCellDef> {{'~loanName' | translate}} </th>
+                <td mat-cell *matCellDef="let element"> {{element.loanName | valueTranslate}} </td>
+              </ng-container>
+
+              <!-- Loan type -->
+              <ng-container matColumnDef="loanType">
+                <th mat-header-cell *matHeaderCellDef> {{'~loanType' | translate}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.loanType}} </td>
+              </ng-container>
+
+              <!-- Loan type -->
+              <ng-container matColumnDef="currencyCode">
+                <th mat-header-cell *matHeaderCellDef> {{'~currencyCode' | translate}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.currencyCode}} </td>
+              </ng-container>
+
+              <!-- minRate -->
+              <ng-container matColumnDef="minRate">
+                <th mat-header-cell *matHeaderCellDef> {{'~minRate' | translate}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.minRate}} </td>
+              </ng-container>
+
+              <!-- minAmount -->
+
+              <ng-container matColumnDef="minAmount">
+                <th mat-header-cell *matHeaderCellDef> {{'~minAmount' | translate}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.minAmount}} </td>
+              </ng-container>
+
+              <!-- maxAmount -->
+              <ng-container matColumnDef="maxAmount">
+                <th mat-header-cell *matHeaderCellDef> {{'~maxAmount' | translate}}</th>
+                <td mat-cell *matCellDef="let element"> {{element.maxAmount}} </td>
+              </ng-container>
+
+              <!-- maxAmount -->
+              <ng-container matColumnDef="editer" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element">
+                  <mat-icon>format_align_right</mat-icon>
+                </td>
+              </ng-container>
+
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+      </div>
+    </div>
+  </div>
+<ng-template #table_loader>
+  <div class="h-100">
+      <table-loader></table-loader>
+  </div>
+</ng-template>
