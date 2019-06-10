@@ -1,0 +1,14 @@
+:host {
+    display: block;
+    color: rgba(0,0,0,.87);
+  }
+  .ng-modal-content {
+    display: flex;
+    flex-direction: column;
+    .ng-modal-title {
+      font-size: 18px;
+    }
+    .ng-modal-actions {
+      padding-top: 12px;
+    }
+  }

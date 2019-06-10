@@ -22,7 +22,7 @@ export class AdminLoginComponent implements OnInit {
     setTimeout(() => {
       this.form.controls['login'].setValue('plusm');
       this.form.controls['password'].setValue('123');
-     // this.login();
+      this.login();
     }, 100)
    }
    login() {

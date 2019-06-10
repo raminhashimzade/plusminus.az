@@ -1,0 +1,26 @@
+<mat-form-field *ngIf="(banks) else loading" class="select-search" [appearance]="appearance">
+  <mat-label>{{placeholder}}</mat-label>
+  <mat-select [formControl]="bankCtrl" [placeholder]="placeholder"  #singleSelect [required]="required" >
+    <mat-option>
+      <ngx-mat-select-search
+      [formControl]="bankFilterCtrl"
+      [noEntriesFoundLabel]="noEntriesFoundLabel"
+      placeholderLabel="{{'search' | translate | titlecase}}"
+      ></ngx-mat-select-search>
+    </mat-option>
+  <mat-option (click)="onReset()" >{{'none' | translate | titlecase}}</mat-option>
+    <mat-option *ngFor="let bank of filteredBanks | async"  [value]="bank.value"
+    (click)="onSelect(bank)"  >
+      {{bank.label}}
+    </mat-option>
+  </mat-select>
+  <mat-error>
+    {{getErrors()}}
+  </mat-error>
+</mat-form-field>
+
+
+<ng-template #loading>
+    <select-search-loader>
+    </select-search-loader>
+  </ng-template>

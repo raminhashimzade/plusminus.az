@@ -77,8 +77,6 @@ export class SharedService {
   );
   }
   private mapCurrCodeList(data: any): SelectType[] {
-    console.log(data)
-    console.log(data.currencyCode)
     if (!data.currencyCode) {return;}
     return data.currencyCode.map(cur => {
       return {

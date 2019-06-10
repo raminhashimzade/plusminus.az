@@ -4,41 +4,43 @@ export interface LoanGroup{
     list: LoanProduct[];
   }
 
- export  interface LoanProduct {
-    lnID: number;
-    bankID: number;
-    bankName: string;
-    loanName: LoanName;
-    currencyCode: string;
-    priority: number;
-    withEmpReference: string;
-    withCollateral: string;
-    withGracePeriod: string;
-    auditorium?: any;
-    comissionCash?: string;
-    comissionLoan?: string;
-    minAge: string;
-    maxAge: string;
-    minAmount?: string;
-    maxAmount: string;
-    minPeriod: string;
-    maxPeriod: string;
-    minRate?: string;
-    maxRate?: string;
-    minEffectiveRate?: any;
-    maxEffectiveRate?: any;
-    insurance: string;
-    minSalary: string;
-    description: LoanName;
-    descriptionPd: LoanName;
-    descriptionDoc: LoanName;
-    minMonthlyPayment?: number;
-    maxMonthlyPayment?: number;
-    anunitet?: string;
+ export class LoanProduct {
+    lnID = 0;
+    bankID = 0;
+    bankName = '';
+    loanType = '';
+    loanName = new Value();
+    currencyCode = '';
+    priority = 0;
+    withEmpReference = '';
+    withCollateral = '';
+    withGracePeriod = '';
+    auditorium? = '';
+    comissionCash? = '';
+    comissionLoan? = '';
+    minAge = '';
+    maxAge = '';
+    minAmount? = '';
+    maxAmount = '';
+    minPeriod = '';
+    maxPeriod = '';
+    minRate? = '';
+    maxRate? = '';
+    minEffectiveRate? = '';
+    maxEffectiveRate? = '';
+    insurance = '';
+    minSalary = '';
+    description = new Value();
+    descriptionPD = new Value();
+    descriptionDOC = new Value();
+    minMonthlyPayment? = 0;
+    maxMonthlyPayment? = 0;
+    anunitet? = '';
+    prodStatus: number;
   }
 
-  interface LoanName {
-    az: string;
-    ru: string;
-    en: string;
+  class Value {
+    az = '';
+    ru = '';
+    en = '';
   }

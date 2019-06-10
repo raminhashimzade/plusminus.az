@@ -404,6 +404,13 @@ a.mat-stroked-button .mat-icon {
 }
 
 
+ .add-or-edit-dialog {
+  .mat-dialog-container {
+    padding: 24px 0;
+  }
+}
+
+
 @media (min-width: 768px) and (max-width: 992px){
   .container.custom{
       max-width: 960px;

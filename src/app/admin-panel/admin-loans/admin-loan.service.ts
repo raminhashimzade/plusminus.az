@@ -7,15 +7,10 @@ import { HttpClient } from '@angular/common/http';
 import { CrudCommandType } from '../models/crud-command-type.enum';
 import { LoanProduct } from 'src/app/home/loans/models/loanGroup.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AdminLoanService {
 
-  constructor(private http: HttpClient, private adminPanelService: AdminPanelService) {
-
-
-    }
+  constructor(private http: HttpClient, private adminPanelService: AdminPanelService) {}
     crudLoanProduct(commandType: CrudCommandType, loanProduct = {}): Observable<LoanProduct[]> {
       return this.http.post<DataResponse>('mybank/crud/loanProduct', {
         token: this.adminPanelService.token,

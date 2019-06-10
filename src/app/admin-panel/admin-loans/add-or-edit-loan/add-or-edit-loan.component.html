@@ -1,0 +1,324 @@
+<form #f="ngForm"  class="nt-form" *ngIf="loanProduct" >
+
+  <div class="container-fluid table-edit">
+
+      <div class="row table-edit__actions">
+          <div class="col-12 table-edit__actions__wrapper">
+
+              <button mat-raised-button (click)="dialogRef.close()" type="reset">{{'~cancel' | translate}}</button>
+
+              <button mat-raised-button color="accent"  type="submit"
+              *ngIf="loanProduct?.lnId"
+              (click)="onUpdate()"
+              [ngClass]="{'is-loading': loading}"
+              [disabled]="loading"
+              >{{'~update' | translate}}</button>
+
+              <button mat-raised-button color="accent"  type="submit"
+              *ngIf="!loanProduct?.lnId"
+              (click)="onAdd()"
+              [ngClass]="{'is-loading': loading}"
+              [disabled]="loading"
+              >{{'~add' | translate}}</button>
+
+
+          </div>
+
+        </div>
+
+
+    <div class="row table-edit__inputs">
+        <div class="col-12 col-md-6 p-0">
+
+            <select-search name="bankId" [(ngModel)]="loanProduct.bankId"
+               class="table-edit__inputs__field" appearance="legacy" [banks]="banks$ | async"
+               placeholder="{{'~bankId' | translate}}" [appearance]="'legacy'">
+           </select-search>
+
+
+           <fieldset ngModelGroup="loanName">
+
+              <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                <mat-label>{{'~loanName' | translate}} (AZ)</mat-label>
+                <input matInput placeholder="{{'~loanName' | translate}} (AZ)" required  name="az"  [(ngModel)]="loanProduct.loanName.az">
+              </mat-form-field>
+
+              <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~loanName' | translate}} (EN)</mat-label>
+                <input matInput placeholder="{{'~loanName' | translate}} (EN)" required  name="en"  [(ngModel)]="loanProduct.loanName.en">
+              </mat-form-field>
+
+              <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~loanName' | translate}} (RU)</mat-label>
+                <input matInput placeholder="{{'~loanName' | translate}} (RU)" required  name="ru"  [(ngModel)]="loanProduct.loanName.ru">
+              </mat-form-field>
+
+          </fieldset>
+
+
+          <fieldset ngModelGroup="description">
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~description' | translate}} (AZ)</mat-label>
+                  <textarea matInput
+                            ngModel name="az"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~description' | translate}} (EN) </mat-label>
+                  <textarea matInput
+                            ngModel name="en"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~description' | translate}} (RU) </mat-label>
+                  <textarea matInput
+                            ngModel name="ru"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+          </fieldset>
+
+          <fieldset ngModelGroup="descriptionPD">
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionPD' | translate}} (AZ)</mat-label>
+                  <textarea matInput
+                            ngModel name="az"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionPD' | translate}} (EN) </mat-label>
+                  <textarea matInput
+                            ngModel name="en"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionPD' | translate}} (RU) </mat-label>
+                  <textarea matInput
+                            ngModel name="ru"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+
+
+          </fieldset>
+
+          <fieldset ngModelGroup="descriptionDOC">
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionDOC' | translate}} (AZ)</mat-label>
+                  <textarea matInput
+                            ngModel name="az"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionDOC' | translate}} (EN) </mat-label>
+                  <textarea matInput
+                            ngModel name="en"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionDOC' | translate}} (RU) </mat-label>
+                  <textarea matInput
+                            ngModel name="ru"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+
+          </fieldset>
+
+
+          </div>
+
+
+          <div class="col-12 col-md-6 p-0">
+
+              <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~loanType' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~loanType' | translate}}" required  name="loanType"  [(ngModel)]="loanProduct.loanType">
+                </mat-form-field>
+
+                <select-search name="currencyCode" [(ngModel)]="loanProduct.currencyCode"
+               [required]="true"
+                 class="table-edit__inputs__field" appearance="legacy" [banks]="curCodes$ | async"
+                  placeholder="{{'~currencyCode' | translate}}" [appearance]="'legacy'">
+               </select-search>
+
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minAge' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minAge' | translate}}" type="number" name="minAge"  [(ngModel)]="loanProduct.minAge">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxAge' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxAge' | translate}}" type="number" name="maxAge"  [(ngModel)]="loanProduct.maxAge">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minAmount' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minAmount' | translate}}" required  type="number" name="minAmount"  [(ngModel)]="loanProduct.minAmount">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxAmount' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxAmount' | translate}}" required  type="number" name="maxAmount"  [(ngModel)]="loanProduct.maxAmount">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minPeriod' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minPeriod' | translate}}" required  type="number" name="minPeriod"  [(ngModel)]="loanProduct.minPeriod">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxPeriod' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxPeriod' | translate}}" required  type="number" name="maxPeriod"  [(ngModel)]="loanProduct.maxPeriod">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minEffectiveRate' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minEffectiveRate' | translate}}" type="number" name="minEffectiveRate"  [(ngModel)]="loanProduct.minEffectiveRate">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxEffectiveRate' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxEffectiveRate' | translate}}" type="number" name="maxEffectiveRate"  [(ngModel)]="loanProduct.maxEffectiveRate">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minRate' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minRate' | translate}}" type="number" name="minRate"  [(ngModel)]="loanProduct.minRate">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxRate' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxRate' | translate}}" type="number" name="maxRate"  [(ngModel)]="loanProduct.maxRate">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minSalary' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minSalary' | translate}}" type="number" name="minSalary"  [(ngModel)]="loanProduct.minSalary">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~insurance' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~insurance' | translate}}" type="number" name="insurance"  [(ngModel)]="loanProduct.insurance">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~comissionCash' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~comissionCash' | translate}}" required  type="number" name="comissionCash"  [(ngModel)]="loanProduct.comissionCash">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~comissionLoan' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~comissionLoan' | translate}}" required  type="number" name="comissionLoan"  [(ngModel)]="loanProduct.comissionLoan">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~priority' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~priority' | translate}}" type="number" required  name="priority"  [(ngModel)]="loanProduct.priority">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field">
+                    <mat-label>{{'~prodStatus'}}</mat-label>
+                    <mat-select  name="prodStatus" [(ngModel)]="loanProduct.prodStatus" required >
+                      <mat-option [value]="1"> 1 </mat-option>
+                      <mat-option [value]="-1">-1</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+               <fieldset>
+                  <mat-checkbox
+                  name="withEmpReference"
+                  required
+                  [(ngModel)]="loanProduct.withEmpReference"
+                 >
+                  {{'~withEmpReference' | translate}}
+               </mat-checkbox>
+
+               </fieldset>
+
+               <fieldset>
+                  <mat-checkbox
+                  name="withCollateral"
+                  [(ngModel)]="loanProduct.withCollateral"
+                 >
+                  {{'~withCollateral' | translate}}
+               </mat-checkbox>
+
+               </fieldset>
+
+               <fieldset>
+                  <mat-checkbox
+                  name="withGracePeriod"
+                  [(ngModel)]="loanProduct.withGracePeriod"
+                 >
+                  {{'~withGracePeriod' | translate}}
+               </mat-checkbox>
+
+               </fieldset>
+
+
+
+          </div>
+    </div>
+
+
+  </div>
+
+  <input type="hidden" name="lnId" [(ngModel)]="loanProduct.lnId">
+
+</form>

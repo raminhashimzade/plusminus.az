@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminDepositsComponent } from './admin-deposits.component';
 import { AdminDepositsRoutingModule } from './admin-deposits.routing';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedAdminModule } from '../shared/shared-admin.module';
 
 @NgModule({
   declarations: [AdminDepositsComponent],
   imports: [
     CommonModule,
     AdminDepositsRoutingModule,
-    SharedModule,
+    SharedAdminModule
   ]
 })
 export class AdminDepositsModule { }

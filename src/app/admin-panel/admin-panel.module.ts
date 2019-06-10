@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
 import { AdminNavigationComponent } from './admin-navigation/admin-navigation.component';
 import { AdminPanelGuard } from './admin-panel.guard';
+import { SharedAdminService } from './shared/shared-admin.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,6 @@ import { AdminPanelGuard } from './admin-panel.guard';
     AdminPanelRoutingModule,
     SharedModule
   ],
-  providers: [AdminPanelGuard]
+  providers: [AdminPanelGuard, SharedAdminService]
 })
 export class AdminPanelModule { }

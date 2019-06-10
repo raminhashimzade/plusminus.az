@@ -1,0 +1,45 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 41px;
+  margin-bottom: 29px;
+}
+@mixin text-loader {
+    background: linear-gradient(-90deg, #efefef 0%, #fcfcfc 50%, #efefef 100%);
+    border-radius: 4px;
+    margin-bottom: 3px;
+    background-size: 400% 400%;
+    animation: pulse 1.2s ease-in-out infinite;
+    @keyframes pulse {
+      0% {
+        background-position: 0% 0%
+      }
+      100% {
+        background-position: -135% 0%
+      }
+    }
+  }
+
+
+.loader {
+    height: 100%;
+    .loader__text {
+        height: 8px;
+        @include text-loader();
+      &:nth-child(1) {
+        width: 100px;
+      }
+      &:nth-child(2) {
+        width: 120px;
+      }
+      &:nth-child(3) {
+        width: 140px;
+      }
+      &:nth-child(4) {
+        width: 160px;
+      }
+
+    }
+
+}

@@ -1,4 +1,4 @@
 export interface SelectType {
-    value: string,
+    value: string | number,
     label: string
 }
