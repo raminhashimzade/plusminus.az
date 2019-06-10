@@ -190,5 +190,6 @@
     "~contactNumber": "Əlaqə nömrəsi",
     "~fullScreenExitMsg": "Full Screen - dən çıxmaq üçün ESC ",
     "~addSuccess": "Əlavə olundu",
-    "~updateSuccess": "Dəyişiklik olundu"
+    "~updateSuccess": "Dəyişiklik olundu",
+    "~deleteSuccess": "Silindi"
   }

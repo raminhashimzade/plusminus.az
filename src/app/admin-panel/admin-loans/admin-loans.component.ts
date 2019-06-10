@@ -6,6 +6,8 @@ import { MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { AddOrEditLoanComponent } from './add-or-edit-loan/add-or-edit-loan.component';
 import { TableDialogConfig } from '../admin-panel.utils';
 import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/confirm-dialog.component';
+import { AdminPanelService } from '../admin-panel.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'admin-loans',
@@ -17,7 +19,11 @@ export class AdminLoansComponent implements OnInit {
   dataSource: MatTableDataSource<LoanProduct>;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private adminLoanService: AdminLoanService, private dialog: MatDialog) { }
+  constructor(
+    private adminLoanService: AdminLoanService,
+    private translateService: TranslateService,
+    private dialog: MatDialog,
+     private adminService: AdminPanelService) { }
   ngOnInit() {
     this.getData();
   }
@@ -59,7 +65,11 @@ export class AdminLoansComponent implements OnInit {
       if (res) {
         this.adminLoanService.crudLoanProduct(CrudCommandType.DELETE, element)
         .subscribe(res => {
-          if (res) {this.getData(); }
+          if (res) {
+            this.adminService
+            .createNotification(`[ LOAN ] ${this.translateService.instant('~deleteSuccess')}`, 'OK', 'success');
+            this.getData();
+           }
         })
       }
     })

@@ -287,8 +287,11 @@
                   [(ngModel)]="loanProduct.withEmpReference"
                  >
                   {{'~withEmpReference' | translate}}
-               </mat-checkbox>
 
+               </mat-checkbox>
+               <div class="form-error" *ngIf="f?.touched &&  !f?.controls['withEmpReference']?.valid">
+                 {{'~required' | translate}}
+               </div>
                </fieldset>
 
                <fieldset>
