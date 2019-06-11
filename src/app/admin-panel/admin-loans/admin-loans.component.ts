@@ -1,21 +1,30 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { AdminLoanService } from './admin-loan.service';
 import { CrudCommandType } from '../models/crud-command-type.enum';
 import { LoanProduct } from 'src/app/home/loans/models/loanGroup.model';
-import { MatSort, MatTableDataSource, MatDialog } from '@angular/material';
+import { MatSort, MatTableDataSource, MatDialog, MatSelectChange } from '@angular/material';
 import { AddOrEditLoanComponent } from './add-or-edit-loan/add-or-edit-loan.component';
 import { TableDialogConfig } from '../admin-panel.utils';
 import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/confirm-dialog.component';
 import { AdminPanelService } from '../admin-panel.service';
 import { TranslateService } from '@ngx-translate/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'admin-loans',
   templateUrl: './admin-loans.component.html',
-  styleUrls: ['./admin-loans.component.scss']
+  styleUrls: ['./admin-loans.component.scss'],
+ // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminLoansComponent implements OnInit {
-  displayedColumns: string[] = ['bankId', 'loanName', 'loanType', 'currencyCode',  'minRate', 'minAmount', 'maxAmount', 'editer'];
+  allColumns: string[] = ['bankId', 'loanName', 'loanType', 'currencyCode',
+   'minRate', 'minAmount', 'maxAmount', 'comissionCash', 'comissionLoan',
+   'minAge', 'maxAge', 'minEffectiveRate', 'maxEffectiveRate', 'minPeriod',
+   'maxPeriod', 'withCollateral', 'withEmpReference', 'withGracePeriod', 'prodStatus', 'insurance', 'priority',
+ //  'description', 'desciprtionDOC', 'descriptionPD'
+   ];
+  displayedColumns: string[] = this.allColumns.slice();
+  toggleColumnsControl: FormControl = new FormControl();
   dataSource: MatTableDataSource<LoanProduct>;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -23,11 +32,26 @@ export class AdminLoansComponent implements OnInit {
     private adminLoanService: AdminLoanService,
     private translateService: TranslateService,
     private dialog: MatDialog,
-     private adminService: AdminPanelService) { }
+     private adminService: AdminPanelService,
+     private changeRef: ChangeDetectorRef
+     ) { }
   ngOnInit() {
     this.getData();
   }
+  initToggleColumnControl() {
+    this.toggleColumnsControl.setValue(this.displayedColumns);
+    this.toggleColumnsControl.valueChanges.subscribe(res => {
+      this.displayedColumns = res;
+      // this.changeRef.detectChanges();
+    })
+  }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
+  isMultiLang(column: string): boolean {
+    return column === 'loanName' || column === 'description' || column ==='descriptionPD' || column === 'descriptionDOC';
+  }
   getData() {
     this.dataSource = undefined;
     this.adminLoanService.crudLoanProduct(CrudCommandType.SELECT, {})
@@ -35,6 +59,8 @@ export class AdminLoansComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res);
       setTimeout(() => {
         this.dataSource.sort = this.sort;
+       // this.initToggleColumnControl();
+        // this.changeRef.detectChanges();
       }, 10);
     })
   }
@@ -79,5 +105,17 @@ export class AdminLoansComponent implements OnInit {
     })
 
   }
+
+  showAllColumns() {
+    this.displayedColumns = [...this.allColumns];
+  //  this.toggleColumnsControl.setValue(this.displayedColumns);
+    // this.changeRef.detectChanges();
+  }
+  hideAllColumns() {
+    this.displayedColumns = [];
+ //   this.toggleColumnsControl.setValue(this.displayedColumns);
+    // this.changeRef.detectChanges();
+  }
+
 
 }
