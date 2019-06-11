@@ -45,7 +45,11 @@ export class AdminLoansComponent implements OnInit {
       },
       ...TableDialogConfig
     });
-    ref.afterClosed().subscribe(res => res && this.getData());
+    ref.afterClosed().subscribe(res => {
+      if (res) {
+        this.getData();
+      }
+    });
   }
   onAdd() {
     const ref = this.dialog.open(AddOrEditLoanComponent, {

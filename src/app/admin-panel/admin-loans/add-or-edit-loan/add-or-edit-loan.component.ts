@@ -35,7 +35,6 @@ export class AddOrEditLoanComponent implements OnInit {
      }
 
   ngOnInit() {
-    console.log(this.data)
     this.loanProduct = this.data.item ? this.data.item : new LoanProduct();
     console.log(this.loanProduct)
   }
@@ -48,7 +47,6 @@ export class AddOrEditLoanComponent implements OnInit {
       finalize(() => this.loading = false)
     )
     .subscribe(res => {
-      console.log(res);
       if(res) {
         this.onUpdateSuccess(res);
       }
@@ -62,7 +60,6 @@ export class AddOrEditLoanComponent implements OnInit {
       finalize(() => this.loading = false)
     )
     .subscribe(res => {
-      console.log(res);
       if(res) {
         this.onAddSuccess(res);
       }
