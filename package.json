@@ -8,6 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "init": "git add . && git reset --hard HEAD && git fetch origin && git pull origin",
     "build:stats": "ng build --prod --stats-json",
     "analyze": "webpack-bundle-analyzer dist/plus-minus/stats.json"
   },
@@ -34,7 +35,6 @@
     "moment": "^2.24.0",
     "ng-animate": "^0.3.4",
     "ngx-build-plus": "^7.8.3",
-    "ngx-mat-select-search": "^1.7.5",
     "ngx-router-animations": "0.0.9",
     "ngx-swiper-wrapper": "^7.2.1",
     "npm": "^6.9.0",
