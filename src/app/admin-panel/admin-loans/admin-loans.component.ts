@@ -21,6 +21,7 @@ export class AdminLoansComponent implements OnInit {
    'minRate', 'minAmount', 'maxAmount', 'comissionCash', 'comissionLoan',
    'minAge', 'maxAge', 'minEffectiveRate', 'maxEffectiveRate', 'minPeriod',
    'maxPeriod', 'withCollateral', 'withEmpReference', 'withGracePeriod', 'prodStatus', 'insurance', 'priority',
+   'editer'
  //  'description', 'desciprtionDOC', 'descriptionPD'
    ];
   displayedColumns: string[] = this.allColumns.slice();
@@ -49,8 +50,12 @@ export class AdminLoansComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  isMultiLang(column: string): boolean {
-    return column === 'loanName' || column === 'description' || column ==='descriptionPD' || column === 'descriptionDOC';
+  isMultiLang(column: string): string {
+    if (column === 'editer') {
+      console.log('editer')
+      return 'editer';
+    }
+    return (column === 'loanName' || column === 'description' || column ==='descriptionPD' || column === 'descriptionDOC') ? 'multilang' : 'standard';
   }
   getData() {
     this.dataSource = undefined;
