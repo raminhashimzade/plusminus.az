@@ -16,10 +16,15 @@
         display: flex;
         color: #ffffff;
         .page__content__icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             border-radius: 50%;
             box-shadow: 0 0px 17px 6px rgba(0,0,0,.2);
             width: 125px;
             height: 125px;
+            color: var(--secondary-default);
+            font-size: 127px;
         }
         .page__content__text {
             display: flex;
