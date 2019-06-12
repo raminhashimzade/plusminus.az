@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { AdminLoanService } from './admin-loan.service';
 import { CrudCommandType } from '../models/crud-command-type.enum';
 import { LoanProduct } from 'src/app/home/loans/models/loanGroup.model';
-import { MatSort, MatTableDataSource, MatDialog, MatSelectChange } from '@angular/material';
+import { MatSort, MatTableDataSource, MatDialog, MatSelectChange, MatPaginator } from '@angular/material';
 import { AddOrEditLoanComponent } from './add-or-edit-loan/add-or-edit-loan.component';
 import { TableDialogConfig } from '../admin-panel.utils';
 import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/confirm-dialog.component';
@@ -17,6 +17,7 @@ import { FormControl } from '@angular/forms';
  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminLoansComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   allColumns: string[] = ['bankId', 'loanName', 'loanType', 'currencyCode',
    'minRate', 'minAmount', 'maxAmount', 'comissionCash', 'comissionLoan',
    'minAge', 'maxAge', 'minEffectiveRate', 'maxEffectiveRate', 'minPeriod',
@@ -74,7 +75,7 @@ export class AdminLoansComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res);
       setTimeout(() => {
         this.dataSource.sort = this.sort;
-
+        this.dataSource.paginator = this.paginator;
        // this.initToggleColumnControl();
         // this.changeRef.detectChanges();
       }, 10);

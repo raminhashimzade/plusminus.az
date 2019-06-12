@@ -57,7 +57,7 @@ export class BankCustomersComponent implements OnInit {
 
     ref.afterClosed$.subscribe(res => {
       //  console.log(res);
-      this.getOrderList();
+    //  this.getOrderList();
     })
 
   }
