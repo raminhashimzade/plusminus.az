@@ -1,3 +1,4 @@
+import { SharedService } from './../../../shared/shared.service';
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef } from '@angular/core';
 import { BankAdminService } from '../bank-admin.service';
 import { CustomerOrder } from '../models/customer-order.model';
@@ -22,7 +23,8 @@ export class BankCustomersComponent implements OnInit {
     private changeRef: ChangeDetectorRef,
     private popper: Popover,
     private titleService: Title,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private sharedService: SharedService
     ) {
       this.titleService.setTitle(this.translateService.instant('~forBanks'));
     }
@@ -72,7 +74,15 @@ export class BankCustomersComponent implements OnInit {
      if (res) {this.getOrderList();}
     })
   }
-
+  onCancelOrder(order: CustomerOrder) {
+    this.bankService.postLoanOrderCalled(order, null)
+    .pipe(finalize(() => this.loading = false))
+    .subscribe(res => {
+      if (res.success) {
+        this.sharedService.createNotification(this.translateService.instant('~orderCancelled'), 'OK', 'success');
+      }
+    });
+  }
   onNextRateScroll() {
     try {
       const el = document.getElementById('customers-table');

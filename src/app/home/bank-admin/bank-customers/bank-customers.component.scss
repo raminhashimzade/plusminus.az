@@ -43,10 +43,16 @@
                         text-align: center;
                     }
                     &.information {
-                        button {
-                            width: 100%;
-                            font-size: 15px;
+                        .actions {
+                            display: flex;
+                            button {
+
+                            }
                         }
+                        // button {
+                        //     width: 100%;
+                        //     font-size: 15px;
+                        // }
                     }
                 }
             }

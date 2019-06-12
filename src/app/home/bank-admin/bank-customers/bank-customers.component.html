@@ -58,18 +58,41 @@
                       <td>{{order.guarantor}}</td>
                       <td class="information">
 
-                          <div class="row-actions">
-                              <a mat-raised-button
-                              color="primary" class="w-100"
-                              (click)="onCustomerContactPopup(order, $event.target)"
-                           >{{'~contactNumber' | translate}}</a>
 
-                              <a mat-raised-button
-                              color="accent" class="w-100"
+                          <div class="actions">
+                              <a mat-icon-button
+                              color="primary"
+                              title="{{'~contactNumber' | translate}}"
+                              (click)="onCustomerContactPopup(order, $event.target)"
+                               >
+                                 <mat-icon>phone</mat-icon>
+                              </a>
+
+                              <a mat-icon-button
+                              title="{{'~called' | translate}}"
+                              [color]="order.called ? 'accent' : 'primary'"
+                              (click)="onCustomerNotePopup(order, $event.target)"
+                           >
+                              <mat-icon>phone_in_talk</mat-icon>
+                             </a>
+
+                              <a mat-icon-button
+                              [color]="'warn'"
+                              title="{{'~cancelOrder' | translate}}"
+                              (click)="onCancelOrder(order)"
+                           >
+                              <mat-icon>cancel</mat-icon>
+                             </a>
+
+                              <!-- <a mat-icon-button
+                              color="accent"
                               [matBadge]="order.called ? 1 : ''" matBadgePosition="after"
                               matBadgeColor="warn"
                               (click)="onCustomerNotePopup(order, $event.target)"
-                           >{{'~called' | translate}}</a>
+                           >
+                              <mat-icon>phone_in_talk</mat-icon>
+                             </a> -->
+
 
                           </div>
                         </td>

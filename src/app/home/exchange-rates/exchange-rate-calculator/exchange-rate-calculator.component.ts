@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 export class ExchangeRateCalculatorComponent implements OnInit {
   @ViewChild('f') form: NgForm;
   currencyCodeIn = 'USD';
-  currencyCodeOut = 'EUR';
+  currencyCodeOut = 'AZN';
   result: string;
   rates: FavorableRatePreview[];
   constructor(private homeService: HomeService) { }

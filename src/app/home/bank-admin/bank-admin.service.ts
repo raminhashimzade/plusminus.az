@@ -50,7 +50,7 @@ export class BankAdminService {
         return res && res.data;
       }))
   }
-  postLoanOrderCalled(order: CustomerOrder, note: string): Observable<OrderShowInfo> {
+  postLoanOrderCalled(order: CustomerOrder, note: string): Observable<DataResponse> {
     return this.http.post<DataResponse>('mybank/postLoanOrderCalled', {
       token: this.authService.getToken(),
       bankToken: this.token,
@@ -59,7 +59,7 @@ export class BankAdminService {
       bankNote: note
     })
       .pipe(map(res => {
-        return res && res.data;
+        return res
       }))
   }
 }
