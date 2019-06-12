@@ -46,13 +46,23 @@ export class AdminLoansComponent implements OnInit {
       // this.changeRef.detectChanges();
     })
   }
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter(column, filterValue: string) {
+    console.log(column)
+    this.dataSource.filterPredicate =
+    (data: LoanProduct, filter: string) => data[column].toString().toLowerCase().includes(filter.toLowerCase());
+    this.dataSource.filter = filterValue;
+  //  this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  applyMultiLangFilter(column, filterValue: string) {
+    this.dataSource.filterPredicate =
+    (data: LoanProduct, filter: string) => data[column]['az'].toLowerCase().includes(filter.toLowerCase());
+    this.dataSource.filter = filterValue;
+  //  this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   isMultiLang(column: string): string {
     if (column === 'editer') {
-      console.log('editer')
+  //    console.log('editer')
       return 'editer';
     }
     return (column === 'loanName' || column === 'description' || column ==='descriptionPD' || column === 'descriptionDOC') ? 'multilang' : 'standard';
@@ -64,6 +74,7 @@ export class AdminLoansComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res);
       setTimeout(() => {
         this.dataSource.sort = this.sort;
+
        // this.initToggleColumnControl();
         // this.changeRef.detectChanges();
       }, 10);
