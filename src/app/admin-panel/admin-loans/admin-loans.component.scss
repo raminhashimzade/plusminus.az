@@ -3,7 +3,9 @@
    }
 
    /deep/ .cdk-column-bankId{
-       width: 50px;
+       .td-content {
+       //    max-width: 50px;
+        }
    }
    /deep/ .cdk-column-loanName {
        width: 200px;
@@ -15,7 +17,6 @@
     transition: color 100ms ease-in-out;
     position: sticky;
     right: 0;
-   // border-left: 1px solid grey;
     &:before {
         content: '';
         position: absolute;

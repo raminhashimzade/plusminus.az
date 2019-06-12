@@ -35,6 +35,7 @@ export class BankCustomersComponent implements OnInit {
   getOrderList() {
     this.orders = undefined;
     this.loading = true;
+    this.changeRef.detectChanges();
     this.bankService.getOrderList()
     .pipe(finalize(() => {
       this.loading = false;
@@ -56,6 +57,7 @@ export class BankCustomersComponent implements OnInit {
 
     ref.afterClosed$.subscribe(res => {
       //  console.log(res);
+      this.getOrderList();
     })
 
   }
@@ -70,8 +72,8 @@ export class BankCustomersComponent implements OnInit {
       }
     });
 
-    ref.afterClosed$.subscribe(res => {
-     if (res) {this.getOrderList();}
+    ref.afterClosed$.subscribe((res: any) => {
+     if (res && res && res.data && res.data.success) {this.getOrderList();}
     })
   }
   onCancelOrder(order: CustomerOrder) {

@@ -192,6 +192,8 @@
     "~addSuccess": "Əlavə olundu",
     "~updateSuccess": "Dəyişiklik olundu",
     "~deleteSuccess": "Silindi",
+    "~orderCancelled": "Sifariş ləğv olundu",
+    "~cancelOrder": "Sifarişi ləğv et",
 
     "~bankId": "Bank id",
     "~loanType": "Loan type",

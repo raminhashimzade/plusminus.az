@@ -185,9 +185,15 @@
 
           <div class="col-12 col-md-6 p-0">
 
-              <mat-form-field class="table-edit__inputs__field" appearance="legacy">
-                  <mat-label>{{'~loanType' | translate}}</mat-label>
-                  <input matInput placeholder="{{'~loanType' | translate}}" required  name="loanType"  [(ngModel)]="loanProduct.loanType">
+
+                <mat-form-field class="table-edit__inputs__field">
+                  <mat-label>{{'~loanType'}}</mat-label>
+                  <mat-select  required  name="loanType"  [(ngModel)]="loanProduct.loanType">
+                    <mat-option value="IPOTEKA"> IPOTEKA </mat-option>
+                    <mat-option value="CONSUMER">CONSUMER</mat-option>
+                    <mat-option value="BUSINESS">BUSINESS</mat-option>
+                    <mat-option value="AUTO">AUTO</mat-option>
+                  </mat-select>
                 </mat-form-field>
 
                 <select-search name="currencyCode" [(ngModel)]="loanProduct.currencyCode"

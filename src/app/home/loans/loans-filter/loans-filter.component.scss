@@ -43,6 +43,7 @@
     background-repeat: no-repeat;
     background-color: #F6C300;
     min-height:var(--banner-min-height);
+    background-position-x: initial;
     .banner {
       display: flex;
       flex-direction: column;
@@ -54,14 +55,14 @@
             flex-direction: column;
             padding-bottom: 1.5rem;
             .banner__title__top {
-                color: #1da329;
+                color: #ffffff;
                 font-family: "Montserrat-SemiBold";
                 font-size: 2rem;
                 font-weight: 600;
                 letter-spacing: 0.0625rem;
             }
             .banner__title__bottom {
-                color: #1da329;
+                color: #ffffff;
                 letter-spacing: -0.06rem;
                 font-family: "Montserrat-Medium";
                 font-size: 1.6875rem;
