@@ -62,4 +62,16 @@ export class BankAdminService {
         return res
       }))
   }
+  postLoanOrderCancel(order: CustomerOrder): Observable<DataResponse> {
+    return this.http.post<DataResponse>('mybank/postLoanOrderCancel', {
+      token: this.authService.getToken(),
+      bankToken: this.token,
+      orderId: order.rqId,
+      bankID: this.bankId,
+      bankNote: null
+    })
+      .pipe(map(res => {
+        return res
+      }))
+  }
 }

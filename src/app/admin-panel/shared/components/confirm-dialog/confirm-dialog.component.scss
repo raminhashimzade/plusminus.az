@@ -2,13 +2,18 @@
     display: block;
     color: rgba(0,0,0,.87);
   }
-  .ng-modal-content {
+  .component {
     display: flex;
     flex-direction: column;
-    .ng-modal-title {
+    align-items: center;
+    .component__title {
       font-size: 18px;
     }
-    .ng-modal-actions {
-      padding-top: 12px;
+    .component__content {
+
+    }
+    .component__footer {
+
+      padding-top: 30px;
     }
   }

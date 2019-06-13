@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderByColumnModule } from './directives/order-by-column/order-by-column.module';
 import { DocumentDialogModule } from './components/document-dialog/document-dialog.module';
 import { PopoverModule } from '../popover/popover.module';
+import { ConfirmDialogModule } from '../admin-panel/shared/components/confirm-dialog/confirm-dialog.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PopoverModule } from '../popover/popover.module';
     DocumentDialogModule,
     FormsModule,
     ReactiveFormsModule,
-    PopoverModule
+    PopoverModule,
+    ConfirmDialogModule
   ],
   exports: [
     SharedTranslateModule,
@@ -42,7 +44,8 @@ import { PopoverModule } from '../popover/popover.module';
     DocumentDialogModule,
     FormsModule,
     ReactiveFormsModule,
-    PopoverModule
+    PopoverModule,
+    ConfirmDialogModule
   ],
   entryComponents: []
 })

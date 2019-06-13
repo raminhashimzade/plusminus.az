@@ -8,6 +8,8 @@ import { CustomerContactPopupComponent } from './customer-contact-popup/customer
 import { CustomerNotePopupComponent } from './customer-note-popup/customer-note-popup.component';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material';
+import { ConfirmDialogComponent } from 'src/app/admin-panel/shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'bank-customers',
@@ -24,7 +26,8 @@ export class BankCustomersComponent implements OnInit {
     private popper: Popover,
     private titleService: Title,
     private translateService: TranslateService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private dialog: MatDialog
     ) {
       this.titleService.setTitle(this.translateService.instant('~forBanks'));
     }
@@ -77,13 +80,22 @@ export class BankCustomersComponent implements OnInit {
     })
   }
   onCancelOrder(order: CustomerOrder) {
-    this.bankService.postLoanOrderCalled(order, null)
-    .pipe(finalize(() => this.loading = false))
-    .subscribe(res => {
-      if (res.success) {
-        this.sharedService.createNotification(this.translateService.instant('~orderCancelled'), 'OK', 'success');
+    const ref = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: `${this.translateService.instant('~confirmOrderCancel')} ?`
       }
     });
+    ref.afterClosed().subscribe(res => {
+      if (res) {
+        this.bankService.postLoanOrderCancel(order)
+        .pipe(finalize(() => this.loading = false))
+        .subscribe(res => {
+          if (res.success) {
+            this.sharedService.createNotification(this.translateService.instant('~orderCancelled'), 'OK', 'success');
+          }
+        });
+      }
+    })
   }
   onNextRateScroll() {
     try {
