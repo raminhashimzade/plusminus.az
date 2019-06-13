@@ -245,12 +245,14 @@
 
                 <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                     <mat-label>{{'~minRate' | translate}}</mat-label>
-                    <input matInput placeholder="{{'~minRate' | translate}}" type="number" name="minRate"  [(ngModel)]="loanProduct.minRate">
+                    <input matInput placeholder="{{'~minRate' | translate}}" type="number" required
+                    name="minRate"  [(ngModel)]="loanProduct.minRate">
                   </mat-form-field>
 
                 <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                     <mat-label>{{'~maxRate' | translate}}</mat-label>
-                    <input matInput placeholder="{{'~maxRate' | translate}}" type="number" name="maxRate"  [(ngModel)]="loanProduct.maxRate">
+                    <input matInput placeholder="{{'~maxRate' | translate}}" type="number" required
+                     name="maxRate"  [(ngModel)]="loanProduct.maxRate">
                 </mat-form-field>
 
                 <mat-form-field class="table-edit__inputs__field" appearance="legacy">

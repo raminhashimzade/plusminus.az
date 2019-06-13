@@ -217,5 +217,6 @@
     "~cancel": "Cancel",
     "~add": "Add",
     "~update": "Update",
-    "~generalActions": "General Actions"
+    "~generalActions": "General Actions",
+    "~confirmOrderCancel": "Sifarişi ləğv etməyə əminsiz"
   }
