@@ -194,6 +194,8 @@
     "~deleteSuccess": "Silindi",
     "~orderCancelled": "Sifariş ləğv olundu",
     "~cancelOrder": "Sifarişi ləğv et",
+    "~unsupportedBrowserTitle": "Təəssüf ki, Plus Minus proqramı bu brauzeri dəstəkləmir",
+    "~unsupportedBrowserMessage": "Üzr istəyirik, lakin Plus Minus bu brauzeri dəstəkləmir. Bu linki açmaq üçün Chrome 69, Firefox 63 və ya Safari 11 və ya daha müasir brauzerlərdən istifadə edin.",
 
     "~bankId": "Bank id",
     "~loanType": "Loan type",

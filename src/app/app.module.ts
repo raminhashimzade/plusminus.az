@@ -34,6 +34,8 @@ import { LoanComparePreviewComponent } from './home/header/compare-preview/loan-
 import { ComparePreviewComponent } from './home/header/compare-preview/compare-preview.component';
 import { ValueTranslateModule } from './shared/pipes/value-translate/value-translate.module';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
+import { UnsupportedBrowserComponent } from './unsupported-browser/unsupported-browser.component';
+import { SupportedBrowserCardComponent } from './unsupported-browser/supported-browser-card/supported-browser-card.component';
 
 
 @NgModule({
@@ -47,6 +49,8 @@ import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
     ComparePreviewComponent,
     LoanComparePreviewComponent,
     DepositComparePreviewComponent,
+    UnsupportedBrowserComponent,
+    SupportedBrowserCardComponent
   ],
   imports: [
   BrowserModule,

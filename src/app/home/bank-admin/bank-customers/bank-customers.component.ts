@@ -92,6 +92,7 @@ export class BankCustomersComponent implements OnInit {
         .subscribe(res => {
           if (res.success) {
             this.sharedService.createNotification(this.translateService.instant('~orderCancelled'), 'OK', 'success');
+            this.getOrderList();
           }
         });
       }
