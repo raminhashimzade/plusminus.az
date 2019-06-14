@@ -1,59 +1,153 @@
 <div class="admin-module">
-    <div class="admin-module__header">
-      <div class="admin-module__header__moduleName">{{ '~deposits' | translate }}</div>
-      <div class="admin-module__header__actions">
+  <div class="admin-module__header">
+    <div class="admin-module__header__moduleName">{{ '~loans' | translate }}</div>
+    <div class="admin-module__header__actions">
 
-        <div class="admin-module__header__actions__general">
-          <button [matMenuTriggerFor]="menu">
-            <div class="admin-module__header__actions__general__icon">
-              <i class="fas fa-cog"></i>
-            </div>
-            <div class="admin-module__header__actions__general__text">
-              {{ '~generalActions' | translate }}
-            </div>
+      <mat-select [multiple]="true"
+      [(ngModel)]="displayedColumns" name="columns"
+       class="admin-module__header__actions__columns">
+        <mat-select-trigger>{{'~columns' | translate}} </mat-select-trigger>
+        <div class="toggle-actions">
+          <button mat-button color="primary" (click)="showAllColumns()">
+            {{ '~showAll' | translate }}
+          </button>
+          <button mat-button color="warn" (click)="hideAllColumns()">
+            {{ '~hideAll' | translate }}
           </button>
         </div>
+        <mat-option *ngFor="let col of allColumns" [value]="col">
+          {{col}}
+        </mat-option>
+    </mat-select>
 
-
-        <mat-menu #menu="matMenu" class="general-actions-menu">
-
-          <!-- <button mat-menu-item disabled = "true"  (click)="table?.addData()"> {{ '~addData' | translate }}
-          </button>
-
-          <button mat-menu-item disabled = "true"   (click)="table?.deleteData()"
-            [disabled]="!table?.isRowSelected"> {{ '~removeSelected' | translate }}
-          </button>
-
-          <button mat-menu-item disabled = "true"  (click)="table?.onPrint()"> {{ '~print' | translate }}
-          </button>
-
-          <button mat-menu-item disabled = "true" (click)="table?.onExport()"> {{ '~export' | translate }}
-          </button> -->
-
-        </mat-menu>
-
-
+      <div class="admin-module__header__actions__general">
+        <button [matMenuTriggerFor]="menu">
+          <div class="admin-module__header__actions__general__icon">
+            <i class="fas fa-cog"></i>
+          </div>
+          <div class="admin-module__header__actions__general__text">
+            {{ '~generalActions' | translate }}
+          </div>
+        </button>
       </div>
-    </div>
 
-    <div class="admin-module__content">
-      <div class="native-table-wrapper">
-        <!-- <ngx-native-table #table [config]="config" [editTemplate]="editer" (actionClick)="onOptClick($event)">
-        </ngx-native-table> -->
-      </div>
+
+      <mat-menu #menu="matMenu" class="general-actions-menu">
+
+        <button mat-menu-item (click)="onAdd()" > {{ '~addData' | translate }}
+        </button>
+
+        <button mat-menu-item disabled = "true"
+        > {{ '~removeSelected' | translate }}
+        </button>
+
+        <button mat-menu-item disabled = "true"  > {{ '~print' | translate }}
+        </button>
+
+        <button mat-menu-item disabled = "true" > {{ '~export' | translate }}
+        </button>
+
+      </mat-menu>
+
+
     </div>
   </div>
-  <!-- <ng-template #editer let-row="row">
-    <button [matMenuTriggerFor]="menu">
-      <table-edit-button> </table-edit-button>
-    </button>
-    <mat-menu #menu="matMenu" class="table-editer-menu">
-      <button mat-menu-item *rbacAllow="['1000160', 'EDIT']" (click)="onOptClick({data: row, type: 'edit'})">
-        {{ '~edit' | translate }}
-      </button>
-      <button mat-menu-item *rbacAllow="['1000160', 'DELETE']" (click)="onOptClick({data: row, type: 'delete'})">
-        {{ '~delete' | translate }}
-      </button>
-    </mat-menu>
-  </ng-template>
-   -->
+
+  <div class="admin-module__content">
+    <div class="native-table-wrapper" *ngIf="dataSource else table_loader">
+        <table class="material-table"
+        mat-table
+        matSort
+         [dataSource]="dataSource"
+         class="mat-elevation-z8"
+         >
+
+            <ng-container *ngFor="let column of displayedColumns">
+
+                    <ng-container [matColumnDef]="column" [ngSwitch]="isMultiLang(column)" >
+
+                      <ng-container *ngSwitchCase="'standard'">
+                        <th mat-header-cell *matHeaderCellDef >
+
+                          <div class="th-content">
+                              <div mat-sort-header>{{column}}</div>
+                              <mat-form-field appearance="legacy">
+                                  <input matInput (keyup)="applyFilter(column, $event.target.value)" placeholder="Filter {{column}}">
+                              </mat-form-field>
+                          </div>
+
+                          </th>
+                          <td mat-cell *matCellDef="let element">
+                              <div class="td-content">
+                               {{element[column]}}
+                              </div>
+                          </td>
+                      </ng-container>
+
+                      <ng-container *ngSwitchCase="'multilang'">
+                          <th mat-header-cell *matHeaderCellDef >
+                              <div class="th-content">
+                                  <div mat-sort-header>{{column}}</div>
+                                  <mat-form-field appearance="legacy">
+                                      <input matInput (keyup)="applyMultiLangFilter(column, $event.target.value)" placeholder="Filter {{column}}">
+                                  </mat-form-field>
+                              </div>
+
+                          </th>
+                          <td mat-cell *matCellDef="let element">
+                            <div class="td-content">
+                                {{element[column] | valueTranslate}}
+                            </div>
+                          </td>
+                      </ng-container>
+
+                      <ng-container *ngSwitchDefault>
+                          <th mat-header-cell *matHeaderCellDef></th>
+                          <td mat-cell *matCellDef="let element" >
+
+                            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Add or Edit">
+                              <mat-icon>format_align_right</mat-icon>
+                            </button>
+
+                            <mat-menu #menu="matMenu">
+
+                              <button mat-menu-item (click)="onEdit(element)">
+                                <mat-icon>edit</mat-icon>
+                                <span>EDIT</span>
+                              </button>
+
+                              <button mat-menu-item (click)="onDelete(element)">
+                                <mat-icon>remove</mat-icon>
+                                <span>DELETE</span>
+                              </button>
+
+                            </mat-menu>
+
+                          </td>
+                        </ng-container>
+
+                     </ng-container>
+
+
+
+
+            </ng-container>
+
+
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky:true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+    </div>
+    <div class="admin-module__content__paginator">
+        <mat-paginator [pageSizeOptions]="[20, 50, 500]" showFirstLastButtons></mat-paginator>
+      </div>
+  </div>
+</div>
+<ng-template #table_loader>
+<div class="h-100">
+    <table-loader></table-loader>
+</div>
+</ng-template>

@@ -1,3 +1,46 @@
 :host {
     display: block;
    }
+
+   .td-content {
+       max-height: 48px;
+       overflow: hidden;
+   }
+   /deep/ .cdk-column-bankId{
+       .td-content {
+       //    max-width: 50px;
+        }
+   }
+   /deep/ .cdk-column-depositName{
+       width: 200px;
+   }
+
+   /deep/ .cdk-column-editer {
+    width: 50px;
+    padding-right: 8px;
+    transition: color 100ms ease-in-out;
+    position: sticky;
+    right: 0;
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        border-left: 1px solid #e0e0e0;
+        background: #ffffff;
+    }
+  //  background: #ffffff;
+    &:hover {
+        color: var(--secondary-default);
+    }
+   }
+
+   td.mat-column-editer {
+
+  }
+
+  .th-content {
+      padding-top: 10px;
+  }

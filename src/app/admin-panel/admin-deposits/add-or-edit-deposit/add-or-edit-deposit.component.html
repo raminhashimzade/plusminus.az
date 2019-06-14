@@ -1,0 +1,251 @@
+<form #f="ngForm"  class="nt-form" *ngIf="depositProduct" >
+
+  <div class="container-fluid table-edit">
+
+      <div class="row table-edit__actions">
+          <div class="col-12 table-edit__actions__wrapper">
+
+              <button mat-raised-button (click)="dialogRef.close()">{{'~cancel' | translate}}</button>
+
+              <button mat-raised-button color="accent"  type="submit"
+              *ngIf="depositProduct?.dpId"
+              (click)="onUpdate()"
+              [ngClass]="{'is-loading': loading}"
+              [disabled]="loading"
+              >{{'~update' | translate}}</button>
+
+              <button mat-raised-button color="accent"  type="submit"
+              *ngIf="!depositProduct?.dpId"
+              (click)="onAdd()"
+              [ngClass]="{'is-loading': loading}"
+              [disabled]="loading"
+              >{{'~add' | translate}}</button>
+
+
+          </div>
+
+        </div>
+
+
+    <div class="row table-edit__inputs">
+        <div class="col-12 col-md-6 p-0">
+
+            <select-search name="bankId" [(ngModel)]="depositProduct.bankId"
+               class="table-edit__inputs__field" appearance="legacy" [banks]="banks$ | async"
+               placeholder="{{'~bankId' | translate}}" [appearance]="'legacy'">
+           </select-search>
+
+
+           <fieldset ngModelGroup="depositName">
+
+              <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                <mat-label>{{'~depositName' | translate}} (AZ)</mat-label>
+                <input matInput placeholder="{{'~depositName' | translate}} (AZ)" required  name="az"  [(ngModel)]="depositProduct.depositName.az">
+              </mat-form-field>
+
+              <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~depositName' | translate}} (EN)</mat-label>
+                <input matInput placeholder="{{'~depositName' | translate}} (EN)"   name="en"  [(ngModel)]="depositProduct.depositName.en">
+              </mat-form-field>
+
+              <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~depositName' | translate}} (RU)</mat-label>
+                <input matInput placeholder="{{'~depositName' | translate}} (RU)"   name="ru"  [(ngModel)]="depositProduct.depositName.ru">
+              </mat-form-field>i
+
+          </fieldset>
+
+
+          <fieldset ngModelGroup="description">
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~description' | translate}} (AZ)</mat-label>
+                  <textarea matInput
+                            ngModel name="az"
+                            [(ngModel)]="depositProduct.description.az"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~description' | translate}} (EN) </mat-label>
+                  <textarea matInput
+                            ngModel name="en"
+                            [(ngModel)]="depositProduct.description.en"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~description' | translate}} (RU) </mat-label>
+                  <textarea matInput
+                            ngModel name="ru"
+                            [(ngModel)]="depositProduct.description.ru"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+          </fieldset>
+
+          <fieldset ngModelGroup="present">
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~present' | translate}} (AZ)</mat-label>
+                  <textarea matInput
+                            ngModel name="az"
+                            [(ngModel)]="depositProduct.present.az"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~present' | translate}} (EN) </mat-label>
+                  <textarea matInput
+                            ngModel name="en"
+                            [(ngModel)]="depositProduct.present.en"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~present' | translate}} (RU) </mat-label>
+                  <textarea matInput
+                            ngModel name="ru"
+                            [(ngModel)]="depositProduct.present.ru"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+
+          </fieldset>
+
+          </div>
+
+
+          <div class="col-12 col-md-6 p-0">
+
+
+                <select-search name="currencyCode" [(ngModel)]="depositProduct.currencyCode"
+               [required]="true"
+                 class="table-edit__inputs__field" appearance="legacy" [banks]="curCodes$ | async"
+                  placeholder="{{'~currencyCode' | translate}}" [appearance]="'legacy'">
+               </select-search>
+
+               <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                <mat-label>{{'~liqType' | translate}}</mat-label>
+                <input matInput placeholder="{{'~liqType' | translate}}" required  name="liqType"  [(ngModel)]="depositProduct.liqType">
+              </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minAmount' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minAmount' | translate}}" required  type="number" name="minAmount"  [(ngModel)]="depositProduct.minAmount">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxAmount' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxAmount' | translate}}" required  type="number" name="maxAmount"  [(ngModel)]="depositProduct.maxAmount">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minPeriod' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minPeriod' | translate}}" required  type="number" name="minPeriod"  [(ngModel)]="depositProduct.minPeriod">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxPeriod' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxPeriod' | translate}}" required  type="number" name="maxPeriod"  [(ngModel)]="depositProduct.maxPeriod">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minRate' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minRate' | translate}}" type="number" required
+                    name="minRate"  [(ngModel)]="depositProduct.minRate">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxRate' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxRate' | translate}}" type="number" required
+                     name="maxRate"  [(ngModel)]="depositProduct.maxRate">
+                </mat-form-field>
+
+
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~priority' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~priority' | translate}}" type="number" required  name="priority"  [(ngModel)]="depositProduct.priority">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field">
+                    <mat-label>{{'~prodStatus'}}</mat-label>
+                    <mat-select  name="prodStatus" [(ngModel)]="depositProduct.prodStatus" required >
+                      <mat-option [value]="1"> 1 </mat-option>
+                      <mat-option [value]="-1">-1</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+               <fieldset>
+                  <mat-checkbox
+                  name="withAutoProlongation"
+                  [(ngModel)]="depositProduct.withAutoProlongation"
+                 >
+                  {{'~withAutoProlongation' | translate}}
+
+               </mat-checkbox>
+
+               </fieldset>
+
+               <fieldset>
+                  <mat-checkbox
+                  name="withCapitalisation"
+                  [(ngModel)]="depositProduct.withCapitalisation"
+                 >
+                  {{'~withCapitalisation' | translate}}
+               </mat-checkbox>
+
+               </fieldset>
+
+               <fieldset>
+                  <mat-checkbox
+                  name="withRefill"
+                  [(ngModel)]="depositProduct.withRefill"
+                 >
+                  {{'~withRefill' | translate}}
+               </mat-checkbox>
+
+               </fieldset>
+
+
+
+          </div>
+    </div>
+
+
+  </div>
+
+  <input type="hidden" name="lnId" [(ngModel)]="depositProduct.lnId">
+
+</form>

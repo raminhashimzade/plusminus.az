@@ -5,32 +5,37 @@ export interface DepositGroup extends Array<any> {
     list: DepositProduct[];
   }
 
-  export interface DepositProduct {
-    dpID: number;
-    bankID: number;
-    bankName: string;
-    depositName: DepositName;
-    currencyCode: string;
-    priority: number;
-    minAmount: string;
+  export class  DepositProduct {
+    dpID = 0;
+    dpId = 0;
+    bankID? = 0;
+    bankId? = '';
+    bankName = '';
+    depositName = new Value();
+    currencyCode = '';
+    priority = 0;
+    minAmount = '';
     maxAmount?: any;
-    minRate: string;
-    maxRate: string;
-    minPeriod: string;
-    maxPeriod: string;
-    liqType: string;
-    withCapitalisation: string;
-    withWithdraw: string;
-    withRefill: string;
-    withAutoProloing: string;
-    description: DepositName;
-    descriptionPresent: DepositName;
-    website: string;
-    income: number;
+    minRate = '';
+    maxRate = '';
+    minPeriod = '';
+    maxPeriod = '';
+    liqType = '';
+    withCapitalisation = '';
+    withWithdraw = '';
+    withRefill = '';
+    withAutoProloing = '';
+    description = new Value();
+    descriptionPresent = new Value();
+    present? = new Value();
+    website = '';
+    income = 0;
+    withAutoProlongation = '';
+    prodStatus? = 0
   }
 
-  interface DepositName {
-    az: string;
-    ru: string;
-    en: string;
+  class  Value {
+    az = '';
+    ru = '';
+    en = '';
   }
