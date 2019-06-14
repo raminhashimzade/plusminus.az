@@ -20,8 +20,13 @@ export class AppComponent {
   try {
     switch (browser && browser.name) {
       case 'chrome':
+      case 'chromium-webview':
       case 'firefox':
+      case 'ios':
+      case 'ios-webview':
+      case 'searchbot':
       case 'edge':
+      case 'edge-chromium':
       case 'opera':
       case 'safari':
       case 'yandexbrowser':
