@@ -1,4 +1,7 @@
 <div class="container">
+
+
+
     <div class="row">
       <div class="col-12 col-xl-12">
         <div class="component">
@@ -102,13 +105,43 @@
                   </tbody>
                 </table>
 
+
+
             </div>
         </div>
+        <div class="card">
+            <div class="card__header">{{'~statistics' | translate}}</div>
+            <div class="card__content">
+
+                <div class="card__content__row">
+                    <p>{{'~orders' | translate}}</p>
+                    <b> - 123</b>
+                </div>
+
+                <div class="card__content__row">
+                    <p>{{'~called' | translate}}</p>
+                    <b> - 43</b>
+                </div>
+
+                <div class="card__content__row">
+                    <p>{{'~loanCompleted' | translate}}</p>
+                    <b> - 22</b>
+                </div>
+
+                <div class="card__content__row">
+                    <p>{{'~cancelled' | translate}}</p>
+                    <b> - 56</b>
+                </div>
+
+            </div>
+          </div>
 
       </div>
     </div>
 
   </div>
+
+
 
   <ng-template #table_loader>
     <table-loader></table-loader>

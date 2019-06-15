@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   constructor(private translateService: TranslateService, private router: Router) {
     this.setDefaultLang();
-    this.detectBrowser();
+  //  this.detectBrowser();
   }
   detectBrowser() {
     const browser = detect();
