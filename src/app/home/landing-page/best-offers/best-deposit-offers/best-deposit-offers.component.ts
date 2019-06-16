@@ -1,65 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { MockDepositOffers } from './mock-deposit-offfers';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
-declare var Swiper;
 
 @Component({
   selector: 'best-deposit-offers',
   templateUrl: './best-deposit-offers.component.html',
   styleUrls: ['./best-deposit-offers.component.scss']
 })
-export class BestDepositOffersComponent implements OnInit {
+export class BestDepositOffersComponent {
   offers = MockDepositOffers;
   swiper: any;
   public config: SwiperConfigInterface = {
+    a11y: true,
+    direction: 'horizontal',
     slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    },
-    speed: 800,
-    spaceBetween: 10,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-next'
-    },
-    // breakpoints: {
-    //   1700: {
-    //     slidesPerView: 3,
-    //     slidesPerGroup: 3
-    //   },
-    //   1199: {
-    //     slidesPerView: 3,
-    //     slidesPerGroup: 3
-    //   },
-    //   992: {
-    //     slidesPerView: 2,
-    //     slidesPerGroup: 2
-    //   },
-    //  768: {
-    //     slidesPerView: 1,
-    //     slidesPerGroup: 1
-    //   },
-    //   576: {
-    //     slidesPerView: 1,
-    //     slidesPerGroup: 1
-    //   }
-    // }
+    keyboard: true,
+    mousewheel: false,
+    scrollbar: false,
+    navigation: false,
+    pagination: { el: '.swiper-pagination', clickable: true }
   };
-  constructor() {}
-
-  ngOnInit() {
-    this.initSwiper();
-  }
-  ngOnDestroy() {
-   this.swiper &&  this.swiper.destroy(true, true)
- // this.swiper && this.swiper.destroy();
-  }
-  initSwiper() {
-  //  this.swiper && this.swiper.destroy();
-    setTimeout(() => {
-      this.swiper = new Swiper('#swiper-deposits', this.config);
-    }, 0);
-  }
 
 }

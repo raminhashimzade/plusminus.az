@@ -8,34 +8,23 @@ declare var Swiper;
   styleUrls: ['./best-credit-offers.component.scss']
 })
 export class BestCreditOffersComponent implements OnInit, OnDestroy {
-  creidtOffers = MockCreditOffers;
+  offers = MockCreditOffers;
   swiper: any;
   public config: SwiperConfigInterface = {
+    a11y: true,
+    direction: 'horizontal',
     slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true
-    },
-    speed: 800,
-    spaceBetween: 10,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-next'
-    },
-
+    keyboard: true,
+    mousewheel: false,
+    scrollbar: false,
+    navigation: false,
+    pagination: { el: '.swiper-pagination', clickable: true }
   };
   constructor() {}
 
   ngOnInit() {
-    this.initSwiper();
   }
   ngOnDestroy() {
-     this.swiper && this.swiper.destroy(true, true);
   }
-  initSwiper() {
- //   this.swiper && this.swiper.destroy();
-    setTimeout(() => {
-      this.swiper = new Swiper('#swiper-credits', this.config);
-    }, 0);
-  }
+
 }

@@ -6,10 +6,10 @@
     min-height: 280px;
     overflow: hidden;
 }
-/deep/ .swiper-slide {
- // width: 340px!important;
-}
 
+  .swiper-slide {
+    width: 340px
+   }
 
 @media (max-width: 320px) {
   .swiper-slide {
