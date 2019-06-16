@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
  @import './material.theme.scss';
- @import '~swiper/dist/css/swiper.min.css';
 
 //  @import "~bootstrap/scss/_functions.scss";
 //  @import "~bootstrap/scss/_variables.scss";
@@ -320,6 +319,7 @@ button.is-loading {
 }
 
 .swiper-container{
+  margin: 0;
   .swiper-pagination {
     // bottom: -4px!important;
     .swiper-pagination-bullet {

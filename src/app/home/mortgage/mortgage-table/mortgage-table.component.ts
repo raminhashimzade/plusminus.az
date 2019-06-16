@@ -75,7 +75,7 @@ export class MortgageTableComponent implements OnInit {
           loanCurrency: res['loanCurrency'] ||  '',
           loanPeriod: res['loanPeriod'] || '',
           withEmpReference: res['withEmpReference'] || true,
-          withCollateral: res['withCollateral'] || false,
+          withCollateral: res['withCollateral'] || true,
           withGracePeriod: res['withGracePeriod'] || false,
           comissionCash: res['comissionCash'] || false,
           comissionLoan: res['comissionLoan'] || false,

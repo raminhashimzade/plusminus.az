@@ -11,7 +11,11 @@ import { OrderByColumnModule } from './directives/order-by-column/order-by-colum
 import { DocumentDialogModule } from './components/document-dialog/document-dialog.module';
 import { PopoverModule } from '../popover/popover.module';
 import { ConfirmDialogModule } from '../admin-panel/shared/components/confirm-dialog/confirm-dialog.module';
-
+import { SWIPER_CONFIG, SwiperConfigInterface, SwiperModule } from 'ngx-swiper-wrapper';
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 @NgModule({
   declarations: [
   ],
@@ -29,7 +33,8 @@ import { ConfirmDialogModule } from '../admin-panel/shared/components/confirm-di
     FormsModule,
     ReactiveFormsModule,
     PopoverModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    SwiperModule
   ],
   exports: [
     SharedTranslateModule,
@@ -45,8 +50,15 @@ import { ConfirmDialogModule } from '../admin-panel/shared/components/confirm-di
     FormsModule,
     ReactiveFormsModule,
     PopoverModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    SwiperModule
   ],
-  entryComponents: []
+  entryComponents: [],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
+  ]
 })
 export class SharedModule { }

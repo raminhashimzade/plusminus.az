@@ -205,7 +205,9 @@
      "~cancelMyLoanOrder": "Imtina edirəm",
     "~liqType": "Faizlərin Ödənməsi",
     "~documentDoc": "Tələb olunan sənədlər",
-
+    "~depositDuration": "Depozit müddəti",
+    "~mortgageBannerMessage": "İPOTEKA ÜZRƏ FAİZLƏRİ BURDAN MÜQAYİSƏ ET",
+    "~goToPage": "Səhifəyə keçid",
 
     "~bankId": "Bank id",
     "~loanType": "Loan type",

@@ -120,13 +120,13 @@ export class LoansFilterComponent implements OnInit {
       position: isMobileSize() && {top: '10px'}
     });
   }
-  setInitialCheckboxesToFalse() {
-    Object.keys(this.form.controls).forEach(controlKey => {
-      if (!this.form.controls[controlKey].value) {
-        this.form.controls[controlKey].setValue(false);
-      }
-    });
-  }
+  // setInitialCheckboxesToFalse() {
+  //   Object.keys(this.form.controls).forEach(controlKey => {
+  //     if (!this.form.controls[controlKey].value) {
+  //       this.form.controls[controlKey].setValue(false);
+  //     }
+  //   });
+  // }
 
 
 }

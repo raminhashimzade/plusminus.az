@@ -17,7 +17,7 @@
               <div class="card__header__bank">
 
                 <div class="card__header__bank__img">
-                  <img src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.lnID">
+                  <img src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.dpID">
                 </div>
 
                 <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
@@ -75,9 +75,10 @@
                 [queryParams]="{lnID: product.lnID}"
                 >{{'~detailed' | translate}}</a>
 
-                <a mat-raised-button color="accent" [id]="product?.lnID"
+                <a mat-raised-button color="accent" [id]="product?.dpID"
                 fly-to-cart
-                 [disabled]="(canAddProductToCompare(product?.lnID) | async)"
+
+                 [disabled]="(canAddProductToCompare(product?.dpID) | async)"
                   (click)="onAddProductToCompare(product)">{{'~addToCart' | translate}}</a>
 
             </div>

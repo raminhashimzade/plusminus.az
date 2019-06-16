@@ -1,4 +1,4 @@
-<div class="swiper-container" [swiper]="config" [(index)]="index">
+<div class="swiper-container" [swiper]="config" >
     <div class="swiper-wrapper credits">
       <div class="swiper-slide" *ngFor="let offer of offers;let i=index;let first=first">
         <credit-card-offer-card [offer]="offer"> </credit-card-offer-card>

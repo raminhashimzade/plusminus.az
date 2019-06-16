@@ -27,7 +27,6 @@ export class MainBannerComponent implements OnInit {
     scrollbar: false,
     navigation: true,
     pagination: { el: '.swiper-pagination', clickable: true }
-
   };
   constructor() {}
 

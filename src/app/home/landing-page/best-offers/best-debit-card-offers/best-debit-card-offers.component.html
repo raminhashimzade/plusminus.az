@@ -1,10 +1,11 @@
-<div  class="swiper-container" style="width: 100%" #swiper >
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" *ngFor="let offer of offers;let i=index;let first=first" >
-        <debit-card-offer-card  [offer]="offer"> </debit-card-offer-card>
-       </div>
+
+  <div class="swiper-container" [swiper]="config" >
+      <div class="swiper-wrapper credits">
+          <div class="swiper-slide" *ngFor="let offer of offers;let i=index;let first=first" >
+              <debit-card-offer-card  [offer]="offer"> </debit-card-offer-card>
+             </div>
+          </div>
+
+      <div class="swiper-pagination"></div>
+
     </div>
-  <div class="swiper-pagination" ></div>
-  </div>
-
-

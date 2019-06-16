@@ -7,6 +7,7 @@ import { isMobileSize } from 'src/app/app.utils';
 import { MatDialog } from '@angular/material';
 import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
 import { TranslateService } from '@ngx-translate/core';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 declare var Swiper;
 @Component({
   selector: 'deposits-compare',
@@ -23,6 +24,27 @@ export class DepositsCompareComponent implements OnInit {
 /** Mobile only */
   swiper: any;
   isMobile: boolean; // whether it is mobile mode
+ public config: SwiperConfigInterface = {
+    a11y: true,
+    direction: 'horizontal',
+    slidesPerView: 1,
+    keyboard: true,
+    mousewheel: false,
+    scrollbar: false,
+    navigation: true,
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+     slideShadows : true,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'progressbar',
+      clickable: true,
+    },
+  };
   @HostListener('window:resize', ['$event']) resize() { this.buildView()}
 
   constructor(private depositService: DepositService,
@@ -104,53 +126,11 @@ export class DepositsCompareComponent implements OnInit {
        this.itemsPerTable= 3;
      }
   }
-  initSwiper() {
-    const config = this.getSwiperConfig();
-    setTimeout(() => {
-      this.swiper && this.swiper.destroy();
-      console.log('sw')
-        this.swiper = new Swiper('.swiper-container', config);
-    }, 0);
-  }
-  getSwiperConfig() {
-    return {
-     // autoHeight: true,
-      slidesPerView: 'auto',
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'progressbar',
-          clickable: true,
-        },
-     //  speed: 600,
-        spaceBetween: 10,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-next',
-        },
-    //    effect: 'cube',
-        coverflowEffect: {
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-         slideShadows : true,
-        },
-        cubeEffect: {
-          shadow: false,
-          slideShadows: true,
-          shadowOffset: 20,
-          shadowScale: 0.94,
-        },
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: true,
-        },
-      };
-  }
+
   buildView() {
     this.isMobile = isMobileSize();
     if (this.isMobile) {
-      this.initSwiper();
+    //  this.initSwiper();
     }
       this.setVisibleProducts();
   }

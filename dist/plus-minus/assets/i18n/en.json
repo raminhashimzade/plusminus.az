@@ -25,6 +25,7 @@
   "~selectCredits": "Select Credits",
   "~selectCreditsShortInfo": "Заполните одну заявку для всех банков и выберите подходящее предложение",
   "~detailed": "More",
+  "~from": "from",
   "~upTo": "up to",
   "~upToDuration": "up to duration",
   "~banks": "Banks",
