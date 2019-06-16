@@ -6,14 +6,14 @@ export interface DepositGroup extends Array<any> {
   }
 
   export class  DepositProduct {
-    dpID = 0;
-    dpId = 0;
-    bankID? = 0;
+    dpID = null;
+    dpId = null;
+    bankID? = null;
     bankId? = '';
     bankName = '';
     depositName = new Value();
     currencyCode = '';
-    priority = 0;
+    priority = null;
     minAmount = '';
     maxAmount?: any;
     minRate = '';
@@ -29,9 +29,9 @@ export interface DepositGroup extends Array<any> {
     descriptionPresent = new Value();
     present? = new Value();
     website = '';
-    income = 0;
+    income = null;
     withAutoProlongation = '';
-    prodStatus? = 0
+    prodStatus? = null
   }
 
   class  Value {

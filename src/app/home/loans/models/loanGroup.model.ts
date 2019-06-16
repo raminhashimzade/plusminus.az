@@ -5,13 +5,13 @@ export interface LoanGroup{
   }
 
  export class LoanProduct {
-    lnID = 0;
-    bankID = 0;
+    lnID = null;
+    bankID = null;
     bankName = '';
     loanType = '';
     loanName = new Value();
     currencyCode = '';
-    priority = 0;
+    priority = null;
     withEmpReference = '';
     withCollateral = '';
     withGracePeriod = '';
@@ -33,8 +33,8 @@ export interface LoanGroup{
     description = new Value();
     descriptionPD = new Value();
     descriptionDOC = new Value();
-    minMonthlyPayment? = 0;
-    maxMonthlyPayment? = 0;
+    minMonthlyPayment? = null;
+    maxMonthlyPayment? = null;
     anunitet? = '';
     prodStatus: number;
   }
