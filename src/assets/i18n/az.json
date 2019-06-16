@@ -205,6 +205,8 @@
      "~cancelMyLoanOrder": "Imtina edirəm",
     "~liqType": "Faizlərin Ödənməsi",
     "~documentDoc": "Tələb olunan sənədlər",
+    "~depositDuration": "Depozit müddəti",
+
     "~bankId": "Bank id",
     "~loanType": "Loan type",
     "~minAge": "Min age",

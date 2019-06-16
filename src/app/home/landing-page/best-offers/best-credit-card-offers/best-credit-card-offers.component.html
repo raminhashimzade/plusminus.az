@@ -1,0 +1,10 @@
+<div  class="swiper-container" style="width: 100%" #swiper >
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let offer of creidtOffers;let i=index;let first=first" >
+        <credit-card-offer-card  [offer]="offer"> </credit-card-offer-card>
+       </div>
+    </div>
+  <div class="swiper-pagination" ></div>
+  </div>
+
+

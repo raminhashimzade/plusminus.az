@@ -6,6 +6,13 @@
     min-height: 280px;
     overflow: hidden;
 }
-.swiper-slide {
-  // width: 20.9375rem!important;
+/deep/ .swiper-slide {
+ width: 340px!important;
+}
+
+
+@media (max-width: 320px) {
+  .swiper-slide {
+    width: 290px;
+   }
 }

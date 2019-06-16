@@ -1,14 +1,14 @@
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
-import { MockCreditOffers } from './mock-credit-offer';
+import { Component, OnInit } from '@angular/core';
+import { MockDebitCardOffer } from './mock-debit-card.offer';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 declare var Swiper;
 @Component({
-  selector: 'best-credit-offers',
-  templateUrl: './best-credit-offers.component.html',
-  styleUrls: ['./best-credit-offers.component.scss']
+  selector: 'best-debit-card-offers',
+  templateUrl: './best-debit-card-offers.component.html',
+  styleUrls: ['./best-debit-card-offers.component.scss']
 })
-export class BestCreditOffersComponent implements OnInit, OnDestroy {
-  creidtOffers = MockCreditOffers;
+export class BestDebitCardOffersComponent implements OnInit {
+  creidtOffers = MockDebitCardOffer;
   swiper: any;
   public config: SwiperConfigInterface = {
     slidesPerView: 'auto',
@@ -30,12 +30,13 @@ export class BestCreditOffersComponent implements OnInit, OnDestroy {
     this.initSwiper();
   }
   ngOnDestroy() {
-     this.swiper && this.swiper.destroy(true, true);
+   this.swiper && this.swiper.destroy(true, true);
   }
   initSwiper() {
  //   this.swiper && this.swiper.destroy();
     setTimeout(() => {
-      this.swiper = new Swiper('#swiper-credits', this.config);
+      this.swiper = new Swiper('.swiper-container', this.config);
     }, 0);
   }
+
 }

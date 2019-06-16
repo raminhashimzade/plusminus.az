@@ -1,3 +1,10 @@
-<best-deposit-offer [type]="'azer-turk-bank'"> </best-deposit-offer>
-<!-- <best-deposit-offer [type]="'amrah-bank'"> </best-deposit-offer>
-<best-deposit-offer [type]="'express-bank'"> </best-deposit-offer> -->
+<div  class="swiper-container" id="swiper-deposits" style="width: 100%" #swiper >
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" *ngFor="let offer of offers;let i=index;let first=first" >
+            <best-deposit-offer  [offer]="offer"> </best-deposit-offer>
+           </div>
+        </div>
+      <div class="swiper-pagination"></div>
+      </div>
+
+

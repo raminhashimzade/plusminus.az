@@ -8,7 +8,7 @@ import { takeUntil, tap } from 'rxjs/operators';
 })
 export class BestOffersComponent implements OnInit {
   tabsCount = 5;
-  selectedTabIndex = 1;
+  selectedTabIndex = 0;
   _onDestroy$ = new Subject<void>();
   constructor() { }
 

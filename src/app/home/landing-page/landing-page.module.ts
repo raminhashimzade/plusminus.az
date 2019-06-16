@@ -22,6 +22,10 @@ import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { FavorableRatesPreviewTableModule } from './favorable-rates-preview/favorable-rates-preview-table/favorable-rates-preview-table.module';
+import { BestCreditCardOffersComponent } from './best-offers/best-credit-card-offers/best-credit-card-offers.component';
+import { CreditCardOfferCardComponent } from './best-offers/best-credit-card-offers/credit-card-offer-card/credit-card-offer-card.component';
+import { BestDebitCardOffersComponent } from './best-offers/best-debit-card-offers/best-debit-card-offers.component';
+import { DebitCardOfferCardComponent } from './best-offers/best-debit-card-offers/debit-card-offer-card/debit-card-offer-card.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -43,6 +47,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     BankPartnersComponent,
     BankPartnerCardComponent,
     FavorableRatesPreviewComponent,
+    BestCreditCardOffersComponent,
+    CreditCardOfferCardComponent,
+    BestDebitCardOffersComponent,
+    DebitCardOfferCardComponent,
   ],
   imports: [
     CommonModule,

@@ -7,5 +7,12 @@
     overflow: hidden;
 }
 .swiper-slide {
-   width: 290px;
+ width: 340px;
+}
+
+
+@media (max-width: 320px) {
+  .swiper-slide {
+    width: 290px;
+   }
 }
