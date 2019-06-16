@@ -123,9 +123,12 @@ export class LoansTableComponent implements OnInit, OnDestroy {
     this.changeRef.detectChanges();
   }
   openDocumentDialog(documentData) {
-    const data = documentData[this.translateService.getDefaultLang()]
+    const text= documentData[this.translateService.getDefaultLang()]
     this.dialog.open(DocumentDialogComponent, {
-      data: data,
+      data: {
+        title: this.translateService.instant('~documentDoc'),
+        text: text
+      },
       width: '300px',
       maxHeight: '90vh'
     })

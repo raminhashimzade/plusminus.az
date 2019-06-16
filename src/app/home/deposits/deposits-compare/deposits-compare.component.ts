@@ -155,10 +155,13 @@ export class DepositsCompareComponent implements OnInit {
       this.setVisibleProducts();
   }
 
-  openDocumentDialog(documentData) {
-    const data = documentData[this.translateService.getDefaultLang()]
+  openDocumentDialog(documentData, type: string) {
+    const text= documentData[this.translateService.getDefaultLang()]
     this.dialog.open(DocumentDialogComponent, {
-      data: data,
+      data: {
+        title: this.translateService.instant(type),
+        text: text
+      },
       width: '300px',
       maxHeight: '90vh'
     })

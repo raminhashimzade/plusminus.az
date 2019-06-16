@@ -124,7 +124,8 @@
      "~sortByRate": "Faiz üzrə",
      "~sortByMinAmount": "Minimum məbləğ üzrə",
      "~productName": "Məhsul adı",
-     "~description": "təsvir",
+     "~description": "Təsvir",
+     "~descriptionPresent": "Hədiyyə",
      "~website": "Websayt",
      "~product": "Məhsul",
      "~mortgage": "Ipoteka",
@@ -199,6 +200,12 @@
      "~cancelled": "Imtina olundu",
      "~loanCompleted": "Kredit verildi",
      "~statistics": "Statistika",
+    "~yes": "Bəli",
+    "~no": "Xeyir",
+     "~cancelMyLoanOrder": "Imtina edirəm",
+    "~liqType": "Faizlərin Ödənməsi",
+    "~documentDoc": "Tələb olunan sənədlər",
+
 
     "~bankId": "Bank id",
     "~loanType": "Loan type",
@@ -223,5 +230,6 @@
     "~add": "Add",
     "~update": "Update",
     "~generalActions": "General Actions",
-    "~confirmOrderCancel": "Sifarişi ləğv etməyə əminsiz"
+    "~confirmOrderCancel": "Sifarişi ləğv etməyə əminsiz",
+    "~bankName": "Bank adı"
   }

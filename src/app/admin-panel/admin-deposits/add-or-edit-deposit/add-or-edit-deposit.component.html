@@ -35,6 +35,11 @@
                placeholder="{{'~bankId' | translate}}" [appearance]="'legacy'">
            </select-search>
 
+           <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+            <mat-label>{{'~bankName' | translate}}</mat-label>
+            <input matInput disabled placeholder="{{'~bankName' | translate}}" required  name="bankName"  [(ngModel)]="depositProduct.bankName">
+          </mat-form-field>
+
 
            <fieldset ngModelGroup="depositName">
 

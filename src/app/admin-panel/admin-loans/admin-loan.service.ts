@@ -13,7 +13,7 @@ export class AdminLoanService {
   constructor(private http: HttpClient, private adminPanelService: AdminPanelService) {}
     crudLoanProduct(commandType: CrudCommandType, loanProduct = {}): Observable<LoanProduct[]> {
       return this.http.post<DataResponse>('mybank/crud/loanProduct', {
-        token: this.adminPanelService.token,
+        adminToken: this.adminPanelService.token,
         commandType: commandType,
         ...loanProduct,
     }).pipe(
