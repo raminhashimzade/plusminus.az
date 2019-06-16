@@ -35,6 +35,10 @@ export class BestCreditOffersComponent implements OnInit, OnDestroy {
         slidesPerView: 2,
         slidesPerGroup: 2
       },
+     768: {
+        slidesPerView: 1,
+        slidesPerGroup: 1
+      },
       576: {
         slidesPerView: 1,
         slidesPerGroup: 1

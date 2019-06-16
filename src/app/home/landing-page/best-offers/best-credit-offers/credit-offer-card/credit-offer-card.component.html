@@ -1,22 +1,58 @@
-<div class="offer-card">
-  <div class="offer-card__header">
-      <div class="offer-card__header__title">
-        <div class="offer-card__header__title__main">{{offer.bankName}}</div>
-        <div class="offer-card__header__title__secondary">{{'~offer' | translate}}</div>
+<div class="card">
+  <div class="card__header">
+      <div class="card__header__title">
+          <div class="card__header__title__logo">
+              <img src="./assets/icons/banks/{{offer.iconPath}}.svg">
+            </div>
+        <div class="card__header__title__secondary"> «{{'~offer' | translate | titlecase}}»</div>
       </div>
-      <div class="offer-card__header__logo">
-        <img src="./assets/icons/{{offer.iconPath}}.svg">
+      <div class="card__header__logo">
+       <img src="./assets/icons/bank.svg">
       </div>
   </div>
-  <div class="offer-card__content">
+  <div class="card__content">
       <div class="credit-percent">
-        <div class="credit-percent__title">{{offer.creditPercent}}%</div>
-        <div class="credit-percent__subtitle"> {{'~annual' | translate}}</div>
+        <div class="credit-percent__title">
+          <ng-container [ngSwitch]="lang">
+              <p *ngSwitchCase="'az'">
+                  {{offer.creditPercent}}<span>%-dən</span>
+              </p>
+              <p *ngSwitchDefault>
+               <span>{{'~from' | translate}}</span>{{offer.creditPercent}}%
+              </p>
+            </ng-container>
+        </div>
+        <div class="credit-percent__subtitle">{{'~annual' | translate}} </div>
       </div>
       <div class="credit-count">
-        <div class="credit-count__title"> <span>{{'~amount' | translate}}: </span> {{offer.creditAmount}} <span class="currency">AZN</span> </div>
-        <div class="credit-count__subtitle"><span>{{'~duration' | translate}}:</span> {{offer.creditDuration}}</div>
+        <div class="credit-count__title">
+
+            <ng-container [ngSwitch]="lang">
+                <p *ngSwitchCase="'az'">
+                    {{offer.creditAmount}}  <span class="currency">AZN</span> <span>-ə qədər</span>
+                </p>
+                <p *ngSwitchDefault>
+                 <span>{{'~uptTo' | translate}}</span>{{offer.creditAmount}}%  <span class="currency">AZN</span>
+                </p>
+              </ng-container>
+
+        </div>
+        <div class="credit-count__subtitle">
+
+           <ng-container [ngSwitch]="lang">
+              <p *ngSwitchCase="'az'">
+                  {{offer.creditDuration}}<span>-ə qədər</span>
+              </p>
+              <p *ngSwitchDefault>
+               <span>{{'~uptTo' | translate}}</span>{{offer.creditDuration}}%
+              </p>
+            </ng-container>
+
+          </div>
       </div>
   </div>
-  <div class="offer-card__navigate"><i class="fas fa-chevron-right"></i></div>
+  <div class="card__footer">
+    <button mat-stroked-button color="primary"> {{'~detailed' | translate}}</button>
+  </div>
+  <!-- <div class="card__navigate"><i class="fas fa-chevron-right"></i></div> -->
 </div>

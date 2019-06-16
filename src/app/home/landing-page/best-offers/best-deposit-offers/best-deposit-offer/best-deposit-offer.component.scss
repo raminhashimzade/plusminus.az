@@ -18,22 +18,27 @@
         width: 100%;
         .offer-card__header__title {
             display: flex;
-            flex-direction: column;
-            .offer-card__header__title__main {
-                font-size: 20px;
-                font-family: 'Montserrat-SemiBold';
-            }
-            .toffer-card__header__title__secondary {
+            justify-content: space-between;
+            width: 100%;
+            // .offer-card__header__title__main {
+            //     font-size: 20px;
+            //     font-family: 'Montserrat-SemiBold';
+            // }
+            .offer-card__header__title__logo {
+                width: 100px;
+                max-height: 30px;
+             }
+            .offer-card__header__title__secondary {
+                color: var(--secondary-default)
             }
         }
-        .offer-card__header__logo {
-           width: 42px;
-        }
+
 
     }
     .offer-card__content {
         width: 100%;
         display: flex;
+        flex-direction: column;
         .deposit-percent {
             font-size: 0.625rem;
             margin-right: 3.375rem;
@@ -48,11 +53,15 @@
         .deposit-count {
             .deposit-count__title {
                 font-family: 'Raleway-bold';
-                font-size: 1.5rem;
+                font-size: 1.6875rem;
             }
             .deposit-count__subtitle {
-                font-size: 0.625rem;
+                font-size: 0.75rem;
             }
+        }
+        .higlighted-info {
+            font-size: 13px;
+            font-family: 'Montserrat-SemiBold';
         }
     }
     .offer-card__actions {

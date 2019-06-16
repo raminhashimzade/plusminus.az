@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { APP_KEY, DEFAULT_LANG } from './app.utils';
 import  {detect} from 'detect-browser';
 import { Router } from '@angular/router';
+import { SharedService } from './shared/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(private translateService: TranslateService, private router: Router) {
+  constructor(
+    private translateService: TranslateService,
+    private sharedService: SharedService,
+     private router: Router) {
     this.setDefaultLang();
   //  this.detectBrowser();
   }

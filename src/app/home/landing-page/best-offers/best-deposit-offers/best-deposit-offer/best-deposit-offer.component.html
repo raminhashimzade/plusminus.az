@@ -1,22 +1,33 @@
 <div class="offer-card">
   <div class="offer-card__header">
       <div class="offer-card__header__title">
-        <div class="offer-card__header__title__main">AzerTurk Bank</div>
-        <div class="offer-card__header__title__secondary">{{'~offer' | translate}}</div>
+
+        <div class="offer-card__header__title__logo">
+          <img src="./assets/icons/banks/1.svg">
+        </div>
+
+        <div class="offer-card__header__title__secondary">{{'~offer' | translate | titlecase}}</div>
       </div>
-      <div class="offer-card__header__logo">
-        <img src="./assets/images/kapital-bank.png">
-      </div>
+
   </div>
   <div class="offer-card__content">
-      <div class="deposit-percent">
-        <div class="deposit-percent__title">8,00%</div>
-        <div class="deposit-percent__subtitle">{{'~annual' | translate}}</div>
+    <div class="d-flex">
+        <div class="deposit-percent">
+            <div class="deposit-percent__title">10 %</div>
+            <div class="deposit-percent__subtitle">{{'~annual' | translate}}</div>
+          </div>
+          <div class="deposit-count">
+            <div class="deposit-count__title">36 ay</div>
+            <div class="deposit-count__subtitle">{{'~deposit-time' | translate}}</div>
+          </div>
+    </div>
+
+    <div class="d-flex mt-3">
+      <div class="higlighted-info">
+          Əlavə kart qiymətinə
       </div>
-      <div class="deposit-count">
-        <div class="deposit-count__title"></div>
-        <div class="deposit-count__subtitle">{{'~deposit-time' | translate}}</div>
-      </div>
+    </div>
+
   </div>
   <div class="offer-card__actions">{{'~more-info' | translate}}</div>
 </div>

@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SortChangeModel } from './directives/order-by-column/sort-change.model';
 import { SortStates } from './directives/order-by-column/sort-states.enum';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { SelectType } from './models/select-type.model';
 import { DataResponse } from '../models/data-reponse';
 import { map, catchError } from 'rxjs/operators';
@@ -14,13 +14,15 @@ import { MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition
   providedIn: 'root'
 })
 export class SharedService {
-
+  lang$ = new Subject<string>();
   constructor(
     private translateService: TranslateService,
     private http: HttpClient,
      private authService: AuthService,
      private snackBar: MatSnackBar
-     ) { }
+     ) {
+       this.translateService.onDefaultLangChange.subscribe(res => this.lang$.next(res.lang));
+      }
 
   filterTableWithRowGroups(filterValue: string, data: any, columnNames: string[]) {
     const lang = this.translateService.getDefaultLang();
@@ -116,4 +118,7 @@ export class SharedService {
         catchError(er => of(null))
     );;
 }
+  getLang() {
+    return this.lang$.asObservable();
+  }
 }
