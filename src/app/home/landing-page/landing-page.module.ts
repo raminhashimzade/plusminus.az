@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { LandingPageComponent } from './landing-page.component';
 import { SharedTranslateModule } from 'src/app/shared/shared-translate.module';
 import { MainBannerComponent } from './main-banner/main-banner.component';
-import { SlideComponent } from './main-banner/slide/slide.component';
 import { LandingPageRoutingModule } from './landing-page.routing';
 import { OurServicesComponent } from './our-services/our-services.component';
 import { ServiceCardComponent } from './our-services/service-card/service-card.component';
@@ -26,6 +25,8 @@ import { BestCreditCardOffersComponent } from './best-offers/best-credit-card-of
 import { CreditCardOfferCardComponent } from './best-offers/best-credit-card-offers/credit-card-offer-card/credit-card-offer-card.component';
 import { BestDebitCardOffersComponent } from './best-offers/best-debit-card-offers/best-debit-card-offers.component';
 import { DebitCardOfferCardComponent } from './best-offers/best-debit-card-offers/debit-card-offer-card/debit-card-offer-card.component';
+import { LoanSlideComponent } from './main-banner/loan-slide/loan-slide.component';
+import { MortgageSlideComponent } from './main-banner/mortgage-slide/mortgage-slide.component';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -35,7 +36,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   declarations: [
     LandingPageComponent,
     MainBannerComponent,
-    SlideComponent,
     OurServicesComponent,
     ServiceCardComponent,
     BestOffersComponent,
@@ -51,6 +51,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     CreditCardOfferCardComponent,
     BestDebitCardOffersComponent,
     DebitCardOfferCardComponent,
+    LoanSlideComponent,
+    MortgageSlideComponent,
   ],
   imports: [
     CommonModule,

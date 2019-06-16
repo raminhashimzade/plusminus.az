@@ -3,7 +3,7 @@ import { MockSlides } from './mock-slides';
 import { SlideModel } from './slide.model';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { rotateCubeToLeft } from 'ngx-router-animations';
-import { MatDialog } from '@angular/material/dialog';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 @Component({
   selector: 'main-banner',
   templateUrl: './main-banner.component.html',
@@ -17,24 +17,21 @@ import { MatDialog } from '@angular/material/dialog';
 export class MainBannerComponent implements OnInit {
   slides: SlideModel[] = MockSlides;
   slideIndex = 0;
-  slideCount: number;
-  constructor(private dialog: MatDialog) {
-    this.slideCount = this.slides ? this.slides.length : 0;
-  }
+  slideCount: number = 2 ;
+  public config: SwiperConfigInterface = {
+    a11y: true,
+    direction: 'horizontal',
+    slidesPerView: 1,
+    keyboard: true,
+    mousewheel: false,
+    scrollbar: false,
+    navigation: true,
+    pagination: { el: '.swiper-pagination', clickable: true }
+
+  };
+  constructor() {}
 
   ngOnInit() {}
-  onSlidePrev() {
-    if (this.slideIndex === 0) {
-      return;
-    }
-    this.slideIndex -= 1;
-  }
-  onSlideNext() {
-    if (this.slideIndex === this.slideCount - 1) {
-      this.slideIndex = 0;
-      return;
-    }
-    this.slideIndex += 1;
-  }
+
 
 }

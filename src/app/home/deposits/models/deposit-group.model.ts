@@ -9,33 +9,33 @@ export interface DepositGroup extends Array<any> {
     dpID = null;
     dpId = null;
     bankID? = null;
-    bankId? = '';
-    bankName = '';
+    bankId? = null;
+    bankName = null;
     depositName = new Value();
-    currencyCode = '';
+    currencyCode = null;
     priority = null;
-    minAmount = '';
+    minAmount = null;
     maxAmount?: any;
-    minRate = '';
-    maxRate = '';
-    minPeriod = '';
-    maxPeriod = '';
-    liqType = '';
-    withCapitalisation = '';
-    withWithdraw = '';
-    withRefill = '';
-    withAutoProloing = '';
+    minRate = null;
+    maxRate = null;
+    minPeriod = null;
+    maxPeriod = null;
+    liqType = null;
+    withCapitalisation = null;
+    withWithdraw = null;
+    withRefill = null;
+    withAutoProloing = null;
     description = new Value();
     descriptionPresent = new Value();
     present? = new Value();
-    website = '';
+    website = null;
     income = null;
-    withAutoProlongation = '';
+    withAutoProlongation = null;
     prodStatus? = null
   }
 
   class  Value {
-    az = '';
-    ru = '';
-    en = '';
+    az = null;
+    ru = null;
+    en = null;
   }
