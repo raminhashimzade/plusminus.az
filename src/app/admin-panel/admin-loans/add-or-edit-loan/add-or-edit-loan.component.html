@@ -30,6 +30,10 @@
     <div class="row table-edit__inputs">
         <div class="col-12 col-md-6 p-0">
 
+          <div class="upload-input-wrapper">
+            <upload-input name="cardImageId" ngModel [defaultImgUrl]="'./assets/icons/avatar.svg'"></upload-input>
+          </div>
+
             <select-search name="bankId" [(ngModel)]="loanProduct.bankId"
                class="table-edit__inputs__field" appearance="legacy" [banks]="banks$ | async"
                placeholder="{{'~bankId' | translate}}" [appearance]="'legacy'">

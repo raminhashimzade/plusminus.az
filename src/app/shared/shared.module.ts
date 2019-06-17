@@ -12,6 +12,7 @@ import { DocumentDialogModule } from './components/document-dialog/document-dial
 import { PopoverModule } from '../popover/popover.module';
 import { ConfirmDialogModule } from '../admin-panel/shared/components/confirm-dialog/confirm-dialog.module';
 import { SWIPER_CONFIG, SwiperConfigInterface, SwiperModule } from 'ngx-swiper-wrapper';
+import { UploadInputModule } from './components/upload-input/upload-input.module';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
   slidesPerView: 'auto'
@@ -34,7 +35,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ReactiveFormsModule,
     PopoverModule,
     ConfirmDialogModule,
-    SwiperModule
+    SwiperModule,
+    UploadInputModule
   ],
   exports: [
     SharedTranslateModule,
@@ -51,7 +53,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     ReactiveFormsModule,
     PopoverModule,
     ConfirmDialogModule,
-    SwiperModule
+    SwiperModule,
+    UploadInputModule
   ],
   entryComponents: [],
   providers: [

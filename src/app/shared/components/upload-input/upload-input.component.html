@@ -1,0 +1,28 @@
+
+<upload-input-loader *ngIf="!loaded">
+
+</upload-input-loader>
+
+<div class="upload-input" [ngStyle]="{'display': loaded ? 'block' : 'none'}">
+  <div class="upload-input__img">
+
+      <ng-container *ngIf="!imgId">
+          <img [src]="defaultImgUrl" (load)="onLoaded()" >
+        </ng-container>
+
+        <ng-container *ngIf="imgId">
+          <img src="{{imgId }}" (load)="onLoaded()" (error)="this.src = defaultImgUrl" >
+        </ng-container>
+
+  </div>
+   <div class="upload-input__corners">
+      <div class="arrow"></div>
+      <div class="arrow-2"></div>
+   </div>
+
+   <div class="upload-input__actions">
+      <p *ngIf="!imgId" (click)="onUpload()">{{'~uploadImg' | translate}}</p>
+      <p *ngIf="imgId" class="remove-img" (click)="onRemoveFile(imgId)">{{'~removeImg' | translate}}</p>
+   </div>
+
+</div>

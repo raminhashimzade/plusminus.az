@@ -1,0 +1,62 @@
+:host {
+    display: block;
+  }
+  @mixin loader-text {
+      background: linear-gradient(-90deg, #efefef 0%, #fcfcfc 50%, #efefef 100%);
+      border-radius: 4px;
+      margin-bottom: 3px;
+      background-size: 400% 400%;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+    @mixin  loader-icon {
+    background: hsl(0,0%,89%);
+      background: linear-gradient(-90deg, #efefef 0%, #fcfcfc 50%, #efefef 100%);
+      background-size: 400% 400%;
+      margin-right: 5px;
+      border-radius: 4px;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        background-position: 0% 0%
+      }
+      100% {
+        background-position: -135% 0%
+      }
+    }
+
+  .loader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+      .loader__text {
+          height: 10px;
+          @include loader-text;
+        &:nth-child(1) {
+          width: 100px;
+        }
+        &:nth-child(2) {
+          width: 120px;
+        }
+        &:nth-child(3) {
+          width: 140px;
+        }
+        &:nth-child(4) {
+          width: 160px;
+        }
+
+      }
+      .loader__icon {
+        position: relative;
+        width: 5.5em;
+        height: 5.5em;
+        margin-top: 14px;
+        margin-bottom: 14px;
+        @include loader-icon;
+        border-radius: 50%;
+      }
+
+  }
