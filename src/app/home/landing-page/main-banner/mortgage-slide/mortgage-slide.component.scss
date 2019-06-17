@@ -46,16 +46,17 @@
         font-weight: 400;
         max-width: 19.375rem;
         letter-spacing: -0.0088rem;
+        min-height: 63px;
       }
       .slide__detailed {
-        margin-top: 29px;
+        margin-top: 42px;
       //  margin-top: 42px;
         margin-left: 10.625rem;
         position: relative;
         z-index: 1;
-        button {
-          min-width: 11.375rem;
-          border: 1px solid #fff2c2;
+       a {
+          min-width: 170px;
+         // border: 1px solid #fff2c2;
         }
       }
     }
