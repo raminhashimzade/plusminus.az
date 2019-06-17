@@ -90,40 +90,57 @@
           <div id="products-table-filter" class="products__table__filter">
 
               <div class="ck-buttons">
-                <div class="--ck-button">
+
+                <button-toggle ngModel name="withEmpReference" value="true">
+                    <span>{{'~withEmpReference' | translate |titlecase}} </span>
+                </button-toggle>
+
+                <button-toggle ngModel name="withCollateral" value="true">
+                    <span>{{'~withCollateral' | translate |titlecase}} </span>
+                </button-toggle>
+
+                <button-toggle ngModel name="withGracePeriod">
+                    <span>{{'~withGracePeriod' | translate |titlecase}} </span>
+                </button-toggle>
+
+                <button-toggle ngModel name="comissionLoan">
+                    <span>{{'~comissionLoan' | translate |titlecase}} </span>
+                </button-toggle>
+
+                <!-- <div class="--ck-button">
                   <label>
                     <input type="checkbox" [value]="true" ngModel
                       name="withEmpReference"><span>{{'~withEmpReference' | translate |titlecase}}</span>
                   </label>
-                </div>
-
+                </div> -->
+<!--
                 <div class="--ck-button">
                   <label>
                     <input type="checkbox" [value]="true" [checked]="true" ngModel
                       name="withCollateral"><span>{{'~withCollateral' | translate |titlecase}}</span>
                   </label>
-                </div>
+                </div> -->
 
-                <div class="--ck-button">
+                <!-- <div class="--ck-button">
                   <label>
                     <input type="checkbox" [value]="false" ngModel
                       name="withGracePeriod"><span>{{'~withGracePeriod' | translate |titlecase}}</span>
                   </label>
-                </div>
-
+                </div> -->
+<!--
                 <div class="--ck-button">
                   <label>
                     <input type="checkbox" value="false" ngModel
                       name="comissionCash"><span>{{'~commissionCash' | translate |titlecase}}</span>
                   </label>
-                </div>
-                <div class="--ck-button">
+                </div> -->
+                <!-- <div class="--ck-button">
                   <label>
                     <input type="checkbox" value="false" ngModel
                       name="comissionLoan"><span>{{'~commissionLoan' | translate |titlecase}}</span>
                   </label>
                 </div>
-              </div>
+              </div> -->
 
 
 
@@ -133,5 +150,6 @@
 
 
     </div>
+  </div>
   </div>
 </form>
