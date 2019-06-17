@@ -52,6 +52,8 @@
 
                 <mat-checkbox ngModel name="checked" [required]="true">
                   {{'~loanRequestContactAgreement' | translate | titlecase}}
+                  <a href="./assets/documents/PLUSMINUS_POLICY.pdf" target="_blank">
+                   ( {{'~privacyPolicy' | translate}} )</a>
                 </mat-checkbox>
 
                 <div *ngIf="form?.controls['checked']?.invalid" class="form-error">{{getCheckBoxErrorMessage()}}</div>

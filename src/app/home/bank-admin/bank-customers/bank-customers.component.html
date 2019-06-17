@@ -3,7 +3,7 @@
 
 
     <div class="row">
-      <div class="col-12 col-xl-12">
+      <div class="col-12 col-lg-9 col-xl-10 pr-0">
         <div class="component">
             <div class="component__header">
                 <p>{{'~forBanks' | translate}}</p>
@@ -109,35 +109,32 @@
 
             </div>
         </div>
-    <div class="card-wrapper">
-      <div class="card">
-        <div class="card__header">{{'~statistics' | translate}}</div>
-        <div class="card__content">
 
-            <div class="card__content__row" (click)="onGetAll()" [ngClass]="{'active': !called && !cancelled}">
-                <p>{{'~orders' | translate}}</p>
-                <b> - {{orderStats?.totalOrderCount}}</b>
-            </div>
-
-            <div class="card__content__row" (click)="onGetCalled()" [ngClass]="{'active': called}">
-                <p>{{'~called' | translate}}</p>
-                <b> - {{orderStats?.contactedCount}}</b>
-            </div>
-
-            <!-- <div class="card__content__row">
-                <p>{{'~loanCompleted' | translate}}</p>
-                <b> - {{orderStats?.caledStats}}</b>
-            </div> -->
-
-            <div class="card__content__row" (click)="onGetCancelled()" [ngClass]="{'active': cancelled}">
-                <p>{{'~cancelled' | translate}}</p>
-                <b> - {{orderStats?.canceledCount}}</b>
-            </div>
-
-        </div>
       </div>
-    </div>
+      <div class="col-lg-3 col-xl-2">
+        <div class="card-wrapper">
+          <div class="card">
+            <div class="card__header">{{'~statistics' | translate}}</div>
+            <div class="card__content">
 
+                <div class="card__content__row" (click)="onGetAll()" [ngClass]="{'active': !called && !cancelled}">
+                    <p>{{'~orders' | translate}}</p>
+                    <b> - {{orderStats?.totalOrderCount}}</b>
+                </div>
+
+                <div class="card__content__row" (click)="onGetCalled()" [ngClass]="{'active': called}">
+                    <p>{{'~called' | translate}}</p>
+                    <b> - {{orderStats?.contactedCount}}</b>
+                </div>
+
+                <div class="card__content__row" (click)="onGetCancelled()" [ngClass]="{'active': cancelled}">
+                    <p>{{'~cancelled' | translate}}</p>
+                    <b> - {{orderStats?.canceledCount}}</b>
+                </div>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

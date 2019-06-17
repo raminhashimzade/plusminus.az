@@ -9,26 +9,29 @@
 .active {
     border-bottom: 1px solid var(--primary-default);
 }
-.card {
-    position: absolute;
-    top: 0;
-    right: -135px;
-    .card__header {
-        padding: 10px;
-        font-weight: bold;
-        background: var(--secondary-default);
-    }
-    .card__content {
-        padding: 10px;
-        .card__content__row {
-            display: flex;
-            padding:5px 0;
-            cursor: pointer;
-            p {
-                font-size: 13px;
-            }
-            b {
-                font-size: 13px;
+
+.card-wrapper {
+    position: sticky;
+    top: 100px;
+    .card {
+        position: relative;
+        .card__header {
+            padding: 10px;
+            font-weight: bold;
+            background: var(--secondary-default);
+        }
+        .card__content {
+            padding: 10px;
+            .card__content__row {
+                display: flex;
+                padding:5px 0;
+                cursor: pointer;
+                p {
+                    font-size: 13px;
+                }
+                b {
+                    font-size: 13px;
+                }
             }
         }
     }

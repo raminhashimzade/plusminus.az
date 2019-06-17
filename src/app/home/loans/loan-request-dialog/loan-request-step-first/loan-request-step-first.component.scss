@@ -56,7 +56,11 @@
             align-items: flex-end;
             flex-direction: column;
             /deep/ .mat-checkbox-layout {
-                font-size: 9px!important;
+                font-size:11px!important;
+                a {
+                    display: block;
+                    color: #2980b9
+                }
             }
             @media (max-width: 768px) {
                 margin-bottom: 7px;
