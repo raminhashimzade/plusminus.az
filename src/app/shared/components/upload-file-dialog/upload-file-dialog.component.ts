@@ -29,6 +29,7 @@ export class UploadFileDialogComponent implements OnInit {
     if (this.data && this.data.adapter) {this.adapter = this.data.adapter; }
   }
   onUploaded(res: FilePreviewModel) {
+    console.log(res)
    this.dialogRef.close(res.fileId);
   }
   onValidationError(er) {

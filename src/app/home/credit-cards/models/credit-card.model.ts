@@ -14,14 +14,14 @@ export class CreditCard {
     cardProduct?: any;
     cardType = null;
     cardPeriod?: any;
-    sellAmount = null;
+    sellAmount = 0;
     withCashBack = false;
     withBonus = false;
     withEmpReference = false;
     withCollateral = false;
     withMiles? = false;
     withGracePeriod = null;
-    withDepositRate = null;
+    withDepositRate = 0;
     auditorium? = false;
     comissionSMS = null;
     comissionCashInhouseOwn = null;
@@ -42,6 +42,7 @@ export class CreditCard {
     descriptionPD = new Value();
     descriptionDOC = new Value();
     cardImageId = null;
+    cardImage? = null;
   }
 
   class Value {

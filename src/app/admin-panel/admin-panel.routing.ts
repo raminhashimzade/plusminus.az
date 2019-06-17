@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: '', component: AdminPanelComponent , children: [
       {path: '', redirectTo: 'loans', pathMatch: 'full'},
       {path: 'deposits', loadChildren:'./admin-deposits/admin-deposits.module#AdminDepositsModule', canActivate: [AdminPanelGuard]},
-      {path: 'loans', loadChildren:'./admin-loans/admin-loans.module#AdminLoansModule', canActivate: [AdminPanelGuard]}
+      {path: 'loans', loadChildren:'./admin-loans/admin-loans.module#AdminLoansModule', canActivate: [AdminPanelGuard]},
+      {path: 'credit-cards', loadChildren:'./admin-credit-cards/admin-credit-cards.module#AdminCreditCardsModule', canActivate: [AdminPanelGuard]}
   ]},
 ];
 

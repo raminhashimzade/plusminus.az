@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material';
 import { UploadFileDialogComponent } from '../upload-file-dialog/upload-file-dialog.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AdminPanelService } from 'src/app/admin-panel/admin-panel.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'upload-input',
@@ -18,27 +19,31 @@ import { AdminPanelService } from 'src/app/admin-panel/admin-panel.service';
 })
 export class UploadInputComponent implements OnInit {
   @Input() defaultImgUrl: string;
-  imgId: string;
+  base64: string;
   disabled = false;
   loaded: boolean;
-  constructor(private dialog: MatDialog, private adminPanelService: AdminPanelService ) { }
+  constructor(private dialog: MatDialog, private sanitizer: DomSanitizer,  private adminPanelService: AdminPanelService ) { }
 
   ngOnInit() {
   }
   onLoaded() {
    this.loaded = true;
   }
+  getSafeUrl() {
+    return this.sanitizer.bypassSecurityTrustUrl(this.base64);
+  }
   onUpload() {
     const dialogRef = this.dialog.open(UploadFileDialogComponent);
     dialogRef.afterClosed().subscribe(res => {
       if (!res) { return; }
-      this.imgId = res;
-      console.log(this.imgId);
-      this.onChange(this.imgId);
+      this.base64 = res;
+      this.onChange(this.base64);
       dialogRef.close();
     });
   }
   onRemoveFile(id: string) {
+    this.base64 = undefined;
+    this.onChange(undefined);
     // this.adminPanelService
     //   .removeFile(id)
     //   .subscribe(res => {
@@ -47,18 +52,16 @@ export class UploadInputComponent implements OnInit {
     //   });
   }
   get value(): string {
-    return this.imgId;
+    return this.base64;
   }
   writeValue(value: string): void {
-    if (+value) {
-      console.log(value)
-      this.imgId = value;
+    if (value) {
+      this.base64 = value;
     }
 
   }
   onChange(value: string) {
-    this.imgId =  value;
-    console.log(value);
+    this.base64 =  value;
   }
   onTouched = () => {};
   ngOnChanges(changes: SimpleChanges) {

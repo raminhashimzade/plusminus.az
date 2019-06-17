@@ -6,12 +6,12 @@
 <div class="upload-input" [ngStyle]="{'display': loaded ? 'block' : 'none'}">
   <div class="upload-input__img">
 
-      <ng-container *ngIf="!imgId">
+      <ng-container *ngIf="!base64">
           <img [src]="defaultImgUrl" (load)="onLoaded()" >
         </ng-container>
 
-        <ng-container *ngIf="imgId">
-          <img src="{{imgId }}" (load)="onLoaded()" (error)="this.src = defaultImgUrl" >
+        <ng-container *ngIf="base64">
+          <img src="{{base64}}" (load)="onLoaded()" (error)="this.src = defaultImgUrl" >
         </ng-container>
 
   </div>
@@ -21,8 +21,8 @@
    </div>
 
    <div class="upload-input__actions">
-      <p *ngIf="!imgId" (click)="onUpload()">{{'~uploadImg' | translate}}</p>
-      <p *ngIf="imgId" class="remove-img" (click)="onRemoveFile(imgId)">{{'~removeImg' | translate}}</p>
+      <p *ngIf="!base64" (click)="onUpload()">{{'~uploadImg' | translate}}</p>
+      <p *ngIf="base64" class="remove-img" (click)="onRemoveFile(base64)">{{'~removeImg' | translate}}</p>
    </div>
 
 </div>
