@@ -92,21 +92,21 @@
               <div class="ck-buttons">
                 <div class="--ck-button">
                   <label>
-                    <input type="checkbox" value="false" ngModel
+                    <input type="checkbox" [value]="true" ngModel
                       name="withEmpReference"><span>{{'~withEmpReference' | translate |titlecase}}</span>
                   </label>
                 </div>
 
                 <div class="--ck-button">
                   <label>
-                    <input type="checkbox" value="true" [checked]="true" ngModel
+                    <input type="checkbox" [value]="true" [checked]="true" ngModel
                       name="withCollateral"><span>{{'~withCollateral' | translate |titlecase}}</span>
                   </label>
                 </div>
 
                 <div class="--ck-button">
                   <label>
-                    <input type="checkbox" value="false" ngModel
+                    <input type="checkbox" [value]="false" ngModel
                       name="withGracePeriod"><span>{{'~withGracePeriod' | translate |titlecase}}</span>
                   </label>
                 </div>

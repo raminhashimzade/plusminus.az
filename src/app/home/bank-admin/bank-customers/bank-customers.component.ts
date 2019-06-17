@@ -160,11 +160,13 @@ export class BankCustomersComponent implements OnInit {
   }
 
   onGetCalled() {
+    this.cancelled = false;
      this.called = true;
       this.getOrderList();
   }
   onGetCancelled() {
      this.cancelled= true;
+     this.called = false;
       this.getOrderList();
   }
   onGetAll() {

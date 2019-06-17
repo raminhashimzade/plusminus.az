@@ -31,7 +31,7 @@ export class AddOrEditDepositComponent implements OnInit {
     private adminService: AdminPanelService,
     private translateService: TranslateService
     ) {
-      this.banks$ = this.sharedAdminService.getBankList(false);
+      this.banks$ = this.sharedAdminService.getBankList(true);
       this.curCodes$ = this.sharedAdminService.getCurrCodeList('loans');
      }
 

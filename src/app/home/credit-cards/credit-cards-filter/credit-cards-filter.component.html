@@ -28,7 +28,7 @@
 
                       <div class="col-12 col-md-2 col-lg-2 col-xl-2">
                           <mat-form-field appearance="outline"  class="banner__field w-100">
-                              <mat-select required name="loanCurrency" [ngModel]="loanCurrency" class="form-field">
+                              <mat-select required name="currencyCode" [ngModel]="currencyCode" class="form-field">
                                 <mat-option *ngFor="let option of currCodes$ | async"
                                 [value]="option.value"
                                 >{{option.label}}</mat-option>
@@ -42,7 +42,7 @@
                       <mat-form-field appearance="outline"  class="banner__field w-100">
                           <!-- <mat-label>{{'~loanPeriod' | translate }}</mat-label> -->
                           <mat-select required name="loanPeriod" ngModel class="form-field" placeholder="{{'~loanPeriod' | translate }}">
-                            <mat-option *ngFor="let period of (loanPeriods$ | async)" [value]="period?.periodId"> {{period?.period}}
+                            <mat-option *ngFor="let period of (periods$ | async)" [value]="period?.periodId"> {{period?.period}}
                             </mat-option>
 
                           </mat-select>
@@ -69,7 +69,7 @@
 <div class="container custom">
 
 
-  <div class="row" *ngIf="false">
+  <div class="row" >
     <div class="col-12">
       <div class="products__table">
         <div id="products-table-filter" class="products__table__filter">
@@ -85,13 +85,6 @@
               <div class="--ck-button">
                 <label>
                   <input type="checkbox" value="false" ngModel
-                    name="withCollateral"><span>{{'~withCollateral' | translate |titlecase}}</span>
-                </label>
-              </div>
-
-              <div class="--ck-button">
-                <label>
-                  <input type="checkbox" value="false" ngModel
                     name="withGracePeriod"><span>{{'~withGracePeriod' | translate |titlecase}}</span>
                 </label>
               </div>
@@ -99,13 +92,26 @@
               <div class="--ck-button">
                 <label>
                   <input type="checkbox" value="false" ngModel
-                    name="comissionCash"><span>{{'~commissionCash' | translate |titlecase}}</span>
+                    name="withMiles"><span>{{'~withMiles' | translate |titlecase}}</span>
+                </label>
+              </div>
+
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="withDepositRate"><span>{{'~withDepositRate' | translate |titlecase}}</span>
                 </label>
               </div>
               <div class="--ck-button">
                 <label>
                   <input type="checkbox" value="false" ngModel
-                    name="comissionLoan"><span>{{'~commissionLoan' | translate |titlecase}}</span>
+                    name="comissionCash"><span>{{'~comissionCash' | translate |titlecase}}</span>
+                </label>
+              </div>
+              <div class="--ck-button">
+                <label>
+                  <input type="checkbox" value="false" ngModel
+                    name="withCashBack"><span>{{'~withCashBack' | translate |titlecase}}</span>
                 </label>
               </div>
             </div>

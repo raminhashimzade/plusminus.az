@@ -197,7 +197,7 @@
     "~cancelOrder": "Sifarişi ləğv et",
     "~unsupportedBrowserTitle": "Təəssüf ki, Plus Minus proqramı bu brauzeri dəstəkləmir",
     "~unsupportedBrowserMessage": "Üzr istəyirik, lakin Plus Minus bu brauzeri dəstəkləmir. Bu linki açmaq üçün Chrome 69, Firefox 63 və ya Safari 11 və ya daha müasir brauzerlərdən istifadə edin.",
-     "~cancelled": "Imtina olundu",
+     "~cancelled": "Imtina olunub",
      "~loanCompleted": "Kredit verildi",
      "~statistics": "Statistika",
     "~yes": "Bəli",
@@ -208,6 +208,7 @@
     "~depositDuration": "Depozit müddəti",
     "~mortgageBannerMessage": "İPOTEKA ÜZRƏ FAİZLƏRİ BURDAN MÜQAYİSƏ ET",
     "~goToPage": "Səhifəyə keçid",
+    "~type": "Tip",
 
     "~bankId": "Bank id",
     "~loanType": "Loan type",

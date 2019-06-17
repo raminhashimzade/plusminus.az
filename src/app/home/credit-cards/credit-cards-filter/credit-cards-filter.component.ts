@@ -9,6 +9,7 @@ import { MatDialog, MatSliderChange } from '@angular/material';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 import { deepClone } from 'src/app/app.utils';
+import { CreditCardService } from '../credit-card.service';
 
 @Component({
   selector: 'credit-cards-filter',
@@ -18,8 +19,8 @@ import { deepClone } from 'src/app/app.utils';
 export class CreditCardsFilterComponent implements OnInit {
 
   @ViewChild('f') form: NgForm;
-  loanCurrency = 'AZN';
-  loanPeriods$: Observable<any>;
+  currencyCode = 'AZN';
+  periods$: Observable<any>;
   slideValue: number;
   isMdSize: boolean;
   _onDestroy$ = new Subject<void>();
@@ -31,9 +32,10 @@ export class CreditCardsFilterComponent implements OnInit {
       private router: Router,
       private route: ActivatedRoute,
     //  private dialog: MatDialog,
-      private breakPointObserver: BreakpointObserver
+      private breakPointObserver: BreakpointObserver,
+      private  productService: CreditCardService
      ) {
- //   this.loanPeriods$ = this.loanService.listLoanPeriods();
+  this.periods$ = this.productService.listCardCreditPeriod();
     this.currCodes$ = this.sharedService.getCurrCodeList('credit-cards');
   }
 
@@ -93,7 +95,7 @@ export class CreditCardsFilterComponent implements OnInit {
           filterForm[key] = this.form.controls[key].value;
         };
       });
-    this.router.navigate(['/home/loans',
+    this.router.navigate(['/home/credit-cards',
     {
       ...filterForm,
       scrollIntoView: scrollIntoView
