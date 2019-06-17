@@ -10,6 +10,7 @@ import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material';
 import { ConfirmDialogComponent } from 'src/app/admin-panel/shared/components/confirm-dialog/confirm-dialog.component';
+import { OrderStats } from '../models/order-stats.model';
 
 @Component({
   selector: 'bank-customers',
@@ -20,6 +21,9 @@ import { ConfirmDialogComponent } from 'src/app/admin-panel/shared/components/co
 export class BankCustomersComponent implements OnInit {
   orders: CustomerOrder[];
   loading: boolean;
+  orderStats: OrderStats;
+  cancelled: boolean  = false;
+  called: boolean = false;
   constructor(
     private bankService: BankAdminService,
     private changeRef: ChangeDetectorRef,
@@ -34,12 +38,13 @@ export class BankCustomersComponent implements OnInit {
 
   ngOnInit() {
   this.getOrderList();
+  this.getOrderStats();
   }
   getOrderList() {
     this.orders = undefined;
     this.loading = true;
     this.changeRef.detectChanges();
-    this.bankService.getOrderList()
+    this.bankService.getOrderList(this.cancelled, this.called)
     .pipe(finalize(() => {
       this.loading = false;
       this.changeRef.detectChanges();
@@ -141,5 +146,30 @@ export class BankCustomersComponent implements OnInit {
     })
 
   }
+  getOrderStats() {
+    this.bankService.getOrderStats()
+    .pipe(
+      finalize(() => {
+        this.changeRef.detectChanges();
+      })
+    )
+    .subscribe(res => {
+      console.log(res);
+      this.orderStats = res;
+    })
+  }
 
+  onGetCalled() {
+     this.called = true;
+      this.getOrderList();
+  }
+  onGetCancelled() {
+     this.cancelled= true;
+      this.getOrderList();
+  }
+  onGetAll() {
+    this.called = false;
+    this.cancelled = false;
+    this.getOrderList();
+  }
 }

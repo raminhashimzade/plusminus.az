@@ -6,7 +6,9 @@
     width: 100%;
 }
 
-
+.active {
+    border-bottom: 1px solid var(--primary-default);
+}
 .card {
     position: absolute;
     top: 0;
@@ -20,7 +22,8 @@
         padding: 10px;
         .card__content__row {
             display: flex;
-            padding-bottom: 10px;
+            padding:5px 0;
+            cursor: pointer;
             p {
                 font-size: 13px;
             }

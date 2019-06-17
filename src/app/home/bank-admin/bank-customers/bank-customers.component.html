@@ -109,32 +109,34 @@
 
             </div>
         </div>
-        <div class="card">
-            <div class="card__header">{{'~statistics' | translate}}</div>
-            <div class="card__content">
+    <div class="card-wrapper">
+      <div class="card">
+        <div class="card__header">{{'~statistics' | translate}}</div>
+        <div class="card__content">
 
-                <div class="card__content__row">
-                    <p>{{'~orders' | translate}}</p>
-                    <b> - 123</b>
-                </div>
-
-                <div class="card__content__row">
-                    <p>{{'~called' | translate}}</p>
-                    <b> - 43</b>
-                </div>
-
-                <div class="card__content__row">
-                    <p>{{'~loanCompleted' | translate}}</p>
-                    <b> - 22</b>
-                </div>
-
-                <div class="card__content__row">
-                    <p>{{'~cancelled' | translate}}</p>
-                    <b> - 56</b>
-                </div>
-
+            <div class="card__content__row" (click)="onGetAll()" [ngClass]="{'active': !called && !cancelled}">
+                <p>{{'~orders' | translate}}</p>
+                <b> - {{orderStats?.totalOrderCount}}</b>
             </div>
-          </div>
+
+            <div class="card__content__row" (click)="onGetCalled()" [ngClass]="{'active': called}">
+                <p>{{'~called' | translate}}</p>
+                <b> - {{orderStats?.contactedCount}}</b>
+            </div>
+
+            <!-- <div class="card__content__row">
+                <p>{{'~loanCompleted' | translate}}</p>
+                <b> - {{orderStats?.caledStats}}</b>
+            </div> -->
+
+            <div class="card__content__row" (click)="onGetCancelled()" [ngClass]="{'active': cancelled}">
+                <p>{{'~cancelled' | translate}}</p>
+                <b> - {{orderStats?.canceledCount}}</b>
+            </div>
+
+        </div>
+      </div>
+    </div>
 
       </div>
     </div>

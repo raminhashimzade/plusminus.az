@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/auth.service';
 import { CustomerOrder } from './models/customer-order.model';
 import { OrderShowInfo } from './models/order-show-info.model';
+import { OrderStats } from './models/order-stats.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,11 +30,12 @@ export class BankAdminService {
         return this.token;
       }))
   }
-  getOrderList(): Observable<CustomerOrder[]> {
+  getOrderList(cancelled: boolean, called: boolean): Observable<CustomerOrder[]> {
     return this.http.post<DataResponse>('mybank/getOrderList', {
       token: this.authService.getToken(),
       bankToken: this.token,
-      called: false
+      called: called,
+      cancelled: cancelled
     })
       .pipe(map(res => {
         return res && res.data;
@@ -72,6 +74,15 @@ export class BankAdminService {
     })
       .pipe(map(res => {
         return res
+      }))
+  }
+  getOrderStats(): Observable<OrderStats> {
+    return this.http.post<DataResponse>('mybank/getOrderStats', {
+      token: this.authService.getToken(),
+      bankToken: this.token,
+    })
+      .pipe(map(res => {
+        return res && res.data && res.data[0]
       }))
   }
 }
