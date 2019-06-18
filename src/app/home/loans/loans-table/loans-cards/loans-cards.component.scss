@@ -57,26 +57,7 @@
     }
 }
 
-.expand {
-    font-size: 12px;
-    display: flex;
-    color: var(--secondary-default);
-    margin-top: 5px;
-    cursor: pointer;
-    .expand__title {
-        margin-right: 3px;
-        font-family: 'Montserrat-Thin'
-    }
-    .expand__icon {
-        transition: transform 300ms ease-in-out;
-    }
-    &.--top {
-        .expand__icon {
-            transform: rotateZ(-180deg);
-        }
-    }
 
-}
 
 .expand-icon {
     padding: 0.75rem;
