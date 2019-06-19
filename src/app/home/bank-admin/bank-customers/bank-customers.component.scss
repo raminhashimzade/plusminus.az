@@ -11,8 +11,11 @@
 }
 
 .card-wrapper {
+    display: inline-block;
     position: sticky;
     top: 100px;
+    width: 135px;
+    margin-left: 10px;
     .card {
         position: relative;
         .card__header {
@@ -38,10 +41,11 @@
 }
 
 .component {
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
     width: 100%;
-     box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+    width: calc(100% - 145px);
     .component__header {
          background: var(--primary-default);
         color: #ffffff;
