@@ -10,6 +10,7 @@ import { DepositService } from '../deposit.service';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
 import { deepClone } from 'src/app/app.utils';
+import { DepositCalcForm } from '../models/deposit-calc-form.model';
 
 @Component({
   selector: 'deposits-filter',
@@ -25,6 +26,7 @@ export class DepositsFilterComponent implements OnInit {
   isMdSize: boolean;
   _onDestroy$ = new Subject<void>();
   currCodes$: Observable<SelectType[]>;
+  depositFilter = new DepositCalcForm();
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
@@ -99,7 +101,7 @@ export class DepositsFilterComponent implements OnInit {
     this.router.navigate(['/home/deposits',
     {
     ...filterForm,
-    scrollIntoView: scrollIntoView
+  //  scrollIntoView: scrollIntoView
    } ]);
   }
   getErrorMessage(controlKey: string) {
@@ -110,13 +112,6 @@ export class DepositsFilterComponent implements OnInit {
     this.slideValue = change.value;
   }
 
-  setInitialCheckboxesToFalse() {
-    Object.keys(this.form.controls).forEach(controlKey => {
-      if (!this.form.controls[controlKey].value) {
-        this.form.controls[controlKey].setValue(false);
-      }
-    });
-  }
 
 
 }
