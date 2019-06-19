@@ -32,67 +32,63 @@
               </div>
               <div class="card__content__features">
 
-                <div class="card__content__features__column">
 
-                  <div class="card__content__features__column__info">
-                    <div class="card__content__features__column__info__key">
+                  <div class="card__content__features__info">
+                    <div class="card__content__features__info__key">
                         {{product?.minRate}} %-
                     </div>
-                    <div class="card__content__features__column__info__value">
+                    <div class="card__content__features__info__value">
                         dən başlayaraq
                     </div>
                   </div>
 
-                  <div class="card__content__features__column__info">
-                    <div class="card__content__features__column__info__key">
+                  <div class="card__content__features__info">
+                    <div class="card__content__features__info__key">
                         {{'~maxAmount' | translate}}:
                     </div>
-                    <div class="card__content__features__column__info__value">
+                    <div class="card__content__features__info__value">
                         {{product.maxAmount}}
                     </div>
                   </div>
 
-                  <div class="card__content__features__column__info">
-                    <div class="card__content__features__column__info__key">
+                  <div class="card__content__features__info">
+                    <div class="card__content__features__info__key">
                       {{'~price' | translate}}:
                     </div>
-                    <div class="card__content__features__column__info__value">
+                    <div class="card__content__features__info__value">
                       {{product.sellAmount}}
                     </div>
                   </div>
 
-                  <div class="card__content__features__column__info">
-                    <div class="card__content__features__column__info__key">
+                      <div class="card__content__features__info" *ngIf="product.withCashBack">
+                    <div class="card__content__features__info__key">
                       {{'~cashback' | translate}}:
                     </div>
-                    <div class="card__content__features__column__info__value">
-                      {{product.withCashBack}}
+                    <div class="card__content__features__info__value --icon">
+                      <i class="fas fa-check-circle"></i>
                     </div>
                   </div>
-                </div>
-
-                <div class="card__content__features__column --right">
 
 
 
-                  <div class="card__content__features__column__info">
-                    <div class="card__content__features__column__info__key">
+
+                  <div class="card__content__features__info" *ngIf="product.withMiles">
+                    <div class="card__content__features__info__key">
                       {{'~miles' | translate}}:
                     </div>
-                    <div class="card__content__features__column__info__value">
-                      {{product.withMiles}}
+                    <div class="card__content__features__info__value --icon">
+                      <i class="fas fa-check-circle"></i>
                     </div>
                   </div>
 
-                  <div class="card__content__features__column__info">
-                    <div class="card__content__features__column__info__key">
+                  <div class="card__content__features__info">
+                    <div class="card__content__features__info__key">
                       {{'~comissionCashInhouseOwn' | translate}}:
                     </div>
-                    <div class="card__content__features__column__info__value">
+                    <div class="card__content__features__info__value">
                       {{product.comissionCashInhouseOwn}} %
                     </div>
                   </div>
-                </div>
 
 
 
