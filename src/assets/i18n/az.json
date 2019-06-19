@@ -212,6 +212,8 @@
     "~privacyPolicy": "Məxfilik siyasəti",
     "~withDepositRate": "Depozit faizi ilə",
     "~miles": "Millər",
+    "~withMiles": "Millər",
+    "~withCashBack": "Cashback ilə",
     "~comissionCashInhouseOwn" : "Nağdlaşdırma",
 
     "~bankId": "Bank id",
