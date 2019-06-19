@@ -11,7 +11,7 @@
         </ng-container>
 
         <ng-container *ngIf="base64">
-          <img src="{{base64}}" (load)="onLoaded()" (error)="this.src = defaultImgUrl" >
+          <img [src]="getSafeUrl()" (load)="onLoaded()" (error)="this.src = defaultImgUrl" >
         </ng-container>
 
   </div>

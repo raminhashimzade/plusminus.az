@@ -19,6 +19,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class UploadInputComponent implements OnInit {
   @Input() defaultImgUrl: string;
+  @Input() fileExtensions: string[];
   base64: string;
   disabled = false;
   loaded: boolean;
@@ -33,7 +34,11 @@ export class UploadInputComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustUrl(this.base64);
   }
   onUpload() {
-    const dialogRef = this.dialog.open(UploadFileDialogComponent);
+    const dialogRef = this.dialog.open(UploadFileDialogComponent, {
+      data: {
+        fileExtensions: this.fileExtensions
+      }
+    });
     dialogRef.afterClosed().subscribe(res => {
       if (!res) { return; }
       this.base64 = res;

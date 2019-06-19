@@ -31,7 +31,7 @@
         <div class="col-12 col-md-6 p-0">
 
           <div class="upload-input-wrapper" *ngIf="!creditCard?.cardImageId">
-            <upload-input name="cardImage" [(ngModel)]="creditCard.cardImage" [defaultImgUrl]="'./assets/images/credit-card.png'"></upload-input>
+            <upload-input [fileExtensions]="['svg']" name="cardImage" [(ngModel)]="creditCard.cardImage" [defaultImgUrl]="'./assets/images/credit-card.png'"></upload-input>
           </div>
 
           <div class="upload-input-wrapper" *ngIf="imageUrl">

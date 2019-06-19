@@ -210,6 +210,9 @@
     "~goToPage": "Səhifəyə keçid",
     "~type": "Tip",
     "~privacyPolicy": "Məxfilik siyasəti",
+    "~withDepositRate": "Depozit faizi ilə",
+    "~miles": "Millər",
+    "~comissionCashInhouseOwn" : "Nağdlaşdırma",
 
     "~bankId": "Bank id",
     "~loanType": "Loan type",
@@ -218,7 +221,7 @@
     "~minRate": "Min Rate",
     "~maxRate": "Max Rate",
     "~minAmount": "Min amount",
-    "~maxAmount": "Max amount",
+    "~maxAmount": "Maksumum Məbləğ",
     "~minPeriod": "Min Period",
     "~maxPeriod": "Max Period",
     "~minEffectiveRate": "Min EffectiveRate",

@@ -1,9 +1,8 @@
 <ngx-file-picker
-[fileMaxSize]="5"
+[fileMaxSize]="2"
 [adapter]="adapter"
 [uploadType]="'multi'"
-[enableCropper]="true"
-[fileExtensions]="data?.fileExtensions"
+[enableCropper]="false"
 (validationError)="onValidationError($event)"
 (uploadSuccess)="onUploaded($event)"
 [cropperOptions]="cropperOptions"
