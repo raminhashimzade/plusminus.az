@@ -71,15 +71,16 @@ export class LoansTableComponent implements OnInit, OnDestroy {
     this.route.params
       .pipe(takeUntil(this._onDestroy$))
       .subscribe(res => {
+        console.log('route change in table')
         const formValue = {
-          loanAmount: res['loanAmount'] || '',
-          loanCurrency: res['loanCurrency'] ||  '',
-          loanPeriod: res['loanPeriod'] || '',
-          withEmpReference: res['withEmpReference'] || true,
-          withCollateral: res['withCollateral'] || true,
-          withGracePeriod: res['withGracePeriod'] || false,
-          comissionCash: res['comissionCash'] || false,
-          comissionLoan: res['comissionLoan'] || false,
+          loanAmount: res['loanAmount'],
+          loanCurrency: res['loanCurrency'],
+          loanPeriod: res['loanPeriod'],
+          withEmpReference: res['withEmpReference'],
+          withCollateral: res['withCollateral'],
+          withGracePeriod: res['withGracePeriod'],
+          comissionCash: res['comissionCash'] ,
+          comissionLoan: res['comissionLoan'],
         } as LoanFilterForm;
         const scrollIntoView =  res['scrollIntoView'] === 'true'
         this.getListloanGroupProducts(formValue, scrollIntoView);
@@ -101,7 +102,7 @@ export class LoansTableComponent implements OnInit, OnDestroy {
       .subscribe(res => {
         this.loanGroupProducts = res;
         this.filteredGroupProducts = [...this.loanGroupProducts];
-        if (scrollIntoView) {switchToView('#products-table-filter') }
+      //  if (scrollIntoView) {switchToView('#products-table-filter') }
       });
   }
   onAddProductToCompare(loan: LoanProduct) {

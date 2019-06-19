@@ -20,10 +20,10 @@
                             <div class="slider-group">
                                 <mat-form-field class="w-100 banner__field" appearance="outline" >
                                     <input required  matInput name="slideValue" type="number" placeholder="{{'~loanAmount' | translate}}"
-                                      [(ngModel)]="slideValue">
+                                    [(ngModel)]="loanFilter.loanAmount" >
                                   </mat-form-field>
 
-                                  <mat-slider class="slider" color="primary" [max]="'100000'" [min]="'0'" [step]="'1000'" ngModel
+                                  <mat-slider class="slider" color="primary" [max]="'100000'" [min]="'0'" [step]="'1000'"
                                     name="loanAmount" [(ngModel)]="slideValue" (input)="onSlideMove($event)">
                                   </mat-slider>
                             </div>
@@ -31,7 +31,7 @@
 
                         <div class="col-12 col-md-2 col-lg-2 col-xl-2">
                             <mat-form-field appearance="outline"  class="banner__field w-100">
-                                <mat-select required name="loanCurrency" [ngModel]="loanCurrency" class="form-field">
+                                <mat-select required name="loanCurrency" [(ngModel)]="loanFilter.loanCurrency"  class="form-field">
                                   <mat-option *ngFor="let option of currCodes$ | async"
                                   [value]="option.value"
                                   >{{option.label}}</mat-option>
@@ -45,7 +45,9 @@
 
                         <mat-form-field appearance="outline"  class="banner__field w-100">
                             <!-- <mat-label>{{'~loanPeriod' | translate }}</mat-label> -->
-                            <mat-select required name="loanPeriod" ngModel class="form-field" placeholder="{{'~loanPeriod' | translate }}">
+                            <mat-select required name="loanPeriod"
+                            [(ngModel)]="loanFilter.loanPeriod"
+                             class="form-field" placeholder="{{'~loanPeriod' | translate }}">
                               <mat-option *ngFor="let period of (loanPeriods$ | async)" [value]="period?.periodId"> {{period?.period}}
                               </mat-option>
 
@@ -91,19 +93,19 @@
 
               <div class="ck-buttons">
 
-                <button-toggle ngModel name="withEmpReference" value="true">
+                <button-toggle [isOpposite]="true" [(ngModel)]="loanFilter.withEmpReference" name="withEmpReference" value="true">
                     <span>{{'~withEmpReference' | translate |titlecase}} </span>
                 </button-toggle>
 
-                <button-toggle ngModel name="withCollateral" value="true">
+                <button-toggle  [isOpposite]="true"  [(ngModel)]="loanFilter.withCollateral" name="withCollateral" value="true">
                     <span>{{'~withCollateral' | translate |titlecase}} </span>
                 </button-toggle>
 
-                <button-toggle ngModel name="withGracePeriod">
+                <button-toggle [(ngModel)]="loanFilter.withGracePeriod" name="withGracePeriod">
                     <span>{{'~withGracePeriod' | translate |titlecase}} </span>
                 </button-toggle>
 
-                <button-toggle ngModel name="comissionLoan">
+                <button-toggle [(ngModel)]="loanFilter.comissionLoan" name="comissionLoan">
                     <span>{{'~comissionLoan' | translate |titlecase}} </span>
                 </button-toggle>
 

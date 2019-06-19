@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges, forwardRef } from '@angular/core';
+import { Component, OnInit, SimpleChanges, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -14,6 +14,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class ButtonToggleComponent  {
+  @Input() isOpposite: boolean;
   private _value: boolean;
   disabled: boolean;
   onToggleValue() {
@@ -49,6 +50,14 @@ export class ButtonToggleComponent  {
   // Allows Angular to disable the input.
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  get color(): string {
+    if (!this.isOpposite) {
+      return this.value ? 'accent' : 'default';
+    } else {
+      return this.value ? 'default' : 'accent';
+    }
   }
 
 }

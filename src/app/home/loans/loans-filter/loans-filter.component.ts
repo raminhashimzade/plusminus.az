@@ -11,6 +11,7 @@ import { isMobileSize, deepClone } from 'src/app/app.utils';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
+import { LoanFilterForm } from '../models/loan-filter-form';
 
 @Component({
   selector: 'loans-filter',
@@ -18,7 +19,6 @@ import { SharedService } from 'src/app/shared/shared.service';
   styleUrls: ['./loans-filter.component.scss']
 })
 export class LoansFilterComponent implements OnInit {
-
   @ViewChild('f') form: NgForm;
   loanCurrency = 'AZN';
   loanPeriods$: Observable<any>;
@@ -26,6 +26,7 @@ export class LoansFilterComponent implements OnInit {
   isMdSize: boolean;
   _onDestroy$ = new Subject<void>();
   currCodes$: Observable<SelectType[]>
+  loanFilter = new LoanFilterForm();
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
@@ -80,6 +81,7 @@ export class LoansFilterComponent implements OnInit {
      takeUntil(this._onDestroy$)
     )
     .subscribe(res => {
+      console.log('form change')
   //  if (!this.form.value.loanAmount || !this.form.value.loanCurrency) {return;}
      this.loanService.loanFilterValue = deepClone(this.form.value);
      console.log(this.loanService.loanFilterValue )
@@ -100,7 +102,7 @@ export class LoansFilterComponent implements OnInit {
     this.router.navigate(['/home/loans',
     {
       ...filterForm,
-      scrollIntoView: scrollIntoView
+    //  scrollIntoView: scrollIntoView
    } ]);
   }
   getErrorMessage(controlKey: string) {
@@ -120,13 +122,6 @@ export class LoansFilterComponent implements OnInit {
       position: isMobileSize() && {top: '10px'}
     });
   }
-  // setInitialCheckboxesToFalse() {
-  //   Object.keys(this.form.controls).forEach(controlKey => {
-  //     if (!this.form.controls[controlKey].value) {
-  //       this.form.controls[controlKey].setValue(false);
-  //     }
-  //   });
-  // }
 
 
 }
