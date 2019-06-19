@@ -110,6 +110,7 @@ export class DepositsFilterComponent implements OnInit {
   }
   onSlideMove(change: MatSliderChange) {
     this.slideValue = change.value;
+    this.depositFilter.depositAmount = this.slideValue;
   }
 
 

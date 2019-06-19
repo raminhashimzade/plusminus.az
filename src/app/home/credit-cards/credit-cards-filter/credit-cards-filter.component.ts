@@ -109,6 +109,7 @@ export class CreditCardsFilterComponent implements OnInit {
   }
   onSlideMove(change: MatSliderChange) {
     this.slideValue = change.value;
+    this.creditCardFilter.loanAmount = this.slideValue;
   }
 
 

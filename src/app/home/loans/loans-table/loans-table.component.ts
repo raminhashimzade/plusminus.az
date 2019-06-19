@@ -73,15 +73,16 @@ export class LoansTableComponent implements OnInit, OnDestroy {
       .subscribe(res => {
         console.log('route change in table');
       //  if (!res['loanCurrency']) {return;}
+      const defaultFilter  = new LoanFilterForm();
         const formValue = {
-          loanAmount: res['loanAmount'],
-          loanCurrency: res['loanCurrency'],
-          loanPeriod: res['loanPeriod'],
-          withEmpReference: res['withEmpReference'],
-          withCollateral: res['withCollateral'],
-          withGracePeriod: res['withGracePeriod'],
-          comissionCash: res['comissionCash'] ,
-          comissionLoan: res['comissionLoan'],
+          loanAmount: res['loanAmount'] || defaultFilter.loanAmount,
+          loanCurrency: res['loanCurrency'] || defaultFilter.loanCurrency,
+          loanPeriod: res['loanPeriod'] || defaultFilter.loanPeriod,
+          withEmpReference: res['withEmpReference'] || defaultFilter.withEmpReference,
+          withCollateral: res['withCollateral'] || defaultFilter.withCollateral,
+          withGracePeriod: res['withGracePeriod'] || defaultFilter.withGracePeriod,
+          comissionCash: res['comissionCash'] || defaultFilter.comissionCash,
+          comissionLoan: res['comissionLoan'] || defaultFilter.comissionLoan,
         } as LoanFilterForm;
         const scrollIntoView =  res['scrollIntoView'] === 'true'
         this.getListloanGroupProducts(formValue, scrollIntoView);

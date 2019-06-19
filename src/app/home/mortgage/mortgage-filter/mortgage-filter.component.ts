@@ -101,6 +101,7 @@ export class MortgageFilterComponent implements OnInit {
   }
   onSlideMove(change: MatSliderChange) {
     this.slideValue = change.value;
+   // this.mo.depositAmount = this.slideValue;
   }
 
 }
