@@ -18,7 +18,7 @@ import { Title } from '@angular/platform-browser';
   selector: 'loans-table',
   templateUrl: './loans-table.component.html',
   styleUrls: ['./loans-table.component.scss'],
- changeDetection: ChangeDetectionStrategy.OnPush
+// changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoansTableComponent implements OnInit, OnDestroy {
   loading: boolean;
@@ -71,7 +71,8 @@ export class LoansTableComponent implements OnInit, OnDestroy {
     this.route.params
       .pipe(takeUntil(this._onDestroy$))
       .subscribe(res => {
-        console.log('route change in table')
+        console.log('route change in table');
+      //  if (!res['loanCurrency']) {return;}
         const formValue = {
           loanAmount: res['loanAmount'],
           loanCurrency: res['loanCurrency'],

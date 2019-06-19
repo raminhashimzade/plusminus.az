@@ -42,7 +42,7 @@ export class CreditCardsFilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => this.listenToformChange(), 20);
+    setTimeout(() => this.listenToformChange(), 10);
     this.isMdSize = this.breakPointObserver.isMatched('(max-width: 992px)');
   }
   get isContainerFluid() {
@@ -55,7 +55,7 @@ export class CreditCardsFilterComponent implements OnInit {
     this._onDestroy$.next();
   }
   ngAfterViewInit() {
-    setTimeout(() => this.listenToRouterParams(), 10);
+    setTimeout(() => this.listenToRouterParams());
   }
   listenToRouterParams() {
     this.route.params

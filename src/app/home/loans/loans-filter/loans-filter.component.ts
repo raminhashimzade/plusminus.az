@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, fromEvent } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { LoansService } from '../loans.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -20,24 +20,24 @@ import { LoanFilterForm } from '../models/loan-filter-form';
 })
 export class LoansFilterComponent implements OnInit {
   @ViewChild('f') form: NgForm;
-  loanCurrency = 'AZN';
-  loanPeriods$: Observable<any>;
+  periods$: Observable<any>;
   slideValue: number;
   isMdSize: boolean;
   _onDestroy$ = new Subject<void>();
   currCodes$: Observable<SelectType[]>
-  loanFilter = new LoanFilterForm();
+  productFilter = new LoanFilterForm();
+  slideChange$ = new Subject<number>();
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
-      private loanService: LoansService,
+      private productService: LoansService,
       private sharedService: SharedService,
       private router: Router,
       private route: ActivatedRoute,
       private dialog: MatDialog,
       private breakPointObserver: BreakpointObserver
      ) {
-    this.loanPeriods$ = this.loanService.listLoanPeriods();
+    this.periods$ = this.productService.listLoanPeriods();
     this.currCodes$ = this.sharedService.getCurrCodeList('loans');
   }
 
@@ -55,6 +55,7 @@ export class LoansFilterComponent implements OnInit {
     this._onDestroy$.next();
   }
   ngAfterViewInit() {
+    this.listenToSlideMove();
     setTimeout(() => this.listenToRouterParams(), 10);
   }
   listenToRouterParams() {
@@ -64,6 +65,7 @@ export class LoansFilterComponent implements OnInit {
       const loanAmount = res['loanAmount'];
       if (loanAmount) {
         this.slideValue = +loanAmount;
+        this.productFilter.loanAmount = this.slideValue;
       }
       Object.keys(res).forEach(key => {
         if (this.form.controls[key]) {
@@ -71,28 +73,24 @@ export class LoansFilterComponent implements OnInit {
           this.form.controls[key].setValue(res[key]);
         }
       })
-      this.loanService.loanFilterValue = deepClone(this.form.value);
+      this.productService.loanFilterValue = deepClone(this.form.value);
     });
   }
   listenToformChange() {
     this.form.valueChanges
     .pipe(
-    debounceTime(500),
      takeUntil(this._onDestroy$)
     )
     .subscribe(res => {
-      console.log('form change')
   //  if (!this.form.value.loanAmount || !this.form.value.loanCurrency) {return;}
-     this.loanService.loanFilterValue = deepClone(this.form.value);
-     console.log(this.loanService.loanFilterValue )
-      this.searchLoans();
+     this.productService.loanFilterValue = deepClone(this.form.value);
+      this.searchProducts();
     });
   }
   onSubmit() {
-    this.searchLoans(true);
+    this.searchProducts(true);
   }
-  searchLoans(scrollIntoView: boolean = false) {
-   // if (!this.form.valid) {return;}
+  searchProducts(scrollIntoView: boolean = false) {
     const filterForm = {};
       Object.keys(this.form.value).forEach(key => {
         if (this.form.controls[key].value) {
@@ -110,7 +108,17 @@ export class LoansFilterComponent implements OnInit {
     this.translateService.instant('~requiredField') : '';
   }
   onSlideMove(change: MatSliderChange) {
-    this.slideValue = change.value;
+    this.slideChange$.next(change.value);
+
+  }
+  listenToSlideMove() {
+    this.slideChange$
+    .pipe(
+      debounceTime(500),
+    ).subscribe(res => {
+      this.slideValue = res;
+     this.productFilter.loanAmount = res;
+    })
   }
 
   onRequestLoansFromAllBanks() {
