@@ -72,51 +72,36 @@
   <div class="row" >
     <div class="col-12">
       <div class="products__table">
-        <div id="products-table-filter" class="products__table__filter">
+        <div id="products-table-filter" class="products__table__filter mt-4 mb-4">
 
-            <div class="ck-buttons">
-              <div class="--ck-button">
-                <label>
-                  <input type="checkbox" value="false" ngModel
-                    name="withEmpReference"><span>{{'~withEmpReference' | translate |titlecase}}</span>
-                </label>
-              </div>
+          <fieldset>
 
-              <div class="--ck-button">
-                <label>
-                  <input type="checkbox" value="false" ngModel
-                    name="withGracePeriod"><span>{{'~withGracePeriod' | translate |titlecase}}</span>
-                </label>
-              </div>
+              <button-toggle [(ngModel)]="creditCardFilter.withEmpReference" name="withEmpReference">
+                  <span>{{'~withEmpReference' | translate |titlecase}} </span>
+              </button-toggle>
 
-              <div class="--ck-button">
-                <label>
-                  <input type="checkbox" value="false" ngModel
-                    name="withMiles"><span>{{'~withMiles' | translate |titlecase}}</span>
-                </label>
-              </div>
+              <button-toggle [(ngModel)]="creditCardFilter.withGracePeriod" name="withGracePeriod">
+                  <span>{{'~withGracePeriod' | translate |titlecase}} </span>
+              </button-toggle>
 
-              <div class="--ck-button">
-                <label>
-                  <input type="checkbox" value="false" ngModel
-                    name="withDepositRate"><span>{{'~withDepositRate' | translate |titlecase}}</span>
-                </label>
-              </div>
-              <div class="--ck-button">
-                <label>
-                  <input type="checkbox" value="false" ngModel
-                    name="comissionCash"><span>{{'~comissionCash' | translate |titlecase}}</span>
-                </label>
-              </div>
-              <div class="--ck-button">
-                <label>
-                  <input type="checkbox" value="false" ngModel
-                    name="withCashBack"><span>{{'~withCashBack' | translate |titlecase}}</span>
-                </label>
-              </div>
-            </div>
+              <button-toggle [(ngModel)]="creditCardFilter.withMiles" name="withMiles">
+                  <span>{{'~withMiles' | translate |titlecase}} </span>
+              </button-toggle>
+
+              <button-toggle [(ngModel)]="creditCardFilter.withDepositRate" name="withDepositRate">
+                  <span>{{'~withDepositRate' | translate |titlecase}} </span>
+              </button-toggle>
+
+              <button-toggle [(ngModel)]="creditCardFilter.comissionCash" name="comissionCash">
+                  <span>{{'~comissionCash' | translate |titlecase}} </span>
+              </button-toggle>
+
+              <button-toggle [(ngModel)]="creditCardFilter.withCashBack" name="withCashBack">
+                  <span>{{'~withCashBack' | translate |titlecase}} </span>
+              </button-toggle>
 
 
+          </fieldset>
 
         </div>
       </div>

@@ -10,6 +10,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 import { deepClone } from 'src/app/app.utils';
 import { CreditCardService } from '../credit-card.service';
+import { CreditCardFilterForm } from '../models/credit-card-filter-form.model';
 
 @Component({
   selector: 'credit-cards-filter',
@@ -24,7 +25,8 @@ export class CreditCardsFilterComponent implements OnInit {
   slideValue: number;
   isMdSize: boolean;
   _onDestroy$ = new Subject<void>();
-  currCodes$: Observable<SelectType[]>
+  currCodes$: Observable<SelectType[]>;
+  creditCardFilter = new CreditCardFilterForm();
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
@@ -98,7 +100,7 @@ export class CreditCardsFilterComponent implements OnInit {
     this.router.navigate(['/home/credit-cards',
     {
       ...filterForm,
-      scrollIntoView: scrollIntoView
+   //   scrollIntoView: scrollIntoView
    } ]);
   }
   getErrorMessage(controlKey: string) {
