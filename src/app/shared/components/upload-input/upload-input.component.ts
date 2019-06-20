@@ -20,18 +20,15 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class UploadInputComponent implements OnInit {
   @Input() defaultImgUrl: string;
   @Input() fileExtensions: string[];
-  base64: string;
+  imgId: string;
   disabled = false;
   loaded: boolean;
-  constructor(private dialog: MatDialog, private sanitizer: DomSanitizer,  private adminPanelService: AdminPanelService ) { }
+  constructor(private dialog: MatDialog, private adminPanelService: AdminPanelService ) { }
 
   ngOnInit() {
   }
   onLoaded() {
    this.loaded = true;
-  }
-  getSafeUrl() {
-    return this.sanitizer.bypassSecurityTrustUrl(this.base64);
   }
   onUpload() {
     const dialogRef = this.dialog.open(UploadFileDialogComponent, {
@@ -41,14 +38,14 @@ export class UploadInputComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(res => {
       if (!res) { return; }
-      this.base64 = res;
-      this.onChange(this.base64);
+      this.imgId = res;
+      console.log(this.imgId);
+      this.onChange(this.imgId);
       dialogRef.close();
     });
   }
   onRemoveFile(id: string) {
-    this.base64 = undefined;
-    this.onChange(undefined);
+    this.imgId = undefined;
     // this.adminPanelService
     //   .removeFile(id)
     //   .subscribe(res => {
@@ -57,16 +54,16 @@ export class UploadInputComponent implements OnInit {
     //   });
   }
   get value(): string {
-    return this.base64;
+    return this.imgId;
   }
   writeValue(value: string): void {
-    if (value) {
-      this.base64 = value;
+    if (+value) {
+      this.imgId = value;
     }
 
   }
   onChange(value: string) {
-    this.base64 =  value;
+    this.imgId =  value;
   }
   onTouched = () => {};
   ngOnChanges(changes: SimpleChanges) {
@@ -74,7 +71,6 @@ export class UploadInputComponent implements OnInit {
   }
   registerOnChange(fn: (value: string) => void): void {
     this.onChange = fn;
-    console.log('register On cChanged')
   }
     // Allows Angular to register a function to call when the input has been touched.
   // Save the function as a property to call later here.

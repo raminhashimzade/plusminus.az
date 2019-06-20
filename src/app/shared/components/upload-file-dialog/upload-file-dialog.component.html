@@ -3,6 +3,7 @@
 [adapter]="adapter"
 [uploadType]="'multi'"
 [enableCropper]="false"
+[fileExtensions]="data?.fileExtensions"
 (validationError)="onValidationError($event)"
 (uploadSuccess)="onUploaded($event)"
 [cropperOptions]="cropperOptions"

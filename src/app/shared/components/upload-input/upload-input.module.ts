@@ -6,6 +6,7 @@ import { UploadFileDialogModule } from '../upload-file-dialog/upload-file-dialog
 import { MatDialogModule } from '@angular/material';
 import { UploadInputLoaderComponent } from './upload-input-loader/upload-input-loader.component';
 import { SharedTranslateModule } from '../../shared-translate.module';
+import { ImgSrcPipeModule } from '../../pipes/img-src-pipe.module';
 
 @NgModule({
   declarations: [UploadInputComponent, UploadInputLoaderComponent],
@@ -15,7 +16,7 @@ import { SharedTranslateModule } from '../../shared-translate.module';
     FilePickerModule,
     UploadFileDialogModule,
     MatDialogModule,
-  //  ImgSrcPipeModule,
+    ImgSrcPipeModule,
     SharedTranslateModule
   ],
   entryComponents: []

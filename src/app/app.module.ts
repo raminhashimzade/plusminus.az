@@ -73,7 +73,7 @@ import { SupportedBrowserCardComponent } from './unsupported-browser/supported-b
   providers: [
     TokenResolver,
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+   {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     { provide: LOCALE_ID,
       deps: [TranslateService],
       useFactory: (service) => service.getDefaultLang()

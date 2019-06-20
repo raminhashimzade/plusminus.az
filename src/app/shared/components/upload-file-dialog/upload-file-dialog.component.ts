@@ -1,3 +1,5 @@
+import { AdminPanelService } from 'src/app/admin-panel/admin-panel.service';
+import { AuthService } from 'src/app/auth/auth.service';
 import { FilePreviewModel } from 'ngx-awesome-uploader';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
@@ -11,7 +13,7 @@ import { UnibookFilePickerAdapter } from './unibook-file-picker.adapter';
 })
 export class UploadFileDialogComponent implements OnInit {
   @Output() uploaded = new EventEmitter<string>();
-  adapter = new UnibookFilePickerAdapter(this.http);
+  adapter = new UnibookFilePickerAdapter(this.http, this.authService, this.adminService);
   cropperOptions = {
     dragMode: 'crop',
     autoCrop: true,
@@ -24,6 +26,8 @@ export class UploadFileDialogComponent implements OnInit {
   };
   constructor( @Inject(MAT_DIALOG_DATA) public data: any,
                public dialogRef: MatDialogRef<UploadFileDialogComponent>,
+               private authService: AuthService,
+               private adminService: AdminPanelService,
                private http: HttpClient) {}
   ngOnInit() {
     if (this.data && this.data.adapter) {this.adapter = this.data.adapter; }

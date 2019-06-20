@@ -30,13 +30,8 @@
     <div class="row table-edit__inputs">
         <div class="col-12 col-md-6 p-0">
 
-          <div class="upload-input-wrapper" *ngIf="!creditCard?.cardImageId">
-            <upload-input [fileExtensions]="['svg']" name="cardImage" [(ngModel)]="creditCard.cardImage" [defaultImgUrl]="'./assets/images/credit-card.png'"></upload-input>
-          </div>
-
-          <div class="upload-input-wrapper" *ngIf="imageUrl">
-            <img [src]="imageUrl"  >
-             <!-- <upload-input name="cardImage" ngModel [defaultImgUrl]="'./assets/images/credit-card.png'"></upload-input> -->
+          <div class="upload-input-wrapper">
+            <upload-input [fileExtensions]="['svg']" name="cardImageId" [(ngModel)]="creditCard.cardImageId" [defaultImgUrl]="'./assets/images/credit-card.png'"></upload-input>
           </div>
 
             <select-search name="bankId" [(ngModel)]="creditCard.bankId"

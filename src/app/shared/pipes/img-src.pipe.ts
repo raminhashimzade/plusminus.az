@@ -1,9 +1,7 @@
 import { Pipe, PipeTransform, ChangeDetectorRef } from '@angular/core';
-import { getBaseUrl } from 'src/app/app.utils';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/auth/auth.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { hostname } from 'os';
 import { map, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
 
@@ -23,8 +21,9 @@ export class ImgSrcPipe implements PipeTransform {
         token: this.authService.token
       }).pipe(
         map((res: any) => {
+          console.log(res)
           const base64 = res && res.data && res.data.file;
-           return res && res.data && res.data.file && this.sanitizer.bypassSecurityTrustUrl(`data:image/png;base64, ${base64}`);
+          return res && res.data && res.data.file && this.sanitizer.bypassSecurityTrustUrl(`data:image/svg+xml;base64, ${base64}`);
         })
       );
     })
@@ -37,7 +36,5 @@ export class ImgSrcPipe implements PipeTransform {
     this.valueSubject.next(fileId);
     return this.imageFetcher$;
 
-  //  return this.http.post('mybank/getFileById/', {});
-   // return `${hostname}/DispatcherRest/api/get/file/${fileId}`;
   }
 }

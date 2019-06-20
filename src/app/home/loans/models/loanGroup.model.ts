@@ -7,6 +7,9 @@ export interface LoanGroup{
  export class LoanProduct {
     lnID = null;
     bankID = null;
+    //temp
+    lnId = null;
+    bankId = null;
     bankName = null;
     loanType = null;
     loanName = new Value();
