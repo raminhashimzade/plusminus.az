@@ -150,7 +150,6 @@ export class BankCustomersComponent implements OnInit {
       })
     )
     .subscribe(res => {
-      console.log(res);
       this.orderStats = res;
     })
   }

@@ -13,19 +13,17 @@ import { HttpClient } from '@angular/common/http';
 export class AdminCreditCardService {
 
   constructor(private http: HttpClient, private adminPanelService: AdminPanelService) {}
-  cardCreditProduct(commandType: CrudCommandType, loanProduct: any = {}): Observable<CreditCard[]> {
-      if (loanProduct && loanProduct.cardImage) {
-        loanProduct.cardImage = loanProduct.cardImage.split(',')[1];
+ crudProduct(commandType: CrudCommandType, product: any = {}): Observable<CreditCard[]> {
+      if (product && product.cardImage) {
+        product.cardImage = product.cardImage.split(',')[1];
       }
       return this.http.post<DataResponse>('mybank/crud/cardCreditProduct', {
         adminToken: this.adminPanelService.token,
         commandType: commandType,
-        ...loanProduct,
+        ...product,
     }).pipe(
         map(res => res && res.data),
         catchError(er => of(null))
     );
     }
-
-
 }

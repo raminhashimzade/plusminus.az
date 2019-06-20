@@ -62,7 +62,7 @@ export class AddOrEditCreditCardComponent implements OnInit {
   onUpdate() {
     if(!this.form.valid) {return;}
     this.loading = true;
-    this.productService.cardCreditProduct(CrudCommandType.UPDATE, this.creditCard )
+    this.productService.crudProduct(CrudCommandType.UPDATE, this.creditCard )
     .pipe(
       finalize(() => this.loading = false)
     )
@@ -75,7 +75,7 @@ export class AddOrEditCreditCardComponent implements OnInit {
   onAdd() {
     if(!this.form.valid) {return;}
     this.loading = true;
-    this.productService.cardCreditProduct(CrudCommandType.INSERT , this.creditCard )
+    this.productService.crudProduct(CrudCommandType.INSERT , this.creditCard )
     .pipe(
       finalize(() => this.loading = false)
     )

@@ -1,0 +1,373 @@
+<form #f="ngForm"  class="nt-form" *ngIf="product" >
+
+  <div class="container-fluid table-edit">
+
+      <div class="row table-edit__actions">
+          <div class="col-12 table-edit__actions__wrapper">
+
+              <button mat-raised-button (click)="dialogRef.close()">{{'~cancel' | translate}}</button>
+
+              <button mat-raised-button color="accent"  type="submit"
+              *ngIf="product?.cdId"
+              (click)="onUpdate()"
+              [ngClass]="{'is-loading': loading}"
+              [disabled]="loading"
+              >{{'~update' | translate}}</button>
+
+              <button mat-raised-button color="accent"  type="submit"
+              *ngIf="!product?.cdId"
+              (click)="onAdd()"
+              [ngClass]="{'is-loading': loading}"
+              [disabled]="loading"
+              >{{'~add' | translate}}</button>
+
+
+          </div>
+
+        </div>
+
+
+    <div class="row table-edit__inputs">
+        <div class="col-12 col-md-6 p-0">
+
+          <div class="upload-input-wrapper">
+            <upload-input [fileExtensions]="['svg']" name="cardImageId" [(ngModel)]="product.cardImageId" [defaultImgUrl]="'./assets/images/credit-card.png'"></upload-input>
+          </div>
+
+            <select-search name="bankId" [(ngModel)]="product.bankId"
+               class="table-edit__inputs__field" appearance="legacy" [banks]="banks$ | async"
+               placeholder="{{'~bankId' | translate}}" [appearance]="'legacy'">
+           </select-search>
+
+           <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+            <mat-label>{{'~bankName' | translate}}</mat-label>
+            <input matInput disabled placeholder="{{'~bankName' | translate}}" required  name="bankName"  [(ngModel)]="product.bankName">
+          </mat-form-field>
+
+
+           <fieldset ngModelGroup="cardName">
+
+              <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                <mat-label>{{'~cardName' | translate}} (AZ)</mat-label>
+                <input matInput placeholder="{{'~cardName' | translate}} (AZ)" required  name="az"  [(ngModel)]="product.cardName.az">
+              </mat-form-field>
+
+              <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~cardName' | translate}} (EN)</mat-label>
+                <input matInput placeholder="{{'~cardName' | translate}} (EN)"   name="en"  [(ngModel)]="product.cardName.en">
+              </mat-form-field>
+
+              <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~cardName' | translate}} (RU)</mat-label>
+                <input matInput placeholder="{{'~cardName' | translate}} (RU)"   name="ru"  [(ngModel)]="product.cardName.ru">
+              </mat-form-field>i
+
+          </fieldset>
+
+
+          <fieldset ngModelGroup="description">
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~description' | translate}} (AZ)</mat-label>
+                  <textarea matInput
+                            ngModel name="az"
+                            [(ngModel)]="product.description.az"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~description' | translate}} (EN) </mat-label>
+                  <textarea matInput
+                            ngModel name="en"
+                            [(ngModel)]="product.description.en"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~description' | translate}} (RU) </mat-label>
+                  <textarea matInput
+                            ngModel name="ru"
+                            [(ngModel)]="product.description.ru"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+          </fieldset>
+
+
+          <fieldset ngModelGroup="descriptionDOC">
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionDOC' | translate}} (AZ)</mat-label>
+                  <textarea matInput
+                            ngModel name="az"
+                            [(ngModel)]="product.descriptionDOC.az"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionDOC' | translate}} (EN) </mat-label>
+                  <textarea matInput
+                            ngModel name="en"
+                            [(ngModel)]="product.descriptionDOC.en"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionDOC' | translate}} (RU) </mat-label>
+                  <textarea matInput
+                            ngModel name="ru"
+                            [(ngModel)]="product.descriptionDOC.ru"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+
+          </fieldset>
+
+          <fieldset ngModelGroup="descriptionPD">
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionPD' | translate}} (AZ)</mat-label>
+                  <textarea matInput
+                            ngModel name="az"
+                            [(ngModel)]="product.descriptionPD.az"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionPD' | translate}} (EN) </mat-label>
+                  <textarea matInput
+                            ngModel name="en"
+                            [(ngModel)]="product.descriptionPD.en"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                  <mat-label >{{'~descriptionPD' | translate}} (RU) </mat-label>
+                  <textarea matInput
+                            ngModel name="ru"
+                            [(ngModel)]="product.descriptionPD.ru"
+                            cdkTextareaAutosize
+                            #autosize="cdkTextareaAutosize"
+                            cdkAutosizeMinRows="5"
+                            cdkAutosizeMaxRows="5"
+                            >
+                          </textarea>
+                </mat-form-field>
+
+
+          </fieldset>
+
+
+          </div>
+
+
+          <div class="col-12 col-md-6 p-0">
+
+
+                <mat-form-field class="table-edit__inputs__field">
+                  <mat-label>{{'~cardPeriod'}}</mat-label>
+                  <mat-select  required  name="cardPeriod"  [(ngModel)]="product.cardPeriod">
+                    <mat-option value="12"> 12 </mat-option>
+                    <mat-option value="24"> 24 </mat-option>
+                    <mat-option value="36"> 36 </mat-option>
+                    <mat-option value="48"> 48 </mat-option>
+                    <mat-option value="60"> 60 </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <select-search name="currencyCode" [(ngModel)]="product.currencyCode"
+                [required]="true"
+                 class="table-edit__inputs__field" appearance="legacy" [banks]="curCodes$ | async"
+                  placeholder="{{'~currencyCode' | translate}}" [appearance]="'legacy'">
+               </select-search>
+
+               <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~sellAmount' | translate}}</mat-label>
+                  <input matInput  placeholder="{{'~sellAmount' | translate}}" type="number" required  name="sellAmount"  [(ngModel)]="product.sellAmount">
+                </mat-form-field>
+
+               <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~depositRate' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~dpositRate' | translate}}" type="number" required  name="withDepositRate"  [(ngModel)]="product.withDepositRate">
+                </mat-form-field>
+
+               <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~gracePeriod' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~gracePeriod' | translate}}" type="number" required  name="withGracePeriod"  [(ngModel)]="product.withGracePeriod">
+                </mat-form-field>
+
+               <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~comissionSMS' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~comissionSMS' | translate}}" type="number" required  name="comissionSMS"  [(ngModel)]="product.comissionSMS">
+                </mat-form-field>
+
+               <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~comissionCashInhouseOwn' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~comissionCashInhouseOwn' | translate}}" type="number" required  name="comissionCashInhouseOwn"  [(ngModel)]="product.comissionCashInhouseOwn">
+                </mat-form-field>
+
+               <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~comissionCashInhouseOther' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~comissionCashInhouseOther' | translate}}" type="number" required  name="comissionCashInhouseOther"  [(ngModel)]="product.comissionCashInhouseOther">
+                </mat-form-field>
+
+               <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~comissionCashFCountry' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~comissionCashFCountry' | translate}}" type="number" required  name="comissionCashFCountry"  [(ngModel)]="product.comissionCashFCountry">
+                </mat-form-field>
+
+               <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~comissionCardToCard' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~comissionCardToCard' | translate}}" type="number" required  name="comissionCardToCard"  [(ngModel)]="product.comissionCardToCard">
+                </mat-form-field>
+
+               <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~comissionQuasiCash' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~comissionQuasiCash' | translate}}" type="number" required  name="comissionQuasiCash"  [(ngModel)]="product.comissionQuasiCash">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~comissionLoan' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~comissionLoan' | translate}}" type="number" required  type="number" name="comissionLoan"  [(ngModel)]="product.comissionLoan">
+                </mat-form-field>
+
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minAmount' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minAmount' | translate}}" type="number" required  type="number" name="minAmount"  [(ngModel)]="product.minAmount">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxAmount' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxAmount' | translate}}" type="number" required  type="number" name="maxAmount"  [(ngModel)]="product.maxAmount">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minPeriod' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minPeriod' | translate}}" type="number"  required  type="number" name="minPeriod"  [(ngModel)]="product.minPeriod">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxPeriod' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxPeriod' | translate}}" type="number" required  type="number" name="maxPeriod"  [(ngModel)]="product.maxPeriod">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minEffectiveRate' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minEffectiveRate' | translate}}"  type="number" name="minEffectiveRate"  [(ngModel)]="product.minEffectiveRate">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxEffectiveRate' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxEffectiveRate' | translate}}" type="number" name="maxEffectiveRate"  [(ngModel)]="product.maxEffectiveRate">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~minRate' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~minRate' | translate}}" type="number" required
+                    name="minRate"  [(ngModel)]="product.minRate">
+                  </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~maxRate' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~maxRate' | translate}}" type="number" required
+                     name="maxRate"  [(ngModel)]="product.maxRate">
+                </mat-form-field>
+
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                    <mat-label>{{'~priority' | translate}}</mat-label>
+                    <input matInput placeholder="{{'~priority' | translate}}" type="number" required  name="priority"  [(ngModel)]="product.priority">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field">
+                    <mat-label>{{'~prodStatus'}}</mat-label>
+                    <mat-select  name="prodStatus" [(ngModel)]="product.prodStatus" required >
+                      <mat-option [value]="1"> 1 </mat-option>
+                      <mat-option [value]="-1">-1</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+               <fieldset>
+
+                  <mat-checkbox
+                  name="withCashback"
+                  [(ngModel)]="product.withCashback"
+                 >
+                  {{'~withCashback' | translate}}
+               </mat-checkbox>
+
+               </fieldset>
+
+               <fieldset>
+                  <mat-checkbox
+                  name="withMiles"
+                  [(ngModel)]="product.withMiles"
+                 >
+                  {{'~withMiles' | translate}}
+               </mat-checkbox>
+
+               </fieldset>
+
+
+               <fieldset>
+                  <mat-checkbox
+                  name="withBonus"
+                  [(ngModel)]="product.withBonus"
+                 >
+                  {{'~withBonus' | translate}}
+               </mat-checkbox>
+
+               </fieldset>
+
+
+          </div>
+    </div>
+
+
+  </div>
+
+  <input type="hidden" name="cdId" [(ngModel)]="product.cdId">
+  <input type="hidden" name="cardType" [(ngModel)]="product.cardType">
+
+</form>

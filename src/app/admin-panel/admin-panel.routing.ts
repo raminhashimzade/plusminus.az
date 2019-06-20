@@ -7,13 +7,17 @@ import { TokenResolver } from '../home/token.resolver';
 
 const routes: Routes = [
     {path: 'login', component: AdminLoginComponent},
-  { path: '', component: AdminPanelComponent , children: [
+     {path: '', component: AdminPanelComponent, resolve: {token: TokenResolver}, children: [
       {path: '', redirectTo: 'loans', pathMatch: 'full'},
-      {path: 'deposits', loadChildren:'./admin-deposits/admin-deposits.module#AdminDepositsModule', canActivate: [AdminPanelGuard]},
-      {path: 'loans', loadChildren:'./admin-loans/admin-loans.module#AdminLoansModule', canActivate: [AdminPanelGuard]},
+      {path: 'deposits', loadChildren:'./admin-deposits/admin-deposits.module#AdminDepositsModule',
+      canActivate: [AdminPanelGuard]},
+      {path: 'loans', loadChildren:'./admin-loans/admin-loans.module#AdminLoansModule',
+       canActivate: [AdminPanelGuard]},
       {path: 'credit-cards', loadChildren:'./admin-credit-cards/admin-credit-cards.module#AdminCreditCardsModule',
        canActivate: [AdminPanelGuard],
-       resolve: {token: TokenResolver},
+      },
+      {path: 'debit-cards', loadChildren:'./admin-debit-cards/admin-debit-cards.module#AdminDebitCardsModule',
+       canActivate: [AdminPanelGuard],
       }
   ]},
 ];

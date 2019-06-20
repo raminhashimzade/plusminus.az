@@ -223,47 +223,52 @@
 
                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                   <mat-label>{{'~sellAmount' | translate}}</mat-label>
-                  <input matInput  placeholder="{{'~sellAmount' | translate}}" required  name="sellAmount"  [(ngModel)]="creditCard.sellAmount">
+                  <input matInput  placeholder="{{'~sellAmount' | translate}}"  type="number" required  name="sellAmount"  [(ngModel)]="creditCard.sellAmount">
                 </mat-form-field>
 
                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
-                  <mat-label>{{'~withDepositRate' | translate}}</mat-label>
-                  <input matInput placeholder="{{'~withDepositRate' | translate}}" required  name="withDepositRate"  [(ngModel)]="creditCard.withDepositRate">
+                  <mat-label>{{'~depositRate' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~depositRate' | translate}}" type="number"  required  name="withDepositRate"  [(ngModel)]="creditCard.withDepositRate">
+                </mat-form-field>
+
+               <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~gracePeriod' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~gracePeriod' | translate}}" type="number" required  name="withGracePeriod"  [(ngModel)]="creditCard.withGracePeriod">
                 </mat-form-field>
 
                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                   <mat-label>{{'~comissionSMS' | translate}}</mat-label>
-                  <input matInput placeholder="{{'~comissionSMS' | translate}}" required  name="comissionSMS"  [(ngModel)]="creditCard.comissionSMS">
+                  <input matInput placeholder="{{'~comissionSMS' | translate}}" type="number" required  name="comissionSMS"  [(ngModel)]="creditCard.comissionSMS">
                 </mat-form-field>
 
                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                   <mat-label>{{'~comissionCashInhouseOwn' | translate}}</mat-label>
-                  <input matInput placeholder="{{'~comissionCashInhouseOwn' | translate}}" required  name="comissionCashInhouseOwn"  [(ngModel)]="creditCard.comissionCashInhouseOwn">
+                  <input matInput placeholder="{{'~comissionCashInhouseOwn' | translate}}"  type="number" required  name="comissionCashInhouseOwn"  [(ngModel)]="creditCard.comissionCashInhouseOwn">
                 </mat-form-field>
 
                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                   <mat-label>{{'~comissionCashInhouseOther' | translate}}</mat-label>
-                  <input matInput placeholder="{{'~comissionCashInhouseOther' | translate}}" required  name="comissionCashInhouseOther"  [(ngModel)]="creditCard.comissionCashInhouseOther">
+                  <input matInput placeholder="{{'~comissionCashInhouseOther' | translate}}"  type="number" required  name="comissionCashInhouseOther"  [(ngModel)]="creditCard.comissionCashInhouseOther">
                 </mat-form-field>
 
                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                   <mat-label>{{'~comissionCashFCountry' | translate}}</mat-label>
-                  <input matInput placeholder="{{'~comissionCashFCountry' | translate}}" required  name="comissionCashFCountry"  [(ngModel)]="creditCard.comissionCashFCountry">
+                  <input matInput placeholder="{{'~comissionCashFCountry' | translate}}" type="number" required  name="comissionCashFCountry"  [(ngModel)]="creditCard.comissionCashFCountry">
                 </mat-form-field>
 
                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                   <mat-label>{{'~comissionCardToCard' | translate}}</mat-label>
-                  <input matInput placeholder="{{'~comissionCardToCard' | translate}}" required  name="comissionCardToCard"  [(ngModel)]="creditCard.comissionCardToCard">
+                  <input matInput placeholder="{{'~comissionCardToCard' | translate}}" type="number" required  name="comissionCardToCard"  [(ngModel)]="creditCard.comissionCardToCard">
                 </mat-form-field>
 
                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                   <mat-label>{{'~comissionQuasiCash' | translate}}</mat-label>
-                  <input matInput placeholder="{{'~comissionQuasiCash' | translate}}" required  name="comissionQuasiCash"  [(ngModel)]="creditCard.comissionQuasiCash">
+                  <input matInput placeholder="{{'~comissionQuasiCash' | translate}}" type="number" required  name="comissionQuasiCash"  [(ngModel)]="creditCard.comissionQuasiCash">
                 </mat-form-field>
 
                 <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                     <mat-label>{{'~comissionLoan' | translate}}</mat-label>
-                    <input matInput placeholder="{{'~comissionLoan' | translate}}" required  type="number" name="comissionLoan"  [(ngModel)]="creditCard.comissionLoan">
+                    <input matInput placeholder="{{'~comissionLoan' | translate}}" type="number" required  type="number" name="comissionLoan"  [(ngModel)]="creditCard.comissionLoan">
                 </mat-form-field>
 
 
@@ -308,12 +313,6 @@
                     <input matInput placeholder="{{'~maxRate' | translate}}" type="number" required
                      name="maxRate"  [(ngModel)]="creditCard.maxRate">
                 </mat-form-field>
-
-                <!-- <mat-form-field class="table-edit__inputs__field" appearance="legacy">
-                    <mat-label>{{'~minSalary' | translate}}</mat-label>
-                    <input matInput placeholder="{{'~minSalary' | translate}}" type="number" name="minSalary"  [(ngModel)]="creditCard.minSalary">
-                </mat-form-field> -->
-
 
 
                 <mat-form-field class="table-edit__inputs__field" appearance="legacy">
@@ -370,17 +369,6 @@
                </mat-checkbox>
 
                </fieldset>
-
-               <fieldset>
-                  <mat-checkbox
-                  name="withGracePeriod"
-                  [(ngModel)]="creditCard.withGracePeriod"
-                 >
-                  {{'~withGracePeriod' | translate}}
-               </mat-checkbox>
-
-               </fieldset>
-
 
 
           </div>

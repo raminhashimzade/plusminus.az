@@ -12,7 +12,7 @@ export class CreditCard {
     currencyCode = null;
     cardSystem = null;
     cardProduct?: any;
-    cardType = null;
+    cardType = 'C';
     cardPeriod?: any;
     sellAmount = 0;
     withCashBack = false;
