@@ -18,7 +18,7 @@ import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/conf
 export class AdminDebitCardsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   allColumns: string[] = [];
-  displayedColumns: string[] = this.allColumns.slice();
+  displayedColumns: string[];
   toggleColumnsControl: FormControl = new FormControl();
   dataSource: MatTableDataSource<DebitCard>;
   @ViewChild(MatSort) sort: MatSort;
@@ -109,7 +109,7 @@ export class AdminDebitCardsComponent implements OnInit {
         .subscribe(res => {
           if (res) {
             this.adminService
-            .createNotification(`[ CREDIT CARD ] ${this.translateService.instant('~deleteSuccess')}`, 'OK', 'success');
+            .createNotification(`[ DEBIT CARD ] ${this.translateService.instant('~deleteSuccess')}`, 'OK', 'success');
             this.getData();
            }
         })

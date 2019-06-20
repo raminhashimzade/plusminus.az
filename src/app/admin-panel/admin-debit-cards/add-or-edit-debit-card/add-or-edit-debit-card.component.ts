@@ -76,12 +76,12 @@ export class AddOrEditDebitCardComponent implements OnInit {
   }
   onAddSuccess(res) {
       this.adminService
-        .createNotification(`[ Debit] ${this.translateService.instant('~addSuccess')}`, 'OK', 'success');
+        .createNotification(`[ Debit CARD] ${this.translateService.instant('~addSuccess')}`, 'OK', 'success');
    //   this.dialogRef.close(res);
    }
    onUpdateSuccess(res) {
     this.adminService
-    .createNotification(`[ Debit] ${this.translateService.instant('~updateSuccess')}`, 'OK', 'success');
+    .createNotification(`[ Debit CARD] ${this.translateService.instant('~updateSuccess')}`, 'OK', 'success');
        this.dialogRef.close(res);
    }
 

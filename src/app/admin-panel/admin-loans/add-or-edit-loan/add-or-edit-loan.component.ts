@@ -18,7 +18,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AddOrEditLoanComponent implements OnInit {
   @ViewChild('f') form:NgForm;
-  loanProduct: LoanProduct;
+  product: LoanProduct;
   banks$: Observable<SelectType[]> = of([]);
   curCodes$: Observable<SelectType[]> = of([]);
   loading: boolean;
@@ -35,14 +35,13 @@ export class AddOrEditLoanComponent implements OnInit {
      }
 
   ngOnInit() {
-    this.loanProduct = this.data.item ? this.data.item : new LoanProduct();
-    console.log(this.loanProduct)
+    this.product = this.data.item ? this.data.item : new LoanProduct();
   }
 
   onUpdate() {
     if(!this.form.valid) {return;}
     this.loading = true;
-    this.adminLoanService.crudLoanProduct(CrudCommandType.UPDATE, this.loanProduct )
+    this.adminLoanService.crudProduct(CrudCommandType.UPDATE, this.product )
     .pipe(
       finalize(() => this.loading = false)
     )
@@ -55,7 +54,7 @@ export class AddOrEditLoanComponent implements OnInit {
   onAdd() {
     if(!this.form.valid) {return;}
     this.loading = true;
-    this.adminLoanService.crudLoanProduct(CrudCommandType.INSERT , this.loanProduct )
+    this.adminLoanService.crudProduct(CrudCommandType.INSERT , this.product )
     .pipe(
       finalize(() => this.loading = false)
     )

@@ -11,7 +11,7 @@ import { LoanProduct } from 'src/app/home/loans/models/loanGroup.model';
 export class AdminLoanService {
 
   constructor(private http: HttpClient, private adminPanelService: AdminPanelService) {}
-    crudLoanProduct(commandType: CrudCommandType, loanProduct = {}): Observable<LoanProduct[]> {
+    crudProduct(commandType: CrudCommandType, loanProduct = {}): Observable<LoanProduct[]> {
       return this.http.post<DataResponse>('mybank/crud/loanProduct', {
         adminToken: this.adminPanelService.token,
         commandType: commandType,

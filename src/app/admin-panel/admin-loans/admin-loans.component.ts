@@ -70,12 +70,13 @@ export class AdminLoansComponent implements OnInit {
   }
   getData() {
     this.dataSource = undefined;
-    this.adminLoanService.crudLoanProduct(CrudCommandType.SELECT, {})
+    this.adminLoanService.crudProduct(CrudCommandType.SELECT, {})
     .subscribe(res => {
       this.dataSource = new MatTableDataSource(res);
       setTimeout(() => {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
+
        // this.initToggleColumnControl();
         // this.changeRef.detectChanges();
       }, 10);
@@ -110,7 +111,7 @@ export class AdminLoansComponent implements OnInit {
     });
     ref.afterClosed().subscribe( res => {
       if (res) {
-        this.adminLoanService.crudLoanProduct(CrudCommandType.DELETE, element)
+        this.adminLoanService.crudProduct(CrudCommandType.DELETE, element)
         .subscribe(res => {
           if (res) {
             this.adminService
