@@ -2,6 +2,7 @@ import { HomeService } from './../../../home.service';
 import { Component, OnInit } from '@angular/core';
 import {BankPartner} from './bank-partner.model';
 import { Observable } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 @Component({
   selector: 'bank-partners',
   templateUrl: './bank-partners.component.html',
@@ -14,7 +15,8 @@ export class BankPartnersComponent implements OnInit {
     bankWebSite: 'http://www.azerturkbank.az'
   }
   constructor(private homeService: HomeService) {
-    this.partners$ = this.homeService.getBankList(true);
+    this.partners$ = this.homeService.getBankList(true)
+                      .pipe(map((banks: BankPartner[]) => banks.filter(bank => bank.bankID === 1 || bank.bankID === 12) ));
   }
 
   ngOnInit() {
