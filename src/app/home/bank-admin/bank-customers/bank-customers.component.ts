@@ -62,12 +62,6 @@ export class BankCustomersComponent implements OnInit {
        order: order
       }
     });
-
-    ref.afterClosed$.subscribe(res => {
-      //  console.log(res);
-    //  this.getOrderList();
-    })
-
   }
   onCustomerNotePopup(order, target) {
     const ref = this.popper.open({
@@ -81,7 +75,10 @@ export class BankCustomersComponent implements OnInit {
     });
 
     ref.afterClosed$.subscribe((res: any) => {
-     if (res && res && res.data && res.data.success) {this.getOrderList();}
+     if (res && res && res.data && res.data.success) {
+       this.getOrderList();
+       this.getOrderStats();
+      }
     })
   }
   onCancelOrder(order: CustomerOrder) {
@@ -98,6 +95,8 @@ export class BankCustomersComponent implements OnInit {
           if (res.success) {
             this.sharedService.createNotification(this.translateService.instant('~orderCancelled'), 'OK', 'success');
             this.getOrderList();
+             this.getOrderStats();
+
           }
         });
       }
@@ -141,12 +140,9 @@ export class BankCustomersComponent implements OnInit {
       }
     });
 
-    ref.afterClosed$.subscribe(res => {
-        console.log(res);
-    })
-
   }
   getOrderStats() {
+    this.orderStats = undefined;
     this.bankService.getOrderStats()
     .pipe(
       finalize(() => {

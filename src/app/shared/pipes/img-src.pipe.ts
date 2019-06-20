@@ -21,9 +21,19 @@ export class ImgSrcPipe implements PipeTransform {
         token: this.authService.token
       }).pipe(
         map((res: any) => {
-          console.log(res)
-          const base64 = res && res.data && res.data.file;
-          return res && res.data && res.data.file && this.sanitizer.bypassSecurityTrustUrl(`data:image/svg+xml;base64, ${base64}`);
+          console.log(res);
+          if (!(res && res.data && res.data.file && res.data.fileExt)) {return;}
+          const base64 =  res.data.file;
+          const fileExt = res.data.fileExt;
+          let base64Header: string;
+          switch(fileExt) {
+            case 'svg':
+              base64Header = 'data:image/svg+xml;base64';
+              break;
+             case 'png':
+               base64Header = 'data:image/png;base64';
+          }
+          return res && res.data && res.data.file && this.sanitizer.bypassSecurityTrustUrl(`${base64Header}, ${base64}`);
         })
       );
     })
