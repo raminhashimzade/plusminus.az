@@ -205,14 +205,6 @@
 
 
                 <mat-form-field class="table-edit__inputs__field">
-                  <mat-label>{{'~cardType'}}</mat-label>
-                  <mat-select  required  name="cardType"  [(ngModel)]="creditCard.cardType">
-                    <mat-option value="C"> CREDIT </mat-option>
-                    <mat-option value="D">DEBIT</mat-option>
-                  </mat-select>
-                </mat-form-field>
-
-                <mat-form-field class="table-edit__inputs__field">
                   <mat-label>{{'~cardPeriod'}}</mat-label>
                   <mat-select  required  name="cardPeriod"  [(ngModel)]="creditCard.cardPeriod">
                     <mat-option value="12"> 12 </mat-option>
@@ -317,10 +309,10 @@
                      name="maxRate"  [(ngModel)]="creditCard.maxRate">
                 </mat-form-field>
 
-                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                <!-- <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                     <mat-label>{{'~minSalary' | translate}}</mat-label>
                     <input matInput placeholder="{{'~minSalary' | translate}}" type="number" name="minSalary"  [(ngModel)]="creditCard.minSalary">
-                </mat-form-field>
+                </mat-form-field> -->
 
 
 
@@ -398,5 +390,6 @@
   </div>
 
   <input type="hidden" name="cdId" [(ngModel)]="creditCard.cdId">
+  <input type="hidden" name="cardType" [(ngModel)]="creditCard.cardType">
 
 </form>

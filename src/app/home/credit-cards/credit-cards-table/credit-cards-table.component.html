@@ -8,16 +8,17 @@
           <div class="card" *ngIf="first || expandedGroupId === group.bankID">
             <div class="card__icon">
               <img [src]="product.cardImageId | imgSrc | async">
-
-              <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
-                [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
-                <div class="expand__title">
-                  {{'~expandMore' | translate}} {{group.list?.length}} {{'~product' | translate | lowercase}}
+              <ng-container  *ngIf="group.list?.length > 1">
+                  <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
+                  [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
+                  <div class="expand__title">
+                    {{'~expandMore' | translate}} {{group.list?.length - 1}} {{'~product' | translate | lowercase}}
+                  </div>
+                  <div class="expand__icon">
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
                 </div>
-                <div class="expand__icon">
-                  <i class="fas fa-chevron-down"></i>
-                </div>
-              </div>
+              </ng-container>
 
             </div>
 

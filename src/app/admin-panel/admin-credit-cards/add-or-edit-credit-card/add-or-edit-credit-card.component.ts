@@ -88,7 +88,7 @@ export class AddOrEditCreditCardComponent implements OnInit {
   onAddSuccess(res) {
       this.adminService
         .createNotification(`[ LOAN ] ${this.translateService.instant('~addSuccess')}`, 'OK', 'success');
-      this.dialogRef.close(res);
+   //   this.dialogRef.close(res);
    }
    onUpdateSuccess(res) {
     this.adminService

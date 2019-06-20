@@ -43,6 +43,8 @@ export class CreditCard {
     descriptionDOC = new Value();
     cardImageId = null;
     cardImage? = null;
+    prodStatus = null;
+    priority = null;
   }
 
   class Value {
