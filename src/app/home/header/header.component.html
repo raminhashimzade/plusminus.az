@@ -12,8 +12,8 @@
           </button>
           <mat-menu #langMenu="matMenu">
             <button mat-menu-item (click)="onLangChange('en')">EN</button>
-            <button mat-menu-item (click)="onLangChange('ru')">RU</button>
-            <button mat-menu-item (click)="onLangChange('az')">AZ</button>
+            <button mat-menu-item [disabled]="true"(click)="onLangChange('ru')">RU</button>
+            <button mat-menu-item [disabled]="true"(click)="onLangChange('az')">AZ</button>
           </mat-menu>
         </div>
 
@@ -29,9 +29,8 @@
             <button mat-menu-item [routerLink]="['deposits']" routerLinkActive="active" >{{ '~deposits' | translate }} </button>
             <button mat-menu-item [routerLink]="['loans']" routerLinkActive="active">{{ '~loans' | translate }}</button>
             <button mat-menu-item [routerLink]="['credit-cards']">{{ '~credit-cards' | translate }}</button>
-            <button mat-menu-item [disabled]="true">{{ '~debit-cards' | translate }}</button>
+            <button mat-menu-item  [routerLink]="['debit-cards']">{{ '~debit-cards' | translate }}</button>
             <button mat-menu-item [routerLink]="['mortgage']">{{ '~mortgage' | translate }}</button>
-            <!-- <button mat-menu-item [disabled]="true">{{ '~auctions' | translate }}</button> -->
             <button mat-menu-item [routerLink]="['exchange-rates']" routerLinkActive="active" >{{ '~exchange-rates' | translate }}</button>
             <button mat-menu-item [routerLink]="['bank-admin/customers']" routerLinkActive="active" >{{ '~forBanks' | translate }}</button>
           </mat-menu>
@@ -46,7 +45,7 @@
           <a class="link" [routerLink]="['credit-cards']" routerLinkActive="active"  >
             {{ '~credit-cards' | translate }}
           </a>
-          <a class="link disabled">
+          <a class="link"  [routerLink]="['debit-cards']" routerLinkActive="active" >
             {{ '~debit-cards' | translate }}
           </a>
           <a class="link" [routerLink]="['mortgage']" routerLinkActive="active" >

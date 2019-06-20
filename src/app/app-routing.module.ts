@@ -44,6 +44,11 @@ const routes: Routes = [
           './home/credit-cards/credit-cards.module#CreditCardsModule'
       },
       {
+        path: 'debit-cards',
+        loadChildren:
+          './home/debit-cards/debit-cards.module#DebitCardsModule'
+      },
+      {
         path: 'requestCustomerDetails',
         loadChildren: './home/request-customer-details/request-customer-details.module#RequestCustomerDetailsModule'
       },

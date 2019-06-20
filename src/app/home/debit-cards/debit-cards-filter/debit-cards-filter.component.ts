@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-debit-cards-filter',
+  selector: 'debit-cards-filter',
   templateUrl: './debit-cards-filter.component.html',
   styleUrls: ['./debit-cards-filter.component.scss']
 })

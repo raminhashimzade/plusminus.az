@@ -1,3 +1,108 @@
-<p>
-  debit-cards-table works!
-</p>
+<debit-cards-filter> </debit-cards-filter>
+
+<div class="container custom">
+  <div class="row">
+    <div class="col-12">
+      <div class="items-group" *ngFor="let group of filteredGroupProducts">
+        <ng-container *ngFor="let product of group?.list;let first=first">
+          <div class="card" *ngIf="first || expandedGroupId === group.bankID">
+            <div class="card__icon">
+              <img [src]="product.cardImageId | imgSrc | async">
+              <ng-container  *ngIf="group.list?.length > 1">
+                  <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
+                  [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
+                  <div class="expand__title">
+                    {{'~expandMore' | translate}} {{group.list?.length - 1}} {{'~product' | translate | lowercase}}
+                  </div>
+                  <div class="expand__icon">
+                    <i class="fas fa-chevron-down"></i>
+                  </div>
+                </div>
+              </ng-container>
+
+            </div>
+
+            <div class="card__content">
+              <div class="card__content__header">
+                <div class="card__content__header__bankName">
+                  {{product.bankName}}
+                </div>
+                <div class="card__content__header__name">
+                  {{product.cardSystem}}
+                </div>
+              </div>
+              <div class="card__content__features">
+
+
+                  <div class="card__content__features__info">
+                    <div class="card__content__features__info__key">
+                        {{'~cardPeriod' | translate}}:
+                    </div>
+                    <div class="card__content__features__info__value">
+                        {{product.cardPeriod}}
+                    </div>
+                  </div>
+
+                  <div class="card__content__features__info">
+                    <div class="card__content__features__info__key">
+                        {{'~currencyCode' | translate}}:
+                    </div>
+                    <div class="card__content__features__info__value">
+                        {{product.currencyCode}}
+                    </div>
+                  </div>
+
+                  <div class="card__content__features__info">
+                    <div class="card__content__features__info__key">
+                      {{'~price' | translate}}:
+                    </div>
+                    <div class="card__content__features__info__value">
+                      {{product.sellAmount}}
+                    </div>
+                  </div>
+
+                      <div class="card__content__features__info" *ngIf="product.withCashBack">
+                    <div class="card__content__features__info__key">
+                      {{'~cashback' | translate}}:
+                    </div>
+                    <div class="card__content__features__info__value --icon">
+                      <i class="fas fa-check-circle"></i>
+                    </div>
+                  </div>
+
+
+
+                  <div class="card__content__features__info" *ngIf="product.withMiles">
+                    <div class="card__content__features__info__key">
+                      {{'~miles' | translate}}:
+                    </div>
+                    <div class="card__content__features__info__value --icon">
+                      <i class="fas fa-check-circle"></i>
+                    </div>
+                  </div>
+
+                  <div class="card__content__features__info">
+                    <div class="card__content__features__info__key">
+                      {{'~comissionCashInhouseOwn' | translate}}:
+                    </div>
+                    <div class="card__content__features__info__value">
+                      {{product.comissionCashInhouseOwn}} %
+                    </div>
+                  </div>
+
+
+              </div>
+
+
+            </div>
+
+
+            <div class="card__actions">
+              <button mat-raised-button color="primary">{{'~visit' | translate}}</button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
