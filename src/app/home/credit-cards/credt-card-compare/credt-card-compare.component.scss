@@ -27,8 +27,10 @@ table.products {
         }
         td {
             .td-content {
-                &.--documents {
+                &.--document {
                     font-size: 18px;
+                    color: #CE1B21;
+                    cursor: pointer;
                 }
                 a {
                     color: #2980b9;

@@ -15,9 +15,9 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
   styleUrls: ['./credt-card-compare.component.scss']
 })
 export class CredtCardCompareComponent implements OnInit {
-  columns: string[] = [
-    'bankName', 'cardType', 'sellAmount', 'productPeriod', 'minAmount',
-    'minPeriod', 'withMiles', 'wihtCashback', 'wihtBonus', 'withEmpReference',
+  rows: string[] = [
+    'cardName',  'cardType', 'sellAmount', 'productPeriod', 'minAmount',
+    'minPeriod', 'withMiles', 'withCashback', 'wihtBonus', 'withEmpReference',
     'withCollateral', 'withDepositRate', 'withGracePeriod', 'comissionCashInhouseOwn',
     'comissionCashInhouseOther', 'comissionCashFCountry', 'comissionCardToCard',
     'comissionQuasiCash',  'comissionLoan', 'description', 'descriptionDOC', 'descriptionPD'
@@ -65,6 +65,18 @@ export class CredtCardCompareComponent implements OnInit {
       this.getPreviewProduct(id);
     } else {
     this.getCompareProductList();
+    }
+  }
+  getRowName(row): string {
+    return `~${row}`;
+  }
+  getRowType(row): string {
+    if (row === 'cardName' || row === 'bankName') {
+      return 'multi-lang';
+    } else if( row === 'description' || row ==='descriptionPD' || row === 'descriptionDOC') {
+      return 'document';
+    } else {
+      return 'standard';
     }
   }
   getPreviewProduct(id: number) {
