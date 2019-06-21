@@ -86,55 +86,16 @@
                 </td>
               </tr>
 
-            <tr [attr.cdId]="product.cdId">
-                <td *ngIf="first || isMobile">
-                  <div class="td-content --productPeriod">
-                    {{'~productPeriod' | translate | titlecase}}
-                  </div>
-                </td>
-                <td >
-                  <div class="td-content --productPeriod">
-                      {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
-                  </div>
-                </td>
-              </tr>
-
-            <tr [attr.cdId]="product.cdId">
-                <td *ngIf="first || isMobile">
-                  <div class="td-content --minAmount">
-                    {{'~minAmount' | translate | titlecase}}
-                  </div>
-                </td>
-                <td >
-                  <div class="td-content --minAmount">
-                    {{product.minAmount}} {{product.currencyCode}}
-                  </div>
-                </td>
-              </tr>
-
-            <tr [attr.cdId]="product.cdId">
-                <td *ngIf="first || isMobile">
-                  <div class="td-content --minAmount">
-                    {{'~minAmount' | translate | titlecase}}
-                  </div>
-                </td>
-                <td >
-                  <div class="td-content --minAmount">
-                      {{product.minAmount }} {{product.currencyCode | lowercase}} - {{product.maxAmount}}
-                     {{product.currencyCode | lowercase}}
-                  </div>
-                </td>
-              </tr>
 
               <tr [attr.cdId]="product.cdId">
                   <td *ngIf="first || isMobile">
                     <div class="td-content --minPeriod">
-                      {{'~minPeriod' | translate | titlecase}}
+                      {{'~cardPeriod' | translate | titlecase}}
                     </div>
                   </td>
                   <td >
                     <div class="td-content --minPeriod">
-                        {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
+                        {{product.cardPeriod}} {{'~month' | translate}}
                     </div>
                   </td>
                 </tr>
@@ -183,33 +144,7 @@
                 </td>
               </tr>
 
-            <tr [attr.cdId]="product.cdId">
-                <td *ngIf="first || isMobile">
-                  <div class="td-content --withEmpReference">
-                    {{'~withEmpReference' | translate | titlecase}}
-                  </div>
-                </td>
-                <td >
-                  <div class="td-content --withEmpReference">
-                      <span *ngIf="withEmpReference"> {{'~yes' | translate}}</span>
-                      <span *ngIf="!withEmpReference"> {{'~no' | translate}}</span>
-                  </div>
-                </td>
-              </tr>
 
-            <tr [attr.cdId]="product.cdId">
-                <td *ngIf="first || isMobile">
-                  <div class="td-content --withCollateral">
-                    {{'~withCollateral' | translate | titlecase}}
-                  </div>
-                </td>
-                <td >
-                  <div class="td-content --withCollateral">
-                      <span *ngIf="withCollateral"> {{'~yes' | translate}}</span>
-                      <span *ngIf="!withCollateral"> {{'~no' | translate}}</span>
-                  </div>
-                </td>
-              </tr>
 
             <tr [attr.cdId]="product.cdId">
                 <td *ngIf="first || isMobile">
@@ -224,18 +159,6 @@
                 </td>
               </tr>
 
-            <tr [attr.cdId]="product.cdId">
-                <td *ngIf="first || isMobile">
-                  <div class="td-content --withGracePeriod">
-                    {{'~gracePeriod' | translate | titlecase}}
-                  </div>
-                </td>
-                <td >
-                  <div class="td-content --withGracePeriod">
-                      {{product.withGracePeriod }}
-                  </div>
-                </td>
-              </tr>
 
             <tr [attr.cdId]="product.cdId">
                 <td *ngIf="first || isMobile">

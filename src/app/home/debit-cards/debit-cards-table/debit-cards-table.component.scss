@@ -46,7 +46,8 @@
       }
 
       .card__icon {
-        width: 200px;
+        flex:  0 0 220px;
+        height: 140px;
         margin-bottom: 10px;
       }
 
@@ -76,14 +77,15 @@
 
         .card__content__features {
           display: flex;
+          flex-direction: column;
           flex-wrap: wrap;
-          width: 70%;
+          width: 100%;
 
           .card__content__features__info {
             display: flex;
             align-items: flex-end;
             margin-bottom: 10px;
-            width: 50%;
+            width: 100%;
             padding-left: 2.1875rem;
 
             .card__content__features__info__key {
@@ -101,7 +103,7 @@
               font-size: 13px;
               font-weight: 400;
               letter-spacing: -0.36px;
-
+              white-space: nowrap;
               &.--icon {
                 color: var(--primary-default);
                 font-size: 16px;

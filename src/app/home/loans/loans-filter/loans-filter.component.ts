@@ -105,7 +105,6 @@ export class LoansFilterComponent implements OnInit {
     this.router.navigate(['/home/loans',
     {
       ...filterForm,
-    //  scrollIntoView: scrollIntoView
    } ]);
   }
   getErrorMessage(controlKey: string) {

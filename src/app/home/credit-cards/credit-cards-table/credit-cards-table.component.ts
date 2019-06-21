@@ -98,7 +98,6 @@ export class CreditCardsTableComponent implements OnInit {
         })
       )
       .subscribe(res => {
-        console.log(res);
         this.creditCardGroups = res;
         this.filteredGroupProducts = [...this.creditCardGroups];
      //   if (scrollIntoView) {switchToView('#products-table-filter') }

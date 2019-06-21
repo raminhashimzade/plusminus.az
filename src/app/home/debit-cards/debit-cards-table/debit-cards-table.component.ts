@@ -92,7 +92,6 @@ export class DebitCardsTableComponent implements OnInit {
         })
       )
       .subscribe(res => {
-        console.log(res);
         this.DebitCardGroups = res;
         this.filteredGroupProducts = [...this.DebitCardGroups];
      //   if (scrollIntoView) {switchToView('#products-table-filter') }

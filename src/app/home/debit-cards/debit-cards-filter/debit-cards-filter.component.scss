@@ -109,16 +109,12 @@
  }
  @media (max-width: 576px) {
       .banner-wrapper {
-        background: var(--primary-default);
+     //   background: var(--primary-default);
         background-position-x: -590px;
-        background-image: none;
+    //    background-image: none;
       }
  }
- @media (max-width: 450px) {
-        .banner-wrapper {
-      //      background-position-x: -625px;
-        }
- }
+
  @media (max-width: 768px) {
     .banner-wrapper {
         padding: 0;
