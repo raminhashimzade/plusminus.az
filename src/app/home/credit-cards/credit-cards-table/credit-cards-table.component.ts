@@ -25,7 +25,6 @@ export class CreditCardsTableComponent implements OnInit {
   sortState: SortChangeModel;
   _onDestroy$ = new Subject<void>();
   expandedGroupId: number;z
-  columns = ['bankName', 'loanName', 'minRate','minAmount', 'maxAmount', 'minMonthlyPayment', 'maxMonthlyPayment', 'currencyCode'];
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
     private route: ActivatedRoute,
@@ -58,6 +57,7 @@ export class CreditCardsTableComponent implements OnInit {
       return;
     }
     this.expandedGroupId = groupId;
+    this.changeRef.detectChanges();
   }
   ngOnDestroy() {
     this._onDestroy$.next();

@@ -20,15 +20,15 @@
                   <img src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.lnID">
                 </div>
 
-                <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
-                  [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
-                  <div class="expand__title">
-                    {{'~expandMore' | translate}} {{group.list?.length}} {{'~product' | translate | lowercase}}
-                  </div>
-                  <div class="expand__icon">
-                    <i class="fas fa-chevron-down"></i>
-                  </div>
+                <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first && group.list?.length >1"
+                [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
+                <div class="expand__title">
+                  {{'~expandMore' | translate}} {{group.list?.length - 1}} {{'~product' | translate | lowercase}}
                 </div>
+                <div class="expand__icon">
+                  <i class="fas fa-chevron-down"></i>
+                </div>
+              </div>
 
               </div>
             </div>

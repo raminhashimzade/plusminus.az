@@ -61,33 +61,24 @@
 .expand {
     font-size: 12px;
     display: flex;
-    color: var(--secondary-default);
-    margin-top: 5px;
-    cursor: pointer;
-    .expand__title {
-        margin-right: 3px;
-        font-family: 'Montserrat-Thin'
-    }
-    .expand__icon {
-        transition: transform 300ms ease-in-out;
-    }
-    &.--top {
-        .expand__icon {
-            transform: rotateZ(-180deg);
-        }
-    }
-
-}
-
-.expand-icon {
-    padding: 0.75rem;
-    padding-top: 0.9375rem;
-    cursor: pointer;
-    font-size: 1.2rem;
     color: var(--primary-default);
-    transition: transform 300ms ease-in-out;
+    margin-top: 10px;
+    cursor: pointer;
+
+    .expand__title {
+      margin-right: 3px;
+      font-family: 'Montserrat-Medium';
+      font-size: 13px;
+    }
+
+    .expand__icon {
+      transition: transform 300ms ease-in-out;
+    }
 
     &.--top {
+      .expand__icon {
         transform: rotateZ(-180deg);
+      }
     }
+
   }
