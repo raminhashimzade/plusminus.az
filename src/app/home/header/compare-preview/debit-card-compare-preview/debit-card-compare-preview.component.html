@@ -1,3 +1,44 @@
-<p>
-  debit-card-compare-preview works!
-</p>
+<div class="compare" hoverClass ="--expanded" >
+    <div class="compare__icon">
+        <button mat-button class="compare-button"
+        matBadgePosition="below" matBadgeColor="accent"
+        [matBadge]="(products$ | async)?.length"
+      >
+        <img src="./assets/icons/shopping-cart.svg" />
+      </button>
+    </div>
+    <div class="compare__menu">
+
+        <div class="box" *ngIf="(products$ | async) as products else no_products" >
+          <div class="box__title">
+            {{'~credict-cards' | translate | titlecase}}
+          </div>
+            <div class="box__items">
+              <div class="item" *ngFor="let item of products">
+                <div class="item__description">
+                  <div class="item__description__image">
+                      <img  src="./assets/icons/banks/{{item.bankID}}.svg" alt="{{item.bankName}}">
+
+                  </div>
+                    <div class="item__description__name">
+                        {{item.cardName | valueTranslate}}
+                      </div>
+                </div>
+
+                  <a class="item__remove" (click)="onRemoveFromCompareList(item)" title="{{'~removeFromCompareList' | translate}}">
+                    <mat-icon>remove_circle_outline</mat-icon>
+                  </a>
+              </div>
+            </div>
+            <div class="box__footer">
+              <button mat-raised-button color="accent"
+              (click)="onCompare()"
+              class="box__footer__btn"> {{'~compare' | translate}}</button>
+            </div>
+          </div>
+    </div>
+  </div>
+
+  <ng-template #no_products>
+  <p class="no-products">No Products</p>
+  </ng-template>

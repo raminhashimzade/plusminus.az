@@ -8,7 +8,12 @@ import { CreditCardsFilterComponent } from './credit-cards-filter/credit-cards-f
 import { CredtCardCompareComponent } from './credt-card-compare/credt-card-compare.component';
 
 @NgModule({
-  declarations: [CreditCardsComponent, CreditCardsTableComponent, CreditCardsFilterComponent, CredtCardCompareComponent],
+  declarations: [
+    CreditCardsComponent,
+    CreditCardsTableComponent,
+    CreditCardsFilterComponent,
+    CredtCardCompareComponent
+  ],
   imports: [
     CommonModule,
     CreditCardsRoutingModule,

@@ -1,3 +1,356 @@
-<p>
-  debit-card-compare works!
-</p>
+<div class="container" *ngIf="!isMobile">
+    <div class="row">
+      <div class="col-12">
+        <div class="productsCompare">
+          <div class="productsCompare__content" *ngIf="!loading else table_loader">
+
+            <div class="arrows">
+
+              <button mat-mini-fab class="arrow --prev" (click)="onPrevProduct()" [disabled]="!hasPrevProduct()">
+                <mat-icon inline="true">arrow_forward_ios</mat-icon>
+              </button>
+
+              <button mat-mini-fab class="arrow --next" (click)="onNextProduct()" [disabled]="!hasNextProduct()">
+                <mat-icon inline="true">arrow_forward_ios</mat-icon>
+              </button>
+
+            </div>
+            <div class="tables d-flex">
+              <ng-container  *ngFor="let product of visibleProducts;let i=index;let first=first">
+                <ng-container *ngTemplateOutlet="table__template;context:{product: product, first: first}"></ng-container>
+              </ng-container>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="swiper-container" *ngIf="isMobile" [swiper]="config" style="width: 100%" #swiper >
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let product of products;let i=index;let first=first">
+          <ng-container *ngTemplateOutlet="table__template;context:{product: product, first: first}"></ng-container>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+
+  </div>
+
+
+  <ng-template #table_loader>
+    <table-loader></table-loader>
+  </ng-template>
+
+  <ng-template #table__template let-product="product" let-first="first">
+      <table class="table products">
+          <thead>
+            <th *ngIf="first || isMobile">
+              <div class="th-content --first">
+                {{'~bank' | translate | titlecase}}
+              </div>
+            </th>
+            <th >
+              <div class="th-content">
+                  {{product.bankName}}
+              </div>
+            </th>
+          </thead>
+          <tbody>
+
+            <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --first --cardName">
+                  {{'~cardName' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --cardName">
+                  {{product.cardName | valueTranslate}}
+                </div>
+              </td>
+            </tr>
+
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --sellAmount">
+                    {{'~sellAmount' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --sellAmount">
+                    {{product.sellAmount}}
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --productPeriod">
+                    {{'~productPeriod' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --productPeriod">
+                      {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --minAmount">
+                    {{'~minAmount' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --minAmount">
+                    {{product.minAmount}} {{product.currencyCode}}
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --minAmount">
+                    {{'~minAmount' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --minAmount">
+                      {{product.minAmount }} {{product.currencyCode | lowercase}} - {{product.maxAmount}}
+                     {{product.currencyCode | lowercase}}
+                  </div>
+                </td>
+              </tr>
+
+              <tr [attr.cdId]="product.cdId">
+                  <td *ngIf="first || isMobile">
+                    <div class="td-content --minPeriod">
+                      {{'~minPeriod' | translate | titlecase}}
+                    </div>
+                  </td>
+                  <td >
+                    <div class="td-content --minPeriod">
+                        {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
+                    </div>
+                  </td>
+                </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --withMiles">
+                    {{'~withMiles' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --withMiles">
+                      <span *ngIf="withMiles"> {{'~yes' | translate}}</span>
+                      <span *ngIf="!withMiles"> {{'~no' | translate}}</span>
+                  </div>
+                </td>
+              </tr>
+
+
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --withCachBack">
+                    {{'~withCachBack' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --withCachBack">
+                      <span *ngIf="withCachBack"> {{'~yes' | translate}}</span>
+                      <span *ngIf="!withCachBack"> {{'~no' | translate}}</span>
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --wihtBonus">
+                    {{'~wihtBonus' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content -wihtBonus">
+                      <span *ngIf="wihtBonus"> {{'~yes' | translate}}</span>
+                      <span *ngIf="!wihtBonus"> {{'~no' | translate}}</span>
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --withEmpReference">
+                    {{'~withEmpReference' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --withEmpReference">
+                      <span *ngIf="withEmpReference"> {{'~yes' | translate}}</span>
+                      <span *ngIf="!withEmpReference"> {{'~no' | translate}}</span>
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --withCollateral">
+                    {{'~withCollateral' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --withCollateral">
+                      <span *ngIf="withCollateral"> {{'~yes' | translate}}</span>
+                      <span *ngIf="!withCollateral"> {{'~no' | translate}}</span>
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --withDepositRate">
+                    {{'~depositRate' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content -withDepositRate">
+                      {{product.withDepositRate }} %
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --withGracePeriod">
+                    {{'~gracePeriod' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --withGracePeriod">
+                      {{product.withGracePeriod }}
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --comissionCashInhouseOwn">
+                    {{'~comissionCashInhouseOwn' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --comissionCashInhouseOwn">
+                      {{product.comissionCashInhouseOwn }} %
+                  </div>
+                </td>
+              </tr>
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --comissionCashInhouseOther">
+                    {{'~comissionCashInhouseOther' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --comissionCashInhouseOther">
+                      {{product.comissionCashInhouseOther }} %
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --comissionCashFCountry">
+                    {{'~comissionCashFCountry' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --comissionCashFCountry">
+                      {{product.comissionCashFCountry }} %
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --comissionCardToCard">
+                    {{'~comissionCardToCard' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --comissionCardToCard">
+                      {{product.comissionCardToCard }}  %
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --comissionQuasiCash">
+                    {{'~comissionQuasiCash' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --comissionQuasiCash">
+                      {{product.comissionQuasiCash }}  %
+                  </div>
+                </td>
+              </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --comissionLoan">
+                    {{'~comissionLoan' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --comissionLoan">
+                      {{product.comissionLoan }}  %
+                  </div>
+                </td>
+              </tr>
+
+            <tr>
+              <td *ngIf="first || isMobile">
+                  <div class="td-content --first">
+                    {{'~description' | translate}}
+                  </div>
+                </td>
+                <td >
+                    <div class="td-content --document" (click)="openDocumentDialog(product.description, '~description')">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                </td>
+              </tr>
+            <tr>
+              <td *ngIf="first || isMobile">
+                  <div class="td-content --first">
+                    {{'~descriptionDOC' | translate}}
+                  </div>
+                </td>
+                <td >
+                    <div class="td-content --document" (click)="openDocumentDialog(product.descriptionDOC, '~descriptionDOC')">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                </td>
+              </tr>
+            <tr>
+              <td *ngIf="first || isMobile">
+                  <div class="td-content --first">
+                    {{'~descriptionPD' | translate}}
+                  </div>
+                </td>
+                <td >
+                    <div class="td-content --document" (click)="openDocumentDialog(product.descriptionPD, '~descriptionPD')">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                </td>
+              </tr>
+
+          </tbody>
+        </table>
+  </ng-template>

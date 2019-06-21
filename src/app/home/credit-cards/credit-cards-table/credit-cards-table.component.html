@@ -46,7 +46,7 @@
                     {{'~maxAmount' | translate}}:
                   </div>
                   <div class="card__content__features__info__value">
-                    {{product.maxAmount}}
+                    {{product.maxAmount}} {{product.currencyCode | translate}}
                   </div>
                 </div>
 
@@ -55,7 +55,7 @@
                     {{'~price' | translate}}:
                   </div>
                   <div class="card__content__features__info__value">
-                    {{product.sellAmount}}
+                    {{product.sellAmount}} {{product.currencyCode}}
                   </div>
                 </div>
 

@@ -3,14 +3,14 @@ import { DebitCardGroup, DebitCard } from '../models/debit-card.model';
 import { DebitCardService } from '../debit-card.service';
 import { DebitCardFilterForm } from '../models/debit-card-filter-form.model';
 import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-change.model';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { SharedService } from 'src/app/shared/shared.service';
 import { MatDialog } from '@angular/material';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
-import { takeUntil, finalize } from 'rxjs/operators';
+import { takeUntil, finalize, map } from 'rxjs/operators';
 
 @Component({
   selector: 'debit-cards-table',
@@ -18,9 +18,8 @@ import { takeUntil, finalize } from 'rxjs/operators';
   styleUrls: ['./debit-cards-table.component.scss']
 })
 export class DebitCardsTableComponent implements OnInit {
-
   loading: boolean;
-  produtctGroups: DebitCardGroup[];
+  DebitCardGroups: DebitCardGroup[];
   filteredGroupProducts: DebitCardGroup[];
   sortState: SortChangeModel;
   _onDestroy$ = new Subject<void>();
@@ -76,12 +75,12 @@ export class DebitCardsTableComponent implements OnInit {
           comissionCash: res['comissionCash'] || true,
         } as DebitCardFilterForm;
         const scrollIntoView =  res['scrollIntoView'] === 'true'
-        this.getListprodutctGroups(formValue, scrollIntoView);
+        this.getListDebitCardGroups(formValue, scrollIntoView);
       });
     this.changeRef.detectChanges();
   }
-  getListprodutctGroups(data: DebitCardFilterForm, scrollIntoView: boolean) {
-    this.produtctGroups = undefined;
+  getListDebitCardGroups(data: DebitCardFilterForm, scrollIntoView: boolean) {
+    this.DebitCardGroups = undefined;
     this.loading = true;
     this.sortState = { orderByColumn: '', orderBySort: '' };
     this.changeRef.detectChanges();
@@ -94,27 +93,27 @@ export class DebitCardsTableComponent implements OnInit {
       )
       .subscribe(res => {
         console.log(res);
-        this.produtctGroups = res;
-        this.filteredGroupProducts = [...this.produtctGroups];
+        this.DebitCardGroups = res;
+        this.filteredGroupProducts = [...this.DebitCardGroups];
      //   if (scrollIntoView) {switchToView('#products-table-filter') }
       });
   }
-  onAddProductToCompare(loan: DebitCard) {
-  //  this.productService.addProductToCompare(loan);
+  onAddProductToCompare(product: DebitCard) {
+  this.productService.addProductToCompare(product);
     this.changeRef.detectChanges();
   }
-  // canAddProductToCompare(loanID: number): Observable<boolean> {
-  //   return this.productService.getSavedCompareProductList()
-  //     .pipe(map((loans: DebitCard[]) => !!loans.find(l => l.lnID === loanID)));
-  // }
+  canAddProductToCompare(id: number): Observable<boolean> {
+    return this.productService.getSavedCompareProductList()
+      .pipe(map((products: DebitCard[]) => !!products.find(l => l.cdID === id)));
+  }
   onSortChange(sortChange: SortChangeModel) {
     this.sortState = { ...sortChange };
-    this.filteredGroupProducts = this.sharedService.sortTableWithRowGroups(this.sortState, [...this.produtctGroups])
+    this.filteredGroupProducts = this.sharedService.sortTableWithRowGroups(this.sortState, [...this.DebitCardGroups])
     this.changeRef.detectChanges();
   }
   applyFilter(filterValue: string) {
     this.filteredGroupProducts = this.sharedService.
-    filterTableWithRowGroups(filterValue, [...this.produtctGroups], ['bankName']);
+    filterTableWithRowGroups(filterValue, [...this.DebitCardGroups], ['bankName']);
     this.changeRef.detectChanges();
   }
 
