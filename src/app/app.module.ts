@@ -36,6 +36,8 @@ import { ValueTranslateModule } from './shared/pipes/value-translate/value-trans
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { UnsupportedBrowserComponent } from './unsupported-browser/unsupported-browser.component';
 import { SupportedBrowserCardComponent } from './unsupported-browser/supported-browser-card/supported-browser-card.component';
+import { DebitCardComparePreviewComponent } from './home/header/compare-preview/debit-card-compare-preview/debit-card-compare-preview.component';
+import { CreditCardComparePreviewComponent } from './home/header/compare-preview/credit-card-compare-preview/credit-card-compare-preview.component';
 
 
 @NgModule({
@@ -49,6 +51,8 @@ import { SupportedBrowserCardComponent } from './unsupported-browser/supported-b
     ComparePreviewComponent,
     LoanComparePreviewComponent,
     DepositComparePreviewComponent,
+    CreditCardComparePreviewComponent,
+    DebitCardComparePreviewComponent,
     UnsupportedBrowserComponent,
     SupportedBrowserCardComponent
   ],

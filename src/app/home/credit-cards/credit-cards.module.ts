@@ -5,9 +5,10 @@ import { CreditCardsRoutingModule } from './credit-cards.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CreditCardsTableComponent } from './credit-cards-table/credit-cards-table.component';
 import { CreditCardsFilterComponent } from './credit-cards-filter/credit-cards-filter.component';
+import { CredtCardCompareComponent } from './credt-card-compare/credt-card-compare.component';
 
 @NgModule({
-  declarations: [CreditCardsComponent, CreditCardsTableComponent, CreditCardsFilterComponent],
+  declarations: [CreditCardsComponent, CreditCardsTableComponent, CreditCardsFilterComponent, CredtCardCompareComponent],
   imports: [
     CommonModule,
     CreditCardsRoutingModule,

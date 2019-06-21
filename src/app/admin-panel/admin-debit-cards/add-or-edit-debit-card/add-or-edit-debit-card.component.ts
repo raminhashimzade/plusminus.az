@@ -28,6 +28,17 @@ export class AddOrEditDebitCardComponent implements OnInit {
   curCodes$: Observable<SelectType[]> = of([]);
   loading: boolean;
   imageUrl: SafeUrl;
+  config = {
+    fileExtensions: [ 'png', 'jpg', 'jpeg'],
+    enableCropper: true,
+    cropperOptions: {
+      dragMode: 'crop',
+      autoCrop: true,
+      movable: true,
+      zoomable: true,
+      scalable: true,
+    }
+  }
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {item: DebitCard| undefined},
     public dialogRef: MatDialogRef<AddOrEditDebitCardComponent>,

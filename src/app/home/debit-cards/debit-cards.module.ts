@@ -5,12 +5,14 @@ import { DebitCardsFilterComponent } from './debit-cards-filter/debit-cards-filt
 import { DebitCardsTableComponent } from './debit-cards-table/debit-cards-table.component';
 import { DebitCardsRoutingModule } from './debit-cards.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DebitCardCompareComponent } from './debit-card-compare/debit-card-compare.component';
 
 @NgModule({
   declarations: [
     DebitCardsComponent,
      DebitCardsFilterComponent,
-      DebitCardsTableComponent
+      DebitCardsTableComponent,
+      DebitCardCompareComponent
     ],
   imports: [
     CommonModule,

@@ -1,0 +1,112 @@
+:host {
+    display: block;
+    }
+
+
+    .compare {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      .compare__icon{
+        button {
+          padding: 0 7px;
+          background: transparent!important;
+          box-shadow: none;
+          min-width: 0;
+          transform: translateY(-10px);
+          img {
+            width: 1.32rem;
+          }
+        }
+      }
+      .compare__menu {
+        display: none;
+        .box {
+          display: block;
+          width: 300px;
+          background: white;
+          box-shadow: 0.0625rem 0.0625rem 0.9375rem rgba(0,0,0,0.15);
+          padding: 1.25rem;
+          border: 1px solid #dcdcdc;
+          border-radius: 4px;
+          max-height: 84vh;
+          overflow: auto;
+          .box__title {
+            padding: 5px 0;
+            border-bottom: 1px solid #ececec;
+            color: #27ae60;
+            font-size: 15px;
+          }
+          .box__items {
+            display: flex;
+            flex-direction: column;
+            .item {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              border-bottom: 1px solid #ececec;
+              padding: 10px 0;
+              .item__description {
+                display: flex;
+                align-items: center;
+                flex: 1;
+                .item__description__image {
+                  max-width: 120px;
+                //  height: 50px;
+                  object-fit: cover;
+              }
+                }
+                .item__description__name {
+                  font-size: 11px;
+                  margin-left: auto;
+                  padding:0 10px;
+                  text-align: right;
+                }
+
+              .item__remove {
+                cursor: pointer;
+                &:hover {
+                  color: #e74c3c;
+                }
+              }
+            }
+          }
+          .box__footer {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+            .box__footer__btn {
+              width: 100%;
+              align-self: center;
+              font-size: 13px;
+              margin-top: 10px;
+            }
+          }
+
+        }
+      }
+      &.--expanded {
+        .compare__menu {
+          display: block;
+        }
+      }
+    }
+
+.no-products {
+  padding: 10px;
+    background: white;
+    font-size: 12px;
+    width: 100px;
+    color: #d3d3d3;
+    box-shadow: 0.0625rem 0.0625rem 0.9375rem rgba(0,0,0,0.15);
+}
+
+    @media (max-width: 576px) {
+      .compare {
+        .compare__menu {
+          .box {
+            width: 290px;
+          }
+        }
+      }
+    }

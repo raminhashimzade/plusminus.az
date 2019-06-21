@@ -20,6 +20,10 @@ export class ComparePreviewComponent implements OnInit {
       this.type = 'loans';
     } else if (url && url.includes('deposits')) {
       this.type = 'deposits';
+    }  else if (url && url.includes('credit-cards')) {
+      this.type = 'credit-cards';
+    } else if (url && url.includes('debit-cards')) {
+      this.type = 'debit-cards';
     } else {
       this.type = undefined;
     }

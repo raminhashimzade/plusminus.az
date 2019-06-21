@@ -104,14 +104,14 @@ export class CreditCardsTableComponent implements OnInit {
      //   if (scrollIntoView) {switchToView('#products-table-filter') }
       });
   }
-  onAddProductToCompare(loan: CreditCard) {
-  //  this.productService.addProductToCompare(loan);
+  onAddProductToCompare(product: CreditCard) {
+  this.productService.addProductToCompare(product);
     this.changeRef.detectChanges();
   }
-  // canAddProductToCompare(loanID: number): Observable<boolean> {
-  //   return this.productService.getSavedCompareProductList()
-  //     .pipe(map((loans: CreditCard[]) => !!loans.find(l => l.lnID === loanID)));
-  // }
+  canAddProductToCompare(loanID: number): Observable<boolean> {
+    return this.productService.getSavedCompareProductList()
+      .pipe(map((products: CreditCard[]) => !!products.find(l => l.cdId === loanID)));
+  }
   onSortChange(sortChange: SortChangeModel) {
     this.sortState = { ...sortChange };
     this.filteredGroupProducts = this.sharedService.sortTableWithRowGroups(this.sortState, [...this.creditCardGroups])
