@@ -56,7 +56,7 @@ export class CredtCardCompareComponent implements OnInit {
   constructor(private productService: CreditCardService,
     private router: Router, private route: ActivatedRoute,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    public translateService: TranslateService
     ) { }
 
   ngOnInit() {
@@ -67,18 +67,7 @@ export class CredtCardCompareComponent implements OnInit {
     this.getCompareProductList();
     }
   }
-  getRowName(row): string {
-    return `~${row}`;
-  }
-  getRowType(row): string {
-    if (row === 'cardName' || row === 'bankName') {
-      return 'multi-lang';
-    } else if( row === 'description' || row ==='descriptionPD' || row === 'descriptionDOC') {
-      return 'document';
-    } else {
-      return 'standard';
-    }
-  }
+
   getPreviewProduct(id: number) {
     this.loading = true;
     this.productService.getCompareProductList([id], this.productService.productFilterValue)

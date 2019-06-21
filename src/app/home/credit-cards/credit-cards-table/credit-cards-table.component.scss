@@ -1,141 +1,169 @@
 :host {
-    display: block;
-    flex: 1 1 0;
-    background: var(--background-secondary);
+  display: block;
+  flex: 1 1 0;
+  background: var(--background-secondary);
 }
+
 .expand {
-    font-size: 12px;
-    display: flex;
-    color: var(--secondary-default);
-    margin-top: 10px;
-    cursor: pointer;
-    .expand__title {
-        margin-right: 3px;
-        font-family: 'Montserrat-Thin'
-    }
+  font-size: 12px;
+  display: flex;
+  color: var(--primary-default);
+  margin-top: 10px;
+  cursor: pointer;
+
+  .expand__title {
+    margin-right: 3px;
+    font-family: 'Montserrat-Medium';
+    font-size: 13px;
+  }
+
+  .expand__icon {
+    transition: transform 300ms ease-in-out;
+  }
+
+  &.--top {
     .expand__icon {
-        transition: transform 300ms ease-in-out;
+      transform: rotateZ(-180deg);
     }
-    &.--top {
-        .expand__icon {
-            transform: rotateZ(-180deg);
-        }
-    }
+  }
 
 }
 
 .items-group {
-    box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
-    margin-bottom: 20px;
-    .card {
-        display: flex;
-        flex-direction: row;
-        box-shadow: none;
-        padding: 30px;
-        border: solid 1px rgba(0, 0, 0, 0.12);
-        transition: backgroun-color 100ms ease-in-out;
-        &:hover {
-            background-color: #f5f6fa;
-        //    box-shadow: 0 2px 11.84px 4.16px rgba(0,0,0,.2);
-        }
-        .card__icon {
-            width: 15rem;
-            margin-bottom: 10px;
-        }
-        .card__content {
-            display: flex;
-            flex-direction: column;
-            .card__content__header {
-                padding-left: 2.1875rem;
-                .card__content__header__bankName {
-                    font-family: 'Montserrat-Medium';
-                    font-size: 13px;
-                    font-weight: 400;
-                    letter-spacing: -0.36px;
-                }
-                .card__content__header__name {
-                    font-family: "Montserrat-SemiBold";
-                    font-size: 1.0625rem;
-                    font-weight: 400;
-                    letter-spacing: -0.48px;
-                    color: var(--primary-default);
-                    margin-bottom: 1.125rem;
-                }
-            }
-            .card__content__features {
-                display: flex;
-                flex-wrap: wrap;
-                width: 70%;
-                    .card__content__features__info {
-                        display: flex;
-                        align-items: flex-end;
-                        margin-bottom: 10px;
-                        width: 50%;
-                         padding-left: 2.1875rem;
-                        .card__content__features__info__key {
-                            font-family: 'Montserrat-SemiBold';
-                            color: #000000;
-                            font-size: 15px;
-                            letter-spacing: -0.42px;
-                            margin-right: 10px;
-                            white-space: nowrap;
-                        }
-                        .card__content__features__info__value {
-                            font-family: 'Montserrat-Medium';
-                            color: #000000;
-                            font-size:13px;
-                            font-weight: 400;
-                            letter-spacing: -0.36px;
-                            &.--icon {
-                                color: var(--primary-default);
-                                font-size: 16px;
-                            }
-                        }
-                    }
-            }
+  box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
 
-        }
-        .card__actions {
-            margin-left: auto;
-           a {
-                min-width: 110px;
-            }
-        }
+  .card {
+    display: flex;
+    flex-direction: row;
+    box-shadow: none;
+    padding: 30px;
+    border: solid 1px rgba(0, 0, 0, 0.12);
+    transition: backgroun-color 100ms ease-in-out;
+
+    &:hover {
+      background-color: #f5f6fa;
     }
-}
-@media (max-width: 992px) {
-    .items-group {
-        .card {
-            .card__content {
-                .card__content__features {
-                        width: 100%;
-                    }
-                }
-            }
+
+    .card__icon {
+      width: 200px;
+      margin-bottom: 10px;
+    }
+
+    .card__content {
+      display: flex;
+      flex-direction: column;
+
+      .card__content__header {
+        padding-left: 2.1875rem;
+
+        .card__content__header__bankName {
+          font-family: 'Montserrat-Medium';
+          font-size: 13px;
+          font-weight: 400;
+          letter-spacing: -0.36px;
         }
+
+        .card__content__header__name {
+          font-family: "Montserrat-SemiBold";
+          font-size: 1.0625rem;
+          font-weight: 400;
+          letter-spacing: -0.48px;
+          color: var(--primary-default);
+          margin-bottom: 1.125rem;
+        }
+      }
+
+      .card__content__features {
+        display: flex;
+        flex-wrap: wrap;
+        width: 70%;
+
+        .card__content__features__info {
+          display: flex;
+          align-items: flex-end;
+          margin-bottom: 10px;
+          width: 50%;
+          padding-left: 2.1875rem;
+
+          .card__content__features__info__key {
+            font-family: 'Montserrat-SemiBold';
+            color: #000000;
+            font-size: 15px;
+            letter-spacing: -0.42px;
+            margin-right: 10px;
+            white-space: nowrap;
+          }
+
+          .card__content__features__info__value {
+            font-family: 'Montserrat-Medium';
+            color: #000000;
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: -0.36px;
+
+            &.--icon {
+              color: var(--primary-default);
+              font-size: 16px;
+            }
+          }
+        }
+      }
+
+    }
+
+    .card__actions {
+      margin-left: auto;
+
+      a {
+        min-width: 110px;
+        margin-bottom: 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .items-group {
+    .card {
+      .card__content {
+        .card__content__features {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 
 
 @media (max-width: 768px) {
-    .items-group {
-        .card {
-            flex-direction: column;
-            .card__content {
-                .card__content__header {
-                    padding-left: 0;
-                }
-                .card__content__features {
-                    flex-direction: column;
-                        .card__content__features__info {
-                            padding-left: 0;
-                            width: 100%;
-                            .card__content__features__info__key {
-                                font-size: 13px;
-                            }
-                        }
-                }
-            }
-        }
-    }
-}
+  .items-group {
+    .card {
+      flex-direction: column;
 
+      .card__content {
+        .card__content__header {
+          padding-left: 0;
+        }
+
+        .card__content__features {
+          flex-direction: column;
+
+          .card__content__features__info {
+            padding-left: 0;
+            width: 100%;
+
+            .card__content__features__info__key {
+              font-size: 13px;
+            }
+          }
+        }
+      }
+
+      .card__actions {
+        margin-left: 0;
+      }
+    }
+  }
+}

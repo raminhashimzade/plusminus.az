@@ -46,14 +46,12 @@
 <ng-template #table__template let-product="product" let-first="first">
     <table class="table products">
         <thead>
-
           <th *ngIf="first || isMobile">
             <div class="th-content --first">
               {{'~bank' | translate | titlecase}}
             </div>
           </th>
-
-          <th>
+          <th >
             <div class="th-content">
                 {{product.bankName}}
             </div>
@@ -61,90 +59,297 @@
         </thead>
         <tbody>
 
-            <ng-container *ngFor="let row of rows">
-
-              <ng-container [ngSwitch]="getRowType(row)" >
-
-                  <ng-container *ngSwitchCase="'standard'">
-                      <tr [attr.cdId] = "row.cdId">
-                          <td *ngIf="first || isMobile">
-                            <div class="td-content --first">
-                              {{getRowName(row) | translate | titlecase}}
-                            </div>
-                          </td>
-                          <td >
-                            <div class="td-content --{{row}}">
-                              {{product[row]}}
-                            </div>
-                          </td>
-                        </tr>
-                  </ng-container>
-
-                  <ng-container *ngSwitchCase="'minAmount'">
-                      <tr [attr.cdId] = "row.cdId">
-                          <td *ngIf="first || isMobile">
-                            <div class="td-content --first">
-                              {{getRowName(row) | translate | titlecase}}
-                            </div>
-                          </td>
-                          <td>
-                            <div class="td-content --{{row}}">
-                                {{product.minAmount }} {{product.currencyCode | lowercase}} - {{product.maxAmount}}
-                                {{product.currencyCode | lowercase}}
-                            </div>
-                          </td>
-                        </tr>
-                  </ng-container>
-
-                  <ng-container *ngSwitchCase="'minPeriod'">
-                      <tr [attr.cdId] = "row.cdId">
-                          <td *ngIf="first || isMobile">
-                            <div class="td-content --first">
-                              {{getRowName(row) | translate | titlecase}}
-                            </div>
-                          </td>
-                          <td >
-                            <div class="td-content --{{row}}">
-                                {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
-                            </div>
-                          </td>
-                        </tr>
-                  </ng-container>
+          <tr [attr.cdId]="product.cdId">
+            <td *ngIf="first || isMobile">
+              <div class="td-content --first --cardName">
+                {{'~cardName' | translate | titlecase}}
+              </div>
+            </td>
+            <td >
+              <div class="td-content --cardName">
+                {{product.cardName | valueTranslate}}
+              </div>
+            </td>
+          </tr>
 
 
-                  <ng-container *ngSwitchCase="'multi-lang'">
-                      <tr [attr.cdId] = "row.cdId">
-                          <td *ngIf="first || isMobile">
-                            <div class="td-content --first">
-                              {{getRowName(row) | translate | titlecase}}
-                            </div>
-                          </td>
-                          <td >
-                            <div class="td-content --{{row}}">
-                              {{product[row] | valueTranslate}}
-                            </div>
-                          </td>
-                        </tr>
-                  </ng-container>
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --sellAmount">
+                  {{'~sellAmount' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --sellAmount">
+                  {{product.sellAmount}}
+                </div>
+              </td>
+            </tr>
 
-                  <ng-container *ngSwitchCase="'document'">
-                      <tr [attr.cdId] = "row.cdId">
-                          <td *ngIf="first || isMobile">
-                            <div class="td-content --first">
-                              {{getRowName(row) | translate | titlecase}}
-                            </div>
-                          </td>
-                          <td>
-                            <div class="td-content --{{row}} --document" (click)="openDocumentDialog(product[row], getRowName(row))">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                          </td>
-                        </tr>
-                  </ng-container>
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --productPeriod">
+                  {{'~productPeriod' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --productPeriod">
+                    {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
+                </div>
+              </td>
+            </tr>
 
-              </ng-container>
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --minAmount">
+                  {{'~minAmount' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --minAmount">
+                  {{product.minAmount}} {{product.currencyCode}}
+                </div>
+              </td>
+            </tr>
 
-              </ng-container>
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --minAmount">
+                  {{'~minAmount' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --minAmount">
+                    {{product.minAmount }} {{product.currencyCode | lowercase}} - {{product.maxAmount}}
+                   {{product.currencyCode | lowercase}}
+                </div>
+              </td>
+            </tr>
+
+            <tr [attr.cdId]="product.cdId">
+                <td *ngIf="first || isMobile">
+                  <div class="td-content --minPeriod">
+                    {{'~minPeriod' | translate | titlecase}}
+                  </div>
+                </td>
+                <td >
+                  <div class="td-content --minPeriod">
+                      {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
+                  </div>
+                </td>
+              </tr>
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --withMiles">
+                  {{'~withMiles' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --withMiles">
+                    <span *ngIf="withMiles"> {{'~yes' | translate}}</span>
+                    <span *ngIf="!withMiles"> {{'~no' | translate}}</span>
+                </div>
+              </td>
+            </tr>
+
+
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --withCachBack">
+                  {{'~withCachBack' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --withCachBack">
+                    <span *ngIf="withCachBack"> {{'~yes' | translate}}</span>
+                    <span *ngIf="!withCachBack"> {{'~no' | translate}}</span>
+                </div>
+              </td>
+            </tr>
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --wihtBonus">
+                  {{'~wihtBonus' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content -wihtBonus">
+                    <span *ngIf="wihtBonus"> {{'~yes' | translate}}</span>
+                    <span *ngIf="!wihtBonus"> {{'~no' | translate}}</span>
+                </div>
+              </td>
+            </tr>
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --withEmpReference">
+                  {{'~withEmpReference' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --withEmpReference">
+                    <span *ngIf="withEmpReference"> {{'~yes' | translate}}</span>
+                    <span *ngIf="!withEmpReference"> {{'~no' | translate}}</span>
+                </div>
+              </td>
+            </tr>
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --withCollateral">
+                  {{'~withCollateral' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --withCollateral">
+                    <span *ngIf="withCollateral"> {{'~yes' | translate}}</span>
+                    <span *ngIf="!withCollateral"> {{'~no' | translate}}</span>
+                </div>
+              </td>
+            </tr>
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --withDepositRate">
+                  {{'~depositRate' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content -withDepositRate">
+                    {{product.withDepositRate }} %
+                </div>
+              </td>
+            </tr>
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --withGracePeriod">
+                  {{'~gracePeriod' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --withGracePeriod">
+                    {{product.withGracePeriod }}
+                </div>
+              </td>
+            </tr>
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --comissionCashInhouseOwn">
+                  {{'~comissionCashInhouseOwn' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --comissionCashInhouseOwn">
+                    {{product.comissionCashInhouseOwn }} %
+                </div>
+              </td>
+            </tr>
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --comissionCashInhouseOther">
+                  {{'~comissionCashInhouseOther' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --comissionCashInhouseOther">
+                    {{product.comissionCashInhouseOther }} %
+                </div>
+              </td>
+            </tr>
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --comissionCashFCountry">
+                  {{'~comissionCashFCountry' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --comissionCashFCountry">
+                    {{product.comissionCashFCountry }} %
+                </div>
+              </td>
+            </tr>
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --comissionCardToCard">
+                  {{'~comissionCardToCard' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --comissionCardToCard">
+                    {{product.comissionCardToCard }}  %
+                </div>
+              </td>
+            </tr>
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --comissionQuasiCash">
+                  {{'~comissionQuasiCash' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --comissionQuasiCash">
+                    {{product.comissionQuasiCash }}  %
+                </div>
+              </td>
+            </tr>
+
+          <tr [attr.cdId]="product.cdId">
+              <td *ngIf="first || isMobile">
+                <div class="td-content --comissionLoan">
+                  {{'~comissionLoan' | translate | titlecase}}
+                </div>
+              </td>
+              <td >
+                <div class="td-content --comissionLoan">
+                    {{product.comissionLoan }}  %
+                </div>
+              </td>
+            </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+                <div class="td-content --first">
+                  {{'~description' | translate}}
+                </div>
+              </td>
+              <td >
+                  <div class="td-content --document" (click)="openDocumentDialog(product.description, '~description')">
+                      <i class="fas fa-file-pdf"></i>
+                  </div>
+              </td>
+            </tr>
+          <tr>
+            <td *ngIf="first || isMobile">
+                <div class="td-content --first">
+                  {{'~descriptionDOC' | translate}}
+                </div>
+              </td>
+              <td >
+                  <div class="td-content --document" (click)="openDocumentDialog(product.descriptionDOC, '~descriptionDOC')">
+                      <i class="fas fa-file-pdf"></i>
+                  </div>
+              </td>
+            </tr>
+          <tr>
+            <td *ngIf="first || isMobile">
+                <div class="td-content --first">
+                  {{'~descriptionPD' | translate}}
+                </div>
+              </td>
+              <td >
+                  <div class="td-content --document" (click)="openDocumentDialog(product.descriptionPD, '~descriptionPD')">
+                      <i class="fas fa-file-pdf"></i>
+                  </div>
+              </td>
+            </tr>
 
         </tbody>
       </table>
