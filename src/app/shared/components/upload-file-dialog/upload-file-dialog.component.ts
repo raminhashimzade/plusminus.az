@@ -30,6 +30,7 @@ export class UploadFileDialogComponent implements OnInit {
                private adminService: AdminPanelService,
                private http: HttpClient) {}
   ngOnInit() {
+    console.log(this.data.cropperOptions)
     if (this.data && this.data.adapter) {this.adapter = this.data.adapter; }
   }
   onUploaded(res: FilePreviewModel) {

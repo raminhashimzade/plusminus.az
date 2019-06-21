@@ -31,7 +31,7 @@
         <div class="col-12 col-md-6 p-0">
 
           <div class="upload-input-wrapper">
-            <upload-input [fileExtensions]="['svg']" name="cardImageId" [(ngModel)]="creditCard.cardImageId" [defaultImgUrl]="'./assets/images/credit-card.png'"></upload-input>
+            <upload-input [config]="config" name="cardImageId" [(ngModel)]="creditCard.cardImageId" [defaultImgUrl]="'./assets/images/credit-card.png'"></upload-input>
           </div>
 
             <select-search name="bankId" [(ngModel)]="creditCard.bankId"

@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DataResponse } from '../models/data-reponse';
 import { catchError, tap } from 'rxjs/operators';
-import { of, Subject } from 'rxjs';
+import { of, Subject, Observable } from 'rxjs';
 import { MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition, MatSnackBar } from '@angular/material';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,11 @@ import { MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition, MatSnackBar
 export class AdminPanelService {
   token: string;
   fullScreen$ = new Subject<boolean>();
-  constructor(private http: HttpClient, private snackBar: MatSnackBar) { }
+  constructor(
+    private http: HttpClient,
+     private snackBar: MatSnackBar,
+     private authService: AuthService,
+     ) { }
   getToken(): string {
     return this.token;
   }
@@ -38,6 +43,13 @@ export class AdminPanelService {
       verticalPosition,
       horizontalPosition,
       panelClass: [`snackbar-${type}`]
+    });
+  }
+  removeFile(id: number): Observable<any> {
+    return this.http.post('mybank/crud/removeFile', {
+      token: this.authService.getToken(),
+      adminToken: this.getToken(),
+      fileID: id
     });
   }
 }

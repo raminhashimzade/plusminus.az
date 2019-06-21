@@ -20,6 +20,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class UploadInputComponent implements OnInit {
   @Input() defaultImgUrl: string;
   @Input() fileExtensions: string[];
+  @Input() config: Object;
   imgId: string;
   disabled = false;
   loaded: boolean;
@@ -33,7 +34,7 @@ export class UploadInputComponent implements OnInit {
   onUpload() {
     const dialogRef = this.dialog.open(UploadFileDialogComponent, {
       data: {
-        fileExtensions: this.fileExtensions
+        ...this.config
       }
     });
     dialogRef.afterClosed().subscribe(res => {
@@ -44,14 +45,14 @@ export class UploadInputComponent implements OnInit {
       dialogRef.close();
     });
   }
-  onRemoveFile(id: string) {
+  onRemoveFile(id: number) {
     this.imgId = undefined;
-    // this.adminPanelService
-    //   .removeFile(id)
-    //   .subscribe(res => {
-    //     this.imgId = undefined;
-    //     this.onChange(undefined);
-    //   });
+    this.adminPanelService
+      .removeFile(id)
+      .subscribe(res => {
+        this.imgId = undefined;
+        this.onChange(undefined);
+      });
   }
   get value(): string {
     return this.imgId;

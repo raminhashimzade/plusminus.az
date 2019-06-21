@@ -28,6 +28,17 @@ export class AddOrEditCreditCardComponent implements OnInit {
   curCodes$: Observable<SelectType[]> = of([]);
   loading: boolean;
   imageUrl: SafeUrl;
+  config = {
+    fileExtensions: [ 'png', 'jpg', 'jpeg'],
+    enableCropper: true,
+    cropperOptions: {
+      dragMode: 'crop',
+      autoCrop: true,
+      movable: true,
+      zoomable: true,
+      scalable: true,
+    }
+  }
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {item: CreditCard | undefined},
     public dialogRef: MatDialogRef<AddOrEditLoanComponent>,
@@ -45,7 +56,6 @@ export class AddOrEditCreditCardComponent implements OnInit {
 
   ngOnInit() {
     this.creditCard = this.data.item ? this.data.item : new CreditCard();
-    console.log(this.creditCard);
     this.getImage(this.creditCard.cardImageId);
   }
   getImage(id:number) {
@@ -88,7 +98,7 @@ export class AddOrEditCreditCardComponent implements OnInit {
   onAddSuccess(res) {
       this.adminService
         .createNotification(`[ LOAN ] ${this.translateService.instant('~addSuccess')}`, 'OK', 'success');
-   //   this.dialogRef.close(res);
+ // this.dialogRef.close(res);
    }
    onUpdateSuccess(res) {
     this.adminService
