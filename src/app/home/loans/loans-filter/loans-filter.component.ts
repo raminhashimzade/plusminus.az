@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, ElementRef, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable, Subject, fromEvent } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -12,6 +12,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
 import { LoanFilterForm } from '../models/loan-filter-form';
+import { CreditCardFilterForm } from '../../credit-cards/models/credit-card-filter-form.model';
 
 @Component({
   selector: 'loans-filter',
@@ -20,6 +21,7 @@ import { LoanFilterForm } from '../models/loan-filter-form';
 })
 export class LoansFilterComponent implements OnInit {
   @ViewChild('f') form: NgForm;
+  @Output('searchSubmit') searchSubmit = new EventEmitter<CreditCardFilterForm>();
   periods$: Observable<any>;
   slideValue: number;
   isMdSize: boolean;
@@ -27,6 +29,7 @@ export class LoansFilterComponent implements OnInit {
   currCodes$: Observable<SelectType[]>
   productFilter = new LoanFilterForm();
   slideChange$ = new Subject<number>();
+  loading$: Observable<boolean>;
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
@@ -39,6 +42,7 @@ export class LoansFilterComponent implements OnInit {
      ) {
     this.periods$ = this.productService.listLoanPeriods();
     this.currCodes$ = this.sharedService.getCurrCodeList('loans');
+    this.loading$ = this.productService.loadingProducts$;
   }
 
   ngOnInit() {
@@ -88,9 +92,10 @@ export class LoansFilterComponent implements OnInit {
     });
   }
   onSubmit() {
-    this.searchProducts(true);
+    this.searchProducts();
+    this.searchSubmit.next(this.form.value);
   }
-  searchProducts(scrollIntoView: boolean = false) {
+  searchProducts() {
     const filterForm = {};
       Object.keys(this.form.value).forEach(key => {
         if (this.form.controls[key].value) {

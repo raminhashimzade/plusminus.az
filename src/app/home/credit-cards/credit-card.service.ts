@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CreditCardFilterForm } from './models/credit-card-filter-form.model';
 import { CreditCardGroup, CreditCard } from './models/credit-card.model';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { DataResponse } from 'src/app/models/data-reponse';
-import { map } from 'rxjs/operators';
+import { map, finalize } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -14,13 +14,16 @@ export class CreditCardService {
   compareProductList$ = new ReplaySubject<CreditCard[]>();
   compareProductList: CreditCard[] = [];
   productFilterValue: CreditCardFilterForm;
+  loadingProducts$ = new Subject<boolean>();
+
   constructor(private http: HttpClient, private authService: AuthService) { }
   getListGCardCreditProduct(formValue: CreditCardFilterForm): Observable<CreditCardGroup[]> {
     return this.http.post<DataResponse>('mybank/listGCardCreditProduct', {
       token: this.authService.getToken(),
       ...formValue
   }).pipe(
-      map(res => res && res.data)
+      map(res => res && res.data),
+      finalize(() => this.loadingProducts$.next(false))
   );
   }
   listCardCreditPeriod() {

@@ -1,9 +1,9 @@
 import { AuthService } from './../../auth/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, finalize } from 'rxjs/operators';
 import { DataResponse } from 'src/app/models/data-reponse';
-import { Observable, of, ReplaySubject } from 'rxjs';
+import { Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { LoanProduct, LoanGroup } from './models/loanGroup.model';
 import { LoanFilterForm } from './models/loan-filter-form';
 
@@ -15,6 +15,8 @@ export class LoansService {
     compareProductList$ = new ReplaySubject<LoanProduct[]>();
     compareProductList: LoanProduct[] = [];
     loanFilterValue: LoanFilterForm;
+    scrollIntoView: boolean;
+    loadingProducts$ = new Subject<boolean>();
     constructor(private http: HttpClient, private authService: AuthService) {
     //    this.compareProductIds$.next(this.compareProductIds)
     }
@@ -28,11 +30,13 @@ export class LoansService {
         )
     }
     getListLoanGroupProducts(formValue: LoanFilterForm): Observable<LoanGroup[]> {
+        this.loadingProducts$.next(true);
         return this.http.post<DataResponse>('mybank/listGLoanProduct', {
           token: this.authService.getToken(),
           ...formValue
       }).pipe(
-          map(res => res && res.data)
+          map(res => res && res.data),
+          finalize(() => this.loadingProducts$.next(false))
       );
       }
     sendOtp(formValue:Object):Observable<DataResponse> {

@@ -68,13 +68,12 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
           withRefill: res['withRefill'] || false,
           withAutoProloing: res['withAutoProloing'] || false,
         } as DepositCalcForm;
-        const scrollIntoView =  res['scrollIntoView'] === 'true'
         console.log(formValue);
-        this.getListDepositGroupProducts(formValue, scrollIntoView);
+        this.getListDepositGroupProducts(formValue);
       });
     this.changeRef.detectChanges();
   }
-  getListDepositGroupProducts(data: DepositCalcForm, scrollIntoView: boolean) {
+  getListDepositGroupProducts(data: DepositCalcForm, scrollIntoView: boolean = false) {
     this.depositGroupProducts = undefined;
     this.loading = true;
     this.sortState = { orderByColumn: '', orderBySort: '' };

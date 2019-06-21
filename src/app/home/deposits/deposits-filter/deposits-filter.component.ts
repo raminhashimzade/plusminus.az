@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,6 +11,7 @@ import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
 import { deepClone } from 'src/app/app.utils';
 import { DepositCalcForm } from '../models/deposit-calc-form.model';
+import { DebitCardFilterForm } from '../../debit-cards/models/debit-card-filter-form.model';
 
 @Component({
   selector: 'deposits-filter',
@@ -18,7 +19,7 @@ import { DepositCalcForm } from '../models/deposit-calc-form.model';
   styleUrls: ['./deposits-filter.component.scss']
 })
 export class DepositsFilterComponent implements OnInit {
-
+  @Output('searchSubmit') searchSubmit = new EventEmitter<DebitCardFilterForm>();
   @ViewChild('f') form: NgForm;
   depositCurrency = 'AZN';
   depositPeriods$: Observable<any>;
@@ -27,6 +28,8 @@ export class DepositsFilterComponent implements OnInit {
   _onDestroy$ = new Subject<void>();
   currCodes$: Observable<SelectType[]>;
   depositFilter = new DepositCalcForm();
+  loading$: Observable<boolean>;
+
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
@@ -39,6 +42,8 @@ export class DepositsFilterComponent implements OnInit {
      ) {
     this.depositPeriods$ = this.depositService.listDepositPeriod();
     this.currCodes$ = this.sharedService.getCurrCodeList('deposits');
+    this.loading$ = this.depositService.loadingProducts$;
+
   }
 
   ngOnInit() {
@@ -87,9 +92,11 @@ export class DepositsFilterComponent implements OnInit {
     });
   }
   onSubmit() {
-    this.searchDeposits(true);
+    this.searchDeposits();
+    this.searchSubmit.next(this.form.value);
+
   }
-  searchDeposits(scrollIntoView: boolean = false) {
+  searchDeposits() {
     console.log('search');
  //   if (!this.form.valid) {return;}
     const filterForm = {};
@@ -101,7 +108,6 @@ export class DepositsFilterComponent implements OnInit {
     this.router.navigate(['/home/deposits',
     {
     ...filterForm,
-  //  scrollIntoView: scrollIntoView
    } ]);
   }
   getErrorMessage(controlKey: string) {

@@ -84,12 +84,11 @@ export class LoansTableComponent implements OnInit, OnDestroy {
           comissionCash: res['comissionCash'] || defaultFilter.comissionCash,
           comissionLoan: res['comissionLoan'] || defaultFilter.comissionLoan,
         } as LoanFilterForm;
-        const scrollIntoView =  res['scrollIntoView'] === 'true'
-        this.getListloanGroupProducts(formValue, scrollIntoView);
+        this.getListloanGroupProducts(formValue);
       });
     this.changeRef.detectChanges();
   }
-  getListloanGroupProducts(data: LoanFilterForm, scrollIntoView) {
+  getListloanGroupProducts(data: LoanFilterForm, scrollIntoView =false) {
     this.loanGroupProducts = undefined;
     this.loading = true;
     this.sortState = { orderByColumn: '', orderBySort: '' };
@@ -104,7 +103,7 @@ export class LoansTableComponent implements OnInit, OnDestroy {
       .subscribe(res => {
         this.loanGroupProducts = res;
         this.filteredGroupProducts = [...this.loanGroupProducts];
-      //  if (scrollIntoView) {switchToView('#products-table-filter') }
+      if (scrollIntoView) {switchToView('#products-table-filter') }
       });
   }
   onAddProductToCompare(loan: LoanProduct) {
