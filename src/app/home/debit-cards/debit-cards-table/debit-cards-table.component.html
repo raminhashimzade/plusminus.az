@@ -7,7 +7,7 @@
         <ng-container *ngFor="let product of group?.list;let first=first">
           <div class="card" *ngIf="first || expandedGroupId === group.bankID" [attr.id]="product.cdID">
             <div class="card__icon">
-              <img [src]="product.cardImageId | imgSrc | async" [attr.product-img-id]="product.cdID">
+              <img [src]="product.cardImageId | imgSrc" [attr.product-img-id]="product.cdID">
               <ng-container *ngIf="group.list?.length > 1">
                 <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
                   [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
