@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { TokenResolver } from './home/token.resolver';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UnsupportedBrowserComponent } from './unsupported-browser/unsupported-browser.component';
@@ -11,7 +10,6 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    resolve:  {token: TokenResolver},
     children: [
       {
         path: '',
