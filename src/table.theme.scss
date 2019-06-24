@@ -18,6 +18,13 @@ table.plus-minus {
       position: relative;
       cursor: pointer;
 
+      font-size: .75rem;
+      font-weight: 500;
+      height: 3.5rem;
+      padding-bottom: 1.214285rem;
+      padding-top: 1.214285rem;
+
+
       &.asc {
         .tableSorting {
           .tableSorting__arrow.--top {
@@ -50,10 +57,6 @@ table.plus-minus {
       text-align: center;
       font-size: 0.8rem;
       color: var(--primary-default);
-
-
-
-
     }
 
     .td-content {
