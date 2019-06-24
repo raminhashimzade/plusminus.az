@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map} from 'rxjs/operators';
 import { DataResponse } from '../models/data-reponse';
 
 @Injectable({
@@ -18,6 +18,7 @@ export class AuthService {
     .pipe(map(res => {
       this.token = res && res.data;
       return this.token;
-    }))
+    }
+    ))
   }
 }

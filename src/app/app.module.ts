@@ -38,6 +38,7 @@ import { UnsupportedBrowserComponent } from './unsupported-browser/unsupported-b
 import { SupportedBrowserCardComponent } from './unsupported-browser/supported-browser-card/supported-browser-card.component';
 import { DebitCardComparePreviewComponent } from './home/header/compare-preview/debit-card-compare-preview/debit-card-compare-preview.component';
 import { CreditCardComparePreviewComponent } from './home/header/compare-preview/credit-card-compare-preview/credit-card-compare-preview.component';
+import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { CreditCardComparePreviewComponent } from './home/header/compare-preview
   ],
   providers: [
     TokenResolver,
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     { provide: LOCALE_ID,
