@@ -42,6 +42,7 @@
 
 .component {
     display: inline-block;
+    vertical-align: top;
     width: 100%;
     box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
     position: relative;
@@ -73,7 +74,7 @@
             table-layout: auto;
             &.--customers {
                 td {
-                    text-align: left;
+                    text-align: center;
                     .td-content {
                         text-align: center;
                     }
