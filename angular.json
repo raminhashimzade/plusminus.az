@@ -27,7 +27,6 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/daemonite-material/css/material.min.css",
               "src/styles.scss"
             ],
             "scripts": [
