@@ -12,8 +12,8 @@ export class ImgSrcPipe implements PipeTransform {
   constructor(private authService: AuthService, private sanitizer: DomSanitizer) {
   }
 
-  transform(fileId: string): SafeResourceUrl {
+  transform(fileId: string): string {
     if (!fileId) {return;}
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`${getBaseUrl()}/mybank/getFileById/${fileId}/${this.authService.getToken()}`)
+    return `${getBaseUrl()}/mybank/getFileById/${fileId}/${this.authService.getToken()}`;
   }
 }
