@@ -23,13 +23,17 @@ export class UploadInputComponent implements OnInit {
   @Input() config: Object;
   imgId: string;
   disabled = false;
-  loaded: boolean;
+  loaded: boolean = true;
   constructor(private dialog: MatDialog, private adminPanelService: AdminPanelService ) { }
 
   ngOnInit() {
   }
-  onLoaded() {
+  onLoaded(e) {
+    console.log('loaded')
    this.loaded = true;
+  }
+  onErrorLoad(e) {
+    console.log(e);
   }
   onUpload() {
     const dialogRef = this.dialog.open(UploadFileDialogComponent, {

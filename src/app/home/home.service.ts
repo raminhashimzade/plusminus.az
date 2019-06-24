@@ -27,7 +27,6 @@ export class HomeService {
         'Content-Type': 'application/json'
       })
     };
-    console.log(this.authService.getToken())
     return this.http.post<DataResponse>('mybank/banklist', {
       token: this.authService.getToken(),
       partner: partner
