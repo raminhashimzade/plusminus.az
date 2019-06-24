@@ -2,11 +2,12 @@
  @import './material.theme.scss';
  @import '~swiper/dist/css/swiper.min.css';
 
+// Required
  @import "~bootstrap/scss/_functions.scss";
  @import "~bootstrap/scss/_variables.scss";
  @import "~bootstrap/scss/_mixins.scss";
+// Optional
  @import "~bootstrap/scss/_tables.scss";
-
  @import "~bootstrap/scss/_grid.scss";
  @import "~bootstrap/scss/utilities/_display.scss";
  @import "~bootstrap/scss/utilities/_spacing.scss";
