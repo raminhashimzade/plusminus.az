@@ -19,8 +19,8 @@ export const MockServices = [
   {
     name: '~debit-cards',
     iconPath: './assets/images/debit-cards.png',
-    url: '',
-    disabled: true
+    url: 'debit-cards',
+    disabled: false
   },
   {
     name: '~mortgage',

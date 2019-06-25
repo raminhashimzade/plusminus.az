@@ -35,7 +35,7 @@ export class DebitCardsTableComponent implements OnInit {
     private translateService: TranslateService,
     private titleService: Title
   ) {
-    this.titleService.setTitle(translateService.instant('~loans'));
+    this.titleService.setTitle(translateService.instant('~debit-cards'));
   }
 
   ngOnInit() {

@@ -10,6 +10,7 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (request.url.includes('mybank/getSessionId')) { return next.handle(request); }
+    if (request.url.includes('.json')) { return next.handle(request); }
 
       return this.fetchToken$
       .pipe(

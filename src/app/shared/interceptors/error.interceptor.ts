@@ -28,6 +28,7 @@ import { Router } from '@angular/router';
         }),
         map(
           response => {
+            console.log(response)
             if (response instanceof HttpResponse) {
               if (response.body && response.body.success === 'false') {
                 switch (response.body.errorText) {

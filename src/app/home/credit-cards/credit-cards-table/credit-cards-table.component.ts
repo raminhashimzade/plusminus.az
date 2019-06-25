@@ -36,7 +36,7 @@ export class CreditCardsTableComponent implements OnInit {
     private translateService: TranslateService,
     private titleService: Title
   ) {
-    this.titleService.setTitle(translateService.instant('~loans'));
+    this.titleService.setTitle(translateService.instant('~credit-cards'));
   }
 
   ngOnInit() {
