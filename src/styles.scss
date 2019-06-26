@@ -335,10 +335,31 @@ a.mat-stroked-button .mat-icon {
   }
 }
 
+.no-webp {
+  .slide__cover {
+    &.--loans {
+      background-image: url("./assets/images/PLUSMINUS_HOMEPAGE_BANNER.jpg") !important;
+    }
+    &.--mortgage {
+       background-image: url("./assets/images/mortgage-banner-cover.png") !important;
+    }
+  }
+  .banner-wrapper {
+    &.--loans {
+      background-image: url("assets/images/loans-banner-cover.png") !important;
+    }
+    &.--deposits {
+      background-image: url("assets/images/deposits-banner-cover.png") !important;
+    }
+    &.--credit-cards {
+      background-image: url("assets/images/credit-cards-banner-cover.png") !important;
+    }
+    &.--debit-cards {
+      background-image: url("assets/images/debit-cards-banner-cover.png") !important;
+    }
+  }
+}
 
-// table {
-//   border-collapse: collapse;
-// }
 .card {
   background: white;
   box-shadow: 0 0 4px 0 rgba(0,0,0,.14), 0 3px 4px 0 rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
