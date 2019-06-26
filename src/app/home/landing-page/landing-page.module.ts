@@ -1,4 +1,3 @@
-import { MaterialModule } from './../../material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LandingPageComponent } from './landing-page.component';
@@ -27,6 +26,7 @@ import { BestDebitCardOffersComponent } from './best-offers/best-debit-card-offe
 import { DebitCardOfferCardComponent } from './best-offers/best-debit-card-offers/debit-card-offer-card/debit-card-offer-card.component';
 import { LoanSlideComponent } from './main-banner/loan-slide/loan-slide.component';
 import { MortgageSlideComponent } from './main-banner/mortgage-slide/mortgage-slide.component';
+import { MatButtonModule, MatTabsModule } from '@angular/material';
 
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -57,7 +57,10 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   imports: [
     CommonModule,
     SharedTranslateModule,
-    MaterialModule,
+
+    MatButtonModule,
+    MatTabsModule,
+
     LandingPageRoutingModule,
     LoanRequestDialogModule,
     SwiperModule,

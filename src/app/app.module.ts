@@ -1,5 +1,4 @@
 import { LoanRequestDialogModule } from './home/loans/loan-request-dialog/loan-request-dialog.module';
-import { MaterialModule } from './material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -39,6 +38,7 @@ import { SupportedBrowserCardComponent } from './unsupported-browser/supported-b
 import { DebitCardComparePreviewComponent } from './home/header/compare-preview/debit-card-compare-preview/debit-card-compare-preview.component';
 import { CreditCardComparePreviewComponent } from './home/header/compare-preview/credit-card-compare-preview/credit-card-compare-preview.component';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
+import { MatButtonModule, MatMenuModule, MatBadgeModule, MatIconModule } from '@angular/material';
 
 
 @NgModule({
@@ -62,7 +62,13 @@ import { TokenInterceptor } from './shared/interceptors/token.interceptor';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    MaterialModule,
+
+    MatButtonModule,
+    MatMenuModule,
+    MatBadgeModule,
+    MatIconModule,
+
+
     FormsModule,
     ValueTranslateModule,
     HoverClassModule,
