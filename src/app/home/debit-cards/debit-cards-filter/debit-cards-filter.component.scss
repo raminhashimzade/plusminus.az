@@ -43,7 +43,7 @@
     background-repeat: no-repeat;
     background-color: #1DA329;
     min-height:var(--banner-min-height);
-    background-position-x: initial;
+    background-position-x: center;
     .banner {
       display: flex;
       flex-direction: column;
@@ -108,7 +108,7 @@
  @media (max-width: 576px) {
       .banner-wrapper {
      //   background: var(--primary-default);
-        background-position-x: -590px;
+     //   background-position-x: -462px;
     //    background-image: none;
       }
  }
