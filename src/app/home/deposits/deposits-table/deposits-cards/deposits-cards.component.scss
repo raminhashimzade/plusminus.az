@@ -37,11 +37,12 @@
             border-bottom:1px solid #dddede;
              padding: 10px 0;
             .card__content__row__left{
-                font-size: 11px;
+                font-size: 12px;
+                max-width: 200px;
             }
             .card__content__row__right {
                 max-width: 175px;
-                font-size: 11px;
+                font-size: 12px;
                 font-weight: bold;
             }
         }
