@@ -31,7 +31,6 @@
             ],
             "scripts": [
             ],
-            "aot": true,
             "es5BrowserSupport": true
           },
           "configurations": {

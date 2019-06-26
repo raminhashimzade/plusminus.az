@@ -14,49 +14,52 @@ const routes: Routes = [
       {
         path: '',
         loadChildren:
-          './home/landing-page/landing-page.module#LandingPageModule'
+        () => import('./home/landing-page/landing-page.module').then(m => m.LandingPageModule)
       },
       {
         path: 'loans',
         loadChildren:
-          './home/loans/loans.module#LoansModule'
+        () => import('./home/loans/loans.module').then(m => m.LoansModule)
       },
       {
         path: 'deposits',
         loadChildren:
-          './home/deposits/deposits.module#DepositsModule'
+        () => import('./home/deposits/deposits.module').then(m => m.DepositsModule)
       },
       {
         path: 'exchange-rates',
         loadChildren:
-          './home/exchange-rates/exchange-rates.module#ExchangeRatesModule'
+        () => import('./home/exchange-rates/exchange-rates.module').then(m => m.ExchangeRatesModule)
       },
       {
         path: 'mortgage',
         loadChildren:
-          './home/mortgage/mortgage.module#MortgageModule'
+        () => import('./home/mortgage/mortgage.module').then(m => m.MortgageModule)
       },
       {
         path: 'credit-cards',
         loadChildren:
-          './home/credit-cards/credit-cards.module#CreditCardsModule'
+        () => import('./home/credit-cards/credit-cards.module').then(m => m.CreditCardsModule)
       },
       {
         path: 'debit-cards',
         loadChildren:
-          './home/debit-cards/debit-cards.module#DebitCardsModule'
+        () => import('./home/debit-cards/debit-cards.module').then(m => m.DebitCardsModule)
       },
       {
         path: 'requestCustomerDetails',
-        loadChildren: './home/request-customer-details/request-customer-details.module#RequestCustomerDetailsModule'
+        loadChildren:
+        () => import('./home/request-customer-details/request-customer-details.module').then(m => m.RequestCustomerDetailsModule)
       },
       {
         path: 'contact',
-        loadChildren: './home/contact/contact.module#ContactModule'
+        loadChildren:
+        () => import('./home/contact/contact.module').then(m => m.ContactModule)
       },
       {
         path: 'bank-admin',
-        loadChildren: './home/bank-admin/bank-admin.module#BankAdminModule'
+        loadChildren:
+        () => import('./home/bank-admin/bank-admin.module').then(m => m.BankAdminModule)
       }
     ]
   },
