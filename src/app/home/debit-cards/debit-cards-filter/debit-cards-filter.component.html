@@ -1,8 +1,6 @@
 <form #f="ngForm" >
     <div class="banner-wrapper">
-
      <div class="container custom">
-
         <div class="row">
             <div class="col-12">
                <div class="banner">
@@ -11,14 +9,47 @@
                        {{'~debit-cards' | translate}}
                      </div>
                    </div>
-
-
             </div>
           </div>
         </div>
 
-
       </div>
   </div>
 
+  <div class="container custom" >
+    <div class="row" >
+      <div class="col-12">
+        <div class="products__table">
+          <div id="products-table-filter" class="products__table__filter mt-4 mb-4">
+
+            <fieldset>
+
+                <button-toggle [(ngModel)]="productFilter.withMiles" name="withMiles">
+                    <span>{{'~withMiles' | translate |titlecase}} </span>
+                </button-toggle>
+
+                <button-toggle [(ngModel)]="productFilter.withDepositRate" name="withDepositRate">
+                    <span>{{'~withDepositRate' | translate |titlecase}} </span>
+                </button-toggle>
+
+                <button-toggle [(ngModel)]="productFilter.comissionCash" name="comissionCash">
+                    <span>{{'~comissionCash' | translate |titlecase}} </span>
+                </button-toggle>
+
+                <button-toggle [(ngModel)]="productFilter.withCashBack" name="withCashBack">
+                    <span>{{'~withCashBack' | translate |titlecase}} </span>
+                </button-toggle>
+
+
+            </fieldset>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
   </form>
+
