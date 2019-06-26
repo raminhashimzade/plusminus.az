@@ -129,17 +129,20 @@ img {
 
 @font-face {
   font-family: Montserrat-Medium;
+  font-display: swap;
   src: url(assets/fonts/Montserrat/Montserrat-Medium.ttf) format('opentype');
 }
+
+@font-face {
+  font-family: Montserrat-SemiBold;
+  font-display: swap;
+  src: url(assets/fonts/Montserrat/Montserrat-SemiBold.ttf) format('opentype');
+}
+
 // @font-face {
 //   font-family: Montserrat-Thin;
 //   src: url(assets/fonts/Montserrat/Montserrat-Light.ttf) format('opentype');
 // }
-@font-face {
-  font-family: Montserrat-SemiBold;
-  src: url(assets/fonts/Montserrat/Montserrat-SemiBold.ttf) format('opentype');
-}
-
 .mat-tab-label {
   min-width: 20px!important;
   padding:  0 10px!important;
