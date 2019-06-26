@@ -2,16 +2,16 @@
     display: block;
    }
 
-   /deep/ .cdk-column-bankId{
+   ::ng-deep .cdk-column-bankId{
        .td-content {
        //    max-width: 50px;
         }
    }
-   /deep/ .cdk-column-loanName {
+   ::ng-deep .cdk-column-loanName {
        width: 200px;
    }
 
-   /deep/ .cdk-column-editer {
+   ::ng-deep .cdk-column-editer {
     width: 50px;
     padding-right: 8px;
     transition: color 100ms ease-in-out;

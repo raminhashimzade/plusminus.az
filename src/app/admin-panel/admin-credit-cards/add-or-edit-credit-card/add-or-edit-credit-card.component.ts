@@ -22,7 +22,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 })
 export class AddOrEditCreditCardComponent implements OnInit {
 
-  @ViewChild('f') form:NgForm;
+  @ViewChild('f', { static: false }) form:NgForm;
   creditCard: CreditCard;
   banks$: Observable<SelectType[]> = of([]);
   curCodes$: Observable<SelectType[]> = of([]);

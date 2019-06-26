@@ -1,6 +1,6 @@
 :host {
   display: block;
 }
-/deep/ .select-search {
+::ng-deep .select-search {
     width: 100%;
 }

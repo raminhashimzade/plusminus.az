@@ -47,7 +47,7 @@
         }
     }
     .second {
-        /deep/ .favorable-rates-table {
+        ::ng-deep .favorable-rates-table {
             thead {
                 display: none;
             }

@@ -20,7 +20,7 @@ import { DebitCardFilterForm } from '../../debit-cards/models/debit-card-filter-
 })
 export class DepositsFilterComponent implements OnInit {
   @Output('searchSubmit') searchSubmit = new EventEmitter<DebitCardFilterForm>();
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   depositCurrency = 'AZN';
   depositPeriods$: Observable<any>;
   slideValue: number;

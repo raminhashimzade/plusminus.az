@@ -13,9 +13,9 @@ import { timer, Subject } from 'rxjs';
   styleUrls: ['./otp-verify.component.scss']
 })
 export class OtpVerifyComponent implements OnInit, OnDestroy {
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   loading: boolean;
-  @ViewChild('firstField') firstField: MatInput;
+  @ViewChild('firstField', { static: true }) firstField: MatInput;
   otpError: boolean;
   canResendOtp: boolean;
   resendTimerInterval = 100;

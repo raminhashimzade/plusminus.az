@@ -6,16 +6,16 @@
        max-height: 48px;
        overflow: hidden;
    }
-   /deep/ .cdk-column-bankId{
+   ::ng-deep .cdk-column-bankId{
        .td-content {
        //    max-width: 50px;
         }
    }
-   /deep/ .cdk-column-depositName{
+   ::ng-deep .cdk-column-depositName{
        width: 200px;
    }
 
-   /deep/ .cdk-column-editer {
+   ::ng-deep .cdk-column-editer {
     width: 50px;
     padding-right: 8px;
     transition: color 100ms ease-in-out;

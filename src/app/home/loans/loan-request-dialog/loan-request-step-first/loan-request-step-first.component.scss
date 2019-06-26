@@ -55,7 +55,7 @@
             display: flex;
             align-items: flex-end;
             flex-direction: column;
-            /deep/ .mat-checkbox-layout {
+            ::ng-deep .mat-checkbox-layout {
                 font-size:11px!important;
                 a {
                     display: block;

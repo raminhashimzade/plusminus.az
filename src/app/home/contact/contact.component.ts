@@ -14,7 +14,7 @@ import { OtpVerifyComponent } from 'src/app/shared/components/otp-verify/otp-ver
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent implements OnInit {
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   inputPrefix = '50';
   loading: boolean;
   isSent: boolean;

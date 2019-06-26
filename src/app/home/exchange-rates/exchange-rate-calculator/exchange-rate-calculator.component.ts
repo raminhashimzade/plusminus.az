@@ -9,7 +9,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./exchange-rate-calculator.component.scss']
 })
 export class ExchangeRateCalculatorComponent implements OnInit {
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   currencyCodeIn = 'USD';
   currencyCodeOut = 'AZN';
   result: string;

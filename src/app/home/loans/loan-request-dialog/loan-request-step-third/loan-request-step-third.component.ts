@@ -11,8 +11,8 @@ import { HttpResponseEnum } from 'src/app/shared/enums/http-response.enum';
   styleUrls: ['./loan-request-step-third.component.scss']
 })
 export class LoanRequestStepThirdComponent implements OnInit {
-  @ViewChild('f') form: NgForm;
-  @ViewChild('cusFirstNameField') cusFirstNameField: MatInput;
+  @ViewChild('f', { static: true }) form: NgForm;
+  @ViewChild('cusFirstNameField', { static: true }) cusFirstNameField: MatInput;
   @Input() firstStepData: {gsm: string,  channel: string};
   @Input() requestBankId: number[] = [];
   @Output() stepComplete = new EventEmitter();

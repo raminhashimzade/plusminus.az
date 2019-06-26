@@ -17,7 +17,7 @@ import { takeUntil, debounceTime } from 'rxjs/operators';
 })
 export class MortgageFilterComponent implements OnInit {
 
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
  loanCurrency = 'AZN';
  loanPeriods$: Observable<any>;
   slideValue: number;

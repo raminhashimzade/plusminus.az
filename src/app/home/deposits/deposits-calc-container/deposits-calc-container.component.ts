@@ -14,7 +14,7 @@ import { throttleTime, takeUntil, debounceTime } from 'rxjs/operators';
   styleUrls: ['./deposits-calc-container.component.scss']
 })
 export class DepositsCalcContainerComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   depositCurrency = 'AZN';
   depositPeriods$: Observable<any>;
   slideValue: number;

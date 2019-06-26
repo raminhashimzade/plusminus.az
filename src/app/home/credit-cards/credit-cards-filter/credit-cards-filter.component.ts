@@ -19,7 +19,7 @@ import { CreditCardFilterForm } from '../models/credit-card-filter-form.model';
 })
 export class CreditCardsFilterComponent implements OnInit {
 
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   currencyCode = 'AZN';
   periods$: Observable<any>;
   slideValue: number;

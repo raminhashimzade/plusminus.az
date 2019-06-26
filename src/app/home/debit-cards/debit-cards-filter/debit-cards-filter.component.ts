@@ -18,7 +18,7 @@ import { takeUntil, debounceTime } from 'rxjs/operators';
 export class DebitCardsFilterComponent implements OnInit {
 
 
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   currencyCode = 'AZN';
   slideValue: number;
   isMdSize: boolean;

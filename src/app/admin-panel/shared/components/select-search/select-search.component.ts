@@ -43,7 +43,7 @@ export class SelectSearchComponent implements OnInit, OnChanges, AfterViewInit, 
   /** list of banks filtered by search keyword */
   public filteredBanks: ReplaySubject<SelectType[]> = new ReplaySubject<SelectType[]>(1);
 
-  @ViewChild('singleSelect') singleSelect: MatSelect;
+  @ViewChild('singleSelect', { static: false }) singleSelect: MatSelect;
 
   /** Subject that emits when the component has been destroyed. */
   protected _onDestroy = new Subject<void>();

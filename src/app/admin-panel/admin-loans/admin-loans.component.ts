@@ -17,7 +17,7 @@ import { FormControl } from '@angular/forms';
  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminLoansComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   allColumns: string[] = ['bankId', 'bankName', 'loanName', 'loanType', 'currencyCode',
    'minRate', 'minAmount', 'maxAmount', 'comissionCash', 'comissionLoan',
    'minAge', 'maxAge', 'minEffectiveRate', 'maxEffectiveRate', 'minPeriod',
@@ -28,7 +28,7 @@ export class AdminLoansComponent implements OnInit {
   displayedColumns: string[] = this.allColumns.slice();
   toggleColumnsControl: FormControl = new FormControl();
   dataSource: MatTableDataSource<LoanProduct>;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
     private adminLoanService: AdminLoanService,

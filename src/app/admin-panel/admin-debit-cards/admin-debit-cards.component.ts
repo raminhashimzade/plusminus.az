@@ -16,12 +16,12 @@ import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/conf
   styleUrls: ['./admin-debit-cards.component.scss']
 })
 export class AdminDebitCardsComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   allColumns: string[] = [];
   displayedColumns: string[];
   toggleColumnsControl: FormControl = new FormControl();
   dataSource: MatTableDataSource<DebitCard>;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
     private productService: AdminDebitCardsService,

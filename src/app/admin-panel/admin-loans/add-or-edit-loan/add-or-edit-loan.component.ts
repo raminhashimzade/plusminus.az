@@ -17,7 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./add-or-edit-loan.component.scss']
 })
 export class AddOrEditLoanComponent implements OnInit {
-  @ViewChild('f') form:NgForm;
+  @ViewChild('f', { static: false }) form:NgForm;
   product: LoanProduct;
   banks$: Observable<SelectType[]> = of([]);
   curCodes$: Observable<SelectType[]> = of([]);

@@ -13,13 +13,13 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./loan-request-step-second.component.scss']
 })
 export class LoanRequestStepSecondComponent implements OnInit {
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   @Input() firstStepData: {gsm: string, channel: string};
   @Output() stepComplete = new EventEmitter();
   @Output() stepError = new EventEmitter();
   @Output() stepBack = new EventEmitter<number>();
   loading: boolean;
-  @ViewChild('firstField') firstField: MatInput;
+  @ViewChild('firstField', { static: true }) firstField: MatInput;
   otpError: boolean;
   constructor(private loansServce: LoansService, private translateService: TranslateService) { }
 

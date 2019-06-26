@@ -20,7 +20,7 @@ import { CreditCardFilterForm } from '../../credit-cards/models/credit-card-filt
   styleUrls: ['./loans-filter.component.scss']
 })
 export class LoansFilterComponent implements OnInit {
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   @Output('searchSubmit') searchSubmit = new EventEmitter<CreditCardFilterForm>();
   periods$: Observable<any>;
   slideValue: number;

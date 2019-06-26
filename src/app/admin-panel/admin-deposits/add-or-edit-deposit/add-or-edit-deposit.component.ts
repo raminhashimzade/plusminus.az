@@ -18,7 +18,7 @@ import { finalize } from 'rxjs/operators';
 })
 export class AddOrEditDepositComponent implements OnInit {
 
-  @ViewChild('f') form:NgForm;
+  @ViewChild('f', { static: false }) form:NgForm;
   depositProduct: DepositProduct;
   banks$: Observable<SelectType[]> = of([]);
   curCodes$: Observable<SelectType[]> = of([]);

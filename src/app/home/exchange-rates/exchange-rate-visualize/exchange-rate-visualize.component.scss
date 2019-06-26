@@ -19,7 +19,7 @@
         .form__field {
             width: 100%;
             font-size: 0.875rem;
-            /deep/ .mat-form-field-wrapper {
+            ::ng-deep .mat-form-field-wrapper {
                 padding: 0!important;
             }
         }
@@ -28,6 +28,6 @@
         }
     }
 }
-/deep/ .raphael-group-21-creditgroup {
+::ng-deep .raphael-group-21-creditgroup {
     display: none;
 }

@@ -17,12 +17,12 @@ import { AddOrEditCreditCardComponent } from './add-or-edit-credit-card/add-or-e
 })
 export class AdminCreditCardsComponent implements OnInit {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   allColumns: string[] = [];
   displayedColumns: string[] = this.allColumns.slice();
   toggleColumnsControl: FormControl = new FormControl();
   dataSource: MatTableDataSource<CreditCard>;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
     private productService: AdminCreditCardService,

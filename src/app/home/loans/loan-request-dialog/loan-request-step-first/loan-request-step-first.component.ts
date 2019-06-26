@@ -17,8 +17,8 @@ import { takeUntil } from 'rxjs/operators';
 export class LoanRequestStepFirstComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output() stepComplete = new EventEmitter();
   @Output() stepError = new EventEmitter();
-  @ViewChild('f') form: NgForm;
-  @ViewChild('telField') telField: MatInput;
+  @ViewChild('f', { static: true }) form: NgForm;
+  @ViewChild('telField', { static: true }) telField: MatInput;
   inputPrefix = '50';
   loading: boolean;
   checked: boolean;

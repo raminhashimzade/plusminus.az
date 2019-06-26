@@ -13,8 +13,8 @@ import { finalize } from 'rxjs/operators';
   styleUrls: ['./customer-note-popup.component.scss']
 })
 export class CustomerNotePopupComponent implements OnInit, AfterViewInit {
-  @ViewChild('f') form: NgForm;
-  @ViewChild('bankNoteInput') bankNoteInput: MatInput;
+  @ViewChild('f', { static: true }) form: NgForm;
+  @ViewChild('bankNoteInput', { static: true }) bankNoteInput: MatInput;
   order: CustomerOrder;
   loading: boolean;
   constructor(

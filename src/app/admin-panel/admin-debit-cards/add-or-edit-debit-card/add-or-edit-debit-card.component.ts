@@ -22,7 +22,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddOrEditDebitCardComponent implements OnInit {
 
-  @ViewChild('f') form:NgForm;
+  @ViewChild('f', { static: false }) form:NgForm;
   product: DebitCard;
   banks$: Observable<SelectType[]> = of([]);
   curCodes$: Observable<SelectType[]> = of([]);

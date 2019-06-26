@@ -9,7 +9,7 @@ import { AdminPanelService } from '../admin-panel.service';
   styleUrls: ['./admin-login.component.scss']
 })
 export class AdminLoginComponent implements OnInit {
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   hide = true;
   isLoading: boolean;
    constructor(

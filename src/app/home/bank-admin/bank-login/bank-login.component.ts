@@ -14,7 +14,7 @@ declare var Typed;
   styleUrls: ['./bank-login.component.scss']
 })
 export class BankLoginComponent implements OnInit, AfterViewInit {
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   typed: any;
   loading: boolean;
   constructor(

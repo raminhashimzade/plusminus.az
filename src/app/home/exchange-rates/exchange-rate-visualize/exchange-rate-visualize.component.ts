@@ -17,7 +17,7 @@ declare var google: any;
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ExchangeRateVisualizeComponent implements OnInit {
-  @ViewChild('f') form: NgForm;
+  @ViewChild('f', { static: true }) form: NgForm;
   dataSource: any;
   data: any;
   loading: boolean;

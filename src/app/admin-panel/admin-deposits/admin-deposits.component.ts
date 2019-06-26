@@ -16,7 +16,7 @@ import { AddOrEditDepositComponent } from './add-or-edit-deposit/add-or-edit-dep
   styleUrls: ['./admin-deposits.component.scss']
 })
 export class AdminDepositsComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   allColumns: string[] = ['bankId', 'bankName', 'depositName', 'currencyCode',
     'minRate', 'maxRate', 'minPeriod', 'maxPeriod', 'minAmount', 'maxAmount', 'liqType',
     'website', 'description', 'present',
@@ -27,7 +27,7 @@ export class AdminDepositsComponent implements OnInit {
   displayedColumns: string[] = this.allColumns.slice();
   toggleColumnsControl: FormControl = new FormControl();
   dataSource: MatTableDataSource<DepositProduct>;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(
     private adminDepositService: AdminDepositService,

@@ -34,12 +34,12 @@
         .calculator__input__in, .calculator__input__out {
             display: flex;
              flex-wrap: wrap;
-             /deep/ .mat-form-field-wrapper {
+             ::ng-deep .mat-form-field-wrapper {
                  padding: 0!important;
              }
         }
         .calculator__input__amount{
-          /deep/  input[type=number]::-webkit-outer-spin-button {
+          ::ng-deep  input[type=number]::-webkit-outer-spin-button {
                 -webkit-appearance: none;
                 margin: 0;
               }
