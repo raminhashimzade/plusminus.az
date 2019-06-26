@@ -16,7 +16,7 @@ import { getFormErrors } from 'src/app/admin-panel/admin-panel.utils';
   selector: "[fieldError]"
 })
 export class FieldErrorDirective implements AfterViewInit, DoCheck {
-  @HostBinding("innerHtml") innerHtml;
+  @HostBinding("innerHTML") innerHTML;
   @Input() fieldError: string;
   constructor(
     @Optional() @SkipSelf() @Host() public form: NgForm,
@@ -27,7 +27,7 @@ export class FieldErrorDirective implements AfterViewInit, DoCheck {
     return getFormErrors(this.form, this.fieldError, this.translateService);
   }
   ngDoCheck() {
-    this.innerHtml = getFormErrors(this.form, this.fieldError, this.translateService);
+    this.innerHTML = getFormErrors(this.form, this.fieldError, this.translateService);
   }
 
 }

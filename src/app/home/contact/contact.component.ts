@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { ContactService } from './contact.service';
 import { finalize } from 'rxjs/operators';
 import { SharedService } from 'src/app/shared/shared.service';
-import { MatDialog, MatDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { OtpVerifyComponent } from 'src/app/shared/components/otp-verify/otp-verify.component';
 
 @Component({

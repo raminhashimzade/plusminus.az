@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { DepositProduct } from 'src/app/home/deposits/models/deposit-group.model';
 import { DepositService } from 'src/app/home/deposits/deposit.service';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs/operators';
 
 @Component({

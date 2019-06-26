@@ -10,7 +10,7 @@ import { CreditCard, CreditCardGroup } from '../models/credit-card.model';
 import { ActivatedRoute } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { SharedService } from 'src/app/shared/shared.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { CreditCardService } from '../credit-card.service';
 
 @Component({

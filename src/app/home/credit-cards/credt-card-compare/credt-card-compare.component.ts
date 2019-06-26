@@ -2,7 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { CreditCard } from '../models/credit-card.model';
 import { CreditCardService } from '../credit-card.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { finalize, map, switchMap, take } from 'rxjs/operators';
 import { isMobileSize } from 'src/app/app.utils';

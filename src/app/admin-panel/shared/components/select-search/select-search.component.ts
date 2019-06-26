@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewChild, Output, EventEmitter, OnChanges,
    SimpleChanges, forwardRef, ChangeDetectorRef, ChangeDetectionStrategy, AfterViewInit, OnDestroy, Host, Injector, Optional, SkipSelf } from '@angular/core';
 import { FormControl, NG_VALUE_ACCESSOR, NgForm, NgControl, ControlContainer, Validators } from '@angular/forms';
 import { ReplaySubject, Subject } from 'rxjs';
-import { MatSelect } from '@angular/material';
+import { MatSelect } from '@angular/material/select';
 import { takeUntil, take } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { SelectType } from 'src/app/shared/models/select-type.model';

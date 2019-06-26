@@ -3,7 +3,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { FilePreviewModel } from 'ngx-awesome-uploader';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Output, EventEmitter, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UnibookFilePickerAdapter } from './unibook-file-picker.adapter';
 
 @Component({

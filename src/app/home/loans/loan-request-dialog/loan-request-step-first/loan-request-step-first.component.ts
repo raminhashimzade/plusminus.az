@@ -4,7 +4,7 @@ import { LoansService } from '../../loans.service';
 import { TranslateService } from '@ngx-translate/core';
 import { MatInput } from '@angular/material/input';
 import { HttpResponseEnum } from 'src/app/shared/enums/http-response.enum';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 import { LoanRequestDialogComponent } from '../loan-request-dialog.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

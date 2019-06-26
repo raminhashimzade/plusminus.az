@@ -6,7 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { LoansService } from '../../loans/loans.service';
 import { SharedService } from 'src/app/shared/shared.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import {  MatSliderChange } from '@angular/material';
+import { MatSliderChange } from '@angular/material/slider';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { takeUntil, debounceTime } from 'rxjs/operators';
 

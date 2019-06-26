@@ -5,7 +5,7 @@ import { CrudCommandType } from '../../models/crud-command-type.enum';
 import { NgForm } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SharedAdminService } from '../../shared/shared-admin.service';
 import { AdminPanelService } from '../../admin-panel.service';
 import { TranslateService } from '@ngx-translate/core';

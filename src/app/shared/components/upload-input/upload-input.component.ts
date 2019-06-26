@@ -1,5 +1,5 @@
 import { Component, OnInit, forwardRef, SimpleChanges, Input} from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { UploadFileDialogComponent } from '../upload-file-dialog/upload-file-dialog.component';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { AdminPanelService } from 'src/app/admin-panel/admin-panel.service';

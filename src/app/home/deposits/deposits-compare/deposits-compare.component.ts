@@ -4,7 +4,7 @@ import { DepositProduct } from '../models/deposit-group.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { finalize, map, switchMap, take } from 'rxjs/operators';
 import { isMobileSize } from 'src/app/app.utils';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
 import { TranslateService } from '@ngx-translate/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';

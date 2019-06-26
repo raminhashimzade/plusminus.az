@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable, Subject } from 'rxjs';
 import { DepositService } from '../deposit.service';
-import { MatSliderChange } from '@angular/material';
+import { MatSliderChange } from '@angular/material/slider';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DepositCalcForm } from '../models/deposit-calc-form.model';
 import { throttleTime, takeUntil, debounceTime } from 'rxjs/operators';

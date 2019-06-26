@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { DataResponse } from '../models/data-reponse';
 import { catchError, tap } from 'rxjs/operators';
 import { of, Subject, Observable } from 'rxjs';
-import { MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition, MatSnackBar } from '@angular/material';
+import { MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition, MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({

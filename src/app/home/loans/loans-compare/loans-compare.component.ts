@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { isMobileSize } from 'src/app/app.utils';
 import { LoanProduct } from '../models/loanGroup.model';
 import { TranslateService } from '@ngx-translate/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
 declare var Swiper;
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter, OnDestroy, Input } from '@angu
 import { bounce } from 'ng-animate';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { LoansService } from '../../loans.service';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 import { LoanRequestDialogComponent } from '../loan-request-dialog.component';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';

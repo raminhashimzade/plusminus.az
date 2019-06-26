@@ -58,7 +58,7 @@ import { TokenInterceptor } from './shared/interceptors/token.interceptor';
     SupportedBrowserCardComponent
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,

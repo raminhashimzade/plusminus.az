@@ -7,7 +7,7 @@ import { Subject, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { SharedService } from 'src/app/shared/shared.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
 import { takeUntil, finalize, map } from 'rxjs/operators';

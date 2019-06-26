@@ -1,4 +1,4 @@
-import { MatDialogConfig } from '@angular/material';
+import { MatDialogConfig } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 

@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { CreditCard } from 'src/app/home/credit-cards/models/credit-card.model';
 import { Observable, of } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AddOrEditLoanComponent } from '../../admin-loans/add-or-edit-loan/add-or-edit-loan.component';
 import { SharedAdminService } from '../../shared/shared-admin.service';
 import { AdminPanelService } from '../../admin-panel.service';

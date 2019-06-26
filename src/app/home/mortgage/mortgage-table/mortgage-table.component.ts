@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { LoansService } from '../../loans/loans.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { SharedService } from 'src/app/shared/shared.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { takeUntil, finalize, map } from 'rxjs/operators';
 import { LoanFilterForm } from '../../loans/models/loan-filter-form';

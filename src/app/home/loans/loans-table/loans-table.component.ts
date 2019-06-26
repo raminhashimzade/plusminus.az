@@ -9,7 +9,7 @@ import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-
 import { SharedService } from 'src/app/shared/shared.service';
 import { LoanGroup, LoanProduct } from '../models/loanGroup.model';
 import { LoanFilterForm } from '../models/loan-filter-form';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
 import { TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';

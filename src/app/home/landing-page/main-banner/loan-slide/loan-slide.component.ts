@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SlideModel } from '../slide.model';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { LoanRequestDialogComponent } from 'src/app/home/loans/loan-request-dialog/loan-request-dialog.component';
 import { isMobileSize } from 'src/app/app.utils';
 

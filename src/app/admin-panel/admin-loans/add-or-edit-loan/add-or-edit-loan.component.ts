@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { LoanProduct } from 'src/app/home/loans/models/loanGroup.model';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { of, Observable } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';

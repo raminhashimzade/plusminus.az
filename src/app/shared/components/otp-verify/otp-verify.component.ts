@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter, Inject, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatInput, MatButton, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatButton } from '@angular/material/button';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatInput } from '@angular/material/input';
 import { SharedService } from '../../shared.service';
 import { TranslateService } from '@ngx-translate/core';
 import { finalize, takeUntil } from 'rxjs/operators';

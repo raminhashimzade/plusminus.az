@@ -8,7 +8,7 @@ import { CustomerContactPopupComponent } from './customer-contact-popup/customer
 import { CustomerNotePopupComponent } from './customer-note-popup/customer-note-popup.component';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/admin-panel/shared/components/confirm-dialog/confirm-dialog.component';
 import { OrderStats } from '../models/order-stats.model';
 

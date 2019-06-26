@@ -8,7 +8,7 @@ import { SelectType } from './models/select-type.model';
 import { DataResponse } from '../models/data-reponse';
 import { map, catchError } from 'rxjs/operators';
 import { AuthService } from '../auth/auth.service';
-import { MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material';
+import { MatSnackBar, MatSnackBarVerticalPosition, MatSnackBarHorizontalPosition } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'

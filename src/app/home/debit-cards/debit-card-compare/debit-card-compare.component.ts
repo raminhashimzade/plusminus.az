@@ -3,7 +3,7 @@ import { DebitCard } from '../models/debit-card.model';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { DebitCardService } from '../debit-card.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { finalize, map, switchMap, take } from 'rxjs/operators';
 import { isMobileSize } from 'src/app/app.utils';

@@ -2,7 +2,11 @@ import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRe
 import { AdminLoanService } from './admin-loan.service';
 import { CrudCommandType } from '../models/crud-command-type.enum';
 import { LoanProduct } from 'src/app/home/loans/models/loanGroup.model';
-import { MatSort, MatTableDataSource, MatDialog, MatSelectChange, MatPaginator } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSelectChange } from '@angular/material/select';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { AddOrEditLoanComponent } from './add-or-edit-loan/add-or-edit-loan.component';
 import { TableDialogConfig } from '../admin-panel.utils';
 import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/confirm-dialog.component';

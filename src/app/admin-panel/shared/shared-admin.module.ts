@@ -4,7 +4,10 @@ import { SelectSearchModule } from './components/select-search/select-search.mod
 import { ProgressSpinnerModule } from './components/progress-spinner/progress-spinner.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ConfirmDialogModule } from './components/confirm-dialog/confirm-dialog.module';
-import { MatSlideToggleModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [],
