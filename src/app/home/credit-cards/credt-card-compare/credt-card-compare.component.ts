@@ -17,7 +17,7 @@ import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 export class CredtCardCompareComponent implements OnInit {
   rows: string[] = [
     'cardName',  'cardType', 'sellAmount', 'productPeriod', 'minAmount',
-    'minPeriod', 'withMiles', 'withCashback', 'wihtBonus', 'withEmpReference',
+    'minPeriod', 'withMiles', 'withCashback', 'withBonus', 'withEmpReference',
     'withCollateral', 'withDepositRate', 'withGracePeriod', 'comissionCashInhouseOwn',
     'comissionCashInhouseOther', 'comissionCashFCountry', 'comissionCardToCard',
     'comissionQuasiCash',  'comissionLoan', 'description', 'descriptionDOC', 'descriptionPD'

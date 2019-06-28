@@ -108,8 +108,8 @@
                 </td>
                 <td >
                   <div class="td-content --withMiles">
-                      <span *ngIf="withMiles"> {{'~yes' | translate}}</span>
-                      <span *ngIf="!withMiles"> {{'~no' | translate}}</span>
+                      <span *ngIf="product.withMiles"> {{'~yes' | translate}}</span>
+                      <span *ngIf="!product.withMiles"> {{'~no' | translate}}</span>
                   </div>
                 </td>
               </tr>
@@ -118,28 +118,28 @@
 
             <tr [attr.cdId]="product.cdId">
                 <td *ngIf="first || isMobile">
-                  <div class="td-content --withCachBack">
-                    {{'~withCachBack' | translate | titlecase}}
+                  <div class="td-content --withCashBack">
+                    {{'~withCashBack' | translate | titlecase}}
                   </div>
                 </td>
                 <td >
-                  <div class="td-content --withCachBack">
-                      <span *ngIf="withCachBack"> {{'~yes' | translate}}</span>
-                      <span *ngIf="!withCachBack"> {{'~no' | translate}}</span>
+                  <div class="td-content --withCashBack">
+                      <span *ngIf="product.withCashBack"> {{'~yes' | translate}}</span>
+                      <span *ngIf="!product.withCashBack"> {{'~no' | translate}}</span>
                   </div>
                 </td>
               </tr>
 
             <tr [attr.cdId]="product.cdId">
                 <td *ngIf="first || isMobile">
-                  <div class="td-content --wihtBonus">
-                    {{'~wihtBonus' | translate | titlecase}}
+                  <div class="td-content --withBonus">
+                    {{'~withBonus' | translate | titlecase}}
                   </div>
                 </td>
                 <td >
-                  <div class="td-content -wihtBonus">
-                      <span *ngIf="wihtBonus"> {{'~yes' | translate}}</span>
-                      <span *ngIf="!wihtBonus"> {{'~no' | translate}}</span>
+                  <div class="td-content -withBonus">
+                      <span *ngIf="product.withBonus"> {{'~yes' | translate}}</span>
+                      <span *ngIf="!product.withBonus"> {{'~no' | translate}}</span>
                   </div>
                 </td>
               </tr>
@@ -211,7 +211,7 @@
                 </td>
               </tr>
 
-            <tr [attr.cdId]="product.cdId">
+            <!-- <tr [attr.cdId]="product.cdId">
                 <td *ngIf="first || isMobile">
                   <div class="td-content --comissionQuasiCash">
                     {{'~comissionQuasiCash' | translate | titlecase}}
@@ -222,7 +222,7 @@
                       {{product.comissionQuasiCash }}  %
                   </div>
                 </td>
-              </tr>
+              </tr> -->
 
             <tr [attr.cdId]="product.cdId">
                 <td *ngIf="first || isMobile">

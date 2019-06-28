@@ -11,7 +11,7 @@
 
         <div class="box" *ngIf="(products$ | async) as products else no_products" >
           <div class="box__title">
-            {{'~credict-cards' | translate | titlecase}}
+            {{'~debit-cards' | translate | titlecase}}
           </div>
             <div class="box__items">
               <div class="item" *ngFor="let item of products">
