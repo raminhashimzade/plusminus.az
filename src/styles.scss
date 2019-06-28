@@ -280,16 +280,16 @@ button.is-loading {
   .swiper-pagination {
     // bottom: -4px!important;
     .swiper-pagination-bullet {
-        width: 15px;
-        height: 15px;
+        width: 10px;
+        height: 10px;
         outline: 0;
     }
     .swiper-pagination-bullet-active {
-        background: var(--secondary-default);
+        background: #ffffff;
     }
   }
   .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-    background: var(--secondary-default);
+    background: #ffffff;
   }
 }
 
