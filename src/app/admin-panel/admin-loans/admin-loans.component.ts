@@ -76,11 +76,11 @@ export class AdminLoansComponent implements OnInit {
     this.dataSource = undefined;
     this.adminLoanService.crudProduct(CrudCommandType.SELECT, {})
     .subscribe(res => {
+      console.log(res)
       this.dataSource = new MatTableDataSource(res);
       setTimeout(() => {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-
        // this.initToggleColumnControl();
         // this.changeRef.detectChanges();
       }, 10);
