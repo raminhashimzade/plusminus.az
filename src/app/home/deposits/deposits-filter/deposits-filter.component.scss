@@ -27,6 +27,9 @@
         top: 0!important;
         left: 0!important;
         right: 0!important;
+        .mat-slider-ticks-container {
+          background: #ffffff!important;
+       }
       }
       ::ng-deep .mat-slider-thumb-label {
         width: 40px!important;
