@@ -50,7 +50,6 @@ export class AdminDepositsComponent implements OnInit {
     })
   }
   applyFilter(column, filterValue: string) {
-    console.log(column)
     this.dataSource.filterPredicate =
     (data: DepositProduct, filter: string) => data[column].toString().toLowerCase().includes(filter.toLowerCase());
     this.dataSource.filter = filterValue;

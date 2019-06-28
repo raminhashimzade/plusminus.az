@@ -76,7 +76,7 @@
 
           <fieldset>
 
-              <button-toggle [(ngModel)]="creditCardFilter.withEmpReference" name="withEmpReference">
+              <button-toggle [isOpposite]="true"  [(ngModel)]="creditCardFilter.withEmpReference" name="withEmpReference">
                   <span>{{'~withEmpReference' | translate |titlecase}} </span>
               </button-toggle>
 
@@ -92,12 +92,12 @@
                   <span>{{'~withDepositRate' | translate |titlecase}} </span>
               </button-toggle>
 
-              <button-toggle [(ngModel)]="creditCardFilter.comissionCash" name="comissionCash">
+              <button-toggle [isOpposite]="true" [(ngModel)]="creditCardFilter.comissionCash" name="comissionCash">
                   <span>{{'~comissionCash' | translate |titlecase}} </span>
               </button-toggle>
 
               <button-toggle [(ngModel)]="creditCardFilter.withCashBack" name="withCashBack">
-                  <span>{{'~withCashBack' | translate |titlecase}} </span>
+                  <span>{{'~withCashBack' | translate}} </span>
               </button-toggle>
 
 

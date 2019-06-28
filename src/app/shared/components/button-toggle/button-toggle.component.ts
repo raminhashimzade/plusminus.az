@@ -15,6 +15,7 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class ButtonToggleComponent  {
   @Input() isOpposite: boolean;
+  @Input() name: string;
   private _value: boolean;
   disabled: boolean;
   onToggleValue() {
@@ -26,7 +27,11 @@ export class ButtonToggleComponent  {
   }
   writeValue(value: boolean): void {
     if (value) {
-      this._value = value;
+      if (typeof value === 'string') {
+        this._value = JSON.parse( value);
+      } else {
+        this._value = value;
+      }
     }
 
   }
@@ -39,7 +44,6 @@ export class ButtonToggleComponent  {
   }
   registerOnChange(fn: (value: boolean) => void): void {
     this.onChange = fn;
-    console.log('register On cChanged')
   }
     // Allows Angular to register a function to call when the input has been touched.
   // Save the function as a property to call later here.
@@ -53,11 +57,20 @@ export class ButtonToggleComponent  {
   }
 
   get color(): string {
-    if (!this.isOpposite) {
+    if(!this.isOpposite) {
+      if (this.name === 'comissionLoan') {
+      }
       return this.value ? 'accent' : 'default';
-    } else {
+    }
+    if (this.isOpposite) {
       return this.value ? 'default' : 'accent';
     }
+
+    // if (!this.isOpposite) {
+    //   return this.value ? 'accent' : 'default';
+    // } else {
+    //   return this.value ? 'default' : 'accent';
+    // }
   }
 
 }

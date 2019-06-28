@@ -72,7 +72,6 @@ export class AdminCreditCardsComponent implements OnInit {
         this.allColumns = columns;
         this.displayedColumns = [...this.allColumns];
       }
-      console.log(res)
       this.dataSource = new MatTableDataSource(res);
       setTimeout(() => {
         this.dataSource.sort = this.sort;

@@ -99,7 +99,7 @@ export class LoansFilterComponent implements OnInit {
   searchProducts() {
     const filterForm = {};
       Object.keys(this.form.value).forEach(key => {
-        if (this.form.controls[key].value) {
+        if (this.form.controls[key].value || this.form.controls[key].value === false) {
           filterForm[key] = this.form.controls[key].value;
         };
       });

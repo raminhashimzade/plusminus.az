@@ -52,7 +52,6 @@ export class AdminLoansComponent implements OnInit {
     })
   }
   applyFilter(column, filterValue: string) {
-    console.log(column)
     this.dataSource.filterPredicate =
     (data: LoanProduct, filter: string) => data[column].toString().toLowerCase().includes(filter.toLowerCase());
     this.dataSource.filter = filterValue;
@@ -76,7 +75,6 @@ export class AdminLoansComponent implements OnInit {
     this.dataSource = undefined;
     this.adminLoanService.crudProduct(CrudCommandType.SELECT, {})
     .subscribe(res => {
-      console.log(res)
       this.dataSource = new MatTableDataSource(res);
       setTimeout(() => {
         this.dataSource.sort = this.sort;

@@ -217,6 +217,19 @@
     "~comissionCashInhouseOwn" : "Nağdlaşdırma",
     "~cardPeriod": "Kart Müddəti",
 
+
+    "~productPeriod" : "Müddət",
+    "~cardname" : "Kart",
+    "~productperiod " : "Müddət",
+    "~withcachback" : "Cashback",
+    "~wihtbonus" : "Əlavə bonuslar",
+    "~depositrate" : "Qalığa Faiz hesablanması",
+    "~graceperiod" : "Güzəşt Müddəti",
+    "~comissioncashinhouseother" : "Digər bankomatlarda nağdlaşdırma",
+    "~comissioncashfcountry" : "Xarici ölkələrdə nağdlaşdırma",
+    "~comissioncardtocard" : "Kartdan Karta üzrə komisiya",
+    "~sellamount" : "Satış qiyməti",
+
     "~bankId": "Bank id",
     "~loanType": "Loan type",
     "~minAge": "Min age",

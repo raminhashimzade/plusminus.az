@@ -109,8 +109,8 @@
                     <span>{{'~withGracePeriod' | translate |titlecase}} </span>
                 </button-toggle>
 
-                <button-toggle [(ngModel)]="productFilter.comissionLoan" name="comissionLoan">
-                    <span>{{'~comissionLoan' | translate |titlecase}} </span>
+                <button-toggle  [isOpposite]="true" [(ngModel)]="productFilter.comissionLoan" name="comissionLoan">
+                    <span>{{'~withoutCommission' | translate |titlecase}} </span>
                 </button-toggle>
 
                 <!-- <div class="--ck-button">

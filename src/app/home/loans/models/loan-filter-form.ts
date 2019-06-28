@@ -6,5 +6,5 @@ export class LoanFilterForm {
     withCollateral = true;
     withGracePeriod = false;
     comissionCash = false;
-    comissionLoan = false;
+    comissionLoan = true;
 }

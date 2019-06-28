@@ -32,7 +32,7 @@
                     <span>{{'~withDepositRate' | translate |titlecase}} </span>
                 </button-toggle>
 
-                <button-toggle [(ngModel)]="productFilter.comissionCash" name="comissionCash">
+                <button-toggle [isOpposite]="true" [(ngModel)]="productFilter.comissionCash" name="comissionCash">
                     <span>{{'~comissionCash' | translate |titlecase}} </span>
                 </button-toggle>
 
