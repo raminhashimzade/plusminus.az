@@ -74,35 +74,36 @@
       <div class="products__table">
         <div id="products-table-filter" class="products__table__filter mt-4 mb-4">
 
-          <fieldset>
 
-              <button-toggle [isOpposite]="true"  [(ngModel)]="creditCardFilter.withEmpReference" name="withEmpReference">
-                  <span>{{'~withEmpReference' | translate |titlecase}} </span>
-              </button-toggle>
+            <button-toggle-group class="mb-2">
 
-              <button-toggle [(ngModel)]="creditCardFilter.withGracePeriod" name="withGracePeriod">
-                  <span>{{'~withGracePeriod' | translate |titlecase}} </span>
-              </button-toggle>
+                <div class="banner-filter-button-toggle-group-container">
+                    <button-toggle class="button-toggle-wrapper" [isOpposite]="true"  [(ngModel)]="creditCardFilter.withEmpReference" name="withEmpReference">
+                        <span>{{'~withEmpReference' | translate |titlecase}} </span>
+                    </button-toggle>
 
-              <button-toggle [(ngModel)]="creditCardFilter.withMiles" name="withMiles">
-                  <span>{{'~withMiles' | translate |titlecase}} </span>
-              </button-toggle>
+                    <button-toggle class="button-toggle-wrapper" [(ngModel)]="creditCardFilter.withGracePeriod" name="withGracePeriod">
+                        <span>{{'~withGracePeriod' | translate |titlecase}} </span>
+                    </button-toggle>
 
-              <button-toggle [(ngModel)]="creditCardFilter.withDepositRate" name="withDepositRate">
-                  <span>{{'~withDepositRate' | translate |titlecase}} </span>
-              </button-toggle>
+                    <button-toggle class="button-toggle-wrapper" [(ngModel)]="creditCardFilter.withMiles" name="withMiles">
+                        <span>{{'~withMiles' | translate |titlecase}} </span>
+                    </button-toggle>
 
-              <button-toggle [isOpposite]="true" [(ngModel)]="creditCardFilter.comissionCash" name="comissionCash">
-                  <span>{{'~comissionCash' | translate |titlecase}} </span>
-              </button-toggle>
+                    <button-toggle class="button-toggle-wrapper" [(ngModel)]="creditCardFilter.withDepositRate" name="withDepositRate">
+                        <span>{{'~withDepositRate' | translate |titlecase}} </span>
+                    </button-toggle>
 
-              <button-toggle [(ngModel)]="creditCardFilter.withCashBack" name="withCashBack">
-                  <span>{{'~withCashBack' | translate}} </span>
-              </button-toggle>
+                    <button-toggle [isOpposite]="true" [(ngModel)]="creditCardFilter.comissionCash" name="comissionCash">
+                        <span>{{'~comissionCash' | translate |titlecase}} </span>
+                    </button-toggle>
 
+                    <button-toggle [(ngModel)]="creditCardFilter.withCashBack" name="withCashBack">
+                        <span>{{'~withCashBack' | translate}} </span>
+                    </button-toggle>
 
-          </fieldset>
-
+                </div>
+                  </button-toggle-group>
         </div>
       </div>
     </div>

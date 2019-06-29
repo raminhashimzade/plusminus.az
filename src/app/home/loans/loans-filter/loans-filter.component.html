@@ -95,62 +95,28 @@
         <div class="products__table">
           <div id="products-table-filter" class="products__table__filter">
 
-              <div class="ck-buttons">
+            <button-toggle-group class="mb-2">
+              <div class="banner-filter-button-toggle-group-container">
 
-                <button-toggle [isOpposite]="true" [(ngModel)]="productFilter.withEmpReference" name="withEmpReference" value="true">
+                <button-toggle class ="button-toggle-wrapper" [isOpposite]="true" [(ngModel)]="productFilter.withEmpReference" name="withEmpReference" value="true">
                     <span>{{'~withEmpReference' | translate |titlecase}} </span>
                 </button-toggle>
 
-                <button-toggle  [isOpposite]="true"  [(ngModel)]="productFilter.withCollateral" name="withCollateral" value="true">
+                <button-toggle class ="button-toggle-wrapper"  [isOpposite]="true"  [(ngModel)]="productFilter.withCollateral" name="withCollateral" value="true">
                     <span>{{'~withCollateral' | translate |titlecase}} </span>
                 </button-toggle>
 
-                <button-toggle [(ngModel)]="productFilter.withGracePeriod" name="withGracePeriod">
+                <button-toggle class ="button-toggle-wrapper" [(ngModel)]="productFilter.withGracePeriod" name="withGracePeriod">
                     <span>{{'~withGracePeriod' | translate |titlecase}} </span>
                 </button-toggle>
 
-                <button-toggle  [isOpposite]="true" [(ngModel)]="productFilter.comissionLoan" name="comissionLoan">
+                <button-toggle class ="button-toggle-wrapper"  [isOpposite]="true" [(ngModel)]="productFilter.comissionLoan" name="comissionLoan">
                     <span>{{'~withoutCommission' | translate |titlecase}} </span>
                 </button-toggle>
 
-                <!-- <div class="--ck-button">
-                  <label>
-                    <input type="checkbox" [value]="true" ngModel
-                      name="withEmpReference"><span>{{'~withEmpReference' | translate |titlecase}}</span>
-                  </label>
-                </div> -->
-<!--
-                <div class="--ck-button">
-                  <label>
-                    <input type="checkbox" [value]="true" [checked]="true" ngModel
-                      name="withCollateral"><span>{{'~withCollateral' | translate |titlecase}}</span>
-                  </label>
-                </div> -->
+              </div>
+            </button-toggle-group>
 
-                <!-- <div class="--ck-button">
-                  <label>
-                    <input type="checkbox" [value]="false" ngModel
-                      name="withGracePeriod"><span>{{'~withGracePeriod' | translate |titlecase}}</span>
-                  </label>
-                </div> -->
-<!--
-                <div class="--ck-button">
-                  <label>
-                    <input type="checkbox" value="false" ngModel
-                      name="comissionCash"><span>{{'~commissionCash' | translate |titlecase}}</span>
-                  </label>
-                </div> -->
-                <!-- <div class="--ck-button">
-                  <label>
-                    <input type="checkbox" value="false" ngModel
-                      name="comissionLoan"><span>{{'~commissionLoan' | translate |titlecase}}</span>
-                  </label>
-                </div>
-              </div> -->
-
-
-
-          </div>
         </div>
       </div>
 

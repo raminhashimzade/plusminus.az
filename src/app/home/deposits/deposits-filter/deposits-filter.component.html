@@ -82,21 +82,23 @@
             <div class="products__table">
               <div id="products-table-filter" class="products__table__filter">
 
-                <fieldset>
+                  <button-toggle-group class="mb-2">
 
-                  <button-toggle [(ngModel)]="depositFilter.withCapitalisation" name="withCapitalisation">
-                    <span>{{'~withCapitalisation' | translate |titlecase}} </span>
-                </button-toggle>
+                    <div class="banner-filter-button-toggle-group-container">
+                        <button-toggle class="button-toggle-wrapper" [(ngModel)]="depositFilter.withCapitalisation" name="withCapitalisation">
+                            <span>{{'~withCapitalisation' | translate |titlecase}} </span>
+                        </button-toggle>
 
-                  <button-toggle [(ngModel)]="depositFilter.withWithdraw" name="withWithdraw">
-                    <span>{{'~withWithdraw' | translate |titlecase}} </span>
-                </button-toggle>
+                          <button-toggle class="button-toggle-wrapper" [(ngModel)]="depositFilter.withWithdraw" name="withWithdraw">
+                            <span>{{'~withWithdraw' | translate |titlecase}} </span>
+                        </button-toggle>
 
-                  <button-toggle [(ngModel)]="depositFilter.withRefill" name="withRefill">
-                    <span>{{'~withRefill' | translate |titlecase}} </span>
-                </button-toggle>
+                          <button-toggle class="button-toggle-wrapper" [(ngModel)]="depositFilter.withRefill" name="withRefill">
+                            <span>{{'~withRefill' | translate |titlecase}} </span>
+                        </button-toggle>
+                    </div>
 
-                </fieldset>
+                </button-toggle-group>
 
               </div>
             </div>

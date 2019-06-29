@@ -14,6 +14,7 @@ import { ConfirmDialogModule } from '../admin-panel/shared/components/confirm-di
 import { SWIPER_CONFIG, SwiperConfigInterface, SwiperModule } from 'ngx-swiper-wrapper';
 import { UploadInputModule } from './components/upload-input/upload-input.module';
 import { ButtonToggleModule } from './components/button-toggle/button-toggle.module';
+import { ButtonToggleGroupModule } from './components/button-toggle-group/button-toggle-group.module';
 import { ImgSrcPipeModule } from './pipes/img-src-pipe.module';
 const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
   direction: 'horizontal',
@@ -40,7 +41,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     SwiperModule,
     UploadInputModule,
     ButtonToggleModule,
-    ImgSrcPipeModule
+    ImgSrcPipeModule,
+    ButtonToggleGroupModule
   ],
   exports: [
     SharedTranslateModule,
@@ -60,7 +62,8 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     SwiperModule,
     UploadInputModule,
     ButtonToggleModule,
-    ImgSrcPipeModule
+    ImgSrcPipeModule,
+    ButtonToggleGroupModule
   ],
   entryComponents: [],
   providers: [

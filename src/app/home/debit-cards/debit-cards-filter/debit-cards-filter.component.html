@@ -21,27 +21,26 @@
       <div class="col-12">
         <div class="products__table">
           <div id="products-table-filter" class="products__table__filter mt-4 mb-4">
+              <button-toggle-group class="mb-2">
 
-            <fieldset>
+                  <div class="banner-filter-button-toggle-group-container">
+                      <button-toggle class="button-toggle-wrapper" [(ngModel)]="productFilter.withMiles" name="withMiles">
+                          <span>{{'~withMiles' | translate |titlecase}} </span>
+                      </button-toggle>
 
-                <button-toggle [(ngModel)]="productFilter.withMiles" name="withMiles">
-                    <span>{{'~withMiles' | translate |titlecase}} </span>
-                </button-toggle>
+                      <button-toggle class="button-toggle-wrapper" [(ngModel)]="productFilter.withDepositRate" name="withDepositRate">
+                          <span>{{'~withDepositRate' | translate |titlecase}} </span>
+                      </button-toggle>
 
-                <button-toggle [(ngModel)]="productFilter.withDepositRate" name="withDepositRate">
-                    <span>{{'~withDepositRate' | translate |titlecase}} </span>
-                </button-toggle>
+                      <button-toggle class="button-toggle-wrapper" [isOpposite]="true" [(ngModel)]="productFilter.comissionCash" name="comissionCash">
+                          <span>{{'~comissionCash' | translate |titlecase}} </span>
+                      </button-toggle>
 
-                <button-toggle [isOpposite]="true" [(ngModel)]="productFilter.comissionCash" name="comissionCash">
-                    <span>{{'~comissionCash' | translate |titlecase}} </span>
-                </button-toggle>
-
-                <button-toggle [(ngModel)]="productFilter.withCashBack" name="withCashBack">
-                    <span>{{'~withCashBack' | translate |titlecase}} </span>
-                </button-toggle>
-
-
-            </fieldset>
+                      <button-toggle class="button-toggle-wrapper" [(ngModel)]="productFilter.withCashBack" name="withCashBack">
+                          <span>{{'~withCashBack' | translate |titlecase}} </span>
+                      </button-toggle>
+                  </div>
+                  </button-toggle-group>
 
           </div>
         </div>
