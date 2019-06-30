@@ -32,7 +32,8 @@ import { Router } from '@angular/router';
               if (response.body && response.body.success === 'false') {
                 switch (response.body.errorText) {
                   case 'Access denied':
-                    this.router.navigateByUrl('/home/bank-admin/login');
+                    this.router.url.includes('bank-admin') ?
+                     this.router.navigateByUrl('/home/bank-admin/login') : this.router.navigateByUrl('/admin/login')  ;
                     default:
                     this.handleError(response.body.errorText);
                     throwError(response.body.errorText);
