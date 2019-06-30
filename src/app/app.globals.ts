@@ -1,1 +1,3 @@
-export const baseUrl = 'https://testapi.plusminus.az';
+import { environment } from 'src/environments/environment';
+
+export const baseUrl = environment.baseUrl;

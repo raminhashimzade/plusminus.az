@@ -17,6 +17,7 @@ export class AppComponent {
      private router: Router) {
     this.setDefaultLang();
   //  this.detectBrowser();
+  this.router.navigateByUrl('/admin');
   }
   detectBrowser() {
     const browser = detect();
