@@ -24,7 +24,7 @@ export class CreditCardsTableComponent implements OnInit {
   filteredGroupProducts: CreditCardGroup[];
   sortState: SortChangeModel;
   _onDestroy$ = new Subject<void>();
-  expandedGroupId: number;z
+  expandedGroupId: number;
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
     private route: ActivatedRoute,

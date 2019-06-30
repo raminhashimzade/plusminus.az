@@ -391,6 +391,32 @@ a.mat-stroked-button .mat-icon {
     display: none;
   }
 }
+
+.productExpand {
+  font-size: 12px;
+  display: flex;
+  color: #2980b9;
+  margin-top: 10px;
+  cursor: pointer;
+
+  .productExpand__title {
+    margin-right: 3px;
+    font-family: 'Montserrat-Medium';
+    font-size: 12px;
+  }
+
+  .productExpand__icon {
+    transition: transform 300ms ease-in-out;
+  }
+
+  &.--top {
+    .productExpand__icon {
+      transform: rotateZ(-180deg);
+    }
+  }
+
+}
+
 @media (max-width: 1199px) {
   html {
     font-size: 15px;

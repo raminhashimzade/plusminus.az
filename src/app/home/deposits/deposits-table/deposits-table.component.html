@@ -13,7 +13,6 @@
       <div class="productsTable" *ngIf="isLGSize">
         <table class="table plus-minus deposits" *ngIf="!loading else table_loader">
                <thead>
-                  <th class="--expand"> </th>
                   <th [orderByColumn]="'bankName'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                       <div class="th-content --bank ">
                         {{'~bank' | translate}}
@@ -94,19 +93,24 @@
                         <ng-container  *ngFor="let product of group?.list;let first=first">
                           <tr *ngIf="first || expandedGroupId === group.bankID">
 
-                            <td class="p-0">
-                              <div class="expand-icon"   (click)="onExpandGroup(group.bankID)"
-                               *ngIf="first && group.list?.length > 1"
-                                 [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
-                                <i class="fas fa-chevron-down"></i>
-                              </div>
-                            </td>
+
 
                             <td class="pl-0">
                               <div  *ngIf="first" class="td-content products__table__content__bank">
                                 <div class="products__table__content__bank__icon" >
                                   <img  src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.dpID">
-                               </div>
+                                  <ng-container *ngIf="group.list?.length > 1">
+                                      <div class="productExpand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
+                                        [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
+                                        <div class="productExpand__title">
+                                          {{'~expandMore' | translate}} {{group.list?.length - 1}} {{'~product' | translate | lowercase}}
+                                        </div>
+                                        <div class="productExpand__icon">
+                                          <i class="fas fa-chevron-down"></i>
+                                        </div>
+                                      </div>
+                                    </ng-container>
+                                </div>
                               </div>
 
                             </td>

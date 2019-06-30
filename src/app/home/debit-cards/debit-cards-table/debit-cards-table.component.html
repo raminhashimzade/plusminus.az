@@ -9,12 +9,12 @@
             <div class="card__icon">
               <img [src]="product.cardImageId | imgSrc" [attr.product-img-id]="product.cdID">
               <ng-container *ngIf="group.list?.length > 1">
-                <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
+                <div class="productExpand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
                   [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
-                  <div class="expand__title">
+                  <div class="productExpand__title">
                     {{'~expandMore' | translate}} {{group.list?.length - 1}} {{'~product' | translate | lowercase}}
                   </div>
-                  <div class="expand__icon">
+                  <div class="productExpand__icon">
                     <i class="fas fa-chevron-down"></i>
                   </div>
                 </div>

@@ -4,30 +4,6 @@
     background: var(--background-secondary);
   }
 
-  .expand {
-    font-size: 12px;
-    display: flex;
-    color: var(--primary-default);
-    margin-top: 10px;
-    cursor: pointer;
-
-    .expand__title {
-      margin-right: 3px;
-      font-family: 'Montserrat-Medium';
-      font-size: 13px;
-    }
-
-    .expand__icon {
-      transition: transform 300ms ease-in-out;
-    }
-
-    &.--top {
-      .expand__icon {
-        transform: rotateZ(-180deg);
-      }
-    }
-
-  }
 
   .items-group {
     box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
