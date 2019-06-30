@@ -1,8 +1,8 @@
-import { baseUrl } from './app.globals';
 import { Moment } from 'moment';
 import * as moment from 'moment';
 export function getBaseUrl(): string {
-  return baseUrl;
+  return isTestMode()
+  ? 'https://testapi.plusminus.az' : 'https://api.plusminus.az';;
 }
 export const DEFAULT_LANG = 'az';
 export const APP_KEY = 'uni';
@@ -132,6 +132,9 @@ export function loadExternalScripts(url: string) {
    });
  }
 
+ export function isTestMode() {
+ return (window.location.origin.includes('test.plusminus.az') || window.location.origin.includes('localhost:4200') )
+ }
 
  export enum Key {
   Backspace = 8,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { APP_KEY, DEFAULT_LANG } from './app.utils';
+import { APP_KEY, DEFAULT_LANG, isTestMode } from './app.utils';
 import  {detect} from 'detect-browser';
 import { Router } from '@angular/router';
 import { SharedService } from './shared/shared.service';
@@ -18,7 +18,7 @@ export class AppComponent {
      private router: Router) {
     this.setDefaultLang();
   //  this.detectBrowser();
-    if (!environment.testMode) {
+    if (!isTestMode()) {
       this.router.navigateByUrl('/admin');
      }
   }
