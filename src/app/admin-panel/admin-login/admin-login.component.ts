@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup,  NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminPanelService } from '../admin-panel.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'admin-login',
@@ -29,13 +30,14 @@ export class AdminLoginComponent implements OnInit {
      this.isLoading = true;
      if (!this.form.valid) {return; }
      this.adminService.fetchToken(this.form.value)
-       .subscribe((res: any) => {
-         console.log(res);
-      this.router.navigateByUrl('/admin');
-           this.isLoading = false;
-         }, (er) => {
+     .pipe(
+       finalize(() => {
          this.isLoading = false;
-       }
+       })
+     )
+       .subscribe((res: any) => {
+       this.router.navigateByUrl('/admin');
+         }
    );
    }
 }

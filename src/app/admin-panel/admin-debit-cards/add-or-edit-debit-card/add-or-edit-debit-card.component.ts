@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { DebitCard } from 'src/app/home/debit-cards/models/debit-card.model';
 import { NgForm } from '@angular/forms';
-import { CreditCard } from 'src/app/home/credit-cards/models/credit-card.model';
 import { Observable, of } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SafeUrl, DomSanitizer } from '@angular/platform-browser';
@@ -46,9 +45,6 @@ export class AddOrEditDebitCardComponent implements OnInit {
     private productService: AdminDebitCardsService,
     private adminService: AdminPanelService,
     private translateService: TranslateService,
-    private sanitizer: DomSanitizer,
-    private http: HttpClient,
-    private authService: AuthService
     ) {
       this.banks$ = this.sharedAdminService.getBankList(true);
       this.curCodes$ = this.sharedAdminService.getCurrCodeList('loans');
@@ -56,7 +52,6 @@ export class AddOrEditDebitCardComponent implements OnInit {
 
   ngOnInit() {
     this.product = this.data.item ? this.data.item : new DebitCard();
-    console.log(this.product);
   }
 
   onUpdate() {
