@@ -39,6 +39,7 @@ import { DebitCardComparePreviewComponent } from './home/header/compare-preview/
 import { CreditCardComparePreviewComponent } from './home/header/compare-preview/credit-card-compare-preview/credit-card-compare-preview.component';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MatButtonModule, MatMenuModule, MatBadgeModule, MatIconModule } from '@angular/material';
+import { AppPreloadingStrategy } from './app-preloading';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { MatButtonModule, MatMenuModule, MatBadgeModule, MatIconModule } from '@
   ],
   providers: [
     TokenResolver,
+    AppPreloadingStrategy,
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

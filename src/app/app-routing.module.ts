@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UnsupportedBrowserComponent } from './unsupported-browser/unsupported-browser.component';
+import { AppPreloadingStrategy } from './app-preloading';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -14,37 +15,44 @@ const routes: Routes = [
       {
         path: '',
         loadChildren:
-          './home/landing-page/landing-page.module#LandingPageModule'
+          './home/landing-page/landing-page.module#LandingPageModule',
+          data: { preload: true }
       },
       {
         path: 'loans',
         loadChildren:
-          './home/loans/loans.module#LoansModule'
+          './home/loans/loans.module#LoansModule',
+          data: { preload: true }
       },
       {
         path: 'deposits',
         loadChildren:
-          './home/deposits/deposits.module#DepositsModule'
+          './home/deposits/deposits.module#DepositsModule',
+          data: { preload: true }
       },
       {
         path: 'exchange-rates',
         loadChildren:
-          './home/exchange-rates/exchange-rates.module#ExchangeRatesModule'
+          './home/exchange-rates/exchange-rates.module#ExchangeRatesModule',
+          data: { preload: true }
       },
       {
         path: 'mortgage',
         loadChildren:
-          './home/mortgage/mortgage.module#MortgageModule'
+          './home/mortgage/mortgage.module#MortgageModule',
+          data: { preload: true }
       },
       {
         path: 'credit-cards',
         loadChildren:
-          './home/credit-cards/credit-cards.module#CreditCardsModule'
+          './home/credit-cards/credit-cards.module#CreditCardsModule',
+          data: { preload: true }
       },
       {
         path: 'debit-cards',
         loadChildren:
-          './home/debit-cards/debit-cards.module#DebitCardsModule'
+          './home/debit-cards/debit-cards.module#DebitCardsModule',
+          data: { preload: true }
       },
       {
         path: 'requestCustomerDetails',
@@ -80,7 +88,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,
-    {useHash: true, scrollPositionRestoration: 'enabled'})],
+    {useHash: true, preloadingStrategy: AppPreloadingStrategy, scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
