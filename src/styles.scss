@@ -275,21 +275,22 @@ button.is-loading {
 	background-color: lightgray;
 }
 
+
 .swiper-container{
   margin: 0;
   .swiper-pagination {
     // bottom: -4px!important;
     .swiper-pagination-bullet {
-        width: 10px;
-        height: 10px;
-        outline: 0;
+      width: 10px;
+      height: 10px;
+      outline: 0;
     }
     .swiper-pagination-bullet-active {
-        background: #ffffff;
+        background: var(--secondary-default);
     }
   }
   .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
-    background: #ffffff;
+    background: var(--secondary-default);
   }
 }
 

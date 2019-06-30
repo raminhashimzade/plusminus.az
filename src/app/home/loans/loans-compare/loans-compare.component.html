@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<div class="swiper-container" *ngIf="isMobile" style="width: 100%" #swiper >
+<div class="swiper-container" [swiper]="config" style="width: 100%"  *ngIf="isMobile" style="width: 100%" #swiper >
   <div class="swiper-wrapper">
     <div class="swiper-slide" *ngFor="let product of products;let i=index;let first=first">
         <ng-container *ngTemplateOutlet="table__template;context:{product: product, first: first}"></ng-container>

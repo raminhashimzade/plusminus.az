@@ -31,6 +31,7 @@ export interface DebitCardGroup{
     descriptionDOC = new Value();
     descriptionPD = new Value();
     cardImageId = null;
+    website = null;
   }
 
   class Value {

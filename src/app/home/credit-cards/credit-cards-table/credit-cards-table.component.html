@@ -94,7 +94,7 @@
 
 
             <div class="card__actions">
-              <a mat-raised-button color="primary">{{'~visit' | translate}}</a>
+              <a mat-raised-button color="primary" [href]="product.website" target="_blank">{{'~visit' | translate}}</a>
 
               <a mat-raised-button color="accent" [id]="product?.cdId" fly-to-cart
                 [disabled]="(canAddProductToCompare(product?.cdId) | async)"

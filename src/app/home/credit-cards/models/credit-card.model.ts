@@ -45,6 +45,7 @@ export class CreditCard {
     cardImage? = null;
     prodStatus = null;
     priority = null;
+    website = null;
   }
 
   class Value {
