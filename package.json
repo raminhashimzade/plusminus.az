@@ -10,7 +10,8 @@
     "e2e": "ng e2e",
     "init": "git add . && git reset --hard HEAD && git fetch origin && git pull origin",
     "build:stats": "ng build --prod --extraWebpackConfig=webpack.extra.js --stats-json && cd dist && npm run analyze",
-    "analyze": "webpack-bundle-analyzer dist/plus-minus/stats.json"
+    "analyze": "webpack-bundle-analyzer dist/plus-minus/stats.json",
+    "build:test": "ng build --prod --extraWebpackConfig=webpack.extra.js --configuration=test"
   },
   "private": true,
   "dependencies": {
