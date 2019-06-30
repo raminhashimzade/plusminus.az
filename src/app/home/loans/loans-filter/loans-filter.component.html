@@ -114,6 +114,11 @@
                     <span>{{'~withoutCommission' | translate |titlecase}} </span>
                 </button-toggle>
 
+
+                <button-toggle [isOpposite]="true" [(ngModel)]="productFilter.comissionCash" name="comissionCash">
+                  <span>{{'~comissionCash' | translate |titlecase}} </span>
+              </button-toggle>
+
               </div>
             </button-toggle-group>
 
