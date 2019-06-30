@@ -77,8 +77,8 @@ export class MortgageTableComponent implements OnInit {
           withEmpReference: res['withEmpReference'] || true,
           withCollateral: res['withCollateral'] || true,
           withGracePeriod: res['withGracePeriod'] || false,
-          comissionCash: res['comissionCash'] || false,
-          comissionLoan: res['comissionLoan'] || false,
+          comissionCash: res['comissionCash'] || true,
+          comissionLoan: res['comissionLoan'] || true,
           mortgage: true
         } as LoanFilterForm;
         console.log(formValue);
