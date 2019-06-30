@@ -47,7 +47,7 @@
 
     .card__icon {
       flex:  0 0 220px;
-      height: 140px;
+      max-height: 175px;
       margin-bottom: 10px;
     }
 
@@ -165,6 +165,17 @@
 
       .card__actions {
         margin-left: 0;
+      }
+    }
+  }
+}
+@media (max-width: 576px) {
+  .items-group {
+    .card {
+      .card__actions {
+        a {
+          width: 100%;
+        }
       }
     }
   }
