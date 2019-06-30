@@ -41,6 +41,7 @@ import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MatButtonModule, MatMenuModule, MatBadgeModule, MatIconModule } from '@angular/material';
 import { AppPreloadingStrategy } from './app-preloading';
 import { SentryErrorHandler } from './sentry-error-handler';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -86,7 +87,7 @@ import { SentryErrorHandler } from './sentry-error-handler';
   providers: [
     TokenResolver,
     AppPreloadingStrategy,
-    { provide: ErrorHandler, useClass: SentryErrorHandler },
+    !environment.testMode ? { provide: ErrorHandler, useClass: SentryErrorHandler } : [],
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

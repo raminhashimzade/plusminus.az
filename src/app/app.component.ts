@@ -4,6 +4,7 @@ import { APP_KEY, DEFAULT_LANG } from './app.utils';
 import  {detect} from 'detect-browser';
 import { Router } from '@angular/router';
 import { SharedService } from './shared/shared.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,9 @@ export class AppComponent {
      private router: Router) {
     this.setDefaultLang();
   //  this.detectBrowser();
-  this.router.navigateByUrl('/admin');
+    if (!environment.testMode) {
+      this.router.navigateByUrl('/admin');
+     }
   }
   detectBrowser() {
     const browser = detect();

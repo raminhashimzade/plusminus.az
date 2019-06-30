@@ -5,6 +5,6 @@ export class LoanFilterForm {
     withEmpReference = true;
     withCollateral = true;
     withGracePeriod = false;
-    comissionCash = false;
+    comissionCash = true;
     comissionLoan = true;
 }
