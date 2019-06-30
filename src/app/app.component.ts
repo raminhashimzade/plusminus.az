@@ -7,7 +7,7 @@ import { SharedService } from './shared/shared.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-root',
+  selector: 'plus-minus',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
