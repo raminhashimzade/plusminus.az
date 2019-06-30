@@ -231,6 +231,22 @@
     "~comissionCardToCard" : "Kartdan Karta üzrə komisiya",
     "~sellAmount" : "Satış qiyməti",
 
+
+  "~SENTRY": {
+    "feedbackTitle": "Xəta baş verdi :(",
+    "feedbackSubtitle": "Xəta komandamıza bildirildi.",
+    "feedbackSubtitle2": "Əgər kömək etmək istəyirsinizsə, aşağıdak xanaları doldurun.",
+    "feedbackLabelName": "Ad",
+    "feedbackLabelEmail": "Email",
+    "feedbackLabelComments": "Xəta necə baş verdi?",
+    "feedbackLabelClose": "Geri",
+    "feedbackLabelSubmit": "Göndər",
+    "feedbackErrorGeneric": "Xəta baş verdi",
+    "feedbackErrorFormEntry": "Zəhmət olmasa xanaları doldurun",
+    "feedbackSuccessMessage": "Təşəkkürlər. Xəta araşdırılacaq."
+  },
+
+
     "~bankId": "Bank id",
     "~loanType": "Loan type",
     "~minAge": "Min age",

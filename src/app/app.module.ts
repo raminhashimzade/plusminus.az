@@ -1,6 +1,6 @@
 import { LoanRequestDialogModule } from './home/loans/loan-request-dialog/loan-request-dialog.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -40,6 +40,7 @@ import { CreditCardComparePreviewComponent } from './home/header/compare-preview
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
 import { MatButtonModule, MatMenuModule, MatBadgeModule, MatIconModule } from '@angular/material';
 import { AppPreloadingStrategy } from './app-preloading';
+import { SentryErrorHandler } from './sentry-error-handler';
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import { AppPreloadingStrategy } from './app-preloading';
   providers: [
     TokenResolver,
     AppPreloadingStrategy,
+    { provide: ErrorHandler, useClass: SentryErrorHandler },
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

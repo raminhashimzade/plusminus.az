@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map} from 'rxjs/operators';
+import { map, tap} from 'rxjs/operators';
 import { DataResponse } from '../models/data-reponse';
 
 @Injectable({
@@ -19,6 +19,8 @@ export class AuthService {
       this.token = res && res.data;
       return this.token;
     }
-    ))
+    ),
+    tap(res => console.log(res))
+    )
   }
 }
