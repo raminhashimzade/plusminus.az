@@ -27,6 +27,8 @@ table.products {
         }
         td {
             .td-content {
+                white-space: nowrap;
+                min-width: 170px;
                 &.--documents {
                     font-size: 18px;
                 }
