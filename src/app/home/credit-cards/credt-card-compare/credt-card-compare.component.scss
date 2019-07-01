@@ -28,6 +28,7 @@ table.products {
         td {
             .td-content {
                 min-width: 170px;
+                white-space: nowrap;
                 &.--document {
                     font-size: 18px;
                     color: #CE1B21;
