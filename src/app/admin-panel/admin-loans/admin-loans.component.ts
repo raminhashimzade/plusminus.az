@@ -22,7 +22,7 @@ import { FormControl } from '@angular/forms';
 })
 export class AdminLoansComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  allColumns: string[] = ['bankId', 'bankName', 'loanName', 'loanType', 'currencyCode',
+  allColumns: string[] = ['lnId', 'bankId', 'bankName', 'loanName', 'loanType', 'currencyCode',
    'minRate', 'minAmount', 'maxAmount', 'comissionCash', 'comissionLoan',
    'minAge', 'maxAge', 'minEffectiveRate', 'maxEffectiveRate', 'minPeriod',
    'maxPeriod', 'withCollateral', 'withEmpReference', 'withGracePeriod', 'prodStatus', 'insurance', 'priority',

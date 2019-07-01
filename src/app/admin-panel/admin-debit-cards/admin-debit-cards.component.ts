@@ -66,9 +66,10 @@ export class AdminDebitCardsComponent implements OnInit {
     this.productService.crudProduct(CrudCommandType.SELECT, {})
     .subscribe(res => {
       if (res && res[0]) {
-        const columns = Object.keys(res[0]);
+        const columns = Object.keys(res[0]).filter(c => c!== 'cdId');
         columns.push('editer');
-        this.allColumns = columns;
+        columns.unshift('cdId');
+        this.allColumns = [...columns];
         this.displayedColumns = [...this.allColumns];
       }
       console.log(res)

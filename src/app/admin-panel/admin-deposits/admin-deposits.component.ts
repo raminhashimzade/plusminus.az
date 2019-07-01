@@ -20,7 +20,7 @@ import { AddOrEditDepositComponent } from './add-or-edit-deposit/add-or-edit-dep
 })
 export class AdminDepositsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  allColumns: string[] = ['bankId', 'bankName', 'depositName', 'currencyCode',
+  allColumns: string[] = ['dpId', 'bankId', 'bankName', 'depositName', 'currencyCode',
     'minRate', 'maxRate', 'minPeriod', 'maxPeriod', 'minAmount', 'maxAmount', 'liqType',
     'website', 'description', 'present',
     'withCollateral', 'withAutoProloing', 'withCapitalisation', 'withRefill', 'withWithdraw', 'priority', 'prodStatus',
