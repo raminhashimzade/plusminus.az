@@ -1,0 +1,9 @@
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Change Profile Settings">
+    <mat-icon>person</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/home/bank-admin/profile-update">
+     {{'~profileUpdate' | translate}}
+    </button>
+
+  </mat-menu>

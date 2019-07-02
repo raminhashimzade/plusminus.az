@@ -62,10 +62,16 @@
                                 type="password">
                               </mat-form-field>
 
-                              <button mat-raised-button
-                              [ngClass]="{'is-loading': loading}"
-                              [disabled]="loading"
-                              color ="accent" class="form-submit" type="submit"> {{'~login' | translate}}</button>
+                              <div class="login__content__form__actions">
+
+                                <button mat-raised-button
+                                [ngClass]="{'is-loading': loading}"
+                                [disabled]="loading"
+                                color ="accent" class="form-submit" type="submit"> {{'~login' | translate}}</button>
+
+                              </div>
+
+
                           </form>
                     </div>
                 </div>

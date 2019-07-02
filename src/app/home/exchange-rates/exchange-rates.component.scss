@@ -52,7 +52,7 @@
         position: sticky;
         left: 0;
         background: #ffffff;
-        z-index: 100;
+        z-index: calc(var(--header-z-index) - 1);
       }
 
       .th-content {
@@ -120,7 +120,7 @@
   position: -webkit-sticky;
   position: absolute;
   top: 3px;
-  z-index: 998;
+  z-index: calc(var(--header-z-index) - 1);
   height: 0;
   right: 6px;
 

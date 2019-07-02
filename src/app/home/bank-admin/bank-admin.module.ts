@@ -9,6 +9,7 @@ import { BankAdminGuard } from './bank-admin.guard';
 import { CustomerContactPopupComponent } from './bank-customers/customer-contact-popup/customer-contact-popup.component';
 import { PopoverModule } from 'src/app/popover/popover.module';
 import { CustomerNotePopupComponent } from './bank-customers/customer-note-popup/customer-note-popup.component';
+import { BankAdminChangePasswordComponent } from './bank-admin-change-password/bank-admin-change-password.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CustomerNotePopupComponent } from './bank-customers/customer-note-popup
     BankLoginComponent,
     BankCustomersComponent,
     CustomerContactPopupComponent,
-    CustomerNotePopupComponent
+    CustomerNotePopupComponent,
+    BankAdminChangePasswordComponent
   ],
   imports: [
     CommonModule,

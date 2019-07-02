@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { LoansService } from '../loans/loans.service';
-import { Observable } from 'rxjs';
-import { LoanProduct } from '../loans/models/loanGroup.model';
 
 @Component({
   selector: 'app-header',
@@ -12,18 +9,17 @@ import { LoanProduct } from '../loans/models/loanGroup.model';
 })
 export class HeaderComponent implements OnInit {
   defaultLang: string;
-  showloanCompare= false;
+  showProfileSettings = false;
   constructor(private translateService: TranslateService,
-     private router: Router,
-      private loansService: LoansService) {
-      }
+     private router: Router
+      ) {}
 
   ngOnInit() {
     this.defaultLang = this.translateService.getDefaultLang();
     this.translateService.onDefaultLangChange.subscribe(res => {
       this.defaultLang = res && res.lang;
     });
-    this.showloanCompare= this.router.url.includes('loans');
+    this.showProfileSettings = this.router.url.includes('bank-admin/customers');
     this.listenToRouteChange();
   }
   onLangChange(lang) {
@@ -32,10 +28,10 @@ export class HeaderComponent implements OnInit {
   listenToRouteChange() {
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd ) {
-        if (event && event.url.includes('loans')) {
-          this.showloanCompare= true;
+        if (event && event.url.includes('bank-admin/customers')) {
+          this.showProfileSettings= true;
         } else {
-          this.showloanCompare= false;
+          this.showProfileSettings= false;
         }
       }
     })

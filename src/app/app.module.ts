@@ -42,6 +42,7 @@ import { MatButtonModule, MatMenuModule, MatBadgeModule, MatIconModule } from '@
 import { AppPreloadingStrategy } from './app-preloading';
 import { SentryErrorHandler } from './sentry-error-handler';
 import { environment } from 'src/environments/environment';
+import { BankAdminSettingsDropdownComponent } from './home/header/bank-admin-settings-dropdown/bank-admin-settings-dropdown.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { environment } from 'src/environments/environment';
     CreditCardComparePreviewComponent,
     DebitCardComparePreviewComponent,
     UnsupportedBrowserComponent,
-    SupportedBrowserCardComponent
+    SupportedBrowserCardComponent,
+    BankAdminSettingsDropdownComponent
   ],
   imports: [
     BrowserModule,
