@@ -43,7 +43,7 @@
 
                       <th [orderByColumn]="'minRate'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                         <div class="th-content" >
-                            {{'~effectiveRate' | translate}}
+                            {{'~effectiveRate' | translate | titlecase}}
                             <div class="tableSorting">
                                 <span class="tableSorting__arrow --top">
                                    <i class="fas fa-caret-down"></i>
@@ -132,7 +132,22 @@
 
                               <td>
                                 <div class="td-content">
-                                    {{product.minRate}} %
+                                    <ng-container *ngIf="product.minRate && product.maxRate && (product.minRate !== product.maxRate)">
+                                        <span>{{product.minRate}}</span>
+                                        - <span>{{product.maxRate}}</span> %
+                                      </ng-container>
+
+                                      <ng-container *ngIf="!product.minRate && product.maxRate">
+                                        <span>{{product.maxRate}}</span> %
+                                      </ng-container>
+
+                                      <ng-container *ngIf="product.minRate && !product.maxRate">
+                                        <span>{{product.minRate}}</span> %
+                                      </ng-container>
+
+                                      <ng-container *ngIf="product.minRate && product.maxRate && (product.minRate === product.maxRate)">
+                                        <span>{{product.minRate}}</span> %
+                                      </ng-container>
                                 </div>
                               </td>
 
