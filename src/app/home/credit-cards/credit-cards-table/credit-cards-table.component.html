@@ -41,6 +41,15 @@
                   </div>
                 </div>
 
+                <div class="card__content__features__info" *ngIf="!!product.withGracePeriod">
+                  <div class="card__content__features__info__key">
+                    {{'~gracePeriod' | translate}}:
+                  </div>
+                  <div class="card__content__features__info__value">
+                    {{product.withGracePeriod}} {{'~day' | translate}}
+                  </div>
+                </div>
+
                 <div class="card__content__features__info">
                   <div class="card__content__features__info__key">
                     {{'~maxAmount' | translate}}:
@@ -64,7 +73,7 @@
                     {{'~cashback' | translate}}:
                   </div>
                   <div class="card__content__features__info__value --icon">
-                    <i class="fas fa-check-circle"></i>
+                    <i class="far fa-check-circle"></i>
                   </div>
                 </div>
 
@@ -75,7 +84,7 @@
                     {{'~miles' | translate}}:
                   </div>
                   <div class="card__content__features__info__value --icon">
-                    <i class="fas fa-check-circle"></i>
+                    <i class="far fa-check-circle"></i>
                   </div>
                 </div>
 
