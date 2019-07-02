@@ -239,6 +239,11 @@
                 </mat-form-field>
 
                 <mat-form-field class="table-edit__inputs__field" appearance="legacy">
+                  <mat-label>{{'~gracePeriod' | translate}}</mat-label>
+                  <input matInput placeholder="{{'~gracePeriod' | translate}}" type="number" required  name="withGracePeriod"  [(ngModel)]="product.withGracePeriod">
+                </mat-form-field>
+
+                <mat-form-field class="table-edit__inputs__field" appearance="legacy">
                     <mat-label>{{'~minPeriod' | translate}}</mat-label>
                     <input matInput placeholder="{{'~minPeriod' | translate}}" required  type="number" name="minPeriod"  [(ngModel)]="product.minPeriod">
                   </mat-form-field>
@@ -324,15 +329,6 @@
 
                </fieldset>
 
-               <fieldset>
-                  <mat-checkbox
-                  name="withGracePeriod"
-                  [(ngModel)]="product.withGracePeriod"
-                 >
-                  {{'~withGracePeriod' | translate}}
-               </mat-checkbox>
-
-               </fieldset>
 
 
 
