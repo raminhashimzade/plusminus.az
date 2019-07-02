@@ -68,6 +68,15 @@
                   </div>
                 </div>
 
+                <div class="card__content__features__info" *ngIf="product.maxPeriod">
+                  <div class="card__content__features__info__key">
+                    {{'~loanPeriod' | translate}}:
+                  </div>
+                  <div class="card__content__features__info__value">
+                    {{product.maxPeriod}} {{'~month' | translate}}
+                  </div>
+                </div>
+
                 <div class="card__content__features__info" *ngIf="product.withCashBack">
                   <div class="card__content__features__info__key">
                     {{'~cashback' | translate}}:
