@@ -88,6 +88,36 @@
 
       <tr [attr.cdId]="product.cdId">
         <td *ngIf="first || isMobile">
+          <div class="td-content --minRate">
+            {{'~rate' | translate | titlecase}}
+          </div>
+        </td>
+        <td>
+          <div class="td-content -minRate">
+            <ng-container *ngIf="product.minRate && product.maxRate && (product.minRate !== product.maxRate)">
+              <span>{{product.minRate}}</span>
+              - <span>{{product.maxRate}}</span> %
+            </ng-container>
+
+            <ng-container *ngIf="!product.minRate && product.maxRate">
+              <span>{{product.maxRate}}</span> %
+            </ng-container>
+
+            <ng-container *ngIf="product.minRate && !product.maxRate">
+              <span>{{product.minRate}}</span> %
+            </ng-container>
+
+            <ng-container *ngIf="product.minRate && product.maxRate && (product.minRate === product.maxRate)">
+              <span>{{product.minRate}}</span> %
+            </ng-container>
+
+          </div>
+        </td>
+      </tr>
+
+
+      <tr [attr.cdId]="product.cdId">
+        <td *ngIf="first || isMobile">
           <div class="td-content --productPeriod">
             {{'~productPeriod' | translate | titlecase}}
           </div>
@@ -224,34 +254,7 @@
         </td>
       </tr>
 
-      <tr [attr.cdId]="product.cdId">
-        <td *ngIf="first || isMobile">
-          <div class="td-content --minRate">
-            {{'~rate' | translate | titlecase}}
-          </div>
-        </td>
-        <td>
-          <div class="td-content -minRate">
-            <ng-container *ngIf="product.minRate && product.maxRate && (product.minRate !== product.maxRate)">
-              <span>{{product.minRate}}</span>
-              - <span>{{product.maxRate}}</span> %
-            </ng-container>
 
-            <ng-container *ngIf="!product.minRate && product.maxRate">
-              <span>{{product.maxRate}}</span> %
-            </ng-container>
-
-            <ng-container *ngIf="product.minRate && !product.maxRate">
-              <span>{{product.minRate}}</span> %
-            </ng-container>
-
-            <ng-container *ngIf="product.minRate && product.maxRate && (product.minRate === product.maxRate)">
-              <span>{{product.minRate}}</span> %
-            </ng-container>
-
-          </div>
-        </td>
-      </tr>
 
       <tr [attr.cdId]="product.cdId">
         <td *ngIf="first || isMobile">
