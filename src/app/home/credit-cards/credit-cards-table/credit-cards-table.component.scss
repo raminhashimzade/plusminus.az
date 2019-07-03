@@ -60,7 +60,6 @@
 
       .card__content__features {
         display: flex;
-        flex-direction: column;
         flex-wrap: wrap;
         width: 100%;
 
@@ -68,7 +67,7 @@
           display: flex;
           align-items: center;
           margin-bottom: 10px;
-          width: 100%;
+          width: 50%;
           padding-left: 2.1875rem;
 
           .card__content__features__info__key {
@@ -115,6 +114,7 @@
       .card__content {
         .card__content__features {
           width: 100%;
+          flex-direction: column;
         }
       }
     }

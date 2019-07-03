@@ -69,7 +69,7 @@ export class AdminDebitCardsComponent implements OnInit {
         const columns = Object.keys(res[0]).filter(c => c!== 'cdId');
         columns.push('editer');
         columns.unshift('cdId');
-        this.allColumns = [...columns];
+        this.allColumns = [...columns].filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') );
         this.displayedColumns = [...this.allColumns];
       }
       console.log(res)

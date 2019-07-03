@@ -60,7 +60,7 @@ export class AdminCreditCardsComponent implements OnInit {
     if (column === 'editer') {
       return 'editer';
     }
-    return (column === 'cardName' || column === 'description' || column ==='descriptionPD' || column === 'descriptionDOC') ? 'multilang' : 'standard';
+    return (column === 'cardName' ) ? 'multilang' : 'standard';
   }
   getData() {
     this.dataSource = undefined;
@@ -70,7 +70,7 @@ export class AdminCreditCardsComponent implements OnInit {
         const columns = Object.keys(res[0]).filter(c => c!== 'cdId');
         columns.push('editer');
         columns.unshift('cdId');
-        this.allColumns = [...columns];
+        this.allColumns = [...columns].filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') );
         this.displayedColumns = [...this.allColumns];
       }
       this.dataSource = new MatTableDataSource(res);
