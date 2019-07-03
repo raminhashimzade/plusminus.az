@@ -49,8 +49,8 @@
     "~effectiveRate": "faiz",
     "~documents": "Tələb olunan sənədlər",
     "~requirements": "Tələblər",
-    "~withEmpReference": "Iş yerindən arayış tələb olunur",
-    "~withCollateral": "Girovsuz vəya zamin tələb olunur",
+    "~withEmpReference": "Iş yerindən arayış olmadan",
+    "~withCollateral": "Girovsuz və zaminsiz",
     "~withGracePeriod": "Güzəşt müddəti ilə",
     "~commissionCash": "Nağd pulun kommissiyası",
     "~commissionLoan": "Kredit komissiyasız",
@@ -272,5 +272,7 @@
     "~update": "Update",
     "~generalActions": "General Actions",
     "~confirmOrderCancel": "Sifarişi ləğv etməyə əminsiz",
-    "~bankName": "Bank adı"
+    "~bankName": "Bank adı",
+    "~adminWithEmpReference": "Iş yerindən arayış tələb olunur",
+    "~adminWithCollateral": "Girovsuz vəya zamin tələb olunur"
   }
