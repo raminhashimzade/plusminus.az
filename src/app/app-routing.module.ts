@@ -5,9 +5,11 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { UnsupportedBrowserComponent } from './unsupported-browser/unsupported-browser.component';
 import { AppPreloadingStrategy } from './app-preloading';
+import { ApplicationCountdownComponent } from './application-countdown/application-countdown.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  {path: 'countdown', component: ApplicationCountdownComponent },
   {
     path: 'home',
     component: HomeComponent,

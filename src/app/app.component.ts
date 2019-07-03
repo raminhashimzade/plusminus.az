@@ -18,8 +18,8 @@ export class AppComponent {
      private router: Router) {
     this.setDefaultLang();
   //  this.detectBrowser();
-    if (!isTestMode()) {
-      this.router.navigateByUrl('/admin');
+    if (!this.isTestMode()) {
+      this.router.navigateByUrl('/countdown');
      }
   }
   detectBrowser() {
@@ -45,6 +45,9 @@ export class AppComponent {
   } catch(er) {
     this.router.navigateByUrl('/unsupported-browser');
   }
+  }
+  isTestMode() {
+    return isTestMode();
   }
   setDefaultLang() {
     const language = localStorage.getItem(`${APP_KEY}_language`) || DEFAULT_LANG;

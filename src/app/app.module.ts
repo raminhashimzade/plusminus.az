@@ -43,6 +43,7 @@ import { AppPreloadingStrategy } from './app-preloading';
 import { SentryErrorHandler } from './sentry-error-handler';
 import { environment } from 'src/environments/environment';
 import { BankAdminSettingsDropdownComponent } from './home/header/bank-admin-settings-dropdown/bank-admin-settings-dropdown.component';
+import { ApplicationCountdownComponent } from './application-countdown/application-countdown.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { BankAdminSettingsDropdownComponent } from './home/header/bank-admin-set
     DebitCardComparePreviewComponent,
     UnsupportedBrowserComponent,
     SupportedBrowserCardComponent,
-    BankAdminSettingsDropdownComponent
+    BankAdminSettingsDropdownComponent,
+    ApplicationCountdownComponent
   ],
   imports: [
     BrowserModule,

@@ -232,6 +232,7 @@
     "~comissionCardToCard" : "Kartdan Karta üzrə komisiya",
     "~sellAmount" : "Satış qiyməti",
     "~profileUpdate": "İstifadəçi sazlaması",
+    "~infoIsLoading": "Məlumat yüklənir",
 
   "~SENTRY": {
     "feedbackTitle": "Xəta baş verdi :(",
