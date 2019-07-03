@@ -20,7 +20,7 @@ export class AuthService {
       return this.token;
     }
     ),
-    tap(res => console.log(res))
+  //  tap(res => console.log(res))
     )
   }
 }
