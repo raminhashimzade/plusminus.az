@@ -48,6 +48,7 @@
     "smoothscroll-polyfill": "^0.4.4",
     "swiper": "^4.5.0",
     "tslib": "^1.9.0",
+    "typed.js": "^2.0.10",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
