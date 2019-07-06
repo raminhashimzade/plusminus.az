@@ -5,6 +5,7 @@ import { BankAdminService } from '../bank-admin.service';
 import { finalize } from 'rxjs/operators';
 import { SharedService } from 'src/app/shared/shared.service';
 import { Router } from '@angular/router';
+import { BankAdminUser } from '../models/bank-admin.user.model';
 
 @Component({
   selector: 'bank-admin-change-password',
@@ -17,6 +18,7 @@ export class BankAdminChangePasswordComponent implements OnInit {
   hideNewPassword = true;
   confirmNewPassword = true;
   loading: boolean;
+  user: BankAdminUser;
   constructor(
     private translateService: TranslateService,
     private sharedService: SharedService,
@@ -25,6 +27,7 @@ export class BankAdminChangePasswordComponent implements OnInit {
      ) { }
 
   ngOnInit() {
+    this.user = this.bankAdminService.getUser();
   }
   onSubmit() {
     if (!this.form.valid) {return;}
@@ -35,7 +38,7 @@ export class BankAdminChangePasswordComponent implements OnInit {
       finalize(() => this.loading = false)
     )
     .subscribe(res => {
-      if (res.success) {
+      if (!!res.success) {
         this.sharedService.createNotification('~passwordChangeSuccess', 'OK', 'success');
         this.bankAdminService.logout();
       }

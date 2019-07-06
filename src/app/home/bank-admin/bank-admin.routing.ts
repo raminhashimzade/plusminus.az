@@ -9,8 +9,8 @@ const routes: Routes = [
   {path: '',redirectTo: 'customers', pathMatch: 'full'},
   {path: 'login', component: BankLoginComponent},
   {path: 'customers', component: BankCustomersComponent, canActivate: [BankAdminGuard]},
-  {path: 'profile-update', component: BankAdminChangePasswordComponent}
-  // {path: 'profile-update', component: BankAdminChangePasswordComponent, canActivate: [BankAdminGuard]}
+  // {path: 'profile-update', component: BankAdminChangePasswordComponent}
+   {path: 'profile-update', component: BankAdminChangePasswordComponent, canActivate: [BankAdminGuard]}
 ];
 
 @NgModule({

@@ -8,16 +8,23 @@ import { CustomerOrder } from './models/customer-order.model';
 import { OrderShowInfo } from './models/order-show-info.model';
 import { OrderStats } from './models/order-stats.model';
 import { Router } from '@angular/router';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { BankAdminUser } from './models/bank-admin.user.model';
 @Injectable({
   providedIn: 'root'
 })
 export class BankAdminService {
   token: string;
   bankId: string;
-  constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
+  user: BankAdminUser;
+  jwtService = new JwtHelperService();
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {
+   }
   getToken(): string {
     return this.token;
+  }
+  getUser(): BankAdminUser {
+    return {...this.user};
   }
   fetchToken(login: string, password: string): Observable<string> {
     return this.http.post<DataResponse>('mybank/checkBankLogin', {
@@ -28,6 +35,7 @@ export class BankAdminService {
       .pipe(map(res => {
         this.token = res && res.data.token;
         this.bankId = res && res.data.bankId;
+        this.user = this.jwtService.decodeToken(this.token);
         return this.token;
       }))
   }
