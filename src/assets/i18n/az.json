@@ -233,6 +233,12 @@
     "~sellAmount" : "Satış qiyməti",
     "~profileUpdate": "İstifadəçi sazlaması",
     "~infoIsLoading": "Məlumat yüklənir",
+    "~username": "Istifadəçi adı",
+    "~oldPassword": "Köhnə şifrə",
+    "~newPassword": "Yeni şifrə",
+    "~confirmNewPassword": "Yeni şifrə təsdiq edin",
+    "~newPasswordIsNotMatched": "Yeni şifrəni düzgün qeyd edin",
+    "~logout": "Çıxış",
 
   "~SENTRY": {
     "feedbackTitle": "Xəta baş verdi :(",

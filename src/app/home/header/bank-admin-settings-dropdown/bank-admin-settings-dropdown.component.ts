@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BankAdminService } from '../../bank-admin/bank-admin.service';
 
 @Component({
   selector: 'bank-admin-settings-dropdown',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BankAdminSettingsDropdownComponent implements OnInit {
 
-  constructor() { }
+  constructor(private bankAdminService: BankAdminService) { }
 
   ngOnInit() {
+  }
+  onLogout() {
+    this.bankAdminService.logout();
   }
 
 }

@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { CustomerOrder } from './models/customer-order.model';
 import { OrderShowInfo } from './models/order-show-info.model';
 import { OrderStats } from './models/order-stats.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ import { OrderStats } from './models/order-stats.model';
 export class BankAdminService {
   token: string;
   bankId: string;
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
   getToken(): string {
     return this.token;
   }
@@ -28,6 +29,22 @@ export class BankAdminService {
         this.token = res && res.data.token;
         this.bankId = res && res.data.bankId;
         return this.token;
+      }))
+  }
+  logout() {
+    this.token = undefined;
+    this.bankId = undefined;
+    this.router.navigateByUrl('/home/bank-admin/login');
+  }
+  changePassword(formValue: any): Observable<DataResponse> {
+    return this.http.post<DataResponse>('mybank/changeBankLoginPassword', {
+      token: this.authService.getToken(),
+      bankToken : this.token,
+      oldPassword : formValue.oldPassword,
+      newPassword : formValue.newPassword
+    })
+      .pipe(map(res => {
+        return res;
       }))
   }
   getOrderList(cancelled: boolean, called: boolean): Observable<CustomerOrder[]> {
