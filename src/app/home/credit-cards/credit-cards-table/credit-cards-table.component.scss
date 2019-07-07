@@ -22,13 +22,13 @@
     }
 
     .card__icon {
-      flex: 0 0 220px;
-      height: 140px;
+      flex: 0 0 var(--credit-card-width);
+      height: var(--credit-card-height);
       max-height: 175px;
       margin-bottom: 10px;
       img {
-        height: 140px;
-        width: 220px;
+        height: var( --credit-card-height);
+        width: var(--credit-card-width);
         box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.14), 0 3px 4px 0 rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
         border-radius: 4px;
       }
@@ -61,7 +61,7 @@
       .card__content__features {
         display: flex;
         flex-wrap: wrap;
-        width: 100%;
+        width: 94%;
 
         .card__content__features__info {
           display: flex;
@@ -98,11 +98,10 @@
 
     .card__actions {
       margin-left: auto;
-
+      flex: 0 0 120px;
       a {
-        min-width: 110px;
+       width: 100%;
         margin-bottom: 10px;
-        margin-right: 10px;
       }
     }
   }
@@ -148,6 +147,7 @@
 
       .card__actions {
         margin-left: 0;
+        margin-top: 10px;
       }
     }
   }
@@ -157,7 +157,7 @@
     .card {
       .card__actions {
         a {
-          width: 100%;
+          width: 220px;
         }
       }
     }
