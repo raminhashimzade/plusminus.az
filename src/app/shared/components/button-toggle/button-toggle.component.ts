@@ -28,7 +28,7 @@ export class ButtonToggleComponent  {
   writeValue(value: boolean): void {
     if (value) {
       if (typeof value === 'string') {
-        this._value = JSON.parse( value);
+        this._value = JSON.parse(value);
       } else {
         this._value = value;
       }

@@ -19,7 +19,7 @@ import { takeUntil, finalize, map } from 'rxjs/operators';
 })
 export class DebitCardsTableComponent implements OnInit {
   loading: boolean;
-  DebitCardGroups: DebitCardGroup[];
+  productGroups: DebitCardGroup[];
   filteredGroupProducts: DebitCardGroup[];
   sortState: SortChangeModel;
   _onDestroy$ = new Subject<void>();
@@ -80,7 +80,8 @@ export class DebitCardsTableComponent implements OnInit {
     this.changeRef.detectChanges();
   }
   getListDebitCardGroups(data: DebitCardFilterForm, scrollIntoView: boolean) {
-    this.DebitCardGroups = undefined;
+    this.productGroups = undefined;
+    this.filteredGroupProducts = undefined;
     this.loading = true;
     this.sortState = { orderByColumn: '', orderBySort: '' };
     this.changeRef.detectChanges();
@@ -92,8 +93,8 @@ export class DebitCardsTableComponent implements OnInit {
         })
       )
       .subscribe(res => {
-        this.DebitCardGroups = res;
-        this.filteredGroupProducts = [...this.DebitCardGroups];
+        this.productGroups = res;
+        this.filteredGroupProducts = [...this.productGroups];
      //   if (scrollIntoView) {switchToView('#products-table-filter') }
       });
   }
@@ -107,12 +108,12 @@ export class DebitCardsTableComponent implements OnInit {
   }
   onSortChange(sortChange: SortChangeModel) {
     this.sortState = { ...sortChange };
-    this.filteredGroupProducts = this.sharedService.sortTableWithRowGroups(this.sortState, [...this.DebitCardGroups])
+    this.filteredGroupProducts = this.sharedService.sortTableWithRowGroups(this.sortState, [...this.productGroups])
     this.changeRef.detectChanges();
   }
   applyFilter(filterValue: string) {
     this.filteredGroupProducts = this.sharedService.
-    filterTableWithRowGroups(filterValue, [...this.DebitCardGroups], ['bankName']);
+    filterTableWithRowGroups(filterValue, [...this.productGroups], ['bankName']);
     this.changeRef.detectChanges();
   }
 

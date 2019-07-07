@@ -21,7 +21,17 @@
       <div class="col-12">
         <div class="products__table">
           <div id="products-table-filter" class="products__table__filter mt-4 mb-4">
-              <button-toggle-group class="mb-2">
+
+              <div class="banner-filter-currency-selector">
+                  <mat-select [(ngModel)]="productFilter.currencyCode" name="currencyCode">
+                    <mat-option value="AZN"> AZN</mat-option>
+                    <mat-option value="USD"> USD</mat-option>
+                    <mat-option value="EUR"> EUR</mat-option>
+                  </mat-select>
+                </div>
+
+
+              <button-toggle-group class="mb-2 button-toggle-group" >
 
                   <div class="banner-filter-button-toggle-group-container">
                       <button-toggle class="button-toggle-wrapper" [(ngModel)]="productFilter.withMiles" name="withMiles">
@@ -40,7 +50,9 @@
                           <span>{{'~withCashBack' | translate |titlecase}} </span>
                       </button-toggle>
                   </div>
-                  </button-toggle-group>
+               </button-toggle-group>
+
+
 
           </div>
         </div>

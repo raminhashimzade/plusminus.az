@@ -6,6 +6,12 @@
        border-radius: 0px!important;
    }
 
+   .products__table__filter {
+    display: flex;
+    .button-toggle-group {
+      width: calc(100% - 90px) ;
+    }
+  }
 
    .slider-group {
     position: relative;
