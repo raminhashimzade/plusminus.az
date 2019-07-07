@@ -2,7 +2,7 @@ import { Moment } from 'moment';
 import * as moment from 'moment';
 export function getBaseUrl(): string {
   return isTestMode()
-  ? 'https://api.plusminus.az' : 'https://api.plusminus.az';
+  ? 'https://testapi.plusminus.az' : 'https://api.plusminus.az';
 }
 export const DEFAULT_LANG = 'az';
 export const APP_KEY = 'uni';
