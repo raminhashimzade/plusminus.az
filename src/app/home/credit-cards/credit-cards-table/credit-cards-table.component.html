@@ -3,124 +3,130 @@
 <div class="container custom">
   <div class="row">
     <div class="col-12">
-      <div class="items-group" *ngFor="let group of filteredGroupProducts">
-        <ng-container *ngFor="let product of group?.list;let first=first">
-          <div class="card" *ngIf="first || expandedGroupId === group.bankID" [attr.id]="product.cdId">
-            <div class="card__icon">
-              <img [src]="product.cardImageId | imgSrc" [attr.product-img-id]="product.cdId">
-              <ng-container *ngIf="group.list?.length > 1">
-                <div class="productExpand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
-                  [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
-                  <div class="productExpand__title">
-                    {{'~expandMore' | translate}} {{group.list?.length - 1}} {{'~product' | translate | lowercase}}
+      <ng-container *ngIf="!loading else cardLoader">
+          <div class="items-group" *ngFor="let group of filteredGroupProducts">
+              <ng-container *ngFor="let product of group?.list;let first=first">
+                <div class="card" *ngIf="first || expandedGroupId === group.bankID" [attr.id]="product.cdId">
+                  <div class="card__icon">
+                    <img [src]="product.cardImageId | imgSrc" [attr.product-img-id]="product.cdId">
+                    <ng-container *ngIf="group.list?.length > 1">
+                      <div class="productExpand" (click)="onExpandGroup(group.bankID)" *ngIf="first"
+                        [ngClass]="{'--top' : (expandedGroupId === group.bankID)}">
+                        <div class="productExpand__title">
+                          {{'~expandMore' | translate}} {{group.list?.length - 1}} {{'~product' | translate | lowercase}}
+                        </div>
+                        <div class="productExpand__icon">
+                          <i class="fas fa-chevron-down"></i>
+                        </div>
+                      </div>
+                    </ng-container>
                   </div>
-                  <div class="productExpand__icon">
-                    <i class="fas fa-chevron-down"></i>
+
+                  <div class="card__content">
+                    <div class="card__content__header">
+                      <div class="card__content__header__bankName">
+                        {{product.bankName}}
+                      </div>
+                      <div class="card__content__header__name">
+                        {{product.cardName | valueTranslate}}
+                      </div>
+                    </div>
+                    <div class="card__content__features">
+
+                      <div class="card__content__features__info">
+                        <div class="card__content__features__info__key">
+                          {{product?.minRate}} %-
+                        </div>
+                        <div class="card__content__features__info__value">
+                          dən başlayaraq
+                        </div>
+                      </div>
+
+                      <div class="card__content__features__info" *ngIf="!!product.withGracePeriod">
+                        <div class="card__content__features__info__key">
+                          {{'~gracePeriod' | translate}}:
+                        </div>
+                        <div class="card__content__features__info__value">
+                          {{product.withGracePeriod}} {{'~day' | translate}}
+                        </div>
+                      </div>
+
+                      <div class="card__content__features__info">
+                        <div class="card__content__features__info__key">
+                          {{'~maxAmount' | translate}}:
+                        </div>
+                        <div class="card__content__features__info__value">
+                          {{product.maxAmount}} {{product.currencyCode | translate}}
+                        </div>
+                      </div>
+
+                      <div class="card__content__features__info">
+                        <div class="card__content__features__info__key">
+                          {{'~price' | translate}}:
+                        </div>
+                        <div class="card__content__features__info__value">
+                          {{product.sellAmount}} {{product.currencyCode}}
+                        </div>
+                      </div>
+
+                      <div class="card__content__features__info" *ngIf="product.maxPeriod">
+                        <div class="card__content__features__info__key">
+                          {{'~loanPeriod' | translate}}:
+                        </div>
+                        <div class="card__content__features__info__value">
+                          {{product.maxPeriod}} {{'~month' | translate}}
+                        </div>
+                      </div>
+
+                      <div class="card__content__features__info" *ngIf="product.withCashBack">
+                        <div class="card__content__features__info__key">
+                          {{'~cashback' | translate}}:
+                        </div>
+                        <div class="card__content__features__info__value --icon">
+                          <i class="far fa-check-circle"></i>
+                        </div>
+                      </div>
+
+
+
+                      <div class="card__content__features__info" *ngIf="product.withMiles">
+                        <div class="card__content__features__info__key">
+                          {{'~miles' | translate}}:
+                        </div>
+                        <div class="card__content__features__info__value --icon">
+                          <i class="far fa-check-circle"></i>
+                        </div>
+                      </div>
+
+                      <div class="card__content__features__info">
+                        <div class="card__content__features__info__key">
+                          {{'~comissionCashInhouseOwn' | translate}}:
+                        </div>
+                        <div class="card__content__features__info__value">
+                          {{product.comissionCashInhouseOwn}} %
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="card__actions">
+                    <a mat-raised-button color="primary" [href]="product.website" target="_blank">{{'~visit' | translate}}</a>
+
+                    <a mat-raised-button color="accent" [id]="product?.cdId" fly-to-cart
+                      [disabled]="(canAddProductToCompare(product?.cdId) | async)"
+                      (click)="onAddProductToCompare(product)">{{'~addToCart' | translate}}</a>
                   </div>
                 </div>
               </ng-container>
             </div>
-
-            <div class="card__content">
-              <div class="card__content__header">
-                <div class="card__content__header__bankName">
-                  {{product.bankName}}
-                </div>
-                <div class="card__content__header__name">
-                  {{product.cardName | valueTranslate}}
-                </div>
-              </div>
-              <div class="card__content__features">
-
-                <div class="card__content__features__info">
-                  <div class="card__content__features__info__key">
-                    {{product?.minRate}} %-
-                  </div>
-                  <div class="card__content__features__info__value">
-                    dən başlayaraq
-                  </div>
-                </div>
-
-                <div class="card__content__features__info" *ngIf="!!product.withGracePeriod">
-                  <div class="card__content__features__info__key">
-                    {{'~gracePeriod' | translate}}:
-                  </div>
-                  <div class="card__content__features__info__value">
-                    {{product.withGracePeriod}} {{'~day' | translate}}
-                  </div>
-                </div>
-
-                <div class="card__content__features__info">
-                  <div class="card__content__features__info__key">
-                    {{'~maxAmount' | translate}}:
-                  </div>
-                  <div class="card__content__features__info__value">
-                    {{product.maxAmount}} {{product.currencyCode | translate}}
-                  </div>
-                </div>
-
-                <div class="card__content__features__info">
-                  <div class="card__content__features__info__key">
-                    {{'~price' | translate}}:
-                  </div>
-                  <div class="card__content__features__info__value">
-                    {{product.sellAmount}} {{product.currencyCode}}
-                  </div>
-                </div>
-
-                <div class="card__content__features__info" *ngIf="product.maxPeriod">
-                  <div class="card__content__features__info__key">
-                    {{'~loanPeriod' | translate}}:
-                  </div>
-                  <div class="card__content__features__info__value">
-                    {{product.maxPeriod}} {{'~month' | translate}}
-                  </div>
-                </div>
-
-                <div class="card__content__features__info" *ngIf="product.withCashBack">
-                  <div class="card__content__features__info__key">
-                    {{'~cashback' | translate}}:
-                  </div>
-                  <div class="card__content__features__info__value --icon">
-                    <i class="far fa-check-circle"></i>
-                  </div>
-                </div>
-
-
-
-                <div class="card__content__features__info" *ngIf="product.withMiles">
-                  <div class="card__content__features__info__key">
-                    {{'~miles' | translate}}:
-                  </div>
-                  <div class="card__content__features__info__value --icon">
-                    <i class="far fa-check-circle"></i>
-                  </div>
-                </div>
-
-                <div class="card__content__features__info">
-                  <div class="card__content__features__info__key">
-                    {{'~comissionCashInhouseOwn' | translate}}:
-                  </div>
-                  <div class="card__content__features__info__value">
-                    {{product.comissionCashInhouseOwn}} %
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="card__actions">
-              <a mat-raised-button color="primary" [href]="product.website" target="_blank">{{'~visit' | translate}}</a>
-
-              <a mat-raised-button color="accent" [id]="product?.cdId" fly-to-cart
-                [disabled]="(canAddProductToCompare(product?.cdId) | async)"
-                (click)="onAddProductToCompare(product)">{{'~addToCart' | translate}}</a>
-            </div>
-          </div>
-        </ng-container>
-      </div>
+      </ng-container>
     </div>
   </div>
 </div>
+
+<ng-template #cardLoader>
+  <credit-card-loader></credit-card-loader>
+</ng-template>

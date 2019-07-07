@@ -87,6 +87,7 @@ export class CreditCardsTableComponent implements OnInit {
   }
   getListcreditCardGroups(data: CreditCardFilterForm, scrollIntoView: boolean) {
     this.creditCardGroups = undefined;
+    this.filteredGroupProducts = undefined;
     this.loading = true;
     this.sortState = { orderByColumn: '', orderBySort: '' };
     this.changeRef.detectChanges();

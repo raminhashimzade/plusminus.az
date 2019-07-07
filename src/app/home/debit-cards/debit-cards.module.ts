@@ -6,13 +6,15 @@ import { DebitCardsTableComponent } from './debit-cards-table/debit-cards-table.
 import { DebitCardsRoutingModule } from './debit-cards.routing';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DebitCardCompareComponent } from './debit-card-compare/debit-card-compare.component';
+import { DebitCardLoaderComponent } from './debit-card-loader/debit-card-loader.component';
 
 @NgModule({
   declarations: [
     DebitCardsComponent,
      DebitCardsFilterComponent,
       DebitCardsTableComponent,
-      DebitCardCompareComponent
+      DebitCardCompareComponent,
+      DebitCardLoaderComponent
     ],
   imports: [
     CommonModule,

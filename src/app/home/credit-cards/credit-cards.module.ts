@@ -6,13 +6,15 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CreditCardsTableComponent } from './credit-cards-table/credit-cards-table.component';
 import { CreditCardsFilterComponent } from './credit-cards-filter/credit-cards-filter.component';
 import { CredtCardCompareComponent } from './credt-card-compare/credt-card-compare.component';
+import { CreditCardLoaderComponent } from './credit-card-loader/credit-card-loader.component';
 
 @NgModule({
   declarations: [
     CreditCardsComponent,
     CreditCardsTableComponent,
     CreditCardsFilterComponent,
-    CredtCardCompareComponent
+    CredtCardCompareComponent,
+    CreditCardLoaderComponent
   ],
   imports: [
     CommonModule,

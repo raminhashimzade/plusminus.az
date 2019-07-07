@@ -2,7 +2,9 @@
 
 <div class="container custom">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12" >
+        <ng-container *ngIf="!loading else cardLoader">
+
       <div class="items-group" *ngFor="let group of filteredGroupProducts">
         <ng-container *ngFor="let product of group?.list;let first=first">
           <div class="card" *ngIf="first || expandedGroupId === group.bankID" [attr.id]="product.cdID">
@@ -106,6 +108,13 @@
           </div>
         </ng-container>
       </div>
+
+      </ng-container>
     </div>
   </div>
 </div>
+
+
+<ng-template #cardLoader>
+    <debit-card-loader></debit-card-loader>
+</ng-template>
