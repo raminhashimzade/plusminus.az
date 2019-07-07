@@ -43,7 +43,7 @@ export class LoanRequestStepThirdComponent implements OnInit {
       ...formValue,
       requestType: "LOAN",
       requestProductId: "LN_ID",
-       cusBirthDate:'19880101000000',
+       cusBirthDate:  moment(this.form.value.cusBirthDate).format('YYYYMMDDHHMMSS'),
        requestBankId: this.requestBankId
  // cusBirthDate: moment(this.form.controls['cusBirthDate'].value).unix()
     }
