@@ -51,16 +51,15 @@
                 align-items: center;
                 flex: 1;
                 .item__description__image {
-                  max-width: 120px;
-                //  height: 50px;
+                  flex: 0 0 90px;
                   object-fit: cover;
               }
                 }
                 .item__description__name {
-                  font-size: 11px;
-                  margin-left: auto;
-                  padding:0 10px;
-                  text-align: right;
+                    font-size: 15px;
+                    margin-left: 7px;
+                    padding: 0 10px;
+                    text-align: left;
                 }
 
               .item__remove {

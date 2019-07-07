@@ -17,7 +17,7 @@
               <div class="item" *ngFor="let item of products">
                 <div class="item__description">
                   <div class="item__description__image">
-                      <img  src="./assets/icons/banks/{{item.bankID}}.svg" alt="{{item.bankName}}">
+                      <img [src]="item.cardImageId | imgSrc"  alt="{{item.bankName}}">
 
                   </div>
                     <div class="item__description__name">

@@ -44,6 +44,7 @@ import { SentryErrorHandler } from './sentry-error-handler';
 import { environment } from 'src/environments/environment';
 import { BankAdminSettingsDropdownComponent } from './home/header/bank-admin-settings-dropdown/bank-admin-settings-dropdown.component';
 import { ApplicationCountdownComponent } from './application-countdown/application-countdown.component';
+import { ImgSrcPipeModule } from './shared/pipes/img-src-pipe.module';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { ApplicationCountdownComponent } from './application-countdown/applicati
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    ImgSrcPipeModule,
 
     MatButtonModule,
     MatMenuModule,

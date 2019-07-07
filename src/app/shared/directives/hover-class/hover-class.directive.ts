@@ -9,7 +9,6 @@ export class HoverClassDirective {
   @Input() hoverClass: string;
   constructor(private element: ElementRef, private renderer: Renderer2) { }
   onMouseEnter() {
-    console.log('hover');
     this.renderer.addClass(this.element.nativeElement, this.hoverClass);
   }
   onMouseLeave() {
