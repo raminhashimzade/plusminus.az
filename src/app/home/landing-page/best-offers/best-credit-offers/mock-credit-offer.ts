@@ -1,7 +1,7 @@
 export const MockCreditOffers = [
     {
         bankName: 'AzerTürk Bank',
-        creditPercent: '19',
+        creditPercent: '17',
         creditAmount: '20.000',
         creditDuration: '36 ay',
         iconPath: '1',
