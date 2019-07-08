@@ -1,7 +1,7 @@
 export const MockCreditCardOffer = [
     {
-        percent: '19',
-         duration: '36 ay',
+        percent: '27',
+         duration: '24 ay',
         iconPath: '1',
         name: "65 günədək 0% faizlə",
         url: "http://azerturkbank.az/loans/gcreditcards/info/"
