@@ -81,7 +81,7 @@
         </td>
         <td>
           <div class="td-content --sellAmount">
-            {{product.sellAmount}} {{product.currencyCode}}
+            {{product.sellAmount | number:'':'fr-FR'}} {{product.currencyCode}}
           </div>
         </td>
       </tr>
@@ -141,16 +141,16 @@
                    {{product.currencyCode | lowercase}} -->
 
             <ng-container *ngIf="product.minAmount && product.maxAmount">
-              <span>{{product.minAmount}}</span>
-              - <span>{{product.maxAmount}}</span> {{product.currencyCode | lowercase}}
+              <span>{{product.minAmount | number:'':'fr-FR'}}</span>
+              - <span>{{product.maxAmount | number:'':'fr-FR'}}</span> {{product.currencyCode | lowercase}}
             </ng-container>
 
             <ng-container *ngIf="!product.minAmount && product.maxAmount">
-              <span>{{product.maxAmount}}</span> {{product.currencyCode | lowercase}}
+              <span>{{product.maxAmount | number:'':'fr-FR'}}</span> {{product.currencyCode | lowercase}}
             </ng-container>
 
             <ng-container *ngIf="product.minAmount && !product.maxAmount">
-              <span>{{product.minAmount}}</span> <span>{{product.currencyCode}}</span>
+              <span>{{product.minAmount | number:'':'fr-FR'}}</span> <span>{{product.currencyCode}}</span>
             </ng-container>
           </div>
         </td>
@@ -164,7 +164,7 @@
         </td>
         <td>
           <div class="td-content --cardPeriod">
-            {{product.cardPeriod }}{{'~month' | translate}}
+            {{product.cardPeriod }} {{'~month' | translate}}
           </div>
         </td>
       </tr>

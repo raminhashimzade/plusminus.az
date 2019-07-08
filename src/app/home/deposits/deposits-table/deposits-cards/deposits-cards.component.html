@@ -64,7 +64,7 @@
 
                 <div class="card__content__row__right text-ellipsis">
                     <ng-container *ngIf="product.income">
-                        <p>+{{product.income}} {{product.currencyCode}}</p>
+                        <p>+{{product.income | number:'':'fr-FR'}} {{product.currencyCode}}</p>
                     </ng-container>
                 </div>
 

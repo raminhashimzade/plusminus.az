@@ -51,8 +51,8 @@
                 </div>
 
                 <div class="card__content__row__right text-ellipsis">
-                  <span>{{product.minAmount}}</span> {{product.currencyCode | lowercase}}
-                  - <span>{{product.maxAmount}}</span> {{product.currencyCode | lowercase}}
+                  <span>{{product.minAmount | number:'':'fr-FR'}}</span> {{product.currencyCode | lowercase}}
+                  - <span>{{product.maxAmount | number:'':'fr-FR'}}</span> {{product.currencyCode | lowercase}}
                   <br class="d-none d-sm-block">
                   <span>({{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}})</span>
 
@@ -65,18 +65,18 @@
 
                 <div class="card__content__row__right text-ellipsis">
                     <ng-container *ngIf="product.minMonthlyPayment && product.maxMonthlyPayment">
-                        {{product.minMonthlyPayment }} -
-                        {{product.maxMonthlyPayment}}
+                        {{product.minMonthlyPayment | number:'':'fr-FR' }} -
+                        {{product.maxMonthlyPayment | number:'':'fr-FR'}}
                        {{product.currencyCode | lowercase}}
                     </ng-container>
 
                     <ng-container *ngIf="product.minMonthlyPayment && !product.maxMonthlyPayment">
-                        {{product.minMonthlyPayment }}
+                        {{product.minMonthlyPayment | number:'':'fr-FR' }}
                        {{product.currencyCode | lowercase}}
                     </ng-container>
 
                     <ng-container *ngIf="!product.minMonthlyPayment && product.maxMonthlyPayment">
-                        {{product.maxMonthlyPayment }}
+                        {{product.maxMonthlyPayment | number:'':'fr-FR'}}
                        {{product.currencyCode | lowercase}}
                     </ng-container>
                 </div>

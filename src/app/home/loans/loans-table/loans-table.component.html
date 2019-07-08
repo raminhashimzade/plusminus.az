@@ -156,20 +156,20 @@
                                     <div>
 
                                       <ng-container *ngIf="product.minAmount && product.maxAmount">
-                                          <span >{{product.minAmount}}</span>
-                                        - <span >{{product.maxAmount}}</span>  {{product.currencyCode | lowercase}}
+                                          <span >{{product.minAmount | number:'':'fr-FR'}}</span>
+                                        - <span >{{product.maxAmount | number:'':'fr-FR'}}</span>  {{product.currencyCode | lowercase}}
                                       </ng-container>
 
                                       <ng-container *ngIf="!product.minAmount && product.maxAmount">
-                                         <span >{{product.maxAmount}}</span>  {{product.currencyCode | lowercase}}
+                                         <span >{{product.maxAmount | number:'':'fr-FR'}}</span>  {{product.currencyCode | lowercase}}
                                       </ng-container>
 
                                       <ng-container *ngIf="product.minAmount && !product.maxAmount">
-                                          <span >{{product.minAmount}}</span> <span>{{product.currencyCode}}</span>
+                                          <span >{{product.minAmount | number:'':'fr-FR'}}</span> <span>{{product.currencyCode}}</span>
                                       </ng-container>
 
                                          <br class="d-none d-sm-block">
-                                         <span>({{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}})</span>
+                                         <span>({{product.minPeriod | number:'':'fr-FR' }} - {{product.maxPeriod | number:'':'fr-FR'}} {{'~month' | translate}})</span>
                                       </div>
                                 </div>
                               </td>
@@ -177,18 +177,18 @@
                               <td>
                                   <div class=" td-content" >
                                       <ng-container *ngIf="product.minMonthlyPayment && product.maxMonthlyPayment">
-                                          {{product.minMonthlyPayment }} -
-                                          {{product.maxMonthlyPayment}}
+                                          {{product.minMonthlyPayment | number:'':'fr-FR'}} -
+                                          {{product.maxMonthlyPayment | number:'':'fr-FR'}}
                                          {{product.currencyCode | lowercase}}
                                       </ng-container>
 
                                       <ng-container *ngIf="product.minMonthlyPayment && !product.maxMonthlyPayment">
-                                          {{product.minMonthlyPayment }}
+                                          {{product.minMonthlyPayment | number:'':'fr-FR' }}
                                          {{product.currencyCode | lowercase}}
                                       </ng-container>
 
                                       <ng-container *ngIf="!product.minMonthlyPayment && product.maxMonthlyPayment">
-                                          {{product.maxMonthlyPayment }}
+                                          {{product.maxMonthlyPayment  | number:'':'fr-FR'}}
                                          {{product.currencyCode | lowercase}}
                                       </ng-container>
 

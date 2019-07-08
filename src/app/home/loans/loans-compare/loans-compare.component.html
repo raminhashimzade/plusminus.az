@@ -81,7 +81,7 @@
             </td>
             <td >
               <div class="td-content">
-                {{product.minAmount }} {{product.currencyCode | lowercase}} - {{product.maxAmount}}
+                {{product.minAmount  | number:'':'fr-FR'}} {{product.currencyCode | lowercase}} - {{product.maxAmount | number:'':'fr-FR'}}
                 {{product.currencyCode | lowercase}}
               </div>
             </td>
@@ -95,7 +95,7 @@
             </td>
             <td >
               <div class="td-content">
-             {{product.minPeriod }} - {{product.maxPeriod}} {{'~month' | translate}}
+             {{product.minPeriod | number:'':'fr-FR' }} - {{product.maxPeriod | number:'':'fr-FR'}} {{'~month' | translate}}
               </div>
             </td>
           </tr>
@@ -121,7 +121,7 @@
             </td>
             <td >
               <div class="td-content">
-                  {{product.minSalary}} AZN
+                  {{product.minSalary | number:'':'fr-FR'}} AZN
               </div>
             </td>
           </tr>

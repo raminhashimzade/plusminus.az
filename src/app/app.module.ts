@@ -14,10 +14,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FormsModule } from '@angular/forms';
 import localeRu from '@angular/common/locales/ru';
 import localeAz from '@angular/common/locales/az';
+import localeFr from '@angular/common/locales/fr';
 import { registerLocaleData } from '@angular/common';
 
 registerLocaleData(localeRu);
 registerLocaleData(localeAz);
+registerLocaleData(localeFr);
 export function HttpLoaderFactory(http: HttpClient) {
   const link = './assets/i18n/';
   return new TranslateHttpLoader(http, link, `.json?random=${Math.random() * 100}`);

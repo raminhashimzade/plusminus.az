@@ -135,7 +135,7 @@
                               <td>
                                 <div class="td-content --amount">
                                     <div>
-                                     <span >{{product.maxAmount}}</span>  {{product.currencyCode | lowercase}}
+                                     <span >{{product.maxAmount | number:'':'fr-FR'}}</span>  {{product.currencyCode | lowercase}}
 
                                       </div>
                                 </div>
@@ -145,7 +145,7 @@
                                   <div class=" td-content" >
 
                                        <ng-container *ngIf="product.maxMonthlyPayment">
-                                          {{product.maxMonthlyPayment }}
+                                          {{product.maxMonthlyPayment | number:'':'fr-FR' }}
                                           {{product.currencyCode | lowercase}}
                                        </ng-container>
 
