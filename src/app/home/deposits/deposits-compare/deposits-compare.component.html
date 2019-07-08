@@ -142,33 +142,38 @@
           </tr>
 
           <tr>
+              <td *ngIf="first || isMobile">
+                  <div class="td-content --first">
+                    {{'~description' | translate}}
+                  </div>
+                </td>
+                <td class="td-documents" >
+                    <div class="td-content --documents" >
+                        <mat-chip-list>
+                            <mat-chip class="document-chip"
+                            (click)="openDocumentDialog(product.description, '~description')"
+                            >{{'~detailed' | translate}}</mat-chip>
+                          </mat-chip-list>
+                    </div>
+                </td>
+              </tr>
+
+              <tr>
             <td *ngIf="first || isMobile">
-              <div class="td-content --first">
-                {{'~description' | translate}}
-
-              </div>
-            </td>
-            <td >
-                <div class="td-content --documents" (click)="openDocumentDialog(product.description, '~description')">
-                    <i class="fas fa-file-pdf"></i>
+                <div class="td-content --first">
+                  {{'~descriptionPresent' | translate}}
                 </div>
-
-            </td>
-          </tr>
-          <tr>
-            <td *ngIf="first || isMobile">
-              <div class="td-content --first">
-                {{'~descriptionPresent' | translate}}
-
-              </div>
-            </td>
-            <td >
-                <div class="td-content --documents" (click)="openDocumentDialog(product.descriptionPresent, '~descriptionPresent')">
-                    <i class="fas fa-file-pdf"></i>
-                </div>
-
-            </td>
-          </tr>
+              </td>
+              <td class="td-documents" >
+                  <div class="td-content --documents" >
+                      <mat-chip-list>
+                          <mat-chip class="document-chip"
+                          (click)="openDocumentDialog(product.descriptionPresent, '~descriptionPresent')"
+                          >{{'~detailed' | translate}}</mat-chip>
+                        </mat-chip-list>
+                  </div>
+              </td>
+            </tr>
 
           <tr>
             <td *ngIf="first || isMobile">

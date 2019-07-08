@@ -1,117 +1,134 @@
 :host {
-    display: block;
-    min-height: 800px;
+  display: block;
+  min-height: 800px;
 }
+
 .productsCompare {
-    .productsCompare__content {
-        margin-top: 20px;
-        position: relative;
-        box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
-        border: 1px solid #e1e1e1;
+  .productsCompare__content {
+    margin-top: 20px;
+    position: relative;
+    box-shadow: 0.0625rem 0.125rem 0.6875rem 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid #e1e1e1;
 
-    }
+  }
 }
+
 table.products {
-        box-shadow: none;
-        border: 0;
-        th {
-            border: 0;
-            position: sticky;
-            top: 80px;
-            background: white;
-            z-index: 8;
-            .th-content {
-                color: inherit;
+  box-shadow: none;
+  border: 0;
 
-            }
-        }
-        td {
-            &.td-documents {
-                vertical-align: middle;
-                .document-chip {
-                cursor: pointer;
-                background-color: var(--secondary-light);
-                }
-            }
+  th {
+    border: 0;
+    position: sticky;
+    top: 80px;
+    background: white;
+    z-index: 8;
 
-            .td-content {
-                white-space: nowrap;
-                min-width: 170px;
-                &.--documents {
-                    font-size: 18px;
-                    height: 32px;
-                    display: flex;
-                    justify-content: center;
-                }
-                a {
-                    color: #2980b9;
-                    cursor: pointer;
-                }
-            }
-        }
+    .th-content {
+      color: inherit;
 
-    .th-content, .td-content {
-        height: 21px;
-        overflow: hidden;
-        &.--first {
-            width: 200px;
-          text-align: left;
-          justify-content: flex-start;
-        }
     }
+  }
+
+  td {
+    &.td-documents {
+      vertical-align: middle;
+
+      .document-chip {
+        cursor: pointer;
+        background-color: var(--secondary-light);
+      }
+    }
+
+    .td-content {
+      white-space: nowrap;
+      min-width: 170px;
+
+      &.--documents {
+        font-size: 18px;
+        height: 32px;
+        display: flex;
+        justify-content: center;
+      }
+
+      a {
+        color: #2980b9;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .th-content,
+  .td-content {
+    height: 21px;
+    overflow: hidden;
+
+    &.--first {
+      width: 200px;
+      text-align: left;
+      justify-content: flex-start;
+    }
+  }
 }
 
 .arrows {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    position: sticky;
-    top: 90px;
-    z-index: 10;
-    height: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 90px;
+  z-index: 10;
+  height: 0;
 
-    .arrow {
-        font-size: 18px;
-        &.--prev {
-          transform: translateX(-25px) rotateY(180deg) ;
-        }
-        &.--next {
-        transform: translateX(25px);
-        }
+  .arrow {
+    font-size: 18px;
+
+    &.--prev {
+      transform: translateX(-25px) rotateY(180deg);
     }
+
+    &.--next {
+      transform: translateX(25px);
+    }
+  }
 }
 
 @media (max-width: 576px) {
-    table.products {
-        th {
-            top: 0;
-        }
+  table.products {
+    th {
+      top: 0;
     }
-    .productsCompare {
-        .productsCompare__content {
-            .productsCompare__content__table {
-                th:first-child {
-                    width: 100px;
-                }
-                .th-content, .td-content {
-                    width: 150px;
-                    &.--first {
-                        width: 100px;
-                    }
-                }
-            }
+  }
 
+  .productsCompare {
+    .productsCompare__content {
+      .productsCompare__content__table {
+        th:first-child {
+          width: 100px;
         }
+
+        .th-content,
+        .td-content {
+          width: 150px;
+
+          &.--first {
+            width: 100px;
+          }
+        }
+      }
+
     }
-    .arrows {
-      .arrow {
-        &.--prev {
-            transform: translateX(0px) rotateY(180deg) ;
-          }
-          &.--next {
-          transform: translateX(0px);
-          }
+  }
+
+  .arrows {
+    .arrow {
+      &.--prev {
+        transform: translateX(0px) rotateY(180deg);
+      }
+
+      &.--next {
+        transform: translateX(0px);
       }
     }
+  }
 }
-
