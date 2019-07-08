@@ -214,9 +214,13 @@
                   {{'~description' | translate}}
                 </div>
               </td>
-              <td >
-                  <div class="td-content --documents" (click)="openDocumentDialog(product.description, '~description')">
-                      <i class="fas fa-file-pdf"></i>
+              <td class="td-documents" >
+                  <div class="td-content --documents" >
+                      <mat-chip-list>
+                          <mat-chip class="document-chip"
+                          (click)="openDocumentDialog(product.description, '~description')"
+                          >{{'~detailed' | translate}}</mat-chip>
+                        </mat-chip-list>
                   </div>
               </td>
             </tr>
@@ -227,9 +231,13 @@
                   {{'~descriptionDOC' | translate}}
                 </div>
               </td>
-              <td >
-                  <div class="td-content --documents" (click)="openDocumentDialog(product.descriptionDoc, '~descriptionDOC')">
-                      <i class="fas fa-file-pdf"></i>
+              <td class="td-documents">
+                  <div class="td-content --documents" >
+                      <mat-chip-list >
+                          <mat-chip class="document-chip"
+                          (click)="openDocumentDialog(product.descriptionDoc, '~descriptionDOC')"
+                          >{{'~detailed' | translate}}</mat-chip>
+                        </mat-chip-list>
                   </div>
               </td>
             </tr>
@@ -240,9 +248,13 @@
                   {{'~descriptionPD' | translate}}
                 </div>
               </td>
-              <td >
-                  <div class="td-content --documents" (click)="openDocumentDialog(product.descriptionPd, '~descriptionPD')">
-                      <i class="fas fa-file-pdf"></i>
+              <td class="td-documents">
+                  <div class="td-content --documents" >
+                      <mat-chip-list >
+                          <mat-chip class="document-chip"
+                          (click)="openDocumentDialog(product.descriptionPd, '~descriptionPD')"
+                          >{{'~detailed' | translate}}</mat-chip>
+                        </mat-chip-list>
                   </div>
               </td>
             </tr>

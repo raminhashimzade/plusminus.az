@@ -17,6 +17,7 @@ import { DateAdapter, MAT_DATE_LOCALE, MAT_DATE_FORMATS } from '@angular/materia
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MY_FORMATS } from './app.utils';
+import { MatChipsModule } from '@angular/material';
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { MY_FORMATS } from './app.utils';
     MatBadgeModule,
     MatSliderModule,
     MatSnackBarModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatChipsModule,
+
   ],
   exports: [
     MatFormFieldModule,
@@ -54,7 +57,9 @@ import { MY_FORMATS } from './app.utils';
     MatBadgeModule,
     MatSliderModule,
     MatSnackBarModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatChipsModule,
+
   ],
   providers: [
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},

@@ -225,42 +225,56 @@
                 </td>
               </tr>
 
-            <tr>
-              <td *ngIf="first || isMobile">
-                  <div class="td-content --first">
-                    {{'~description' | translate}}
-                  </div>
-                </td>
-                <td >
-                    <div class="td-content --document" (click)="openDocumentDialog(product.description, '~description')">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                </td>
-              </tr>
-            <tr>
-              <td *ngIf="first || isMobile">
-                  <div class="td-content --first">
-                    {{'~descriptionDOC' | translate}}
-                  </div>
-                </td>
-                <td >
-                    <div class="td-content --document" (click)="openDocumentDialog(product.descriptionDOC, '~descriptionDOC')">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                </td>
-              </tr>
-            <tr>
-              <td *ngIf="first || isMobile">
-                  <div class="td-content --first">
-                    {{'~descriptionPD' | translate}}
-                  </div>
-                </td>
-                <td >
-                    <div class="td-content --document" (click)="openDocumentDialog(product.descriptionPD, '~descriptionPD')">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                </td>
-              </tr>
+              <tr>
+                  <td *ngIf="first || isMobile">
+                      <div class="td-content --first">
+                        {{'~description' | translate}}
+                      </div>
+                    </td>
+                    <td class="td-documents" >
+                        <div class="td-content --documents" >
+                            <mat-chip-list>
+                                <mat-chip class="document-chip"
+                                (click)="openDocumentDialog(product.description, '~description')"
+                                >{{'~detailed' | translate}}</mat-chip>
+                              </mat-chip-list>
+                        </div>
+                    </td>
+                  </tr>
+
+                <tr>
+                  <td *ngIf="first || isMobile">
+                      <div class="td-content --first">
+                        {{'~descriptionDOC' | translate}}
+                      </div>
+                    </td>
+                    <td class="td-documents">
+                        <div class="td-content --documents" >
+                            <mat-chip-list >
+                                <mat-chip class="document-chip"
+                                (click)="openDocumentDialog(product.descriptionDoc, '~descriptionDOC')"
+                                >{{'~detailed' | translate}}</mat-chip>
+                              </mat-chip-list>
+                        </div>
+                    </td>
+                  </tr>
+
+                <tr>
+                  <td *ngIf="first || isMobile">
+                      <div class="td-content --first">
+                        {{'~descriptionPD' | translate}}
+                      </div>
+                    </td>
+                    <td class="td-documents">
+                        <div class="td-content --documents" >
+                            <mat-chip-list >
+                                <mat-chip class="document-chip"
+                                (click)="openDocumentDialog(product.descriptionPd, '~descriptionPD')"
+                                >{{'~detailed' | translate}}</mat-chip>
+                              </mat-chip-list>
+                        </div>
+                    </td>
+                  </tr>
 
           </tbody>
         </table>

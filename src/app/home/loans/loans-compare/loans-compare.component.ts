@@ -131,6 +131,7 @@ export class LoansCompareComponent implements OnInit {
   }
 
   openDocumentDialog(documentData, type: string) {
+    console.log(documentData)
     const text = documentData[this.translateService.getDefaultLang()]
     this.dialog.open(DocumentDialogComponent, {
       data: {

@@ -38,7 +38,7 @@ import { SupportedBrowserCardComponent } from './unsupported-browser/supported-b
 import { DebitCardComparePreviewComponent } from './home/header/compare-preview/debit-card-compare-preview/debit-card-compare-preview.component';
 import { CreditCardComparePreviewComponent } from './home/header/compare-preview/credit-card-compare-preview/credit-card-compare-preview.component';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
-import { MatButtonModule, MatMenuModule, MatBadgeModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatMenuModule, MatBadgeModule, MatIconModule} from '@angular/material';
 import { AppPreloadingStrategy } from './app-preloading';
 import { SentryErrorHandler } from './sentry-error-handler';
 import { environment } from 'src/environments/environment';

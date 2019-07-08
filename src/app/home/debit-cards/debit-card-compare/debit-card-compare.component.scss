@@ -26,13 +26,21 @@ table.products {
             }
         }
         td {
+            &.td-documents {
+                vertical-align: middle;
+                .document-chip {
+                cursor: pointer;
+                background-color: var(--secondary-light);
+                }
+            }
             .td-content {
                 min-width: 170px;
                 white-space: nowrap;
-                &.--document {
+                &.--documents {
                     font-size: 18px;
-                    color: #CE1B21;
-                    cursor: pointer;
+                    height: 32px;
+                    display: flex;
+                    justify-content:flex-start;
                 }
                 a {
                     color: #2980b9;

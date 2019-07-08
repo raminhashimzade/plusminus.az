@@ -14,8 +14,20 @@ table.deposits {
       justify-content: flex-start;
     }
   }
+  td {
+    &.td-documents {
+      vertical-align: middle;
+      .document-chip {
+        cursor: pointer;
+        background-color: var(--secondary-light);
+      }
+    }
+  }
   .td-content {
-
+    &.--documents {
+      display: flex;
+      justify-content: center;
+  }
     &.products__table__content__bank {
       width: 112px;
       margin: auto;

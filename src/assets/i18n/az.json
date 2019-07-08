@@ -51,7 +51,7 @@
     "~documents": "Tələb olunan sənədlər",
     "~requirements": "Tələblər",
     "~withEmpReference": "Iş yerindən arayış olmadan",
-    "~withCollateral": "Girovsuz vəya zamin tələb olunur",
+    "~withCollateral": "Girov və ya zamin tələb olunur",
     "~withGracePeriod": "Güzəşt müddəti ilə",
     "~commissionCash": "Nağd pulun kommissiyası",
     "~commissionLoan": "Kredit komisiyası",
@@ -281,5 +281,5 @@
     "~confirmOrderCancel": "Sifarişi ləğv etməyə əminsiz",
     "~bankName": "Bank adı",
     "~adminWithEmpReference": "Iş yerindən arayış tələb olunur",
-    "~adminWithCollateral": "Girovsuz vəya zamin tələb olunur"
+    "~adminWithCollateral": "Girov və ya zamin tələb olunur"
   }
