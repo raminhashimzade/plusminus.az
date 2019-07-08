@@ -19,7 +19,7 @@ export class AppComponent {
     this.setDefaultLang();
   //  this.detectBrowser();
     if (!this.isTestMode()) {
-      this.router.navigateByUrl('/countdown');
+  //    this.router.navigateByUrl('/countdown');
      }
   }
   detectBrowser() {
