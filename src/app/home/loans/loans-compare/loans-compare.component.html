@@ -121,7 +121,7 @@
             </td>
             <td >
               <div class="td-content">
-                  {{product.minSalary}}
+                  {{product.minSalary}} AZN
               </div>
             </td>
           </tr>
@@ -170,7 +170,7 @@
           <tr>
             <td *ngIf="first || isMobile">
               <div class="td-content --first">
-                  {{'~commissionLoan' | translate}}
+                  {{'~comissionLoan' | translate}} %
 
               </div>
             </td>
@@ -203,7 +203,7 @@
               </td>
               <td >
                 <div class="td-content">
-                    {{'~age' | translate}}
+                    {{product.minAge}} - {{product.maxAge}}
                 </div>
               </td>
             </tr>
@@ -216,6 +216,32 @@
               </td>
               <td >
                   <div class="td-content --documents" (click)="openDocumentDialog(product.description, '~description')">
+                      <i class="fas fa-file-pdf"></i>
+                  </div>
+              </td>
+            </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+                <div class="td-content --first">
+                  {{'~descriptionDOC' | translate}}
+                </div>
+              </td>
+              <td >
+                  <div class="td-content --documents" (click)="openDocumentDialog(product.descriptionDoc, '~descriptionDOC')">
+                      <i class="fas fa-file-pdf"></i>
+                  </div>
+              </td>
+            </tr>
+
+          <tr>
+            <td *ngIf="first || isMobile">
+                <div class="td-content --first">
+                  {{'~descriptionPD' | translate}}
+                </div>
+              </td>
+              <td >
+                  <div class="td-content --documents" (click)="openDocumentDialog(product.descriptionPd, '~descriptionPD')">
                       <i class="fas fa-file-pdf"></i>
                   </div>
               </td>

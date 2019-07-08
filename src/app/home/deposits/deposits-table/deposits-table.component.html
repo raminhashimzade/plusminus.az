@@ -55,6 +55,20 @@
                       </div>
                     </th>
 
+                    <th [orderByColumn]="'minPeriod'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                      <div class="th-content" >
+                          {{'~period' | translate}}
+                          <div class="tableSorting">
+                              <span class="tableSorting__arrow --top">
+                                 <i class="fas fa-caret-down"></i>
+                                </span>
+                                <span class="tableSorting__arrow --down">
+                                  <i class="fas fa-caret-down"></i>
+                                </span>
+                           </div>
+                      </div>
+                    </th>
+
                     <th>
                       <div class="th-content">
                           {{'~currencyCode' | translate}}
@@ -123,7 +137,18 @@
 
                             <td>
                               <div class="td-content">
-                                  {{product.minRate}} %
+                                  <ng-container *ngIf="product.minRate">
+                                      {{product.minRate}} %
+                                  </ng-container>
+                              </div>
+                            </td>
+
+                            <td>
+                              <div class="td-content">
+                                <ng-container *ngIf="product.minPeriod">
+                                    {{product.minPeriod}} {{'~month' | translate}}
+                                </ng-container>
+
                               </div>
                             </td>
 

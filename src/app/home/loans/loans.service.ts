@@ -89,7 +89,6 @@ export class LoansService {
         );;
     }
     getCompareProductList(productIds: number[], formValue: LoanFilterForm) {
-        console.log(formValue)
         return this.http.post<DataResponse>('mybank/compareLoanProducts', {
             token: this.authService.getToken(),
             prodId : productIds,
