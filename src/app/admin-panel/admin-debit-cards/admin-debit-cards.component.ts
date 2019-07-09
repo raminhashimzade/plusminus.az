@@ -4,7 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormControl } from '@angular/forms';
 import { DebitCard } from 'src/app/home/debit-cards/models/debit-card.model';
 import { TranslateService } from '@ngx-translate/core';
 import { AdminPanelService } from '../admin-panel.service';
@@ -21,8 +20,7 @@ import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/conf
 export class AdminDebitCardsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   allColumns: string[] = [];
-  displayedColumns: string[];
-  toggleColumnsControl: FormControl = new FormControl();
+  visibleColumns: string[] = [];
   dataSource: MatTableDataSource<DebitCard>;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
@@ -36,13 +34,7 @@ export class AdminDebitCardsComponent implements OnInit {
   ngOnInit() {
     this.getData();
   }
-  initToggleColumnControl() {
-    this.toggleColumnsControl.setValue(this.displayedColumns);
-    this.toggleColumnsControl.valueChanges.subscribe(res => {
-      this.displayedColumns = res;
-      // this.changeRef.detectChanges();
-    })
-  }
+
   applyFilter(column, filterValue: string) {
     console.log(column)
     this.dataSource.filterPredicate =
@@ -65,15 +57,17 @@ export class AdminDebitCardsComponent implements OnInit {
     this.dataSource = undefined;
     this.productService.crudProduct(CrudCommandType.SELECT, {})
     .subscribe(res => {
-      if (res && res[0]) {
-        const columns = Object.keys(res[0]).filter(c => c!== 'cdId');
-        columns.push('editer');
-        columns.unshift('cdId');
-        this.allColumns = [...columns].filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') );
-        this.displayedColumns = [...this.allColumns];
-      }
-      console.log(res)
+      if (!(res && res[0])) {return;}
       this.dataSource = new MatTableDataSource(res);
+      const columns = Object.keys(res[0]);
+      columns.push('editer');
+      this.allColumns = [...columns].filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') );
+      const localStorageColumns = localStorage.getItem('debitCardsVisibleColumns');
+      if (localStorageColumns) {
+        this.visibleColumns = JSON.parse(localStorageColumns);
+      } else {
+        this.visibleColumns = [...this.allColumns];
+      }
       setTimeout(() => {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -123,10 +117,17 @@ export class AdminDebitCardsComponent implements OnInit {
   }
 
   showAllColumns() {
-    this.displayedColumns = [...this.allColumns];
+    this.visibleColumns = [...this.allColumns];
+    localStorage.removeItem('debitCardsVisibleColumns');
   }
   hideAllColumns() {
-    this.displayedColumns = [];
+    this.visibleColumns = [];
+    localStorage.removeItem('debitCardsVisibleColumns');
   }
+  onToggleColumns(columns: string[]) {
+    this.visibleColumns = columns;
+    localStorage.setItem('debitCardsVisibleColumns', JSON.stringify(columns));
+  }
+
 
 }

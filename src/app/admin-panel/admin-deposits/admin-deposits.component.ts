@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { AdminPanelService } from '../admin-panel.service';
 import { CrudCommandType } from '../models/crud-command-type.enum';
@@ -20,15 +19,8 @@ import { AddOrEditDepositComponent } from './add-or-edit-deposit/add-or-edit-dep
 })
 export class AdminDepositsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  allColumns: string[] = ['dpId', 'bankId', 'bankName', 'depositName', 'currencyCode',
-    'minRate', 'maxRate', 'minPeriod', 'maxPeriod', 'minAmount', 'maxAmount', 'liqType',
-    'website', 'description', 'present',
-    'withCollateral', 'withAutoProloing', 'withCapitalisation', 'withRefill', 'withWithdraw', 'priority', 'prodStatus',
-   'editer'
- //  'description', 'desciprtionDOC', 'descriptionPD'
-   ];
-  displayedColumns: string[] = this.allColumns.slice();
-  toggleColumnsControl: FormControl = new FormControl();
+  allColumns: string[] = [];
+  visibleColumns: string[] = [];
   dataSource: MatTableDataSource<DepositProduct>;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
@@ -42,13 +34,7 @@ export class AdminDepositsComponent implements OnInit {
   ngOnInit() {
    this.getData();
   }
-  initToggleColumnControl() {
-    this.toggleColumnsControl.setValue(this.displayedColumns);
-    this.toggleColumnsControl.valueChanges.subscribe(res => {
-      this.displayedColumns = res;
-      // this.changeRef.detectChanges();
-    })
-  }
+
   applyFilter(column, filterValue: string) {
     this.dataSource.filterPredicate =
     (data: DepositProduct, filter: string) => data[column].toString().toLowerCase().includes(filter.toLowerCase());
@@ -70,12 +56,20 @@ export class AdminDepositsComponent implements OnInit {
     this.dataSource = undefined;
     this.adminDepositService.crudDepositProduct(CrudCommandType.SELECT, {})
     .subscribe(res => {
+      if (!(res && res[0])) {return;}
       this.dataSource = new MatTableDataSource(res);
+      const columns = Object.keys(res[0]);
+      columns.push('editer');
+      this.allColumns = [...columns].filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') );
+      const localStorageColumns = localStorage.getItem('depositsVisibleColumns');
+      if (localStorageColumns) {
+        this.visibleColumns = JSON.parse(localStorageColumns);
+      } else {
+        this.visibleColumns = [...this.allColumns];
+      }
       setTimeout(() => {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-       // this.initToggleColumnControl();
-        // this.changeRef.detectChanges();
       }, 10);
     })
   }
@@ -122,16 +116,17 @@ export class AdminDepositsComponent implements OnInit {
   }
 
   showAllColumns() {
-    this.displayedColumns = [...this.allColumns];
-  //  this.toggleColumnsControl.setValue(this.displayedColumns);
-    // this.changeRef.detectChanges();
+    this.visibleColumns = [...this.allColumns];
+    localStorage.removeItem('depositsVisibleColumns');
   }
   hideAllColumns() {
-    this.displayedColumns = [];
- //   this.toggleColumnsControl.setValue(this.displayedColumns);
-    // this.changeRef.detectChanges();
+    this.visibleColumns = [];
+    localStorage.removeItem('depositsVisibleColumns');
   }
-
+  onToggleColumns(columns: string[]) {
+    this.visibleColumns = columns;
+    localStorage.setItem('depositsVisibleColumns', JSON.stringify(columns));
+  }
 
 
 }

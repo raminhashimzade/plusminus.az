@@ -22,14 +22,8 @@ import { FormControl } from '@angular/forms';
 })
 export class AdminLoansComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  allColumns: string[] = ['lnId', 'bankId', 'bankName', 'loanName', 'loanType', 'currencyCode',
-   'minRate', 'minAmount', 'maxAmount', 'comissionCash', 'comissionLoan',
-   'minAge', 'maxAge', 'minEffectiveRate', 'maxEffectiveRate', 'minPeriod',
-   'maxPeriod', 'withCollateral', 'withEmpReference', 'withGracePeriod', 'prodStatus', 'insurance', 'priority',
-   'editer'
- //  'description', 'desciprtionDOC', 'descriptionPD'
-   ];
-  displayedColumns: string[] = this.allColumns.slice();
+  allColumns: string[];
+  visibleColumns: string[];
   toggleColumnsControl: FormControl = new FormControl();
   dataSource: MatTableDataSource<LoanProduct>;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
@@ -45,9 +39,9 @@ export class AdminLoansComponent implements OnInit {
     this.getData();
   }
   initToggleColumnControl() {
-    this.toggleColumnsControl.setValue(this.displayedColumns);
+    this.toggleColumnsControl.setValue(this.allColumns);
     this.toggleColumnsControl.valueChanges.subscribe(res => {
-      this.displayedColumns = res;
+      this.allColumns = res;
       // this.changeRef.detectChanges();
     })
   }
@@ -75,12 +69,20 @@ export class AdminLoansComponent implements OnInit {
     this.dataSource = undefined;
     this.adminLoanService.crudProduct(CrudCommandType.SELECT, {})
     .subscribe(res => {
+      if (!(res && res[0])) {return;}
       this.dataSource = new MatTableDataSource(res);
+      const columns = Object.keys(res[0]);
+      columns.push('editer');
+      this.allColumns = [...columns].filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') );
+      const localStorageColumns = localStorage.getItem('loansVisibleColumns');
+      if (localStorageColumns) {
+        this.visibleColumns = JSON.parse(localStorageColumns);
+      } else {
+        this.visibleColumns = [...this.allColumns];
+      }
       setTimeout(() => {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-       // this.initToggleColumnControl();
-        // this.changeRef.detectChanges();
       }, 10);
     })
   }
@@ -127,14 +129,16 @@ export class AdminLoansComponent implements OnInit {
   }
 
   showAllColumns() {
-    this.displayedColumns = [...this.allColumns];
-  //  this.toggleColumnsControl.setValue(this.displayedColumns);
-    // this.changeRef.detectChanges();
+    this.visibleColumns = [...this.allColumns];
+    localStorage.removeItem('loansVisibleColumns');
   }
   hideAllColumns() {
-    this.displayedColumns = [];
- //   this.toggleColumnsControl.setValue(this.displayedColumns);
-    // this.changeRef.detectChanges();
+    this.visibleColumns = [];
+    localStorage.removeItem('loansVisibleColumns');
+  }
+  onToggleColumns(columns: string[]) {
+    this.visibleColumns = columns;
+    localStorage.setItem('loansVisibleColumns', JSON.stringify(columns));
   }
 
 

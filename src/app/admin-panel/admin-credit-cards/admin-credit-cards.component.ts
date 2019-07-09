@@ -19,11 +19,9 @@ import { AddOrEditCreditCardComponent } from './add-or-edit-credit-card/add-or-e
   styleUrls: ['./admin-credit-cards.component.scss']
 })
 export class AdminCreditCardsComponent implements OnInit {
-
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   allColumns: string[] = [];
-  displayedColumns: string[] = this.allColumns.slice();
-  toggleColumnsControl: FormControl = new FormControl();
+  visibleColumns: string[] = [];
   dataSource: MatTableDataSource<CreditCard>;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
@@ -36,13 +34,6 @@ export class AdminCreditCardsComponent implements OnInit {
      ) { }
   ngOnInit() {
     this.getData();
-  }
-  initToggleColumnControl() {
-    this.toggleColumnsControl.setValue(this.displayedColumns);
-    this.toggleColumnsControl.valueChanges.subscribe(res => {
-      this.displayedColumns = res;
-      // this.changeRef.detectChanges();
-    })
   }
   applyFilter(column, filterValue: string) {
     console.log(column)
@@ -66,14 +57,17 @@ export class AdminCreditCardsComponent implements OnInit {
     this.dataSource = undefined;
     this.productService.crudProduct(CrudCommandType.SELECT, {})
     .subscribe(res => {
-      if (res && res[0]) {
-        const columns = Object.keys(res[0]).filter(c => c!== 'cdId');
-        columns.push('editer');
-        columns.unshift('cdId');
-        this.allColumns = [...columns].filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') );
-        this.displayedColumns = [...this.allColumns];
-      }
+      if (!(res && res[0])) {return;}
       this.dataSource = new MatTableDataSource(res);
+      const columns = Object.keys(res[0]);
+      columns.push('editer');
+      this.allColumns = [...columns].filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') );
+      const localStorageColumns = localStorage.getItem('creditCardsVisibleColumns');
+      if (localStorageColumns) {
+        this.visibleColumns = JSON.parse(localStorageColumns);
+      } else {
+        this.visibleColumns = [...this.allColumns];
+      }
       setTimeout(() => {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -123,10 +117,16 @@ export class AdminCreditCardsComponent implements OnInit {
   }
 
   showAllColumns() {
-    this.displayedColumns = [...this.allColumns];
+    this.visibleColumns = [...this.allColumns];
+    localStorage.removeItem('creditCardsVisibleColumns');
   }
   hideAllColumns() {
-    this.displayedColumns = [];
+    this.visibleColumns = [];
+    localStorage.removeItem('creditCardsVisibleColumns');
+  }
+  onToggleColumns(columns: string[]) {
+    this.visibleColumns = columns;
+    localStorage.setItem('creditCardsVisibleColumns', JSON.stringify(columns));
   }
 
 
