@@ -21,9 +21,9 @@ export class AdminLoginComponent implements OnInit {
 
    ngOnInit() {
     setTimeout(() => {
-     this.form.controls['login'].setValue('plusm');
-     this.form.controls['password'].setValue('123');
-     this.login();
+    //  this.form.controls['login'].setValue('plusm');
+    //  this.form.controls['password'].setValue('123');
+    //  this.login();
     }, 100)
    }
    login() {
