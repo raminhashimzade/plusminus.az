@@ -161,9 +161,11 @@
                </select-search>
 
               <mat-form-field>
-                  <mat-label>{{'~liqType' | translate}}<</mat-label>
+                  <mat-label>{{'~liqType' | translate}}</mat-label>
                   <mat-select  name="liqType"  [(ngModel)]="depositProduct.liqType">
 
+                  <mat-option value="QUARTER"> QUARTER </mat-option>
+                  <mat-option value="6MONTH"> 6MONTH </mat-option>
                   <mat-option value="MONTHLY"> MONTHLY </mat-option>
                   <mat-option value="LASTDAY"> LASTDAY </mat-option>
                   <mat-option value="AVANS"> AVANS </mat-option>
