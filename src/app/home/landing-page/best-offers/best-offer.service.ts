@@ -13,9 +13,10 @@ export class BestOfferService {
 
   constructor(private authService: AuthService, private http: HttpClient) { }
 
-  getBestOffers(): Observable<BestOffer[] >{
+  getBestOffers(offerType: string): Observable<BestOffer[] >{
       return this.http.post<DataResponse>('mybank/bestOffers', {
           token: this.authService.getToken(),
+          offerType: offerType
       }).pipe(
           map(res => res && res.data),
           catchError(er => of(null))

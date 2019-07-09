@@ -152,6 +152,11 @@
             <ng-container *ngIf="product.minAmount && !product.maxAmount">
               <span>{{product.minAmount | number:'':'fr-FR'}}</span> <span>{{product.currencyCode}}</span>
             </ng-container>
+
+            <ng-container *ngIf="product.minAmount && product.maxAmount && product.minAmount === product.maxAmount">
+              <span>{{product.minAmount | number:'':'fr-FR'}}</span> <span>{{product.currencyCode}}</span>
+            </ng-container>
+
           </div>
         </td>
       </tr>

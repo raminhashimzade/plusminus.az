@@ -1,6 +1,9 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { MockCreditOffers } from './mock-credit-offer';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { BestOfferService } from '../best-offer.service';
+import { Observable } from 'rxjs';
+import { BestOffer } from '../models/best-offer.model';
 declare var Swiper;
 @Component({
   selector: 'best-credit-offers',
@@ -9,6 +12,7 @@ declare var Swiper;
 })
 export class BestCreditOffersComponent implements OnInit, OnDestroy {
   offers = MockCreditOffers;
+  offers$: Observable<BestOffer[]>;
   swiper: any;
   public config: SwiperConfigInterface = {
     a11y: true,
@@ -20,9 +24,11 @@ export class BestCreditOffersComponent implements OnInit, OnDestroy {
     navigation: false,
     pagination: { el: '.swiper-pagination', clickable: true }
   };
-  constructor() {}
+  constructor(private bestOfferService: BestOfferService) {}
 
   ngOnInit() {
+    this.offers$ = this.bestOfferService.getBestOffers('LOAN');
+    this.offers$.subscribe(res => console.log(res))
   }
   ngOnDestroy() {
   }
