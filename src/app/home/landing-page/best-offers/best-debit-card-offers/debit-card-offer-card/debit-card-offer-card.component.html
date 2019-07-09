@@ -2,32 +2,35 @@
     <div class="card__header">
         <div class="card__header__title">
             <div class="card__header__title__logo">
-                <img src="./assets/icons/banks/{{offer.iconPath}}.svg">
+                {{offer.bankName}}
               </div>
-          <div class="card__header__title__secondary"> «{{offer.name}}»</div>
+          <div class="card__header__title__secondary"> «{{offer.offerName}}»</div>
         </div>
         <div class="card__header__logo">
-          <i class="far fa-credit-card"></i>
+            <i class="fas fa-university"></i>
         </div>
     </div>
     <div class="card__content">
         <div class="credit-percent">
           <div class="credit-percent__title">
-                    {{offer.percent}}
+          {{offer.leftTop}}
           </div>
-          <div class="credit-percent__subtitle">{{'~annual' | translate}} </div>
+          <div class="credit-percent__subtitle">{{offer.leftButtom}} </div>
         </div>
         <div class="credit-count">
           <div class="credit-count__title">
-                      {{offer.type}}
+
+              {{offer.rightTop}}
+
           </div>
           <div class="credit-count__subtitle">
-                <!-- {{'~type' | translate}} -->
+
+              {{offer.rightButtom}}
+
             </div>
         </div>
     </div>
     <div class="card__footer">
-      <a mat-stroked-button color="primary" [href]="offer.url" target="_blank" rel="noopener"> {{'~detailed' | translate}}</a>
+      <a mat-stroked-button color="primary" href="{{offer.webLink}}" target="_blank" rel="noopener"> {{'~detailed' | translate}}</a>
     </div>
-    <!-- <div class="card__navigate"><i class="fas fa-chevron-right"></i></div> -->
   </div>

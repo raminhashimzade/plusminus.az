@@ -8,7 +8,7 @@ import { BestOffer } from '../../models/best-offer.model';
   styleUrls: ['./credit-offer-card.component.scss']
 })
 export class CreditOfferCardComponent implements OnInit {
-  @Input() offer: any;
+  @Input() offer: BestOffer;
   lang: string;
   constructor(private translateService: TranslateService) {
       this.lang = this.translateService.getDefaultLang();

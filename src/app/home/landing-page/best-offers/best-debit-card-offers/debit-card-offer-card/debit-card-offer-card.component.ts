@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { BestOffer } from '../../models/best-offer.model';
 
 @Component({
   selector: 'debit-card-offer-card',
@@ -8,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class DebitCardOfferCardComponent implements OnInit {
 
-  @Input() offer: any;
+  @Input() offer: BestOffer;
   lang: string;
   constructor(private translateService: TranslateService) {
       this.lang = this.translateService.getDefaultLang();

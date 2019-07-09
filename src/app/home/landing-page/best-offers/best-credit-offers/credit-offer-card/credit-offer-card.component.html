@@ -2,9 +2,9 @@
   <div class="card__header">
       <div class="card__header__title">
           <div class="card__header__title__logo">
-              <img src="./assets/icons/banks/{{offer.iconPath}}.svg">
+              {{offer.bankName}}
             </div>
-        <div class="card__header__title__secondary"> «{{'~offer' | translate | titlecase}}»</div>
+        <div class="card__header__title__secondary"> «{{offer.offerName}}»</div>
       </div>
       <div class="card__header__logo">
           <i class="fas fa-university"></i>
@@ -13,45 +13,24 @@
   <div class="card__content">
       <div class="credit-percent">
         <div class="credit-percent__title">
-          <ng-container [ngSwitch]="lang">
-              <p *ngSwitchCase="'az'">
-                  {{offer.creditPercent}}<span>%-dən</span>
-              </p>
-              <p *ngSwitchDefault>
-               <span>{{'~from' | translate}}</span>{{offer.creditPercent}}%
-              </p>
-            </ng-container>
+        {{offer.leftTop}}
         </div>
-        <div class="credit-percent__subtitle">{{'~annual' | translate}} </div>
+        <div class="credit-percent__subtitle">{{offer.leftButtom}} </div>
       </div>
       <div class="credit-count">
         <div class="credit-count__title">
 
-            <ng-container [ngSwitch]="lang">
-                <p *ngSwitchCase="'az'">
-                    {{offer.creditAmount}}  <span class="currency">AZN</span> <span>-ə qədər</span>
-                </p>
-                <p *ngSwitchDefault>
-                 <span>{{'~uptTo' | translate}}</span>{{offer.creditAmount}}%  <span class="currency">AZN</span>
-                </p>
-              </ng-container>
+            {{offer.rightTop}}
 
         </div>
         <div class="credit-count__subtitle">
 
-           <ng-container [ngSwitch]="lang">
-              <p *ngSwitchCase="'az'">
-                  {{offer.creditDuration}}<span>-ə qədər</span>
-              </p>
-              <p *ngSwitchDefault>
-               <span>{{'~uptTo' | translate}}</span>{{offer.creditDuration}}%
-              </p>
-            </ng-container>
+            {{offer.rightButtom}}
 
           </div>
       </div>
   </div>
   <div class="card__footer">
-    <a mat-stroked-button color="primary" href="{{offer.url}}" target="_blank" rel="noopener"> {{'~detailed' | translate}}</a>
+    <a mat-stroked-button color="primary" href="{{offer.webLink}}" target="_blank" rel="noopener"> {{'~detailed' | translate}}</a>
   </div>
 </div>

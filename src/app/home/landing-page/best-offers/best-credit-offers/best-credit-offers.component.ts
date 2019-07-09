@@ -11,7 +11,6 @@ declare var Swiper;
   styleUrls: ['./best-credit-offers.component.scss']
 })
 export class BestCreditOffersComponent implements OnInit, OnDestroy {
-  offers = MockCreditOffers;
   offers$: Observable<BestOffer[]>;
   swiper: any;
   public config: SwiperConfigInterface = {
@@ -28,7 +27,6 @@ export class BestCreditOffersComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.offers$ = this.bestOfferService.getBestOffers('LOAN');
-    this.offers$.subscribe(res => console.log(res))
   }
   ngOnDestroy() {
   }

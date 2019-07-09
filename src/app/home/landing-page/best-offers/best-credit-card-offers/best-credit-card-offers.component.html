@@ -1,7 +1,7 @@
-<div class="swiper-container" [swiper]="config" >
+<div class="swiper-container" [swiper]="config">
     <div class="swiper-wrapper credits">
-      <div class="swiper-slide" *ngFor="let offer of offers;let i=index;let first=first">
-        <credit-card-offer-card [offer]="offer"> </credit-card-offer-card>
+      <div class="swiper-slide" *ngFor="let offer of (offers$ | async);let i=index;let first=first">
+        <credit-offer-card [offer]="offer"> </credit-offer-card>
       </div>
     </div>
 
