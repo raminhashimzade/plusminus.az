@@ -98,12 +98,12 @@
             <button-toggle-group class="mb-2">
               <div class="banner-filter-button-toggle-group-container">
 
-                <button-toggle class ="button-toggle-wrapper" [isOpposite]="true"   [(ngModel)]="productFilter.withEmpReference" name="withEmpReference" value="true">
+                <!-- <button-toggle class ="button-toggle-wrapper" [isOpposite]="true"   [(ngModel)]="productFilter.withEmpReference" name="withEmpReference" value="true">
                     <span>{{'~withEmpReference' | translate |titlecase}} </span>
-                </button-toggle>
+                </button-toggle> -->
 
                 <button-toggle class ="button-toggle-wrapper"  [isOpposite]="true"  [(ngModel)]="productFilter.withCollateral" name="withCollateral" value="true">
-                    <span>{{'~withCollateral' | translate |titlecase}} </span>
+                    <span>{{'~withoutCollateral' | translate |titlecase}} </span>
                 </button-toggle>
 
                 <button-toggle class ="button-toggle-wrapper" [(ngModel)]="productFilter.withGracePeriod" name="withGracePeriod">

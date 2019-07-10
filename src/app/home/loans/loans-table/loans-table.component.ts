@@ -78,7 +78,7 @@ export class LoansTableComponent implements OnInit, OnDestroy {
           loanAmount: res['loanAmount'] || defaultFilter.loanAmount,
           loanCurrency: res['loanCurrency'] || defaultFilter.loanCurrency,
           loanPeriod: res['loanPeriod'] || defaultFilter.loanPeriod,
-          withEmpReference: res['withEmpReference'] || defaultFilter.withEmpReference,
+         withEmpReference: res['withEmpReference'] || defaultFilter.withEmpReference,
           withCollateral: res['withCollateral'] || defaultFilter.withCollateral,
           withGracePeriod: res['withGracePeriod'] || defaultFilter.withGracePeriod,
           comissionCash: res['comissionCash'] || defaultFilter.comissionCash,

@@ -73,7 +73,7 @@ export class CreditCardsTableComponent implements OnInit {
           loanAmount: res['loanAmount'] || '',
           currencyCode: res['currencyCode'] ||  'AZN',
           loanPeriod: res['loanPeriod'] || '',
-          withEmpReference: res['withEmpReference'] || true,
+         withEmpReference: res['withEmpReference'] || true,
           withCashBack: res['withCashBack'] ||false,
           withMiles: res['withMiles'] || false,
           withDepositRate: res['withDepositRate'] || false,

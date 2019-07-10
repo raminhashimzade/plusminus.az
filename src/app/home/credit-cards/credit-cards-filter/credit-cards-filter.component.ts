@@ -5,11 +5,9 @@ import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
 import { MatSliderChange } from '@angular/material/slider';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { takeUntil, debounceTime } from 'rxjs/operators';
-import { deepClone } from 'src/app/app.utils';
 import { CreditCardService } from '../credit-card.service';
 import { CreditCardFilterForm } from '../models/credit-card-filter-form.model';
 

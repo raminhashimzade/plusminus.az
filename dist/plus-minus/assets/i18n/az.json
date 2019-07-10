@@ -239,6 +239,7 @@
     "~confirmNewPassword": "Yeni şifrə təsdiq edin",
     "~newPasswordIsNotMatched": "Yeni şifrəni düzgün qeyd edin",
     "~logout": "Çıxış",
+    "~withoutCollateral": "Girovsuz ve Zaminsiz",
 
   "~SENTRY": {
     "feedbackTitle": "Xəta baş verdi :(",
