@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLoansComponent } from './admin-loans.component';
 
 const routes: Routes = [
-  { path: '', component: AdminLoansComponent},
+  { path: '', component: AdminLoansComponent, data: {key: "admin/loans"}},
 ];
 
 @NgModule({

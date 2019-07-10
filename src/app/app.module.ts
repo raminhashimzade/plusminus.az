@@ -47,6 +47,8 @@ import { environment } from 'src/environments/environment';
 import { BankAdminSettingsDropdownComponent } from './home/header/bank-admin-settings-dropdown/bank-admin-settings-dropdown.component';
 import { ApplicationCountdownComponent } from './application-countdown/application-countdown.component';
 import { ImgSrcPipeModule } from './shared/pipes/img-src-pipe.module';
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomReuseStrategy } from './custom-router-reuse-strategy';
 
 
 @NgModule({
@@ -102,7 +104,9 @@ import { ImgSrcPipeModule } from './shared/pipes/img-src-pipe.module';
     { provide: LOCALE_ID,
       deps: [TranslateService],
       useFactory: (service) => service.getDefaultLang()
-    }
+    },
+    { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
+
   ],
   bootstrap: [AppComponent],
 })

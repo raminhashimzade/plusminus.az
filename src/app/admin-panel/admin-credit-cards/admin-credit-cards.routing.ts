@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminCreditCardsComponent } from './admin-credit-cards.component';
 
 const routes: Routes = [
-  { path: '', component: AdminCreditCardsComponent},
+  { path: '', component: AdminCreditCardsComponent, data: {key: "admin/credit-cards"}},
 ];
 
 @NgModule({

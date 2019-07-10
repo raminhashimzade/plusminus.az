@@ -9,7 +9,6 @@ import { LoanProduct } from 'src/app/home/loans/models/loanGroup.model';
 
 @Injectable()
 export class AdminLoanService {
-
   constructor(private http: HttpClient, private adminPanelService: AdminPanelService) {}
     crudProduct(commandType: CrudCommandType, loanProduct = {}): Observable<LoanProduct[]> {
       return this.http.post<DataResponse>('mybank/crud/loanProduct', {

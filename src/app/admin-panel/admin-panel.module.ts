@@ -21,6 +21,9 @@ import { SharedAdminService } from './shared/shared-admin.service';
     AdminPanelRoutingModule,
     SharedModule
   ],
-  providers: [AdminPanelGuard, SharedAdminService]
+  providers: [
+    AdminPanelGuard,
+     SharedAdminService
+    ]
 })
 export class AdminPanelModule { }

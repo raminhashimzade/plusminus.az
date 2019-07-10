@@ -18,23 +18,23 @@ import { FormControl } from '@angular/forms';
   selector: 'admin-loans',
   templateUrl: './admin-loans.component.html',
   styleUrls: ['./admin-loans.component.scss'],
- // changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdminLoansComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
   allColumns: string[];
   visibleColumns: string[];
   toggleColumnsControl: FormControl = new FormControl();
   dataSource: MatTableDataSource<LoanProduct>;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
-
+  dataFilterState: { column: string, filterValue: string, multi: boolean };
   constructor(
     private adminLoanService: AdminLoanService,
     private translateService: TranslateService,
     private dialog: MatDialog,
-     private adminService: AdminPanelService,
-     private changeRef: ChangeDetectorRef
-     ) { }
+    private adminService: AdminPanelService,
+    private changeRef: ChangeDetectorRef
+  ) { }
   ngOnInit() {
     this.getData();
   }
@@ -47,45 +47,52 @@ export class AdminLoansComponent implements OnInit {
   }
   applyFilter(column, filterValue: string) {
     this.dataSource.filterPredicate =
-    (data: LoanProduct, filter: string) => data[column].toString().toLowerCase().includes(filter.toLowerCase());
+      (data: LoanProduct, filter: string) => data[column].toString().toLowerCase().includes(filter.toLowerCase());
     this.dataSource.filter = filterValue;
-  //  this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataFilterState = { column, filterValue, multi: false };
   }
   applyMultiLangFilter(column, filterValue: string) {
     this.dataSource.filterPredicate =
-    (data: LoanProduct, filter: string) => data[column]['az'].toLowerCase().includes(filter.toLowerCase());
+      (data: LoanProduct, filter: string) => data[column]['az'].toLowerCase().includes(filter.toLowerCase());
     this.dataSource.filter = filterValue;
-  //  this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataFilterState = { column, filterValue, multi: true };
   }
 
   isMultiLang(column: string): string {
     if (column === 'editer') {
-  //    console.log('editer')
       return 'editer';
     }
-    return (column === 'loanName' || column === 'description' || column ==='descriptionPD' || column === 'descriptionDOC') ? 'multilang' : 'standard';
+    return (column === 'loanName' || column === 'description' || column === 'descriptionPD' || column === 'descriptionDOC') ? 'multilang' : 'standard';
   }
   getData() {
     this.dataSource = undefined;
     this.adminLoanService.crudProduct(CrudCommandType.SELECT, {})
-    .subscribe(res => {
-      if (!(res && res[0])) {return;}
-      this.dataSource = new MatTableDataSource(res);
-      const columns = Object.keys(res[0]);
-      columns.push('editer');
-      this.allColumns = [...columns].filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') );
-      const localStorageColumns = localStorage.getItem('loansVisibleColumns');
-      if (localStorageColumns) {
-        this.visibleColumns = JSON.parse(localStorageColumns);
-      } else {
+      .subscribe(res => {
+        if (!(res && res[0])) { return; }
+        this.dataSource = new MatTableDataSource(res);
+        if (this.dataFilterState) {
+          const { column, filterValue, multi } = { ...this.dataFilterState };
+          multi ? this.applyMultiLangFilter(column, filterValue) :
+            this.applyFilter(column, filterValue);
+        }
+        const columns = Object.keys(res[0]);
+        columns.push('editer');
+        this.allColumns = [...columns].
+          filter(column => (column !== 'description') && (column !== 'descriptionPD') && (column !== 'descriptionDOC') && (column !== 'lnId'));
+        this.allColumns.unshift('lnId');
         this.visibleColumns = [...this.allColumns];
-      }
-      setTimeout(() => {
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-      }, 10);
-    })
+        setTimeout(() => {
+          this.dataSource.sort = this.sort;
+          this.dataSource.paginator = this.paginator;
+        }, 10);
+      })
   }
+
+  getFilterValue(column: string): string | void {
+    if (!(this.dataFilterState && this.dataFilterState.column === column)) { return; }
+    return this.dataFilterState.filterValue;
+  }
+
   onEdit(item: LoanProduct) {
     const ref = this.dialog.open(AddOrEditLoanComponent, {
       data: {
@@ -113,16 +120,16 @@ export class AdminLoansComponent implements OnInit {
         title: "Əminsiz silməyə ?"
       }
     });
-    ref.afterClosed().subscribe( res => {
+    ref.afterClosed().subscribe(res => {
       if (res) {
         this.adminLoanService.crudProduct(CrudCommandType.DELETE, element)
-        .subscribe(res => {
-          if (res) {
-            this.adminService
-            .createNotification(`[ LOAN ] ${this.translateService.instant('~deleteSuccess')}`, 'OK', 'success');
-            this.getData();
-           }
-        })
+          .subscribe(res => {
+            if (res) {
+              this.adminService
+                .createNotification(`[ LOAN ] ${this.translateService.instant('~deleteSuccess')}`, 'OK', 'success');
+              this.getData();
+            }
+          })
       }
     })
 
@@ -130,15 +137,12 @@ export class AdminLoansComponent implements OnInit {
 
   showAllColumns() {
     this.visibleColumns = [...this.allColumns];
-    localStorage.removeItem('loansVisibleColumns');
   }
   hideAllColumns() {
     this.visibleColumns = [];
-    localStorage.removeItem('loansVisibleColumns');
   }
   onToggleColumns(columns: string[]) {
     this.visibleColumns = columns;
-    localStorage.setItem('loansVisibleColumns', JSON.stringify(columns));
   }
 
 

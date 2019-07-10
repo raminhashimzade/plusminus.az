@@ -19,11 +19,11 @@ import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/conf
 })
 export class AdminDebitCardsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
   allColumns: string[] = [];
   visibleColumns: string[] = [];
   dataSource: MatTableDataSource<DebitCard>;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
-
+  dataFilterState: {column: string, filterValue: string, multi: boolean};
   constructor(
     private productService: AdminDebitCardsService,
     private translateService: TranslateService,
@@ -40,11 +40,15 @@ export class AdminDebitCardsComponent implements OnInit {
     this.dataSource.filterPredicate =
     (data: DebitCard, filter: string) => data[column].toString().toLowerCase().includes(filter.toLowerCase());
     this.dataSource.filter = filterValue;
+    this.dataFilterState = {column, filterValue, multi: false};
+
   }
   applyMultiLangFilter(column, filterValue: string) {
     this.dataSource.filterPredicate =
     (data: DebitCard, filter: string) => data[column]['az'].toLowerCase().includes(filter.toLowerCase());
     this.dataSource.filter = filterValue;
+    this.dataFilterState = {column, filterValue, multi: true};
+
   }
 
   isMultiLang(column: string): string {
@@ -59,20 +63,26 @@ export class AdminDebitCardsComponent implements OnInit {
     .subscribe(res => {
       if (!(res && res[0])) {return;}
       this.dataSource = new MatTableDataSource(res);
+      if (this.dataFilterState) {
+        const {column, filterValue, multi} = {...this.dataFilterState};
+        multi ? this.applyMultiLangFilter(column, filterValue) :
+                                      this.applyFilter(column, filterValue);
+      }
       const columns = Object.keys(res[0]);
       columns.push('editer');
-      this.allColumns = [...columns].filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') );
-      const localStorageColumns = localStorage.getItem('debitCardsVisibleColumns');
-      if (localStorageColumns) {
-        this.visibleColumns = JSON.parse(localStorageColumns);
-      } else {
-        this.visibleColumns = [...this.allColumns];
-      }
+      this.allColumns = [...columns].
+      filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') && (column !== 'cdId'));
+      this.allColumns.unshift('cdId');
+      this.visibleColumns = [...this.allColumns];
       setTimeout(() => {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       }, 10);
     })
+  }
+  getFilterValue(column: string): string | void {
+    if (!(this.dataFilterState && this.dataFilterState.column === column)) {return;}
+     return this.dataFilterState.filterValue;
   }
   onEdit(item: DebitCard) {
     const ref = this.dialog.open(AddOrEditDebitCardComponent, {
@@ -118,15 +128,12 @@ export class AdminDebitCardsComponent implements OnInit {
 
   showAllColumns() {
     this.visibleColumns = [...this.allColumns];
-    localStorage.removeItem('debitCardsVisibleColumns');
   }
   hideAllColumns() {
     this.visibleColumns = [];
-    localStorage.removeItem('debitCardsVisibleColumns');
   }
   onToggleColumns(columns: string[]) {
     this.visibleColumns = columns;
-    localStorage.setItem('debitCardsVisibleColumns', JSON.stringify(columns));
   }
 
 

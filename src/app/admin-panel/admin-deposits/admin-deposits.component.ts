@@ -19,11 +19,11 @@ import { AddOrEditDepositComponent } from './add-or-edit-deposit/add-or-edit-dep
 })
 export class AdminDepositsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
   allColumns: string[] = [];
   visibleColumns: string[] = [];
   dataSource: MatTableDataSource<DepositProduct>;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
-
+  dataFilterState: {column: string, filterValue: string, multi: boolean};
   constructor(
     private adminDepositService: AdminDepositService,
     private translateService: TranslateService,
@@ -39,11 +39,15 @@ export class AdminDepositsComponent implements OnInit {
     this.dataSource.filterPredicate =
     (data: DepositProduct, filter: string) => data[column].toString().toLowerCase().includes(filter.toLowerCase());
     this.dataSource.filter = filterValue;
+    this.dataFilterState = {column, filterValue, multi: false};
+
   }
   applyMultiLangFilter(column, filterValue: string) {
     this.dataSource.filterPredicate =
     (data: DepositProduct, filter: string) => data[column]['az'].toLowerCase().includes(filter.toLowerCase());
     this.dataSource.filter = filterValue;
+    this.dataFilterState = {column, filterValue, multi: true};
+
   }
 
   isMultiLang(column: string): string {
@@ -58,21 +62,28 @@ export class AdminDepositsComponent implements OnInit {
     .subscribe(res => {
       if (!(res && res[0])) {return;}
       this.dataSource = new MatTableDataSource(res);
+      if (this.dataFilterState) {
+        const {column, filterValue, multi} = {...this.dataFilterState};
+        multi ? this.applyMultiLangFilter(column, filterValue) :
+                                      this.applyFilter(column, filterValue);
+      }
       const columns = Object.keys(res[0]);
       columns.push('editer');
-      this.allColumns = [...columns].filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') );
-      const localStorageColumns = localStorage.getItem('depositsVisibleColumns');
-      if (localStorageColumns) {
-        this.visibleColumns = JSON.parse(localStorageColumns);
-      } else {
-        this.visibleColumns = [...this.allColumns];
-      }
+      this.allColumns = [...columns].
+      filter( column => (column !== 'description') && (column !=='descriptionPD') && (column !== 'descriptionDOC') && (column !== 'dpId'));
+      this.allColumns.unshift('dpId');
+      this.visibleColumns = [...this.allColumns];
       setTimeout(() => {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
       }, 10);
     })
   }
+
+    getFilterValue(column: string): string | void {
+      if (!(this.dataFilterState && this.dataFilterState.column === column)) {return;}
+       return this.dataFilterState.filterValue;
+    }
   onEdit(item: DepositProduct) {
     const ref = this.dialog.open(AddOrEditDepositComponent, {
       data: {
@@ -117,15 +128,12 @@ export class AdminDepositsComponent implements OnInit {
 
   showAllColumns() {
     this.visibleColumns = [...this.allColumns];
-    localStorage.removeItem('depositsVisibleColumns');
   }
   hideAllColumns() {
     this.visibleColumns = [];
-    localStorage.removeItem('depositsVisibleColumns');
   }
   onToggleColumns(columns: string[]) {
     this.visibleColumns = columns;
-    localStorage.setItem('depositsVisibleColumns', JSON.stringify(columns));
   }
 
 

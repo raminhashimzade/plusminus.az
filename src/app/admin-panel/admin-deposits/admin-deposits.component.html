@@ -72,7 +72,7 @@
                           <div class="th-content">
                               <div mat-sort-header>{{column}}</div>
                               <mat-form-field appearance="legacy">
-                                  <input matInput (keyup)="applyFilter(column, $event.target.value)" placeholder="Filter {{column}}">
+                                  <input [ngModel] = "getFilterValue(column)" matInput (keyup)="applyFilter(column, $event.target.value)" placeholder="Filter {{column}}">
                               </mat-form-field>
                           </div>
 
