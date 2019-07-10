@@ -103,6 +103,7 @@ export class LoansFilterComponent implements OnInit {
           filterForm[key] = this.form.controls[key].value;
         };
       });
+      this.productService.loanFilterValue = deepClone(this.form.value);
     this.router.navigate(['/home/loans',
     {
       ...filterForm,

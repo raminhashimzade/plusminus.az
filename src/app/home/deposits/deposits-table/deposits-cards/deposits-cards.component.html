@@ -73,8 +73,8 @@
             <div class="card__footer">
 
                 <a mat-raised-button
-                color="primary" routerLink="/home/deposits/compare"
-                [queryParams]="{lnID: product.lnID}"
+                color="primary"
+                href="{{product.website}}" target="_blank" rel="noopener"
                 >{{'~detailed' | translate}}</a>
 
                 <a mat-raised-button color="accent" [id]="product?.dpID"
