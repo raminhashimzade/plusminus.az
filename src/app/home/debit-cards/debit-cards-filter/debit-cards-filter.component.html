@@ -30,6 +30,16 @@
                   </mat-select>
                 </div>
 
+              <div class="banner-filter-currency-selector">
+                  <mat-select [(ngModel)]="productFilter.period" name="period">
+                    <mat-option value="12"> 1 {{'~year' | translate}}</mat-option>
+                    <mat-option value="24"> 2 {{'~year' | translate}}</mat-option>
+                    <mat-option value="36"> 3 {{'~year' | translate}}</mat-option>
+                    <mat-option value="48"> 4 {{'~year' | translate}}</mat-option>
+                    <mat-option value="60"> 5 {{'~year' | translate}}</mat-option>
+                  </mat-select>
+                </div>
+
 
               <button-toggle-group class="mb-2 button-toggle-group" >
 

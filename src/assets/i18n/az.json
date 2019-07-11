@@ -240,6 +240,7 @@
     "~newPasswordIsNotMatched": "Yeni şifrəni düzgün qeyd edin",
     "~logout": "Çıxış",
     "~withoutCollateral": "Girovsuz ve Zaminsiz",
+    "~year": "il",
 
   "~SENTRY": {
     "feedbackTitle": "Xəta baş verdi :(",

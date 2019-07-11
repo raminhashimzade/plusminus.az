@@ -9,7 +9,7 @@
    .products__table__filter {
     display: flex;
     .button-toggle-group {
-      width: calc(100% - 90px) ;
+      width: calc(100% - 180px) ;
     }
   }
 
@@ -105,19 +105,7 @@
    // background-position-x: -336px;
    }
  }
- @media (max-width: 768px) {
-   .banner-wrapper {
-  //  background-position-x: right;
-   // height: 25.75rem;
-   }
- }
- @media (max-width: 576px) {
-      .banner-wrapper {
-     //   background: var(--primary-default);
-     //   background-position-x: -462px;
-    //    background-image: none;
-      }
- }
+
 
  @media (max-width: 768px) {
     .banner-wrapper {
@@ -139,4 +127,13 @@
         }
     }
  }
+ @media (max-width: 576px) {
+  .products__table__filter {
+    flex-wrap: wrap;
+    .button-toggle-group {
+      width: 100% ;
+      margin-top: 10px;
+    }
+  }
+}
 

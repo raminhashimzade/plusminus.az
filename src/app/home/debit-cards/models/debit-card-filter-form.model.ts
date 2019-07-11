@@ -4,4 +4,5 @@ export class  DebitCardFilterForm {
     withCashBack = false;
     comissionCash = true;
     currencyCode = 'AZN';
+    period = '12';
  }

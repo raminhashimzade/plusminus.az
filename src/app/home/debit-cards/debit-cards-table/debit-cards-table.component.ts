@@ -73,6 +73,7 @@ export class DebitCardsTableComponent implements OnInit {
           withMiles: res['withMiles'] || false,
           withDepositRate: res['withDepositRate'] || false,
           comissionCash: res['comissionCash'] || true,
+          period: res['period'] || 12,
         } as DebitCardFilterForm;
         const scrollIntoView =  res['scrollIntoView'] === 'true'
         this.getListDebitCardGroups(formValue, scrollIntoView);

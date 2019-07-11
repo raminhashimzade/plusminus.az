@@ -27,23 +27,24 @@
                         </div>
                       </th>
 
-                      <th  [orderByColumn]="'loanName'" >
-                          <div class="th-content">
-                              {{'~loanName' | translate}}
-                              <!-- <div class="tableSorting">
-                                  <span class="tableSorting__arrow --top">
-                                     <i class="fas fa-caret-down"></i>
-                                    </span>
-                                    <span class="tableSorting__arrow --down">
-                                      <i class="fas fa-caret-down"></i>
-                                    </span>
-                               </div> -->
-                          </div>
-                      </th>
 
                       <th [orderByColumn]="'minRate'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
                         <div class="th-content" >
                             {{'~effectiveRate' | translate | titlecase}}
+                            <div class="tableSorting">
+                                <span class="tableSorting__arrow --top">
+                                   <i class="fas fa-caret-down"></i>
+                                  </span>
+                                  <span class="tableSorting__arrow --down">
+                                    <i class="fas fa-caret-down"></i>
+                                  </span>
+                             </div>
+                        </div>
+                      </th>
+
+                      <th [orderByColumn]="'minPeriod'"  [sortState] = "sortState" (sortChange)="onSortChange($event)">
+                        <div class="th-content" >
+                            {{'~period' | translate | titlecase}}
                             <div class="tableSorting">
                                 <span class="tableSorting__arrow --top">
                                    <i class="fas fa-caret-down"></i>
@@ -124,11 +125,7 @@
 
                               </td>
 
-                              <td>
-                                <div class="td-content">
-                                    {{product?.loanName | valueTranslate}}
-                                </div>
-                              </td>
+
 
                               <td>
                                 <div class="td-content">
@@ -151,6 +148,31 @@
                                 </div>
                               </td>
 
+
+                              <td>
+                                  <div class="td-content --period">
+                                      <div>
+                                        <ng-container *ngIf="product.minPeriod && product.maxPeriod">
+                                            {{product.minPeriod | number:'':'fr-FR' }} -
+                                            {{product.maxPeriod | number:'':'fr-FR'}}
+                                            {{'~month' | translate}}
+                                        </ng-container>
+
+                                        <ng-container *ngIf="product.minPeriod && !product.maxPeriod">
+                                            {{product.minPeriod | number:'':'fr-FR' }}
+                                           {{'~month' | translate}}
+                                        </ng-container>
+
+                                        <ng-container *ngIf="!product.minPeriod && product.maxPeriod">
+                                            {{product.maxPeriod | number:'':'fr-FR' }}
+                                            {{'~month' | translate}}
+                                        </ng-container>
+
+                                        </div>
+                                  </div>
+                                </td>
+
+
                               <td>
                                 <div class="td-content --amount">
                                     <div>
@@ -167,25 +189,6 @@
                                       <ng-container *ngIf="product.minAmount && !product.maxAmount">
                                           <span >{{product.minAmount | number:'':'fr-FR'}}</span> <span>{{product.currencyCode}}</span>
                                       </ng-container>
-
-                                         <br class="d-none d-sm-block">
-                                      ( <ng-container *ngIf="product.minPeriod && product.maxPeriod">
-                                          {{product.minPeriod | number:'':'fr-FR' }} -
-                                          {{product.maxPeriod | number:'':'fr-FR'}}
-                                          {{'~month' | translate}}
-                                      </ng-container>
-
-                                      <ng-container *ngIf="product.minPeriod && !product.maxPeriod">
-                                          {{product.minPeriod | number:'':'fr-FR' }}
-                                         {{'~month' | translate}}
-                                      </ng-container>
-
-                                      <ng-container *ngIf="!product.minPeriod && product.maxPeriod">
-                                          {{product.maxPeriod | number:'':'fr-FR' }}
-                                          {{'~month' | translate}}
-                                      </ng-container>
-                                      )
-
 
                                       </div>
                                 </div>
