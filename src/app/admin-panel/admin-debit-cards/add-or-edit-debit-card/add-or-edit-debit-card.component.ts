@@ -55,6 +55,8 @@ export class AddOrEditDebitCardComponent implements OnInit {
   }
 
   onUpdate() {
+    console.log(this.form.value);
+    console.log(this.product);
     if(!this.form.valid) {return;}
     this.loading = true;
     this.productService.crudProduct(CrudCommandType.UPDATE, this.product )
@@ -68,6 +70,8 @@ export class AddOrEditDebitCardComponent implements OnInit {
     })
   }
   onAdd() {
+    console.log(this.form.value);
+    return;
     if(!this.form.valid) {return;}
     this.loading = true;
     this.productService.crudProduct(CrudCommandType.INSERT , this.product )

@@ -5,6 +5,7 @@ export interface DebitCardGroup{
   }
 
   export class DebitCard{
+    dateTime = null;
     cdID = null;
     bankID = null;
     bankName = null;
@@ -32,6 +33,7 @@ export interface DebitCardGroup{
     descriptionPD = new Value();
     cardImageId = null;
     website = null;
+    prodStatus = 1;
   }
 
   class Value {
