@@ -64,21 +64,11 @@
               </div>
 
               <div class="card__content__row__right text-ellipsis">
-                  <ng-container *ngIf="product.minMonthlyPayment && product.maxMonthlyPayment">
+                  <ng-container *ngIf="product.minMonthlyPayment">
                       {{product.minMonthlyPayment | number:'':'fr-FR' }} -
-                      {{product.maxMonthlyPayment | number:'':'fr-FR'}}
                      {{product.currencyCode | lowercase}}
                   </ng-container>
 
-                  <ng-container *ngIf="product.minMonthlyPayment && !product.maxMonthlyPayment">
-                      {{product.minMonthlyPayment | number:'':'fr-FR' }}
-                     {{product.currencyCode | lowercase}}
-                  </ng-container>
-
-                  <ng-container *ngIf="!product.minMonthlyPayment && product.maxMonthlyPayment">
-                      {{product.maxMonthlyPayment | number:'':'fr-FR' }}
-                     {{product.currencyCode | lowercase}}
-                  </ng-container>
               </div>
 
             </div>

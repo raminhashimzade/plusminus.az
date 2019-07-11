@@ -169,7 +169,24 @@
                                       </ng-container>
 
                                          <br class="d-none d-sm-block">
-                                         <span>({{product.minPeriod | number:'':'fr-FR' }} - {{product.maxPeriod | number:'':'fr-FR'}} {{'~month' | translate}})</span>
+                                      ( <ng-container *ngIf="product.minPeriod && product.maxPeriod">
+                                          {{product.minPeriod | number:'':'fr-FR' }} -
+                                          {{product.maxPeriod | number:'':'fr-FR'}}
+                                          {{'~month' | translate}}
+                                      </ng-container>
+
+                                      <ng-container *ngIf="product.minPeriod && !product.maxPeriod">
+                                          {{product.minPeriod | number:'':'fr-FR' }}
+                                         {{'~month' | translate}}
+                                      </ng-container>
+
+                                      <ng-container *ngIf="!product.minPeriod && product.maxPeriod">
+                                          {{product.maxPeriod | number:'':'fr-FR' }}
+                                          {{'~month' | translate}}
+                                      </ng-container>
+                                      )
+
+
                                       </div>
                                 </div>
                               </td>

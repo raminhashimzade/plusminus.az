@@ -26,7 +26,7 @@ export class MortgageTableComponent implements OnInit {
   sortState: SortChangeModel;
   _onDestroy$ = new Subject<void>();
   expandedGroupId: number;
-  columns = ['bankName', 'loanName', 'minRate','minAmount', 'maxAmount', 'minMonthlyPayment', 'maxMonthlyPayment', 'currencyCode'];
+  columns = ['bankName', 'loanName', 'minRate','minAmount', 'maxAmount', 'minMonthlyPayment', 'currencyCode'];
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
     private route: ActivatedRoute,

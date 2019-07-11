@@ -27,7 +27,7 @@ export class LoansTableComponent implements OnInit, OnDestroy {
   sortState: SortChangeModel;
   _onDestroy$ = new Subject<void>();
   expandedGroupId: number;z
-  columns = ['bankName', 'loanName', 'minRate','minAmount', 'maxAmount', 'minMonthlyPayment', 'maxMonthlyPayment', 'currencyCode'];
+  columns = ['bankName', 'loanName', 'minRate','minAmount', 'maxAmount', 'minMonthlyPayment', 'currencyCode'];
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
     private route: ActivatedRoute,
