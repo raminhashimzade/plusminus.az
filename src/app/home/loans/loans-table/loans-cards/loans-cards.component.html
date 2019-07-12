@@ -37,20 +37,20 @@
               <div class="card__content__row ">
                 <div class="card__content__row__left">
                   <ng-container *ngIf="product.minPeriod && product.maxPeriod && (product.minPeriod !== product.maxPeriod)">
-                    <span>{{product.minPeriod}}</span>
-                    - <span>{{product.maxPeriod}}</span> <span> {{'~month' | translate}} müddətinə </span>
+                    <b>{{product.minPeriod}}</b>
+                    - <b>{{product.maxPeriod}}</b> <b> {{'~month' | translate}} müddətinə </b>
                   </ng-container>
 
                   <ng-container *ngIf="!product.minPeriod && product.maxPeriod">
-                    <span>{{product.maxPeriod}}</span> <span> {{'~month' | translate}} müddətinə </span>
+                    <b>{{product.maxPeriod}}</b> <b> {{'~month' | translate}} müddətinə </b>
                   </ng-container>
 
                   <ng-container *ngIf="product.minPeriod && !product.maxPeriod">
-                    <span>{{product.minPeriod}}</span> <span> {{'~month' | translate}} müddətinə </span>
+                    <b>{{product.minPeriod}}</b> <b> {{'~month' | translate}} müddətinə </b>
                   </ng-container>
 
                   <ng-container *ngIf="product.minPeriod && product.maxPeriod && (product.minPeriod === product.maxPeriod)">
-                    <span>{{product.minPeriod}}</span> <span> {{'~month' | translate}} müddətinə</span>
+                    <b>{{product.minPeriod}}</b> <b> {{'~month' | translate}} müddətinə</b>
                   </ng-container>
                 </div>
 
