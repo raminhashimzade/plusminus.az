@@ -188,21 +188,10 @@
 
                               <td>
                                   <div class=" td-content" >
-                                      <ng-container *ngIf="product.minMonthlyPayment && product.maxMonthlyPayment">
-                                          {{product.minMonthlyPayment | number:'':'fr-FR'}} -
-                                          {{product.maxMonthlyPayment | number:'':'fr-FR'}}
-                                         {{product.currencyCode | lowercase}}
-                                      </ng-container>
-
-                                      <ng-container *ngIf="product.minMonthlyPayment && !product.maxMonthlyPayment">
-                                          {{product.minMonthlyPayment | number:'':'fr-FR' }}
-                                         {{product.currencyCode | lowercase}}
-                                      </ng-container>
-
-                                      <ng-container *ngIf="!product.minMonthlyPayment && product.maxMonthlyPayment">
-                                          {{product.maxMonthlyPayment  | number:'':'fr-FR'}}
-                                         {{product.currencyCode | lowercase}}
-                                      </ng-container>
+                                    <ng-container *ngIf="product.minMonthlyPayment">
+                                      {{product.minMonthlyPayment | number:'':'fr-FR' }}
+                                     {{product.currencyCode | lowercase}}
+                                  </ng-container>
 
                                       </div>
                               </td>

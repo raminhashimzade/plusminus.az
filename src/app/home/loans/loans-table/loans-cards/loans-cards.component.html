@@ -36,7 +36,22 @@
 
               <div class="card__content__row ">
                 <div class="card__content__row__left">
-                  {{product?.loanName | valueTranslate}}
+                  <ng-container *ngIf="product.minPeriod && product.maxPeriod && (product.minPeriod !== product.maxPeriod)">
+                    <span>{{product.minPeriod}}</span>
+                    - <span>{{product.maxPeriod}}</span> {{'~month' | translate}} müddətinə
+                  </ng-container>
+
+                  <ng-container *ngIf="!product.minPeriod && product.maxPeriod">
+                    <span>{{product.maxPeriod}}</span> {{'~month' | translate}} müddətinə
+                  </ng-container>
+
+                  <ng-container *ngIf="product.minPeriod && !product.maxPeriod">
+                    <span>{{product.minPeriod}}</span> <span>{{'~month' | translate}} müddətinə</span>
+                  </ng-container>
+
+                  <ng-container *ngIf="product.minPeriod && product.maxPeriod && (product.minPeriod === product.maxPeriod)">
+                    <span>{{product.minPeriod}}</span> <span>{{'~month' | translate}} müddətinə</span>
+                  </ng-container>
                 </div>
 
                 <div class="card__content__row__right text-ellipsis">
@@ -70,24 +85,6 @@
                       </ng-container>
 
                   <br class="d-none d-sm-block">
-                  <span>&nbsp; (
-                      <ng-container *ngIf="product.minPeriod && product.maxPeriod && (product.minPeriod !== product.maxPeriod)">
-                          <span>{{product.minPeriod}}</span>
-                          - <span>{{product.maxPeriod}}</span> {{'~month' | translate}}
-                        </ng-container>
-
-                        <ng-container *ngIf="!product.minPeriod && product.maxPeriod">
-                          <span>{{product.maxPeriod}}</span> {{'~month' | translate}}
-                        </ng-container>
-
-                        <ng-container *ngIf="product.minPeriod && !product.maxPeriod">
-                          <span>{{product.minPeriod}}</span> <span>{{'~month' | translate}}</span>
-                        </ng-container>
-
-                        <ng-container *ngIf="product.minPeriod && product.maxPeriod && (product.minPeriod === product.maxPeriod)">
-                          <span>{{product.minPeriod}}</span> <span>{{'~month' | translate}}</span>
-                        </ng-container>
-                    )</span>
 
                 </div>
               </div>
