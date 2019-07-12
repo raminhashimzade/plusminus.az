@@ -35,8 +35,8 @@ export class DebitCardsFilterComponent implements OnInit {
       private breakPointObserver: BreakpointObserver,
       private  productService: DebitCardService
      ) {
-    this.currCodes$ = this.sharedService.getCurrCodeList('credit-cards');
-   // this.periods$ = this.sharedService.getCurrCodeList('credit-cards');
+     this.currCodes$ = this.sharedService.getCurrCodeList('credit-cards');
+     this.periods$ = this.sharedService.getCardPeriodList('DEBET');
   }
 
   ngOnInit() {

@@ -87,6 +87,23 @@ export class SharedService {
       } as SelectType
     })
   }
+  private mapPeriodList(data: any): SelectType[] {
+    return data.map(cur => {
+      return {
+        value: cur.periodId.toString(),
+        label: cur.period
+      } as SelectType
+    })
+  }
+  getCardPeriodList(cardType: string) {
+    return this.http.post<DataResponse>('mybank/listCardPeriod', {
+      token: this.authService.getToken(),
+      cardType: cardType
+  }).pipe(
+      map(res => res && res.data && this.mapPeriodList(res.data)),
+      catchError(er => of(null))
+  );
+  }
   getPeriodCodeList(pageName: string): Observable<SelectType[]> {
     return this.http.post<DataResponse>('mybank/currCodeList', {
       token: this.authService.getToken(),
