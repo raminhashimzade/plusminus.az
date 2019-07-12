@@ -38,6 +38,11 @@
                     <mat-option value="48"> 4 {{'~year' | translate}}</mat-option>
                     <mat-option value="60"> 5 {{'~year' | translate}}</mat-option>
                   </mat-select>
+
+                  <!-- <mat-select [(ngModel)]="productFilter.period" name="period">
+                      <mat-option *ngFor="let option of periods$ | async" [value]="option.value">{{option.label}}
+                      </mat-option>
+                    </mat-select> -->
                 </div>
 
 

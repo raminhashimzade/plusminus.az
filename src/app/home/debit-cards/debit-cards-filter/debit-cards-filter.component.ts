@@ -24,6 +24,7 @@ export class DebitCardsFilterComponent implements OnInit {
   isMdSize: boolean;
   _onDestroy$ = new Subject<void>();
   currCodes$: Observable<SelectType[]>;
+  periods$: Observable<SelectType[]>;
   productFilter = new DebitCardFilterForm();
   @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
   constructor(
@@ -35,6 +36,7 @@ export class DebitCardsFilterComponent implements OnInit {
       private  productService: DebitCardService
      ) {
     this.currCodes$ = this.sharedService.getCurrCodeList('credit-cards');
+   // this.periods$ = this.sharedService.getCurrCodeList('credit-cards');
   }
 
   ngOnInit() {

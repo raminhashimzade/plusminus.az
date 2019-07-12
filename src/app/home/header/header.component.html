@@ -28,11 +28,11 @@
           <mat-menu #menu="matMenu">
             <button mat-menu-item [routerLink]="['deposits']" routerLinkActive="active" >{{ '~deposits' | translate }} </button>
             <button mat-menu-item [routerLink]="['loans']" routerLinkActive="active">{{ '~loans' | translate }}</button>
-            <button mat-menu-item [routerLink]="['credit-cards']">{{ '~credit-cards' | translate }}</button>
-            <button mat-menu-item  [disabled]="true" [routerLink]="['debit-cards']">{{ '~debit-cards' | translate }}</button>
+            <button mat-menu-item  [disabled]="true"  [routerLink]="['credit-cards']">{{ '~credit-cards' | translate }}</button>
+            <button mat-menu-item [routerLink]="['debit-cards']">{{ '~debit-cards' | translate }}</button>
             <button mat-menu-item [routerLink]="['mortgage']">{{ '~mortgage' | translate }}</button>
             <button mat-menu-item [routerLink]="['exchange-rates']" routerLinkActive="active" >{{ '~exchange-rates' | translate }}</button>
-            <button mat-menu-item [disabled]="true" [routerLink]="['bank-admin/customers']" routerLinkActive="active" >{{ '~insurance' | translate }}</button>
+            <button mat-menu-item [disabled]="true" [routerLink]="['insurance']" routerLinkActive="active" >{{ '~insurance' | translate }}</button>
             <button mat-menu-item [routerLink]="['bank-admin/customers']" routerLinkActive="active" >{{ '~forBanks' | translate }}</button>
           </mat-menu>
         </div>

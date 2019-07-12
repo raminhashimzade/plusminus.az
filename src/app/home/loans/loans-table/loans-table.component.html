@@ -177,17 +177,9 @@
                                 <div class="td-content --amount">
                                     <div>
 
-                                      <ng-container *ngIf="product.minAmount && product.maxAmount">
+                                      <ng-container *ngIf="product.minAmount">
                                           <span >{{product.minAmount | number:'':'fr-FR'}}</span>
-                                        - <span >{{product.maxAmount | number:'':'fr-FR'}}</span>  {{product.currencyCode | lowercase}}
-                                      </ng-container>
-
-                                      <ng-container *ngIf="!product.minAmount && product.maxAmount">
-                                         <span >{{product.maxAmount | number:'':'fr-FR'}}</span>  {{product.currencyCode | lowercase}}
-                                      </ng-container>
-
-                                      <ng-container *ngIf="product.minAmount && !product.maxAmount">
-                                          <span >{{product.minAmount | number:'':'fr-FR'}}</span> <span>{{product.currencyCode}}</span>
+                                           {{product.currencyCode | lowercase}}
                                       </ng-container>
 
                                       </div>

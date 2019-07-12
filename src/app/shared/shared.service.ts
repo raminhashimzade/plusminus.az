@@ -87,6 +87,16 @@ export class SharedService {
       } as SelectType
     })
   }
+  getPeriodCodeList(pageName: string): Observable<SelectType[]> {
+    return this.http.post<DataResponse>('mybank/currCodeList', {
+      token: this.authService.getToken(),
+      pageName: pageName
+  }).pipe(
+      map(res => res && res.data && this.mapCurrCodeList(res.data[0])),
+      catchError(er => of(null))
+  );
+  }
+
   createNotification(message: string, actionMessage: string, type: string,
     duration = 5000,
     verticalPosition: MatSnackBarVerticalPosition = 'bottom',
