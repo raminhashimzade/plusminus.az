@@ -98,7 +98,6 @@ export class DepositsFilterComponent implements OnInit {
 
   }
   searchDeposits() {
-    console.log('search');
  //   if (!this.form.valid) {return;}
     const filterForm = {};
       Object.keys(this.form.value).forEach(key => {

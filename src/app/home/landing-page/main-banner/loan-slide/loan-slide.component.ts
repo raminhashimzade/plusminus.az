@@ -29,7 +29,7 @@ export class LoanSlideComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
   ngAfterViewInit() {
-    this.startTypedJs();
+   // this.startTypedJs();
   }
   startTypedJs() {
     const options = {
@@ -47,6 +47,6 @@ export class LoanSlideComponent implements OnInit, AfterViewInit, OnDestroy {
     this.typed = new Typed("#slideLoanShortInfo", options);
   }
   ngOnDestroy() {
-    this.typed.destroy();
+ //   this.typed.destroy();
   }
 }

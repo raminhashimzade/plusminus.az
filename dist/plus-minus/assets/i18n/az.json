@@ -241,6 +241,9 @@
     "~logout": "Çıxış",
     "~withoutCollateral": "Girovsuz ve Zaminsiz",
     "~year": "il",
+    "~cash": "nağd",
+    "~typeLoanAmount": "Kredit məbləği qeyd edin",
+    "~typeLoanPeriod": "Kredit müddəti qeyd edin",
 
   "~SENTRY": {
     "feedbackTitle": "Xəta baş verdi :(",

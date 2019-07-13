@@ -12,7 +12,7 @@
     .component__content {
         flex: 1;
        // width: calc(100% - 90px);
-        overflow: hidden;
+        overflow-x: auto;
     }
     .component__pagination {
         width: 48px;
@@ -40,4 +40,25 @@
           //  background-image: linear-gradient(90deg,rgba(235,239,240,0),#ebeff0);
         }
     }
+}
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+    border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 9px;
+    height: 0px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.5);
+	background-color: lightgray;
 }
