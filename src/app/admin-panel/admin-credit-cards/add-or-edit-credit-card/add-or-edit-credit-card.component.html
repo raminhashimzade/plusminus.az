@@ -44,6 +44,17 @@
             <input matInput disabled placeholder="{{'~bankName' | translate}}" required  name="bankName"  [(ngModel)]="creditCard.bankName">
           </mat-form-field>
 
+          <mat-form-field class="table-edit__inputs__field">
+            <mat-label>{{'~cardSystem'}}</mat-label>
+            <mat-select  required  name="cardSystem"  [(ngModel)]="creditCard.cardSystem" required>
+              <mat-option value="MASTER"> MASTER </mat-option>
+              <mat-option value="VISA"> VISA </mat-option>
+              <mat-option value="MASTER/VISA"> MASTER/VISA </mat-option>
+              <mat-option value="AMERICAN"> AMERICAN </mat-option>
+              <mat-option value="UNION"> UNION </mat-option>
+            </mat-select>
+          </mat-form-field>
+
 
            <fieldset ngModelGroup="cardName">
 
