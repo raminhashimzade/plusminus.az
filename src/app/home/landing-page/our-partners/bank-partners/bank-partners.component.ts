@@ -17,7 +17,11 @@ export class BankPartnersComponent implements OnInit {
   constructor(private homeService: HomeService) {
     this.partners$ = this.homeService.getBankList(true)
                       .pipe(map((banks: BankPartner[]) =>
-                       banks && banks.filter(bank => bank.bankID === 1 || bank.bankID === 12 || bank.bankID === 16) ));
+                       banks && banks.filter(bank => bank.bankID === 1 ||
+                         bank.bankID === 12 ||
+                         bank.bankID === 16 ||
+                         bank.bankID === 8
+                         ) ));
   }
 
   ngOnInit() {
