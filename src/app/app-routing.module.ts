@@ -6,6 +6,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { UnsupportedBrowserComponent } from './unsupported-browser/unsupported-browser.component';
 import { AppPreloadingStrategy } from './app-preloading';
 import { ApplicationCountdownComponent } from './application-countdown/application-countdown.component';
+import { getBaseUrl } from './app.utils';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

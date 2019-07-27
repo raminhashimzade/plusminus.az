@@ -11,7 +11,8 @@
     "init": "git add . && git reset --hard HEAD && git fetch origin && git pull origin",
     "build:stats": "ng build --prod --extraWebpackConfig=webpack.extra.js --stats-json && cd dist && npm run analyze",
     "analyze": "webpack-bundle-analyzer dist/plus-minus/stats.json",
-    "build:test": "ng build --prod --extraWebpackConfig=webpack.extra.js --configuration=test"
+    "build:test": "ng build --prod --extraWebpackConfig=webpack.extra.js --configuration=test",
+    "http-server": "http-server ./dist/plus-minus -p 8080 -c-1 https://test.plusminus.az"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +27,7 @@
     "@angular/platform-browser": "~8.0.2",
     "@angular/platform-browser-dynamic": "~8.0.2",
     "@angular/router": "~8.0.2",
+    "@angular/service-worker": "~8.0.2",
     "@auth0/angular-jwt": "^2.1.1",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",

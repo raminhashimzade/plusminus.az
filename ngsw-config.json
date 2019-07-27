@@ -1,0 +1,58 @@
+{
+  "$schema": "./node_modules/@angular/service-worker/config/schema.json",
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    }, {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "getSessionId",
+      "urls": [
+        "/mybank/getSessionId",
+        "/assets/i18n/*"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "timeout":"10s",
+        "maxAge": "1d",
+        "maxSize": 100
+      }
+    },
+    {
+      "name": "main-page",
+      "urls": [
+        "/mybank/currBestRateList",
+        "/mybank/bestOffers",
+        "/mybank/banklist",
+        "https://sentry.io/api/1493555/store/?sentry_key=a8e86152f6ed4e25bd846779131e5560&sentry_version=7"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "timeout":"10s",
+        "maxAge": "1d",
+        "maxSize": 100
+      }
+    }
+  ]
+}

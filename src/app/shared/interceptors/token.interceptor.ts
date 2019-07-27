@@ -10,7 +10,7 @@ export class TokenInterceptor implements HttpInterceptor {
     fetchToken$ = this.authService.fetchToken().pipe(
       shareReplay(1),
       catchError(er => {
-        this.router.navigateByUrl('error-page');
+     //   this.router.navigateByUrl('error-page');
          return of(er);
       })
       );
