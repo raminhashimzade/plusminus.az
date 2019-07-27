@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, PLATFORM_ID, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AdminPanelService } from '../admin-panel.service';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'admin-navigation',
@@ -16,7 +17,8 @@ export class AdminNavigationComponent implements OnInit {
   constructor(
     private translateService: TranslateService,
      private adminPanelService: AdminPanelService,
-     private router: Router
+     private router: Router,
+     @Inject(PLATFORM_ID) private platformId: Object
      ) {
     this.currentLang = this.translateService.getDefaultLang();
   }
@@ -24,6 +26,7 @@ export class AdminNavigationComponent implements OnInit {
   ngOnInit() {
   }
   goToMainPage() {
+    if (!isPlatformBrowser(this.platformId)) {return;}
     let root = document.documentElement;
     root.style.setProperty('--primary-default', '#20a62c');
     root.style.setProperty('--primary-dark', '#20a62c');
@@ -41,6 +44,7 @@ export class AdminNavigationComponent implements OnInit {
    createNotification(`${this.translateService.instant('~fullScreenExitMsg')}`, 'Full screen', 'success', 5000, 'top', 'center');
   }
   onThemeChange() {
+    if (!isPlatformBrowser(this.platformId)) {return;}
     let root = document.documentElement;
 
     if (this.previousTheme=== 'purple') {

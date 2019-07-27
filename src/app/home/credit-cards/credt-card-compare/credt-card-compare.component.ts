@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { CreditCard } from '../models/credit-card.model';
 import { CreditCardService } from '../credit-card.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -8,6 +8,7 @@ import { finalize, map, switchMap, take } from 'rxjs/operators';
 import { isMobileSize } from 'src/app/app.utils';
 import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'credt-card-compare',
@@ -56,7 +57,8 @@ export class CredtCardCompareComponent implements OnInit {
   constructor(private productService: CreditCardService,
     private router: Router, private route: ActivatedRoute,
     private dialog: MatDialog,
-    public translateService: TranslateService
+    public translateService: TranslateService,
+    @Inject(PLATFORM_ID) private platformId: Object
     ) { }
 
   ngOnInit() {
@@ -119,6 +121,7 @@ export class CredtCardCompareComponent implements OnInit {
     return !(this.pageIndex + this.itemsPerTable >= this.products.length);
   }
   setItemsPerTable() {
+    if (!isPlatformBrowser(this.platformId)) {return;}
     const width  = window.innerWidth
     || document.documentElement.clientWidth
     || document.body.clientWidth;

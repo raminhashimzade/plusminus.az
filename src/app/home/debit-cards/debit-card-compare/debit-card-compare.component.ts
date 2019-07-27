@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { DebitCard } from '../models/debit-card.model';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 import { DebitCardService } from '../debit-card.service';
@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { finalize, map, switchMap, take } from 'rxjs/operators';
 import { isMobileSize } from 'src/app/app.utils';
 import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'debit-card-compare',
@@ -49,7 +50,8 @@ export class DebitCardCompareComponent implements OnInit {
   constructor(private productService: DebitCardService,
     private router: Router, private route: ActivatedRoute,
     private dialog: MatDialog,
-    public translateService: TranslateService
+    public translateService: TranslateService,
+    @Inject(PLATFORM_ID) private platformId: Object
     ) { }
 
   ngOnInit() {
@@ -112,6 +114,7 @@ export class DebitCardCompareComponent implements OnInit {
     return !(this.pageIndex + this.itemsPerTable >= this.products.length);
   }
   setItemsPerTable() {
+    if (!isPlatformBrowser(this.platformId)) {return; }
     const width  = window.innerWidth
     || document.documentElement.clientWidth
     || document.body.clientWidth;

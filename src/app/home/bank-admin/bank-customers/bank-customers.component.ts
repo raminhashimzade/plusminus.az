@@ -1,5 +1,5 @@
 import { SharedService } from './../../../shared/shared.service';
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, TemplateRef, PLATFORM_ID, Inject } from '@angular/core';
 import { BankAdminService } from '../bank-admin.service';
 import { CustomerOrder } from '../models/customer-order.model';
 import { finalize } from 'rxjs/operators';
@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from 'src/app/admin-panel/shared/components/confirm-dialog/confirm-dialog.component';
 import { OrderStats } from '../models/order-stats.model';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'bank-customers',
@@ -31,7 +32,8 @@ export class BankCustomersComponent implements OnInit {
     private titleService: Title,
     private translateService: TranslateService,
     private sharedService: SharedService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    @Inject(PLATFORM_ID) private platformId: Object,
     ) {
       this.titleService.setTitle(this.translateService.instant('~forBanks'));
     }
@@ -104,6 +106,7 @@ export class BankCustomersComponent implements OnInit {
   }
   onNextRateScroll() {
     try {
+      if (!isPlatformBrowser(this.platformId)) {return;}
       const el = document.getElementById('customers-table');
       el.scrollBy({
       left: 200,
@@ -117,6 +120,7 @@ export class BankCustomersComponent implements OnInit {
   }
   onPrevRateScroll() {
     try {
+      if (!isPlatformBrowser(this.platformId)) {return;}
       const el = document.getElementById('customers-table');
       el.scrollBy({
       left: -200,

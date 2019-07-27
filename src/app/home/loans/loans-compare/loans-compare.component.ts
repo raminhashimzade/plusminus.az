@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { LoansService } from '../loans.service';
 import { map, switchMap, finalize, take, tap } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'loans-compare',
   templateUrl: './loans-compare.component.html',
@@ -48,7 +49,8 @@ export class LoansCompareComponent implements OnInit {
   constructor(private loanService: LoansService,
     private router: Router, private route: ActivatedRoute,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    @Inject(PLATFORM_ID) private platformId: Object
     ) { }
 
   ngOnInit() {
@@ -111,6 +113,7 @@ export class LoansCompareComponent implements OnInit {
     return !(this.pageIndex + this.itemsPerTable >= this.products.length);
   }
   setItemsPerTable() {
+    if (!isPlatformBrowser(this.platformId)) {return;}
     const width  = window.innerWidth
     || document.documentElement.clientWidth
     || document.body.clientWidth;

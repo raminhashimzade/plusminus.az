@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, HostListener, ChangeDetectionStrategy, ChangeDetectorRef, Inject, PLATFORM_ID } from '@angular/core';
 import { FavorableRatePreview } from '../landing-page/favorable-rates-preview/favorable-rate-preview.model';
 import { ExchangeRatesService } from './exchange-rates.service';
 import { ExchangeRate, Rate } from './models/exchange-rate.model';
@@ -6,6 +6,7 @@ import { isMobileSize } from 'src/app/app.utils';
 import { finalize } from 'rxjs/operators';
 import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'exchange-rates',
@@ -25,7 +26,8 @@ export class ExchangeRatesComponent implements OnInit {
     private exchangeRatesService: ExchangeRatesService,
     private changeRef: ChangeDetectorRef,
     private titlseService: Title,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    @Inject(PLATFORM_ID) private platformId: Object
     ) {
       this.titlseService.setTitle(this.translateService.instant('~exchange-rates'));
     }
@@ -97,6 +99,7 @@ export class ExchangeRatesComponent implements OnInit {
   }
   onNextRateScroll() {
     try {
+      if (!isPlatformBrowser(this.platformId)) {return;}
       const el = document.getElementsByClassName('exchange-rates-full__table')[0];
       el.scrollBy({
       left: 200,

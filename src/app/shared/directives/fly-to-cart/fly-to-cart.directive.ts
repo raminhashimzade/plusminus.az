@@ -1,4 +1,5 @@
-import { Directive, OnInit, Input, HostListener, ElementRef } from '@angular/core';
+import { Directive, OnInit, Input, HostListener, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
   selector: '[fly-to-cart]'
@@ -6,7 +7,9 @@ import { Directive, OnInit, Input, HostListener, ElementRef } from '@angular/cor
 export class FlyToCartDirective implements OnInit{
   @Input() id: number;
   @HostListener('click') click() { this.onClick()}
-  constructor(private element: ElementRef) { }
+  constructor(private element: ElementRef,
+    @Inject(PLATFORM_ID) private platformId: Object
+    ) { }
   ngOnInit() {
   }
   onClick() {
@@ -32,6 +35,7 @@ export class FlyToCartDirective implements OnInit{
     imgClone.style.left = (this.element.nativeElement as HTMLElement).getBoundingClientRect().left + 'px';
     imgClone.style.opacity = '0.7';
     imgClone.style.zIndex = '9999';
+    if (!isPlatformBrowser(this.platformId)) {return;}
     const htmlEl = document.getElementById('plus-minus');
     htmlEl.append(imgClone);
 

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { DebitCardService } from 'src/app/home/debit-cards/debit-card.service';
 import { DebitCard } from 'src/app/home/debit-cards/models/debit-card.model';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'debit-card-compare-preview',
@@ -14,7 +15,11 @@ export class DebitCardComparePreviewComponent implements OnInit {
 
   products$: Observable<DebitCard[]>;
   showMenu: boolean;
- constructor(private productService: DebitCardService, private router: Router) {
+ constructor(
+   private productService: DebitCardService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+    ) {
    this.products$ = this.productService.getSavedCompareProductList();
  }
 
@@ -31,6 +36,7 @@ export class DebitCardComparePreviewComponent implements OnInit {
      .pipe(map((products: DebitCard[]) => !!products.find(l => l.cdID=== id)));
  }
  onCompare() {
+  if (!isPlatformBrowser(this.platformId)) {return;}
    const el = document.getElementById('header__depositCompare__preview');
    if ( el) { el.style.display  = 'none'; }
    this.router.navigateByUrl('/home/debit-cards/compare');

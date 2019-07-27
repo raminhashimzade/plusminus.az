@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { DepositService } from '../deposit.service';
 import { DepositProduct } from '../models/deposit-group.model';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DocumentDialogComponent } from 'src/app/shared/components/document-dialog/document-dialog.component';
 import { TranslateService } from '@ngx-translate/core';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { isPlatformBrowser } from '@angular/common';
 declare var Swiper;
 @Component({
   selector: 'deposits-compare',
@@ -50,7 +51,8 @@ export class DepositsCompareComponent implements OnInit {
   constructor(private depositService: DepositService,
     private router: Router, private route: ActivatedRoute,
     private dialog: MatDialog,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    @Inject(PLATFORM_ID) private platformId: Object
     ) { }
 
   ngOnInit() {
@@ -113,6 +115,7 @@ export class DepositsCompareComponent implements OnInit {
     return !(this.pageIndex + this.itemsPerTable >= this.products.length);
   }
   setItemsPerTable() {
+    if (!isPlatformBrowser(this.platformId)) {return; }
     const width  = window.innerWidth
     || document.documentElement.clientWidth
     || document.body.clientWidth;

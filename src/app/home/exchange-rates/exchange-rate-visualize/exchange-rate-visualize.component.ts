@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, Inject, PLATFORM_ID } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { parseMomentToString, deepClone } from 'src/app/app.utils';
 import { ExchangeRatesService } from '../exchange-rates.service';
@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
+import { isPlatformBrowser } from '@angular/common';
 declare var google: any;
 @Component({
   selector: 'exchange-rate-visualize',
@@ -25,7 +26,8 @@ export class ExchangeRateVisualizeComponent implements OnInit {
   constructor(private exchangeRateService: ExchangeRatesService,
      private changeRef: ChangeDetectorRef,
      private sharedService: SharedService,
-     private translateService: TranslateService
+     private translateService: TranslateService,
+     @Inject(PLATFORM_ID) private platformId: Object
      ) {
       this.currCodes$ = this.sharedService.getCurrCodeList('exchange-rates');
      }
@@ -51,6 +53,7 @@ export class ExchangeRateVisualizeComponent implements OnInit {
     this.loading = false;
     this.changeRef.detectChanges();
     setTimeout(() => {
+      if (!isPlatformBrowser(this.platformId)) {return;}
       const chart = new google.charts.Line(document.getElementById('linechart_material'));
       chart.draw(data, google.charts.Line.convertOptions(options));
       this.changeRef.detectChanges();

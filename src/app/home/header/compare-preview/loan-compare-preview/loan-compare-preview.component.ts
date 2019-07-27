@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { LoansService } from '../../../loans/loans.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoanRequestDialogComponent } from '../../../loans/loan-request-dialog/loan-request-dialog.component';
 import { isMobileSize } from 'src/app/app.utils';
 import { LoanProduct } from '../../../loans/models/loanGroup.model';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'loan-compare-preview',
@@ -15,7 +16,9 @@ import { LoanProduct } from '../../../loans/models/loanGroup.model';
 export class LoanComparePreviewComponent implements OnInit {
   products$: Observable<LoanProduct[]>;
    showMenu: boolean;
-  constructor(private loansService: LoansService, private router: Router, private dialog: MatDialog) {
+  constructor(private loansService: LoansService,
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router, private dialog: MatDialog) {
     this.products$ = this.loansService.getSavedCompareProductList();
   }
 
@@ -25,6 +28,7 @@ export class LoanComparePreviewComponent implements OnInit {
     this.loansService.removeProductFromCompare(loan);
   }
   onCompare() {
+    if (!isPlatformBrowser(this.platformId)) {return;}
     const el = document.getElementById('header__loanCompare__preview');
     if ( el) { el.style.display  = 'none'; }
     this.router.navigateByUrl('/home/loans/compare');

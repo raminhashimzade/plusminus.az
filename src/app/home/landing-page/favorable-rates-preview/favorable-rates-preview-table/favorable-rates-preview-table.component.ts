@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy, HostListener, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, HostListener, ChangeDetectorRef, Inject, PLATFORM_ID } from '@angular/core';
 import { FavorableRatePreview } from '../favorable-rate-preview.model';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'favorable-rates-preview-table',
@@ -14,11 +15,14 @@ export class FavorableRatesPreviewTableComponent implements OnInit {
     this.onWindowResize();
     this.changeRef.detectChanges();
    }
-  constructor(private changeRef: ChangeDetectorRef) { }
+  constructor(private changeRef: ChangeDetectorRef,
+    @Inject(PLATFORM_ID) private platformId: Object
+    ) { }
 
   ngOnInit() {
   }
   get showThead(): boolean {
+    if (!isPlatformBrowser(this.platformId)) {return; }
     console.log('calc th');
     const width  = window.innerWidth
     || document.documentElement.clientWidth
