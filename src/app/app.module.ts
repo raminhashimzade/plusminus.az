@@ -46,7 +46,7 @@ import { SentryErrorHandler } from './sentry-error-handler';
 import { BankAdminSettingsDropdownComponent } from './home/header/bank-admin-settings-dropdown/bank-admin-settings-dropdown.component';
 import { ApplicationCountdownComponent } from './application-countdown/application-countdown.component';
 import { ImgSrcPipeModule } from './shared/pipes/img-src-pipe.module';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { CustomReuseStrategy } from './custom-router-reuse-strategy';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -71,7 +71,7 @@ import { environment } from '../environments/environment';
     ApplicationCountdownComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -95,6 +95,7 @@ import { environment } from '../environments/environment';
       }
   }),
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    RouterModule,
   ],
   providers: [
     TokenResolver,
