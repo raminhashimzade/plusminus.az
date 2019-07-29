@@ -26,7 +26,7 @@ export class CreditCardsFilterComponent implements OnInit {
   _onDestroy$ = new Subject<void>();
   currCodes$: Observable<SelectType[]>;
   creditCardFilter = new CreditCardFilterForm();
-  @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
+  @HostListener('window:resize') resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
       private sharedService: SharedService,

@@ -26,7 +26,7 @@ export class DebitCardsFilterComponent implements OnInit {
   currCodes$: Observable<SelectType[]>;
   periods$: Observable<SelectType[]>;
   productFilter = new DebitCardFilterForm();
-  @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
+  @HostListener('window:resize') resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
       private sharedService: SharedService,

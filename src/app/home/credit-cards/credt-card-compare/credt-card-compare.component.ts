@@ -52,7 +52,7 @@ export class CredtCardCompareComponent implements OnInit {
       clickable: true,
     },
   };
-  @HostListener('window:resize', ['$event']) resize() { this.buildView()}
+  @HostListener('window:resize') resize() { this.buildView()}
 
   constructor(private productService: CreditCardService,
     private router: Router, private route: ActivatedRoute,

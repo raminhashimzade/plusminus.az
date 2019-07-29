@@ -28,7 +28,7 @@ export class UploadInputComponent implements OnInit {
 
   ngOnInit() {
   }
-  onLoaded(e) {
+  onLoaded() {
     console.log('loaded')
    this.loaded = true;
   }
@@ -49,7 +49,7 @@ export class UploadInputComponent implements OnInit {
       dialogRef.close();
     });
   }
-  onRemoveFile(id: number) {
+  onRemoveFile(id: string) {
     this.imgId = undefined;
     this.adminPanelService
       .removeFile(id)

@@ -44,7 +44,7 @@ export class LoansCompareComponent implements OnInit {
       clickable: true,
     },
   };
-  @HostListener('window:resize', ['$event']) resize() { this.buildView()}
+  @HostListener('window:resize') resize() { this.buildView()}
 
   constructor(private loanService: LoansService,
     private router: Router, private route: ActivatedRoute,

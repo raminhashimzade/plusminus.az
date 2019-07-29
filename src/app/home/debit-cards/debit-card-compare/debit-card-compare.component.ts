@@ -45,7 +45,7 @@ export class DebitCardCompareComponent implements OnInit {
       clickable: true,
     },
   };
-  @HostListener('window:resize', ['$event']) resize() { this.buildView()}
+  @HostListener('window:resize') resize() { this.buildView()}
 
   constructor(private productService: DebitCardService,
     private router: Router, private route: ActivatedRoute,

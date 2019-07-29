@@ -31,7 +31,7 @@ export class LoansFilterComponent implements OnInit {
   productFilter = new LoanFilterForm();
   slideChange$ = new Subject<number>();
   loading$: Observable<boolean>;
-  @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
+  @HostListener('window:resize') resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
       private productService: LoansService,

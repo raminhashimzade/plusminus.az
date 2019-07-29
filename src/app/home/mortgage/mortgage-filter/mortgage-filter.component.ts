@@ -24,7 +24,7 @@ export class MortgageFilterComponent implements OnInit {
   isMdSize: boolean;
   _onDestroy$ = new Subject<void>();
   currCodes$: Observable<SelectType[]>
-  @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
+  @HostListener('window:resize') resize() { this.updateForLayoutChange() }
   constructor(
       private translateService: TranslateService,
       private loanService: LoansService,

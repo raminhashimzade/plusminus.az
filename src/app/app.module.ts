@@ -49,6 +49,7 @@ import { ImgSrcPipeModule } from './shared/pipes/img-src-pipe.module';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { CustomReuseStrategy } from './custom-router-reuse-strategy';
 import { environment } from '../environments/environment';
+import { AppShellComponent } from './app-shell/app-shell.component';
 
 
 @NgModule({
@@ -80,7 +81,6 @@ import { environment } from '../environments/environment';
     MatMenuModule,
     MatBadgeModule,
     MatIconModule,
-
 
     FormsModule,
     ValueTranslateModule,

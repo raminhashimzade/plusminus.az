@@ -6,7 +6,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./application-countdown.component.scss']
 })
 export class ApplicationCountdownComponent implements OnInit {
-  countdown: Object;
+  countdown: any;
    constructor() { }
 
    ngOnInit() {

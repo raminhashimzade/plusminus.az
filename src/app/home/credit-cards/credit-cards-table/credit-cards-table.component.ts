@@ -25,7 +25,7 @@ export class CreditCardsTableComponent implements OnInit {
   sortState: SortChangeModel;
   _onDestroy$ = new Subject<void>();
   expandedGroupId: number;
-  @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
+  @HostListener('window:resize') resize() { this.updateForLayoutChange() }
   constructor(
     private route: ActivatedRoute,
     private productService: CreditCardService,

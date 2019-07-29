@@ -45,7 +45,7 @@ export class AdminPanelService {
       panelClass: [`snackbar-${type}`]
     });
   }
-  removeFile(id: number): Observable<any> {
+  removeFile(id: string): Observable<any> {
     return this.http.post('mybank/crud/removeFile', {
       token: this.authService.getToken(),
       adminToken: this.getToken(),

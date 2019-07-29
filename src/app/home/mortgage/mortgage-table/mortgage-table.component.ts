@@ -27,7 +27,7 @@ export class MortgageTableComponent implements OnInit {
   _onDestroy$ = new Subject<void>();
   expandedGroupId: number;
   columns = ['bankName', 'loanName', 'minRate','minAmount', 'maxAmount', 'minMonthlyPayment', 'currencyCode'];
-  @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
+  @HostListener('window:resize') resize() { this.updateForLayoutChange() }
   constructor(
     private route: ActivatedRoute,
     private loanService: LoansService,

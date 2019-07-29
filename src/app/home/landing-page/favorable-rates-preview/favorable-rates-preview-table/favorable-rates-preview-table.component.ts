@@ -11,7 +11,7 @@ import { isPlatformBrowser } from '@angular/common';
 export class FavorableRatesPreviewTableComponent implements OnInit {
   @Input() currency: FavorableRatePreview;
   @Input() index: number;
-  @HostListener('window:resize', ['$event']) resize() {
+  @HostListener('window:resize') resize() {
     this.onWindowResize();
     this.changeRef.detectChanges();
    }

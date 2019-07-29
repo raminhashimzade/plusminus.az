@@ -26,7 +26,7 @@ export class DepositsTableComponent implements OnInit, OnDestroy {
   _onDestroy$ = new Subject<void>();
   expandedGroupId: number;
   columns = ['bankName', 'depositName', 'minRate', 'liqType', 'income', 'currencyCode', 'income'];
-  @HostListener('window:resize', ['$event']) resize() { this.updateForLayoutChange() }
+  @HostListener('window:resize') resize() { this.updateForLayoutChange() }
   constructor(
     private route: ActivatedRoute,
     private depositService: DepositService,
