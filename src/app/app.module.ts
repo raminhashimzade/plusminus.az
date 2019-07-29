@@ -48,7 +48,6 @@ import { ApplicationCountdownComponent } from './application-countdown/applicati
 import { ImgSrcPipeModule } from './shared/pipes/img-src-pipe.module';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { CustomReuseStrategy } from './custom-router-reuse-strategy';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 
@@ -94,20 +93,19 @@ import { environment } from '../environments/environment';
         deps: [HttpClient]
       }
   }),
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     RouterModule,
   ],
   providers: [
     TokenResolver,
     AppPreloadingStrategy,
-    !environment.testMode ? { provide: ErrorHandler, useClass: SentryErrorHandler } : [],
+   { provide: ErrorHandler, useClass: SentryErrorHandler},
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: APIInterceptor, multi: true},
    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
-    { provide: LOCALE_ID,
-      deps: [TranslateService],
-      useFactory: (service) => service.getDefaultLang()
-    },
+    // { provide: LOCALE_ID,
+    //   deps: [TranslateService],
+    //   useFactory: (service) => service.getDefaultLang()
+    // },
     { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
 
   ],

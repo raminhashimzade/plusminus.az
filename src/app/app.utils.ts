@@ -133,7 +133,8 @@ export function loadExternalScripts(url: string) {
  }
 
  export function isTestMode() {
- return (window.location.origin.includes('test.plusminus.az') || window.location.origin.includes('localhost:4200') )
+
+  return (location.origin.includes('test.plusminus.az') || location.origin.includes('localhost:4200') )
  }
 
  export enum Key {
