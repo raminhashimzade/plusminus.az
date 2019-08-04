@@ -1,4 +1,3 @@
-import { LoanRequestDialogModule } from './home/loans/loan-request-dialog/loan-request-dialog.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID, ErrorHandler } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -40,8 +39,7 @@ import { SupportedBrowserCardComponent } from './unsupported-browser/supported-b
 import { DebitCardComparePreviewComponent } from './home/header/compare-preview/debit-card-compare-preview/debit-card-compare-preview.component';
 import { CreditCardComparePreviewComponent } from './home/header/compare-preview/credit-card-compare-preview/credit-card-compare-preview.component';
 import { TokenInterceptor } from './shared/interceptors/token.interceptor';
-import { MatButtonModule, MatMenuModule, MatBadgeModule, MatIconModule} from '@angular/material';
-import { AppPreloadingStrategy } from './app-preloading';
+import { MatButtonModule, MatMenuModule, MatBadgeModule, MatIconModule, MatSnackBarModule, MatDialogModule} from '@angular/material';
 import { SentryErrorHandler } from './sentry-error-handler';
 import { BankAdminSettingsDropdownComponent } from './home/header/bank-admin-settings-dropdown/bank-admin-settings-dropdown.component';
 import { ApplicationCountdownComponent } from './application-countdown/application-countdown.component';
@@ -49,7 +47,7 @@ import { ImgSrcPipeModule } from './shared/pipes/img-src-pipe.module';
 import { RouteReuseStrategy, RouterModule } from '@angular/router';
 import { CustomReuseStrategy } from './custom-router-reuse-strategy';
 import { environment } from '../environments/environment';
-import { AppShellComponent } from './app-shell/app-shell.component';
+import { AppPreloadingStrategy } from './app-preloading';
 
 
 @NgModule({
@@ -81,11 +79,11 @@ import { AppShellComponent } from './app-shell/app-shell.component';
     MatMenuModule,
     MatBadgeModule,
     MatIconModule,
-
+    MatSnackBarModule,
+    MatDialogModule,
     FormsModule,
     ValueTranslateModule,
     HoverClassModule,
-    LoanRequestDialogModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -15,7 +15,6 @@ import { OurPartnersComponent } from './our-partners/our-partners.component';
 import { BankPartnersComponent } from './our-partners/bank-partners/bank-partners.component';
 import { BankPartnerCardComponent } from './our-partners/bank-partners/bank-partner-card/bank-partner-card.component';
 import { FavorableRatesPreviewComponent } from './favorable-rates-preview/favorable-rates-preview.component';
-import { LoanRequestDialogModule } from '../loans/loan-request-dialog/loan-request-dialog.module';
 import { SwiperModule } from 'ngx-swiper-wrapper';
 import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
 import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
@@ -62,7 +61,6 @@ const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
     MatTabsModule,
 
     LandingPageRoutingModule,
-    LoanRequestDialogModule,
     SwiperModule,
     FavorableRatesPreviewTableModule
   ],

@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { SlideModel } from '../slide.model';
 import { MatDialog } from '@angular/material/dialog';
-import { LoanRequestDialogComponent } from 'src/app/home/loans/loan-request-dialog/loan-request-dialog.component';
 import { isMobileSize } from 'src/app/app.utils';
 import Typed from 'typed.js';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'loan-slide',
@@ -15,18 +15,11 @@ export class LoanSlideComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('shortInfo', { static: false }) shortInfo: ElementRef;
   @Input() slide: SlideModel;
   typed: any;
-  constructor(private dialog: MatDialog, private translateService: TranslateService) { }
+  constructor(private router: Router, private translateService: TranslateService) { }
 
   ngOnInit() { }
   onRequestLoansFromAllBanks() {
-    const ref = this.dialog.open(LoanRequestDialogComponent, {
-      panelClass: 'loanRequestDialog',
-      autoFocus: false,
-      maxWidth: '99vw',
-      disableClose: true,
-      position: isMobileSize() && { top: '10px' }
-      //  backdropClass: 'loanRequestDialogBackdrop'
-    });
+      this.router.navigateByUrl('/home/loans/loan-request');
   }
   ngAfterViewInit() {
    // this.startTypedJs();

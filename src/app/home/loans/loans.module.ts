@@ -12,6 +12,7 @@ import { LoansFilterComponent } from './loans-filter/loans-filter.component';
 import { LoansCardsComponent } from './loans-table/loans-cards/loans-cards.component';
 import { EndLoanOrderComponent } from './end-loan-order/end-loan-order.component';
 import { BankCheckboxLoaderComponent } from './end-loan-order/bank-checkbox-loader/bank-checkbox-loader.component';
+import { LoanRequestWrapperComponent } from './loan-request-wrapper/loan-request-wrapper.component';
 @NgModule({
   declarations: [
     LoansComponent,
@@ -21,6 +22,7 @@ import { BankCheckboxLoaderComponent } from './end-loan-order/bank-checkbox-load
       LoansCardsComponent,
       EndLoanOrderComponent,
       BankCheckboxLoaderComponent,
+      LoanRequestWrapperComponent,
     ],
   imports: [
     CommonModule,

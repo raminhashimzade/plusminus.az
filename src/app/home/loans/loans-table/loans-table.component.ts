@@ -3,8 +3,8 @@ import { Component, OnInit,  OnDestroy, HostListener, ChangeDetectionStrategy, C
 import { LoansService } from '../loans.service';
 import { Subject, Observable, of } from 'rxjs';
 import { takeUntil, finalize, map } from 'rxjs/operators';
-import { switchToView, isMobileSize } from 'src/app/app.utils';
-import { Router, ActivatedRoute } from '@angular/router';
+import { switchToView } from 'src/app/app.utils';
+import {  ActivatedRoute } from '@angular/router';
 import { SortChangeModel } from 'src/app/shared/directives/order-by-column/sort-change.model';
 import { SharedService } from 'src/app/shared/shared.service';
 import { LoanGroup, LoanProduct } from '../models/loanGroup.model';

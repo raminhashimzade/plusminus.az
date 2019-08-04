@@ -128,13 +128,7 @@ export class LoansFilterComponent implements OnInit {
   }
 
   onRequestLoansFromAllBanks() {
-    const ref = this.dialog.open(LoanRequestDialogComponent, {
-      panelClass: 'loanRequestDialog',
-      autoFocus: false,
-      maxWidth: '90vw',
-      disableClose: true,
-      position: isMobileSize() && {top: '10px'}
-    });
+    this.router.navigate(['/home/loans/loan-request', {random: Math.random() * 1000}]);
   }
 
 

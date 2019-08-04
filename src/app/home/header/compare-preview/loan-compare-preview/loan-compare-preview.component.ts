@@ -3,8 +3,6 @@ import { LoansService } from '../../../loans/loans.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { LoanRequestDialogComponent } from '../../../loans/loan-request-dialog/loan-request-dialog.component';
-import { isMobileSize } from 'src/app/app.utils';
 import { LoanProduct } from '../../../loans/models/loanGroup.model';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -34,19 +32,9 @@ export class LoanComparePreviewComponent implements OnInit {
     this.router.navigateByUrl('/home/loans/compare');
   }
   onRequestLoansFromBanks(loans: LoanProduct[]) {
-    console.log(loans);
     if (!(loans && loans.length > 0)) {return;}
     const requestBankId = loans.map(l => l.bankID);
-    const ref  = this.dialog.open(LoanRequestDialogComponent, {
-      panelClass: 'loanRequestDialog',
-      autoFocus: false,
-      maxWidth: '99vw',
-      disableClose: true,
-      position: isMobileSize() && {top: '0'},
-      data: {
-        requestBankId: requestBankId
-      }
-    });
+    this.router.navigate(['/home/loans/loan-request', {requestBankId: requestBankId}]);
   }
 
 }
