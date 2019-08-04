@@ -1,16 +1,16 @@
 import { Component, OnInit, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef, Inject, PLATFORM_ID } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { parseMomentToString, deepClone } from 'src/app/app.utils';
+import { deepClone } from 'src/app/app.utils';
 import { ExchangeRatesService } from '../exchange-rates.service';
 import { CurrencyArchieve } from '../models/currency-archieve.model';
-import { finalize } from 'rxjs/operators';
-import { ExchangeRate } from '../models/exchange-rate.model';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { SelectType } from 'src/app/shared/models/select-type.model';
 import { SharedService } from 'src/app/shared/shared.service';
 import { isPlatformBrowser } from '@angular/common';
 declare var google: any;
+import { Moment } from 'moment';
+import * as moment from 'moment';
 @Component({
   selector: 'exchange-rate-visualize',
   templateUrl: './exchange-rate-visualize.component.html',
@@ -62,7 +62,7 @@ export class ExchangeRateVisualizeComponent implements OnInit {
   onSubmit() {
     this.data = null;
     this.loading = true;
-    const newFormValue = parseMomentToString(deepClone(this.form.value));
+    const newFormValue = this.parseMomentToString(deepClone(this.form.value));
     this.exchangeRateService.getcurrRateArchive(newFormValue)
     .subscribe((items: CurrencyArchieve[]) => {
       if (!items) {return;}
@@ -74,4 +74,25 @@ export class ExchangeRateVisualizeComponent implements OnInit {
       this.initChart();
     });
   }
+  parseMomentToString(formValue: Object): Object {
+    try {
+      const newFormValue: string = Object.assign(formValue);
+      Object.keys(newFormValue).forEach(key => {
+        if (key.toLowerCase().includes('date') || moment.isMoment(key)) {
+          newFormValue[key] = this.momentToString(newFormValue[key]);
+        }
+      });
+      return newFormValue;
+    } catch (er) {
+      console.log(er);
+      return formValue;
+    }
+  }
+   momentToString(date: Moment) {
+    if (!date) {
+      return date;
+    }
+    return date.format('YYYYMMDD');
+  }
+
 }

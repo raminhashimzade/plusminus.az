@@ -294,6 +294,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = __webpack_require__("vOrQ");
 const app_utils_1 = __webpack_require__("R2Xm");
 const common_1 = __webpack_require__("0S4P");
+const moment = __webpack_require__("wy2R");
 class ExchangeRateVisualizeComponent {
     constructor(exchangeRateService, changeRef, sharedService, translateService, platformId) {
         this.exchangeRateService = exchangeRateService;
@@ -334,7 +335,7 @@ class ExchangeRateVisualizeComponent {
     onSubmit() {
         this.data = null;
         this.loading = true;
-        const newFormValue = app_utils_1.parseMomentToString(app_utils_1.deepClone(this.form.value));
+        const newFormValue = this.parseMomentToString(app_utils_1.deepClone(this.form.value));
         this.exchangeRateService.getcurrRateArchive(newFormValue)
             .subscribe((items) => {
             if (!items) {
@@ -347,6 +348,27 @@ class ExchangeRateVisualizeComponent {
             this.changeRef.detectChanges();
             this.initChart();
         });
+    }
+    parseMomentToString(formValue) {
+        try {
+            const newFormValue = Object.assign(formValue);
+            Object.keys(newFormValue).forEach(key => {
+                if (key.toLowerCase().includes('date') || moment.isMoment(key)) {
+                    newFormValue[key] = this.momentToString(newFormValue[key]);
+                }
+            });
+            return newFormValue;
+        }
+        catch (er) {
+            console.log(er);
+            return formValue;
+        }
+    }
+    momentToString(date) {
+        if (!date) {
+            return date;
+        }
+        return date.format('YYYYMMDD');
     }
 }
 exports.ExchangeRateVisualizeComponent = ExchangeRateVisualizeComponent;
@@ -10746,7 +10768,6 @@ exports.styles = styles;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const moment = __webpack_require__("wy2R");
 function getBaseUrl() {
     return isTestMode()
         ? 'https://testapi.plusminus.az' : 'https://api.plusminus.az';
@@ -10793,29 +10814,6 @@ exports.MY_FORMATS = {
         monthYearA11yLabel: 'MMMM YYYY'
     }
 };
-function parseMomentToString(formValue) {
-    try {
-        const newFormValue = Object.assign(formValue);
-        Object.keys(newFormValue).forEach(key => {
-            if (key.toLowerCase().includes('date') || moment.isMoment(key)) {
-                newFormValue[key] = momentToString(newFormValue[key]);
-            }
-        });
-        return newFormValue;
-    }
-    catch (er) {
-        console.log(er);
-        return formValue;
-    }
-}
-exports.parseMomentToString = parseMomentToString;
-function momentToString(date) {
-    if (!date) {
-        return date;
-    }
-    return date.format('YYYYMMDD');
-}
-exports.momentToString = momentToString;
 function deepClone(item) {
     if (!item) {
         return item;

@@ -9,9 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "init": "git add . && git reset --hard HEAD && git fetch origin && git pull origin",
-    "build:stats": "ng build --prod --extraWebpackConfig=webpack.extra.js --stats-json && cd dist && npm run analyze",
+    "build:stats": "ng build --prod --stats-json && cd dist && npm run analyze",
     "build:server": "ng build -aot -app ssr",
-    "analyze": "webpack-bundle-analyzer dist/plus-minus/stats.json",
+    "analyze": "webpack-bundle-analyzer dist/plus-minus/stats-es5.json",
     "build:test": "ng build --prod --extraWebpackConfig=webpack.extra.js --configuration=test",
     "http-server": "http-server ./dist/plus-minus -p 8080 -c-1 https://test.plusminus.az"
   },
@@ -53,9 +53,9 @@
     "@angular/cli": "~8.2.0",
     "@angular/compiler-cli": "~8.2.0",
     "@angular/language-service": "~8.2.0",
-    "@types/node": "~12.6.8",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~12.6.8",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -67,6 +67,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "webpack-bundle-analyzer": "^3.4.1"
   }
 }

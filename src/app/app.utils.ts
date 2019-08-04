@@ -1,5 +1,4 @@
-import { Moment } from 'moment';
-import * as moment from 'moment';
+
 export function getBaseUrl(): string {
   return isTestMode()
   ? 'https://testapi.plusminus.az' : 'https://api.plusminus.az';
@@ -44,26 +43,6 @@ export const MY_FORMATS = {
   }
 };
 
-export function parseMomentToString(formValue: Object): Object {
-  try {
-    const newFormValue: string = Object.assign(formValue);
-    Object.keys(newFormValue).forEach(key => {
-      if (key.toLowerCase().includes('date') || moment.isMoment(key)) {
-        newFormValue[key] = momentToString(newFormValue[key]);
-      }
-    });
-    return newFormValue;
-  } catch (er) {
-    console.log(er);
-    return formValue;
-  }
-}
-export function momentToString(date: Moment) {
-  if (!date) {
-    return date;
-  }
-  return date.format('YYYYMMDD');
-}
 
 
 export function deepClone(item) {
