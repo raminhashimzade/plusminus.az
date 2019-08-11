@@ -101,6 +101,7 @@
                                 <div  *ngIf="first" class="td-content products__table__content__bank">
                                   <div class="products__table__content__bank__icon" >
                                     <img  src="./assets/icons/banks/{{product.bankID}}.svg"
+                                    loading="lazy"
                                     alt="{{product.bankName}}" [attr.product-img-id]="product.lnID">
 
                                     <ng-container *ngIf="group.list?.length > 1">

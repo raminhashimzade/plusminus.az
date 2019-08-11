@@ -17,7 +17,9 @@
               <div class="card__header__bank">
 
                 <div class="card__header__bank__img">
-                  <img src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.dpID">
+                  <img src="./assets/icons/banks/{{product.bankID}}.svg"
+                  loading="lazy"
+                  alt="{{product.bankName}}" [attr.product-img-id]="product.dpID">
                 </div>
 
                 <ng-container *ngIf="group.list?.length > 1">

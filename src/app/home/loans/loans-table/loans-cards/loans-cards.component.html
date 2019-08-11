@@ -17,7 +17,9 @@
               <div class="card__header__bank">
 
                 <div class="card__header__bank__img">
-                  <img src="./assets/icons/banks/{{product.bankID}}.svg" alt="{{product.bankName}}" [attr.product-img-id]="product.lnID">
+                  <img src="./assets/icons/banks/{{product.bankID}}.svg"
+                    loading="lazy"
+                  alt="{{product.bankName}}" [attr.product-img-id]="product.lnID">
                 </div>
 
                 <div class="expand" (click)="onExpandGroup(group.bankID)" *ngIf="first && group.list?.length >1"
