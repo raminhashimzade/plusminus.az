@@ -1,0 +1,75 @@
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : getIssuer=plusminus.az
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : getSubject=32:1
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : getExpiresAt=Sat Jun 15 21:00:39 AZT 2019
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : getIssuedAt=Sat Jun 15 20:00:39 AZT 2019
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : getPayload=eyJzdWIiOiIzMjoxIiwiaXNzIjoicGx1c21pbnVzLmF6IiwiZXhwIjoxNTYwNjE4MDM5LCJpYXQiOjE1NjA2MTQ0MzksImp0aSI6IjMyIn0
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : getHeader=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : ----testAznAz
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : ----calcLoanSchedule
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : ----checkBankLogin
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : ----testSendSmsToken
+[2019-06-15 20:26:57.057] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:28:26.026] [main] [139] [INFO ] : ----testAznAz
+[2019-06-15 20:28:26.026] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : ----testJWT
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : getIssuer=plusminus.az
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : getSubject=32:1
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : getExpiresAt=Sat Jun 15 21:00:39 AZT 2019
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : getIssuedAt=Sat Jun 15 20:00:39 AZT 2019
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : getPayload=eyJzdWIiOiIzMjoxIiwiaXNzIjoicGx1c21pbnVzLmF6IiwiZXhwIjoxNTYwNjE4MDM5LCJpYXQiOjE1NjA2MTQ0MzksImp0aSI6IjMyIn0
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : getHeader=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : ----testAznAz
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : ----calcLoanSchedule
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : ----checkBankLogin
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : ----testSendSmsToken
+[2019-06-15 20:29:08.008] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : ----testJWT
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : getIssuer=plusminus.az
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : getSubject=32:1
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : getExpiresAt=Sat Jun 15 21:00:39 AZT 2019
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : getIssuedAt=Sat Jun 15 20:00:39 AZT 2019
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : getPayload=eyJzdWIiOiIzMjoxIiwiaXNzIjoicGx1c21pbnVzLmF6IiwiZXhwIjoxNTYwNjE4MDM5LCJpYXQiOjE1NjA2MTQ0MzksImp0aSI6IjMyIn0
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : getHeader=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : ----testAznAz
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : ----calcLoanSchedule
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : ----checkBankLogin
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : ----testSendSmsToken
+[2019-06-15 20:37:51.051] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : ----testJWT
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : getIssuer=plusminus.az
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : getSubject=32:1
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : getExpiresAt=Sat Jun 15 21:00:39 AZT 2019
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : getIssuedAt=Sat Jun 15 20:00:39 AZT 2019
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : getPayload=eyJzdWIiOiIzMjoxIiwiaXNzIjoicGx1c21pbnVzLmF6IiwiZXhwIjoxNTYwNjE4MDM5LCJpYXQiOjE1NjA2MTQ0MzksImp0aSI6IjMyIn0
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : getHeader=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : ----testAznAz
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : ----calcLoanSchedule
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : ----checkBankLogin
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : ----testSendSmsToken
+[2019-06-15 20:39:41.041] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : ----testJWT
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : getIssuer=plusminus.az
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : getSubject=32:1
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : getExpiresAt=Sat Jun 15 21:00:39 AZT 2019
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : getIssuedAt=Sat Jun 15 20:00:39 AZT 2019
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : getPayload=eyJzdWIiOiIzMjoxIiwiaXNzIjoicGx1c21pbnVzLmF6IiwiZXhwIjoxNTYwNjE4MDM5LCJpYXQiOjE1NjA2MTQ0MzksImp0aSI6IjMyIn0
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : getHeader=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : ----testAznAz
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : ----calcLoanSchedule
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : ------------------------------------------
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : ----testSendSmsToken
+[2019-06-15 20:42:34.034] [main] [139] [INFO ] : ------------------------------------------
